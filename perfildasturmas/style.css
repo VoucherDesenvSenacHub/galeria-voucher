@@ -1,0 +1,102 @@
+ /* Resetando estilos padrões */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #0f0; /* Verde fluorescente */
+}
+
+/* Barra de navegação */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #111;
+    padding: 10px 20px;
+}
+
+nav a {
+    color: #0f0;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #0f0;
+    color: #000;
+}
+
+/* Campo de pesquisa */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #0f0;
+    background-color: #222;
+    color: #0f0;
+    font-size: 16px;
+}
+
+.search-container button {
+    padding: 10px 15px;
+    background-color: #0f0;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-container button:hover {
+    background-color: #111;
+}
+
+/* Título e área de turmas */
+.content {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.content h1 {
+    color: #0f0;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.turmas-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+.turma {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+    width: 250px;
+}
+
+.turma img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.turma h3 {
+    color: #0f0;
+    font-size: 24px;
+}
