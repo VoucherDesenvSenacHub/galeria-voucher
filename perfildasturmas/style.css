@@ -5,13 +5,12 @@
     box-sizing: border-box;
 }
 
-/* Estilo geral da página */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #000;
-    color: #0f0; /* Verde fluorescente */
-}
-
+    background: linear-gradient(to bottom, #000, #000, #0f0);
+  }
+  
+  
+  
 /* Barra de navegação */
 nav {
     display: flex;
@@ -100,3 +99,6 @@ nav a:hover {
     color: #0f0;
     font-size: 24px;
 }
+h1 {
+    margin-top: -20px; /* Move o título 20px para cima */
+  }
