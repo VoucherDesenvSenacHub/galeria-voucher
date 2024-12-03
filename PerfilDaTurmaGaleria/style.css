@@ -13,10 +13,26 @@ body {
     justify-content: right;
 }
 
-.imagem-canto {
+.imagem-direita {
     
     bottom: 0; /* Alinha ao fundo */
     left: 0; /* Alinha à esquerda */
     width: 50%; /* Ajusta o tamanho da imagem */
     height: 100%; /* Mantém a proporção da imagem */
+}
+
+.imagem-diaI {
+
+}
+
+.imagem-diaP {
+
+}
+
+.imagem-diaE {
+
+}
+
+.imagem-projeto {
+    
 }
