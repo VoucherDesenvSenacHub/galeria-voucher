@@ -14,25 +14,50 @@ body {
 }
 
 .imagem-direita {
-    
-    bottom: 0; /* Alinha ao fundo */
     left: 0; /* Alinha à esquerda */
     width: 50%; /* Ajusta o tamanho da imagem */
-    height: 100%; /* Mantém a proporção da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
 }
 
 .imagem-diaI {
-
+    left: 0; /* Alinha à esquerda */
+    width: 50%; /* Ajusta o tamanho da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
+    float: right;
+    width: 300px;
+    /* padding: 10px; */
 }
 
 .imagem-diaP {
+    left: 0; /* Alinha à esquerda */
+    width: 50%; /* Ajusta o tamanho da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
 
 }
 
 .imagem-diaE {
+    left: 0; /* Alinha à esquerda */
+    width: 50%; /* Ajusta o tamanho da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
+    float: right;
+    width: 300px;
 
 }
 
 .imagem-projeto {
-    
+    left: 0; /* Alinha à esquerda */
+    width: 50%; /* Ajusta o tamanho da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
+    /* float: right; */
+    width: 3000px;
 }
