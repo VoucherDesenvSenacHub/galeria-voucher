@@ -1,7 +1,7 @@
 body {
     margin: 0; /* Remove as margens padrão */
     padding: 0;
-    height: 100vh; /* Define a altura para ocupar toda a tela */
+    height: 500vh; /* Define a altura para ocupar toda a tela */
     background: linear-gradient(to bottom, black, #0D9C0D); /* Gradiente de preto para verde */
 }
 
