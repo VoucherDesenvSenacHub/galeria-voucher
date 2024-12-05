@@ -17,7 +17,7 @@
     border: 1px solid #0f0; /* Borda verde com 5px de espessura */
     position: absolute;
     top: 10%; /* 50% da altura da página */
-    left: 27%; /* 50% da largura da página */
+    left: 23%; /* 50% da largura da página */
 }
 
 .square2 {
@@ -26,9 +26,11 @@
     background-color: #000000; /* Cor de fundo preta */
     border: 1px solid #0f0; /* Borda verde com 5px de espessura */
     position: absolute;
-    top: 37%; /* 23% da altura da página */
+    top: 38%; /* 23% da altura da página */
     left: 0%; /* 10% da largura da página */
 }
+
+
 
 
 
@@ -53,7 +55,7 @@ nav {
     background-color: #111;
     padding: 10px 20px;
     position: sticky;
-    top: 100;
+    top: 0;
     width: 100%;
     z-index: 10;
 }
