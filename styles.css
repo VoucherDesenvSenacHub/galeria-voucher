@@ -41,4 +41,19 @@ body {
     width: 50%; /* Ajusta o tamanho da imagem */
     height: 100%; /* Mantém a proporção da imagem */
 }
- 
+
+.row {
+    display: flex; /* Define cada fileira como um contêiner flexível. */
+    justify-content: center; /* Centraliza os elementos filhos horizontalmente dentro da fileira. */
+    margin-bottom: -240px; /* Define o espaçamento entre as fileiras (neste caso, negativo para sobreposição). */
+}
+
+.losango {
+    width: 100px; /* Define a largura do losango (antes da rotação). */
+    height: 100px; /* Define a altura do losango (antes da rotação). */
+    background-color: transparent; /* Torna o fundo transparente. */
+    border: 2px solid green; /* Adiciona uma borda verde ao losango. */
+    transform: rotate(45deg); /* Rotaciona o elemento 45 graus para formar um losango. */
+    margin: 25px; /* Define o espaçamento entre os losangos. */
+}
+
