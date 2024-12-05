@@ -1,16 +1,50 @@
- /* Resetando estilos padrões */
- * {
+/* Resetando estilos padrões */
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: #000000; /* Cor de fundo vermelha */
+    border: 1px solid #0f0; /* Borda verde com 5px de espessura */
+    position: absolute;
+    top: 31%; /* 50% da altura da página */
+    left: 20%; /* 50% da largura da página */
+}
+
+.square1 {
+    width: 0px;
+    height: 1000px;
+    background-color: #000000; /* Cor de fundo vermelha */
+    border: 1px solid #0f0; /* Borda verde com 5px de espessura */
+    position: absolute;
+    top: 10%; /* 50% da altura da página */
+    left: 27%; /* 50% da largura da página */
+}
+
+.square2 {
+    width: 10000px; /* Largura de 1000px */
+    height: 0px; /* Altura 0 para uma linha */
+    background-color: #000000; /* Cor de fundo preta */
+    border: 1px solid #0f0; /* Borda verde com 5px de espessura */
+    position: absolute;
+    top: 37%; /* 23% da altura da página */
+    left: 0%; /* 10% da largura da página */
+}
+
+
+
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    background: linear-gradient(to bottom, #000, #000, #0f0);
-  }
-  
-  
-  
+html, body {
+    height: 100%;
+    background: linear-gradient(to bottom, #000 10%, #000 70%, #000 0%, #0f0 100%); /* Gradiente contínuo de preto para verde */
+    font-family: Arial, sans-serif; /* Fonte básica para o corpo */
+}
+
 /* Barra de navegação */
 nav {
     display: flex;
@@ -18,6 +52,10 @@ nav {
     align-items: center;
     background-color: #111;
     padding: 10px 20px;
+    position: sticky;
+    top: 100;
+    width: 100%;
+    z-index: 10;
 }
 
 nav a {
@@ -65,19 +103,20 @@ nav a:hover {
 .content {
     padding: 40px 20px;
     text-align: center;
+    flex-grow: 1; /* Garante que o conteúdo ocupe o restante da altura da página */
 }
 
 .content h1 {
-    color: #0f0;
-    font-size: 36px;
-    margin-bottom: 20px;
+    color: rgb(237, 246, 237);
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
 .turmas-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    justify-content: center;
     gap: 20px;
-    justify-items: center;
+    flex-wrap: wrap; /* Faz com que os itens se adaptem ao tamanho da tela */
 }
 
 .turma {
@@ -87,6 +126,8 @@ nav a:hover {
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
     width: 250px;
+    margin: 10px;
+    transition: transform 0.3s;
 }
 
 .turma img {
@@ -99,6 +140,16 @@ nav a:hover {
     color: #0f0;
     font-size: 24px;
 }
-h1 {
-    margin-top: -20px; /* Move o título 20px para cima */
-  }
+
+/* Efeito de hover nas turmas */
+.turma:hover {
+    transform: scale(1.05); /* Leve aumento no tamanho da turma */
+}
+
+/* Certificando-se de que o layout ocupe toda a página */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start; /* Garantir que o conteúdo comece de cima */
+}
