@@ -1,0 +1,63 @@
+body {
+    margin: 0; /* Remove as margens padrão */
+    padding: 0;
+    height: 500vh; /* Define a altura para ocupar toda a tela */
+    background: linear-gradient(to bottom, black, #0D9C0D); /* Gradiente de preto para verde */
+}
+
+.mapa {
+    position: relative; /* Define um contêiner de referência */
+    width: 100%; /* Largura do contêiner */
+    height: 100vh; /* Altura total da tela */
+    display: flex;
+    justify-content: right;
+}
+
+.imagem-direita {
+    left: 0; /* Alinha à esquerda */
+    width: 50%; /* Ajusta o tamanho da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
+}
+
+.imagem-diaI {
+    left: 0; /* Alinha à esquerda */
+    width: 50%; /* Ajusta o tamanho da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
+    float: right;
+    width: 300px;
+    /* padding: 10px; */
+}
+
+.imagem-diaP {
+    left: 0; /* Alinha à esquerda */
+    width: 50%; /* Ajusta o tamanho da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
+
+}
+
+.imagem-diaE {
+    left: 0; /* Alinha à esquerda */
+    width: 50%; /* Ajusta o tamanho da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
+    float: right;
+    width: 300px;
+
+}
+
+.imagem-projeto {
+    left: 0; /* Alinha à esquerda */
+    width: 50%; /* Ajusta o tamanho da imagem */
+    height: center; /* Mantém a proporção da imagem */
+    max-width: 40%;
+    border-radius: 10px;
+    /* float: right; */
+    width: 3000px;
+}
