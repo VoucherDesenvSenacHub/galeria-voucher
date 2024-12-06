@@ -83,8 +83,9 @@ nav a:hover {
     padding: 10px;
     margin-right: 10px;
     border: 2px solid #0f0;
-    background-color: #222;
-    color: #0f0;
+    border-radius: 10px;
+    background-color: #f1ecec;
+    color: rgb(8, 8, 8);
     font-size: 16px;
 }
 
@@ -93,6 +94,7 @@ nav a:hover {
     background-color: #0f0;
     color: #000;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
 }
