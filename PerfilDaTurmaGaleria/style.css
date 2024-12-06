@@ -61,3 +61,16 @@ body {
     /* float: right; */
     width: 3000px;
 }
+
+.h1, h2, h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    
+
+    color: white;
+}
+
+p {
+    font-family: "Inter", sans-serif;
+    color: white;
+}
