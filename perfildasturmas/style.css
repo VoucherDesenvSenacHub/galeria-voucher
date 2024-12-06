@@ -1,34 +1,40 @@
 /* Resetando estilos padrões */
+.content {
+    width: 100vw;
+    height: 100vh;
+    position: fixed; /* Para garantir que os elementos absolutos fiquem dentro do contêiner */
+}
 
 .square {
+    position: fixed;
     width: 100px;
     height: 100px;
-    background-color: #000000; /* Cor de fundo vermelha */
-    border: 1px solid #0f0; /* Borda verde com 5px de espessura */
-    position: absolute;
-    top: 31%; /* 50% da altura da página */
-    left: 20%; /* 50% da largura da página */
+    background-color: #000000; /* Cor de fundo preta */
+    border: 1px solid #0f0; /* Borda verde */
+    top: 31%; /* Ajuste do topo para centralizar */
+    left: 19.7%; /* Ajuste da posição à esquerda */
 }
 
 .square1 {
-    width: 0px;
-    height: 1000px;
-    background-color: #000000; /* Cor de fundo vermelha */
-    border: 1px solid #0f0; /* Borda verde com 5px de espessura */
-    position: absolute;
-    top: 10%; /* 50% da altura da página */
-    left: 23%; /* 50% da largura da página */
+    position: fixed;
+    width: 0%;
+    height: 100%;
+    background-color: #000000; /* Cor de fundo preta */
+    border: 1px solid #0f0; /* Borda verde */
+    top: 10%; /* Posiciona a linha vertical um pouco abaixo */
+    left: 23%; /* Alinha um pouco à direita da square */
 }
 
 .square2 {
-    width: 10000px; /* Largura de 1000px */
-    height: 0px; /* Altura 0 para uma linha */
+    position: fixed;
+    width: 100%; /* A largura da linha horizontal */
+    height: 0%; /* Altura zero para uma linha */
     background-color: #000000; /* Cor de fundo preta */
-    border: 1px solid #0f0; /* Borda verde com 5px de espessura */
-    position: absolute;
-    top: 38%; /* 23% da altura da página */
-    left: 0%; /* 10% da largura da página */
+    border: 1px solid #0f0; /* Borda verde */
+    top: 38%; /* Posiciona a linha horizontal um pouco abaixo da square */
+    left: 0%; /* Começa na borda esquerda */
 }
+
 
 
 
@@ -101,14 +107,10 @@ nav a:hover {
     background-color: #111;
 }
 
-/* Título e área de turmas */
-.content {
-    padding: 40px 20px;
-    text-align: center;
-    flex-grow: 1; /* Garante que o conteúdo ocupe o restante da altura da página */
-}
 
-.content h1 {
+
+h1 {
+    text-align: center;
     color: rgb(237, 246, 237);
     font-size: 30px;
     margin-bottom: 10px;
