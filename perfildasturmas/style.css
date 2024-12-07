@@ -2,38 +2,116 @@
 .content {
     width: 100vw;
     height: 100vh;
-    position: fixed; /* Para garantir que os elementos absolutos fiquem dentro do contêiner */
+    position: relative; /* Para garantir que os elementos absolutos fiquem dentro do contêiner */
 }
 
 .square {
-    position: fixed;
-    width: 100px;
-    height: 100px;
+    position: absolute;
+    width: 6vw; /* Tamanho do quadrado ajustado proporcionalmente */
+    height: 6vw; /* Mantém a proporção quadrada */
     background-color: #000000; /* Cor de fundo preta */
-    border: 1px solid #0f0; /* Borda verde */
-    top: 31%; /* Ajuste do topo para centralizar */
-    left: 19.7%; /* Ajuste da posição à esquerda */
+    border: 3px solid #0f0; /* Borda verde */
+    top: 18vh; /* Posição vertical inicial */
+    left: 20vw; /* Posição horizontal inicial */
 }
 
 .square1 {
-    position: fixed;
-    width: 0%;
-    height: 100%;
-    background-color: #000000; /* Cor de fundo preta */
-    border: 1px solid #0f0; /* Borda verde */
-    top: 10%; /* Posiciona a linha vertical um pouco abaixo */
-    left: 23%; /* Alinha um pouco à direita da square */
+    position: absolute; /* Linha vertical */
+    width: 2px; /* Largura da linha vertical */
+    height: 100%; /* Altura da linha vertical que ocupa toda a tela */
+    background-color: #0f0; /* Cor verde */
+    top: 0; /* Começa no topo */
+    left: 23vw; /* Posiciona a linha à direita do quadrado */
 }
 
 .square2 {
-    position: fixed;
-    width: 100%; /* A largura da linha horizontal */
-    height: 0%; /* Altura zero para uma linha */
-    background-color: #000000; /* Cor de fundo preta */
-    border: 1px solid #0f0; /* Borda verde */
-    top: 38%; /* Posiciona a linha horizontal um pouco abaixo da square */
-    left: 0%; /* Começa na borda esquerda */
+    position: absolute; /* Linha horizontal */
+    width: 100%; /* Largura total da tela */
+    height: 2px; /* Espessura da linha horizontal */
+    background-color: #0f0; /* Cor verde */
+    top: calc(18vh + 3vw); /* A linha passa no meio do quadrado */
+    left: 0; /* Começa na borda esquerda */
 }
+
+/* Media Query para telas menores que 1024px (tablets e dispositivos com telas médias) */
+@media (max-width: 1024px) {
+    .square {
+        width: 8vw; /* Ajusta o tamanho do quadrado */
+        height: 8vw; /* Ajusta o tamanho proporcionalmente */
+        top: 20vh; /* Ajusta o topo */
+        left: 22vw; /* Ajusta a posição à esquerda */
+    }
+
+    .square1 {
+        height: calc(100vh - 20vh); /* Ajusta a altura da linha vertical */
+        left: calc(23vw + 2vw); /* Ajusta a posição da linha vertical */
+    }
+
+    .square2 {
+        top: calc(20vh + 4vw); /* Ajusta a linha horizontal */
+    }
+}
+
+/* Media Query para telas menores que 768px (dispositivos móveis) */
+@media (max-width: 768px) {
+    .square {
+        width: 12vw; /* Ajusta o tamanho do quadrado */
+        height: 12vw; /* Ajusta proporcionalmente */
+        top: 25vh; /* Ajusta o topo */
+        left: 25vw; /* Ajusta a posição à esquerda */
+    }
+
+    .square1 {
+        height: calc(100vh - 25vh); /* Ajusta a altura da linha vertical */
+        left: calc(26vw + 2vw); /* Ajusta a posição da linha vertical */
+    }
+
+    .square2 {
+        top: calc(25vh + 6vw); /* Ajusta a linha horizontal */
+    }
+}
+
+/* Media Query para telas menores que 480px (dispositivos móveis pequenos) */
+@media (max-width: 480px) {
+    .square {
+        width: 15vw; /* Ajusta o tamanho do quadrado */
+        height: 15vw; /* Ajusta proporcionalmente */
+        top: 30vh; /* Ajusta o topo */
+        left: 30vw; /* Ajusta a posição à esquerda */
+    }
+
+    .square1 {
+        height: calc(100vh - 30vh); /* Ajusta a altura da linha vertical */
+        left: calc(28vw + 2vw); /* Ajusta a posição da linha vertical */
+    }
+
+    .square2 {
+        top: calc(30vh + 7.5vw); /* Ajusta a linha horizontal */
+    }
+}
+
+/* Media Query para telas menores que 1033px e 929px, onde o layout estava quebrando */
+@media (max-width: 1033px) and (max-height: 929px) {
+    .square {
+        width: 10vw; /* Ajuste do tamanho do quadrado */
+        height: 10vw; /* Mantém a proporção quadrada */
+        top: 22vh; /* Ajusta o topo para telas menores */
+        left: 20vw; /* Ajuste da posição à esquerda */
+    }
+
+    .square1 {
+        height: calc(100vh - 22vh); /* Ajusta a altura da linha vertical */
+        left: calc(23vw + 2vw); /* Ajuste da posição da linha vertical */
+    }
+
+    .square2 {
+        top: calc(22vh + 5vw); /* Ajusta a posição da linha horizontal */
+    }
+}
+
+
+
+
 
 
 
