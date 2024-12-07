@@ -63,6 +63,7 @@ body {
     border: 2px solid black; /* Adiciona uma borda verde ao losango. */
     transform: rotate(45deg); /* Rotaciona o elemento 45 graus para formar um losango. */
     margin: 25px; /* Define o espaçamento entre os losangos. */
+    background-image: url();
     
 }
 
