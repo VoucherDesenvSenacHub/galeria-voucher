@@ -142,7 +142,7 @@ nav a:hover {
 }
 
 .turma h3 {
-    color: #0f0;
+    color: #0f0;  /* titulo centro : turmas*/
     font-size: 24px;
 }
 
@@ -208,7 +208,7 @@ details:hover .menu-dropdown-content {
 .cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 28px;
+    gap: 25px;
     justify-content: space-around;
     margin-top: 20px;
         

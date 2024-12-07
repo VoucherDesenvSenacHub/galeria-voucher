@@ -4,7 +4,7 @@
     width: 100px;
     height: 100px;
     background-color: #000000; /* Cor de fundo vermelha */
-    border: 1px solid #0f0; /* Borda verde com 5px de espessura */
+    border: 2px solid #0f0; /* Borda verde com 5px de espessura */
     position: absolute;
     top: 31%; /* 50% da altura da página */
     left: 20%; /* 50% da largura da página */
@@ -14,7 +14,7 @@
     width: 0px;
     height: 1000px;
     background-color: #000000; /* Cor de fundo vermelha */
-    border: 1px solid #0f0; /* Borda verde com 5px de espessura */
+    border: 2px solid #0f0; /* Borda verde com 5px de espessura */
     position: absolute;
     top: 10%; /* 50% da altura da página */
     left: 23%; /* 50% da largura da página */
@@ -24,7 +24,7 @@
     width: 10000px; /* Largura de 1000px */
     height: 0px; /* Altura 0 para uma linha */
     background-color: #000000; /* Cor de fundo preta */
-    border: 1px solid #0f0; /* Borda verde com 5px de espessura */
+    border: 2px solid #0f0; /* Borda verde com 5px de espessura */
     position: absolute;
     top: 38%; /* 23% da altura da página */
     left: 0%; /* 10% da largura da página */
@@ -52,9 +52,9 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #111;
+    /* background-color: #111; */
     padding: 10px 20px;
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     width: 100%;
     z-index: 10;
@@ -83,8 +83,9 @@ nav a:hover {
     padding: 10px;
     margin-right: 10px;
     border: 2px solid #0f0;
-    background-color: #222;
-    color: #0f0;
+    border-radius: 10px;
+    background-color: #f1ecec;
+    color: rgb(8, 8, 8);
     font-size: 16px;
 }
 
@@ -93,6 +94,7 @@ nav a:hover {
     background-color: #0f0;
     color: #000;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
 }
@@ -104,12 +106,13 @@ nav a:hover {
 /* Título e área de turmas */
 .content {
     padding: 40px 20px;
+    color: #0f0;
     text-align: center;
     flex-grow: 1; /* Garante que o conteúdo ocupe o restante da altura da página */
 }
 
 .content h1 {
-    color: rgb(237, 246, 237);
+    color: #0f0;
     font-size: 30px;
     margin-bottom: 10px;
 }
@@ -139,7 +142,7 @@ nav a:hover {
 }
 
 .turma h3 {
-    color: #0f0;
+    color: #0f0;  /* titulo centro : turmas*/
     font-size: 24px;
 }
 
@@ -155,3 +158,125 @@ body {
     min-height: 100vh;
     justify-content: flex-start; /* Garantir que o conteúdo comece de cima */
 }
+
+/* Estilo para o menu dropdown */
+details {
+    position: relative;
+}
+
+details summary {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+details[open] summary {
+    background-color: #ddd;
+}
+
+/* Quando o mouse passar por cima do <details>, mostrar o conteúdo */
+details:hover .menu-dropdown-content {
+    display: block;
+}
+
+.menu-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0f0;
+    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.menu-dropdown-content a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu-dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Estilo para os cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: space-around;
+    margin-top: 20px;
+        
+    }
+
+
+.card {
+    width: 220px;
+    border: 1px solid #ddd;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 22px;
+    border: 3px solid #0f0;
+}
+
+/* .card-info {
+    padding: 10px;
+}
+
+.card-info h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card-info p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Efeito de hover nos cards */
+.card:hover {
+    transform: translateY(-5px);
+} */
+
+/* Barra de navegação */
+nav {
+    background-color: #333;
+    padding: 10px;
+    color: white;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.search-container {
+    float: right;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 25
+}
+
