@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body{
+
+    font-family: "Poppins", sans-serif;
+    background-image: linear-gradient(#000000, #003100);;
+      
+}
+
+nav{
+    background-image: linear-gradient(#000000, #003100);;
+    display: flex;
+    /* alinhamento horizontal*/
+    justify-content: space-around;
+    /* alinhamento vertical*/
+    align-items: center;
+    height: 8vh;
+}
+
+.logo{       /* . serve para selecionar uma classe*/
+            /*Transforma o texto em caixaalta(maiusculo)*/
+    text-transform: uppercase;
+    /* espacamento entre linhas*/
+    letter-spacing: 4px;
+
+}
+
+a{ /* muda o formato nas letras dos links*/
+    text-decoration: none;
+    color:#aEFF40;
+}
+
+a:hover{
+
+    opacity: 0.7; /* muda a opacidade das letras ex: home*/
+    transform: scale(1.2);
+}
+
+
+ul {
+    display: flex;
+    list-style: none;
+    gap:30px;
+    align-items: center;
+    letter-spacing: 2px;
+    
+}
+
+ul li{
+    display: inline-flex;
+}
+
+main {
+    height: 92vh;
+    background-image: url(voucher-logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-origin:;*/
+    background-size: cover;
+   }
+
+.search {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+}
+
+.search input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    
+}
+
+.search button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #ffffff; /* Corrigido para #ffffff */
+    color: #000;
+    cursor: pointer;
+}
