@@ -9,9 +9,10 @@ body {
 .mapa{
     position: relative; /* Define um contêiner de referência */
     width: 120%; /* Largura do contêiner */
-    height: 150vh; /* Altura total da tela */
+    height: 110vh; /* Altura total da tela */
     display: flex;
     justify-content: end;
+    padding: 120px 10px;
 }
 
 .linha {
@@ -27,12 +28,16 @@ body {
     width: 600px; /* Largura do contêiner */
     height: 200px; /* Altura total da tela */
     padding: 360px 420px;
+    display: flex;
+    justify-content: left;
+    
 }
 .numeros {
-    position: absolute; /* Define um contêiner de referência */
-    width: 600px; /* Largura do contêiner */
-    height: 200px; /* Altura total da tela */
-    padding: 90px 700px;
+    position: absolute;
+    width: 600px; /* Mantém tamanho fixo */
+    height: 200px; /* Mantém tamanho fixo */
+    padding: 1px 700px;
+    
 }
 .imagem-canto {
     
