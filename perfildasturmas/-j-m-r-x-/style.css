@@ -1,7 +1,7 @@
 .content {
     width: 100vw;
     height: 100vh;
-    position: relative; /* Para garantir que os elementos absolutos fiquem dentro do contêiner */
+    /* position: relative; Para garantir que os elementos absolutos fiquem dentro do contêiner */
 }
 
 .square {
@@ -178,6 +178,8 @@ nav a:hover {
     font-size: 60px;  /* Tamanho do ícone */
     width: 100px;      /* Largura do ícone */
     height: 100px;     /* Altura do ícone */
+    /* display: flex; */
+    align-items: center;
   }
   
 
