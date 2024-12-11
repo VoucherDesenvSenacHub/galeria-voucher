@@ -7,7 +7,7 @@
 }
 
 nav {
-    background-image: linear-gradient(#000000, #003100);
+    /* background-image: linear-gradient(#000000, #003100); */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -64,6 +64,7 @@ ul li{
     border-radius: 10px 10px 10px 10px;
     outline: none;
     width: 300px;
+    background-color: #d8dbd6;
     
 }
 
@@ -72,64 +73,110 @@ ul li{
     padding: 5px 10px;
     border: none;
     border-radius: 0 5px 5px 0;
-    background-color: #ffffff;
+    background-color: #d8dbd6;
     cursor: pointer;
     margin-left: -40px;
 }
 
 /* AQUI TERMINA COMEÇA A NAVBAR */
 
-body {
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #000000, #aEFF40);
-    font-family: Arial, sans-serif;
-    color: #fff;
+/* Aqui começa o Login */
 
+/* Geral */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: linear-gradient(#000000, #003100);
+    font-family: Arial, sans-serif;
+    align-items: center;
 }
 
-.login-container {
-    padding: 20px 30px;
+main {
+    display: flex;
+    margin-left: 35%;
+    margin-top: 10%;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Cabeçalho do Formulário */
+.form-header h1 {
+    margin: 0;
+    font-size: 50px;
     text-align: center;
-    display: inline;
+    color:#aEFF40;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 2px;
+    margin-top: -30px;
+    font-weight: normal;
+   
+}
+
+/* Conteúdo do Formulário */
+.form-content {
+    margin-top: 20px;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     
 }
 
-.login-container h1 {
-    margin-bottom: 20px;
-    font-size: 40px;
-}
-
-.login-container input[type="text"],
-.login-container input[type="password"] {
-    width: 100px;
-    padding: 30px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-   
+.form-input input {
+    width: 400px;
+    padding: 20px;
     font-size: 16px;
+    border: 1px solid #ccc;
+    background-color: #d8dbd6;
+    border-radius: 50px 50px 50px 50px;
 }
 
+/* Botão de Ação */
+.form-action {
+    margin-top: 30px;
+    text-align: center;
+}
 
-
-.login-container button {
-    width: 100px;
-    padding: 10px;
-    background-color: #008000;
+.form-action button {
+    width: 35%;
+    padding: 5px;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 1px;
+    font-size: 30px;
+    color: #003100;
+    background-color: #aEFF40;
     border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
+    border-radius: 50px 50px 50px 50px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.login-container button:hover {
-    background-color: #006600;
+.form-action button:hover {
+    background-color: #005e00;
 }
 
-.login-container p {
-    margin-top: 15px;
+/* Rodapé do Formulário */
+.form-footer {
+    margin-top: 20px;
+    text-align: center;
     font-size: 14px;
+    color: #fafafa;
+    font-family: "Inter", sans-serif;
+}
+
+.form-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+h5 {
+    color: #fafafa;
 }
