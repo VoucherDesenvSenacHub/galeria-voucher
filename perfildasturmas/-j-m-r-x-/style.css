@@ -12,6 +12,7 @@
     border: 3px solid #0f0; /* Borda verde */
     top: 18vh; /* Posição vertical inicial */
     left: 20vw; /* Posição horizontal inicial */
+    z-index: 0; /* Quadrado à frente */
 }
 
 .square1 {
@@ -21,6 +22,7 @@
     background-color: #0f0; /* Cor verde */
     top: 0; /* Começa no topo */
     left: 23vw; /* Posiciona a linha à direita do quadrado */
+    z-index: 1; /* Quadrado à frente */
 }
 
 .square2 {
@@ -30,6 +32,7 @@
     background-color: #0f0; /* Cor verde */
     top: calc(18vh + 3vw); /* A linha passa no meio do quadrado */
     left: 0; /* Começa na borda esquerda */
+    z-index: 1; /* Quadrado à frente */
 }
 
 /* Media Query para telas menores que 1024px (tablets e dispositivos com telas médias) */
@@ -427,41 +430,37 @@ details:hover .menu-dropdown-content {
     }
 
 
-.card {
-    width: 220px;
-    /* border: 1px solid #ddd; */
-    border-radius: 22px;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    position: relative;
-}
-
-.card img {
-    width: 200px;
-    height: auto;
-    border-radius: 22px;
-    border: 3px solid #0f0;
-}
-
-/* .card-info {
-    padding: 10px;
-}
-
-.card-info h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.card-info p {
-    font-size: 14px;
-    color: #555;
-}
-
-/* Efeito de hover nos cards */
-.card:hover {
-    transform: translateY(-5px);
-} */
+    .card {
+        display: block;
+        width: relative; /* Ajuste o tamanho do card conforme necessário */
+        height: 220px;
+        border: 5px solid #0f0; /* Borda do card */
+        padding: 10px; /* Espaçamento dentro do card */
+        text-align: center;
+        text-decoration: none;
+        background-color: black; /* Cor de fundo do card */
+        border-radius: 10px;  
+        z-index: 2; /* Quadrado à frente */
+    }
+    
+    .card-content {
+        position: relative;
+    }
+    
+    .card-title {
+        font-size: 18px; /* Tamanho do título */
+        margin-bottom: 10px; /* Espaço entre o título e a imagem */
+        color: #0f0; /* Cor do título - amarelo */
+    }
+    
+    .card-image {
+        width: 100%; /* A imagem ocupará 100% da largura do card */
+        height: auto; /* A altura será ajustada proporcionalmente */
+        max-height: 150px; /* Limita a altura máxima da imagem */
+        object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
+        border-radius: 10px;
+        border: 1px solid #0f0; /* Borda do card */
+    }
 
 /* Barra de navegação */
 nav {
