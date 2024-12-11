@@ -1,45 +1,41 @@
+/* ESSA PARTE AQUI COMEÇA A NOSSA NAVBAR */
+
 *{
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-body{
-
-    font-family: "Poppins", sans-serif;
-    background-image: linear-gradient(#000000, #003100);;
-      
-}
-
-nav{
+nav {
     background-image: linear-gradient(#000000, #003100);;
     display: flex;
-    /* alinhamento horizontal*/
     justify-content: space-around;
-    /* alinhamento vertical*/
     align-items: center;
-    height: 8vh;
+    height: 10vh;
 }
 
-.logo{       /* . serve para selecionar uma classe*/
-            /*Transforma o texto em caixaalta(maiusculo)*/
-    text-transform: uppercase;
-    /* espacamento entre linhas*/
-    letter-spacing: 4px;
 
-}
-
-a{ /* muda o formato nas letras dos links*/
+a {
     text-decoration: none;
     color:#aEFF40;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+
+}
+
+.material-symbols-outlined {
+    color:#aEFF40;
+    font-size: 35px;
+    
 }
 
 a:hover{
-
-    opacity: 0.7; /* muda a opacidade das letras ex: home*/
+    opacity: 0.7;
     transform: scale(1.2);
-}
 
+}
 
 ul {
     display: flex;
@@ -52,36 +48,33 @@ ul {
 
 ul li{
     display: inline-flex;
-}
 
-main {
-    height: 92vh;
-    background-image: url(voucher-logo.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    /*background-origin:;*/
-    background-size: cover;
-   }
+}
 
 .search {
     display: flex;
     align-items: center;
-    border-radius: 50px;
+    
 }
 
 .search input {
-    padding: 5px;
+    display: inline-flex;
+    padding: 7px;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 10px 10px 10px 10px;
     outline: none;
+    width: 300px;
     
 }
 
 .search button {
+    display: inline-flex;
     padding: 5px 10px;
     border: none;
     border-radius: 0 5px 5px 0;
-    background-color: #ffffff; /* Corrigido para #ffffff */
-    color: #000;
+    background-color: #ffffff;
     cursor: pointer;
+    margin-left: -40px;
 }
+
+/* E AQUI COMEÇA A NOSSA NAVBAR */
