@@ -1,0 +1,124 @@
+/* Estilos gerais */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background: linear-gradient(to bottom, black, #0D9C0D);
+    color: white;
+    line-height: 1.5;
+}
+
+/* Estilos do cabeçalho */
+header {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+}
+
+header h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 36px;
+    margin: 0;
+    color: white;
+
+}
+
+header h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    margin: 5px 0;
+    color: white;
+}
+
+header h4 {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px 10px;
+    align-items: center;
+    margin: 0 10px; 
+    
+
+}
+
+/* Seções gerais */
+section {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 1200px;
+    border-left: 3px solid #0D9C0D;
+    position: relative;
+}
+
+section h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #0D9C0D;
+}
+
+section p {
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: justify;
+}
+
+/* Estilos das imagens */
+section img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo específico para alinhar imagens */
+section#turma img,
+section#dia-i img,
+section#dia-p img,
+section#dia-e img,
+section#projeto-xx img {
+    float: none;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Navegação (caso adicionado futuramente) */
+nav {
+    background-color: #0D9C0D;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    header h3, header h4 {
+        font-size: 16px;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    section p {
+        font-size: 14px;
+    }
+}
