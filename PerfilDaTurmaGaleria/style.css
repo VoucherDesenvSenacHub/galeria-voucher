@@ -1,3 +1,83 @@
+/* ESSA PARTE AQUI COMEÇA A NOSSA NAVBAR */
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav {
+    background-image: linear-gradient(#000000, #003100);;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+}
+
+
+a {
+    text-decoration: none;
+    color:#aEFF40;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+
+}
+
+.material-symbols-outlined {
+    color:#aEFF40;
+    font-size: 35px;
+    
+}
+
+a:hover{
+    opacity: 0.7;
+    transform: scale(1.2);
+
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap:30px;
+    align-items: center;
+    letter-spacing: 2px;
+    
+}
+
+ul li{
+    display: inline-flex;
+
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    
+}
+
+.search input {
+    display: inline-flex;
+    padding: 7px;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    width: 300px;
+    
+}
+
+.search button {
+    display: inline-flex;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #ffffff;
+    cursor: pointer;
+    margin-left: -40px;
+}
+
+
 /* Estilos gerais */
 body {
     margin: 0;
@@ -13,33 +93,24 @@ header {
     text-align: center;
     padding: 10px;
     border-bottom: 1px solid #fff;
+    .container {
+        position: relative;
+      }
+      
+      .topleft {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        font-size: 18px;
+      }
+      
+      img { 
+        width: 100%;
+        height: auto;
+        opacity: 0.3;
+}
 }
 
-header h1 {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 36px;
-    margin: 0;
-    color: white;
-
-}
-
-header h3 {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 20px;
-    margin: 5px 0;
-    color: white;
-}
-
-header h4 {
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    color: #fff;
-    padding: 10px 10px;
-    align-items: center;
-    margin: 0 10px; 
-    
-
-}
 
 /* Seções gerais */
 section {
@@ -85,22 +156,8 @@ section#projeto-xx img {
     text-align: center;
 }
 
-/* Navegação (caso adicionado futuramente) */
-nav {
-    background-color: #0D9C0D;
-    padding: 10px 20px;
-    text-align: center;
-    a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-    font-family: "Bebas Neue", sans-serif;
-    }
-    a:hover {
-    color: #000;
-    }
-}
+
+
 
 /* Responsividade */
 @media (max-width: 768px) {
