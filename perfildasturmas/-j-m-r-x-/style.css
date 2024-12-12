@@ -432,7 +432,7 @@ details:hover .menu-dropdown-content {
 
     .card {
         display: block;
-        width: relative; /* Ajuste o tamanho do card conforme necessário */
+        width: 200px; /* Ajuste a largura do card conforme necessário */
         height: 220px;
         border: 5px solid #0f0; /* Borda do card */
         padding: 10px; /* Espaçamento dentro do card */
@@ -455,8 +455,8 @@ details:hover .menu-dropdown-content {
     
     .card-image {
         width: 100%; /* A imagem ocupará 100% da largura do card */
-        height: auto; /* A altura será ajustada proporcionalmente */
-        max-height: 150px; /* Limita a altura máxima da imagem */
+        height: 160px; /* A altura será ajustada proporcionalmente */
+        max-height: 160px; /* Limita a altura máxima da imagem */
         object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
         border-radius: 10px;
         border: 1px solid #0f0; /* Borda do card */
