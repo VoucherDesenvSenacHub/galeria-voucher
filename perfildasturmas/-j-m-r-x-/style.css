@@ -8,7 +8,7 @@
     position: absolute;
     width: 6vw; /* Tamanho do quadrado ajustado proporcionalmente */
     height: 6vw; /* Mantém a proporção quadrada */
-    background-color: #000000; /* Cor de fundo preta */
+    background-color: transparent; /* Cor de fundo preta */
     border: 3px solid #0f0; /* Borda verde */
     top: 18vh; /* Posição vertical inicial */
     left: 20vw; /* Posição horizontal inicial */
@@ -126,7 +126,8 @@
 
 html, body {
     height: 100%;
-    background: linear-gradient(to bottom, #000 10%, #000 70%, #000 0%, #0f0 100%); /* Gradiente contínuo de preto para verde */
+    background-image: linear-gradient(#000000, #003100);
+    /* background: linear-gradient(to bottom, #000 10%, #000 70%, #000 0%, #0f0 100%); Gradiente contínuo de preto para verde */
     font-family: "Bebas Neue", "Bebas Neue";
    
       
