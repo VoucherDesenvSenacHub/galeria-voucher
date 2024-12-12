@@ -162,11 +162,25 @@ section#projeto-xx img {
 /* Responsividade */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 28px;
+        font-size: 10px;
     }
 
     header h3, header h4 {
-        font-size: 16px;
+      font-size: 15px;
+      letter-spacing: 1px;
+      word-spacing: 500px;
+      text-align: center;
+    }
+
+    header h5 {
+      font-size: 12px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: lightblue;
+      padding: 10px;
+      border: 1px solid black;
+      z-index: 1;
     }
 
     section h2 {
