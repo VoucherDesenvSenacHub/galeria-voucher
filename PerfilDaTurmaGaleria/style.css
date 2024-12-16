@@ -88,6 +88,11 @@ body {
     line-height: 1.5;
 }
 
+h1, h5, h4 {
+    font-family: "Bebas Neue", sans-serif;
+    font-style: normal;
+}
+
 /* Estilos do cabeçalho */
 header {
     text-align: center;
