@@ -1,26 +1,28 @@
 body {
-    margin: 0; /* Remove as margens padrão */
-    padding: 0;
+    margin: auto; /* Remove as margens padrão */
+    padding: 0px;
     height: 300vh; /* Define a altura para ocupar toda a tela */
-    background: linear-gradient(to bottom, black, #0D9C0D); /* Gradiente de preto para verde */
+    background: linear-gradient(to bottom, black, #0D9C0D, black); /* Gradiente de preto para verde */
     
 }
 
 .mapa{
-    position: relative; /* Define um contêiner de referência */
+    position: absolute; /* Define um contêiner de referência */
     width: 120%; /* Largura do contêiner */
     height: 110vh; /* Altura total da tela */
     display: flex;
     justify-content: end;
     padding: 120px 10px;
+    opacity: 50%;
 }
 
 .linha {
     position: absolute; /* Define um contêiner de referência */
-    width: 200%; /* Largura do contêiner */
+    width: 100px; /* Largura do contêiner */
     height: 200vh; /* Altura total da tela */
     display: flex;
-    justify-content: left;
+
+    
     
 }
 .nome {
@@ -32,18 +34,144 @@ body {
     justify-content: left;
     
 }
-.numeros {
+.numero {
     position: absolute;
-    width: 600px; /* Mantém tamanho fixo */
-    height: 200px; /* Mantém tamanho fixo */
+    width: 1000px; /* Mantém tamanho fixo */
+    height: 800px; /* Mantém tamanho fixo */
     padding: 1px 700px;
+    opacity: 20%;
+    top:120px;
+    left: 120px;
+    overflow: visible; /* Corta as partes excedentes */
     
 }
-.imagem-canto {
-    
-    bottom: 0; /* Alinha ao fundo */
-    left: 0; /* Alinha à esquerda */
-    width: 50%; /* Ajusta o tamanho da imagem */
-    height: 100%; /* Mantém a proporção da imagem */
-}
+
  
+.container {
+    position: absolute;
+    display: flex;
+    gap: 30px; /* Espaço entre os cartões */
+    flex-wrap: wrap; /* Permite que os cartões se ajustem em telas menores */
+    justify-content: center;
+    top: 900px;
+    right: 200px;
+}
+
+.card {
+    background-color: #0d0d0d; /* Fundo preto para o cartão */
+    border: 2px solid #0D9C0D; /* Borda verde */
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+    overflow: hidden; /* Esconde o texto que sai do cartão */
+    transition: height 0.3s ease-in-out; /* Animação para expandir */
+    height: 80px; /* Apenas o título visível inicialmente */
+}
+
+.card h2 {
+    color: #AEFF40; /* Verde do título */
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #fff; /* Texto branco */
+    opacity: 0; /* Torna o texto invisível inicialmente */
+    transition: opacity 0.3s ease-in-out; /* Animação para visibilidade */
+}
+
+/* Ao passar o mouse sobre o cartão */
+.card:hover {
+    height: 320px; /* Expande o cartão para exibir o texto */
+}
+
+.card:hover p {
+    opacity: 1; /* Mostra o texto */
+}
+
+h2{
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 210%;
+    
+}
+
+
+nav {
+    height: 50px;
+    position: fixed;
+    background-color: #000000;
+    display: flex;
+    justify-content: space-between; /* Distribui os itens entre o início e o fim */
+    align-items: center;
+    width: 100%; /* Ocupa toda a largura da tela */
+    padding: 0 20px; /* Adiciona um pouco de padding para espaçamento */
+  }
+  
+
+
+a {
+    text-decoration: none;
+    color:#aEFF40;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+
+}
+
+.material-symbols-outlined {
+    color:#aEFF40;
+    font-size: 35px;
+    
+}
+
+a:hover{
+    opacity: 0.7;
+    transform: scale(1.2);
+
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap:30px;
+    align-items: center;
+    letter-spacing: 2px;
+
+    
+}
+
+ul li{
+    display: inline-flex;
+
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    
+}
+
+.search input {
+    display: inline-flex;
+    padding: 7px;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    width: 300px;
+    
+}
+
+.search button {
+    display: inline-flex;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #ffffff;
+    cursor: pointer;
+    margin-left: -40px;
+}

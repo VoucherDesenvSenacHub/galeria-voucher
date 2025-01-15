@@ -1,5 +1,5 @@
-body{
-    background-color: black;
+body {
+  background-color: blue;
 }
 .losango {
     display: inline-block;
@@ -7,7 +7,7 @@ body{
     overflow: hidden; /* Corta as partes excedentes */
     width: 200px; /* Define a largura do losango */
     height: 200px; /* Deve ser igual à largura */
-    border: solid 2px white;
+    border: solid 2px black;
   }
   
   .losango img {

@@ -4,7 +4,7 @@ div {
     background-color: red;
     position: relative;
     animation-name: example;
-    animation-duration: 1s;
+    animation-duration: 4s;
   }
   
   @keyframes example {
