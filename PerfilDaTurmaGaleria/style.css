@@ -110,9 +110,9 @@ header {
       }
       
       img { 
-        width: 100%;
+        width: 150px;
         height: auto;
-        opacity: 0.3;
+        opacity: 100%;
 }
 }
 
