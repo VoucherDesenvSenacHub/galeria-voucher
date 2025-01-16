@@ -1,76 +1,407 @@
-body {
-    margin: 0; /* Remove as margens padrão */
+/* ESSA PARTE AQUI COMEÇA A NOSSA NAVBAR */
+
+*{
+    margin: 0;
     padding: 0;
-    height: 500vh; /* Define a altura para ocupar toda a tela */
-    background: linear-gradient(to bottom, black, #0D9C0D); /* Gradiente de preto para verde */
+    list-style: none;
 }
 
-.mapa {
-    position: relative; /* Define um contêiner de referência */
-    width: 100%; /* Largura do contêiner */
-    height: 100vh; /* Altura total da tela */
+nav {
+    background-image: linear-gradient(#000000, #003100);;
     display: flex;
-    justify-content: right;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
 }
 
-.imagem-direita {
-    left: 0; /* Alinha à esquerda */
-    width: 50%; /* Ajusta o tamanho da imagem */
-    height: center; /* Mantém a proporção da imagem */
-    max-width: 40%;
-    border-radius: 10px;
-}
 
-.imagem-diaI {
-    left: 0; /* Alinha à esquerda */
-    width: 50%; /* Ajusta o tamanho da imagem */
-    height: center; /* Mantém a proporção da imagem */
-    max-width: 40%;
-    border-radius: 10px;
-    float: right;
-    width: 300px;
-    /* padding: 10px; */
-}
-
-.imagem-diaP {
-    left: 0; /* Alinha à esquerda */
-    width: 50%; /* Ajusta o tamanho da imagem */
-    height: center; /* Mantém a proporção da imagem */
-    max-width: 40%;
-    border-radius: 10px;
-
-}
-
-.imagem-diaE {
-    left: 0; /* Alinha à esquerda */
-    width: 50%; /* Ajusta o tamanho da imagem */
-    height: center; /* Mantém a proporção da imagem */
-    max-width: 40%;
-    border-radius: 10px;
-    float: right;
-    width: 300px;
-
-}
-
-.imagem-projeto {
-    left: 0; /* Alinha à esquerda */
-    width: 50%; /* Ajusta o tamanho da imagem */
-    height: center; /* Mantém a proporção da imagem */
-    max-width: 40%;
-    border-radius: 10px;
-    /* float: right; */
-    width: 3000px;
-}
-
-.h1, h2, h3 {
+a {
+    text-decoration: none;
+    color:#aEFF40;
     font-family: "Bebas Neue", sans-serif;
     font-size: 30px;
+    display: flex;
+    align-items: center;
+
+}
+
+.material-symbols-outlined {
+    color:#aEFF40;
+    font-size: 35px;
     
-
-    color: white;
 }
 
-p {
+a:hover{
+    opacity: 0.7;
+    transform: scale(1.2);
+
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap:30px;
+    align-items: center;
+    letter-spacing: 2px;
+    
+}
+
+ul li{
+    display: inline-flex;
+
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    
+}
+
+.search input {
+    display: inline-flex;
+    padding: 7px;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    width: 300px;
+    
+}
+
+.search button {
+    display: inline-flex;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #ffffff;
+    cursor: pointer;
+    margin-left: -40px;
+}
+
+
+/* Estilos gerais */
+body {
+    margin: 0;
+    padding: 0;
     font-family: "Inter", sans-serif;
+    background: linear-gradient(to bottom, black, #0D9C0D);
     color: white;
+    line-height: 1.5;
 }
+
+h1, h5, h4 {
+    font-family: "Bebas Neue", sans-serif;
+    font-style: normal;
+}
+
+/* Estilos do cabeçalho */
+header {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+    .container {
+        position: relative;
+      }
+      
+      .topleft {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        font-size: 18px;
+      }
+      
+      img { 
+        width: 150px;
+        height: auto;
+        opacity: 100%;
+}
+}
+
+
+/* Seções gerais */
+section {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 1200px;
+    border-left: 3px solid #0D9C0D;
+    position: relative;
+}
+.dia {
+  display:flex;
+  
+}
+
+section h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #0D9C0D;
+}
+
+section p {
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: justify;
+}
+
+/* Estilos das imagens */
+section img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo específico para alinhar imagens */
+section#turma img,
+section#dia-i img,
+section#dia-p img,
+section#dia-e img,
+section#projeto-xx img {
+    float: none;
+    margin: 20px auto;
+    text-align: center;
+}
+
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 10px;
+    }
+
+    header h3, header h4 {
+      font-size: 15px;
+      letter-spacing: 1px;
+      word-spacing: 500px;
+      text-align: center;
+    }
+
+    header h5 {
+      font-size: 12px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: lightblue;
+      padding: 10px;
+      border: 1px solid black;
+      z-index: 1;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    section p {
+        font-size: 14px;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fbfbfb;
+    color: #fff;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .btn-voltar {
+    background-color: #c3ff00;
+    border: none;
+    padding: 10px 20px;
+    color: #f6f1f1;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .titulo {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    width: 150px;
+    background-color: #fcfbfb;
+    border: 1px solid #0c0c0c;
+    border-radius: 05px;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .foto {
+    width: 100%;
+    height: auto;
+  }
+  
+  .info {
+    padding: 15px;
+    border-radius: 05px;
+  }
+  
+  .info h2 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+  }
+  
+  .info p {
+    font-size: 0.9rem;
+    margin: 5px 0 10px;
+    color: #c3ff00;
+  }
+  
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+  }
+  
+  .linkedin {
+    background-color: #0077b5;
+  }
+  
+  .github {
+    background-color: #fffefe;
+    }
+  
+    /* Tela preta (overlay) */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 250, 250, 0.7); /* Fundo preto com opacidade */
+    z-index: 9999; /* Garante que a tela preta fique sobre outros elementos */
+  }
+  
+  /* Estilo básico para a página */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #070707;
+  }
+  
+  /* Estilos do botão */
+  .btn-voltar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-voltar:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilos do título */
+  .titulo {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 50px;
+    color: #f3eeee;
+  }
+  
+  /* Grid de cards */
+  .grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    border-radius: 05px;
+  }
+  
+  /* Estilos dos cards */
+  .card {
+    background-color: rgb(30, 29, 29);
+    width: 250px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-info {
+    padding: 05px;
+  }
+  
+  .card-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .card-info p {
+    font-size: 0.9em;
+    color: #fff9f9;
+  }
+  
+  
+  .social-icons a {
+    color: #28a745;  /* Verde específico para o texto */
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .social-icons a i {
+    color: #28a745;  /* Verde específico para os ícones */
+    margin-right: 8px;  /* Espaçamento entre o ícone e o texto */
+  }
+  
+  .card-info h3 {
+    color: white;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    margin-right: 8px;
+    color: #69f54d;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 12px; /* Isso arredonda as bordas */
+    transition: background-color 0.3s; /* Transição suave para a mudança de cor */
+  }
+  
+  .social-icons a:hover {
+    background-color: #f0f0f0; /* Cor de fundo quando passar o mouse */
+  }
+        
+  
