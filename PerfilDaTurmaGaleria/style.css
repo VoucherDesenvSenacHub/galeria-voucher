@@ -146,9 +146,9 @@ section p {
 
 /* Estilos das imagens */
 section img {
-    width: 100%;
+    width: 50%;
     max-width: 500px;
-    border-radius: 10px;
+    border-radius: 0px;
     display: block;
     margin: 20px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
