@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Landing Page Fullscreen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header, footer {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            height: 400vh; /* Ajuste conforme necessário */
+        }
+
+        section {
+            flex: 1; /* Cada seção ocupa o espaço disponível */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to top, black,#0D9C0D, #0D9C0D);
+        }
+
+        /* Estilos específicos para cada seção */
+        #secao1 {
+            background: linear-gradient(to top,black,  #0D9C0D);
+        }
+
+        #secao2 {
+            background: linear-gradient(to top, #0D9C0D, black);
+        }
+
+        /* ... e assim por diante */
+
+        /* Para dispositivos móveis, ajuste o layout */
+        @media (max-width: 768px) {
+            section {
+                height: auto;
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <img src="img/nome.png" width="150px">
+        <div class="search">
+            <div class="search">
+                <input type="text" placeholder="Pesquisar">
+                <button>&#128269;</button>
+            </div>
+        </div>
+        <ul>
+            <li><a href="">HOME</a></li>
+            <li><a href="">TURMAS</a></li>
+            <li> <a href="">
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    
+
+    <main>
+        <section id="secao1">
+            <!-- <div class="linha">
+                <img src="img/nome.png" class="nome" alt="Descrição" >
+            </div> -->
+        
+            <!-- <div class="numeros">
+                <img src="img/numeros.png" class="numero" alt="Descrição" >
+            </div> -->
+        
+            <!-- <div class="linha">
+                <img src="img/linha.png" alt="Descrição" class="imagem-canto">
+            </div> -->
+        
+            <div class="mapa">
+                <img src="img/mapa.png" alt="Descrição" class="imagem-canto">
+            </div>
+        
+            <div class="container">
+
+        </section>
+
+        <section id="secao2">
+            
+        </section>
+
+        <section id="secao3">
+
+        </section>
+
+    </main>
+
+    <footer>
+        </footer>
+    <script src="script.js"></script>
+</body>
+</html>

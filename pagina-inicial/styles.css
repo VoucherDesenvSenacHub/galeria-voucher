@@ -1,147 +1,197 @@
 body {
-    margin: 0; /* Remove as margens padrão */
-    padding: 0;
-    height: 500vh; /* Define a altura para ocupar toda a tela */
-    background: linear-gradient(to bottom, black, #0D9C0D); /* Gradiente de preto para verde */
+    margin: auto; /* Remove as margens padrão */
+    padding: 0px;
+    height: 300vh; /* Define a altura para ocupar toda a tela */
+    /*background: linear-gradient(to bottom, black, #0D9C0D, black);  Gradiente de preto para verde */
+    
 }
 
-.nome {
-    position: absolute; /* Define um contêiner de referência */
-    width: 600px; /* Largura do contêiner */
-    height: 200px; /* Altura total da tela */
-    padding: 360px 420px;
-}
-
-.mapa {
-    position: absolute; /* Define um contêiner de referência */
-    width: 1200px; /* Largura do contêiner */
-    height: 140vh; /* Altura total da tela */
+.mapa{
+    /*position: absolute;  Define um contêiner de referência */
+    width: 100%; /* Largura do contêiner */
+    height: 130vh; /* Altura total da tela */
     display: flex;
-    top: -10px;
-    left: 250px;
+    justify-content: right;
+    /* padding: 110px 10px; */
+    opacity: 50%;
 }
 
 .linha {
-    width: 2%; /* Largura do contêiner */
+    position: absolute; /* Define um contêiner de referência */
+    width: 100px; /* Largura do contêiner */
     height: 200vh; /* Altura total da tela */
     display: flex;
-    justify-content: left;
-    align-items: safe;
-}
 
-.numeros {
-    position: absolute; /* Define um contêiner de referência */
+    
+    
+}
+.nome {
+    position: relative; /* Define um contêiner de referência */
     width: 600px; /* Largura do contêiner */
     height: 200px; /* Altura total da tela */
-    padding: 90px 700px;
-    top: -9px;
-    left: -350px;
+    padding: 360px 420px;
+    display: flex;
+    justify-content: left;
+    
+}
+.numero {
+    position: absolute;
+    width: 1000px; /* Mantém tamanho fixo */
+    height: 800px; /* Mantém tamanho fixo */
+    padding: 1px 700px;
+    opacity: 20%;
+    top:120px;
+    left: 120px;
+    overflow: visible; /* Corta as partes excedentes */
+    
 }
 
-.imagem-canto {
-    display: block; /* Remove espaços extras ao redor da imagem */
-    width: 2000px; /* Ajusta a largura para ocupar toda a página */
-    height: auto; /* Mantém a proporção da imagem */
-    position: absolute; /* Garante o posicionamento exato */
-    top: 0px; /* Encosta no topo */
-    left: 0px; /* Encosta no lado esquerdo */
-}
-
+ 
 .container {
-    display: flex; /* Define um layout flexível para o container */
+    position: absolute;
+    display: flex;
     gap: 30px; /* Espaço entre os cartões */
     flex-wrap: wrap; /* Permite que os cartões se ajustem em telas menores */
-    justify-content: center; /* Centraliza os cartões no container */
-    margin: 150px auto; /* Reduzido para controlar o espaçamento vertical */
-    position: relative; /* Define a posição do container como relativa */
+    justify-content: center;
+    top: 900px;
+    right: 00px;
 }
 
 .card {
     background-color: #0d0d0d; /* Fundo preto para o cartão */
-    border: 5px solid #98fe3f; /* Borda verde */
-    padding: 20px; /* Espaçamento interno dos elementos do cartão */
-    max-width: 300px; /* Largura máxima do cartão */
-    text-align: center; /* Centraliza o conteúdo do texto */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Sombra sutil para o cartão */
+    border: 2px solid #0D9C0D; /* Borda verde */
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Sombra sutil */
     overflow: hidden; /* Esconde o texto que sai do cartão */
-    transition: height 0.3s ease-in-out; /* Animação para expandir a altura */
+    transition: height 0.3s ease-in-out; /* Animação para expandir */
     height: 80px; /* Apenas o título visível inicialmente */
 }
 
 .card h2 {
-    color: #98fe3f; /* Define o verde para o título */
-    margin-bottom: 10px; /* Espaçamento abaixo do título */
+    color: #AEFF40; /* Verde do título */
+    margin-bottom: 10px;
 }
 
 .card p {
-    font-family: "Inter", sans-serif; /* Define a fonte do texto do parágrafo */
-    font-size: 14px; /* Tamanho da fonte do parágrafo */
-    line-height: 1.5; /* Altura da linha para melhorar a legibilidade */
-    color: #fff; /* Cor branca para o texto */
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #fff; /* Texto branco */
     opacity: 0; /* Torna o texto invisível inicialmente */
-    transition: opacity 0.3s ease-in-out; /* Animação para suavizar a visibilidade */
+    transition: opacity 0.3s ease-in-out; /* Animação para visibilidade */
 }
 
+/* Ao passar o mouse sobre o cartão */
 .card:hover {
-    height: 330px; /* Expande o cartão para exibir o texto ao passar o mouse */
+    height: 320px; /* Expande o cartão para exibir o texto */
 }
 
 .card:hover p {
-    opacity: 1; /* Mostra o texto ao passar o mouse */
+    opacity: 1; /* Mostra o texto */
 }
 
-h2 {
-    font-family: "Bebas Neue", sans-serif; /* Define a fonte do título geral */
-    font-size: 200%; /* Tamanho relativo para o título */
-}
-
-.evo {
-    text-align: center;
-    margin: 50px auto;
-    position: relative;
-}
-
-.evo h2 {
-    font-size: 2rem;
+h2{
     font-family: "Bebas Neue", sans-serif;
-    color: #98fe3f;
-    margin-bottom: 20px;
+    font-size: 210%;
+    
 }
 
-.infos {
-    display: flex; /* Exibe os elementos em linha */
-    justify-content: center; /* Centraliza horizontalmente */
-    gap: 40px; /* Espaçamento entre os itens */
-}
 
-.info {
-    text-align: center; /* Centraliza o conteúdo dentro de cada info */
-}
-
-.info h2 {
-    font-size: 1rem; /* Tamanho do número */
-    color: #98fe3f; /* Cor do texto */
-    margin-top: 5px;
-}
-
-.info p {
-    margin-top: 5px; /* Espaçamento entre o número e o texto */
-    font-size: 1rem; /* Tamanho do texto */
-    color: #ffffff; /* Cor do texto */
-}
-
-.row {
+nav {
+    height: 50px;
+    position: fixed;
+    background-color: #000000;
     display: flex;
-    justify-content: center;
-    margin: 50px auto;
-    position: relative;
+    justify-content: space-between; /* Distribui os itens entre o início e o fim */
+    align-items: center;
+    width: 100%; /* Ocupa toda a largura da tela */
+    padding: 0 20px; /* Adiciona um pouco de padding para espaçamento */
+  }
+  
+
+
+a {
+    text-decoration: none;
+    color:#aEFF40;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+
+}
+
+.material-symbols-outlined {
+    color:#aEFF40;
+    font-size: 35px;
+    
+}
+
+a:hover{
+    opacity: 0.7;
+    transform: scale(1.2);
+
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap:30px;
+    align-items: center;
+    letter-spacing: 2px;
+
+    
+}
+
+ul li{
+    display: inline-flex;
+
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    
+}
+
+.search input {
+    display: inline-flex;
+    padding: 7px;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    width: 300px;
+    
+}
+
+.search button {
+    display: inline-flex;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #ffffff;
+    cursor: pointer;
+    margin-left: -40px;
 }
 
 .losango {
-    width: 100px;
-    height: 100px;
-    background-color: transparent;
-    border: 2px solid black;
-    transform: rotate(45deg);
-    margin: 25px;
-}
+    margin-top: 1500px;
+    margin-left: 80px;
+    display: inline-block;
+    transform: rotate(45deg); /* Rotaciona o quadrado */
+    overflow: hidden; /* Corta as partes excedentes */
+    width: 200px; /* Define a largura do losango */
+    height: 200px; /* Deve ser igual à largura */
+    border: solid 2px black;
+  }
+  
+  .losango img {
+    transform: rotate(-45deg); /* Mantém a imagem reta */
+    width: 141.42%; /* Ajusta para cobrir o contêiner rotacionado */
+    height: 141.42%; /* Proporcional à largura */
+    position: relative;
+    left: -20.71%; /* Centraliza horizontalmente */
+    top: -20.71%; /* Centraliza verticalmente */
+  }
