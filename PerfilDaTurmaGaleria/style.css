@@ -93,6 +93,28 @@ h1, h5, h4 {
     font-style: normal;
 }
 
+/*cabeçalho*/
+.projeto {
+  text-align: center;
+  font-size: 24px;
+}
+
+.galeria {
+  word-spacing: 300px;
+  text-align: center;
+  font-size: 16px;
+}
+.senac {
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  padding: 0px;
+  background-color:#000000;
+  border: 0px solid;
+  border-radius: 0px;
+  font-size: 12px;
+}
+
 /* Estilos do cabeçalho */
 header {
     text-align: center;
@@ -122,7 +144,6 @@ section {
     margin: 40px auto;
     padding: 20px;
     max-width: 1200px;
-    border-left: 3px solid #0D9C0D;
     position: relative;
 }
 .dia {
@@ -135,7 +156,6 @@ section h2 {
     font-size: 28px;
     margin-bottom: 10px;
     text-transform: uppercase;
-    color: #0D9C0D;
 }
 
 section p {
@@ -146,9 +166,9 @@ section p {
 
 /* Estilos das imagens */
 section img {
-    width: 100%;
+    width: 50%;
     max-width: 500px;
-    border-radius: 10px;
+    border-radius: 0px;
     display: block;
     margin: 20px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -405,3 +425,30 @@ body {
   }
         
   
+/* linhas vousher */
+.square {
+  position: absolute;
+  width: 6vw;
+  height: 6vw;
+  background-color: #000000;
+  border: 3px solid #AEFF40;
+  top: 40vh; 
+  left: 30vw; 
+}
+.square1 {
+  position: absolute; 
+  width: 2px;
+  height: 200%;
+  background-color: #AEFF40; 
+  top: 0;
+  left: 32.99vw;
+}
+
+.square2 {
+  position: absolute; 
+  width: 100%; 
+  height: 2px; 
+  background-color: #AEFF40; 
+  top: calc(40vh + 3vw);
+  left: 0;
+}
