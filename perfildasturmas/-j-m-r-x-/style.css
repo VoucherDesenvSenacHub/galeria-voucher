@@ -36,7 +36,7 @@
 @media (max-width: 1024px) {
     .square {
         width: 8vw; /* Ajusta o tamanho do quadrado */
-        height: 8vw; /* Ajusta o tamanho proporcionalmente */
+        height: vw; /* Ajusta o tamanho proporcionalmente */
         top: 20vh; /* Ajusta o topo */
         left: 22vw; /* Ajusta a posição à esquerda */
     }
@@ -178,6 +178,8 @@ nav a:hover {
     font-size: 60px;  /* Tamanho do ícone */
     width: 100px;      /* Largura do ícone */
     height: 100px;     /* Altura do ícone */
+    align-items:center ;
+    display: center;
   }
   
 
@@ -196,11 +198,18 @@ nav a:hover {
 
 
 
-h1, h3 {
+h1, h3  {
     text-align: center;
     color: rgb(237, 246, 237);
     font-size: 30px;
     margin-bottom: 10px;
+}
+
+.vermais{ 
+    
+    align-items:center ;
+    display: center;
+
 }
 
 .turmas-container {
