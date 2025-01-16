@@ -97,6 +97,9 @@ main {
     align-items: center;
     
 }
+.card-container:hover {
+    font-size: 18px;
+}
 .image-container {
     width: 120%;
     height: 300px;
