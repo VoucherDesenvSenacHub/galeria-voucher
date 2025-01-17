@@ -137,7 +137,7 @@ html, body {
       
 }
 
-/* Barra de navegação */
+/* Barra de navegação
 nav {
     display: flex;
     justify-content: space-between;
@@ -161,9 +161,9 @@ nav a {
 nav a:hover {
     background-color: #0f0;
     color: #000;
-}
+} */
 
-/* Campo de pesquisa */
+/* Campo de pesquisa
 .search-container {
     display: flex;
     align-items: center;
@@ -176,7 +176,7 @@ nav a:hover {
     background-color: #222;
     color: #0f0;
     font-size: 16px;
-}
+} */
 
 .material-symbols-outlined {
     font-size: 60px;  /* Tamanho do ícone */
