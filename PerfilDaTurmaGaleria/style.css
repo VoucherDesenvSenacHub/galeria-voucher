@@ -453,3 +453,9 @@ body {
     top: calc(40vh + 3vw);
     left: 0;
   }
+
+/* texto final */
+  .textofinal {
+    padding: 70px;
+    font-size: 14px;
+}
