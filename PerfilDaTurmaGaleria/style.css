@@ -426,30 +426,3 @@ body {
   }
         
   
-/* linhas vousher */
-.square {
-  position: absolute;
-  width: 6vw;
-  height: 6vw;
-  background-color: #000000;
-  border: 3px solid #AEFF40;
-  top: 40vh; 
-  left: 30vw; 
-}
-.square1 {
-  position: absolute; 
-  width: 2px;
-  height: 200%;
-  background-color: #AEFF40; 
-  top: 0;
-  left: 32.99vw;
-}
-
-.square2 {
-  position: absolute; 
-  width: 100%; 
-  height: 2px; 
-  background-color: #AEFF40; 
-  top: calc(40vh + 3vw);
-  left: 0;
-}
