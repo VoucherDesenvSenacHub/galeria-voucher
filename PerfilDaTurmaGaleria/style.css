@@ -103,6 +103,7 @@ h1, h5, h4 {
   word-spacing: 300px;
   text-align: center;
   font-size: 12px;
+  
 }
 .senac {
   position: absolute;
@@ -147,7 +148,6 @@ section {
 }
 .dia {
   display:flex;
-  
 }
 
 section h2 {
