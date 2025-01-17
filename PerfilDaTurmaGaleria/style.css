@@ -434,7 +434,7 @@ body {
     background-color: #000000;
     border: 3px solid #AEFF40;
     top: 40vh; 
-    left: 30vw; 
+    left: 26vw; 
   }
   .square1 {
     position: absolute; 
@@ -442,7 +442,7 @@ body {
     height: 200%;
     background-color: #AEFF40; 
     top: 0;
-    left: 32.99vw;
+    left: 28.99vw;
   }
   
   .square2 {
