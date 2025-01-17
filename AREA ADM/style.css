@@ -18,7 +18,7 @@
 }
 
 nav {
-    background-color: rgba(50, 50, 50, 0.8);
+    background-color: #363535;
     backdrop-filter: blur(100px);
     justify-content: space-between;
     display: flex;
