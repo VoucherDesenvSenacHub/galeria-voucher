@@ -12,8 +12,9 @@ body {
     height: 130vh; /* Altura total da tela */
     display: flex;
     justify-content: right;
-    /* padding: 110px 10px; */
+    padding-top: 60px;
     opacity: 50%;
+    
 }
 
 .linha {
@@ -25,15 +26,7 @@ body {
     
     
 }
-.nome {
-    position: relative; /* Define um contêiner de referência */
-    width: 600px; /* Largura do contêiner */
-    height: 200px; /* Altura total da tela */
-    padding: 360px 420px;
-    display: flex;
-    justify-content: left;
-    
-}
+
 .numero {
     position: absolute;
     width: 1000px; /* Mantém tamanho fixo */

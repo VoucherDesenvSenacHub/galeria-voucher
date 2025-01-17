@@ -44,6 +44,44 @@
             background: linear-gradient(to top, #0D9C0D, black);
         }
 
+        .square {
+            position: absolute;
+            width: 4vw; /* Tamanho do quadrado ajustado proporcionalmente */
+            height: 4vw; /* Mantém a proporção quadrada */
+            border: 7px solid #aeff40; /* Borda verde */
+            top: 50vh; /* Posição vertical inicial */
+            left: 17.8vw; /* Posição horizontal inicial */
+            
+        }
+
+        .square1 {
+            position: absolute; /* Linha vertical */
+            width: 2px; /* Largura da linha vertical */
+            height: 100%; /* Altura da linha vertical que ocupa toda a tela */
+            background-color: #aeff40; /* Cor verde */
+            top: 50px; /* Começa no topo */
+            left: 20vw; /* Posiciona a linha à direita do quadrado */
+            border: 2px solid #aeff40;
+        }
+
+        .square2 {
+            position: absolute; /* Linha horizontal */
+            width: 100%; /* Largura total da tela */
+            height: 2px; /* Espessura da linha horizontal */
+            background-color: #aeff40; /* Cor verde */
+            top: calc(36vh + 9vw); /* A linha passa no meio do quadrado */
+            left: 0; /* Começa na borda esquerda */
+            border: 2px solid #aeff40;
+        }
+
+        .nome {
+            position: absolute; /* Linha horizontal */
+            width:40%; /* Largura total da tela */
+            top: calc(33.3vh + 6.3vw); /* A linha passa no meio do quadrado */
+        }
+
+        
+
         /* ... e assim por diante */
 
         /* Para dispositivos móveis, ajuste o layout */
@@ -59,7 +97,7 @@
 <body>
     
     <nav>
-        <img src="img/nome.png" width="150px">
+        <img src="img/nomeNav.png" width="150px">
         <div class="search">
             <div class="search">
                 <input type="text" placeholder="Pesquisar">
@@ -82,23 +120,37 @@
 
     <main>
         <section id="secao1">
-            <!-- <div class="linha">
-                <img src="img/nome.png" class="nome" alt="Descrição" >
-            </div> -->
+
+            
+
+            <div class="content">
+            
+                <div class="square"></div>
+        
+                    
+                    
+                <div class="square1"></div>
+        
+                    
+                
+                <div class="square2"></div>
+        
+                    
+            </div>
         
             <!-- <div class="numeros">
                 <img src="img/numeros.png" class="numero" alt="Descrição" >
             </div> -->
         
-            <!-- <div class="linha">
-                <img src="img/linha.png" alt="Descrição" class="imagem-canto">
-            </div> -->
+            <div class="nome">
+                <img src="img/nome.png" alt="Descrição">
+            </div>
         
             <div class="mapa">
                 <img src="img/mapa.png" alt="Descrição" class="imagem-canto">
             </div>
         
-            <div class="container">
+            
 
         </section>
 

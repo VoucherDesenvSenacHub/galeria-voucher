@@ -11,6 +11,7 @@ body {
     height: 100vh; /* Altura total da tela */
     display: flex;
     justify-content: right;
+    padding-top: 50px;
 }
 
 .imagem-direita {

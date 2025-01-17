@@ -13,69 +13,71 @@ nav {
     align-items: center;
     height: 10vh;
     opacity: 90%;
-}
 
-
-a {
-    text-decoration: none;
-    color:#aEFF40;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-
-}
-
-.material-symbols-outlined {
-    color:#aEFF40;
-    font-size: 35px;
+    /* a {
+        text-decoration: none;
+        color:#aEFF40;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
     
-}
-
-a:hover{
-    opacity: 0.7;
-    transform: scale(1.2);
-
-}
-
-ul {
-    display: flex;
-    list-style: none;
-    gap:30px;
-    align-items: center;
-    letter-spacing: 2px;
+    }"
     
-}
-
-ul li{
-    display: inline-flex;
-
-}
-
-.search {
-    display: flex;
-    align-items: center;
+    .material-symbols-outlined {
+        color:#aEFF40;
+        font-size: 35px;
+        
+    }
     
-}
-
-.search input {
-    display: inline-flex;
-    padding: 7px;
-    border: none;
-    border-radius: 10px 10px 10px 10px;
-    outline: none;
-    width: 300px;
+    a:hover{
+        opacity: 0.7;
+        transform: scale(1.2);"
     
+    }
+    
+    ul {
+        display: flex;
+        list-style: none;
+        gap:30px;
+        align-items: center;
+        letter-spacing: 2px;
+        
+    }
+    
+    ul li{
+        display: inline-flex;
+    
+    }
+    
+    .search {
+        display: flex;
+        align-items: center;
+        
+    }
+    
+    .search input {
+        display: inline-flex;
+        padding: 7px;
+        border: none;
+        border-radius: 10px 10px 10px 10px;
+        outline: none;
+        width: 300px;
+        
+    }
+    
+    .search button {
+        display: inline-flex;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        background-color: #ffffff;
+        cursor: pointer;
+        margin-left: -40px;
+    } */
 }
 
-.search button {
-    display: inline-flex;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    background-color: #ffffff;
-    cursor: pointer;
-    margin-left: -40px;
-}
+
+
 
 /* E AQUI COMEÇA A NOSSA NAVBAR */
