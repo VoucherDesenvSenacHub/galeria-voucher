@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    list-style: none;
+    border: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: rgba(50, 50, 50, 0.8);
+    backdrop-filter: blur(100px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    padding: 0 20px;
+}
+  
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+  
+nav ul li {
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+    
+}
+  
+nav ul li a {
+    color: #ACFD3E;
+    text-decoration: none;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 10px;
+    line-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao-person {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.botao-person .material-symbols-outlined {
+  font-size: 40px;
+}
+.imgvoucher {
+    margin-right: 1000px;
+}
+  
+.sidebar {
+    background-color: #363535;
+    color: white;
+    width: 400px;
+    height: 903px;
+}
+  
+.menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+    font-family: "Bebas Neue", sans-serif;
+    padding: 30px;
+    text-align: center;
+    border-bottom: 1px solid #c0c0c0;
+}
+  
+  /* Estilos do Conteúdo Principal */
+.container {
+    display: flex;
+    font-family: Arial, sans-serif;
+}
+  
+.content {
+    background-color: #f2f2f2;
+    flex-grow: 1;
+    padding: 200px;
+}
+  
+.user-profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+  
+.user-icon {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 auto;
+}
+  
+.user-name {
+    margin-top: 15px;
+    font-size: 40px;
+}
+  
+.welcome-message {
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+}
