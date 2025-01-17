@@ -7,11 +7,11 @@
 }
 
 nav {
-    background-image: linear-gradient(#000000, #003100);;
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 10vh;
+    width: 100%;
 }
 
 
