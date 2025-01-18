@@ -1,7 +1,7 @@
 .content {
     width: 100vw;
     height: 100vh;
-    /* position: relative; Para garantir que os elementos absolutos fiquem dentro do contêiner */
+    position: relative; /**Para garantir que os elementos absolutos fiquem dentro do contêiner**/
 }
 
 .square {
@@ -137,7 +137,7 @@ html, body {
       
 }
 
-/* Barra de navegação
+/* Barra de navegação */
 nav {
     display: flex;
     justify-content: space-between;
@@ -163,7 +163,7 @@ nav a:hover {
     color: #000;
 } */
 
-/* Campo de pesquisa
+/* Campo de pesquisa */
 .search-container {
     display: flex;
     align-items: center;
@@ -176,7 +176,7 @@ nav a:hover {
     background-color: #222;
     color: #0f0;
     font-size: 16px;
-} */
+}
 
 .material-symbols-outlined {
     font-size: 60px;  /* Tamanho do ícone */
@@ -184,7 +184,7 @@ nav a:hover {
     height: 100px;     /* Altura do ícone */
     align-items:center ;
     display: center;
-  }
+}  
   
 
 .search-container button {
@@ -207,6 +207,7 @@ h1, h3  {
     color: rgb(237, 246, 237);
     font-size: 30px;
     margin-bottom: 10px;
+    font-size: 80px;
 }
 
 .vermais{ 
@@ -440,37 +441,37 @@ details:hover .menu-dropdown-content {
     }
 
 
-    .card {
-        display: block;
-        width: 200px; /* Ajuste a largura do card conforme necessário */
-        height: 220px;
-        border: 5px solid #0f0; /* Borda do card */
-        padding: 10px; /* Espaçamento dentro do card */
-        text-align: center;
-        text-decoration: none;
-        background-color: black; /* Cor de fundo do card */
-        border-radius: 10px;  
-        z-index: 2; /* Quadrado à frente */
-    }
-    
-    .card-content {
-        position: relative;
-    }
-    
-    .card-title {
-        font-size: 18px; /* Tamanho do título */
-        margin-bottom: 10px; /* Espaço entre o título e a imagem */
-        color: #0f0; /* Cor do título - amarelo */
-    }
-    
-    .card-image {
-        width: 100%; /* A imagem ocupará 100% da largura do card */
-        height: 160px; /* A altura será ajustada proporcionalmente */
-        max-height: 160px; /* Limita a altura máxima da imagem */
-        object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
-        border-radius: 10px;
-        border: 1px solid #0f0; /* Borda do card */
-    }
+.card {
+    display: block;
+    width: 200px; /* Ajuste a largura do card conforme necessário */
+    height: 220px;
+    border: 5px solid #0f0; /* Borda do card */
+    padding: 10px; /* Espaçamento dentro do card */
+    text-align: center;
+    text-decoration: none;
+    background-color: black; /* Cor de fundo do card */
+    border-radius: 10px;  
+    z-index: 2; /* Quadrado à frente */
+}
+
+.card-content {
+    position: relative;
+}
+
+.card-title {
+    font-size: 18px; /* Tamanho do título */
+    margin-bottom: 10px; /* Espaço entre o título e a imagem */
+    color: #0f0; /* Cor do título - amarelo */
+}
+
+.card-image {
+    width: 100%; /* A imagem ocupará 100% da largura do card */
+    height: 160px; /* A altura será ajustada proporcionalmente */
+    max-height: 160px; /* Limita a altura máxima da imagem */
+    object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
+    border-radius: 10px;
+    border: 1px solid #0f0; /* Borda do card */
+}
 
 /* Barra de navegação */
 nav {

@@ -12,43 +12,18 @@
 <body>
      <!-- importa a navbar -->
     <div id="navbar-container"></div>
-    <!-- Barra de navegação -->
-    <nav>
-        <div class="logo">
-            <img src="logo_voucher.JPG" alt="Logo" style="height: 40px;">
-        </div>
-        <div class="search-container">
-            <!-- Formulário de pesquisa -->
-            <form action="dev.html" method="get">
-                <input type="text" name="search" placeholder="Pesquisar...">
-                <button type="submit">
-                    <i class="fas fa-search"></i> <!-- Ícone de lupa -->
-                </button>
-
-                </form>
-            </div>
-        <div class="menu">
-            <a href="dev.html">Home</a> 
-            <details>
-                <summary>Turmas</summary>
-                <div class="menu-dropdown-content">
-                    <a href="dev.html">Campo Grande</a> 
-                    <a href="dev.html">Corumbá</a> 
-                    <a href="dev.html">Dourados</a> 
-                    <a href="dev.html">Ponta Porã</a> 
-                    <a href="dev.html">Três Lagoas</a> 
-                </div>
-            </details>
-        </div>
-    </nav>
+    
 
     <!-- Conteúdo principal -->
     <div class="content">
-        <h1>TURMAS</h1>
+        <h1 style="margin-bottom:150px; ">TURMAS </h1>
+       
+       
         <div class="square"></div><!-- essas 3 sao as linhas na tela lado esquerdo que se cruzam e formam a cruz no meio do quadrado-->
         <div class="square1"></div>
         <div class="square2"></div>
-
+        
+    
         <!-- Cards das Turmas  obs: aqui no beckend devemos fazer um for vinculado ao banco de dados e configura apenas um card e ao inserir os dados da turma ser auto gerado-->
         <div class="cards">
             <!-- Exemplo de um card de turma -->
@@ -95,8 +70,22 @@
             
         </div>
     </div>
-
-
+    <div class="vermais"><h3>VER MAIS</h3>
+        <span class="material-symbols-outlined ">
+            arrow_downward
+            </span></div>
+        
+    <script>
+        // Função para carregar a navbar a partir de navbar.html
+        fetch('Navbar/navbar.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('navbar-container').innerHTML = data; // aqui puxo a navbar de dentro da pasta navbar
+          })
+          .catch(error => {
+            console.error('Erro ao carregar a navbar:', error);
+          });
+      </script>
 
     
 </body>
