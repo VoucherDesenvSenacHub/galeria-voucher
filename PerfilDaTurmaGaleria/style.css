@@ -433,3 +433,9 @@ body {
     font-size: 14px;
     font-family: "Bebas Neue";
 }
+
+.box {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
