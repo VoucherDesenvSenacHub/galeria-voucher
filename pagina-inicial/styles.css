@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: right;
     padding-top: 60px;
-    opacity: 50%;
+    opacity: 60%;
     
 }
 
@@ -27,17 +27,7 @@ body {
     
 }
 
-.numero {
-    position: absolute;
-    width: 1000px; /* Mantém tamanho fixo */
-    height: 800px; /* Mantém tamanho fixo */
-    padding: 1px 700px;
-    opacity: 20%;
-    top:120px;
-    left: 120px;
-    overflow: visible; /* Corta as partes excedentes */
-    
-}
+
 
  
 .container {
@@ -93,81 +83,11 @@ h2{
 }
 
 
-nav {
-    height: 50px;
-    position: fixed;
-    background-color: #000000;
-    display: flex;
-    justify-content: space-between; /* Distribui os itens entre o início e o fim */
-    align-items: center;
-    width: 100%; /* Ocupa toda a largura da tela */
-    padding: 0 20px; /* Adiciona um pouco de padding para espaçamento */
-  }
+
   
 
 
-a {
-    text-decoration: none;
-    color:#aEFF40;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 30px;
-    display: flex;
-    align-items: center;
 
-}
-
-.material-symbols-outlined {
-    color:#aEFF40;
-    font-size: 35px;
-    
-}
-
-a:hover{
-    opacity: 0.7;
-    transform: scale(1.2);
-
-}
-
-ul {
-    display: flex;
-    list-style: none;
-    gap:30px;
-    align-items: center;
-    letter-spacing: 2px;
-
-    
-}
-
-ul li{
-    display: inline-flex;
-
-}
-
-.search {
-    display: flex;
-    align-items: center;
-    
-}
-
-.search input {
-    display: inline-flex;
-    padding: 7px;
-    border: none;
-    border-radius: 10px 10px 10px 10px;
-    outline: none;
-    width: 300px;
-    
-}
-
-.search button {
-    display: inline-flex;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    background-color: #ffffff;
-    cursor: pointer;
-    margin-left: -40px;
-}
 
 .losango {
     margin-top: 1500px;
