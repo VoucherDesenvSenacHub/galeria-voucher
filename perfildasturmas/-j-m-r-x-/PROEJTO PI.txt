@@ -1,0 +1,13 @@
+tela layout 
+
+elementos -nav , mira, cards
+
+nav - pesquisa , menu , logo
+
+
+moleculas
+	atomo
+
+
+
+organizar !
