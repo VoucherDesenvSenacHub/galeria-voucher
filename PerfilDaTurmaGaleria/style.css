@@ -83,7 +83,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
-    background: linear-gradient(to bottom, black, #0D9C0D);
+    background: linear-gradient(to bottom, black, #008100, black, black);
     color: white;
     line-height: 1.5;
 }
