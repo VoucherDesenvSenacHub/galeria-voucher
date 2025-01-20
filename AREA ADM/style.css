@@ -16,7 +16,28 @@
   backdrop-filter: blur(3px); /* Ajuste o valor do blur */
 }
 nav {
+<<<<<<< HEAD
   background-color: rgba(0, 0, 0, 0.6); 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    background-color: #363535;
+    backdrop-filter: blur(100px);
+    justify-content: space-between;
+    display: flex;
+    align-items: center;  
+    height: 100px;
+    width: 100%;
+    padding: 0 20px;
+    z-index: 1;
+=======
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+  background-color: rgba(50, 50, 50, 0.8); 
+>>>>>>> 62e928a8daa819880daadcd0729da7f98d1631b2
   justify-content: space-between;
   display: flex;
   align-items: center;  
@@ -27,6 +48,13 @@ nav {
   position: fixed;    
   top: 0;            
   left: 0;           
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
 }
 
 nav ul {
@@ -64,11 +92,31 @@ nav ul li a {
 }
 
 .sidebar {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    background-color: #363535;
+    color: white;
+    width: 400px;
+    height: 100vh;
+    z-index: 2; 
+=======
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
   padding-top: 100px;
   background-color: #363535;
   color: white;
   width: 400px;
   height: 100vh;
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
 }
 
 .menu a {
