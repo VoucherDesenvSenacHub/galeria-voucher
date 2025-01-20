@@ -1,23 +1,14 @@
 * {
-    padding: 0;
-    margin: 0;
-    vertical-align: baseline;
-    list-style: none;
-    border: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  list-style: none;
+  border: 0;
+  box-sizing: border-box;
 }
-
-.menu-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-.menu {
-    flex-grow: 1;
-}
-
 nav {
+<<<<<<< HEAD
+<<<<<<< HEAD
     background-color: #363535;
     backdrop-filter: blur(100px);
     justify-content: space-between;
@@ -26,93 +17,127 @@ nav {
     height: 100px;
     width: 100%;
     padding: 0 20px;
+    z-index: 1;
+=======
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+  background-color: rgba(50, 50, 50, 0.8); 
+  justify-content: space-between;
+  display: flex;
+  align-items: center;  
+  height: 100px;
+  width: 100%;
+  padding: 0 20px;
+  z-index: 1;         
+  position: fixed;    
+  top: 0;            
+  left: 0;           
+<<<<<<< HEAD
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
 }
 
 nav ul {
-    display: flex;
+  display: flex;
 }
 
 nav ul li {
-    display: inline-flex;
-    align-items: center;
-    width: auto;
+  display: inline-flex;
+  align-items: center;
+  width: auto;
 }
 
 nav ul li a {
-    color: #ACFD3E;
-    text-decoration: none;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 40px;
-    font-weight: bold;
-    padding: 10px;
-    line-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: #ACFD3E;
+  text-decoration: none;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 10px;
+  line-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .botao-person {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto; 
 }
 
 .botao-person .material-symbols-outlined {
-   font-size: 40px;
+  font-size: 40px;
 }
 
 .sidebar {
+<<<<<<< HEAD
+<<<<<<< HEAD
     background-color: #363535;
     color: white;
     width: 400px;
-    height: 100vh; 
+    height: 100vh;
+    z-index: 2; 
+=======
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+  padding-top: 100px;
+  background-color: #363535;
+  color: white;
+  width: 400px;
+  height: 100vh;
+<<<<<<< HEAD
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
+=======
+>>>>>>> 51a538f6239c69b27a596f18373663107bb4fcd9
 }
 
 .menu a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    font-size: 40px;
-    font-family: "Bebas Neue", sans-serif;
-    padding: 30px;
-    text-align: center;
-    border-bottom: 1px solid #c0c0c0;
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 40px;
+  font-family: "Bebas Neue", sans-serif;
+  padding: 30px;
+  text-align: center;
+  border-bottom: 1px solid #c0c0c0;
 }
 
 .container {
-    display: flex;
-    font-family: Arial, sans-serif;
+  display: flex;
+  font-family: Arial, sans-serif;
 }
 
 .content {
-    background-color: #f2f2f2;
-    flex-grow: 1;
-    padding: 80px; 
+  background-color: #f2f2f2;
+  flex-grow: 1;
+  margin-top: 120px;
 }
 
 .user-profile {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .user-icon {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin: 0 auto;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 auto;
 }
 
 .user-name {
-    margin-top: 15px;
-    font-size: 40px;
+  margin-top: 15px;
+  font-size: 40px;
 }
 
 .welcome-message {
-    font-size: 100px;
-    font-weight: bold;
-    text-align: center;
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
 }
 
 @media (max-width: 1333px) and (max-height: 720px) {
