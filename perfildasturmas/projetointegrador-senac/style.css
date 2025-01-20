@@ -334,6 +334,14 @@ html, body {
         
     }
 
+.ocultos {
+    display: none;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
 
 .card {
     display: block;
@@ -391,3 +399,21 @@ html, body {
 
 /* agora o vermais icon --ok  */
 
+
+
+
+
+/* rodape aqui --ok */
+.rodape {
+    text-align:left;
+    /* background-image: linear-gradient(#000001, #003100);  como esta organizado puxa do principio*/
+    color: white; /* Cor do texto */
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.rodape p {
+    margin: 0;
+}
+/* rodape aqui --ok */
