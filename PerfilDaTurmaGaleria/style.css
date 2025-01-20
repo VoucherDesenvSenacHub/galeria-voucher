@@ -253,15 +253,17 @@ body {
     padding: 20px;
     text-align: center;
   }
-  
-  .btn-voltar {
-    background-color: #c3ff00;
+  .botaoprojeto {
+    padding-left: 20px;
+  }
+  .btn {
+    background-color: #AEFF40;
     border: none;
     padding: 10px 20px;
     color: #f6f1f1;
     font-weight: bold;
     cursor: pointer;
-    margin-bottom: 20px;
+    border-radius: 50px;
   }
   
   .titulo {
