@@ -202,6 +202,17 @@ h2 {
     border: 2px solid #aeff40;
 }
 
+
+.numero {
+    position: absolute;
+    width: 540px;
+    height: 50px;
+    padding-left: 250px;
+    opacity: 20%;
+    top: 120px;
+    overflow: visible;
+}
+
 .nome {
     position: absolute;
     width: 40%;
