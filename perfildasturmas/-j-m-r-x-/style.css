@@ -1,0 +1,333 @@
+.content {
+    width: 100vw;
+    height: 100vh;
+    position: relative; /* Para garantir que os elementos absolutos fiquem dentro do contêiner */
+}
+
+.square {
+    position: absolute;
+    width: 6vw; /* Tamanho do quadrado ajustado proporcionalmente */
+    height: 6vw; /* Mantém a proporção quadrada */
+    background-color: #000000; /* Cor de fundo preta */
+    border: 3px solid #0f0; /* Borda verde */
+    top: 18vh; /* Posição vertical inicial */
+    left: 20vw; /* Posição horizontal inicial */
+}
+
+.square1 {
+    position: absolute; /* Linha vertical */
+    width: 2px; /* Largura da linha vertical */
+    height: 100vh; /* Altura da linha vertical que ocupa toda a tela */
+    background-color: #0f0; /* Cor verde */
+    top: 0; /* Começa no topo */
+    left: 23vw; /* Posiciona a linha à direita do quadrado */
+    
+}
+
+.square2 {
+    position: absolute; /* Linha horizontal */
+    width: 100%; /* Largura total da tela */
+    height: 2px; /* Espessura da linha horizontal */
+    background-color: #0f0; /* Cor verde */
+    top: calc(18vh + 3vw); /* A linha passa no meio do quadrado */
+    left: 0; /* Começa na borda esquerda */
+}
+
+/* Media Query para telas menores que 1024px (tablets e dispositivos com telas médias) */
+@media (max-width: 1024px) {
+    .square {
+        width: 8vw; /* Ajusta o tamanho do quadrado */
+        height: 8vw; /* Ajusta o tamanho proporcionalmente */
+        top: 20vh; /* Ajusta o topo */
+        left: 22vw; /* Ajusta a posição à esquerda */
+    }
+
+    .square1 {
+        height: calc(100vh - 20vh); /* Ajusta a altura da linha vertical */
+        left: calc(23vw + 2vw); /* Ajusta a posição da linha vertical */
+    }
+
+    .square2 {
+        top: calc(20vh + 4vw); /* Ajusta a linha horizontal */
+    }
+}
+
+/* Media Query para telas menores que 768px (dispositivos móveis) */
+@media (max-width: 768px) {
+    .square {
+        width: 12vw; /* Ajusta o tamanho do quadrado */
+        height: 12vw; /* Ajusta proporcionalmente */
+        top: 25vh; /* Ajusta o topo */
+        left: 25vw; /* Ajusta a posição à esquerda */
+    }
+
+    .square1 {
+        height: calc(100vh - 25vh); /* Ajusta a altura da linha vertical */
+        left: calc(26vw + 2vw); /* Ajusta a posição da linha vertical */
+    }
+
+    .square2 {
+        top: calc(25vh + 6vw); /* Ajusta a linha horizontal */
+    }
+}
+
+/* Media Query para telas menores que 480px (dispositivos móveis pequenos) */
+@media (max-width: 480px) {
+    .square {
+        width: 15vw; /* Ajusta o tamanho do quadrado */
+        height: 15vw; /* Ajusta proporcionalmente */
+        top: 30vh; /* Ajusta o topo */
+        left: 30vw; /* Ajusta a posição à esquerda */
+    }
+
+    .square1 {
+        height: calc(100vh - 30vh); /* Ajusta a altura da linha vertical */
+        left: calc(28vw + 2vw); /* Ajusta a posição da linha vertical */
+    }
+
+    .square2 {
+        top: calc(30vh + 7.5vw); /* Ajusta a linha horizontal */
+    }
+}
+
+/* Media Query para telas menores que 1033px e 929px, onde o layout estava quebrando */
+@media (max-width: 1033px) and (max-height: 929px) {
+    .square {
+        width: 10vw; /* Ajuste do tamanho do quadrado */
+        height: 10vw; /* Mantém a proporção quadrada */
+        top: 22vh; /* Ajusta o topo para telas menores */
+        left: 20vw; /* Ajuste da posição à esquerda */
+    }
+
+    .square1 {
+        height: calc(100vh - 20vh); /* Ajusta a altura da linha vertical */
+        left: calc(23vw + 2vw); /* Ajuste da posição da linha vertical */
+    }
+
+    .square2 {
+        top: calc(22vh + 5vw); /* Ajusta a posição da linha horizontal */
+    }
+}
+
+
+body, nav {
+    background-image: linear-gradient(#000000, #003100);;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    font-family: "Bebas Neue", "Bebas Neue"; /* Fonte básica para o corpo */
+}
+
+
+
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+  
+
+.search-container button {
+    padding: 10px 15px;
+    background-color: #0f0;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-container button:hover {
+    background-color: #111;
+}
+
+
+
+h1, h3 {
+    text-align: center;
+    color: rgb(237, 246, 237);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.turmas-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Faz com que os itens se adaptem ao tamanho da tela */
+}
+
+.turma {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+    width: 250px;
+    margin: 10px;
+    transition: transform 0.3s;
+}
+
+.turma img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.turma h3 {
+    color: #0f0;
+    font-size: 24px;
+}
+
+/* Efeito de hover nas turmas */
+.turma:hover {
+    transform: scale(1.05); /* Leve aumento no tamanho da turma */
+} */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* Campo de pesquisa */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+.turmas-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Faz com que os itens se adaptem ao tamanho da tela */
+}
+
+.turma {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+    width: 250px;
+    margin: 10px;
+    transition: transform 0.3s;
+}
+
+.turma img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.turma h3 {
+    color: #0f0;  /* titulo centro : turmas*/
+    font-size: 24px;
+}
+
+/* Efeito de hover nas turmas */
+.turma:hover {
+    transform: scale(1.05); /* Leve aumento no tamanho da turma */
+}
+
+/* Certificando-se de que o layout ocupe toda a página */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start; /* Garantir que o conteúdo comece de cima */
+}
+
+/* Estilo para o menu dropdown */
+
+
+
+details[open] summary {
+    background-color: #ddd;
+}
+
+/* Quando o mouse passar por cima do <details>, mostrar o conteúdo */
+details:hover .menu-dropdown-content {
+    display: block;
+}
+
+.menu-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0f0;
+    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.menu-dropdown-content a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu-dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Estilo para os cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: space-around;
+    margin-top: 20px;
+        
+    }
+
+
+.card {
+    width: 220px;
+    /* border: 1px solid #ddd; */
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.card img {
+    width: 200px;
+    height: auto;
+    border-radius: 22px;
+    border: 3px solid #0f0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
