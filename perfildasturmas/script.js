@@ -1,5 +1,5 @@
  // Função para puxarmos  a navbar a partir de navbar.html
- fetch('navbar.html')
+ fetch('../componentes/navbar1/navbar.html')
  .then(response => response.text())
  .then(data => {
    document.getElementById('navbar-container').innerHTML = data; // aqui puxo a navbar de dentro da pasta navbar
@@ -28,7 +28,7 @@
 
 // rodape
 function importarRodape() {
-  fetch('rodape.html') // Pega o arquivo 'rodape.html'
+  fetch('../componentes/rodape/rodape.html') // Pega o arquivo 'rodape.html'
       .then(response => response.text()) // Transforma a resposta em texto
       .then(data => {
           // Adiciona o conteúdo do arquivo ao final da página
