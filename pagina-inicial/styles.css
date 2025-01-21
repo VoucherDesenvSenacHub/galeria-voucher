@@ -1,0 +1,147 @@
+body {
+    margin: 0; /* Remove as margens padrão */
+    padding: 0;
+    height: 500vh; /* Define a altura para ocupar toda a tela */
+    background: linear-gradient(to bottom, black, #0D9C0D); /* Gradiente de preto para verde */
+}
+
+.nome {
+    position: absolute; /* Define um contêiner de referência */
+    width: 600px; /* Largura do contêiner */
+    height: 200px; /* Altura total da tela */
+    padding: 360px 420px;
+}
+
+.mapa {
+    position: absolute; /* Define um contêiner de referência */
+    width: 1200px; /* Largura do contêiner */
+    height: 140vh; /* Altura total da tela */
+    display: flex;
+    top: -10px;
+    left: 250px;
+}
+
+.linha {
+    width: 2%; /* Largura do contêiner */
+    height: 200vh; /* Altura total da tela */
+    display: flex;
+    justify-content: left;
+    align-items: safe;
+}
+
+.numeros {
+    position: absolute; /* Define um contêiner de referência */
+    width: 600px; /* Largura do contêiner */
+    height: 200px; /* Altura total da tela */
+    padding: 90px 700px;
+    top: -9px;
+    left: -350px;
+}
+
+.imagem-canto {
+    display: block; /* Remove espaços extras ao redor da imagem */
+    width: 2000px; /* Ajusta a largura para ocupar toda a página */
+    height: auto; /* Mantém a proporção da imagem */
+    position: absolute; /* Garante o posicionamento exato */
+    top: 0px; /* Encosta no topo */
+    left: 0px; /* Encosta no lado esquerdo */
+}
+
+.container {
+    display: flex; /* Define um layout flexível para o container */
+    gap: 30px; /* Espaço entre os cartões */
+    flex-wrap: wrap; /* Permite que os cartões se ajustem em telas menores */
+    justify-content: center; /* Centraliza os cartões no container */
+    margin: 150px auto; /* Reduzido para controlar o espaçamento vertical */
+    position: relative; /* Define a posição do container como relativa */
+}
+
+.card {
+    background-color: #0d0d0d; /* Fundo preto para o cartão */
+    border: 5px solid #98fe3f; /* Borda verde */
+    padding: 20px; /* Espaçamento interno dos elementos do cartão */
+    max-width: 300px; /* Largura máxima do cartão */
+    text-align: center; /* Centraliza o conteúdo do texto */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Sombra sutil para o cartão */
+    overflow: hidden; /* Esconde o texto que sai do cartão */
+    transition: height 0.3s ease-in-out; /* Animação para expandir a altura */
+    height: 80px; /* Apenas o título visível inicialmente */
+}
+
+.card h2 {
+    color: #98fe3f; /* Define o verde para o título */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+.card p {
+    font-family: "Inter", sans-serif; /* Define a fonte do texto do parágrafo */
+    font-size: 14px; /* Tamanho da fonte do parágrafo */
+    line-height: 1.5; /* Altura da linha para melhorar a legibilidade */
+    color: #fff; /* Cor branca para o texto */
+    opacity: 0; /* Torna o texto invisível inicialmente */
+    transition: opacity 0.3s ease-in-out; /* Animação para suavizar a visibilidade */
+}
+
+.card:hover {
+    height: 330px; /* Expande o cartão para exibir o texto ao passar o mouse */
+}
+
+.card:hover p {
+    opacity: 1; /* Mostra o texto ao passar o mouse */
+}
+
+h2 {
+    font-family: "Bebas Neue", sans-serif; /* Define a fonte do título geral */
+    font-size: 200%; /* Tamanho relativo para o título */
+}
+
+.evo {
+    text-align: center;
+    margin: 50px auto;
+    position: relative;
+}
+
+.evo h2 {
+    font-size: 2rem;
+    font-family: "Bebas Neue", sans-serif;
+    color: #98fe3f;
+    margin-bottom: 20px;
+}
+
+.infos {
+    display: flex; /* Exibe os elementos em linha */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 40px; /* Espaçamento entre os itens */
+}
+
+.info {
+    text-align: center; /* Centraliza o conteúdo dentro de cada info */
+}
+
+.info h2 {
+    font-size: 1rem; /* Tamanho do número */
+    color: #98fe3f; /* Cor do texto */
+    margin-top: 5px;
+}
+
+.info p {
+    margin-top: 5px; /* Espaçamento entre o número e o texto */
+    font-size: 1rem; /* Tamanho do texto */
+    color: #ffffff; /* Cor do texto */
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+    position: relative;
+}
+
+.losango {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: 2px solid black;
+    transform: rotate(45deg);
+    margin: 25px;
+}
