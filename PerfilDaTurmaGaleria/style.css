@@ -78,14 +78,15 @@ ul li{
 }
 
 .codimg {
-  width: 500px;
+  width: 600px;
   height: 300px;
-  margin: 20px auto;
+  margin: auto 60%;
   background-image: url("assets/codimg.png");
-  background-color: rgba(255, 255, 255, 0.0); /* Branco com 50% de opacidade */
+  background-color: rgba(255, 255, 255, 0.0);
   background-blend-mode: luminosity;
   background-size: cover;
-  background-position: center;
+  z-index: 1;
+  background-position: left; /* Alterado de 'right' para 'left' */
 }
 
 /* Estilos gerais */
@@ -93,7 +94,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
-    background: linear-gradient(to bottom, black, #008100, black, black);
+    background: linear-gradient(to bottom, black, #008100, black, black, black);
     color: white;
     line-height: 1.5;
 }
