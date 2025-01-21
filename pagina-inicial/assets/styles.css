@@ -229,76 +229,79 @@ h2 {
     opacity: 50%;
 }
 
-.container2 {
+#secao3{
+    .container2 {
 
-    background: transparent;
-    padding: 20px;
-    border-bottom: 5px solid #abfa3d;
-
-    h1 {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 2.5em;
-        font-weight: normal;
-        margin: 0 0 20px;
-        color: #ffffff;
-        padding-top: 0px;
-        padding-bottom: 30px;
-        display: flex;
-        justify-content: center;
-    }
-
-    .stats {
-
-        display: flex;
-        justify-content: center;
-        gap: 180px;
-        font-size: 2rem;
-    }
-
-    .stats div {
-
-        text-align: center;
-    }
-
-    span{
-        padding-left: 7px;
-    }
-
-    .stats div span {
-        font-family: "Bebas Neue", sans-serif;
-        display: block;
-        font-size: 2.5em;
-        font-weight: bold;
-        color: #abfa3d;
-        
-    }
-
-    .call-to-action {
-        font-family: "Bebas Neue", sans-serif;
-        margin-top: 20px;
-        font-size: 2.5em;
-        color: white;
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
-    }
-
-    .call-to-action span {
-        font-family: "Bebas Neue", sans-serif;
-        color: #abfa3d;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    p {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 19px;
-        margin: -1px;
-        color: #ffffff;
-        padding-left: 30px;
-
+        background: transparent;
+        padding: 20px;
+        border-bottom: 5px solid #abfa3d;
+    
+        h1 {
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 2.5em;
+            font-weight: normal;
+            margin: 0 0 20px;
+            color: #ffffff;
+            padding-top: 0px;
+            padding-bottom: 30px;
+            display: flex;
+            justify-content: center;
+        }
+    
+        .stats {
+    
+            display: flex;
+            justify-content: center;
+            gap: 180px;
+            font-size: 2rem;
+        }
+    
+        .stats div {
+    
+            text-align: center;
+        }
+    
+        span{
+            padding-left: 7px;
+        }
+    
+        .stats div span {
+            font-family: "Bebas Neue", sans-serif;
+            display: block;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #abfa3d;
+            
+        }
+    
+        .call-to-action {
+            font-family: "Bebas Neue", sans-serif;
+            margin-top: 20px;
+            font-size: 2.5em;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+        }
+    
+        .call-to-action span {
+            font-family: "Bebas Neue", sans-serif;
+            color: #abfa3d;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    
+        p {
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 19px;
+            margin: -1px;
+            color: #ffffff;
+            padding-left: 30px;
+    
+        }
     }
 }
+
 
         /* ... e assim por diante */
 
