@@ -1,3 +1,10 @@
+header,
+footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -74,13 +81,6 @@ nav {
     }
 }
 
-header,
-footer {
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-}
-
 main {
     display: flex;
     flex-direction: column;
@@ -89,6 +89,8 @@ main {
     padding: 0px;
     margin: 0px;
 }
+
+
 
 section {
     flex: 1;
@@ -214,16 +216,6 @@ h2 {
     justify-content: right;
     padding-top: 60px;
     opacity: 50%;
-}
-
-.numero {
-    position: absolute;
-    width: 540px;
-    height: 50px;
-    padding-left: 250px;
-    opacity: 20%;
-    top: 120px;
-    overflow: visible;
 }
 
 .container2 {
