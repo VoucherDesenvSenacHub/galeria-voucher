@@ -77,6 +77,16 @@ ul li{
     margin-left: -40px;
 }
 
+.codimg {
+  width: 500px;
+  height: 300px;
+  margin: 20px auto;
+  background-image: url("assets/codimg.png");
+  background-color: rgba(255, 255, 255, 0.0); /* Branco com 50% de opacidade */
+  background-blend-mode: luminosity;
+  background-size: cover;
+  background-position: center;
+}
 
 /* Estilos gerais */
 body {
