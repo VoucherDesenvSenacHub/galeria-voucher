@@ -89,6 +89,19 @@ ul li{
   background-position: left; /* Alterado de 'right' para 'left' */
 }
 
+.binarynumber {
+  width: 90%;
+  height: 300px;
+  margin: auto 20px;
+  background-image: url("assets/01.png");
+  background-color: rgba(255, 255, 255, 0.0);
+  background-blend-mode: overlay;
+  background-position: 100%;
+  z-index: -1;
+  background-position: left; /* Alterado de 'right' para 'left' */
+}
+
+
 /* Estilos gerais */
 body {
     margin: 0;
