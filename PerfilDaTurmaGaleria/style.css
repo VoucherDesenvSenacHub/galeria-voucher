@@ -85,22 +85,28 @@ ul li{
   background-color: rgba(255, 255, 255, 0.0);
   background-blend-mode: luminosity;
   background-size: cover;
-  z-index: 1;
-  background-position: left; /* Alterado de 'right' para 'left' */
+  z-index: -1;
+  background-position: left;
 }
 
 .binarynumber {
-  width: 90%;
-  height: 300px;
+  width: 100%;
+  height: 140vh;
   margin: auto 20px;
   background-image: url("assets/01.png");
-  background-color: rgba(255, 255, 255, 0.0);
-  background-blend-mode: overlay;
-  background-position: 100%;
-  z-index: -1;
-  background-position: left; /* Alterado de 'right' para 'left' */
+  opacity: 20%;
+  background-blend-mode: soft-light;
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+  z-index: 1;
 }
 
+section .dia {
+  position: relative;
+  z-index: 1;
+}
 
 /* Estilos gerais */
 body {
