@@ -6,56 +6,231 @@
     <title>Página de Turmas</title>
     <!-- Link para o Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=person" />
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+   <main>
+     <div id="navbar-container"></div> <!--aqui puxamos por meio de javascript a navbar -->
 
-    <!-- Barra de navegação -->
-    <nav>
-        <a href="#" id="home">Home</a>
-        <div class="search-container">
-            <input type="text" placeholder="Pesquisar...">
-            <button type="button">
-                <i class="fas fa-search"></i> <!-- Ícone de lupa -->
-            </button>
+   
+    <div class="conteudotodo">
+
+        <div class="turmatitulo">
+            <h1 style="margin-bottom:150px; ">TURMAS </h1>
         </div>
-        <a href="#" id="turmas">Turmas</a>
-    </nav>
-
-    <!-- Conteúdo principal -->
-    
-
-    <main>
-    <div class="content">
-        <h1>Turmas</h1>
-    
-        <div class="square"></div>
-
-            
-            
-        <div class="square1"></div>
-
-            
         
-        <div class="square2"></div>
+       
+            <div class="mira"> 
+                <div class="square"></div>
+                <div class="square1"></div>
+                <div class="square2"></div>
+            </div> 
+       
+    
+        <!-- Cards das Turmas  obs: aqui no beckend devemos fazer um for vinculado ao banco de dados e configura apenas um card e ao inserir os dados da turma ser auto gerado-->
+        <div class="cards">
+            <!-- Exemplo de um card de turma -->
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 130</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
 
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 131</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 132</h3>
+                    <img src="imagens/templates/foto3.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 133</h3>
+                    <img src="imagens/templates/foto2.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 134</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 135</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
             
-    </div>
-</main>
-            <!-- <div class="turma">
-                <img src="https://via.placeholder.com/250x150" alt="Turma 4">
-                <h3>Turma 4</h3>
-            </div>
-            <div class="turma">
-                <img src="https://via.placeholder.com/250x150" alt="Turma 5">
-                <h3>Turma 5</h3>
-            </div>
-            <div class="turma">
-                <img src="https://via.placeholder.com/250x150" alt="Turma 6">
-                <h3>Turma 6</h3>
-            </div> -->
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 136</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 137</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 138</h3>
+                    <img src="imagens/templates/foto3.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 137</h3>
+                    <img src="imagens/templates/foto2.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 139</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 140</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 141</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+           
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 142</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 143</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 144</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+
+
+             <!-- Cards adicionais, AQUI ESTA ocultos! -->
+        <div class="cards ocultos" id="cards-adicionais">
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 145</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 146</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 147</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 148</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 149</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 150</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 151</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 152</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 153</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 154</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 155</h3>
+                    <img src="imagens/templates/foto1.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            <a href="emdesenvolvimento.html" class="card">
+                <div class="card-content">
+                    <h3 class="card-title">TURMA 156</h3>
+                    <img src="imagens/templates/foto.jpg" alt="Turma 149" class="card-image">
+                </div>
+            </a>
+            
         </div>
     </div>
 
+    <div class="vermais" id="vermais">
+        <h3>VER MAIS</h3>
+        <span class="material-symbols-outlined" id="arrow-icon">
+            arrow_downward
+        </span>
+    </div>  
+
+
+
+    <script src="script.js" defer></script>
+
+</main>    
 </body>
 </html>
