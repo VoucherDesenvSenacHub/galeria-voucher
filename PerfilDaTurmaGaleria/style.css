@@ -78,6 +78,7 @@ ul li{
 }
 
 .codimg {
+  position: absolute;
   width: 600px;
   height: 300px;
   margin: auto 60%;
@@ -85,29 +86,33 @@ ul li{
   background-color: rgba(255, 255, 255, 0.0);
   background-blend-mode: luminosity;
   background-size: cover;
-  z-index: 1;
-  background-position: left; /* Alterado de 'right' para 'left' */
+  z-index: -1;
+  background-position: left;
 }
 
 .binarynumber {
+  position: absolute;
   width: 90%;
-  height: 300px;
-  margin: auto 20px;
+  height: 300vh;
   background-image: url("assets/01.png");
-  background-color: rgba(255, 255, 255, 0.0);
-  background-blend-mode: overlay;
-  background-position: 100%;
-  z-index: -1;
-  background-position: left; /* Alterado de 'right' para 'left' */
+  background-blend-mode: overlay; /* Efeito de mesclagem da imagem com o fundo */
+  background-size: contain; /* Faz a imagem ajustar-se dentro do contêiner sem distorcer */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  opacity: 0.1; /* Opacidade para suavizar a imagem de fundo */
+  z-index: -1; /* Garante que a imagem fique atrás do conteúdo */
 }
 
+section .dia {
+  position: relative;
+  z-index: 1;
+}
 
 /* Estilos gerais */
 body {
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
-    background: linear-gradient(to bottom, black, #008100, black, black, black, black);
+    background: linear-gradient(to bottom, black, black, #004D00, black, black, black, black, black);
     color: white;
     line-height: 1.5;
 }
