@@ -8,7 +8,7 @@
 
 /* style para a navbar  ok -- */
 nav {
-    background-image: linear-gradient(#000000, #003100);
+    /* background-image: linear-gradient(#000000, #003100); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -203,7 +203,11 @@ nav .search button {
 /* corpo com mira */
 html, body {
     height: 100%;
+    margin: 0;
     background-image: linear-gradient(#000000, #003100);
+    background-size: 100% 100%; /* Certifica que o fundo se estenda por toda a página */
+    background-attachment: fixed; /* Faz o fundo ficar fixo enquanto a página rola */
+    background-repeat: no-repeat;
 }
 
 .conteudotodo {
