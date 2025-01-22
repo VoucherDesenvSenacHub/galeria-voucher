@@ -219,4 +219,137 @@ nav ul li a {
     .welcome-message {
       font-size: 36px;
     }
+
+    /*CSS do botão da nova turma, pesquisa e da lista de turmas */
+
+    /* Estilo do botão "Nova Turma" */
+  .button-nova-turma {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .button-nova-turma button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .button-nova-turma button:hover {
+    background-color: #45a049;
+  }
+
+  /* Estilo da busca */
+  .search {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .search input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 250px;
+  }
+
+  .search button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .search button:hover {
+    background-color: #45a049;
+  }
+
+  /* Estilo da tabela */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+  }
+
+  /* Linhas alternadas da tabela */
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  /* Ações de botões na tabela */
+  .actions {
+    text-align: center;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    margin: 2px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Botão de editar */
+  .edit-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .edit-btn:hover {
+    background-color: #45a049;
+  }
+
+  /* Botão de inativar */
+  .inactive-btn {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .inactive-btn:hover {
+    background-color: #e53935;
+  }
+
+  /* Adicionando um efeito de foco nos botões */
+  .btn:focus {
+    outline: none;
+  }
+
+  /* Responsividade para telas pequenas */
+  @media (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .btn {
+        font-size: 12px;
+    }
+  }
 }
