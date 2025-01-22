@@ -230,6 +230,9 @@ h2 {
 }
 
 #secao3{
+    display: flex;
+    flex-direction: column;
+    
     .container2 {
 
         background: transparent;
@@ -302,13 +305,49 @@ h2 {
     }
 }
 
+.poligono {
+    display: flex;
+    flex-direction: column;  /* Alinha as linhas de imagens em coluna */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    margin: 190px;               /* Remove margens padrão */
+    background-color: #f0f0f0; /* Cor de fundo */
+  
+    .image-row {
+      display: flex;
+      justify-content: center; /* Centraliza as imagens dentro da linha */
+      flex-wrap: wrap;          /* Permite que as imagens quebrem para a linha seguinte se necessário */
+      gap: -1px;                /* Adiciona espaço entre as imagens */
+      
+    }
+    
+    .image-container {
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      background-color: lime;
+      padding: 4px;
+      display: inline-block;
+      max-width: 140px; /* Define a largura do contêiner */
+      margin-top: -70px;
+     
+    }
+    
+    .image-container img {
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      width: 140px; /* width of container */
+      height: 140px; /* height of container */
+      object-fit: cover;
+      display: block;
+    }
+    
+  }
 
-        /* ... e assim por diante */
 
-        /* Para dispositivos móveis, ajuste o layout */
-        @media (max-width: 768px) {
-            section {
-                height: auto;
-                padding: 20px;
-            }
-        }
+/* ... e assim por diante */
+
+/* Para dispositivos móveis, ajuste o layout */
+@media (max-width: 768px) {
+    section {
+        height: auto;
+        padding: 20px;
+    }
+}
