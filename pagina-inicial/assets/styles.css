@@ -20,7 +20,7 @@ nav {
     width: 97%;
     padding: 0 20px;
     opacity: 85%;
-    z-index: 1;
+    z-index: 2;
 
     a {
         text-decoration: none;
@@ -310,24 +310,28 @@ h2 {
     flex-direction: column;  /* Alinha as linhas de imagens em coluna */
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;     /* Centraliza verticalmente */
-    margin: 190px;               /* Remove margens padrão */
-    background-color: #f0f0f0; /* Cor de fundo */
+    margin: 250px;               /* Remove margens padrão */
+    background-color: transparent; /* Cor de fundo */
+    border-radius: 10px;
   
     .image-row {
       display: flex;
       justify-content: center; /* Centraliza as imagens dentro da linha */
       flex-wrap: wrap;          /* Permite que as imagens quebrem para a linha seguinte se necessário */
-      gap: -1px;                /* Adiciona espaço entre as imagens */
-      
+      gap: 2px;                /* Adiciona espaço entre as imagens */
     }
     
     .image-container {
       clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-      background-color: lime;
-      padding: 4px;
+      background-image: url("img/foto.png");
+      padding: 5px;
+      margin-left: 2px;
       display: inline-block;
       max-width: 140px; /* Define a largura do contêiner */
       margin-top: -70px;
+
+      
+      
      
     }
     
@@ -337,6 +341,7 @@ h2 {
       height: 140px; /* height of container */
       object-fit: cover;
       display: block;
+      
     }
     
   }
