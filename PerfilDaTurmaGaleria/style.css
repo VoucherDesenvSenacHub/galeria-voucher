@@ -224,7 +224,7 @@ section img {
 }
 
 .dia p {
-  text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.651);
+  text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.17);
 }
 
 /* Estilo específico para alinhar imagens */
@@ -295,9 +295,11 @@ body {
   .btn {
     background-color: #AEFF40;
     border: none;
-    padding: 10px 20px;
-    color: #f6f1f1;
-    font-weight: bold;
+    font-size: 40px;
+    padding: 10px 40px;
+    font-family: "Bebas Neue";
+    color: #004302;
+    font-weight: normal;
     cursor: pointer;
     border-radius: 50px;
   }
