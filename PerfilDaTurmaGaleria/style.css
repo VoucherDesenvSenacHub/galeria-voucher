@@ -178,6 +178,34 @@ section {
   display:flex;
 }
 
+.dia p{
+  font-size: 19px;
+}
+
+.dia h2{
+  font-size: 48px;
+}
+
+.margin-top-left-turma-xx {
+  margin-left: 25px;
+  margin-top: 65px;
+}
+
+.margin-top-left-dia-p {
+  margin-left: 25px;
+  margin-top: 65px;
+}
+
+.margin-top-left-projeto-xx {
+  margin-left: 25px;
+  margin-top: 20px;
+}
+
+.margin-top-right-dia-e {
+  margin-right: 25px;
+  margin-top: 65px;
+}
+
 section h2 {
     font-family: "Bebas Neue", sans-serif;
     font-size: 28px;
@@ -448,13 +476,13 @@ body {
     height: 6vw;
     background-color: #000000;
     border: 3px solid #AEFF40;
-    top: 70vh; 
+    top: 60vh; 
     left: 26vw; 
   }
   .square1 {
     position: absolute; 
     width: 2px;
-    height: 200%;
+    height: 170%;
     background-color: #AEFF40; 
     top: 0;
     left: 28.99vw;
@@ -465,7 +493,7 @@ body {
     width: 100%; 
     height: 2px; 
     background-color: #AEFF40; 
-    top: calc(70vh + 3vw);
+    top: calc(60vh + 3vw);
     left: 0;
   }
 
