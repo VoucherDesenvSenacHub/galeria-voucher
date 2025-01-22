@@ -333,11 +333,3 @@ section {
         
     }
 }
-
-/* Para dispositivos móveis, ajuste o layout */
-@media (max-width: 768px) {
-    section {
-        height: auto;
-        padding: 20px;
-    }
-}
