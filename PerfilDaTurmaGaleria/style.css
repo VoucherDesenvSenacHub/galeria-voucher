@@ -281,6 +281,7 @@ body {
     padding: 20px;
     text-align: center;
   }
+
   .botaoprojeto {
     padding-left: 20px;
   }
@@ -322,6 +323,8 @@ body {
     gap: 70px;
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
     padding: 10px;
 }
 
