@@ -1,3 +1,4 @@
+/* Reset de estilos */
 * {
   padding: 0;
   margin: 0;
@@ -6,18 +7,27 @@
   border: 0;
   box-sizing: border-box;
 }
+
+/* Estilos globais */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 20px;
+}
+
+/* Navegação (Navbar) */
 nav {
-  background-color: rgba(50, 50, 50, 0.8); 
+  background-color: rgba(50, 50, 50, 0.8);
   justify-content: space-between;
   display: flex;
-  align-items: center;  
+  align-items: center;
   height: 100px;
   width: 100%;
   padding: 0 20px;
-  z-index: 1;         
-  position: fixed;    
-  top: 0;            
-  left: 0;           
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 nav ul {
@@ -27,11 +37,10 @@ nav ul {
 nav ul li {
   display: inline-flex;
   align-items: center;
-  width: auto;
 }
 
 nav ul li a {
-  color: #ACFD3E;
+  color: #acfd3e;
   text-decoration: none;
   font-family: "Bebas Neue", sans-serif;
   font-size: 40px;
@@ -47,13 +56,14 @@ nav ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto; 
+  margin-left: auto;
 }
 
 .botao-person .material-symbols-outlined {
   font-size: 40px;
 }
 
+/* Sidebar */
 .sidebar {
   padding-top: 100px;
   background-color: #363535;
@@ -73,6 +83,7 @@ nav ul li a {
   border-bottom: 1px solid #c0c0c0;
 }
 
+/* Layout principal */
 .container {
   display: flex;
   font-family: Arial, sans-serif;
@@ -84,6 +95,7 @@ nav ul li a {
   margin-top: 120px;
 }
 
+/* Perfil de usuário */
 .user-profile {
   text-align: center;
   margin-bottom: 30px;
@@ -108,16 +120,81 @@ nav ul li a {
   text-align: center;
 }
 
+/* Botões e entradas */
+.nova-turma {
+  background-color: #b5ff00;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.pesquisar {
+  float: right;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Tabela */
+.tabela-turmas {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabela-turmas th,
+.tabela-turmas td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.tabela-turmas th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.tabela-turmas td {
+  background-color: #f9f9f9;
+}
+
+.editar {
+  background-image: url("editar-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.inativar {
+  background-image: url("inativar-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsividade */
 @media (max-width: 1333px) and (max-height: 720px) {
   nav {
     flex-direction: column;
-    align-items: center; 
-    height: auto; 
+    align-items: center;
+    height: auto;
   }
 
   nav ul {
-    flex-direction: column; 
-    width: 100%; 
+    flex-direction: column;
+    width: 100%;
     margin: 0;
     padding: 0;
   }
@@ -125,12 +202,12 @@ nav ul li a {
   nav ul li {
     width: 100%;
     list-style: none;
-    margin: 10px 0; 
+    margin: 10px 0;
   }
 
   .imgvoucher {
     margin: 0;
-    width: 100%; 
+    width: 100%;
     display: flex;
     justify-content: center;
   }
@@ -144,8 +221,8 @@ nav ul li a {
   }
 
   .sidebar {
-    width: 100%; 
-    height: auto; 
+    width: 100%;
+    height: auto;
   }
 
   .content {
@@ -153,12 +230,13 @@ nav ul li a {
   }
 
   .user-icon {
-    width: 100px; 
+    width: 100px;
     height: 100px;
   }
 
-  .user-name, .welcome-message {
-    font-size: 18px; 
+  .user-name,
+  .welcome-message {
+    font-size: 18px;
   }
 
   .welcome-message {
@@ -167,56 +245,57 @@ nav ul li a {
 }
 
 @media (max-width: 768px) {
-    .user-name,
-    .welcome-message {
-      font-size: 20px; 
-    }
+  .user-name,
+  .welcome-message {
+    font-size: 20px;
+  }
 
-    nav {
-      flex-direction: column; 
-      align-items: flex-start; 
-      height: auto; 
-    }
-  
-    nav ul {
-      flex-direction: column; 
-      width: 100%; 
-    }
-  
-    nav ul li {
-      width: 100%;
-    }
-  
-    .imgvoucher {
-      margin-right: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-  
-    .container {
-      flex-direction: column;
-    }
-  
-    .sidebar {
-      width: 100%;
-      height: auto;
-    }
-  
-    .content {
-      padding: 20px;
-    }
-  
-    .user-icon {
-      width: 150px;
-      height: 150px;
-    }
-  
-    .user-name, .welcome-message {
-      font-size: 24px;
-    }
-  
-    .welcome-message {
-      font-size: 36px;
-    }
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  .imgvoucher {
+    margin-right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .user-icon {
+    width: 150px;
+    height: 150px;
+  }
+
+  .user-name,
+  .welcome-message {
+    font-size: 24px;
+  }
+
+  .welcome-message {
+    font-size: 36px;
+  }
 }
