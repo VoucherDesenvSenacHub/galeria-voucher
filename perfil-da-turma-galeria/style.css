@@ -86,6 +86,7 @@ ul li{
   background-color: rgba(255, 255, 255, 0.0);
   background-blend-mode: luminosity;
   background-size: cover;
+  opacity: 0.4;
   z-index: -1;
   background-position: left;
 }
