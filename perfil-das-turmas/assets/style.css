@@ -232,10 +232,11 @@ html, body {
 
 .square1 {
     width: 2px;
-    height: calc(100vh - 18vh); /* Ajuste para que ocupe a altura restante da tela */
+    height: calc(100vh + 40vh); /* Ajuste para que ocupe a altura restante da tela */
     background-color: #0f0;
     top: 0;
     left: 23vw;
+    
 }
 
 .square2 {
@@ -318,8 +319,9 @@ html, body {
     color: rgb(237, 246, 237);
     font-size: 30px;
     margin-bottom: 10px;
-    font-size: 80px;
+    font-size: 40px;
     padding: 15px 10px;
+    font-family: bebas neue;
 }
 /* turma titulo h1  -- ok */
 
@@ -351,12 +353,12 @@ html, body {
     display: block;
     width: 200px; /* Ajuste a largura do card conforme necessário */
     height: 220px;
-    border: 5px solid #0f0; /* Borda do card */
+    border: 2px solid #0f0; /* Borda do card */
     padding: 10px; /* Espaçamento dentro do card */
     text-align: center;
     text-decoration: none;
     background-color: black; /* Cor de fundo do card */
-    border-radius: 10px;  
+    border-radius: 30px;  
     z-index: 2; /* Quadrado à frente */
 }
 
