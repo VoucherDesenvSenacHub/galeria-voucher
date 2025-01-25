@@ -1,3 +1,8 @@
+.bebas-neue-regular {
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+  }  
 
 * {
     margin: 0;
@@ -370,6 +375,7 @@ html, body {
     font-size: 18px; /* Tamanho do título */
     margin-bottom: 10px; /* Espaço entre o título e a imagem */
     color: #0f0; /* Cor do título - amarelo */
+    font-family: "bebas neue";
 }
 
 .card-image {
@@ -388,18 +394,22 @@ html, body {
     text-align: center; /* Centraliza o conteúdo horizontalmente */
     margin-top: 20px;
     color: rgb(237, 246, 237);
-    font-size: 70px;
+    font-size: 30px;
+    font-family: "bebas neue";
     margin-bottom: 10px;
     padding: 15px 10px;
 }
 
 .vermais h3 {
     margin-bottom: 10px; /* Adiciona um pequeno espaço entre o título e o ícone */
+    font-size: 30px;
+    font-family: "bebas neue";
 }
 
 .vermais span {
-    font-size: 70px; /* Tamanho do ícone */
+    font-size: 30px; /* Tamanho do ícone */
     color: rgb(237, 246, 237);
+    
 }
 
 
