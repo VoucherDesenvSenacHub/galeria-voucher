@@ -370,6 +370,7 @@ html, body {
     font-size: 18px; /* Tamanho do título */
     margin-bottom: 10px; /* Espaço entre o título e a imagem */
     color: #0f0; /* Cor do título - amarelo */
+    font-family: "bebas neue";
 }
 
 .card-image {
