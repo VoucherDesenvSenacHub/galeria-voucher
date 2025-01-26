@@ -1,0 +1,133 @@
+/* inicio   caixa  abaixo navbar  */
+
+.cadastraturma {
+  margin-top: 150px;  
+  padding-top: 20px;
+  padding: 30px 20px;
+  
+}
+.turmamenu{
+  border: 3px solid #0b0a0a;
+  border-radius: 2px;   
+}
+.sobremenu{
+  border: 3px solid #0b0a0a;
+  border-radius: 2px;   
+}
+.imagensmenu{
+  border: 3px solid #0b0a0a;
+  
+}
+
+.menux {
+  display: flex;            /* Organiza os itens lado a lado */
+  justify-content: space-between;  /* Adiciona o espaçamento entre os itens */
+  padding: 10px;            /* Espaçamento interno para melhorar o visual */
+  width: 100%;                        /* Faz a div menux ocupar toda a largura disponível */
+  max-width: 100%;  
+}
+
+.menux ul {
+  display: flex;            /* Garante que a lista tenha os itens lado a lado */
+  list-style: none;         /* Remove o marcador de lista */
+  padding: 0;               /* Remove o padding padrão da lista */
+  margin: 0;                /* Remove a margem da lista */
+  width: 100%;
+  justify-content: space-between;
+}
+
+.menux ul li {
+  margin: 0;                /* Remove margem do item da lista */
+}
+
+.menu-item {
+  display: flex;
+  text-decoration: none;    /* Remove o sublinhado do link */
+  font-size: 20px;          /* Define o tamanho da fonte */
+  color: gray;              /* Cor padrão */
+  transition: color 0.3s;   /* Transição suave para a cor */
+  border: 2px solid #0b0a0a; 
+  border-radius: 10%;
+}
+
+.menu-item:hover {
+  color: #4CAF50;           /* Cor quando o item é hover */
+  border-inline-start-color: #4CAF50;
+}
+
+.menu-item:hover {
+  background-color: #2d8329; /* Cor de fundo quando o item é passado o mouse */
+}
+
+
+/* fim  caixa  abaixo navbar  */
+
+
+.painel {
+  margin-top: 30px;  /* Espaçamento entre o menu e o painel */
+}
+
+.formulario-com-icone {
+  display: flex;
+  align-items: flex-start; /* Alinha o formulário e o ícone no topo */
+  gap: 750px;  /* Espaço entre o formulário e o ícone */
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* Alinha os itens à esquerda */
+  gap: 10px;  /* Espaço entre os campos do formulário */
+}
+
+.input-group {
+  width: 250%;  /* Ajuste o width para 100% */
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 3px solid #0b0a0a;
+  border-radius: 20px;  /* Bordas arredondadas nos inputs */
+}
+
+.iconeturma {
+ 
+  font-size: 250px;  /* Tamanho maior para o ícone */
+  margin-top: 20px; /* Alinha o ícone com os campos do formulário */
+  width: 150px;  /* Tamanho da imagem */
+  height: auto;  /* Mantém a proporção da imagem */
+  border-radius: 20%;
+  
+}
+.iconeturma img {
+  width: 200px;  /* aqui ocupou 4 dos 5 input  */
+  height: auto;  /* Mantém a proporção da imagem */
+}
+
+
+/* Responsividade */
+@media (max-width: 767px) {
+  .menux {
+    gap: 15px; /* Menos espaço em telas pequenas */
+  }
+
+  .formulario-com-icone {
+    flex-direction: column; /* Empilha o formulário e o ícone em telas pequenas */
+    align-items: center;
+  }
+
+  .formulario {
+    align-items: center; /* Centraliza o formulário */
+  }
+
+  .input-group {
+    width: 90%; /* Diminui o tamanho dos campos em telas pequenas */
+  }
+
+  .iconeturma {
+    font-size: 40px;  /* Diminui o ícone em telas pequenas */
+    margin-top: 20px;  /* Adiciona margem superior */
+  }
+}
