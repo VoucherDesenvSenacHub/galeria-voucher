@@ -249,6 +249,7 @@ section img {
     display: block;
     margin: 20px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    object-fit: contain;
 }
 
 .image-container img {
@@ -469,6 +470,27 @@ body {
     }
     .image-container {
         height: 280px; /* Adjust as needed */
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      height: 20vh;
+      width: 100%;
+  }
+    .senac {
+      position: absolute;
+      right: unset;
+      justify-content: center;
+      top: 100px;
+      padding: 5px;
+      border: 0px solid;
+      border-radius: 0px;
+      font-size: 12px;
     }
 }
     
