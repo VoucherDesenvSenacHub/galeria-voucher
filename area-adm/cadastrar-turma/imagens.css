@@ -1,17 +1,14 @@
-/* inicio   caixa  abaixo navbar  */
-
-.header2{
+.header4{
   display: flex;
   justify-content: space-between;
   height: 100px;
-  margin-top: -7%;
+  margin-top: 100px; /*aqui colei na navbar */
   /* border-radius: 20%; */
-  
 }
 
 .turma {
   font-size: 40px;
-  background-color: #ACFD3E;
+  background-color: #d8dbd6;
   border-radius: 0px 0px 8px 8px;
   width: 400px;
   border: 2PX solid #000000;
@@ -28,7 +25,7 @@
 
 .imagens{
   font-size: 40px;
-  background-color: #d8dbd6;
+  background-color: #ACFD3E;
   border-radius: 0px 0px 8px 8px;
   width: 370px;
   border: 2PX solid #000000;
@@ -42,14 +39,9 @@
 .cadastraturma {
   margin-top: 150px;  
   padding-top: 20px;
-  padding: 30px 0px;
-  .painel {
-    margin-top: 30px;
-    padding: 20px 7px;  /* 30px no topo e 50px nas laterais */
-  }
+  padding: 30px 20px;
   
 }
-
 .turmamenu{
   border: 3px solid #0b0a0a;
   border-radius: 2px;  
@@ -105,84 +97,8 @@
 }
 
 
-/* fim  caixa  abaixo navbar  */
 
 
-
-
-
-
-
-.formulario-com-icone {
-  display: flex;
-  align-items: flex-start; /* Alinha o formulário e o ícone no topo */
-  gap: 730px;  /* Espaço entre o formulário e o ícone */
-  
+.painel {
+  margin-top: 30px;  /* Espaçamento entre o menu e o painel */
 }
-
-.formulario {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;  /* Alinha os itens à esquerda */
-  gap: 10px;  /* Espaço entre os campos do formulário */
-}
-
-.input-group {
-  width: 250%;  /* Ajuste o width para 100% */
-}
-
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 3px solid #0b0a0a;
-  border-radius: 20px;  /* Bordas arredondadas nos inputs */
-}
-
-.iconeturma {
- 
-  font-size: 250px;  /* Tamanho maior para o ícone */
-  margin-top: 20px; /* Alinha o ícone com os campos do formulário */
-  width: 150px;  /* Tamanho da imagem */
-  height: auto;  /* Mantém a proporção da imagem */
-  border-radius: 20%;
-  
-}
-.iconeturma img {
-  width: 200px;  /* aqui ocupou 4 dos 5 input  */
-  height: auto;  /* Mantém a proporção da imagem */
-}
-
-
-
-
-
-
-/* Responsividade */
-@media (max-width: 767px) {
-  .menux {
-    gap: 15px; /* Menos espaço em telas pequenas */
-  }
-
-  .formulario-com-icone {
-    flex-direction: column; /* Empilha o formulário e o ícone em telas pequenas */
-    align-items: center;
-  }
-
-  .formulario {
-    align-items: center; /* Centraliza o formulário */
-  }
-
-  .input-group {
-    width: 90%; /* Diminui o tamanho dos campos em telas pequenas */
-  }
-
-  .iconeturma {
-    font-size: 40px;  /* Diminui o ícone em telas pequenas */
-    margin-top: 20px;  /* Adiciona margem superior */
-  }
-}
-
-
-
-/* painelsobre */

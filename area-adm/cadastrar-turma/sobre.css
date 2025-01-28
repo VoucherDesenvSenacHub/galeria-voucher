@@ -1,0 +1,104 @@
+.header3{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    margin-top: 100px; /*aqui colei na navbar */
+    /* border-radius: 20%; */
+  }
+  
+  .turma {
+    font-size: 40px;
+    background-color: #d8dbd6;
+    border-radius: 0px 0px 8px 8px;
+    width: 400px;
+    border: 2PX solid #000000;
+  }
+  
+  .sobre{
+    font-size: 40px;
+    background-color: #ACFD3E;
+    border-radius: 0px 0px 8px 8px;
+    width: 370px;
+    border: 2PX solid #000000;
+  
+  }
+  
+  .imagens{
+    font-size: 40px;
+    background-color: #d8dbd6;
+    border-radius: 0px 0px 8px 8px;
+    width: 370px;
+    border: 2PX solid #000000;
+  
+  }
+  
+  .turma:active, .sobre:active, .imagens:active{
+    background-color: #ACFD3E;
+  }
+  
+  .cadastraturma {
+    margin-top: 150px;  
+    padding-top: 20px;
+    padding: 30px 20px;
+    
+  }
+  .turmamenu{
+    border: 3px solid #0b0a0a;
+    border-radius: 2px;  
+    width: 400px; 
+  }
+  .sobremenu{
+    border: 3px solid #0b0a0a;
+    border-radius: 2px;   
+  }
+  .imagensmenu{
+    border: 3px solid #0b0a0a;
+    
+  }
+  
+  .menux {
+    display: flex;            /* Organiza os itens lado a lado */
+    justify-content: space-between;  /* Adiciona o espaçamento entre os itens */
+    padding: 10px;            /* Espaçamento interno para melhorar o visual */
+    width: 500px;                        /* Faz a div menux ocupar toda a largura disponível */
+    /* max-width: 100%;   */
+  }
+  
+  .menux ul {
+    display: flex;            /* Garante que a lista tenha os itens lado a lado */
+    list-style: none;         /* Remove o marcador de lista */
+    padding: 0;               /* Remove o padding padrão da lista */
+    margin: 0;                /* Remove a margem da lista */
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .menux ul li {
+    margin: 0;                /* Remove margem do item da lista */
+  }
+  
+  .menu-item {
+    display: flex;
+    text-decoration: none;    /* Remove o sublinhado do link */
+    font-size: 20px;          /* Define o tamanho da fonte */
+    color: gray;              /* Cor padrão */
+    transition: color 0.3s;   /* Transição suave para a cor */
+    border: 2px solid #0b0a0a; 
+    border-radius: 10%;
+  }
+  
+  .menu-item:hover {
+    color: #ACFD3E;           /* Cor quando o item é hover */
+    border-inline-start-color: #ACFD3E;
+  }
+  
+  .menu-item:hover {
+    background-color: #ACFD3E; /* Cor de fundo quando o item é passado o mouse */
+  }
+  
+
+
+  
+.painel {
+    margin-top: 30px;  /* Espaçamento entre o menu e o painel */
+  }
