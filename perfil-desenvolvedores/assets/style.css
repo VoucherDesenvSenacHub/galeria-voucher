@@ -187,4 +187,10 @@ main {
     .image-container {
         height: 200px; /* Adjust as needed */
     }
+    .text-card {
+        padding: 5px;
+    }
+    .imgnome img{
+        max-width: 300px;
+    }
 }
