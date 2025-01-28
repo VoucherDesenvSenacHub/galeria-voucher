@@ -275,36 +275,58 @@ section#projeto-xx img {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 10px;
-    }
+  body {
+      font-size: 14px; /* Ajusta a fonte para dispositivos móveis */
+  }
 
-    header h3, header h4 {
-      font-size: 15px;
-      letter-spacing: 1px;
-      word-spacing: 500px;
-      text-align: center;
-    }
+  h1, h2, h3, h4 {
+      font-size: 24px; /* Ajusta os tamanhos das fontes de títulos */
+  }
 
-    header h5 {
-      font-size: 12px;
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: lightblue;
-      padding: 10px;
-      border: 1px solid black;
-      z-index: 1;
-    }
+  section p {
+      font-size: 14px; /* Reduz o tamanho do texto do parágrafo */
+  }
 
-    section h2 {
-        font-size: 24px;
-    }
-
-    section p {
-        font-size: 14px;
-    }
+  .titulo {
+      font-size: 1.5rem; /* Ajusta o tamanho dos títulos principais */
+  }
 }
+
+@media (max-width: 768px) {
+  section img {
+      width: 100%;
+      height: 90%; /* Mantém a proporção */
+  }
+
+  .dia {
+    flex-wrap: wrap;
+  }
+
+  .codimg {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    margin: auto;
+    background-image: url(assets/codimg.png);
+    background-color: rgba(255, 255, 255, 0.0);
+    background-blend-mode: luminosity;
+    background-size: cover;
+    opacity: 0.4;
+    z-index: -1;
+    background-position: left;
+  }
+
+  .binarynumber {
+    width: 100%;
+    height: 100%;
+    background-size: unset;
+  }
+  section {
+    padding: 40px;
+  }
+  }
+}
+
 
 body {
     font-family: Arial, sans-serif;
