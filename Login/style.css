@@ -86,7 +86,7 @@ body {
     padding: 0;
     height: 100vh;
     background-image: linear-gradient(#000000, #003100);
-    font-family: Arial, sans-serif;
+                          font-family: Arial, sans-serif;
     align-items: center;
 }
 
