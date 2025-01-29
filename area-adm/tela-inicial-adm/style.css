@@ -84,6 +84,30 @@ nav ul li a {
   margin-top: 120px;
 }
 
+.user-profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.user-icon {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 auto;
+}
+
+.user-name {
+  margin-top: 15px;
+  font-size: 40px;
+}
+
+.welcome-message {
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+}
+
 @media (max-width: 1333px) and (max-height: 720px) {
   nav {
     flex-direction: column;
@@ -127,9 +151,27 @@ nav ul li a {
   .content {
     padding: 20px;
   }
+
+  .user-icon {
+    width: 100px; 
+    height: 100px;
+  }
+
+  .user-name, .welcome-message {
+    font-size: 18px; 
+  }
+
+  .welcome-message {
+    font-size: 24px;
+  }
 }
 
 @media (max-width: 768px) {
+    .user-name,
+    .welcome-message {
+      font-size: 20px; 
+    }
+
     nav {
       flex-direction: column; 
       align-items: flex-start; 
@@ -164,5 +206,17 @@ nav ul li a {
     .content {
       padding: 20px;
     }
-
+  
+    .user-icon {
+      width: 150px;
+      height: 150px;
+    }
+  
+    .user-name, .welcome-message {
+      font-size: 24px;
+    }
+  
+    .welcome-message {
+      font-size: 36px;
+    }
 }
