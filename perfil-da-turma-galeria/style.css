@@ -294,6 +294,8 @@ section p {
 
 .square1 {
   left: 34px;
+  height: 300em;
+  z-index: 1;
 }
 
 }
