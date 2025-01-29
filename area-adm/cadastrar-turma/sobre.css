@@ -102,3 +102,71 @@
 .painel {
     margin-top: 30px;  /* Espaçamento entre o menu e o painel */
   }
+
+
+/*  formulario sobre */
+.formulariosobre{
+ 
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: flex-start;  /* Alinha os itens à esquerda */
+  gap: 10px;  /* Espaço entre os campos do formulário */
+  margin-top: 0px;
+  padding: 30px 20px;
+  .h1{
+    border: #000000;    
+  }
+  .input-group-1 input  {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 3px solid #0b0a0a;
+    border-radius: 20px;  /* Bordas arredondadas nos inputs */
+    justify-content:space-around ;
+    
+  }
+  .input-group-2 input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 3px solid #0b0a0a;
+    border-radius: 10px;  /* Bordas arredondadas nos inputs */
+
+  }
+  .input-group-3 input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 3px solid #0b0a0a;
+    border-radius: 10px;  /* Bordas arredondadas nos inputs */
+
+  }
+
+}
+
+
+@media (max-width: 767px) {
+  .menux {
+    gap: 15px; /* Menos espaço em telas pequenas */
+  }
+
+  .formulariosobre {
+    flex-direction: column; /* Empilha o formulário e o ícone em telas pequenas */
+    align-items: center;
+  }
+
+  .formulariosobre{
+    align-items: center; /* Centraliza o formulário */
+  }
+
+  .input-group-1,.input-group-2, .input-group-3 {
+    width: 90%; /* Diminui o tamanho dos campos em telas pequenas */
+  }
+
+  .iconeturma {
+    font-size: 40px;  /* Diminui o ícone em telas pequenas */
+    margin-top: 20px;  /* Adiciona margem superior */
+  }
+}
