@@ -116,6 +116,7 @@ body {
   background: linear-gradient(to bottom, black, black, #004D00, black, black, black, black, black, black);
   color: white;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 h1, h5, h4 {
@@ -463,7 +464,7 @@ flex-wrap: wrap;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   nav {
     display: flex;
     flex-wrap: wrap;
@@ -486,7 +487,7 @@ flex-wrap: wrap;
   }
 }
   
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .container {
       grid-template-columns: repeat(3, 1fr);
   }
@@ -511,7 +512,7 @@ flex-wrap: wrap;
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   body {
       font-size: 14px; 
   }
@@ -549,7 +550,7 @@ flex-wrap: wrap;
   
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
   section img {
       width: 100%;
       height: 90%; /* Mantém a proporção */
@@ -599,7 +600,7 @@ flex-wrap: wrap;
   }
   
   /*Responsividade Tablet*/
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 767px) and (max-width: 1024px) {
     .codimg {
       position: absolute;
       width: 100%;
@@ -615,13 +616,13 @@ flex-wrap: wrap;
     }
   
     .square2 {
-      top: 38.5em;
+      top: 32.5em;
       position: absolute;
       z-index: -2;
     }
 
     .square {
-      top: 38.5em;
+      top: 32.5em;
       position: absolute;
       z-index: -2;
     }
@@ -629,10 +630,30 @@ flex-wrap: wrap;
     .square1 {
       z-index: -2;
       position: absolute;
-      height: 100em;
+      height: 90em;
     }
 
     section img {
       box-shadow: none;
+    }
+  }
+
+  @media (max-height: 360px) and (max-width: 415px) {
+    .square2 {
+      top: 30.5em;
+      position: absolute;
+      z-index: -2;
+    }
+
+    .square {
+      top: 30.5em;
+      position: absolute;
+      z-index: -2;
+    }
+
+    .square1 {
+      z-index: -2;
+      position: absolute;
+      height: 90em;
     }
   }
