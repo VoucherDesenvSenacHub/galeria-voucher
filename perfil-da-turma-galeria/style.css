@@ -312,6 +312,7 @@ body {
   padding: 0;
   background-color: #fbfbfb;
   color: #fff;
+  overflow-x: hidden;
 }
 
 .container {
@@ -512,9 +513,10 @@ flex-wrap: wrap;
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: 666px) {
   body {
       font-size: 14px; 
+      overflow-x: hidden;
   }
   
   h1, h2, h3, h4 {
@@ -550,7 +552,7 @@ flex-wrap: wrap;
   
   }
   
-  @media (max-width: 767px) {
+  @media (max-width: 666px) {
   section img {
       width: 100%;
       height: 90%; /* Mantém a proporção */
@@ -600,7 +602,7 @@ flex-wrap: wrap;
   }
   
   /*Responsividade Tablet*/
-  @media (min-width: 767px) and (max-width: 1024px) {
+  @media (min-width: 720px) and (max-width: 1366px) {
     .codimg {
       position: absolute;
       width: 100%;
@@ -616,13 +618,13 @@ flex-wrap: wrap;
     }
   
     .square2 {
-      top: 32.5em;
+      top: 37.5em;
       position: absolute;
       z-index: -2;
     }
 
     .square {
-      top: 32.5em;
+      top: 37.1em;
       position: absolute;
       z-index: -2;
     }
@@ -638,15 +640,17 @@ flex-wrap: wrap;
     }
   }
 
-  @media (max-height: 360px) and (max-width: 415px) {
+  /*Responsividade Horizontal aparelhos pequenos*/
+
+  @media (min-height: 357px) and (max-height: 375px) {
     .square2 {
-      top: 30.5em;
+      top: 40.5em;
       position: absolute;
       z-index: -2;
     }
 
     .square {
-      top: 30.5em;
+      top: 40.5em;
       position: absolute;
       z-index: -2;
     }
@@ -654,6 +658,23 @@ flex-wrap: wrap;
     .square1 {
       z-index: -2;
       position: absolute;
-      height: 90em;
+      height: 110em;
+    }
+    .codimg {
+      position: absolute;
+      width: 100%;
+      height: 40%;
+      margin: auto;
+      background-image: url(assets/codimg.png);
+      background-color: rgba(255, 255, 255, 0.0);
+      background-blend-mode: luminosity;
+      background-size: cover;
+      opacity: 0.4;
+      z-index: -1;
+      background-position: left;
+    }
+
+    section img {
+      box-shadow: none;
     }
   }
