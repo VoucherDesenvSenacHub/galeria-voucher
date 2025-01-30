@@ -271,68 +271,33 @@ section#projeto-xx img {
   text-align: center;
 }
 
-
-
-
-/* Responsividade */
-@media (max-width: 768px) {
-body {
-    font-size: 14px; /* Ajusta a fonte para dispositivos móveis */
-}
-
-h1, h2, h3, h4 {
-    font-size: 24px; /* Ajusta os tamanhos das fontes de títulos */
-}
-
-section p {
-    font-size: 14px; /* Reduz o tamanho do texto do parágrafo */
-}
-
-.titulo {
-    font-size: 1.5rem; /* Ajusta o tamanho dos títulos principais */
-}
-
-.square1 {
-  left: 34px;
-  height: 300em;
-  z-index: 1;
-}
-
-}
-
-@media (max-width: 768px) {
-section img {
-    width: 100%;
-    height: 90%; /* Mantém a proporção */
-}
-
-.dia {
-  flex-wrap: wrap;
-}
-
-.codimg {
+.square {
   position: absolute;
-  width: 100%;
-  height: 40%;
-  margin: auto;
-  background-image: url(assets/codimg.png);
-  background-color: rgba(255, 255, 255, 0.0);
-  background-blend-mode: luminosity;
-  background-size: cover;
-  opacity: 0.4;
-  z-index: -1;
-  background-position: left;
+  width: 6vw;
+  height: 6vw;
+  background-color: #000000;
+  border: 3px solid #AEFF40;
+  top: 60vh; 
+  left: 26vw; 
+}
+.square1 {
+  position: absolute; 
+  width: 2px;
+  height: 170%;
+  background-color: #AEFF40; 
+  top: 0;
+  left: 28.99vw;
 }
 
-.binarynumber {
-  width: 100%;
-  height: 100%;
-  background-size: unset;
+.square2 {
+  position: absolute; 
+  width: 100%; 
+  height: 2px; 
+  background-color: #AEFF40; 
+  top: calc(60vh + 3vw);
+  left: 0;
 }
-section {
-  padding: 40px;
-}
-}
+
 
 
 body {
@@ -467,6 +432,20 @@ letter-spacing: 0.5px;
   font-size: 14px;
 }
 
+/* texto final */
+.textofinal {
+  padding: 70px;
+  font-size: 14px;
+  font-family: "Bebas Neue";
+}
+
+.box {
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+}
+
+
 @media (max-width: 992px) {
   .container {
   grid-template-columns: repeat(4, 1fr);
@@ -526,42 +505,78 @@ letter-spacing: 0.5px;
   }
 }
 
-.square {
-  position: absolute;
-  width: 6vw;
-  height: 6vw;
-  background-color: #000000;
-  border: 3px solid #AEFF40;
-  top: 60vh; 
-  left: 26vw; 
-}
-.square1 {
-  position: absolute; 
-  width: 2px;
-  height: 170%;
-  background-color: #AEFF40; 
-  top: 0;
-  left: 28.99vw;
-}
 
-.square2 {
-  position: absolute; 
-  width: 100%; 
-  height: 2px; 
-  background-color: #AEFF40; 
-  top: calc(60vh + 3vw);
-  left: 0;
-}
 
-/* texto final */
-.textofinal {
-  padding: 70px;
-  font-size: 14px;
-  font-family: "Bebas Neue";
-}
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+      font-size: 14px; /* Ajusta a fonte para dispositivos móveis */
+  }
+  
+  h1, h2, h3, h4 {
+      font-size: 24px; /* Ajusta os tamanhos das fontes de títulos */
+  }
+  
+  section p {
+      font-size: 14px; /* Reduz o tamanho do texto do parágrafo */
+  }
+  
+  .titulo {
+      font-size: 1.5rem; /* Ajusta o tamanho dos títulos principais */
+  }
+  
+  .square1 {
+    left: 3.7em;
+    height: 300em;
+    z-index: -2;
+    position: absolute;
+  }
+  
+  .square {
+    z-index: -2;
+    left: 2.7em;
+    top: 38.2em;
+    position: absolute;
+  }
 
-.box {
-display: flex;
-gap: 20px;
-flex-wrap: wrap;
-}
+  .square2 {
+    top: 39.3em;
+    position: absolute;
+  }
+  
+  }
+  
+  @media (max-width: 768px) {
+  section img {
+      width: 100%;
+      height: 90%; /* Mantém a proporção */
+  }
+  
+  .dia {
+    flex-wrap: wrap;
+  }
+  
+  .codimg {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    margin: auto;
+    background-image: url(assets/codimg.png);
+    background-color: rgba(255, 255, 255, 0.0);
+    background-blend-mode: luminosity;
+    background-size: cover;
+    opacity: 0.4;
+    z-index: -1;
+    background-position: left;
+  }
+  
+  .binarynumber {
+    width: 100%;
+    height: 100%;
+    background-size: unset;
+  }
+  section {
+    padding: 40px;
+  }
+  }
+  
