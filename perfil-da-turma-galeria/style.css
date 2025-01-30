@@ -588,5 +588,15 @@ flex-wrap: wrap;
   section {
     padding: 40px;
   }
+
+  .text-card {
+    width: 67%;
+    height: 60%;
+  }
+
+  .image-container img {
+    height: 80%;
+  }
+
   }
   
