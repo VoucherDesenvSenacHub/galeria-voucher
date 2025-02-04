@@ -250,52 +250,51 @@ nav ul li a {
     font-size: 20px;
   }
 
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-  }
-
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  nav ul li {
-    width: 100%;
-  }
-
-  .imgvoucher {
-    margin-right: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-  }
-
-  .content {
-    padding: 20px;
-  }
-
-  .user-icon {
-    width: 150px;
-    height: 150px;
-  }
-
-  .user-name,
-  .welcome-message {
-    font-size: 24px;
-  }
-
-  .welcome-message {
-    font-size: 36px;
-  }
+    nav {
+      flex-direction: column; 
+      align-items: flex-start; 
+      height: auto; 
+    }
+  
+    nav ul {
+      flex-direction: column; 
+      width: 100%; 
+    }
+  
+    nav ul li {
+      width: 100%;
+    }
+  
+    .imgvoucher {
+      margin-right: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .container {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+    }
+  
+    .content {
+      padding: 20px;
+    }
+  
+    .user-icon {
+      width: 150px;
+      height: 150px;
+    }
+  
+    .user-name, .welcome-message {
+      font-size: 24px;
+    }
+  
+    .welcome-message {
+      font-size: 36px;
+    }
 }
