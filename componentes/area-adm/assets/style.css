@@ -1,3 +1,4 @@
+/* Reset de alguns estilos padrões */
 * {
   padding: 0;
   margin: 0;
@@ -6,18 +7,20 @@
   border: 0;
   box-sizing: border-box;
 }
+
+/* Navegação */
 nav {
-  background-color: rgba(50, 50, 50, 0.8); 
+  background-color: rgba(50, 50, 50, 0.8);
   justify-content: space-between;
   display: flex;
-  align-items: center;  
+  align-items: center;
   height: 100px;
   width: 100%;
   padding: 0 20px;
-  z-index: 1;         
-  position: fixed;    
-  top: 0;            
-  left: 0;           
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 nav ul {
@@ -31,7 +34,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #ACFD3E;
+  color: #acfd3e;
   text-decoration: none;
   font-family: "Bebas Neue", sans-serif;
   font-size: 40px;
@@ -43,17 +46,19 @@ nav ul li a {
   justify-content: center;
 }
 
+/* Ícone de pessoa */
 .botao-person {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto; 
+  margin-left: auto;
 }
 
 .botao-person .material-symbols-outlined {
   font-size: 40px;
 }
 
+/* Sidebar */
 .sidebar {
   padding-top: 100px;
   background-color: #363535;
@@ -73,6 +78,7 @@ nav ul li a {
   border-bottom: 1px solid #c0c0c0;
 }
 
+/* Conteúdo principal */
 .container {
   display: flex;
   font-family: Arial, sans-serif;
@@ -84,68 +90,104 @@ nav ul li a {
   margin-top: 120px;
 }
 
-.user-profile {
+/* Botões de interação */
+.button-nova-turma button,
+.search button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-nova-turma button:hover,
+.search button:hover {
+  background-color: #45a049;
+}
+
+/* Estilo da tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.actions {
   text-align: center;
-  margin-bottom: 30px;
 }
 
-.user-icon {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin: 0 auto;
+.btn {
+  padding: 6px 12px;
+  margin: 2px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.user-name {
-  margin-top: 15px;
-  font-size: 40px;
+.edit-btn {
+  background-color: #4caf50;
+  color: white;
 }
 
-.welcome-message {
-  font-size: 100px;
-  font-weight: bold;
-  text-align: center;
+.edit-btn:hover {
+  background-color: #45a049;
 }
 
-@media (max-width: 1333px) and (max-height: 720px) {
-  nav {
-    flex-direction: column;
-    align-items: center; 
-    height: auto; 
-  }
+.inactive-btn {
+  background-color: #f44336;
+  color: white;
+}
 
-  nav ul {
-    flex-direction: column; 
-    width: 100%; 
-    margin: 0;
-    padding: 0;
-  }
+.inactive-btn:hover {
+  background-color: #e53935;
+}
 
-  nav ul li {
-    width: 100%;
-    list-style: none;
-    margin: 10px 0; 
-  }
+.btn:focus {
+  outline: none;
+}
 
-  .imgvoucher {
-    margin: 0;
-    width: 100%; 
-    display: flex;
-    justify-content: center;
-  }
-
-  .imgvoucher img {
-    max-width: 80%;
-  }
-
+/* Responsividade */
+@media (max-width: 768px) {
   .container {
     flex-direction: column;
   }
 
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .sidebar {
-    width: 100%; 
-    height: auto; 
+    width: 100%;
+    height: auto;
   }
 
   .content {
@@ -153,203 +195,23 @@ nav ul li a {
   }
 
   .user-icon {
-    width: 100px; 
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
 
   .user-name, .welcome-message {
-    font-size: 18px; 
-  }
-
-  .welcome-message {
     font-size: 24px;
   }
-}
 
-@media (max-width: 768px) {
-    .user-name,
-    .welcome-message {
-      font-size: 20px; 
-    }
-
-    nav {
-      flex-direction: column; 
-      align-items: flex-start; 
-      height: auto; 
-    }
-  
-    nav ul {
-      flex-direction: column; 
-      width: 100%; 
-    }
-  
-    nav ul li {
-      width: 100%;
-    }
-  
-    .imgvoucher {
-      margin-right: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-  
-    .container {
-      flex-direction: column;
-    }
-  
-    .sidebar {
-      width: 100%;
-      height: auto;
-    }
-  
-    .content {
-      padding: 20px;
-    }
-  
-    .user-icon {
-      width: 150px;
-      height: 150px;
-    }
-  
-    .user-name, .welcome-message {
-      font-size: 24px;
-    }
-  
-    .welcome-message {
-      font-size: 36px;
-    }
-
-    /*CSS do botão da nova turma, pesquisa e da lista de turmas */
-
-    /* Estilo do botão "Nova Turma" */
-  .button-nova-turma {
-    text-align: left;
-    margin-bottom: 20px;
-  }
-
-  .button-nova-turma button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .button-nova-turma button:hover {
-    background-color: #45a049;
-  }
-
-  /* Estilo da busca */
-  .search {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-  }
-
-  .search input {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 250px;
-  }
-
-  .search button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  .search button:hover {
-    background-color: #45a049;
-  }
-
-  /* Estilo da tabela */
   table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
   }
 
   th, td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd;
-  }
-
-  th {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-  }
-
-  /* Linhas alternadas da tabela */
-  tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-  /* Ações de botões na tabela */
-  .actions {
-    text-align: center;
+    padding: 8px;
   }
 
   .btn {
-    padding: 6px 12px;
-    margin: 2px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-
-  /* Botão de editar */
-  .edit-btn {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-  .edit-btn:hover {
-    background-color: #45a049;
-  }
-
-  /* Botão de inativar */
-  .inactive-btn {
-    background-color: #f44336;
-    color: white;
-  }
-
-  .inactive-btn:hover {
-    background-color: #e53935;
-  }
-
-  /* Adicionando um efeito de foco nos botões */
-  .btn:focus {
-    outline: none;
-  }
-
-  /* Responsividade para telas pequenas */
-  @media (max-width: 768px) {
-    table {
-        font-size: 14px;
-    }
-
-    th, td {
-        padding: 8px;
-    }
-
-    .btn {
-        font-size: 12px;
-    }
+    font-size: 12px;
   }
 }
