@@ -1,10 +1,6 @@
-/* ESSA PARTE AQUI COMEÇA A NOSSA NAVBAR */
+@import url('/Login/assets/responsividade.css');
 
-*{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
+/* ESSA PARTE AQUI COMEÇA A NOSSA NAVBAR */
 
 nav {
     display: flex;
@@ -20,19 +16,16 @@ a {
     font-size: 30px;
     display: flex;
     align-items: center;
-
 }
 
 .material-symbols-outlined {
     color:#aEFF40;
     font-size: 35px;
-    
 }
 
 a:hover{
     opacity: 0.7;
     transform: scale(1.2);
-
 }
 
 ul {
@@ -41,18 +34,15 @@ ul {
     gap:30px;
     align-items: center;
     letter-spacing: 2px;
-    
 }
 
 ul li{
     display: inline-flex;
-
 }
 
 .search {
     display: flex;
     align-items: center;
-    
 }
 
 .search input {
@@ -63,7 +53,7 @@ ul li{
     outline: none;
     width: 300px;
     background-color: #d8dbd6;
-    
+    z-index: 1;
 }
 
 .search button {
@@ -92,12 +82,12 @@ body {
 
 main {
     display: flex;
-    margin-left: 35%;
+    justify-content: center;
+    margin-left: 34%;
     margin-top: 10%;
     width: 100%;
     max-width: 400px;
     padding: 20px;
-    justify-content: center;
 }
 
 /* Cabeçalho do Formulário */
@@ -110,7 +100,6 @@ main {
     letter-spacing: 2px;
     margin-top: -30px;
     font-weight: normal;
-   
 }
 
 /* Conteúdo do Formulário */
@@ -122,7 +111,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    
 }
 
 .form-input input {
@@ -176,26 +164,17 @@ main {
     text-decoration: underline;
 }
 
-h5 {
-    color: #fafafa;
-    text-align: center;
-    margin-right: 0;
-    margin-top: 80px;
-}
-
 /* SQUARE'S */
 
 .content {
     width: 100vw;
-        
 }
 
 .square {
     position: absolute;
     width: 6vw; /* Tamanho do quadrado ajustado proporcionalmente */
     height: 6vw; /* Mantém a proporção quadrada */
-    
-    border: 3px solid #0f0; /* Borda verde */
+    border: 3px solid #aEFF40; /* Borda verde */
     top: 18vh; /* Posição vertical inicial */
     left: 20vw; /* Posição horizontal inicial */
 }
@@ -204,94 +183,23 @@ h5 {
     position: absolute; /* Linha vertical */
     width: 2px; /* Largura da linha vertical */
     height: 100vh; /* Altura da linha vertical que ocupa toda a tela */
-    background-color: #0f0; /* Cor verde */
+    background-color: #95ff00; /* Cor verde */
     top: 0; /* Começa no topo */
     left: 23vw; /* Posiciona a linha à direita do quadrado */
-    
 }
 
 .square2 {
     position: absolute; /* Linha horizontal */
     width: 100%; /* Largura total da tela */
     height: 2px; /* Espessura da linha horizontal */
-    background-color: #0f0; /* Cor verde */
+    background-color: #aEFF40; /* Cor verde */
     top: calc(18vh + 3vw); /* A linha passa no meio do quadrado */
     left: 0; /* Começa na borda esquerda */
-    
 }
 
-/* Media Query para telas menores que 1024px (tablets e dispositivos com telas médias) */
-@media (max-width: 1024px) {
-    .square {
-        width: 8vw; /* Ajusta o tamanho do quadrado */
-        height: 8vw; /* Ajusta o tamanho proporcionalmente */
-        top: 20vh; /* Ajusta o topo */
-        left: 22vw; /* Ajusta a posição à esquerda */
-    }
-
-    .square1 {
-        height: calc(100vh - 20vh); /* Ajusta a altura da linha vertical */
-        left: calc(23vw + 2vw); /* Ajusta a posição da linha vertical */
-    }
-
-    .square2 {
-        top: calc(20vh + 4vw); /* Ajusta a linha horizontal */
-    }
-}
-
-/* Media Query para telas menores que 768px (dispositivos móveis) */
-@media (max-width: 768px) {
-    .square {
-        width: 12vw; /* Ajusta o tamanho do quadrado */
-        height: 12vw; /* Ajusta proporcionalmente */
-        top: 25vh; /* Ajusta o topo */
-        left: 25vw; /* Ajusta a posição à esquerda */
-    }
-
-    .square1 {
-        height: calc(100vh - 25vh); /* Ajusta a altura da linha vertical */
-        left: calc(26vw + 2vw); /* Ajusta a posição da linha vertical */
-    }
-
-    .square2 {
-        top: calc(25vh + 6vw); /* Ajusta a linha horizontal */
-    }
-}
-
-/* Media Query para telas menores que 480px (dispositivos móveis pequenos) */
-@media (max-width: 480px) {
-    .square {
-        width: 15vw; /* Ajusta o tamanho do quadrado */
-        height: 15vw; /* Ajusta proporcionalmente */
-        top: 30vh; /* Ajusta o topo */
-        left: 30vw; /* Ajusta a posição à esquerda */
-    }
-
-    .square1 {
-        height: calc(100vh - 30vh); /* Ajusta a altura da linha vertical */
-        left: calc(28vw + 2vw); /* Ajusta a posição da linha vertical */
-    }
-
-    .square2 {
-        top: calc(30vh + 7.5vw); /* Ajusta a linha horizontal */
-    }
-}
-
-/* Media Query para telas menores que 1033px e 929px, onde o layout estava quebrando */
-@media (max-width: 1033px) and (max-height: 929px) {
-    .square {
-        width: 10vw; /* Ajuste do tamanho do quadrado */
-        height: 10vw; /* Mantém a proporção quadrada */
-        top: 22vh; /* Ajusta o topo para telas menores */
-        left: 20vw; /* Ajuste da posição à esquerda */
-    }
-
-    .square1 {
-        height: calc(100vh - 20vh); /* Ajusta a altura da linha vertical */
-        left: calc(23vw + 2vw); /* Ajuste da posição da linha vertical */
-    }
-
-    .square2 {
-        top: calc(22vh + 5vw); /* Ajusta a posição da linha horizontal */
-    }
+.rodape {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    color: #fafafa;
 }
