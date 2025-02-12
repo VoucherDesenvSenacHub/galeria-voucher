@@ -96,6 +96,7 @@ section {
 
 /* Estilos específicos para cada seção */
 #secao1 {
+    margin-top: -60%;
     .square {
         position: absolute;
         width: 4vw;
@@ -221,6 +222,8 @@ section {
 #secao3{
     display: flex;
     flex-direction: column;
+    margin-top: -110%;
+
     
     
     
@@ -228,6 +231,7 @@ section {
 
         background: transparent;
         padding: 20px;
+        margin-top: 18%;
     
         h1 {
             font-family: "Bebas Neue", sans-serif;
@@ -332,4 +336,137 @@ section {
         }
         
     }
+}
+
+@media (max-width: 376px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #secao1 .nome img{
+        max-width: 150%; /* Reduz o tamanho das imagens */
+        margin: -50% auto; /* Centraliza e adiciona espaçamento */
+        padding: 50%;
+        margin-left: -50%;
+    }
+    #secao1 .mapa img{
+        position: absolute;
+        left: 20%;
+        max-width: 90%;
+    }
+    #secao1 .numero img{
+        position: absolute;
+        left: 30%;
+        max-width: 50%;
+    }
+
+    #secao1 .square {
+        top: 39.5vh;
+        border: 5.1px solid #aeff40;
+        left: 17.2vw;
+    }
+    #secao1 .square1{
+        height: 120%;
+    }
+    #secao1 .square1,
+    #secao1 .square2{
+        border: 1px solid #aeff40
+    }
+    #secao1 .square2{
+        width: 199.8%;
+    }
+    #secao3 .container2 {
+        padding: 10px;
+        text-align: center;
+    }
+
+    #secao3 .stats {
+        flex-direction: column; /* Alinha estatísticas em coluna */
+        gap: 15px;
+    }
+    #secao2 .container{
+        gap: 20px;
+        margin-top: 10%;
+        margin-left: 8%;
+        position: absolute;
+    }
+
+    .imgnav {
+        max-width: 8%;
+    }
+    .pesquisa {
+        max-width: 120px;
+        margin-left: 10%;        
+    }
+    nav a {
+        font-size: 16px;
+    }
+    nav ul {
+        gap: 5px;
+        margin-left: -2%;
+    }
+    nav .material-symbols-outlined{
+        font-size: 24px;
+    }
+    #secao3 .container2 {
+        margin-top: 1250px;
+        z-index: 1;
+        gap: 1%;
+    }
+    #secao3 .container2 .stats{
+        gap: 0;
+    }
+    #secao3 .container2 h1{
+        position: relative; /* Adicionado para ativar o z-index */
+        z-index: 1; /* Controla a ordem de empilhamento */
+    }
+    #secao3 .container2 .call-to-action{
+        position: relative; /* Adicionado para ativar o z-index */
+        z-index: 1; /* Controla a ordem de empilhamento */
+    }
+
+    
+    .poligono {
+        flex-wrap: wrap;
+    }
+    #secao3 .poligono .image-row{
+        margin-left: -67%;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    #secao3 .image-row .image-row {
+        max-width: 100%;
+        flex-direction: row;  /* Organiza as imagens em linha */
+        
+        gap: 0px; /* Ajuste o espaçamento entre as imagens */
+        
+    }
+
+    #secao3 .image-row .image-container {
+        max-width: 100%; /* Reduz o tamanho das imagens para se ajustar à tela */
+        margin-top: 0; /* Remove o deslocamento das imagens */
+    }
+
+    #secao3 .image-row .image-container img {
+        width: 3rem;  /* Ajusta a largura para a tela pequena */
+        height: 3rem; /* Ajusta a altura para a tela pequena */
+    }
+    nav{
+        justify-content:start;
+    }
+    .poligono .image-container:nth-of-type(n+3) {
+        display: none;
+    }
+
+    /* Ajusta a largura das imagens para melhorar a visualização no celular */
+    .poligono .image-container img {
+        width: 100px; /* Ajuste conforme necessário */
+        height: 100px;
+    }
+    #secao{
+        margin-top: 10rem;
+    }
+  
 }
