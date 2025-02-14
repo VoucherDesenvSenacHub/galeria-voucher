@@ -242,6 +242,7 @@ header ul li a {
     display: flex;
     justify-content: center; /* Centraliza a tabela */
     padding: 20px; /* Dá espaço da sidebar */
+
 }
 
   th,td {
