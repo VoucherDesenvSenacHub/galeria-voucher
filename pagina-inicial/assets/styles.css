@@ -97,6 +97,7 @@ section {
 /* Estilos específicos para cada seção */
 #secao1 {
     margin-top: -60%;
+    width: 100%;
     .square {
         position: absolute;
         width: 4vw;
@@ -140,8 +141,9 @@ section {
     
     .nome {
         position: absolute;
-        width: 40%;
+        width: 35%;
         top: calc(33.3vh + 6.3vw);
+        left: 30%;
     }
     
     .mapa {
@@ -338,16 +340,14 @@ section {
     }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 431px) {
     body {
         overflow-x: hidden;
     }
 
-    #secao1 .nome img{
-        max-width: 150%; /* Reduz o tamanho das imagens */
-        margin: -50% auto; /* Centraliza e adiciona espaçamento */
-        padding: 50%;
-        margin-left: -50%;
+    .nome, .nome img{
+        width: 60%;
+        
     }
     #secao1 .mapa img{
         position: absolute;
@@ -361,9 +361,9 @@ section {
     }
 
     #secao1 .square {
-        top: 39.5vh;
+        top: 40.5vh;
         border: 5.1px solid #aeff40;
-        left: 17.2vw;
+        left: 17.4vw;
     }
     #secao1 .square1{
         height: 120%;
@@ -390,9 +390,12 @@ section {
         margin-left: 8%;
         position: absolute;
     }
+    .nav{
+        justify-content: space-between;
+    }
 
     .imgnav {
-        max-width: 8%;
+        max-width: 14%;
     }
     .pesquisa {
         max-width: 120px;
@@ -439,7 +442,6 @@ section {
     #secao3 .image-row .image-row {
         max-width: 100%;
         flex-direction: row;  /* Organiza as imagens em linha */
-        
         gap: 0px; /* Ajuste o espaçamento entre as imagens */
         
     }
@@ -452,9 +454,6 @@ section {
     #secao3 .image-row .image-container img {
         width: 3rem;  /* Ajusta a largura para a tela pequena */
         height: 3rem; /* Ajusta a altura para a tela pequena */
-    }
-    nav{
-        justify-content:start;
     }
     .poligono .image-container:nth-of-type(n+3) {
         display: none;
