@@ -721,7 +721,7 @@ gap: 20px;
 
   /*Responsividade Horizontal aparelhos pequenos*/
 
-  @media (min-height: 357px) and (max-height: 375px) {
+  @media (min-height: 357px) and (max-height: 376px) {
     .square2 {
       top: 40.5em;
       position: absolute;
