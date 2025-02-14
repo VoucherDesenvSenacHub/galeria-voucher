@@ -118,22 +118,28 @@ main {
 
 
     
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
     .container {
         grid-template-columns: repeat(2, 1fr);
-        margin-left: auto;
+        margin: 1rem;
         column-gap: 3rem;
     }
-    .card-container {
-        width: 10rem;
+    body {
+        align-items: end;
     }
-    .image-container {
-        height: 200px; /* Adjust as needed */
+    
+    .titulodev {
+        font-size: 10vw;
+        margin-right: 50%;
     }
-    .text-card {
-        padding: 0.1rem;
+        
+    .voltar{
+        font-size: 10vw;
+        margin-right: 30vw;
     }
-    .imgnome img{
-        max-width: 300px;
+
+
+    .textofinal {
+        margin-right: 15rem;
     }
 }
