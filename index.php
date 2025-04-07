@@ -1,3 +1,3 @@
 <?php
 
-require_once __DIR__ . 'APP\view\pages\users\home.php';
+require_once __DIR__ . '\APP\view\pages\users\home.php';
