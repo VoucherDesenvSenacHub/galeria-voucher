@@ -8,6 +8,8 @@ require_once __DIR__ . "\.\..\..\..\..\Config/env.php"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeria Voucher</title>
+
+    <link rel="stylesheet" href= "<?=VARIAVEIS['DIR_CSS']?>styles.css">
 </head>
 <body>
     <h1>Hello World</h1>
