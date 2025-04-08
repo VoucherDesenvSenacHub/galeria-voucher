@@ -1,14 +1,5 @@
 /* posicionamento na grid */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Bebas Neue', sans-serif;
-  }
-  
+
   .footer {
     background-color: #000000;
     color: white;
@@ -16,12 +7,7 @@
     height: 85px;
     font-size: 1.05rem;
     padding-left: 28px;
-
-    span {
-        display: block;
-        height: 100%;
-        text-align: right;
-    }
+    font-family: 'Bebas Neue', sans-serif;
   }
 
 
@@ -34,9 +20,5 @@
       height: auto;
       font-size: 0.85rem;
       grid-column: 1;
-    }
-  
-    .footer span {
-      text-align: center;
     }
   }
