@@ -1,0 +1,72 @@
+.primary-button {
+    background-color: #AEFF40;
+    height: 2.8rem;
+    border-radius: 5rem;
+    border: none;
+    color: #004302;
+    text-align: center;
+    padding: 0 1.5rem; /* Espaço horizontal */
+    font-size: 1.25rem;
+    font-family: "Bebas Neue", sans-serif;
+    width: fit-content; /* Ajusta ao tamanho do texto */
+    max-width: 10rem; /* Define o tamanho máximo */
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Evita que o texto vaze se ultrapassar */
+    text-overflow: ellipsis; /* Adiciona "..." se o texto for cortado */
+    white-space: nowrap; /* Impede quebra de linha */
+}
+
+.primary-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(174, 255, 64, 0.7);
+    cursor: pointer;
+}
+
+.primary-button:active {
+    transform: scale(0.95);
+    background-color: #9BE836;
+    box-shadow: 0 0 10px rgba(174, 255, 64, 0.7);
+    top: 2px;
+}
+
+.primary-button:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 10px rgba(174, 255, 64, 0.7);
+    cursor: pointer;
+}
+
+.primary-button:active {
+    transform: scale(0.95);
+    background-color: #9BE836;
+    box-shadow: 0 0 10px rgba(174, 255, 64, 0.7);
+    top: 2px;
+}
+
+.secondary-button{
+    border: 1px solid black;
+    width: 10rem;
+    height: 2.8rem;
+    border-radius: 5rem;
+    background-color: #FFFFFF;
+    font-size: 200;
+    color: black;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 200%;
+    padding-top: 3px ;
+}
+
+.secondary-button:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 10px rgba(91, 91, 91, 0.7);
+    cursor: pointer;
+}
+
+.secondary-button:active {
+    transform: scale(0.95);
+    background-color: #d4d4d4;
+    box-shadow: 0 0 10px rgba(91, 91, 91, 0.7);
+    top: 2px;
+}
+
