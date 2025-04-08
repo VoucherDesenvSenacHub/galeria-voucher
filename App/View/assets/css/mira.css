@@ -1,0 +1,101 @@
+#secao1 {
+    margin-top: -60%;
+}
+
+
+
+.mira {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    border: 7px solid #aeff40;
+    top: 50vh;
+    left: 17.8vw;
+}
+
+.mira1 {
+    position: absolute;
+    width: 2px;
+    height: 245%;
+    background-color: #aeff40;
+    top: 48.8px;
+    left: 20vw;
+    border: 2px solid #aeff40;
+}
+
+.mira2 {
+    position: absolute;
+    width: 99.8%;
+    height: 2px;
+    background-color: #aeff40;
+    top: calc(36vh + 9vw);
+    left: 0;
+    border: 2px solid #aeff40;
+}
+
+
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .mira {
+        width: 8vw;
+        height: 8vw;
+        top: 20vh;
+        left: 22vw;
+    }
+    .mira1 {
+        height: calc(100vh - 20vh);
+        left: calc(23vw + 2vw);
+    }
+    .mira2 {
+        top: calc(20vh + 4vw);
+    }
+}
+
+@media (max-width: 768px) {
+    .mira {
+        width: 12vw;
+        height: 12vw;
+        top: 25vh;
+        left: 25vw;
+    }
+    .mira1 {
+        height: calc(100vh - 25vh);
+        left: calc(26vw + 2vw);
+    }
+    .mira2 {
+        top: calc(25vh + 6vw);
+    }
+}
+
+@media (max-width: 480px) {
+    .mira {
+        width: 15vw;
+        height: 15vw;
+        top: 30vh;
+        left: 30vw;
+    }
+    .mira1 {
+        height: calc(100vh - 30vh);
+        left: calc(28vw + 2vw);
+    }
+    .mira2 {
+        top: calc(30vh + 7.5vw);
+    }
+}
+
+@media (max-width: 1033px) and (max-height: 929px) {
+    .mira {
+        width: 10vw;
+        height: 10vw;
+        top: 22vh;
+        left: 20vw;
+    }
+    .mira1 {
+        height: calc(100vh - 22vh);
+        left: calc(23vw + 2vw);
+    }
+    .mira2 {
+        top: calc(22vh + 5vw);
+    }
+}
