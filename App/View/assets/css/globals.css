@@ -1,0 +1,27 @@
+@import url(reset.css);
+
+@import url(users/home.css);
+/* @import url(home/footer.css);
+@import url(home/main.css);
+@import url(home/nav.css);
+@import url(home/sidebar.css);
+@import url(home/cadastros.css);
+
+:root{
+    /* Cores A SE USAR */
+    /* --color-white: #fff;
+    --color-sidebar:#4682B4;
+    --color-main: #ccc;
+    --color-textable: #4169E1;
+    --color-linhas:#081c2e;
+
+    /* FONTES A SE USAR */
+    /* --sidebar-font: arial; */
+
+    /* bordas */
+    /* --borda-padrao: .5rem; */
+
+    /* fontes */
+
+    /* --font-table: sans-serif;
+/* } */
