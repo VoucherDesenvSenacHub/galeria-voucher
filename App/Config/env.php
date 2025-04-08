@@ -7,9 +7,10 @@ $variaveis = [];
 
 array_map(
     function($linha) use (&$variaveis){
-        list($key, $val) = explode('=', $linha);
-
-        $variaveis[$key] = $val;
+        if (strpos($linha, '=') !== false) {
+            list($key, $val) = explode('=', $linha, 2);
+            $variaveis[trim($key)] = trim($val);
+        }
     },
     $conteudoArquivo
 );
