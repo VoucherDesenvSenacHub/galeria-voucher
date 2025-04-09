@@ -1,31 +1,6 @@
 
-.voltar {
-    font-family: 'Bebas Neue', sans-serif;
-    background-color: #AEFF40;
-    color: #004302;
-    text-decoration: none;
-    font-size: 30px;
-    border-radius: 40px;
-    width: 150px;
-    height: 60px;
-    
-}
-.titulodev {
-    font-size: 70px;
-}
-.titulo-pagina {
-    text-align: center;
-    flex-grow: 1;
-}
 
-main {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
+.content-grid-card {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(5, 1fr);
