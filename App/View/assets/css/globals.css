@@ -1,4 +1,5 @@
 @import url(reset.css);
+@import url(style.css);
 
 @import url(users/home.css);
 /* @import url(home/footer.css);

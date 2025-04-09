@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php require_once 'C:\xampp\htdocs\galeria-voucher\App\View\assets\componentes\mira.php'; ?>
-
+<?php require_once 'C:\xampp\htdocs\galeria-voucher\App\View\assets\componentes\voucher-desenvolvedor.php'; ?>
 
 </body>
 </html>
@@ -19,3 +19,8 @@
 
 
 <!-- quem for ler lembre que isso é apenas para teste ( nao inclua na main ) -->
+
+
+
+
+
