@@ -2,6 +2,7 @@
 @import url(mira.css);
 @import url(users/home.css);
 @import url(users/footer.css);
+@import url(users/nav.css);
 @import url(button.css);
 
 :root {
