@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . "\.\..\..\..\..\Config/env.php"
+require_once __DIR__ . '/./../../Config/env.php';
 ?>
 
 <!-- Lembrete: Apagar a estrutura exedente q foi usada para testar a head -->
