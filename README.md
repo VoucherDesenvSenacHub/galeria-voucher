@@ -36,9 +36,3 @@ git clone https://github.com/VoucherDesenvSenacHub/galeria-voucher.git
 
 # Acesse o diretório do projeto
 cd galeria-voucher
-
-# Instale as dependências
-npm install
-
-# Inicie o servidor de desenvolvimento
-npm run dev
