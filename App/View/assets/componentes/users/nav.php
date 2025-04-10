@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <link rel="stylesheet" href="\componentes\navbar1\assets\style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kalam:wght@300;400;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-</head>
-
+<?php 
+require_once __DIR__ . "\.\..\..\..\..\Config/env.php"
+?>
 
 <header>
     <nav>
-
-        
-
         <div class="search">
 
             <div class="search">
@@ -44,5 +33,3 @@
         </ul>
     </nav>
 </header>
-
-</html>
