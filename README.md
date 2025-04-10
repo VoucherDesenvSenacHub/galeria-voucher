@@ -21,12 +21,9 @@ O projeto está inserido dentro do **programa governamental de capacitação té
 
 As tecnologias utilizadas podem variar conforme a turma, mas o sistema da Galeria em si utiliza:
 
-- **Frontend**: _Ex: React, HTML/CSS, JavaScript_  
-- **Backend**: _Ex: Node.js, Express_  
-- **Banco de Dados**: _Ex: MongoDB, MySQL_  
-- **Outros**: _Ex: Bootstrap, Tailwind_
-
-> _Atualize esta seção com as tecnologias reais usadas no projeto._
+- **Frontend**: _HTML/CSS, JavaScript_  
+- **Backend**: _PHP_  
+- **Banco de Dados**: _MySQL_  
 
 ## 🚀 Como executar o projeto
 
