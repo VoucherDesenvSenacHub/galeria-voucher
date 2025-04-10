@@ -1,5 +1,5 @@
 button {
-    height: 1.8rem;
+    height: var(--height-button);
     border-radius: 5rem;
     font-family: "Bebas Neue", sans-serif;
     display: inline-block;
@@ -10,6 +10,7 @@ button {
     padding: 0 1.15rem;
     padding-top: 3px;
     cursor: pointer;
+    font-size: 1.25rem;
 }
 
 button:hover {
@@ -25,7 +26,6 @@ button:active {
     background-color: var(--primary-color-button);
     border: none;
     color: var(--color-button-primary-text);
-    font-size: 1.25rem;
 }
 
 .primary-button:hover {
