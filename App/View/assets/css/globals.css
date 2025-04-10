@@ -1,9 +1,10 @@
 @import url(reset.css);
-@import url(mira.css);
 @import url(users/home.css);
 @import url(users/footer.css);
+@import url(users/mira.css);
+@import url(users/nav.css);
+
 /* @import url(home/main.css);
-@import url(home/nav.css);
 @import url(home/sidebar.css);
 @import url(home/cadastros.css); */
 
