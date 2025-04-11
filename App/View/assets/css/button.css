@@ -1,0 +1,55 @@
+button {
+    height: var(--height-button);
+    border-radius: 5rem;
+    font-family: "Bebas Neue", sans-serif;
+    display: inline-block;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    padding: 0 1.15rem;
+    padding-top: 3px;
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+
+button:hover {
+    transform: scale(1.01);
+}
+
+button:active {
+    transform: scale(0.95);
+    top: 2px;
+}
+
+.primary-button {
+    background-color: var(--primary-color-button);
+    border: none;
+    color: var(--color-text-button);
+}
+
+.primary-button:hover {
+    box-shadow: var(--boxshadow-primary-button);
+}
+
+.primary-button:active {
+    background-color: #9BE836;
+    box-shadow: var(--boxshadow-secondary-button);
+}
+
+.secondary-button {
+    border: 1px solid black;
+    background-color: var(--white-background);
+    color: var(--color-text-button);
+    font-size: 100%;
+    padding-top: 3px;
+}
+
+.secondary-button:hover {
+    box-shadow: var(--boxshadow-secondary-button);
+}
+
+.secondary-button:active {
+    background-color: #d4d4d4;
+    box-shadow: var(--boxshadow-secondary-button);
+}

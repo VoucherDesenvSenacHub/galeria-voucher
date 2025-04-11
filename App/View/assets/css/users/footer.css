@@ -1,0 +1,22 @@
+/* posicionamento na grid */
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 35px 0;
+  height: auto;
+  font-size: 1.05rem;
+  padding-left: 28px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+
+/* Telas menores (tablets e celulares) */
+@media (max-width: 768px) {
+    .footer {
+      justify-content: center; /* centraliza o texto no mobile */
+      text-align: center;
+      padding: 10px 20px;
+      height: auto;
+      font-size: 0.85rem;
+    }
+  }
