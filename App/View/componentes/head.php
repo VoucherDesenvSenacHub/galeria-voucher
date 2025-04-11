@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . "\.\..\..\..\..\Config/env.php"
+require_once __DIR__ . '/./../../Config/env.php';
 ?>
 
 <!-- Lembrete: Apagar a estrutura exedente q foi usada para testar a head -->
@@ -29,7 +29,3 @@ require_once __DIR__ . "\.\..\..\..\..\Config/env.php"
 
     <link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>globals.css">
 </head>
-<body>
-    <h1>Hello World</h1>
-</body>
-</html>
