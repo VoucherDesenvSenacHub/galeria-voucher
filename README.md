@@ -6,6 +6,13 @@ A **Galeria Voucher** é um projeto desenvolvido para exibir as turmas participa
 
 O objetivo da Galeria Voucher é centralizar e divulgar os trabalhos desenvolvidos pelas turmas, promovendo visibilidade às soluções criativas e técnicas que os alunos criaram ao longo do curso.
 
+---
+
+📄 **Para informações técnicas e orientações para desenvolvedores**, acesse o documento de apoio:  
+🔗 [Orientações para Devs](./Docs/orientacoes-dev.md)
+
+---
+
 ## 🧩 Funcionalidades
 
 - 📚 Exibição de turmas participantes  
