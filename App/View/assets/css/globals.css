@@ -5,6 +5,7 @@
 @import url(users/footer.css);
 @import url(users/mira.css);
 @import url(users/nav.css);
+@import url(button.css);
 
 
 
@@ -20,19 +21,19 @@ body{
 
 /* :root{ */
     /* Cores A SE USAR */
-    /* --color-white: #fff;
+/* --color-white: #fff;
     --color-sidebar:#4682B4;
     --color-main: #ccc;
     --color-textable: #4169E1;
     --color-linhas:#081c2e;
 
     /* FONTES A SE USAR */
-    /* --sidebar-font: arial; */
+/* --sidebar-font: arial; */
 
-    /* bordas */
-    /* --borda-padrao: .5rem; */
+/* bordas */
+/* --borda-padrao: .5rem; */
 
-    /* fontes */
+/* fontes */
 
-    /* --font-table: sans-serif;
+/* --font-table: sans-serif;
 /* } */
