@@ -1,9 +1,10 @@
-<?php 
-require_once __DIR__ . "\.\..\..\..\..\Config/env.php"
-?>
+
 
 <header>
-    <nav>
+    <nav class = "NavInicial">
+
+        <img class="imgnav" src="App/View/assets/img/utilitarios/nomeNav.png" width="150px">
+
         <div class="search">
 
             <div class="search">
