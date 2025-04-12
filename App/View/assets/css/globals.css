@@ -4,6 +4,7 @@
 @import url(users/mira.css);
 @import url(users/nav.css);
 @import url(button.css);
+@import url(adm/sidebar.css);
 
 :root {
     --primary-color-button: #AEFF40;
