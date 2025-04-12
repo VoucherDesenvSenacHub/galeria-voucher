@@ -1,14 +1,13 @@
 /* posicionamento na grid */
-
-  .footer {
-    background-color: #000000;
-    color: white;
-    padding: 35px 0;
-    height: 85px;
-    font-size: 1.05rem;
-    padding-left: 28px;
-    font-family: 'Bebas Neue', sans-serif;
-  }
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 35px 0;
+  height: auto;
+  font-size: 1.05rem;
+  padding-left: 28px;
+  font-family: 'Bebas Neue', sans-serif;
+}
 
 
 /* Telas menores (tablets e celulares) */
@@ -19,6 +18,5 @@
       padding: 10px 20px;
       height: auto;
       font-size: 0.85rem;
-      grid-column: 1;
     }
   }
