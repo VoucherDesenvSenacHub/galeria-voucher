@@ -5,11 +5,10 @@
     justify-content: center;
     grid-template-columns: repeat(5, 1fr);
     gap: 70px;
-    max-width: 1200px;
+    max-width: 1201px;
     margin: 0 auto;
     padding: 10px;
 }
-
 
 .card-container {
     position: relative;
