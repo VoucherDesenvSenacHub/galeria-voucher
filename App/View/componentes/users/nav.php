@@ -1,9 +1,10 @@
-
+<?php 
+require_once __DIR__ . '/../../../Config/env.php'; ?>
 
 <header>
     <nav class = "NavInicial">
 
-        <img class="imgnav" src="App/View/assets/img/utilitarios/nomeNav.png" width="150px">
+        <img class="imgnav" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nomeNav.png" width="150px">
 
         <div class="search">
 
