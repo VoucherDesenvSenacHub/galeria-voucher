@@ -1,9 +1,5 @@
 <?php 
-<<<<<<< HEAD
-require_once __DIR__ . '/../../Config/env.php';
-=======
 require_once __DIR__ . '/./../../Config/env.php';
->>>>>>> f484869d6b0f3d92c2c6a80fbd62d8613d8f389d
 ?>
 
 <!DOCTYPE html>

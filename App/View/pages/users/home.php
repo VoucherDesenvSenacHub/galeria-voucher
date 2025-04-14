@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
@@ -192,10 +191,3 @@ require_once __DIR__ . "/../../componentes/head.php";
     </main>
 <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
 </body>
-=======
-<?php require_once __DIR__ . "/./../../componentes/head.php" ?>
-
-
-<?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
-<?php require_once __DIR__ . "/./../../componentes/users/footer.php" ?>
->>>>>>> f484869d6b0f3d92c2c6a80fbd62d8613d8f389d
