@@ -1,0 +1,8 @@
+@import url(mira.css);
+@import url(globals.css);
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+body{
+    background-color: green; /* obs: esta apenas para testar a funcionalidade da imagem  */
+}
