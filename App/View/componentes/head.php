@@ -25,4 +25,6 @@ require_once __DIR__ . '/./../../Config/env.php';
 
 
     <link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>globals.css">
+
+    <title>Voucher Desenvolvedor</title>
 </head>
