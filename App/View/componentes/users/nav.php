@@ -1,7 +1,3 @@
-<?php 
-require_once __DIR__ . "\.\..\..\..\..\Config/env.php"
-?>
-
 <header>
     <nav>
         <div class="search">
