@@ -6,6 +6,13 @@ A **Galeria Voucher** é um projeto desenvolvido para exibir as turmas participa
 
 O objetivo da Galeria Voucher é centralizar e divulgar os trabalhos desenvolvidos pelas turmas, promovendo visibilidade às soluções criativas e técnicas que os alunos criaram ao longo do curso.
 
+---
+
+📄 **Para informações técnicas e orientações para desenvolvedores**, acesse o documento de apoio:  
+🔗 [Orientações para Devs](./Docs/orientacoes-dev.md)
+
+---
+
 ## 🧩 Funcionalidades
 
 - 📚 Exibição de turmas participantes  
@@ -21,12 +28,9 @@ O projeto está inserido dentro do **programa governamental de capacitação té
 
 As tecnologias utilizadas podem variar conforme a turma, mas o sistema da Galeria em si utiliza:
 
-- **Frontend**: _Ex: React, HTML/CSS, JavaScript_  
-- **Backend**: _Ex: Node.js, Express_  
-- **Banco de Dados**: _Ex: MongoDB, MySQL_  
-- **Outros**: _Ex: Bootstrap, Tailwind_
-
-> _Atualize esta seção com as tecnologias reais usadas no projeto._
+- **Frontend**: _HTML/CSS, JavaScript_  
+- **Backend**: _PHP_  
+- **Banco de Dados**: _MySQL_  
 
 ## 🚀 Como executar o projeto
 
