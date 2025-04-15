@@ -217,12 +217,9 @@ require_once __DIR__ . "/../../componentes/head.php";
             arrow_downward
         </span>
     </div>  
-
-
-
-    <script src="script.js" defer></script>
-
-    </main>    
+    </main>  
+      
     <?php require_once __DIR__ . "/./../../componentes/users/footer.php" ?>
+    <script src="script.js" defer></script>
 </body>
 </html>
