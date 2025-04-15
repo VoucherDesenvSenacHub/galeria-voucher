@@ -3,10 +3,10 @@ require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
-<body>
-
-    <?php require_once __DIR__ . "/./../../componentes/users/nav.php"; ?>
-
+<html>
+    <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
+    <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
+    
     <main>
     <!-- Seção 1 -->
         <section id="secao1">
@@ -189,5 +189,6 @@ require_once __DIR__ . "/../../componentes/head.php";
             </div>
          </section>
     </main>
-<?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
-</body>
+    
+    <?php require_once __DIR__ . "/./../../componentes/users/footer.php" ?>
+</html>
