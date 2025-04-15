@@ -2,7 +2,7 @@
     require_once "../head.php";
 ?>
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
@@ -14,8 +14,13 @@
                     <h2>EDNALDO PEREIRA</h2>
                     <p>ORIENTADOR</p>
                     <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
+                        
+                        <a href="#" target="_blank">
+                            <img src="../../assets/img/utilitarios/icons8-linkedin-50.png" alt="">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="../../assets/img/utilitarios/icons8-github-50.png" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
