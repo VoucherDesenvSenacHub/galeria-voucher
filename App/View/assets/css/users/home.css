@@ -6,7 +6,6 @@ body {
     
 }
 
-
 main {
     display: flex;
     flex-direction: column;
@@ -27,7 +26,11 @@ section {
 /* Estilos específicos para cada seção */
 #secao1 {
     margin-top: -60%;
+<<<<<<< Updated upstream
 
+=======
+   
+>>>>>>> Stashed changes
     .numero {
         position: absolute;
         width: 540px;
