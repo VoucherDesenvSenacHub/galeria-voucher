@@ -17,13 +17,6 @@ require_once __DIR__ . "/../../componentes/head.php";
         <div class="turmatitulo">
             <h1 style="margin-bottom:150px; ">TURMAS </h1>
         </div>
-        
-       
-            <div class="mira"> 
-                <div class="square"></div>
-                <div class="square1"></div>
-                <div class="square2"></div>
-            </div> 
        
     
         <!-- Cards das Turmas  obs: aqui no beckend devemos fazer um for vinculado ao banco de dados e configura apenas um card e ao inserir os dados da turma ser auto gerado-->
