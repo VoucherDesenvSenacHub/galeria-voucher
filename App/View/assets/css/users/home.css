@@ -27,37 +27,7 @@ section {
 /* Estilos específicos para cada seção */
 #secao1 {
     margin-top: -60%;
-    .square {
-        position: absolute;
-        width: 4vw;
-        height: 4vw;
-        border: 7px solid #aeff40;
-        top: 50vh;
-        left: 17.8vw;
-    }
-    
-    .square1 {
-        position: absolute;
-        width: 2px;
-        height: 245%;
-        background-color: #aeff40;
-        top: 48.8px;
-        left: 20vw;
-        border: 2px solid #aeff40;
-    
-    }
-    
-    .square2 {
-        position: absolute;
-        width: 99.8%;
-        height: 2px;
-        background-color: #aeff40;
-        top: calc(36vh + 9vw);
-        left: 0;
-        border: 2px solid #aeff40;
-    }
-    
-    
+
     .numero {
         position: absolute;
         width: 540px;
@@ -201,7 +171,13 @@ section {
             
         }
     
-        .call-to-action {
+        
+        
+    }
+}
+
+#secao4 {
+    .call-to-action {
             font-family: "Bebas Neue", sans-serif;
             margin-top: 20px;
             font-size: 2.5em;
@@ -264,8 +240,6 @@ section {
             display: block;
         
         }
-        
-    }
 }
 
 @media (max-width: 376px) {

@@ -93,10 +93,10 @@ require_once __DIR__ . "/../../componentes/head.php";
         </section>
 
         <!-- Seção 4 (transição da página inicial para a página de "turmas" e animação dos losângos) -->
-         <section>
+         <section id="secao4">
             
             <div class="call-to-action">
-                VEJA VÁRIOS PROJETOS E <span>INSPIRE-SE</span>
+                VEJA OS NOSSOS PROJETOS E <span>INSPIRE-SE</span>
             </div>
 
             <div class="poligono">
