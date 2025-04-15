@@ -208,10 +208,10 @@ html, body {
     text-align: center;
     color: rgb(237, 246, 237);
     font-size: 30px;
-    margin-bottom: 10px;
     font-size: 40px;
     padding: 15px 10px;
     font-family: bebas neue;
+    margin-bottom: 40px;
 }
 /* turma titulo h1  -- ok */
 
@@ -226,8 +226,6 @@ html, body {
     flex-wrap: wrap;
     gap: 25px;
     justify-content: space-around;
-    margin-top: 20px;
-        
     }
 
 .ocultos {

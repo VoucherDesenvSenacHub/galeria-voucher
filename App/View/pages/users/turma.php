@@ -15,7 +15,7 @@ require_once __DIR__ . "/../../componentes/head.php";
     <div class="conteudotodo">
 
         <div class="turmatitulo">
-            <h1 style="margin-bottom:150px; ">TURMAS </h1>
+            <h1>TURMAS </h1>
         </div>
        
     
@@ -218,7 +218,7 @@ require_once __DIR__ . "/../../componentes/head.php";
         </span>
     </div>  
     </main>  
-      
+
     <?php require_once __DIR__ . "/./../../componentes/users/footer.php" ?>
     <script src="script.js" defer></script>
 </body>
