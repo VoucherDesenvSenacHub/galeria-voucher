@@ -1,10 +1,13 @@
 @import url(reset.css);
 @import url(external.css);
 @import url(button.css);
+@import url(style.css);
+
 @import url(users/home.css);
 @import url(users/footer.css);
 @import url(users/mira.css);
 @import url(users/nav.css);
+@import url(adm/sidebar.css);
 
 :root {
     --primary-color-button: #AEFF40;
