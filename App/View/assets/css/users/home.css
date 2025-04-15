@@ -2,7 +2,15 @@ body {
     margin: 0px;
     padding: 0px;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.970), rgba(0, 0, 0, 0.900), #0D9C0D, rgba(0, 0, 0, 0.930), #0D9C0D,rgba(0, 0, 0, 0.960),rgba(0, 0, 0, 0.950),rgba(0, 0, 0, 0.900));
+    background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.970), 
+    rgba(0, 0, 0, 0.900), 
+    #0D9C0D, 
+    rgba(0, 0, 0, 0.930), 
+    #0D9C0D,
+    rgba(0, 0, 0, 0.960),
+    rgba(0, 0, 0, 0.950),
+    rgba(0, 0, 0, 0.900));
     
 }
 
@@ -24,8 +32,16 @@ section {
 }
 
 /* Estilos específicos para cada seção */
+
+/* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
     margin-top: -60%;
+    
+    .content {
+        position:relative; /* para posicionar elementos absolutos */
+    }
+    
+    /* imagem dos números */
     .numero {
         position: absolute;
         width: 540px;
@@ -36,12 +52,14 @@ section {
         overflow: visible;
     }
     
+    /* imagem do logo */
     .nome {
         position: absolute;
         width: 40%;
         top: calc(33.3vh + 6.3vw);
     }
     
+    /* imagem do mapa do estado */
     .mapa {
         width: 100%;
         height: 130vh;
@@ -53,6 +71,7 @@ section {
 
 }
 
+/* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
 
     .container {
@@ -117,20 +136,20 @@ section {
     }
 }
 
+/* estatísticas e call to action (inspire-se) */
 #secao3{
     display: flex;
     flex-direction: column;
     margin-top: -110%;
+    text-align: center;
 
-    
-    
-    
     .container2 {
 
         background: transparent;
         padding: 20px;
         margin-top: 18%;
-    
+        
+        /* frase "SUA EVOLUÇÃO COMEÇA AQUI" */
         h1 {
             font-family: "Bebas Neue", sans-serif;
             font-size: 2.5em;
@@ -157,25 +176,16 @@ section {
         }
     
         span{
-            padding-left: 7px;
-        }
-    
-        .stats div span {
+            
             font-family: "Bebas Neue", sans-serif;
             display: block;
             font-size: 2.5em;
             font-weight: bold;
             color: #abfa3d;
-            
+            padding-left: 7px;
         }
-    
         
-        
-    }
-}
-
-#secao4 {
-    .call-to-action {
+        .call-to-action {
             font-family: "Bebas Neue", sans-serif;
             margin-top: 20px;
             font-size: 2.5em;
@@ -201,6 +211,51 @@ section {
     
         }
     }
+        
+        
+    }
+}
+
+#secao4 {
+
+    .poligono {
+        display: flex;
+        flex-direction: column;  /* Alinha as linhas de imagens em coluna */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center;     /* Centraliza verticalmente */
+        margin: 250px;               /* Remove margens padrão */
+        background-color: transparent; /* Cor de fundo */
+        border-radius: 10px;
+    
+        .image-row {
+            display: flex;
+            justify-content: center; /* Centraliza as imagens dentro da linha */
+            flex-wrap: wrap;          /* Permite que as imagens quebrem para a linha seguinte se necessário */
+            gap: 2px;                /* Adiciona espaço entre as imagens */
+        }
+        
+        .image-container {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            background-image: url("img/foto.png");
+            padding: 5px;
+            margin-left: 2px;
+            display: inline-block;
+            max-width: 140px; /* Define a largura do contêiner */
+            margin-top: -70px;
+
+        }
+        
+        .image-container img {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            width: 140px; /* width of container */
+            height: 140px; /* height of container */
+            object-fit: cover;
+            display: block;
+        
+        }
+    }
+    
+}
 
         
     .poligono {
