@@ -1,4 +1,6 @@
 @import url(reset.css);
+@import url(style.css);
+
 @import url(users/home.css);
 @import url(users/footer.css);
 @import url(users/mira.css);
