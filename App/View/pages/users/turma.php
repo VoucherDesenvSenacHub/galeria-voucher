@@ -4,6 +4,10 @@ require_once __DIR__ . "/../../componentes/head.php";
 ?>
 <html>
 <body>
+
+    <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
+    <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
+
    <main>
      <div id="navbar-container"></div> <!--aqui puxamos por meio de javascript a navbar -->
 
@@ -226,5 +230,6 @@ require_once __DIR__ . "/../../componentes/head.php";
     <script src="script.js" defer></script>
 
     </main>    
+    <?php require_once __DIR__ . "/./../../componentes/users/footer.php" ?>
 </body>
 </html>
