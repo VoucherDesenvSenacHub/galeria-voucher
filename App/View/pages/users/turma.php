@@ -9,7 +9,7 @@ require_once __DIR__ . "/../../componentes/head.php";
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
    <main>
-     <div id="navbar-container"></div> <!--aqui puxamos por meio de javascript a navbar -->
+     
 
    
     <div class="conteudotodo">
