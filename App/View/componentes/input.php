@@ -12,7 +12,7 @@
  * inputComponent('password', 'senha', 'login_senha','escreva sua senha aqui'(opcional) );           
  
  */
-function inputComponent($type, $label, $name, $placeholder = null) {
+function inputComponent($type, $name, $placeholder = null) {
     // Define a classe CSS com base no estilo informado
     if ($type === 'text') {
         $class = 'input-text';
@@ -28,7 +28,7 @@ function inputComponent($type, $label, $name, $placeholder = null) {
     // Exibe o input HTML com a classe e o conteúdo definidos
    echo 
     "<div class = 'input-container'>
-        <label for='$name'>$label:</label><br>
+
         <input type='$type' class='$class' name='$name' placeholder = '$placeholder'><br>
     </div>";
     }
