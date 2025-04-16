@@ -211,14 +211,16 @@ require_once __DIR__ . "/../../componentes/head.php";
         </div>
     </div>
 
-    <div class="vermais" id="vermais">
-        <h3>VER MAIS</h3>
-        <span class="material-symbols-outlined" id="arrow-icon">
-            arrow_downward
-        </span>
+    <div class = "ver-mais-cont">
+        <div class="vermais" id="vermais">
+            <h3>VER MAIS</h3>
+            <span class="material-symbols-outlined" id="arrow-icon">
+                arrow_downward
+            </span>
+        </div>
     </div>  
+    
     </main>  
-
     <?php require_once __DIR__ . "/./../../componentes/users/footer.php" ?>
     <script src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_JS'] ?>alunos/turma.js" defer></script>
 </body>

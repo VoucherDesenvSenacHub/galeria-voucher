@@ -17,6 +17,11 @@
     align-items: center; /* Centraliza o conteúdo verticalmente */
 }
 
+.ver-mais-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .emdesenvolvimento h1 {
     color: #032a0e80;
     font-size: 2rem;
