@@ -286,6 +286,7 @@ html, body {
     margin-bottom: 10px; /* Adiciona um pequeno espaço entre o título e o ícone */
     font-size: 30px;
     font-family: "bebas neue";
+    cursor: pointer;
 }
 
 .vermais span {

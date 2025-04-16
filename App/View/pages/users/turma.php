@@ -220,6 +220,6 @@ require_once __DIR__ . "/../../componentes/head.php";
     </main>  
 
     <?php require_once __DIR__ . "/./../../componentes/users/footer.php" ?>
-    <script src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_JS']?>alunos/turma.js" defer></script>
+    <script src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_JS'] ?>alunos/turma.js" defer></script>
 </body>
 </html>
