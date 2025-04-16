@@ -5,7 +5,7 @@ require_once __DIR__ . "\.\..\head.php"
 <header class="header-adm"> 
     <nav class="nav-adm">
         <div class="imgvoucher">
-        <img src="../voucher-logo.png" width="150px" />
+        <img src="../../assets/img/adm/logo-navbar.png" width="150px" />
         </div>
         <ul>
         <li><a href="">HOME</a></li>

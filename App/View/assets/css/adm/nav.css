@@ -1,4 +1,4 @@
-nav {
+.nav-adm {
     background-color: rgba(50, 50, 50, 0.8); 
     justify-content: space-between;
     display: flex;
@@ -12,17 +12,17 @@ nav {
     left: 0;           
   }
   
-  nav ul {
+  .nav-adm ul {
     display: flex;
   }
   
-  nav ul li {
+  .nav-adm ul li {
     display: inline-flex;
     align-items: center;
     width: auto;
   }
   
-  nav ul li a {
+  .nav-adm ul li a {
     color: #ACFD3E;
     text-decoration: none;
     font-family: "Bebas Neue", sans-serif;
