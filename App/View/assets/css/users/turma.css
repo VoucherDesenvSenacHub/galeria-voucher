@@ -211,7 +211,7 @@ html, body {
     font-size: 40px;
     padding: 15px 10px;
     font-family: bebas neue;
-    margin-bottom: 40px;
+    margin-bottom: ;
 }
 /* turma titulo h1  -- ok */
 
@@ -291,7 +291,7 @@ html, body {
 .vermais span {
     font-size: 30px; /* Tamanho do ícone */
     color: rgb(237, 246, 237);
-    
+    cursor: pointer;
 }
 
 
