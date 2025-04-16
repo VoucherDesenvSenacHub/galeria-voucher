@@ -164,7 +164,7 @@ section {
         margin-top: 18%;
     
         h1 {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             font-size: 2.5em;
             font-weight: normal;
             margin: 0 0 20px;
@@ -193,7 +193,7 @@ section {
         }
     
         .stats div span {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             display: block;
             font-size: 2.5em;
             font-weight: bold;
@@ -202,7 +202,7 @@ section {
         }
     
         .call-to-action {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             margin-top: 20px;
             font-size: 2.5em;
             color: white;
@@ -212,14 +212,14 @@ section {
         }
     
         .call-to-action span {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             color: var(--accent-color);
             font-weight: bold;
             cursor: pointer;
         }
     
         p {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             font-size: 19px;
             margin: -1px;
             color: #ffffff;
