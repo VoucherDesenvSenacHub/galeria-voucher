@@ -28,7 +28,6 @@ function inputComponent($type, $name, $placeholder = null) {
     // Exibe o input HTML com a classe e o conteúdo definidos
    echo 
     "<div class = 'input-container'>
-
         <input type='$type' class='$class' name='$name' placeholder = '$placeholder'><br>
     </div>";
     }
