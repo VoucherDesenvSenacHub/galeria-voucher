@@ -1,95 +1,31 @@
 @import url('/Login/assets/responsividade.css');
 
-/* ESSA PARTE AQUI COMEÇA A NOSSA NAVBAR */
 
-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 10vh;
-}
-
-a {
-    text-decoration: none;
-    color:#aEFF40;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-}
-
-.material-symbols-outlined {
-    color:#aEFF40;
-    font-size: 35px;
-}
-
-a:hover{
-    opacity: 0.7;
-    transform: scale(1.2);
-}
-
-ul {
-    display: flex;
-    list-style: none;
-    gap:30px;
-    align-items: center;
-    letter-spacing: 2px;
-}
-
-ul li{
-    display: inline-flex;
-}
-
-.search {
-    display: flex;
-    align-items: center;
-}
-
-.search input {
-    display: inline-flex;
-    padding: 7px;
-    border: none;
-    border-radius: 10px 10px 10px 10px;
-    outline: none;
-    width: 300px;
-    background-color: #d8dbd6;
-    z-index: 1;
-}
-
-.search button {
-    display: inline-flex;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    background-color: #d8dbd6;
-    cursor: pointer;
-    margin-left: -40px;
-}
 
 /* AQUI TERMINA COMEÇA A NAVBAR */
 
 /* Aqui começa o Login */
 
 /* Geral */
-body {
-    margin: 0;
-    padding: 0;
+
+.main-login{
+    width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(#000000, #003100);
-    font-family: Arial, sans-serif;
-    align-items: center;
 }
 
-main {
+form{
+ 
+    width: 50%;
+    height: 60%;
+    margin: auto;
     display: flex;
-    justify-content: center;
-    margin-left: 34%;
-    margin-top: 10%;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-}
+    flex-direction: column;
 
+    justify-content: center;
+    align-items: center;
+
+    z-index: 2;
+}
 /* Cabeçalho do Formulário */
 .form-header h1 {
     margin: 0;
@@ -134,7 +70,7 @@ main {
     padding: 5px;
     font-family: "Bebas Neue", sans-serif;
     letter-spacing: 1px;
-    font-size: 30px;
+   
     color: #003100;
     background-color: #aEFF40;
     border: none;
@@ -156,7 +92,7 @@ main {
 }
 
 .form-footer a {
-    color: #007bff;
+    color: #95ff00;
     text-decoration: none;
 }
 

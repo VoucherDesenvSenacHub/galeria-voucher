@@ -6,27 +6,10 @@
 ?>
 
 <body>
-    <header>
-        <nav>
-            <img src="assets/voucher-logo.png" width="150px">
-            <div class="search">
-                <div class="search">
-                    <input type="text" placeholder="Pesquisar">
-                    <button>&#128269;</button>
-                </div>
-            </div>
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">TURMAS</a></li>
-                <li> <a href="#">
-                        <span class="material-symbols-outlined">
-                            person
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+
+    <?php 
+        require_once(__DIR__ . '/../../componentes/users/nav.php');
+    ?>
 
     <div class="content">
     
@@ -40,7 +23,7 @@
         
         <div class="square2"></div>
 
-    <main>
+    <main class="main-login">
         <form  class="form" action="">
 
             <div class="form-header" action="">
@@ -65,7 +48,7 @@
 
                 <div class="form-footer">
 
-                    <p>Esqueceu sua senha ? <a href=""></a> Clique Aqui</p>
+                    <p>Esqueceu sua senha ? <a href="">Clique Aqui</a> </p>
 
                 </div>
 
@@ -75,9 +58,9 @@
                
     </main>
     
-    <footer class="rodape">
-        <p>&copy; 2024 VOUCHER DESENVOLVEDOR 146 </p>
-    </footer>
+    <?php 
+        require_once(__DIR__ . '/../../componentes/users/footer.php');
+    ?>
 
 <body>
 
