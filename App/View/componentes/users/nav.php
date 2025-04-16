@@ -1,5 +1,8 @@
 <header>
-    <nav>
+    <nav class = "NavInicial">
+
+        <img class="imgnav" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nomeNav.png" width="150px">
+
         <div class="search">
 
             <div class="search">
