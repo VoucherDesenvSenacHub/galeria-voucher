@@ -161,7 +161,8 @@ section {
             display: flex;
             justify-content: center;
         }
-    
+        
+        /* ESTATÍSTICAS */
         .stats {
     
             display: flex;
@@ -210,10 +211,7 @@ section {
             padding-left: 30px;
     
         }
-    }
-        
-        
-    
+    }  
 }
 
 #secao4 {
@@ -257,44 +255,7 @@ section {
     
 }
 
-        
-    .poligono {
-        display: flex;
-        flex-direction: column;  /* Alinha as linhas de imagens em coluna */
-        justify-content: center; /* Centraliza horizontalmente */
-        align-items: center;     /* Centraliza verticalmente */
-        margin: 250px;               /* Remove margens padrão */
-        background-color: transparent; /* Cor de fundo */
-        border-radius: 10px;
-    
-        .image-row {
-            display: flex;
-            justify-content: center; /* Centraliza as imagens dentro da linha */
-            flex-wrap: wrap;          /* Permite que as imagens quebrem para a linha seguinte se necessário */
-            gap: 2px;                /* Adiciona espaço entre as imagens */
-        }
-        
-        .image-container {
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            background-image: url("img/foto.png");
-            padding: 5px;
-            margin-left: 2px;
-            display: inline-block;
-            max-width: 140px; /* Define a largura do contêiner */
-            margin-top: -70px;
-
-        }
-        
-        .image-container img {
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            width: 140px; /* width of container */
-            height: 140px; /* height of container */
-            object-fit: cover;
-            display: block;
-        
-        }
-}
-
+/* responsividade dos elementos e da página */
 @media (max-width: 376px) {
     body {
         overflow-x: hidden;
@@ -317,21 +278,7 @@ section {
         max-width: 50%;
     }
 
-    #secao1 .square {
-        top: 39.5vh;
-        border: 5.1px solid #aeff40;
-        left: 17.2vw;
-    }
-    #secao1 .square1{
-        height: 120%;
-    }
-    #secao1 .square1,
-    #secao1 .square2{
-        border: 1px solid #aeff40
-    }
-    #secao1 .square2{
-        width: 199.8%;
-    }
+    
     #secao3 .container2 {
         padding: 10px;
         text-align: center;
@@ -347,24 +294,7 @@ section {
         margin-left: 8%;
         position: absolute;
     }
-
-    .imgnav {
-        max-width: 8%;
-    }
-    .pesquisa {
-        max-width: 120px;
-        margin-left: 10%;        
-    }
-    nav a {
-        font-size: 16px;
-    }
-    nav ul {
-        gap: 5px;
-        margin-left: -2%;
-    }
-    nav .material-symbols-outlined{
-        font-size: 24px;
-    }
+    
     #secao3 .container2 {
         margin-top: 1250px;
         z-index: 1;

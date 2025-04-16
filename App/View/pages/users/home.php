@@ -13,15 +13,15 @@ require_once __DIR__ . "/../../componentes/head.php";
 
             <div class="content">
                 <div class="numero">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>numeros.png" alt="Números">
+                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/numeros.png" alt="Números">
                 </div>
 
                 <div class="nome">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>nome.png" alt="Voucher Desenvolvedor">
+                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nome.png" alt="Voucher Desenvolvedor">
                 </div>
 
                 <div class="mapa">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>mapa.png" alt="Mapa do Brasil">
+                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/mapa.png" alt="Mapa do Brasil">
                 </div>
             </div>
         </section>
@@ -106,27 +106,27 @@ require_once __DIR__ . "/../../componentes/head.php";
                     <div class="image-row">
 
                         <div class="image-container">
-                            <img class="img" src="assets/img/foto.png" >
+                            <img class="img" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
                         
                     </div>
@@ -134,23 +134,23 @@ require_once __DIR__ . "/../../componentes/head.php";
                     <div class="image-row">
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                     </div>
@@ -158,27 +158,27 @@ require_once __DIR__ . "/../../componentes/head.php";
                     <div class="image-row">
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                         <div class="image-container">
-                            <img src="assets/img/foto.png" >
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
                         </div>
 
                     </div>
