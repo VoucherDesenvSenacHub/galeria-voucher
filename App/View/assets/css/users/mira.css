@@ -2,7 +2,7 @@
     position: absolute;
     width: 4vw;
     height: 4vw;
-    border: 7px solid #aeff40;
+    border: 7px solid var(--accent-color);
     top: 50vh;
     left: 17.8vw;
 }
@@ -11,20 +11,20 @@
     position: absolute;
     width: 2px;
     height: 245%;
-    background-color: #aeff40;
+    background-color: var(--accent-color);
     top: 48.8px;
     left: 20vw;
-    border: 2px solid #aeff40;
+    border: 2px solid var(--accent-color);
 }
 
 .mira2 {
     position: absolute;
     width: 99.8%;
     height: 2px;
-    background-color: #aeff40;
+    background-color: var(--accent-color);
     top: calc(36vh + 9vw);
     left: 0;
-    border: 2px solid #aeff40;
+    border: 2px solid var(--accent-color);
 }
 
 
