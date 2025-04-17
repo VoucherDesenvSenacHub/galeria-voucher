@@ -16,7 +16,7 @@ require_once __DIR__ . "/../../componentes/head.php";
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/numeros.png" alt="Números">
                 </div>
 
-                <div class="nome">
+                <div class="nome-voucher">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nome.png" alt="Voucher Desenvolvedor">
                 </div>
 
@@ -104,83 +104,29 @@ require_once __DIR__ . "/../../componentes/head.php";
                 <div class="image-row">
 
                     <div class="image-row">
-
-                        <div class="image-container">
-                            <img class="img" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-                        
+                        <?php for($i=0; $i<=5; $i++){ ?>
+                            <div class='image-container'>
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
+                            </div>
+                        <?php } ?>   
                     </div>
                 
                     <div class="image-row">
 
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
+                        <?php for($i=0; $i<=4; $i++){ ?>
+                            <div class='image-container'>
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
+                            </div>
+                        <?php } ?>
 
                     </div>
 
                     <div class="image-row">
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
-                        <div class="image-container">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
-                        </div>
-
+                        <?php for($i=0; $i<=5; $i++){ ?>
+                            <div class='image-container'>
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png" >
+                            </div>
+                        <?php } ?>
                     </div>
 
                 </div>
