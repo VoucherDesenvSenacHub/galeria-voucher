@@ -6,7 +6,7 @@ require_once __DIR__ . "/../../componentes/head.php";
     <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
     
-    <main>
+    <main class="main-home">
     <!-- Seção 1 -->
         <section id="secao1">
             <div class="content">
@@ -94,7 +94,7 @@ require_once __DIR__ . "/../../componentes/head.php";
          <section id="secao4">
             
             <div class="call-to-action">
-                VEJA OS NOSSOS PROJETOS E <span>INSPIRE-SE</span>
+                <p>VEJA OS NOSSOS PROJETOS E <span>INSPIRE-SE</span></p>
             </div>
 
             <div class="poligono">

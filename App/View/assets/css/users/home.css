@@ -14,7 +14,7 @@ body {
     
 }
 
-main {
+.main-home {
     display: flex;
     flex-direction: column;
     height: 400vh;
@@ -23,7 +23,7 @@ main {
     margin: 0px;
 }
 
-section {
+.main-home section {
     flex: 1;
     /* Cada seção ocupa o espaço disponível */
     display: flex;
@@ -79,6 +79,7 @@ section {
         gap: 100px;
         flex-wrap: wrap;
         margin-top: 100px;
+        justify-content: center;
     
         .card {
             background-color: #0d0d0d;
@@ -138,14 +139,12 @@ section {
 #secao3{
     display: flex;
     flex-direction: column;
-    margin-top: -110%;
     text-align: center;
 
     .container2 {
 
         background: transparent;
         padding: 20px;
-        margin-top: 18%;
         
         /* frase "SUA EVOLUÇÃO COMEÇA AQUI" */
         h1 {
@@ -184,22 +183,7 @@ section {
             padding-left: 7px;
         }
         
-        .call-to-action {
-            font-family: "Bebas Neue", sans-serif;
-            margin-top: 20px;
-            font-size: 2.5em;
-            color: white;
-            display: flex;
-            justify-content: center;
-            padding-top: 20px;
-        }
-    
-        .call-to-action span {
-            font-family: "Bebas Neue", sans-serif;
-            color: #abfa3d;
-            font-weight: bold;
-            cursor: pointer;
-        }
+
     
         p {
             font-family: "Bebas Neue", sans-serif;
@@ -213,6 +197,25 @@ section {
 }
 
 #secao4 {
+
+    flex-direction: column;
+
+    .call-to-action {
+        font-family: "Bebas Neue", sans-serif;
+        margin-top: 20px;
+        font-size: 2.5em;
+        color: white;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+    }
+
+    .call-to-action span {
+        font-family: "Bebas Neue", sans-serif;
+        color: #abfa3d;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
     .poligono {
         display: flex;
