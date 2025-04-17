@@ -23,9 +23,9 @@
 
             <li> <a href="">
                 
-                    <span class="material-symbols-outlined">
-                        person
-                    </span>
+            <span class="material-symbols-outlined">
+                person
+            </span>
 
                 </a>
             </li>
