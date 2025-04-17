@@ -1,9 +1,3 @@
-.bebas-neue-regular {
-    font-family: "Bebas Neue", serif;
-    font-weight: 400;
-    font-style: normal;
-  }  
-
 /* emdesenvolvimento --ok*/
 .emdesenvolvimento {
     background-image: url(/templates/logojrmx.jpg); /* Imagem de fundo */
@@ -50,10 +44,6 @@
 .emdesenvolvimento .btn:hover {
     background-color: #9aa071;
 }
-.principal{
-    color: #d0d9e0;
-}
-
 
 .emdesenvolvimento {
     display: flex;
@@ -65,35 +55,6 @@
     background-size: cover; /* Faz a imagem ocupar toda a tela */
     background-position: center; /* Centraliza a imagem */
 }
-
-
-.principal {
-    background-color: rgba(255, 255, 255, 0.7); /* Cor de fundo semitransparente (branco com opacidade) */
-    padding: 20px;
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
-    font-size: 4rem;      /* Fonte grande */
-    color: #fff;          /* Cor do texto bem clara (branco) */
-    text-align: center;   /* Alinha o texto ao centro */
-    margin-bottom: 30px;  /* Espaçamento entre a classe principal e a secundária */
-}
-
-
-.secundaria {
-    background-color: rgba(255, 255, 255, 0.7); /* Cor de fundo semitransparente (branco com opacidade) */
-    padding: 20px;
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
-    font-size: 2.5rem;    /* Fonte grande */
-    color: #fff;          /* Cor do texto bem clara (branco) */
-    text-align: center;   /* Alinha o texto ao centro */
-    width: 80%;           /* Largura do conteúdo */
-    max-width: 800px;     /* Largura máxima */
-}
-/* emdesenvolvimento --ok*/
-
-
-
 
 /* corpo com mira */
 html, body {
@@ -107,103 +68,6 @@ html, body {
 
 .conteudotodo {
     position: relative;
-}
-
-/* Estilos das miras ok */
-.square, .square1, .square2 {
-    position: absolute;
-    z-index: 0;
-    background-color: transparent;
-}
-
-.square {
-    width: 6vw;
-    height: 6vw;
-    border: 3px solid #0f0;
-    top: 18vh;
-    left: 20vw;
-}
-
-.square1 {
-    width: 2px;
-    height: calc(100vh + 40vh); /* Ajuste para que ocupe a altura restante da tela */
-    background-color: #0f0;
-    top: 0;
-    left: 23vw;
-    
-}
-
-.square2 {
-    width: 100%;
-    height: 2px;
-    background-color: #0f0;
-    top: calc(18vh + 3vw); /* Passa no meio do quadrado */
-    left: 0;
-}
-
-/* Responsividade */
-@media (max-width: 1024px) {
-    .square {
-        width: 8vw;
-        height: 8vw;
-        top: 20vh;
-        left: 22vw;
-    }
-    .square1 {
-        height: calc(100vh - 20vh);
-        left: calc(23vw + 2vw);
-    }
-    .square2 {
-        top: calc(20vh + 4vw);
-    }
-}
-
-@media (max-width: 768px) {
-    .square {
-        width: 12vw;
-        height: 12vw;
-        top: 25vh;
-        left: 25vw;
-    }
-    .square1 {
-        height: calc(100vh - 25vh);
-        left: calc(26vw + 2vw);
-    }
-    .square2 {
-        top: calc(25vh + 6vw);
-    }
-}
-
-@media (max-width: 480px) {
-    .square {
-        width: 15vw;
-        height: 15vw;
-        top: 30vh;
-        left: 30vw;
-    }
-    .square1 {
-        height: calc(100vh - 30vh);
-        left: calc(28vw + 2vw);
-    }
-    .square2 {
-        top: calc(30vh + 7.5vw);
-    }
-}
-
-@media (max-width: 1033px) and (max-height: 929px) {
-    .square {
-        width: 10vw;
-        height: 10vw;
-        top: 22vh;
-        left: 20vw;
-    }
-    .square1 {
-        height: calc(100vh - 22vh);
-        left: calc(23vw + 2vw);
-    }
-    .square2 {
-        top: calc(22vh + 5vw);
-    }
 }
 
 /* turma titulo h1 -- ok */
@@ -220,10 +84,6 @@ html, body {
 }
 /* turma titulo h1  -- ok */
 
-
-
-
-
 /* cards testando --ok */
 
 .cards {
@@ -231,7 +91,7 @@ html, body {
     flex-wrap: wrap;
     gap: 25px;
     justify-content: space-around;
-    }
+}
 
 .ocultos {
     display: none;
@@ -240,7 +100,6 @@ html, body {
     justify-content: space-around;
     margin-top: 20px;
 }
-
 
 .card {
     display: block;
