@@ -1,10 +1,13 @@
 @import url(reset.css);
+@import url(external.css);
+@import url(button.css);
+@import url(input.css);
+
 @import url(users/home.css);
 @import url(users/footer.css);
 @import url(users/mira.css);
 @import url(users/nav.css);
-@import url(button.css);
-@import url(external.css);
+@import url(adm/sidebar.css);
 
 
 :root {
@@ -16,4 +19,8 @@
     --white-background: #FFFFFF;
     --text-color-button: #000000;
     --height-button: 1.8rem;
+}
+
+body{
+    font-family: "Inter", sans-serif;
 }
