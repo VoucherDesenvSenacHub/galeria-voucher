@@ -2,7 +2,7 @@
     margin: 0px;
     padding: 0px;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.970), rgba(0, 0, 0, 0.900), #0D9C0D, rgba(0, 0, 0, 0.930), #0D9C0D,rgba(0, 0, 0, 0.960),rgba(0, 0, 0, 0.950),rgba(0, 0, 0, 0.900));
+    background: var(--background-gradient);
     
 }
 
@@ -31,7 +31,7 @@ section {
         position: absolute;
         width: 4vw;
         height: 4vw;
-        border: 7px solid #aeff40;
+        border: 7px solid var(--accent-color);
         top: 50vh;
         left: 17.8vw;
     }
@@ -40,10 +40,10 @@ section {
         position: absolute;
         width: 2px;
         height: 245%;
-        background-color: #aeff40;
+        background-color: var(--accent-color);
         top: 48.8px;
         left: 20vw;
-        border: 2px solid #aeff40;
+        border: 2px solid var(--accent-color);
     
     }
     
@@ -51,10 +51,10 @@ section {
         position: absolute;
         width: 99.8%;
         height: 2px;
-        background-color: #aeff40;
+        background-color: var(--accent-color);
         top: calc(36vh + 9vw);
         left: 0;
-        border: 2px solid #aeff40;
+        border: 2px solid var(--accent-color);
     }
     
     
@@ -96,12 +96,12 @@ section {
     
         .card {
     
-            background-color: #0d0d0d;
-            border-top: 3px solid #0D9C0D;
-            border-bottom: 3px solid#073e07;
-            border-left: 2px solid#073e07;
-            border-right: 2px solid#073e07;
-            border-radius: 10px;
+            background-color: var(--text-black);
+            border-top: 3px solid var(--dark-green);
+            border-bottom: 3px solid var(--darker-green);
+            border-left: 2px solid var(--darker-green);
+            border-right: 2px solid var(--darker-green);
+            border-radius: var(--card-border-radius);
             max-width: 280px;
             text-align: justify;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
@@ -111,24 +111,24 @@ section {
             transition: height 0.3s ease-in-out;
             /* Animação para expandir */
             height: 92px;
-            padding: 20px;
+            padding: var(--default-padding);
             z-index: 1;
         }
         
         h2 {
-            color: #AEFF40;
+            color: var(--accent-color);
             /* Verde do título */
             margin-bottom: 5px;
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-secondary);
             font-size: 210%;
             text-align: center;
         }
         
         .card p {
-            font-family: "Inter", sans-serif;
+            font-family: var(--font-primary);
             font-size: 14px;
             line-height: 1.5;
-            color: #fff;
+            color: var(--text-white);
             /* Texto branco */
             opacity: 0;
             /* Torna o texto invisível inicialmente */
@@ -164,11 +164,11 @@ section {
         margin-top: 18%;
     
         h1 {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             font-size: 2.5em;
             font-weight: normal;
             margin: 0 0 20px;
-            color: #ffffff;
+            color: var(--text-white);
             padding-top: 0px;
             padding-bottom: 30px;
             display: flex;
@@ -193,16 +193,16 @@ section {
         }
     
         .stats div span {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             display: block;
             font-size: 2.5em;
             font-weight: bold;
-            color: #abfa3d;
+            color: var(--accent-color);
             
         }
     
         .call-to-action {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             margin-top: 20px;
             font-size: 2.5em;
             color: white;
@@ -212,14 +212,14 @@ section {
         }
     
         .call-to-action span {
-            font-family: "Bebas Neue", sans-serif;
-            color: #abfa3d;
+            font-family: var(--font-primary);
+            color: var(--accent-color);
             font-weight: bold;
             cursor: pointer;
         }
     
         p {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             font-size: 19px;
             margin: -1px;
             color: #ffffff;
@@ -292,7 +292,7 @@ section {
 
     #secao1 .square {
         top: 39.5vh;
-        border: 5.1px solid #aeff40;
+        border: 5.1px solid var(--accent-color);
         left: 17.2vw;
     }
     #secao1 .square1{
@@ -300,7 +300,7 @@ section {
     }
     #secao1 .square1,
     #secao1 .square2{
-        border: 1px solid #aeff40
+        border: 1px solid var(--accent-color)
     }
     #secao1 .square2{
         width: 199.8%;

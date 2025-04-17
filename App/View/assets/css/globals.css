@@ -22,8 +22,24 @@
     --white-background: #FFFFFF;
     --text-color-button: #000000;
     --height-button: 1.8rem;
+    --font-primary: "Poppins", sans-serif;
+    --font-secondary: "Bebas Neue", sans-serif;
+    --background-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0.970), rgba(0, 0, 0, 0.900), #0D9C0D, rgba(0, 0, 0, 0.930), #0D9C0D,rgba(0, 0, 0, 0.960),rgba(0, 0, 0, 0.950),rgba(0, 0, 0, 0.900));
+    --card-gradient: linear-gradient(to right, #D8DBD6, #AEFF40);
+    --dark-green: #0D9C0D;
+    --darker-green: #073e07;
+    --sidebar-gray: #363535;
+    --border-gray: #c0c0c0;
+    --nav-height: 50px;
+    --sidebar-width: 400px;
+    --default-padding: 20px;
+    --text-white: #ffffff;
+    --text-black: #000000;
+    --accent-color: #aeff40;
+    --card-border-radius: 10px;
+    --default-transition: all 0.3s ease;
 }
 
 body{
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-primary);
 }
