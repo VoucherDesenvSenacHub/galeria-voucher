@@ -3,14 +3,12 @@ require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
 <body>
-
-    <?php require_once __DIR__ . "/./../../componentes/users/nav.php"; ?>
-
+    <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
+    <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
+    
     <main>
     <!-- Seção 1 -->
         <section id="secao1">
-            <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; //componente da mira ?>
-
             <div class="content">
                 <div class="numero">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/numeros.png" alt="Números">

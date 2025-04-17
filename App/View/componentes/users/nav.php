@@ -21,7 +21,7 @@
 
             <li><a href="">TURMAS</a></li>
 
-            <li> <a href="">
+            <li> <a href="../../pages/adm/login.php">
                 
             <span class="material-symbols-outlined">
                 person
