@@ -14,7 +14,8 @@
     
 }
 
-.main-home {
+
+.main-user {
     display: flex;
     flex-direction: column;
     height: 400vh;
@@ -23,7 +24,7 @@
     margin: 0px;
 }
 
-.main-home section {
+.main-user section {
     flex: 1;
     /* Cada seção ocupa o espaço disponível */
     display: flex;

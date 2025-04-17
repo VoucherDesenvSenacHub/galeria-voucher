@@ -2,39 +2,44 @@
 require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
-<body>
-    <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
-    <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
-    
-    <main class="main-home">
-    <!-- Seção 1 -->
-        <section id="secao1">
-            <div class="content">
-                <div class="numero">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/numeros.png" alt="Números">
-                </div>
+    <body class="body-user">
+        <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
+        <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
+        
+        <main class="main-user">
+        <!-- Seção 1 -->
+            <section id="secao1">
+                <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; //componente da mira ?>
 
                 <div class="content">
                     <div class="numero">
-                        <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>numeros.png" alt="Números">
+                        <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/numeros.png" alt="Números">
                     </div>
 
                     <div class="nome">
-                        <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>nome.png" alt="Voucher Desenvolvedor">
+                        <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nome.png" alt="Voucher Desenvolvedor">
                     </div>
 
                     <div class="mapa">
-                        <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>mapa.png" alt="Mapa do Brasil">
+                        <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/mapa.png" alt="Mapa do Brasil">
                     </div>
                 </div>
             </section>
 
-        <!-- Seção 4 (transição da página inicial para a página de "turmas" e animação dos losângos) -->
-         <section id="secao4">
-            
-            <div class="call-to-action">
-                <p>VEJA OS NOSSOS PROJETOS E <span>INSPIRE-SE</span></p>
-            </div>
+        <!-- Seção 2 (cards Oque é?, Para quem é? e Porque fazer?) -->
+            <section id="secao2">
+                <div class="container">
+                        <div class="card">
+                            <h2>O QUE É ?</h2>
+                                <p>
+                                    Qualifique-se para uma das áreas mais promissoras da atualidade com o Programa Voucher
+                                    Desenvolvedor. Oferecemos vagas gratuitas para o curso Técnico em Desenvolvimento de Sistemas,
+                                    com carga horária de 1.200 horas. Beneficie-se de uma experiência prática com interação direta
+                                    com empresas de tecnologia e, a partir do sexto mês, tenha a chance de conseguir um estágio
+                                    remunerado e se destacar no curso. Invista no seu futuro e abra portas para uma carreira de
+                                    sucesso em TI.
+                                </p>
+                        </div>
 
                         <div class="card">
                             <h2>PARA QUEM É ?</h2>
