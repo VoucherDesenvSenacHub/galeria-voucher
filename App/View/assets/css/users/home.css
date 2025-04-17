@@ -56,7 +56,8 @@
     .nome-voucher {
         position: absolute;
         width: 40%;
-        top: calc(33.3vh + 6.3vw);
+        top: calc(25.0vh + 6.3vw);
+        margin-left: calc(24.6% - 20px);
     }
     
     /* imagem do mapa do estado */
@@ -79,7 +80,7 @@
         display: flex;
         gap: 100px;
         flex-wrap: wrap;
-        margin-top: 100px;
+        margin-top: 425px;
         justify-content: center;
     
         .card {
@@ -97,7 +98,7 @@
             /* Esconde o texto que sai do cartão */
             transition: height 0.3s ease-in-out;
             /* Animação para expandir */
-            height: 92px;
+            height: 85px;
             padding: var(--default-padding);
             z-index: 1;
         }
@@ -151,7 +152,7 @@
         h1 {
             font-family: var(--font-primary);
             font-size: 2.5em;
-            font-weight: normal;
+            font-weight: bold;
             margin: 0 0 20px;
             color: var(--text-white);
             padding-top: 0px;
@@ -182,15 +183,20 @@
             font-weight: bold;
             color: #abfa3d;
             padding-left: 7px;
+            text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
+                    0 0 20px rgba(67, 204, 40, 0.5),
+                    0 0 30px rgba(67, 204, 40, 0.5),
+                    0 0 40px rgba(67, 204, 40, 0.5);
         }
         
     
         p {
             font-family: var(--font-primary);
+            font-weight: bold;
             font-size: 19px;
             margin: -1px;
-            color: #ffffff;
-            padding-left: 30px;
+            color: var(--text-white);
+            padding-left: 10px;
     
         }
     }  
@@ -201,7 +207,7 @@
     flex-direction: column;
 
     .call-to-action {
-        font-family: "Bebas Neue", sans-serif;
+        font-family: var(--font-secondary);
         margin-top: 20px;
         font-size: 2.5em;
         color: white;
@@ -215,6 +221,10 @@
         color: #abfa3d;
         font-weight: bold;
         cursor: pointer;
+        text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
+                    0 0 20px rgba(67, 204, 40, 0.5),
+                    0 0 30px rgba(67, 204, 40, 0.5),
+                    0 0 40px rgba(67, 204, 40, 0.5);
     }
 
     .poligono {
