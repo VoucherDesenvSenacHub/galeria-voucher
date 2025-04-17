@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
 <?php 
-   require_once(__DIR__ . '/../../assets/componentes/users/head.php');
+   require_once(__DIR__ . '/../../componentes/head.php');
 ?>
 
 <body>
@@ -10,18 +7,9 @@
     <?php 
         require_once(__DIR__ . '/../../componentes/users/nav.php');
     ?>
-
-    <div class="content">
-    
-        <div class="square"></div>
-
-            
-            
-        <div class="square1"></div>
-
-            
-        
-        <div class="square2"></div>
+    <?php 
+        require_once(__DIR__ . '/../../componentes/users/mira.php');
+    ?>
 
     <main class="main-login">
         <form  class="form" action="">
@@ -42,16 +30,9 @@
 
                 <div class="form-action">
 
-                    <button type="submit"> Login </button>
+                    <?php buttonComponent('primary', 'Login'); ?>
 
                 </div>
-
-                <div class="form-footer">
-
-                    <p>Esqueceu sua senha ? <a href="">Clique Aqui</a> </p>
-
-                </div>
-
             </div>
           
         </form>

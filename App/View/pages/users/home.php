@@ -2,8 +2,6 @@
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
 ?>
-
-<html>
     <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
     

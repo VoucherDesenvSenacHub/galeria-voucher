@@ -1,4 +1,3 @@
-@import url('/Login/assets/responsividade.css');
 
 
 
@@ -13,7 +12,7 @@
     height: 100vh;
 }
 
-form{
+.main-login .form{
  
     width: 50%;
     height: 60%;
@@ -24,10 +23,9 @@ form{
     justify-content: center;
     align-items: center;
 
-    z-index: 2;
 }
 /* Cabeçalho do Formulário */
-.form-header h1 {
+.main-login .form-header h1 {
     margin: 0;
     font-size: 50px;
     text-align: center;
@@ -39,17 +37,17 @@ form{
 }
 
 /* Conteúdo do Formulário */
-.form-content {
+.main-login .form-content {
     margin-top: 20px;
 }
 
-.form-input {
+.main-login .form-input {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.form-input input {
+.main-login .form-input input {
     width: 400px;
     padding: 20px;
     font-size: 16px;
@@ -60,12 +58,12 @@ form{
 }
 
 /* Botão de Ação */
-.form-action {
+.main-login .form-action {
     margin-top: 30px;
     text-align: center;
 }
 
-.form-action button {
+/* .form-action button {
     width: 35%;
     padding: 5px;
     font-family: "Bebas Neue", sans-serif;
@@ -81,61 +79,4 @@ form{
 .form-action button:hover {
     background-color: #005e00;
 }
-
-/* Rodapé do Formulário */
-.form-footer {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 14px;
-    color: #fafafa;
-    font-family: "Inter", sans-serif;
-}
-
-.form-footer a {
-    color: #95ff00;
-    text-decoration: none;
-}
-
-.form-footer a:hover {
-    text-decoration: underline;
-}
-
-/* SQUARE'S */
-
-.content {
-    width: 100vw;
-}
-
-.square {
-    position: absolute;
-    width: 6vw; /* Tamanho do quadrado ajustado proporcionalmente */
-    height: 6vw; /* Mantém a proporção quadrada */
-    border: 3px solid #aEFF40; /* Borda verde */
-    top: 18vh; /* Posição vertical inicial */
-    left: 20vw; /* Posição horizontal inicial */
-}
-
-.square1 {
-    position: absolute; /* Linha vertical */
-    width: 2px; /* Largura da linha vertical */
-    height: 100vh; /* Altura da linha vertical que ocupa toda a tela */
-    background-color: #95ff00; /* Cor verde */
-    top: 0; /* Começa no topo */
-    left: 23vw; /* Posiciona a linha à direita do quadrado */
-}
-
-.square2 {
-    position: absolute; /* Linha horizontal */
-    width: 100%; /* Largura total da tela */
-    height: 2px; /* Espessura da linha horizontal */
-    background-color: #aEFF40; /* Cor verde */
-    top: calc(18vh + 3vw); /* A linha passa no meio do quadrado */
-    left: 0; /* Começa na borda esquerda */
-}
-
-.rodape {
-    display: flex;
-    justify-content: center;
-    margin-top: 2%;
-    color: #fafafa;
-}
+*/
