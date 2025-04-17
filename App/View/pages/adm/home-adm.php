@@ -4,17 +4,10 @@ require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
   <body class="body-adm">
-    <div class="container-adm"> 
-
-      <aside class="sidebar-adm">
-            <?php require_once __DIR__ . "/./../../componentes/adm/sidebar.php"; ?>
-      </aside>
-
-      <header> 
-        <nav>
-          <?php require_once __DIR__ . "/./../../componentes/adm/nav.php"; ?>
-        </nav>
-      </header>
+    <div class="container-adm">
+       
+        <?php require_once __DIR__ . "/./../../componentes/adm/sidebar.php"; ?>
+        <?php require_once __DIR__ . "/./../../componentes/adm/nav.php"; ?>
 
       <main class="content-adm">
           <div class="user-profile-adm">
