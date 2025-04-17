@@ -35,7 +35,6 @@ section {
 
 /* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
-    margin-top: -60%;
     
     .content {
         position:relative; /* para posicionar elementos absolutos */
@@ -53,7 +52,7 @@ section {
     }
     
     /* imagem do logo */
-    .nome {
+    .nome-voucher {
         position: absolute;
         width: 40%;
         top: calc(33.3vh + 6.3vw);

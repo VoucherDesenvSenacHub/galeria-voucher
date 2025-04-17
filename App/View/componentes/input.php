@@ -3,7 +3,6 @@
  * Gera um input HTML com estilo e tipo personalizados.
  *
  * @param string $type    Define o tipo do input ('text', 'password'). adicionaremos mais depois.
- * @param string $label  titulo do input (texto) que será exibido em cima do input.
  * @param string $name (texto) Define o name do input.
  * @param string $placeholder (Opcional) define um texto dentro do input.
  *
