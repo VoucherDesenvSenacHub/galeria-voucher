@@ -1,4 +1,4 @@
-body {
+.body-user {
     margin: 0px;
     padding: 0px;
     font-family: Arial, sans-serif;
@@ -14,7 +14,8 @@ body {
     
 }
 
-main {
+
+.main-user {
     display: flex;
     flex-direction: column;
     height: 400vh;
@@ -96,24 +97,24 @@ section {
             transition: height 0.3s ease-in-out;
             /* Animação para expandir */
             height: 92px;
-            padding: 20px;
+            padding: var(--default-padding);
             z-index: 1;
         }
         
         h2 {
-            color: #AEFF40;
+            color: var(--accent-color);
             /* Verde do título */
             margin-bottom: 5px;
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-secondary);
             font-size: 210%;
             text-align: center;
         }
         
         .card p {
-            font-family: "Inter", sans-serif;
+            font-family: var(--font-primary);
             font-size: 14px;
             line-height: 1.5;
-            color: #fff;
+            color: var(--text-white);
             /* Texto branco */
             opacity: 0;
             /* Torna o texto invisível inicialmente */
@@ -149,11 +150,11 @@ section {
         
         /* frase "SUA EVOLUÇÃO COMEÇA AQUI" */
         h1 {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             font-size: 2.5em;
             font-weight: normal;
             margin: 0 0 20px;
-            color: #ffffff;
+            color: var(--text-white);
             padding-top: 0px;
             padding-bottom: 30px;
             display: flex;
@@ -185,7 +186,7 @@ section {
         }
         
         .call-to-action {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             margin-top: 20px;
             font-size: 2.5em;
             color: white;
@@ -195,14 +196,14 @@ section {
         }
     
         .call-to-action span {
-            font-family: "Bebas Neue", sans-serif;
-            color: #abfa3d;
+            font-family: var(--font-primary);
+            color: var(--accent-color);
             font-weight: bold;
             cursor: pointer;
         }
     
         p {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             font-size: 19px;
             margin: -1px;
             color: #ffffff;
