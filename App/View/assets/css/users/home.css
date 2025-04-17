@@ -52,7 +52,7 @@ section {
     }
     
     /* imagem do logo */
-    .nome {
+    .nome-voucher {
         position: absolute;
         width: 40%;
         top: calc(33.3vh + 6.3vw);
