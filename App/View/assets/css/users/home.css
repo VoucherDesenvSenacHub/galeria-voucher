@@ -35,7 +35,6 @@ section {
 
 /* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
-    margin-top: -60%;
     
     .content {
         position:relative; /* para posicionar elementos absolutos */
