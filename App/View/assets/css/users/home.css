@@ -1,4 +1,4 @@
-body {
+.body-user {
     margin: 0px;
     padding: 0px;
     font-family: Arial, sans-serif;
@@ -7,7 +7,7 @@ body {
 }
 
 
-main {
+.main-user {
     display: flex;
     flex-direction: column;
     height: 400vh;
