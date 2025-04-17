@@ -1,0 +1,89 @@
+ .container-adm {
+    display: flex;
+    font-family: Arial, sans-serif;
+  }
+   
+  .content-adm {
+    background-color: #f2f2f2;
+    flex-grow: 1;
+    margin-top: 120px;
+  }
+
+  .user-profile-adm {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .user-icon-adm {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 auto;
+  }
+  
+  .user-name-adm {
+    margin-top: 15px;
+    font-size: 40px;
+  }
+  
+  .welcome-message-adm {
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  @media (max-width: 1333px) and (max-height: 720px) {
+   
+   
+  
+    .container-adm {
+      flex-direction: column;
+    }
+  
+   
+    .content-adm {
+      padding: 20px;
+    }
+  
+    .user-icon-adm{
+      width: 100px; 
+      height: 100px;
+    }
+  
+    .user-name-adm, .welcome-message-adm {
+      font-size: 18px; 
+    }
+  
+    .welcome-message-adm {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+      .container-adm{
+        flex-direction: column;
+      }
+    
+      .sidebar-adm {
+        width: 100%;
+        height: auto;
+      }
+    
+      .content-adm {
+        padding: 20px;
+      }
+    
+      .user-icon-adm{
+        width: 150px;
+        height: 150px;
+      }
+    
+      .user-name-adm, .welcome-message-adm {
+        font-size: 24px;
+      }
+    
+      .welcome-message-adm {
+        font-size: 36px;
+      }
+  }

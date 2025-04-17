@@ -3,11 +3,12 @@
   margin: 0;
   vertical-align: baseline;
   list-style: none;
+  list-style: none;
   border: 0;
   box-sizing: border-box;
 }
 
-.sidebar {
+.sidebar-adm {
   padding-top: 100px;
   background-color: var(--sidebar-gray);
   color: var(--text-white);
@@ -15,7 +16,7 @@
   height: 100vh;
 }
 
-.menu a {
+.menu-adm a {
   display: block;
   color: var(--text-white);
   text-decoration: none;

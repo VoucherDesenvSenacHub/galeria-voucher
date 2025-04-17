@@ -8,6 +8,9 @@
 @import url(users/mira.css);
 @import url(users/nav.css);
 @import url(adm/sidebar.css);
+@import url(adm/nav.css);
+@import url(adm/main.css);
+@import url(adm/home-adm.css);
 @import url(adm/login.css);
 
 :root {
