@@ -1,4 +1,4 @@
-body {
+.body-user {
     margin: 0px;
     padding: 0px;
     font-family: Arial, sans-serif;
@@ -97,24 +97,24 @@ body {
             transition: height 0.3s ease-in-out;
             /* Animação para expandir */
             height: 92px;
-            padding: 20px;
+            padding: var(--default-padding);
             z-index: 1;
         }
         
         h2 {
-            color: #AEFF40;
+            color: var(--accent-color);
             /* Verde do título */
             margin-bottom: 5px;
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-secondary);
             font-size: 210%;
             text-align: center;
         }
         
         .card p {
-            font-family: "Inter", sans-serif;
+            font-family: var(--font-primary);
             font-size: 14px;
             line-height: 1.5;
-            color: #fff;
+            color: var(--text-white);
             /* Texto branco */
             opacity: 0;
             /* Torna o texto invisível inicialmente */
@@ -148,11 +148,11 @@ body {
         
         /* frase "SUA EVOLUÇÃO COMEÇA AQUI" */
         h1 {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             font-size: 2.5em;
             font-weight: normal;
             margin: 0 0 20px;
-            color: #ffffff;
+            color: var(--text-white);
             padding-top: 0px;
             padding-bottom: 30px;
             display: flex;
@@ -183,10 +183,9 @@ body {
             padding-left: 7px;
         }
         
-
     
         p {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
             font-size: 19px;
             margin: -1px;
             color: #ffffff;
