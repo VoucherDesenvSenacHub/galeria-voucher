@@ -1,7 +1,6 @@
 /* posicionamento na grid */
 
   .footer {
-    background-color: var(--text-black);
     color: var(--text-white);
     padding: 35px 0;
     height: 85px;

@@ -24,7 +24,7 @@
     margin: 0px;
 }
 
-section {
+.main-user section {
     flex: 1;
     /* Cada seção ocupa o espaço disponível */
     display: flex;
@@ -39,6 +39,7 @@ section {
     
     .content {
         position:relative; /* para posicionar elementos absolutos */
+
     }
     
     /* imagem dos números */
@@ -55,8 +56,9 @@ section {
     /* imagem do logo */
     .nome-voucher {
         position: absolute;
-        width: 40%;
-        top: calc(33.3vh + 6.3vw);
+        width: 100%;
+        top: calc(25.0vh + 6.3vw);
+        text-align: center;
     }
     
     /* imagem do mapa do estado */
@@ -77,9 +79,9 @@ section {
     .container {
 
         display: flex;
-        gap: 100px;
-        flex-wrap: wrap;
-        margin-top: 100px;
+        gap: 5rem;
+        margin-top: 2rem;
+        justify-content: center;
     
         .card {
             background-color: #0d0d0d;
@@ -96,7 +98,7 @@ section {
             /* Esconde o texto que sai do cartão */
             transition: height 0.3s ease-in-out;
             /* Animação para expandir */
-            height: 92px;
+            height: 85px;
             padding: var(--default-padding);
             z-index: 1;
         }
@@ -124,7 +126,7 @@ section {
         
         /* Ao passar o mouse sobre o cartão */
         .card:hover {
-            height: 400px;
+            height: 80%;
             /* Expande o cartão para exibir o texto */
         }
         
@@ -139,20 +141,18 @@ section {
 #secao3{
     display: flex;
     flex-direction: column;
-    margin-top: -110%;
     text-align: center;
 
     .container2 {
 
         background: transparent;
         padding: 20px;
-        margin-top: 18%;
         
         /* frase "SUA EVOLUÇÃO COMEÇA AQUI" */
         h1 {
-            font-family: var(--font-primary);
+            font-family: var(--font-secondary);
             font-size: 2.5em;
-            font-weight: normal;
+            font-weight: bold;
             margin: 0 0 20px;
             color: var(--text-white);
             padding-top: 0px;
@@ -183,31 +183,20 @@ section {
             font-weight: bold;
             color: #abfa3d;
             padding-left: 7px;
+            /* text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
+                    0 0 20px rgba(67, 204, 40, 0.5),
+                    0 0 30px rgba(67, 204, 40, 0.5),
+                    0 0 40px rgba(67, 204, 40, 0.5); */
         }
         
-        .call-to-action {
-            font-family: var(--font-primary);
-            margin-top: 20px;
-            font-size: 2.5em;
-            color: white;
-            display: flex;
-            justify-content: center;
-            padding-top: 20px;
-        }
-    
-        .call-to-action span {
-            font-family: var(--font-primary);
-            color: var(--accent-color);
-            font-weight: bold;
-            cursor: pointer;
-        }
     
         p {
             font-family: var(--font-primary);
+            font-weight: bold;
             font-size: 19px;
             margin: -1px;
-            color: #ffffff;
-            padding-left: 30px;
+            color: var(--text-white);
+            padding-left: 10px;
     
         }
     }  
@@ -215,12 +204,35 @@ section {
 
 #secao4 {
 
+    flex-direction: column;
+
+    .call-to-action {
+        font-family: var(--font-secondary);
+        margin-top: 2remx;
+        font-size: 2.5em;
+        color: white;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+    }
+
+    .call-to-action span {
+        font-family: "Bebas Neue", sans-serif;
+        color: #abfa3d;
+        font-weight: bold;
+        cursor: pointer;
+        /* text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
+                    0 0 20px rgba(67, 204, 40, 0.5),
+                    0 0 30px rgba(67, 204, 40, 0.5),
+                    0 0 40px rgba(67, 204, 40, 0.5); */
+    }
+
     .poligono {
         display: flex;
         flex-direction: column;  /* Alinha as linhas de imagens em coluna */
         justify-content: center; /* Centraliza horizontalmente */
         align-items: center;     /* Centraliza verticalmente */
-        margin: 250px;               /* Remove margens padrão */
+        margin: 10rem;               /* Remove margens padrão */
         background-color: transparent; /* Cor de fundo */
         border-radius: 10px;
     
