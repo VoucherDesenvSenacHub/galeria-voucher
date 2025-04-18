@@ -31,13 +31,14 @@
     --sidebar-gray: #363535;
     --border-gray: #c0c0c0;
     --nav-height: 50px;
-    --sidebar-width: 400px;
+    --sidebar-width: 240px;
     --default-padding: 20px;
     --text-white: #ffffff;
     --text-black: #000000;
     --accent-color: #aeff40;
     --card-border-radius: 10px;
     --default-transition: all 0.3s ease;
+    --space-letters: 1.5px;
 }
 
 body{
