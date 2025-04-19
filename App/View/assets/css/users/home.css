@@ -13,6 +13,21 @@
     rgba(0, 0, 0, 0.900));
     
 }
+.body-turma {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(#000000, #003100);
+    background-repeat: no-repeat;
+}
+
+.body-login {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background-image: linear-gradient(#000000, #003100);
+}
 
 
 .main-user {
