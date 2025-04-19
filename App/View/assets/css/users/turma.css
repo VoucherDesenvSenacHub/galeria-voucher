@@ -1,62 +1,9 @@
-/* emdesenvolvimento --ok*/
-.emdesenvolvimento {
-    background-image: url(/templates/logojrmx.jpg); /* Imagem de fundo */
-    background-size: cover; /* A imagem cobre toda a área do contêiner */
-    background-position: center; /* Centraliza a imagem */
-    background-attachment: fixed; /* A imagem de fundo permanece fixa ao rolar a página */
-    width: 100%; /* Ocupa 100% da largura do contêiner */
-    height: 100vh; /* Ocupa 100% da altura da tela */
-    display: flex; /* Usando flexbox para organizar o conteúdo */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    align-items: center; /* Centraliza o conteúdo verticalmente */
-}
 
 .ver-mais-cont {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.emdesenvolvimento h1 {
-    color: #032a0e80;
-    font-size: 2rem;
-    
-}
-
-.emdesenvolvimento p {
-    font-size: 1.5rem;
-    color: #032a0e80;
-    z-index: 2; /* Garante que o texto esteja acima da imagem */
-}
-
-.emdesenvolvimento .btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    text-decoration: none;
-    z-index: 2; /* Garante que o botão esteja acima da imagem */
-}
-
-.emdesenvolvimento .btn:hover {
-    background-color: #9aa071;
-}
-
-.emdesenvolvimento {
-    display: flex;
-    flex-direction: column;  /* Organiza os itens verticalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center;     /* Centraliza horizontalmente */
-    height: 100vh;           /* Ocupa 100% da altura da tela */
-    background-image: url('templates/logojrmx.jpg'); /* Imagem de fundo */
-    background-size: cover; /* Faz a imagem ocupar toda a tela */
-    background-position: center; /* Centraliza a imagem */
-}
-
-/* corpo com mira */
 
 .conteudotodo {
     position: relative;
@@ -67,7 +14,7 @@
 .turmatitulo h1{
     margin-top: 100px;
     text-align: center;
-    color: rgb(237, 246, 237);
+    color: white;
     font-size: 30px;
     font-size: 40px;
     padding: 15px 10px;
@@ -97,7 +44,7 @@
     display: block;
     width: 200px; /* Ajuste a largura do card conforme necessário */
     height: 220px;
-    border: 2px solid #0f0; /* Borda do card */
+    border: 1px solid var(--accent-color); /* Borda do card */
     padding: 10px; /* Espaçamento dentro do card */
     text-align: center;
     text-decoration: none;
@@ -112,7 +59,7 @@
 .card-title {
     font-size: 18px; /* Tamanho do título */
     margin-bottom: 10px; /* Espaço entre o título e a imagem */
-    color: #0f0; /* Cor do título - amarelo */
+    color: var(--accent-color); /* Cor do título - amarelo */
     font-family: "bebas neue";
 }
 
@@ -122,7 +69,7 @@
     max-height: 160px; /* Limita a altura máxima da imagem */
     object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
     border-radius: 10px;
-    border: 1px solid #0f0; /* Borda do card */
+    border: 1px solid var(--accent-color); /* Borda do card */
 }
 /* cards testando --ok */
 
