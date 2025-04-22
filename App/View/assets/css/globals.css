@@ -8,6 +8,7 @@
 @import url(users/mira.css);
 @import url(users/nav.css);
 @import url(adm/sidebar.css);
+@import url(../css/card_desenvolvedor.css);
 
 
 :root {
