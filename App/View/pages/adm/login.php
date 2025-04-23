@@ -30,7 +30,7 @@
 
                 <div class="form-action">
 
-                    <?php buttonComponent('primary', 'Login'); ?>
+                    <?php buttonComponent('primary', 'Login', false, "www.google.com", null); ?>
 
                 </div>
             </div>
