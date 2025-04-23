@@ -15,7 +15,7 @@
 
         <ul>
 
-            <li><a href="">HOME</a></li>
+            <li><a href="../../pages/users/home.php">HOME</a></li>
 
             <li><a href="">TURMAS</a></li>
 
