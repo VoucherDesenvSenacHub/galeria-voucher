@@ -5,6 +5,7 @@ require_once __DIR__ . "/../../componentes/head.php";
   <body>
     <div class="container"> 
       <aside class="sidebar">
+        <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/voucher-logo.png" alt="Voucher Desenvolvedor">
         <ul class="menu">
           <li><a href="#">USUARIOS</a></li>
           <li><a href="#">TURMAS</a></li>
@@ -15,10 +16,7 @@ require_once __DIR__ . "/../../componentes/head.php";
       </aside>
 
       <header> 
-        <nav>
-          <div class="imgvoucher">
-          <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/voucher-logo.png" alt="Voucher Desenvolvedor">
-          </div>
+        <nav>>
           <ul>
             <li><a href="">HOME</a></li>
             <li><a href="">TURMAS</a></li>
