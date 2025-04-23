@@ -2,6 +2,8 @@
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
 
+
+
 ?>
 <body class="body_dev">
     <header class="header_dev">
@@ -11,6 +13,7 @@ require_once __DIR__ . "/../../componentes/head.php";
         </div>
     </header>
     <main class="main_dev">
+    <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; //componente da mira ?>
         <div class="container">
             <div class="card-container">
                 <div class="image-container">
