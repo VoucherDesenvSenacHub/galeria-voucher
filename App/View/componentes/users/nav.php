@@ -1,6 +1,3 @@
-<?php 
-require_once __DIR__ . '/../../../Config/env.php'; ?>
-
 <header>
     <nav class = "NavInicial">
 
@@ -24,11 +21,11 @@ require_once __DIR__ . '/../../../Config/env.php'; ?>
 
             <li><a href="">TURMAS</a></li>
 
-            <li> <a href="">
+            <li> <a href="../../pages/adm/login.php">
                 
-                    <span class="material-symbols-outlined">
-                        person
-                    </span>
+            <span class="material-symbols-outlined">
+                person
+            </span>
 
                 </a>
             </li>

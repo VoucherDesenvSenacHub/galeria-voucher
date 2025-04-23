@@ -1,13 +1,21 @@
-body {
+.body-user {
     margin: 0px;
     padding: 0px;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.970), rgba(0, 0, 0, 0.900), #0D9C0D, rgba(0, 0, 0, 0.930), #0D9C0D,rgba(0, 0, 0, 0.960),rgba(0, 0, 0, 0.950),rgba(0, 0, 0, 0.900));
+    background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.970), 
+    rgba(0, 0, 0, 0.900), 
+    #0D9C0D, 
+    rgba(0, 0, 0, 0.930), 
+    #0D9C0D,
+    rgba(0, 0, 0, 0.960),
+    rgba(0, 0, 0, 0.950),
+    rgba(0, 0, 0, 0.900));
     
 }
 
 
-main {
+.main-user {
     display: flex;
     flex-direction: column;
     height: 400vh;
@@ -16,7 +24,7 @@ main {
     margin: 0px;
 }
 
-section {
+.main-user section {
     flex: 1;
     /* Cada seção ocupa o espaço disponível */
     display: flex;
@@ -25,39 +33,16 @@ section {
 }
 
 /* Estilos específicos para cada seção */
+
+/* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
-    margin-top: -60%;
-    .square {
-        position: absolute;
-        width: 4vw;
-        height: 4vw;
-        border: 7px solid #aeff40;
-        top: 50vh;
-        left: 17.8vw;
+    
+    .content {
+        position:relative; /* para posicionar elementos absolutos */
+
     }
     
-    .square1 {
-        position: absolute;
-        width: 2px;
-        height: 245%;
-        background-color: #aeff40;
-        top: 48.8px;
-        left: 20vw;
-        border: 2px solid #aeff40;
-    
-    }
-    
-    .square2 {
-        position: absolute;
-        width: 99.8%;
-        height: 2px;
-        background-color: #aeff40;
-        top: calc(36vh + 9vw);
-        left: 0;
-        border: 2px solid #aeff40;
-    }
-    
-    
+    /* imagem dos números */
     .numero {
         position: absolute;
         width: 540px;
@@ -68,12 +53,15 @@ section {
         overflow: visible;
     }
     
-    .nome {
+    /* imagem do logo */
+    .nome-voucher {
         position: absolute;
-        width: 40%;
-        top: calc(33.3vh + 6.3vw);
+        width: 100%;
+        top: calc(25.0vh + 6.3vw);
+        text-align: center;
     }
     
+    /* imagem do mapa do estado */
     .mapa {
         width: 100%;
         height: 130vh;
@@ -85,17 +73,17 @@ section {
 
 }
 
+/* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
 
     .container {
 
         display: flex;
-        gap: 100px;
-        flex-wrap: wrap;
-        margin-top: 100px;
+        gap: 5rem;
+        margin-top: 2rem;
+        justify-content: center;
     
         .card {
-    
             background-color: #0d0d0d;
             border-top: 3px solid #0D9C0D;
             border-bottom: 3px solid#073e07;
@@ -110,25 +98,25 @@ section {
             /* Esconde o texto que sai do cartão */
             transition: height 0.3s ease-in-out;
             /* Animação para expandir */
-            height: 92px;
-            padding: 20px;
+            height: 85px;
+            padding: var(--default-padding);
             z-index: 1;
         }
         
         h2 {
-            color: #AEFF40;
+            color: var(--accent-color);
             /* Verde do título */
             margin-bottom: 5px;
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-secondary);
             font-size: 210%;
             text-align: center;
         }
         
         .card p {
-            font-family: "Inter", sans-serif;
+            font-family: var(--font-primary);
             font-size: 14px;
             line-height: 1.5;
-            color: #fff;
+            color: var(--text-white);
             /* Texto branco */
             opacity: 0;
             /* Torna o texto invisível inicialmente */
@@ -138,7 +126,7 @@ section {
         
         /* Ao passar o mouse sobre o cartão */
         .card:hover {
-            height: 400px;
+            height: 80%;
             /* Expande o cartão para exibir o texto */
         }
         
@@ -149,32 +137,31 @@ section {
     }
 }
 
+/* estatísticas e call to action (inspire-se) */
 #secao3{
     display: flex;
     flex-direction: column;
-    margin-top: -110%;
+    text-align: center;
 
-    
-    
-    
     .container2 {
 
         background: transparent;
         padding: 20px;
-        margin-top: 18%;
-    
+        
+        /* frase "SUA EVOLUÇÃO COMEÇA AQUI" */
         h1 {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-secondary);
             font-size: 2.5em;
-            font-weight: normal;
+            font-weight: bold;
             margin: 0 0 20px;
-            color: #ffffff;
+            color: var(--text-white);
             padding-top: 0px;
             padding-bottom: 30px;
             display: flex;
             justify-content: center;
         }
-    
+        
+        /* ESTATÍSTICAS */
         .stats {
     
             display: flex;
@@ -189,52 +176,63 @@ section {
         }
     
         span{
-            padding-left: 7px;
-        }
-    
-        .stats div span {
+            
             font-family: "Bebas Neue", sans-serif;
             display: block;
             font-size: 2.5em;
             font-weight: bold;
             color: #abfa3d;
-            
+            padding-left: 7px;
+            /* text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
+                    0 0 20px rgba(67, 204, 40, 0.5),
+                    0 0 30px rgba(67, 204, 40, 0.5),
+                    0 0 40px rgba(67, 204, 40, 0.5); */
         }
-    
-        .call-to-action {
-            font-family: "Bebas Neue", sans-serif;
-            margin-top: 20px;
-            font-size: 2.5em;
-            color: white;
-            display: flex;
-            justify-content: center;
-            padding-top: 20px;
-        }
-    
-        .call-to-action span {
-            font-family: "Bebas Neue", sans-serif;
-            color: #abfa3d;
-            font-weight: bold;
-            cursor: pointer;
-        }
+        
     
         p {
-            font-family: "Bebas Neue", sans-serif;
+            font-family: var(--font-primary);
+            font-weight: bold;
             font-size: 19px;
             margin: -1px;
-            color: #ffffff;
-            padding-left: 30px;
+            color: var(--text-white);
+            padding-left: 10px;
     
         }
+    }  
+}
+
+#secao4 {
+
+    flex-direction: column;
+
+    .call-to-action {
+        font-family: var(--font-secondary);
+        margin-top: 2remx;
+        font-size: 2.5em;
+        color: white;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
     }
 
-        
+    .call-to-action span {
+        font-family: "Bebas Neue", sans-serif;
+        color: #abfa3d;
+        font-weight: bold;
+        cursor: pointer;
+        /* text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
+                    0 0 20px rgba(67, 204, 40, 0.5),
+                    0 0 30px rgba(67, 204, 40, 0.5),
+                    0 0 40px rgba(67, 204, 40, 0.5); */
+    }
+
     .poligono {
         display: flex;
         flex-direction: column;  /* Alinha as linhas de imagens em coluna */
         justify-content: center; /* Centraliza horizontalmente */
         align-items: center;     /* Centraliza verticalmente */
-        margin: 250px;               /* Remove margens padrão */
+        margin: 10rem;               /* Remove margens padrão */
         background-color: transparent; /* Cor de fundo */
         border-radius: 10px;
     
@@ -264,10 +262,11 @@ section {
             display: block;
         
         }
-        
     }
+    
 }
 
+/* responsividade dos elementos e da página */
 @media (max-width: 376px) {
     body {
         overflow-x: hidden;
@@ -290,21 +289,7 @@ section {
         max-width: 50%;
     }
 
-    #secao1 .square {
-        top: 39.5vh;
-        border: 5.1px solid #aeff40;
-        left: 17.2vw;
-    }
-    #secao1 .square1{
-        height: 120%;
-    }
-    #secao1 .square1,
-    #secao1 .square2{
-        border: 1px solid #aeff40
-    }
-    #secao1 .square2{
-        width: 199.8%;
-    }
+    
     #secao3 .container2 {
         padding: 10px;
         text-align: center;
@@ -320,24 +305,7 @@ section {
         margin-left: 8%;
         position: absolute;
     }
-
-    .imgnav {
-        max-width: 8%;
-    }
-    .pesquisa {
-        max-width: 120px;
-        margin-left: 10%;        
-    }
-    nav a {
-        font-size: 16px;
-    }
-    nav ul {
-        gap: 5px;
-        margin-left: -2%;
-    }
-    nav .material-symbols-outlined{
-        font-size: 24px;
-    }
+    
     #secao3 .container2 {
         margin-top: 1250px;
         z-index: 1;

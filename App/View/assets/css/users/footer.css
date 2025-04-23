@@ -1,13 +1,12 @@
 /* posicionamento na grid */
 
   .footer {
-    background-color: #000000;
-    color: white;
+    color: var(--text-white);
     padding: 35px 0;
     height: 85px;
     font-size: 1.05rem;
     padding-left: 28px;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-secondary);
     align-items: flex-end;
   }
 
