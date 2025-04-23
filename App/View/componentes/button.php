@@ -31,6 +31,7 @@ function buttonComponent($style, $content, $isSubmit = false, $link = null, $act
     // Se um link for fornecido, renderiza um elemento <a>
     if ($link !== null) {
         echo "<a href='$link' class='$class'>$content</a>";
+        // ! cuidado com esse if e else, pois se houver algo no $link ele vira um button. Logo, se precisarem usar a $action, defina $link como null e passe o valor da $action com '' (aspas)
     } else {
         // Caso contrário, renderiza um <button>
         $formAction = $action !== null ? "formaction='$action'" : '';
