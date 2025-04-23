@@ -8,11 +8,6 @@ require_once __DIR__ . "/../../componentes/head.php";
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
     </header>
     <!-- parte das linhas -->
-    <div>
-        <div class="square"></div>
-        <div class="square1"></div>
-        <div class="square2"></div> 
-    </div>
     <section class="projeto">
         <h1>Projetos da turma</h1>
     </section>
@@ -474,11 +469,7 @@ require_once __DIR__ . "/../../componentes/head.php";
             </div>
         </div>
     </section>
-
-    <!-- texto final -->
-    <div class="textofinal">
-        <p>© 2025 VOUCHER DESENVOLVEDOR 146</p>
-    </div>
+    <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
 
 </body>
 </html>
