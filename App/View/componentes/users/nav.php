@@ -7,9 +7,7 @@
 
             <div class="search">
 
-                <input class="pesquisa" type="text" placeholder="Pesquisar">
-
-                <button>&#128269;</button>
+                <input class="pesquisa" type="text" placeholder="Pesquisar">    
 
             </div>
 
