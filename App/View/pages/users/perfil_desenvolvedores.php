@@ -1,6 +1,9 @@
 <?php 
 require_once __DIR__ . "/../../../Config/env.php";
-require_once __DIR__ . "/../../componentes/head.php";
+// require_once __DIR__ . "/../../componentes/head.php";
+
+
+
 
 
 
@@ -15,232 +18,20 @@ require_once __DIR__ . "/../../componentes/head.php";
     <main class="main_dev">
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; //componente da mira ?>
         <div class="container">
-            <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="card-container">
-                <div class="image-container">
-                    <img src="./../../assets/img/alunos/teste.jpg" alt="Foto de Perfil">
-                </div>
-                <div class="text-card">
-                    <h2>EDNALDO PEREIRA</h2>
-                    <p>ORIENTADOR</p>
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-            </div>
+       <?php require_once __DIR__ . "/../../componentes/head.php";?>
+            <?php
+            // Defina o número de cards que você quer exibir
+            $numeroDeCards = 16;
+
+            for ($i = 0; $i < $numeroDeCards; $i++) {
+                require __DIR__ . "/../../../View/componentes/users/card_desenvolvedores.php";
+            }
+            ?>
         </div>
     </main>
 
     <div class="textofinal">
-        <p>© 2024 VOUCHER DESENVOLVEDOR 146</p>
+    <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; //componente da mira ?>
     </div>
 </body>
 </html>
