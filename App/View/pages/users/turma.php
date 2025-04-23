@@ -128,6 +128,20 @@ require_once __DIR__ . "/../../componentes/head.php";
                     </div>
                 </a>
 
+                <a href="emdesenvolvimento.html" class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">TURMA 144</h3>
+                        <img class="card-image" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>turmas/turma.jpg">
+                    </div>
+                </a>
+
+                <a href="emdesenvolvimento.html" class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">TURMA 144</h3>
+                        <img class="card-image" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>turmas/turma.jpg">
+                    </div>
+                </a>
+
 
                 <!-- Cards adicionais, AQUI ESTA ocultos! -->
             <div class="cards ocultos" id="cards-adicionais">
