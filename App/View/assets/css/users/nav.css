@@ -5,10 +5,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 97.8%;
+    width: 100%;
     padding: 0 var(--default-padding);
-    opacity: 80%;
+    opacity: 100%;
     z-index: 2;
+    height: 75px;
 
     a {
         text-decoration: none;
@@ -44,20 +45,23 @@
         display: inline-flex;
     }
 
+    /*arrumar este*/
     .search {
         display: flex;
         align-items: center;
     }
 
+    /*arrumar este*/
     .search input {
         display: inline-flex;
         padding: 7px;
         border: none;
         border-radius: 10px 10px 10px 10px;
-        outline: nobne;
+        outline: none;
         width: 300px;
     }
 
+    /*arrumar este*/
     .search button {
         display: inline-flex;
         padding: 5px 10px;
