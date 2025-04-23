@@ -18,12 +18,8 @@
         .hidden {
             display: none !important;
         }
-    }
 
-      
     
-
-
     a {
         text-decoration: none;
         color: var(--accent-color);
