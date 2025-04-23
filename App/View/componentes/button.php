@@ -30,7 +30,7 @@ function buttonComponent($style, $content, $isSubmit = false, $link = null, $act
     
     // Se um link for fornecido, renderiza um elemento <a>
     if ($link !== null) {
-        echo "<a href='$link' class='$class' style='text-decoration: none; display: inline-block; padding: 8px 16px; border-radius: 6px; cursor: pointer;'>$content</a>";
+        echo "<a href='$link' class='$class'>$content</a>";
     } else {
         // Caso contrário, renderiza um <button>
         $formAction = $action !== null ? "formaction='$action'" : '';
