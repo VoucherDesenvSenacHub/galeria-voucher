@@ -21,15 +21,6 @@
     background-repeat: no-repeat;
 }
 
-.body-login {
-    margin: 0px;
-    padding: 0px;
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    background-image: linear-gradient(#000000, #003100);
-}
-
-
 .main-user {
     display: flex;
     flex-direction: column;
