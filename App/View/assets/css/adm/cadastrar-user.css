@@ -1,0 +1,93 @@
+* {
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    list-style: none;
+    border: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    display: flex;
+    font-family: Arial, sans-serif;
+  }
+  
+  .content {
+    background-color: #f2f2f2;
+    flex-grow: 1;
+    margin-top: 120px;
+  }
+  
+  @media (max-width: 1333px) and (max-height: 720px) {
+    nav {
+      flex-direction: column;
+      align-items: center; 
+      height: auto; 
+    }
+  
+    nav ul {
+      flex-direction: column; 
+      width: 100%; 
+      margin: 0;
+      padding: 0;
+    }
+  
+    nav ul li {
+      width: 100%;
+      list-style: none;
+      margin: 10px 0; 
+    }
+  
+    .imgvoucher {
+      margin: 0;
+      width: 100%; 
+      display: flex;
+      justify-content: center;
+    }
+  
+    .imgvoucher img {
+      max-width: 80%;
+    }
+  
+    .container {
+      flex-direction: column;
+    }
+  
+    .content {
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+      nav {
+        flex-direction: column; 
+        align-items: flex-start; 
+        height: auto; 
+      }
+    
+      nav ul {
+        flex-direction: column; 
+        width: 100%; 
+      }
+    
+      nav ul li {
+        width: 100%;
+      }
+    
+      .imgvoucher {
+        margin-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    
+      .container {
+        flex-direction: column;
+      }
+    
+      .content {
+        padding: 20px;
+      }
+  
+  }
+  

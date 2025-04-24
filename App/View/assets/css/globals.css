@@ -17,6 +17,8 @@
 @import url(adm/login.css);
 
 @import url(users/cadastrar-usuarios.css);
+@import url(adm/cadastrar-user.css);
+
 
 :root {
     --primary-color-button: #AEFF40;
