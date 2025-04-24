@@ -3,31 +3,13 @@ require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
   <body>
-    <div class="container"> 
-      <aside class="sidebar">
-        <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/voucher-logo.png" alt="Voucher Desenvolvedor">
-        <ul class="menu">
-          <li><a href="#">USUARIOS</a></li>
-          <li><a href="#">TURMAS</a></li>
-          <li>
-            <a href="#">ESTATÍSTICAS <i class="icon-lock"></i></a>
-          </li>
-        </ul>
-      </aside>
+    <?php 
+      require_once __DIR__ . "/../../componentes/adm/sidebar.php";
+    ?>
 
-      <header> 
-        <nav>>
-          <ul>
-            <li><a href="">HOME</a></li>
-            <li><a href="">TURMAS</a></li>
-            <li>
-              <a href="" class="botao-person">
-                <span class="material-symbols-outlined">person</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+    <?php 
+      require_once __DIR__ . "/../../componentes/adm/nav.php";
+    ?>
 
       <main class="content">
         <div class="user-profile">
