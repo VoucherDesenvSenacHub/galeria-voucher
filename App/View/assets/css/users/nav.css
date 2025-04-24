@@ -1,7 +1,7 @@
 .NavInicial {
     height: var(--nav-height);
     position: fixed;
-    background-color: var(--text-black);
+    background-color: var(--background-nav);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,15 +11,7 @@
     z-index: 2;
     height: 75px;
 
-    .NavInicial .search {
 
-          display: block; /* Visível por padrão */
-         }
-        .hidden {
-            display: none !important;
-        }
-
-    
     a {
         text-decoration: none;
         color: var(--accent-color);
