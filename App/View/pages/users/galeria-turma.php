@@ -78,7 +78,9 @@ require_once __DIR__ . "/../../componentes/head.php";
                         <h2>EDNALDO PEREIRA</h2>
                         <p>ORIENTADOR</p>
                         <div class="social-icons">
-                            <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+                        <span class="material-symbols-outlined">
+                            person
+                        </span>
                             <a href="#" target="_blank"><i class="bi bi-github"></i></a>
                         </div>
                     </div>
