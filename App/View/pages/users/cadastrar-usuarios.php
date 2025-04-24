@@ -11,7 +11,7 @@ require_once __DIR__ . "/../../componentes/head.php";
       require_once __DIR__ . "/../../componentes/adm/nav.php";
     ?>
 
-      <main class="content">
+      <main class="content-cadastrar-usuario">
         <div class="user-profile">
           <div class="user-icon"></div>
           <div class="user-name">NOME DO USUÁRIO</div>
