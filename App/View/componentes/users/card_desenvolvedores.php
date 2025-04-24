@@ -1,5 +1,5 @@
 <?php 
-    require_once "../head.php";
+    require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
 <div class="card-container">
