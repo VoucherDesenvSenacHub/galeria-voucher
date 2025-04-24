@@ -19,13 +19,13 @@ require_once __DIR__ . "/../../componentes/head.php";
         <h2>Cadastro</h2>
         <form>
           <div class="form-group">
-            <label for="nome">Nome Completo:</label>
-            <input type="text" id="nome" name="nome">
+            
+            <input type="text" placeholder="Nome Completo" id="nome" name="nome">
           </div>
 
           <div class="form-group">
-            <label for="data-nascimento">Data de Nascimento:</label>
-            <input type="date" id="data-nascimento" name="data-nascimento">
+            
+            <input type="date" placeholder="Data de Nascimento" id="data-nascimento" name="data-nascimento">
           </div>
 
           <div class="form-group">
@@ -76,10 +76,10 @@ require_once __DIR__ . "/../../componentes/head.php";
           </div>
           <div class="form-group">
             <label for="informacoes-adicionais">Sobre:</label>
-            <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="9" cols="110"></textarea>
+            <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140"></textarea>
           </div>
 
-          <div class="form-group">
+          <div class="form-group-buton">
             <button type="button" >Cancelar</button>
             <button type="submit"style="color:green">Cadastrar</button>
           </div>
