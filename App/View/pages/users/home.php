@@ -4,7 +4,6 @@ require_once __DIR__ . "/../../componentes/head.php";
 
     <body class="body-user">
         <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
-        <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
         
         <main class="main-user">
         <!-- Seção 1 -->

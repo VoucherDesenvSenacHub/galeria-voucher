@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . "/../../../Config/env.php";
+// require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
@@ -11,6 +11,12 @@ require_once __DIR__ . "/../../componentes/head.php";
         <h1 class="titulodev">DESENVOLVEDORES</h1>
         </div>
     </header>
+    <main class="main_dev">
+    <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; //componente da mira ?>
+        <div class="container">
+            <?php
+            // Defina o número de cards que você quer exibir
+            $numeroDeCards = 16;
 
     <main class="main_dev">
         <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; //componente da mira ?>
@@ -27,10 +33,7 @@ require_once __DIR__ . "/../../componentes/head.php";
             </div>
     </main>
 
-    <footer>
-        <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
+    <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
 
-    </footer>
-   
 </body>
 </html>
