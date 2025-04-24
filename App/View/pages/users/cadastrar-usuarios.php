@@ -33,11 +33,14 @@ require_once __DIR__ . "/../../componentes/head.php";
             <input type="email" id="email" name="email">
           </div>
 
-          <div class="form-group">
+          <div class="form-group-polo">
             <label for="polo">Polo:</label>
             <select id="polo" name="polo">
-              <option value="polo1">Polo 1</option>
-              <option value="polo2">Polo 2</option>
+              <option value="polo1">Campo Grande</option>
+              <option value="polo2">Tres Lagoas</option>
+              <option value="polo2">Dourados</option>
+              <option value="polo2">Corumba</option>
+              <option value="polo2">Ponta Pora</option>
             </select>
           </div>
 
@@ -56,6 +59,14 @@ require_once __DIR__ . "/../../componentes/head.php";
             <input type="tel" id="telefone" name="telefone">
           </div>
 
+          
+
+          <div class="form-group-imagem">
+            <label for="foto">Foto:</label>
+            <input type="file" id="foto" name="foto">
+          </div>
+
+
           <div class="form-group">
             <label for="status">Status:</label>
             <select id="status" name="status">
@@ -63,15 +74,9 @@ require_once __DIR__ . "/../../componentes/head.php";
               <option value="inativo">Inativo</option>
             </select>
           </div>
-
           <div class="form-group">
-            <label for="foto">Foto:</label>
-            <input type="file" id="foto" name="foto">
-          </div>
-
-          <div class="form-group">
-            <label for="informacoes-adicionais">Informações Adicionais:</label>
-            <textarea id="informacoes-adicionais" name="informacoes-adicionais"></textarea>
+            <label for="informacoes-adicionais">Sobre:</label>
+            <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="9" cols="110"></textarea>
           </div>
 
           <div class="form-group">

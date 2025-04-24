@@ -17,4 +17,15 @@ body {
     /* align-items: center; */
     background-color: #f9f9f9;
   }
- 
+  
+
+ .form-group-imagem{
+
+    margin-left: 500px;
+
+  }
+
+  .form-group-polo{
+
+    margin-left: 300px;
+  }
