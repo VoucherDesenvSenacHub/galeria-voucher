@@ -70,7 +70,7 @@
     /* imagem do mapa do estado */
     .mapa {
         width: 100%;
-        height: 130vh;
+        height: 100vh;
         display: flex;
         justify-content: right;
         padding-top: 60px;
