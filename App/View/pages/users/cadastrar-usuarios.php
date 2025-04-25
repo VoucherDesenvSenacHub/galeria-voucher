@@ -16,24 +16,25 @@ require_once __DIR__ . "/../../componentes/head.php";
 
     <div class="container">
       <div class="form-container">
-        <h2>Cadastro</h2>
-        <form>
+        <h1>Cadastro</h1>
+        <form class="form-dados">
           <div class="form-group">
             
-            <input type="text" placeholder="Nome Completo" id="nome" name="nome">
-          </div>
+            <input type="text" placeholder=" Nome Completo" id="nome" name="nome">
 
-          <div class="form-group">
+            <input type="email" placeholder=" Email" id="email" name="email">
+
+            <input type="url" id="linkedin" name="linkedin" placeholder=" Link do linkedin:">
             
-            <input type="date" placeholder="Data de Nascimento" id="data-nascimento" name="data-nascimento">
+            <input type="url" id="github" name="github" placeholder=" Link para o GitHub:">
+           
+            <input type="tel" id="telefone" name="telefone" placeholder=" Telefone:">
           </div>
 
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-          </div>
 
           <div class="form-group-polo">
+            <input type="date" placeholder="Data de Nascimento" id="data-nascimento" name="data-nascimento">
+
             <label for="polo">Polo:</label>
             <select id="polo" name="polo">
               <option value="polo1">Campo Grande</option>
@@ -42,21 +43,16 @@ require_once __DIR__ . "/../../componentes/head.php";
               <option value="polo2">Corumba</option>
               <option value="polo2">Ponta Pora</option>
             </select>
-          </div>
 
-          <div class="form-group">
-            <label for="linkedin">Link do LinkedIn:</label>
-            <input type="url" id="linkedin" name="linkedin">
-          </div>
+            <label for="turma">Turma:</label>
+            <select id="turma" name="turma">
+              <option value="turma1">Turma 144</option>
+              <option value="turma2">Turma 145</option>
+              <option value="turma3">Turma 146</option>
+              <option value="turma4">Turma 147</option>
+              <option value="turma5">Turma 148 </option>
+            </select>
 
-          <div class="form-group">
-            <label for="github">Link para o GitHub:</label>
-            <input type="url" id="github" name="github">
-          </div>
-
-          <div class="form-group">
-            <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone">
           </div>
 
           
@@ -64,26 +60,23 @@ require_once __DIR__ . "/../../componentes/head.php";
           <div class="form-group-imagem">
             <label for="foto">Foto:</label>
             <input type="file" id="foto" name="foto">
-          </div>
 
-
-          <div class="form-group">
             <label for="status">Status:</label>
             <select id="status" name="status">
               <option value="ativo">Ativo</option>
               <option value="inativo">Inativo</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="informacoes-adicionais">Sobre:</label>
-            <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140"></textarea>
-          </div>
-
-          <div class="form-group-buton">
-            <button type="button" >Cancelar</button>
-            <button type="submit"style="color:green">Cadastrar</button>
-          </div>
         </form>
+        <div class="form-group">
+          <label for="informacoes-adicionais">Sobre:</label>
+          <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140"></textarea>
+        </div>
+
+        <div class="form-group-buton">
+          <button type="button" >Cancelar</button>
+          <button type="submit"style="color:green">Cadastrar</button>
+        </div>
       </div>
     </div>
   </main>

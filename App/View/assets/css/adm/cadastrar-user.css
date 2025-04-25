@@ -3,6 +3,55 @@ body {
     background-color: #d6caca;
   }
   
+
+  .form-dados{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    border: 1px solid red;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+
+    .form-group{
+      width: 40%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      
+      gap: 10px;
+      input{
+        height: 3rem;
+        border-radius: 80px;
+        border: 2px solid;
+      }
+    }
+
+    .form-group-polo{
+      width: 20%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      
+      gap: 10px;
+      input{
+        height: 3rem;
+        border-radius: 80px;
+        border: 2px solid;
+      }
+
+      select{
+        height: 3rem;
+        border-radius: 80px;
+        border: 2px solid;
+      }
+    }
+  }
+  
+
   main.conteudo-cadastro {
     margin-left: 20px; /* largura estimada da sidebar */
     margin-top: 100px;  /* altura estimada da nav */
@@ -21,16 +70,27 @@ body {
 
  .form-group-imagem{
 
-    margin-left: 500px;
+    /* margin-left: 500px; */
     margin-right: 2px;
+    display: flex;
+    flex-direction: column;
+
+    select{
+      height: 3rem;
+      border-radius: 80px;
+      border: 2px solid;
+    }
 
   }
 
   .form-group-polo{
-
-    margin-left: 300px;
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 300px; */
   }
 
   .form-group-buton{
+    display: flex;
+    flex-direction: column;
     margin-left:700px ;
   }

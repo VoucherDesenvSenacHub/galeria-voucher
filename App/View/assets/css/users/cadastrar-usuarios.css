@@ -17,7 +17,7 @@
     flex-grow: 1;
     margin-top: 120px;
   }
-  
+
   @media (max-width: 1333px) and (max-height: 720px) {
     nav {
       flex-direction: column;
@@ -90,4 +90,3 @@
       }
   
   }
-  .
