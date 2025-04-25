@@ -1,15 +1,17 @@
-
-
-
-/* AQUI TERMINA COMEÇA A NAVBAR */
-
-/* Aqui começa o Login */
-
 /* Geral */
 
-.main-login{
-    width: 100vw;
+.body-login {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, sans-serif;
     height: 100vh;
+    background-image: linear-gradient(#000000, #003100);
+}
+
+.main-login{
+    padding-top: 20rem;
+    width: 100vw;
+    height: calc(100vh - 85px);
 }
 
 .main-login .form{
@@ -62,21 +64,3 @@
     margin-top: 30px;
     text-align: center;
 }
-
-/* .form-action button {
-    width: 35%;
-    padding: 5px;
-    font-family: "Bebas Neue", sans-serif;
-    letter-spacing: 1px;
-   
-    color: #003100;
-    background-color: #aEFF40;
-    border: none;
-    border-radius: 50px 50px 50px 50px;
-    cursor: pointer;
-}
-
-.form-action button:hover {
-    background-color: #005e00;
-}
-*/

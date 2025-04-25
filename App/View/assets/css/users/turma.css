@@ -1,0 +1,103 @@
+
+.ver-mais-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudotodo {
+    position: relative;
+}
+
+/* turma titulo h1 -- ok */
+
+.turmatitulo h1{
+    margin-top: 100px;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-size: 40px;
+    padding: 15px 10px;
+    font-family: bebas neue;
+    margin-bottom: 40px;
+}
+/* turma titulo h1  -- ok */
+
+/* cards testando --ok */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: space-around;
+}
+
+.ocultos {
+    display: none;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card-turma {
+    display: block;
+    width: 200px; /* Ajuste a largura do card conforme necessário */
+    height: 220px;
+    border: 1px solid var(--accent-color); /* Borda do card */
+    padding: 10px; /* Espaçamento dentro do card */
+    text-align: center;
+    text-decoration: none;
+    background-color: black; /* Cor de fundo do card */
+    border-radius: 30px;  
+}
+
+.card-content {
+    position: relative;
+}
+
+.card-title {
+    font-size: 18px; /* Tamanho do título */
+    margin-bottom: 10px; /* Espaço entre o título e a imagem */
+    color: var(--accent-color); /* Cor do título - amarelo */
+    font-family: "bebas neue";
+}
+
+.card-image {
+    width: 100%; /* A imagem ocupará 100% da largura do card */
+    height: 160px; /* A altura será ajustada proporcionalmente */
+    max-height: 160px; /* Limita a altura máxima da imagem */
+    object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
+    border-radius: 10px;
+    border: 1px solid var(--accent-color); /* Borda do card */
+}
+/* cards testando --ok */
+
+
+/* agora o vermais icon --ok  */
+.vermais {
+    text-align: center; /* Centraliza o conteúdo horizontalmente */
+    margin-top: 20px;
+    color: rgb(237, 246, 237);
+    font-size: 30px;
+    font-family: "bebas neue";
+    margin-bottom: 10px;
+    padding: 15px 10px;
+}
+
+.vermais h3 {
+    margin-bottom: 10px; /* Adiciona um pequeno espaço entre o título e o ícone */
+    font-size: 30px;
+    font-family: "bebas neue";
+    cursor: pointer;
+}
+
+.vermais span {
+    font-size: 30px; /* Tamanho do ícone */
+    color: rgb(237, 246, 237);
+    cursor: pointer;
+}
+
+
+/* agora o vermais icon --ok  */
+
