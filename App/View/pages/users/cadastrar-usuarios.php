@@ -35,8 +35,8 @@ require_once __DIR__ . "/../../componentes/head.php";
           <div class="form-group-polo">
             <input type="date" placeholder="Data de Nascimento" id="data-nascimento" name="data-nascimento">
 
-            <label for="polo">Polo:</label>
             <select id="polo" name="polo">
+              <option value="">Polo:</option>
               <option value="polo1">Campo Grande</option>
               <option value="polo2">Tres Lagoas</option>
               <option value="polo2">Dourados</option>
@@ -44,8 +44,8 @@ require_once __DIR__ . "/../../componentes/head.php";
               <option value="polo2">Ponta Pora</option>
             </select>
 
-            <label for="turma">Turma:</label>
             <select id="turma" name="turma">
+              <option value="">Turma:</option>
               <option value="turma1">Turma 144</option>
               <option value="turma2">Turma 145</option>
               <option value="turma3">Turma 146</option>
