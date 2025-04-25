@@ -48,12 +48,12 @@
   font-size: var(--height-button);
 }
 
-img{
-  padding: 0px;
-  width: 160px;
-  height: 40px;
-}
-
 .imgvoucher{
   padding-left: 40px;
+
+  img{
+    padding: 0px;
+    width: 160px;
+    height: 40px;
+  }
 }
