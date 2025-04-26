@@ -103,6 +103,7 @@
 }
 .social-icons {
     margin-top: 10px;
+    display: flex;
 }
 .social-icons a {
     color: #AEFF40;
