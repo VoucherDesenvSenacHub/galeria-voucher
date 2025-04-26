@@ -9,8 +9,6 @@
 
                 <input class="pesquisa" type="text" placeholder="Pesquisar">
 
-                <button>&#128269;</button>
-
             </div>
 
         </div>

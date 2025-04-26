@@ -61,7 +61,7 @@
         width: 300px;
     }
 
-    /*arrumar este*/
+    /* arrumar este
     .search button {
         display: inline-flex;
         padding: 5px 10px;
@@ -70,5 +70,5 @@
         background-color: var(--white-background);
         cursor: pointer;
         margin-left: -40px;
-    }
+    } */
 }

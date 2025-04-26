@@ -5,18 +5,14 @@ require_once __DIR__ . "/../../componentes/head.php";
 <body class="body-user">
     <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
-
-    <main class="main-user">
-    <body class="body-user">
-        <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
         
-        <main class="main-user">
+    <main class="main-user">
         <!-- Seção 1 -->
         <section id="secao1">
             <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; //componente da mira ?>
 
             <div class="content">
-                <div class="numero">
+                <div class="numeros">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/numeros.png"
                         alt="Números">
                 </div>
@@ -26,7 +22,7 @@ require_once __DIR__ . "/../../componentes/head.php";
                         alt="Voucher Desenvolvedor">
                 </div>
 
-                <div class="mapa">
+                <div class="mapa-estado">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/mapa.png"
                         alt="Mapa do Brasil">
                 </div>
