@@ -7,7 +7,6 @@
     rgba(0, 0, 0, 0.97),
     rgba(0, 0, 0, 0.9),
     #0d9c0d,
-    rgba(0, 0, 0, 0.93),
     #0d9c0d,
     rgba(0, 0, 0, 0.96),
     rgba(0, 0, 0, 0.95),
@@ -25,14 +24,13 @@
 .main-user {
   display: flex;
   flex-direction: column;
-  min-height: 320vh;
+  min-height: 240vh;
   /* Ajuste conforme necessário */
   padding: 0px;
   margin: 0px;
 }
 
 .main-user section {
-  flex: 1;
   /* Cada seção ocupa o espaço disponível */
   display: flex;
   /* align-items: center; */
@@ -91,12 +89,10 @@
 
 /* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
-  min-height: 80vh;
-
   .container {
+    height: 100%;
     display: flex;
     gap: 5rem;
-    margin-top: 2rem;
     justify-content: center;
 
     .card {
@@ -106,17 +102,18 @@
       border-left: 2px solid#073e07;
       border-right: 2px solid#073e07;
       border-radius: 10px;
-      max-width: 280px;
+      max-width: 300px;
       text-align: justify;
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
       /* Sombra sutil */
       overflow: hidden;
       /* Esconde o texto que sai do cartão */
-      transition: height 0.3s ease-in-out;
       /* Animação para expandir */
-      height: 85px;
       padding: var(--default-padding);
       z-index: 1;
+      max-height: 85px;
+      overflow: hidden;
+      transition: max-height 0.6s ease, box-shadow 0.3s ease;
     }
 
     h2 {
@@ -144,7 +141,7 @@
 
     /* Ao passar o mouse sobre o cartão */
     .card:hover {
-      height: 80%;
+      max-height: 500px;
       /* Expande o cartão para exibir o texto */
     }
 
@@ -160,6 +157,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding-top: 10rem;
 
   .container2 {
     background: transparent;
@@ -216,6 +214,7 @@
 
 #secao4 {
   flex-direction: column;
+  padding-top: 10rem;
 
   .call-to-action {
     font-family: var(--font-secondary);
