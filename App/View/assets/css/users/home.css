@@ -44,7 +44,10 @@
 /* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
   .content {
-    position: relative; /* para posicionar elementos absolutos */
+    display: flex;
+    align-items: center;
+    /* position: relative;  */
+    /* para posicionar elementos absolutos */
   }
 
   /* imagem dos números */
@@ -60,21 +63,23 @@
 
   /* imagem do logo */
   .nome-voucher {
-    position: absolute;
     width: 100%;
     top: calc(25vh + 6.3vw);
     text-align: center;
   }
 
   /* imagem do mapa do estado */
+
   .mapa {
+    position: absolute;
+    padding-right: 31rem;
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     display: flex;
     justify-content: right;
-    padding-top: 60px;
+    padding-top: 2rem;
     opacity: 50%;
-  }
+}
 }
 
 /* cards (O que é?, Para quem é?, Porque fazer?) */
