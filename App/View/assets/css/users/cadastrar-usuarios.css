@@ -24,6 +24,12 @@
     
   }
   
+  
+  .container-users h1 {
+    font-size: 39px;
+  }
+
+
   .content {
     background-color: #f2f2f2;
     flex-grow: 1;
