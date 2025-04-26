@@ -73,6 +73,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 
             <label for="status">Status:</label>
             <select id="campo-status" name="status">
+              <option value="">Status:</option>
               <option value="ativo">Ativo</option>
               <option value="inativo">Inativo</option>
             </select>
