@@ -16,8 +16,8 @@ require_once __DIR__ . "/../../componentes/head.php";
    
    
 
-    <div class="container">
-      <div class="form-container">
+    <div class="container-users">
+      <div class="form-container-users">
         <h1>Cadastro</h1>
         <form class="form-dados">
           <div class="form-group">
@@ -73,7 +73,7 @@ require_once __DIR__ . "/../../componentes/head.php";
           </div>
         </form>
         <div class="form-group-about">
-          <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140" placeholder="" ></textarea>
+          <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140" placeholder="Digite algo sobre o docente..." ></textarea>
         </div>
 
         <div class="form-group-buton">
