@@ -16,6 +16,8 @@
 @import url(adm/main.css);
 @import url(adm/home-adm.css);
 @import url(adm/login.css);
+@import url(adm/sobre.css);
+
 
 :root {
     --primary-color-button: #AEFF40;
