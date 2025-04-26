@@ -25,7 +25,7 @@
 .main-user {
   display: flex;
   flex-direction: column;
-  height: 400vh;
+  min-height: 320vh;
   /* Ajuste conforme necessário */
   padding: 0px;
   margin: 0px;
@@ -43,9 +43,13 @@
 
 /* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
+  min-height: 100vh;
+
   .content {
     display: flex;
     align-items: center;
+    overflow: hidden;
+    width: 100%;
     /* position: relative;  */
     /* para posicionar elementos absolutos */
   }
@@ -53,12 +57,16 @@
   /* imagem dos números */
   .numero {
     position: absolute;
-    width: 540px;
-    height: 50px;
-    padding-left: 390px;
+    width: 100%;
+    height: 50rem;
+    text-align: right;
     opacity: 20%;
-    top: 20px;
-    overflow: visible;
+    overflow: hidden;
+    padding-left: 5rem;
+
+    img {
+      padding-left:  45rem;
+    }
   }
 
   /* imagem do logo */
@@ -72,7 +80,6 @@
 
   .mapa {
     position: absolute;
-    padding-right: 31rem;
     width: 100%;
     height: 110vh;
     display: flex;
@@ -84,6 +91,8 @@
 
 /* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
+  min-height: 80vh;
+
   .container {
     display: flex;
     gap: 5rem;
@@ -114,12 +123,14 @@
       color: var(--accent-color);
       /* Verde do título */
       margin-bottom: 5px;
+      padding: .5rem;
       font-family: var(--font-secondary);
       font-size: 210%;
       text-align: center;
     }
 
     .card p {
+      padding: .5rem;
       font-family: var(--font-primary);
       font-size: 14px;
       line-height: 1.5;
@@ -133,7 +144,7 @@
 
     /* Ao passar o mouse sobre o cartão */
     .card:hover {
-      height: 60%;
+      height: 80%;
       /* Expande o cartão para exibir o texto */
     }
 
