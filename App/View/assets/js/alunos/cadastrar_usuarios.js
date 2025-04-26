@@ -27,6 +27,14 @@ fileInput.addEventListener('change', function () {
     btnInativo.classList.remove('active');
   }
 
+  window.addEventListener('load', () => {
+    toggleActive(btnDocente, btnAluno);
+    campoTurma.style.display = 'none'; 
+    campoStatus.style.display = 'block'; 
+   
+    document.getElementById("informacoes-adicionais").placeholder = "Digite algo sobre o docente...";
+  });
+
   btnDocente.addEventListener('click', () => {
     toggleActive(btnDocente, btnAluno);
     campoTurma.style.display = 'none';

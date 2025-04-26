@@ -3,6 +3,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 
 ?>
 
+
 <body>
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
@@ -13,7 +14,10 @@ require_once __DIR__ . "/../../componentes/head.php";
       <div><button id="btn-docente">DOCENTE</button></div>
       <div><button id="btn-aluno" >ALUNOS</button></div>
     </div>
+    
    
+
+    
    
 
     <div class="container-users">
@@ -84,6 +88,8 @@ require_once __DIR__ . "/../../componentes/head.php";
     </div>
   </main>
 
-  <script src="../../assets/js/alunos/cadastrar_usuarios.js"></script>
+  <!-- <script src="../../assets/js/alunos/cadastrar_usuarios.js"></script> -->
+
+  <script src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_JS'] . 'alunos/cadastrar_usuarios.js'; ?>"></script>
 </body>
 </html>

@@ -7,6 +7,16 @@
     box-sizing: border-box;
   }
   
+
+  /* PRA INICIAR ATIVO*/
+  #btn-docente.active,
+  #btn-aluno.active {
+    background-color: #28a745; /* Cor verde */
+    color: white;
+    border: none;
+  }
+
+
   .container-users {
     display: flex;
     font-family: Arial, sans-serif;
