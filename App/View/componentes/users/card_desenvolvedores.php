@@ -1,7 +1,3 @@
-<?php 
-    require_once "../head.php";
-?>
-
 <div class="card-container">
                 <div class="image-dev">
                     <img src="../../assets/img/utilitarios/img_card_dev_exemplo.jpg" alt="Foto de Perfil">
