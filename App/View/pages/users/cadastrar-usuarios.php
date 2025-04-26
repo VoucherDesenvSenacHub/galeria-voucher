@@ -8,11 +8,12 @@ require_once __DIR__ . "/../../componentes/head.php";
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
   <main class="conteudo-cadastro">
-  <div class="user-profile">
+    <div class="user-profile">
       <div class="user-icon"></div>
-      <div><button>DOCENTE</button</div>
-      <div><button>ALUNOS</button</div>
+      <div><button id="btn-docente">DOCENTE</button></div>
+      <div><button id="btn-aluno" >ALUNOS</button></div>
     </div>
+   
    
 
     <div class="container">
@@ -45,7 +46,7 @@ require_once __DIR__ . "/../../componentes/head.php";
               <option value="polo2">Ponta Pora</option>
             </select>
 
-            <select id="turma" name="turma">
+            <select id="campo-turma" name="turma">
               <option value="">Turma:</option>
               <option value="turma1">Turma 144</option>
               <option value="turma2">Turma 145</option>
@@ -65,14 +66,14 @@ require_once __DIR__ . "/../../componentes/head.php";
             </div>
 
             <label for="status">Status:</label>
-            <select id="status" name="status">
+            <select id="campo-status" name="status">
               <option value="ativo">Ativo</option>
               <option value="inativo">Inativo</option>
             </select>
           </div>
         </form>
         <div class="form-group-about">
-          <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140" placeholder="Sobre o docente:" ></textarea>
+          <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140" placeholder="" ></textarea>
         </div>
 
         <div class="form-group-buton">

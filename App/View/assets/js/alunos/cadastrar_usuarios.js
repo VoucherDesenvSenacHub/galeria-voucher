@@ -15,7 +15,7 @@ fileInput.addEventListener('change', function () {
   }
 });
 
-const btnDocente = document.getElementById('btn-docente');
+  const btnDocente = document.getElementById('btn-docente');
   const btnAluno = document.getElementById('btn-aluno');
   const campoTurma = document.getElementById('campo-turma');
   const campoStatus = document.getElementById('campo-status');
@@ -31,14 +31,19 @@ const btnDocente = document.getElementById('btn-docente');
     toggleActive(btnDocente, btnAluno);
     campoTurma.style.display = 'none';
     campoStatus.style.display = 'block';
-    labelSobre.textContent = '';
-    textareaSobre.value = 'Sobre o docente:';
+    // labelSobre.textContent = '';
+    // textareaSobre.value = 'Sobre o docente:';
+    
+    document.getElementById("informacoes-adicionais").placeholder = "Digite algo sobre o docente...";
+
   });
 
   btnAluno.addEventListener('click', () => {
     toggleActive(btnAluno, btnDocente);
     campoTurma.style.display = 'block';
     campoStatus.style.display = 'none';
-    labelSobre.textContent = '';
-    textareaSobre.value = ' Sobre o aluno:';
+    // labelSobre.textContent = '';
+    // textareaSobre.value = ' Sobre o aluno:';
+
+    document.getElementById("informacoes-adicionais").placeholder = "Digite algo sobre o aluno...";
   });
