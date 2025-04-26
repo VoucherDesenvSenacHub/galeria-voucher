@@ -14,3 +14,31 @@ fileInput.addEventListener('change', function () {
     reader.readAsDataURL(file);
   }
 });
+
+const btnDocente = document.getElementById('btn-docente');
+  const btnAluno = document.getElementById('btn-aluno');
+  const campoTurma = document.getElementById('campo-turma');
+  const campoStatus = document.getElementById('campo-status');
+  const textareaSobre = document.getElementById('informacoes-adicionais');
+  const labelSobre = document.getElementById('label-sobre');
+
+  function toggleActive(btnAtivo, btnInativo) {
+    btnAtivo.classList.add('active');
+    btnInativo.classList.remove('active');
+  }
+
+  btnDocente.addEventListener('click', () => {
+    toggleActive(btnDocente, btnAluno);
+    campoTurma.style.display = 'none';
+    campoStatus.style.display = 'block';
+    labelSobre.textContent = '';
+    textareaSobre.value = 'Sobre o docente:';
+  });
+
+  btnAluno.addEventListener('click', () => {
+    toggleActive(btnAluno, btnDocente);
+    campoTurma.style.display = 'block';
+    campoStatus.style.display = 'none';
+    labelSobre.textContent = '';
+    textareaSobre.value = ' Sobre o aluno:';
+  });
