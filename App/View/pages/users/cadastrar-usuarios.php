@@ -83,15 +83,16 @@ require_once __DIR__ . "/../../componentes/head.php";
         </div>
 
         <div class="form-group-buton">
+        <div>
           <button type="button" >Cancelar</button>
           <button type="submit"style="color:green">Cadastrar</button>
         </div>
+        
       </div>
     </div>
   </main>
 
-  <!-- <script src="../../assets/js/alunos/cadastrar_usuarios.js"></script> -->
-
+ 
   <script src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_JS'] . 'alunos/cadastrar_usuarios.js'; ?>"></script>
 </body>
 </html>
