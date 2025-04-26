@@ -11,8 +11,8 @@
   /* PRA INICIAR ATIVO*/
   #btn-docente.active,
   #btn-aluno.active {
-    background-color: #28a745; /* Cor verde */
-    color: white;
+    background-color: #acfd3e; /* Cor verde */
+    color: black;
     border: none;
   }
 
@@ -20,6 +20,8 @@
   .container-users {
     display: flex;
     font-family: Arial, sans-serif;
+    
+    
   }
   
   .content {
