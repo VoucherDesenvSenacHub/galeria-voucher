@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__ . "/../../componentes/head.php";
+
 ?>
 
 <body>
@@ -55,11 +56,13 @@ require_once __DIR__ . "/../../componentes/head.php";
 
           </div>
 
-          
-
           <div class="form-group-imagem">
-            <label for="foto">Foto:</label>
-            <input type="file" id="foto" name="foto">
+            <div class="input-file-cadastro">
+              <label class="input-file-wrapper">
+                <img id="preview" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/avatar.png" alt="Upload" />
+                <input type="file" id="fileInput" accept="image/*" />
+              </label>
+            </div>
 
             <label for="status">Status:</label>
             <select id="status" name="status">
@@ -68,9 +71,8 @@ require_once __DIR__ . "/../../componentes/head.php";
             </select>
           </div>
         </form>
-        <div class="form-group">
-          <label for="informacoes-adicionais">Sobre:</label>
-          <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140"></textarea>
+        <div class="form-group-about">
+          <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140" placeholder="Sobre o docente:" ></textarea>
         </div>
 
         <div class="form-group-buton">
@@ -80,5 +82,7 @@ require_once __DIR__ . "/../../componentes/head.php";
       </div>
     </div>
   </main>
+
+  <script src="../../assets/js/alunos/cadastrar_usuarios.js"></script>
 </body>
 </html>
