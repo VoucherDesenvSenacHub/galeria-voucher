@@ -1,6 +1,6 @@
 <?php 
 require_once __DIR__ . "/../../../Config/env.php";
-require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../componentes/head.php"; 
 
 
 
@@ -10,7 +10,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 ?>
 <body class="body_dev">
     <header class="header_dev">
-        <button href="#" class="voltar">VOLTAR</button>
+    <?php buttonComponent('primary', 'VOLTAR'); ?>
         <div class="titulo-pagina">
             <h1 class="titulodev">DESENVOLVEDORES</h1>
         </div>
