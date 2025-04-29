@@ -122,3 +122,8 @@ body {
     flex-direction: column;
     margin-left:700px ;
   }
+
+  #btn-docente{
+    width: 300px;
+    margin-bottom: 500px;
+  }

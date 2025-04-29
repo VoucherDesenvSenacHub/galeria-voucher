@@ -16,12 +16,8 @@ require_once __DIR__ . "/../../componentes/head.php";
       <button id="btn-aluno" >ALUNOS</button></div></div>
 
     </div>
-    
-   
 
     
-   
-
     <div class="container-users">
       <div class="form-container-users">
         <h1>Cadastro</h1>
