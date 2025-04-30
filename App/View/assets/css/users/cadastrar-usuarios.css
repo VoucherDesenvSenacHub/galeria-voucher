@@ -36,11 +36,6 @@
     background-color: #C2C2C2;
   }
 
-  #btn-docente:active {
-    border: 2px solid;
-  }
-
-
 
   @media (max-width: 1333px) and (max-height: 720px) {
     nav {
