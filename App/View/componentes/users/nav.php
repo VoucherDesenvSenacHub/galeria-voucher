@@ -7,8 +7,10 @@
 
             <div class="search">
 
-                <input class="pesquisa" type="text" placeholder="Pesquisar">
-
+                <?php if (!isset($esconderPesquisa) || 
+                !$esconderPesquisa) { ?>
+                    <input class="pesquisa" type="text" placeholder="Pesquisar">
+                    <?php } ?>
             </div>
 
         </div>
