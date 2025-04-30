@@ -9,7 +9,7 @@
         display: flex;
         justify-content: center;
         gap:2rem;
-        /* background-color: #ccc; */
+        background-color: #ccc;
     }
 
     .tab {
@@ -53,10 +53,12 @@
         width: 90%;
         padding: 15px;
         margin-bottom: 20px;
-        border: 2px solid #333;
+        border: 1px solid #000;
         border-radius: 30px;
         background-color: #e5e9e4;
         font-size: 16px;
+        margin: 0px;
+        font-weight: bold;
     }
 
     .profile-pic {
@@ -74,7 +76,7 @@
         background-color: #e5e9e4;
         padding: 20px;
         object-fit: contain;
-        border: 2px solid #333;
+        border: 1px solid #333;
     }
 }
 
@@ -91,7 +93,7 @@ h1 {
 .field-group {
     background-color: #e8ece8;
     border: 2px solid black;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 10px;
     flex: 1 1 45%;
     display: flex;
@@ -104,41 +106,84 @@ h1 {
     margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
+    margin-left: 70px;
   }
 
   .form-container-sobre {
     display: flex;
     gap: 40px;
+    margin-left: 70px;
   }
 
-  .input-group-sobre {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .input-field{
-    border: 3px solid black;
-  }
-
+  .input-group-sobre,
   .input-group-sobre-big{
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width: 600px;
+   
+    
   }
+
+  .input-field{
+    border: 1px solid black;
+    
+  }
+
 
   .input-field, .textarea-field {
     background-color: #d9ddd9;
-    border: 3px solid black;
+    border: 1px solid black;
     border-radius: 25px;
     padding: 10px 15px;
     font-size: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 500px;
   }
 
   .textarea-field {
     height: 150px;
     resize: none;
     border-radius: 20px;
+  }
+
+  .link-projeto {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+
+  .input-projeto {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: #cccccc;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .input-projeto::placeholder {
+    color: #666;
+  }
+
+  .btn-novos-projeto{
+    display: flex;
+    align-items: center;
+    background-color: #b5ff22;
+    border: 1px solid black;
+    border-radius: 40px;
+    padding: 20px 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 24px;
+    cursor: pointer;
+    width: 250px;
+    font-size: 2rem;
+    color: #007b19;
   }

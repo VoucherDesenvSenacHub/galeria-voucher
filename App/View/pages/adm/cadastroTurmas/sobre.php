@@ -24,13 +24,19 @@ require_once __DIR__ . "/../../../componentes/head.php";
                 <input type="text" class="input-field" placeholder="Dia P">
                 <textarea class="textarea-field" placeholder="Sobre:"></textarea>
                 <input type="text" class="input-field" placeholder="Projeto XX">
+                <textarea class="textarea-field" placeholder="Sobre:"></textarea>
                 </div>
+
                 <div class="input-group-sobre-big">
                 <input type="text" class="input-field" placeholder="Dia I">
                 <textarea class="textarea-field" placeholder="Sobre:"></textarea>
                 <input type="text" class="input-field" placeholder="Dia E">
                 <textarea class="textarea-field" placeholder="Sobre:"></textarea>
                 </div>
+            </div>
+            <div class="link-projeto">
+            <input type="text" class="input-projeto" placeholder="Link de Projeto:">
+            <button class="btn-novos-projeto">NOVOS PROJETOS</button>
             </div>
         </main> 
     </div> 
