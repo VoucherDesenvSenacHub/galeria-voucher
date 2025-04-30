@@ -2,7 +2,7 @@
    require_once(__DIR__ . '/../../componentes/head.php');
 ?>
 
-<body>
+<body class="body-login">
 
     <?php 
         $esconderPesquisa = true;
