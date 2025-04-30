@@ -1,15 +1,15 @@
 .NavInicial {
     height: var(--nav-height);
     position: fixed;
-    background-color: var(--text-black);
+    background-color: var(--background-nav);
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 0 var(--default-padding);
-    opacity: 80%;
     z-index: 2;
     top: 0;
+
 
     a {
         text-decoration: none;
