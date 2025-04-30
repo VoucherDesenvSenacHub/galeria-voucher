@@ -56,6 +56,13 @@ require_once __DIR__ . "/../../componentes/head.php";
                     text-transform: uppercase;
                 }
 
+                .pesquisa-container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px;
+                }
+
 
                 .pesquisar {
                     width: 250px;
@@ -70,12 +77,32 @@ require_once __DIR__ . "/../../componentes/head.php";
                     justify-content: flex-start;
                 }
 
+                .table-docente{
+                    max-height: 486.8px; /* Ajuste conforme a altura da tabela para rolar o scroll */
+                    overflow-y: auto;
+                    display: block;
+                }
+
                 .docente-table {
                     width: 100%;
                     border-collapse: collapse;
                     background: #fff;
                     margin-top: 10px;
                     border: 1px solid #ccc;
+                }
+
+                .docente-table thead th {
+                    position: sticky; /* Ajuste para thead ficar fixo e não rolar com scroll */
+                    top: 0;
+                    background-color: #fff;
+                    z-index: 2;
+                    border: 1px solid #ccc;
+                    padding: 8px;
+                }
+
+                .docente-table tbody td {
+                    border: 1px solid #ccc;
+                    padding: 8px;
                 }
 
                 .docente-table th, .docente-table td {
@@ -114,34 +141,65 @@ require_once __DIR__ . "/../../componentes/head.php";
                     <button class="tab">ALUNOS</button>
                 </div>
 
-                <div class="">
+                <div class="pesquisa-container">
                     <button class="btn-novo-docente">NOVO DOCENTE</button>
                     <input type="text" class="pesquisar" placeholder="Pesquisar">
                 </div>
 
-                <table class="docente-table">
-                    <thead>
-                        <tr>
-                            <th>NOME</th>
-                            <th>TIPO</th>
-                            <th>EDITAR</th>
-                            <th>INATIVAR</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Anuar</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>pessoa</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>Deutrano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>Urano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>Murano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>Surano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>Tirano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>Borano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>Carano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>Omano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                        <tr><td>Cariano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
-                    </tbody>
-                </table>
+                <div class="table-docente">
+                    <table class="docente-table">
+                        <thead>
+                            <tr>
+                                <th>NOME</th>
+                                <th>TIPO</th>
+                                <th>EDITAR</th>
+                                <th>INATIVAR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Anuar</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>pessoa</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Deutrano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Urano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Murano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>favor</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Tirano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Borano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Carano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Omano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Cariano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Lorano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Norano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Zorano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Jorano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Mariano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Verano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Ferano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Berano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Xarano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Yurano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Pelano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Delano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Kelano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Relano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Solano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Colano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Galano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Zelano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Talano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Malano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Valano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Falano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Ralano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Halano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Silano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Nolano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Filano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                            <tr><td>Milano</td><td>Docente</td><td><i class="editar-icon"></i></td><td><i class="inativar-icon"></i></td></tr>
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
 
         </main>
