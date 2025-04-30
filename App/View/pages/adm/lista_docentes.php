@@ -15,7 +15,6 @@ require_once __DIR__ . "/../../componentes/head.php";
             <style>
                 .docente-container {
                     background: #ffffff;
-                    padding: 20px;
                     border-radius: 10px;
                     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
                     margin-top: 4vh;
@@ -25,29 +24,29 @@ require_once __DIR__ . "/../../componentes/head.php";
                     display: flex;
                     align-items: center;
                     margin-bottom: 20px;
-                    gap: 10px;
                 }
 
                 .tab {
-                    background: #d9d9d9;
-                    border: 1px solid black;
-                    padding: 10px 40px;
+                    padding: 15px 30px;
                     font-weight: bold;
-                    font-size: 16px;
+                    font-size: 2rem;
+                    border: 2px solid;
                     cursor: pointer;
-                    border-radius: 20px 20px 0 0;
-                    color: black;
+                    background-color: #ccc;
+                    transition: 0.3s;
+                    height: 4rem;
+                    width: 20rem;
+                    border-radius: 5px;
                 }
 
                 .tab.active {
-                    background: #c2ff7f;
-                    border: 2px solid black;
-                    border-bottom: none;
+                    background-color: #c3ff3e;
+                    border-radius: 5px;
                 }
 
                 .btn-novo-docente {
                     background: #c2ff7f;
-                    padding: 8px 20px;
+                    padding-top: 3px;
                     margin: 10px 0;
                     border: 2px solid black;
                     font-weight: bold;
@@ -56,6 +55,7 @@ require_once __DIR__ . "/../../componentes/head.php";
                     font-size: 16px;
                     text-transform: uppercase;
                 }
+
 
                 .pesquisar {
                     width: 250px;
@@ -66,6 +66,8 @@ require_once __DIR__ . "/../../componentes/head.php";
                     background: #e9efe9;
                     outline: none;
                     font-size: 14px;
+                    display: flex; 
+                    justify-content: flex-start;
                 }
 
                 .docente-table {
@@ -112,9 +114,10 @@ require_once __DIR__ . "/../../componentes/head.php";
                     <button class="tab">ALUNOS</button>
                 </div>
 
-                <button class="btn-novo-docente">NOVO DOCENTE</button>
-
-                <input type="text" class="pesquisar" placeholder="Pesquisar">
+                <div class="">
+                    <button class="btn-novo-docente">NOVO DOCENTE</button>
+                    <input type="text" class="pesquisar" placeholder="Pesquisar">
+                </div>
 
                 <table class="docente-table">
                     <thead>
