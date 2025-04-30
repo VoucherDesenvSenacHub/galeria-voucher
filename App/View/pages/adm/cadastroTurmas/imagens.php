@@ -48,7 +48,6 @@ require_once __DIR__ . "/../../../componentes/head.php";
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e6e6e6;
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -66,37 +65,54 @@ require_once __DIR__ . "/../../../componentes/head.php";
             display: flex;
             gap: 10px;
             padding: 20px;
-            
         }
 
         .tab {
+            display: flex;
             font-size: 16px;
             font-weight: bold;
             padding: 10px 20px;
-            border: 2px solid #000;
+            border: 1px solid #000;
             border-radius: 25px;
-            background-color: white;
+            /* background-color: white; */
             cursor: pointer;
+            text-align: center;
         }
 
         .tab.active {
+            justify-content: center; 
+            align-items: center;     
             background-color: #a8ff00;
         }
  
         .container-imagens {
-            max-width: 1100px;
-            width: 100%;
+            width: 150vh;
             margin: 0 auto;
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 40px;
-
-            /* limita a altura e ativa scroll */
-            max-height: calc(100vh - 150px);
+            max-height: calc(90vh - 100px);
             overflow-y: auto;
-            padding-bottom: 100px; /* espaço extra para não cobrir imagens */
             scroll-behavior: smooth;
+            background-color: transparent;
+            scroll-snap-type: y mandatory;
+        }
+
+        .container-imagens > * {
+            scroll-snap-align: start;
+        }
+        .container-imagens::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .container-imagens::-webkit-scrollbar-thumb {
+            background-color: rgba(150, 150, 150, 0.4); 
+            border-radius: 4px;
+        }
+
+        .container-imagens::-webkit-scrollbar-track {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .section-imagens {
@@ -127,7 +143,6 @@ require_once __DIR__ . "/../../../componentes/head.php";
             width: 100%;
             height: 100px;
             object-fit: contain;
-            background-color: #d9ddd8;
             border: 1px solid #000;
             border-radius: 10px;
             padding: 10px;
@@ -148,7 +163,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
             font-weight: bold;
             padding: 10px 30px;
             border-radius: 25px;
-            border: 2px solid #000;
+            border: 1px solid #000;
             cursor: pointer;
             align-items: center;
         }

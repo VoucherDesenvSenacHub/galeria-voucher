@@ -27,7 +27,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
                 </div>
 
                 <div class="profile-pic">
-                <img src="" alt="Ícone de usuário" />
+                <img src="" alt="Foto usuário" />
                 </div>
             </div>
         </main> 

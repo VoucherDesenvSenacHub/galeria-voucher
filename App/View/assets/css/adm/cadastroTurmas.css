@@ -1,32 +1,38 @@
 .main-turmas-turmas {
-    margin-top: 55px;
     width:200vh;
     font-family: Arial, sans-serif;
-    background-color: #eeeeee;
+    background-color: #ccc;
 
     .tabs {
         display: flex;
         justify-content: center;
         gap:2rem;
-        /* background-color: #ccc; */
+        margin-top: 55px;
     }
 
     .tab {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
         padding: 15px 30px;
         font-weight: bold;
         font-size: 2rem;
-        border: 2px solid;
+        border: 1px solid;
         cursor: pointer;
-        background-color: #ccc;
         transition: 0.3s;
         height: 4rem;
         width: 20rem;
         border-radius: 5px;
+        text-align: center;
     }
 
-    .tab.active {
-        background-color: #c3ff3e;
-        border-radius: 5px;
+    .tab.active{
+        display: flex;
+        justify-content: center; 
+        align-items: center;     
+        background-color: #a8ff00;
+        text-align: center; 
+        border-radius: 5px;    
     }
 
     .container {
@@ -40,7 +46,7 @@
     }
 
     .form-section h1 {
-        font-size: 28px;
+        font-size: 25px;
         font-weight: bold;
         
         margin-bottom: 30px;
@@ -51,7 +57,7 @@
         width: 90%;
         padding: 15px;
         margin-bottom: 20px;
-        border: 2px solid #333;
+        border: 1px solid #333;
         border-radius: 30px;
         background-color: #e5e9e4;
         font-size: 16px;
@@ -72,6 +78,6 @@
         background-color: #e5e9e4;
         padding: 20px;
         object-fit: contain;
-        border: 2px solid #333;
+        border: 1px solid #333;
     }
 }
