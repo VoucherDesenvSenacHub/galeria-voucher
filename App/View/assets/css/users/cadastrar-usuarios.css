@@ -4,16 +4,40 @@
     vertical-align: baseline;
     list-style: none;
     border: 0;
-    box-sizing: border-box;
+
   }
   
+  #btn-docente, #btn-aluno {
+    width: 300px;
+    height: 75px;
+    border-radius: 8px;
+    border: 2px solid;
+    background-color: #C2C2C2;
+    margin-top: -200px;
+  }
 
   /* PRA INICIAR ATIVO*/
   #btn-docente.active,
   #btn-aluno.active {
     background-color: #acfd3e; /* Cor verde */
     color: black;
-    border: none;
+    border: 2px solid;
+  }
+
+  #btn-cancelar,
+  #btn-cadastro {
+    background-color: #ffffff;
+    color: #004302;
+    border: 2px solid #000000;
+    width: 150px;
+    height: 50px;
+    styl
+  }
+
+  #btn-cancelar:hover,
+  #btn-cadastro:hover {
+    background-color: #acfd3e;
+    cursor: pointer;
   }
 
 
@@ -23,89 +47,9 @@
     
   }
   
-  
   .container-users h1 {
     font-size: 39px;
   }
 
-  #btn-docente, #btn-aluno {
-    width: 300px;
-    height: 75px;
-    border-radius: 8px;
-    border: 2px solid;
-    background-color: #C2C2C2;
-  }
 
-
-  @media (max-width: 1333px) and (max-height: 720px) {
-    nav {
-      flex-direction: column;
-      align-items: center; 
-      height: auto; 
-    }
   
-    nav ul {
-      flex-direction: column; 
-      width: 100%; 
-      margin: 0;
-      padding: 0;
-    }
-  
-    nav ul li {
-      width: 100%;
-      list-style: none;
-      margin: 10px 0; 
-    }
-  
-    .imgvoucher {
-      margin: 0;
-      width: 100%; 
-      display: flex;
-      justify-content: center;
-    }
-  
-    .imgvoucher img {
-      max-width: 80%;
-    }
-  
-    .container {
-      flex-direction: column;
-    }
-  
-    .content {
-      padding: 20px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-      nav {
-        flex-direction: column; 
-        align-items: flex-start; 
-        height: auto; 
-      }
-    
-      nav ul {
-        flex-direction: column; 
-        width: 100%; 
-      }
-    
-      nav ul li {
-        width: 100%;
-      }
-    
-      .imgvoucher {
-        margin-right: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-      }
-    
-      .container {
-        flex-direction: column;
-      }
-    
-      .content {
-        padding: 20px;
-      }
-  
-  }

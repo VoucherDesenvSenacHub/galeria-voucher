@@ -63,11 +63,10 @@ require_once __DIR__ . "/../../componentes/head.php";
             <div class="input-file-cadastro">
               <label class="input-file-wrapper">
                 <img id="preview" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/avatar.png" alt="Upload" />
-                <input type="file" id="fileInput" accept="image/*" />
+                <input type="file" id="fileInput" accept="image/*" style="display: none;" />
               </label>
             </div>
 
-            <label for="status">Status:</label>
             <select id="campo-status" name="status">
               <option value="">Status:</option>
               <option value="ativo">Ativo</option>
@@ -81,8 +80,8 @@ require_once __DIR__ . "/../../componentes/head.php";
 
         <div class="form-group-buton">
         <div>
-          <button type="button" >Cancelar</button>
-          <button type="submit"style="color:green">Cadastrar</button>
+          <button type="button" id="btn-cancelar" >Cancelar</button>
+          <button type="submit" id="btn-cadastro" >Cadastrar</button>
         </div>
         
       </div>
