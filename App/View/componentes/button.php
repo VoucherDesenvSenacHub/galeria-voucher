@@ -13,9 +13,8 @@
  * buttonComponent('secondary', '<i>Cancelar</i>');           // botão secundário (branco) com HTML
  * buttonComponent('primary', 'Enviar', true);                // botão verde do tipo submit
  * buttonComponent('primary', 'Entrar', false, '/home');      // link estilizado como botão
- * buttonComponent('primary', 'Processar', true, null, '/processar'); // botão submit com action específica
  */
-function buttonComponent($style, $content, $isSubmit = false, $link = null, $action = null) {
+function buttonComponent($style, $content, $isSubmit = false, $link = null) {
     // Define a classe CSS com base no estilo informado
     if ($style === 'primary') {
         $class = 'primary-button';
@@ -31,11 +30,10 @@ function buttonComponent($style, $content, $isSubmit = false, $link = null, $act
     // Se um link for fornecido, renderiza um elemento <a>
     if ($link !== null) {
         echo "<a href='$link' class='$class'>$content</a>";
-        // ! cuidado com esse if e else, pois se houver algo no $link ele vira um button. Logo, se precisarem usar a $action, defina $link como null e passe o valor da $action com '' (aspas)
+        // ! cuidado com esse if e else, pois se houver algo no $link ele vira um button.
     } else {
         // Caso contrário, renderiza um <button>
-        $formAction = $action !== null ? "formaction='$action'" : '';
-        echo "<button class='$class' type='$type' $formAction>$content</button>";
+        echo "<button class='$class' type='$type' >$content</button>";
     }
 }
 ?>
