@@ -47,6 +47,7 @@
   .container-users {
     display: flex;
     font-family: Arial, sans-serif;
+    flex-direction: column;
     
   }
   
