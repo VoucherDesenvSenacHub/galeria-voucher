@@ -11,9 +11,12 @@
     width: 300px;
     height: 75px;
     border-radius: 8px;
-    border: 2px solid;
+    border: 1px solid;
     background-color: #C2C2C2;
-    margin-top: -200px;
+    margin-top: 0px;
+    margin-left: -20px;
+    margin-right: 20px;
+    font-size: 30px;
   }
 
   /* PRA INICIAR ATIVO*/
@@ -21,17 +24,18 @@
   #btn-aluno.active {
     background-color: #acfd3e; /* Cor verde */
     color: black;
-    border: 2px solid;
+    border: 1px solid;
   }
 
   #btn-cancelar,
   #btn-cadastro {
     background-color: #ffffff;
     color: #004302;
-    border: 2px solid #000000;
+    border: 1px solid #000000;
     width: 150px;
     height: 50px;
     cursor: pointer;
+    font-size: 30px;
   }
 
   #btn-cancelar:hover,
@@ -48,6 +52,9 @@
   
   .container-users h1 {
     font-size: 39px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: bold;
   }
 
 

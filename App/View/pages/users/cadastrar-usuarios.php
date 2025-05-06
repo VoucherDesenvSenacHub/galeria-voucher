@@ -20,7 +20,7 @@ require_once __DIR__ . "/../../componentes/head.php";
     
     <div class="container-users">
       <div class="form-container-users">
-        <h1>Cadastro</h1>
+        <h1>CADASTRO</h1>
         <form class="form-dados">
           <div class="form-group">
             
@@ -37,9 +37,9 @@ require_once __DIR__ . "/../../componentes/head.php";
 
 
           <div class="form-group-polo">
-            <input type="date" placeholder="Data de Nascimento" id="data-nascimento" name="data-nascimento">
+            <input type="date" placeholder="Data de Nascimento" id="data-nascimento" name="data-nascimento" style="cursor: pointer;">
 
-            <select id="polo" name="polo">
+            <select id="polo" name="polo" style="cursor: pointer;">
               <option value="">Polo:</option>
               <option value="polo1">Campo Grande</option>
               <option value="polo2">Tres Lagoas</option>
@@ -48,7 +48,7 @@ require_once __DIR__ . "/../../componentes/head.php";
               <option value="polo2">Ponta Pora</option>
             </select>
 
-            <select id="campo-turma" name="turma">
+            <select id="campo-turma" name="turma" style="cursor: pointer;">
               <option value="">Turma:</option>
               <option value="turma1">Turma 144</option>
               <option value="turma2">Turma 145</option>
@@ -67,22 +67,25 @@ require_once __DIR__ . "/../../componentes/head.php";
               </label>
             </div>
 
-            <select id="campo-status" name="status">
+            <select id="campo-status" name="status" style="cursor: pointer;">
               <option value="">Status:</option>
               <option value="ativo">Ativo</option>
               <option value="inativo">Inativo</option>
             </select>
           </div>
         </form>
-        <div class="form-group-about">
-          <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140" placeholder="Digite algo sobre o docente..." ></textarea>
-        </div>
 
-        <div class="form-group-buton">
-        <div>
-          <button type="button" id="btn-cancelar" >Cancelar</button>
-          <button type="submit" id="btn-cadastro" >Cadastrar</button>
-        </div>
+        <form>
+          <div class="form-group-about">
+            <textarea id="informacoes-adicionais" name="informacoes-adicionais" rows="15" cols="140" placeholder="Digite algo sobre o docente..." ></textarea>
+          </div>
+
+          <div class="form-group-buton">
+          <div>
+            <button type="button" id="btn-cancelar" >Cancelar</button>
+            <button type="submit" id="btn-cadastro" >Cadastrar</button>
+          </div>
+        </form>
         
       </div>
     </div>

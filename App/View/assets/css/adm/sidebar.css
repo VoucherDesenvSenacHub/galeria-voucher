@@ -16,7 +16,6 @@
   min-width: var(--sidebar-width);
   letter-spacing: var(--espaco-letras);
   height: 100vh;
-
 }
 
 .menu-adm a {
