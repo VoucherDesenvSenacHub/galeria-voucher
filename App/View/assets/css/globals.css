@@ -17,8 +17,7 @@
 @import url(adm/home-adm.css);
 @import url(adm/login.css);
 
-@import url(users/cadastrar-usuarios.css);
-@import url(adm/cadastrar-user.css);
+@import url(adm/cadastrar-usuarios.css);
 
 
 :root {
