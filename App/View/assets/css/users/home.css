@@ -7,7 +7,6 @@
     rgba(0, 0, 0, 0.97),
     rgba(0, 0, 0, 0.9),
     #0d9c0d,
-    rgba(0, 0, 0, 0.93),
     #0d9c0d,
     rgba(0, 0, 0, 0.96),
     rgba(0, 0, 0, 0.95),
@@ -25,14 +24,13 @@
 .main-user {
   display: flex;
   flex-direction: column;
-  height: 400vh;
+  min-height: 240vh;
   /* Ajuste conforme necessário */
   padding: 0px;
   margin: 0px;
 }
 
 .main-user section {
-  flex: 1;
   /* Cada seção ocupa o espaço disponível */
   display: flex;
   /* align-items: center; */
@@ -43,46 +41,58 @@
 
 /* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
+  min-height: 100vh;
+
   .content {
-    position: relative; /* para posicionar elementos absolutos */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    /* position: relative;  */
+    /* para posicionar elementos absolutos */
   }
 
   /* imagem dos números */
   .numero {
     position: absolute;
-    width: 540px;
-    height: 50px;
-    padding-left: 390px;
+    width: 100%;
+    height: 50rem;
+    text-align: right;
     opacity: 20%;
-    top: 20px;
-    overflow: visible;
+    overflow: hidden;
+    padding-left: 5rem;
+
+    img {
+      padding-left:  45rem;
+    }
   }
 
   /* imagem do logo */
   .nome-voucher {
-    position: absolute;
     width: 100%;
     top: calc(25vh + 6.3vw);
     text-align: center;
   }
 
   /* imagem do mapa do estado */
+
   .mapa {
+    position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     display: flex;
     justify-content: right;
-    padding-top: 60px;
+    padding-top: 2rem;
     opacity: 50%;
-  }
+}
 }
 
 /* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
   .container {
+    height: 100%;
     display: flex;
     gap: 5rem;
-    margin-top: 2rem;
     justify-content: center;
 
     .card {
@@ -92,29 +102,32 @@
       border-left: 2px solid#073e07;
       border-right: 2px solid#073e07;
       border-radius: 10px;
-      max-width: 280px;
+      max-width: 300px;
       text-align: justify;
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
       /* Sombra sutil */
       overflow: hidden;
       /* Esconde o texto que sai do cartão */
-      transition: height 0.3s ease-in-out;
       /* Animação para expandir */
-      height: 85px;
       padding: var(--default-padding);
       z-index: 1;
+      max-height: 85px;
+      overflow: hidden;
+      transition: max-height 0.6s ease, box-shadow 0.3s ease;
     }
 
     h2 {
       color: var(--accent-color);
       /* Verde do título */
       margin-bottom: 5px;
+      padding: .5rem;
       font-family: var(--font-secondary);
       font-size: 210%;
       text-align: center;
     }
 
     .card p {
+      padding: .5rem;
       font-family: var(--font-primary);
       font-size: 14px;
       line-height: 1.5;
@@ -128,7 +141,7 @@
 
     /* Ao passar o mouse sobre o cartão */
     .card:hover {
-      height: 60%;
+      max-height: 500px;
       /* Expande o cartão para exibir o texto */
     }
 
@@ -144,6 +157,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding-top: 10rem;
 
   .container2 {
     background: transparent;
@@ -200,6 +214,7 @@
 
 #secao4 {
   flex-direction: column;
+  padding-top: 10rem;
 
   .call-to-action {
     font-family: var(--font-secondary);
