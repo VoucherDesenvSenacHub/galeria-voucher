@@ -1,0 +1,34 @@
+.mira {
+    position: absolute;
+    width: 8vh;
+    height: 8vh;
+    border: 4px solid var(--accent-color);
+    top: 48.8vh;
+    left: 25.1vw;
+    transform: translate(-50%, -50%);
+}
+
+
+/* linha horizontal */
+.mira1 {
+    position: absolute;
+    width: 2px;
+    min-height: calc(100vh - 48.8px);
+    background-color: var(--accent-color);
+    top: 48.8px;
+    left: 25vw;
+    border: 2px solid var(--accent-color);
+    z-index: -1;
+}
+
+/* linha horizontal */
+.mira2 {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+    top: 48.5vh;
+    left: 0;
+    border: 2px solid var(--accent-color);
+    z-index: -1;
+}

@@ -1,0 +1,66 @@
+/* Geral */
+
+.body-login {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background-image: linear-gradient(#000000, #003100);
+}
+
+.main-login{
+    padding-top: 20rem;
+    width: 100vw;
+    height: calc(100vh - 85px);
+}
+
+.main-login .form{
+ 
+    width: 50%;
+    height: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+}
+/* Cabeçalho do Formulário */
+.main-login .form-header h1 {
+    margin: 0;
+    font-size: 50px;
+    text-align: center;
+    color:#aEFF40;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 2px;
+    margin-top: -30px;
+    font-weight: normal;
+}
+
+/* Conteúdo do Formulário */
+.main-login .form-content {
+    margin-top: 20px;
+}
+
+.main-login .form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.main-login .form-input input {
+    width: 400px;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    background-color: #d8dbd6;
+    border-radius: 50px 50px 50px 50px;
+    outline: none;
+}
+
+/* Botão de Ação */
+.main-login .form-action {
+    margin-top: 30px;
+    text-align: center;
+}

@@ -1,0 +1,59 @@
+
+.nav-adm {
+  background-color: rgba(50, 50, 50, 0.8); 
+  justify-content: space-between;
+  display: flex;
+  align-items: center;  
+  height: var(--nav-height);
+  width: 100%;
+  padding: 0px;
+  z-index: 1;         
+  position: fixed;    
+  top: 0;            
+  left: 0;           
+}
+
+.nav-adm ul {
+  display: flex;
+}
+
+.nav-adm ul li {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+}
+
+.nav-adm ul li a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-family: var(--font-secondary);
+  font-size: var(--height-button);
+  font-weight: bold;
+  letter-spacing: var(--espaco-letras);
+  padding: 10px;
+  line-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao-person {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto; 
+}
+
+.botao-person .material-symbols-outlined {
+  font-size: var(--height-button);
+}
+
+.imgvoucher{
+  padding-left: 40px;
+
+  img{
+    padding: 0px;
+    width: 160px;
+    height: 40px;
+  }
+}

@@ -1,0 +1,74 @@
+.NavInicial {
+    height: var(--nav-height);
+    position: fixed;
+    background-color: var(--background-nav);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 var(--default-padding);
+    z-index: 2;
+    top: 0;
+
+
+    a {
+        text-decoration: none;
+        color: var(--accent-color);
+        font-family: var(--font-secondary);
+        font-size: 28px;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .material-symbols-outlined {
+        color: var(--accent-color);
+        font-size: 35px;
+
+    }
+
+    a:hover {
+        opacity: 0.7;
+        transform: scale(1.2);
+
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+        align-items: center;
+        letter-spacing: 2px;
+    }
+
+    ul li {
+        display: inline-flex;
+    }
+
+    /*arrumar este*/
+    .search {
+        display: flex;
+        align-items: center;
+    }
+
+    /*arrumar este*/
+    .search input {
+        display: inline-flex;
+        padding: 7px;
+        border: none;
+        border-radius: 10px 10px 10px 10px;
+        outline: none;
+        width: 300px;
+    }
+
+    /*arrumar este*/
+    .search button {
+        display: inline-flex;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        background-color: var(--white-background);
+        cursor: pointer;
+        margin-left: -40px;
+    }
+}

@@ -1,0 +1,51 @@
+@import url(reset.css);
+@import url(external.css);
+@import url(button.css);
+@import url(input.css);
+
+@import url(users/home.css);
+@import url(users/turma.css);
+@import url(users/footer.css);
+@import url(users/mira.css);
+@import url(users/nav.css);
+@import url(adm/sidebar.css);
+@import url(../css/card_desenvolvedor.css);
+
+
+@import url(adm/nav.css);
+@import url(adm/main.css);
+@import url(adm/home-adm.css);
+@import url(adm/login.css);
+
+:root {
+    --primary-color-button: #AEFF40;
+    --secondary-color-button: #9BE836;
+    --boxshadow-primary-button: 0 0 10px rgba(174, 255, 64, 0.7);
+    --boxshadow-secondary-button: 0 0 10px rgba(91, 91, 91, 0.7);
+    --color-text-button: #004302;
+    --white-background: #FFFFFF;
+    --text-color-button: #000000;
+    --background-nav: rgba(0, 0, 0, 0.7) /*preto com 80% de opacidade*/;
+    --height-button: 1.8rem;
+    --font-primary: "Poppins", sans-serif;
+    --font-secondary: "Bebas Neue", sans-serif;
+    --background-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0.970), rgba(0, 0, 0, 0.900), #0D9C0D, rgba(0, 0, 0, 0.930), #0D9C0D,rgba(0, 0, 0, 0.960),rgba(0, 0, 0, 0.950),rgba(0, 0, 0, 0.900));
+    --card-gradient: linear-gradient(to right, #D8DBD6, #AEFF40);
+    --dark-green: #0D9C0D;
+    --darker-green: #073e07;
+    --sidebar-gray: #363535;
+    --border-gray: #c0c0c0;
+    --nav-height: 50px;
+    --sidebar-width: 240px;
+    --default-padding: 20px;
+    --text-white: #ffffff;
+    --text-black: #000000;
+    --accent-color: #aeff40;
+    --card-border-radius: 10px;
+    --default-transition: all 0.3s ease;
+    --space-letters: 1.5px;
+}
+
+body{
+    font-family: var(--font-primary);
+}
