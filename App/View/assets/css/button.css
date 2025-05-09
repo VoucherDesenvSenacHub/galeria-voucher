@@ -1,9 +1,9 @@
-button {
+button, a.primary-button, a.secondary-button {
     height: var(--height-button);
     border-radius: 5rem;
-    font-family: "Bebas Neue", sans-serif;
+    font-family: var(--font-secondary);
     display: inline-block;
-    transition: all 0.3s ease;
+    transition: var(--default-transition);
     overflow: hidden;
     white-space: nowrap;
     text-align: center;
@@ -11,45 +11,46 @@ button {
     padding-top: 3px;
     cursor: pointer;
     font-size: 1.25rem;
+    text-decoration: none;
 }
 
-button:hover {
+button:hover, a.primary-button:hover, a.secondary-button:hover {
     transform: scale(1.01);
 }
 
-button:active {
+button:active, a.primary-button:active, a.secondary-button:active {
     transform: scale(0.95);
     top: 2px;
 }
 
-.primary-button {
+.primary-button, a.primary-button {
     background-color: var(--primary-color-button);
     border: none;
     color: var(--color-text-button);
 }
 
-.primary-button:hover {
+.primary-button:hover, a.primary-button:hover {
     box-shadow: var(--boxshadow-primary-button);
 }
 
-.primary-button:active {
-    background-color: #9BE836;
+.primary-button:active, a.primary-button:active {
+    background-color: var(--secondary-color-button);
     box-shadow: var(--boxshadow-secondary-button);
 }
 
-.secondary-button {
-    border: 1px solid black;
+.secondary-button, a.secondary-button {
+    border: 1px solid var(--text-black);
     background-color: var(--white-background);
     color: var(--color-text-button);
     font-size: 100%;
     padding-top: 3px;
 }
 
-.secondary-button:hover {
+.secondary-button:hover, a.secondary-button:hover {
     box-shadow: var(--boxshadow-secondary-button);
 }
 
-.secondary-button:active {
+.secondary-button:active, a.secondary-button:active {
     background-color: #d4d4d4;
     box-shadow: var(--boxshadow-secondary-button);
 }
