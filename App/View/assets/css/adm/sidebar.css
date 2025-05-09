@@ -13,6 +13,7 @@
   background-color: var(--sidebar-gray);
   color: var(--text-white);
   width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
   letter-spacing: var(--espaco-letras);
   height: 100vh;
 }
