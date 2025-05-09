@@ -7,14 +7,16 @@
         display: flex;
         justify-content: center;
         gap:2rem;
-        margin-top: 55px;
+        margin-top: 4rem;
+        display: flex;
+        padding: 20px;
     }
 
     .tab {
         display: flex;
         justify-content: center;
         align-items: center; 
-        padding: 15px 30px;
+        padding: 20px;
         font-weight: bold;
         font-size: 2rem;
         border: 1px solid;
@@ -24,6 +26,7 @@
         width: 20rem;
         border-radius: 5px;
         text-align: center;
+        display: flex;
     }
 
     .tab.active{
@@ -32,7 +35,7 @@
         align-items: center;     
         background-color: #a8ff00;
         text-align: center; 
-        border-radius: 5px;    
+        border-radius: 5px;
     }
 
     .container {

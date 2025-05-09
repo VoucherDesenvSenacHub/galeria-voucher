@@ -17,6 +17,7 @@
 @import url(adm/home-adm.css);
 @import url(adm/login.css);
 @import url(adm/cadastroTurmas.css);
+@import url(adm/Turmas-adm/turmas-imagem.css);
 
 :root {
     --primary-color-button: #AEFF40;
