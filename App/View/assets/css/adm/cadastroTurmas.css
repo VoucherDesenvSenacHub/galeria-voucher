@@ -3,16 +3,17 @@
     font-family: Arial, sans-serif;
     background-color: #ccc;
 
-    .tabs {
+    .tabs-adm-turmas {
         display: flex;
         justify-content: center;
-        gap:2rem;
+        gap:5.5rem;
         margin-top: 4rem;
+        margin-bottom: 3rem;
         display: flex;
         padding: 20px;
     }
 
-    .tab {
+    .tab-adm-turmas {
         display: flex;
         justify-content: center;
         align-items: center; 
@@ -29,7 +30,7 @@
         display: flex;
     }
 
-    .tab.active{
+    .tab-adm-turmas.active{
         display: flex;
         justify-content: center; 
         align-items: center;     
@@ -38,11 +39,23 @@
         border-radius: 5px;
     }
 
-    .container {
+    .container-main-adm {
         display: flex;
+        flex-direction: row; 
         justify-content: space-between;
-        padding: 40px;
+        align-items: flex-start;
+        gap: 5rem;
+        padding: 1.25rem;
+        width: 150vh;
+        margin: 0 auto;
+        max-height: calc(90vh - 100px);
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        background-color: transparent;
+        scroll-snap-type: y mandatory;
+        font-family: var(--font-primary);
     }
+    
 
     .form-section {
         width: 60%;
@@ -55,11 +68,11 @@
         margin-bottom: 30px;
     }
 
-    input[type="text"] {
+    .input-adm-turmas[type="text"] {
         display: block;
-        width: 90%;
+        width: 100%;
         padding: 15px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         border: 1px solid #333;
         border-radius: 30px;
         background-color: #e5e9e4;
@@ -71,7 +84,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 5rem 10rem;
+        margin: 5rem 2rem;
     }
 
     .profile-pic img {
@@ -79,7 +92,7 @@
         height: 300px;
         border-radius: 20px;
         background-color: #e5e9e4;
-        padding: 20px;
+        padding: 40px;
         object-fit: contain;
         border: 1px solid #333;
     }

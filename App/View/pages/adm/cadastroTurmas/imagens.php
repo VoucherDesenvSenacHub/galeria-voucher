@@ -19,10 +19,10 @@ require_once __DIR__ . "/../../../componentes/head.php";
     ?>
 
     <main class="main-turmas-turmas">
-        <div class="tabs">
-            <button class="tab ">TURMA</button>
-            <button class="tab ">SOBRE</button>
-            <button class="tab active ">IMAGENS</button>
+        <div class="tabs-adm-turmas">
+            <button class="tab-adm-turmas ">TURMA</button>
+            <button class="tab-adm-turmas ">SOBRE</button>
+            <button class="tab-adm-turmas active ">IMAGENS</button>
         </div>
 
         <div class="container-imagens">
