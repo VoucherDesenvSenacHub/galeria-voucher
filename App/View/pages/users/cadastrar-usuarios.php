@@ -9,11 +9,11 @@ require_once __DIR__ . "/../../componentes/head.php";
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
   <main class="conteudo-cadastro">
-    <div>
     <div class="user-profile">
       <div class="user-icon">
-      <div><button id="btn-docente">DOCENTE</button>
-      <button id="btn-aluno" >ALUNOS</button></div></div>
+      <button id="btn-docente">DOCENTE</button>
+      <button id="btn-aluno" >ALUNOS</button>
+      </div>
 
     </div>
 

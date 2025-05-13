@@ -184,3 +184,52 @@ select {
 #btn-cadastro:hover {
   background-color: #acfd3e;
 }
+
+
+
+@media (max-width: 900px) {
+  main.conteudo-cadastro {
+
+    flex-direction: column;
+  }
+
+  .form-top{
+    flex-direction: column;
+  }
+
+  .form-bottom{
+    flex-direction: column;
+  }
+
+  .form-group{
+    margin: auto;
+  }
+  .form-group-polo {
+    width: 80%;
+    margin: auto;
+  }
+
+  .input-file-cadastro{
+    margin: auto;
+  }
+
+  .user-icon{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  .form-group-about{
+    width: 80%;
+    margin: auto;
+  }
+
+  .form-group-imagem{
+    margin: auto;
+  }
+
+  
+  .form-group-buton{
+    justify-content: center;
+  }
+}
