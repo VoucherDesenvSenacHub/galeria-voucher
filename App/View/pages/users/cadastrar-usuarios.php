@@ -4,7 +4,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
 
-<body>
+<body class="body-cadastrar-users">
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
@@ -81,10 +81,8 @@ require_once __DIR__ . "/../../componentes/head.php";
             </div>
 
             <div class="form-group-buton">
-            <div>
               <button type="button" id="btn-cancelar" >Cancelar</button>
               <button type="submit" id="btn-cadastro" >Cadastrar</button>
-            </div>
           </div>
         </form>
                 
