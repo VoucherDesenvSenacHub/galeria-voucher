@@ -1,43 +1,37 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Estilo base do corpo da página */
 body {
   display: flex;
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
   overflow: hidden;
   font-family: Arial, sans-serif;
 }
 
+/* Conteúdo principal */
 main {
-  margin: 50px 50px 100px 50px;
   width: 100%;
+  margin: 50px;
   min-height: calc(100vh - 50px);
   display: flex;
   justify-content: center;
 }
 
-.topo-lista-docente {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 50px 0 15px 0;
-}
-
+/* Container geral da seção docente */
 .container-lista-docente {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 1rem 0rem 0rem 0rem;
+  padding-top: 1rem;
 }
 
-.input-pesquisa-container {
-  position: relative;
-  display: inline-block;
+/* Topo com botão e campo de pesquisa */
+.topo-lista-docente {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0 15px;
 }
 
+/* Campo de pesquisa com ícone de lupa */
 .input-pesquisa-container {
   position: relative;
   display: inline-block;
@@ -45,9 +39,9 @@ main {
 
 .input-pesquisa-container input[type="text"] {
   width: 400px;
-  padding: 8px 40px 8px 12px; /* espaço à direita para a imagem */
+  padding: 8px 40px 8px 12px;
   font-size: 20px;
-  background-color: #D8DBD6;
+  background-color: #d8dbd6;
   color: #000;
   border: 1px solid #999;
   border-radius: 30px;
@@ -61,54 +55,59 @@ main {
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  cursor: pointer;
   opacity: 0.6;
+  pointer-events: none;
 }
 
+/* Botão Nova Turma */
 #btn-nvturma {
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 30px;
-  text-align: center;
   width: 200px;
   height: 60px;
+  padding: 10px 20px;
+  font-size: 30px;
+  text-align: center;
   color: #004302;
-  background-color: #AEFF40;
+  background-color: #aeff40;
   border: 3px solid #004302;
   border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 #btn-nvturma:hover {
-  background-color: #9FE83A;
+  background-color: #9fe83a;
 }
 
+/* Tabela principal com rolagem */
 .tabela-principal {
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
   min-height: 100%;
   max-height: 600px;
   overflow-y: auto;
   overflow-x: auto;
-  margin: 0 auto;
 }
 
-
+/* Estilo da tabela */
 #tabelaUsuarios {
   width: 100%;
   min-width: 600px;
   border-collapse: collapse;
 }
 
-thead{
+/* Cabeçalho da tabela */
+thead {
   position: sticky;
   top: 0;
-  background-color: #B6B6B6;
+  background-color: #b6b6b6;
   z-index: 2;
   text-align: center;
   font-size: 25px;
   font-weight: bold;
 }
 
+/* Células */
 th,
 td {
   padding: 15px 18px;
@@ -119,30 +118,32 @@ td {
   font-size: 20px;
 }
 
+/* Linhas divisórias verticais */
 th:not(:last-child),
 td:not(:last-child) {
   box-shadow: inset -1px 0 black;
 }
 
+/* Linhas alternadas */
 tbody tr:nth-child(even) {
-  background-color: #D1D1D1;
+  background-color: #d1d1d1;
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #C1C0C0;
+  background-color: #c1c0c0;
 }
 
-/* Scrollbar customizada apenas para navegadores Webkit */
+/* Scrollbar personalizada (Webkit) */
 .tabela-principal::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
 
 .tabela-principal::-webkit-scrollbar-thumb {
-  background-color: #C3C3C3;
+  background-color: #c3c3c3;
   border-radius: 6px;
 }
 
 .tabela-principal::-webkit-scrollbar-track {
-  background: #999999;
+  background-color: #999;
 }
