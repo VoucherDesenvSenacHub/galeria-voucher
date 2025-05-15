@@ -4,16 +4,16 @@ require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
 
-<body>
+<body class="body-cadastrar-users">
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
   <main class="conteudo-cadastro">
-    <div>
     <div class="user-profile">
       <div class="user-icon">
-      <div><button id="btn-docente">DOCENTE</button>
-      <button id="btn-aluno" >ALUNOS</button></div></div>
+      <button id="btn-docente">DOCENTE</button>
+      <button id="btn-aluno" >ALUNOS</button>
+      </div>
 
     </div>
 
@@ -81,10 +81,8 @@ require_once __DIR__ . "/../../componentes/head.php";
             </div>
 
             <div class="form-group-buton">
-            <div>
               <button type="button" id="btn-cancelar" >Cancelar</button>
               <button type="submit" id="btn-cadastro" >Cadastrar</button>
-            </div>
           </div>
         </form>
                 

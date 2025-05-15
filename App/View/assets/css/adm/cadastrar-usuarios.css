@@ -1,6 +1,8 @@
-body {
+.body-cadastrar-users {
   display: flex;
   background-color: #E2E2E2;
+  width: 100%;
+  height: 100%;
 }
 
 /* Estilo principal da área de cadastro */
@@ -11,10 +13,20 @@ main.conteudo-cadastro {
   display: flex;
 }
 
+.container-users{
+  width: 100%;
+  margin: auto;
+}
 .container-users h1 {
   font-size: 39px;
   margin: 30px 0 15px;
   font-weight: bold;
+}
+
+.form-container-users .form-bottom{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 /* Formulário de dados */
@@ -25,7 +37,7 @@ main.conteudo-cadastro {
   align-items: center;
   width: 100%;
   height: 50%;
-  margin: 1rem;
+  /* margin: 1rem; */
   padding-top: 1rem;
   gap: 1rem;
 }
@@ -35,6 +47,11 @@ main.conteudo-cadastro {
   width: 100%;
   gap: 1.5rem;
 }
+
+.form-container-users{
+  width: 100%;
+}
+
 
 /* Estilos base para campos de input, select e textarea */
 input,
@@ -47,6 +64,9 @@ textarea {
   font-size: 1rem;
 }
 
+#informacoes-adicionais{
+  width: 100%;
+}
 
 input,
 select {
@@ -55,6 +75,7 @@ select {
 
 .form-group-about {
   padding: 1rem 0px 1rem 0px;
+  width: 100%;
   /* Campo de texto com textarea */
   textarea {
     border-radius: 30px;
@@ -118,9 +139,10 @@ select {
 
 /* Grupo de botão */
 .form-group-buton {
-  display: flex;
-  flex-direction: column;
-  margin-left: 800px;
+    justify-content: right;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 /* Botões de seleção */
@@ -163,9 +185,51 @@ select {
   background-color: #acfd3e;
 }
 
-/* Botão agrupado */
-.form-group-buton {
-  display: flex;
-  flex-direction: column;
-  margin-left: 1000px;
+
+
+@media (max-width: 900px) {
+  main.conteudo-cadastro {
+
+    flex-direction: column;
+  }
+
+  .form-top{
+    flex-direction: column;
+  }
+
+  .form-bottom{
+    flex-direction: column;
+  }
+
+  .form-group{
+    margin: auto;
+  }
+  .form-group-polo {
+    width: 80%;
+    margin: auto;
+  }
+
+  .input-file-cadastro{
+    margin: auto;
+  }
+
+  .user-icon{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  .form-group-about{
+    width: 80%;
+    margin: auto;
+  }
+
+  .form-group-imagem{
+    margin: auto;
+  }
+
+  
+  .form-group-buton{
+    justify-content: center;
+  }
 }
