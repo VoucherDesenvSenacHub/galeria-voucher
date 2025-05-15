@@ -1,156 +1,131 @@
 <?php 
 require_once __DIR__ . "/../../componentes/head.php";
-
 ?>
 
 <body>
+
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
   <main>
     <div class="container-lista-docente">
-        <div class="topo-lista-docente">
-            <button id="btn-nvturma">NOVA TURMA</button>
-            <input type="text" id="pesquisa" placeholder="Pesquisar">
+      <div class="topo-lista-docente">
+        <button id="btn-nvturma">NOVA TURMA</button>
+        
+        <div class="input-pesquisa-container">
+          <input type="text" id="pesquisa" placeholder="Pesquisar">
+          <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
         </div>
+      </div>
 
-        <div class="tabela-principal">
-            <div class="tabela-container">
-                <table id="tabelaUsuarios">
-                    <thead>
-                    <tr>
-                        <th>NOME</th>
-                        <th>POLO</th>
-                        <th>EDITAR</th>
-                        <th>INATIVAR</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>tenma</td>
-                        <td>Japão</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Arthur Morgan</td>
-                        <td>EUA</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Maestro Jr</td>
-                        <td>Bostil</td>
-                        <td><button onclick="editar()">Editar</button></td>
-                        <td><button onclick="inativar()">Inativar</button></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+      <div class="tabela-principal">
+        <div class="tabela-container">
+          <table id="tabelaUsuarios">
+            <thead>
+              <tr>
+                <th>NOME</th>
+                <th>POLO</th>
+                <th>EDITAR</th>
+                <th>INATIVAR</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tenma</td>
+                    <td>Japão</td>
+                    <td><button>Editar</button></td>
+                    <td><button>Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Arthur Morgan</td>
+                    <td>EUA</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+                <tr>
+                    <td>Maestro Jr</td>
+                    <td>Bostil</td>
+                    <td><button onclick="editar()">Editar</button></td>
+                    <td><button onclick="inativar()">Inativar</button></td>
+                </tr>
+            </tbody>
+          </table>
         </div>
-         <script>
-            // Função para ajustar a altura mínima da tabela
-            function adjustTableHeight() {
-            const table = document.querySelector('.tabela-principal');
-            const windowHeight = window.innerHeight; // altura da janela
-            const newMinHeight = windowHeight * 0.5 + 200; // 50% da altura da janela + 200px
-
-            // Atualizando a altura mínima da tabela
-            table.style.minHeight = `${newMinHeight}px`;
-            }
-
-            // Chama a função ao carregar a página
-            window.addEventListener('load', adjustTableHeight);
-
-            // Chama a função sempre que a janela for redimensionada (incluindo zoom out)
-            window.addEventListener('resize', adjustTableHeight);
-         </script>
+      </div>
     </div>
   </main>
+
+  <script>
+    function adjustTableHeight() {
+      const table = document.querySelector('.tabela-principal');
+      const windowHeight = window.innerHeight;
+      const newMinHeight = windowHeight * 0.5 + 200;
+      table.style.minHeight = `${newMinHeight}px`;
+    }
+
+    window.addEventListener('load', adjustTableHeight);
+    window.addEventListener('resize', adjustTableHeight);
+  </script>
 
 </body>
 </html>
