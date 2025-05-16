@@ -27,10 +27,8 @@ require_once __DIR__ . "/../../componentes/head.php"; // importa as fontes
             ?>
         </div>
     </main>
-    <div class="textofinal">
         <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; // rodapé 
         ?>
-    </div>
 
 </body>
 

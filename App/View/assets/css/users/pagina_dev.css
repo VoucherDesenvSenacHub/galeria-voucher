@@ -2,7 +2,7 @@
 .body_dev {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100dvh;
     background-color: #000;
     color: #fff; 
 }                                  /* BACK E ALINHAMENTO DA PAGINA*/
@@ -35,20 +35,11 @@
     
     @media (max-width: 480px) {
     .container {
-        grid-template-columns: repeat(2, 1fr);
-        margin-left: auto;
-        column-gap: 3rem;
+        display: flex;
+        flex-wrap: wrap;    
+        gap: 55px;
     }
-    .card-container {
-        width: 10rem;
-    }
-    .image-container {
-        height: 200px; /* Adjust as needed */
-    }
-    .text-card {
-        padding: 0.1rem;
-    }
-    .imgnome img{
-        max-width: 300px;
+    .titulodev{
+        font-size: 2rem;
     }
 }
