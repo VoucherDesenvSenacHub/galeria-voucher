@@ -7,10 +7,6 @@
   align-items: center;
 }
 
-.card-container:hover {
-  font-size: 18px;
-}
-
 .image-dev {
   width: 120%;
   height: 300px;
@@ -61,6 +57,14 @@
   font-size: 35px;
   margin: 0 8px;
   text-decoration: none;
+}
+
+.social-icons img{
+  transition: .25s;
+}
+
+.social-icons img:hover{
+  transform: scale(1.2);
 }
 
 @media (max-width: 480px) {

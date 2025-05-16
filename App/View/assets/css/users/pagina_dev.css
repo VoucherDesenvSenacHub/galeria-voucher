@@ -11,6 +11,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+
 }
 
 .titulodev {
@@ -30,16 +31,24 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
+    margin-bottom: 3rem;
 }
 
     
-    @media (max-width: 480px) {
-    .container {
-        display: flex;
-        flex-wrap: wrap;    
-        gap: 55px;
+@media (max-width: 1200px) {
+    .container{
+        display: flex;  
+        flex-wrap: wrap;  
     }
-    .titulodev{
-        font-size: 2rem;
-    }
+
+}
+
+@media (max-width: 480px) {
+.container {
+    gap: 55px;
+    
+}
+.titulodev{
+    font-size: 2rem;
+}
 }
