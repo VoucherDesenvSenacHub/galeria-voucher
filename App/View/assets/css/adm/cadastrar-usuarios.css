@@ -1,0 +1,235 @@
+.body-cadastrar-users {
+  display: flex;
+  background-color: #E2E2E2;
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilo principal da área de cadastro */
+main.conteudo-cadastro {
+  margin: 50px 100px 100px 20px;
+  width: 100%;
+  min-height: calc(100vh - 50px);
+  display: flex;
+}
+
+.container-users{
+  width: 100%;
+  margin: auto;
+}
+.container-users h1 {
+  font-size: 39px;
+  margin: 30px 0 15px;
+  font-weight: bold;
+}
+
+.form-container-users .form-bottom{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Formulário de dados */
+.form-dados {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  /* margin: 1rem; */
+  padding-top: 1rem;
+  gap: 1rem;
+}
+
+.form-dados .form-top {
+  display: flex;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.form-container-users{
+  width: 100%;
+}
+
+
+/* Estilos base para campos de input, select e textarea */
+input,
+select,
+textarea {
+  background-color: #E2E2E2;
+  border: 3px solid #000000;
+  border-radius: 80px;
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+
+#informacoes-adicionais{
+  width: 100%;
+}
+
+input,
+select {
+  height: 3rem;
+}
+
+.form-group-about {
+  padding: 1rem 0px 1rem 0px;
+  width: 100%;
+  /* Campo de texto com textarea */
+  textarea {
+    border-radius: 30px;
+    padding: 1rem;
+    resize: vertical;
+  }
+}
+
+/* Agrupamentos */
+.form-group,
+.form-group-polo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 10px;
+}
+
+.form-group {
+  width: 80%;
+}
+
+.form-group-polo {
+  width: 20%;
+  margin-left: 30px;
+}
+
+/* Área de imagem */
+.form-group-imagem {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 2px 0 50px;
+  gap: 8px;
+}
+
+.form-group-imagem select {
+  width: 95%;
+}
+
+.input-file-cadastro {
+  position: relative;
+  width: 250px;
+  height: 223px;
+  cursor: pointer;
+}
+
+.input-file-cadastro img {
+  z-index: 1;
+  width: 95%;
+  height: 223px;
+  object-fit: cover;
+  border-radius: 5%;
+  border: 2px solid #000000;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.input-file-cadastro img:hover {
+  transform: scale(1.02);
+}
+
+/* Grupo de botão */
+.form-group-buton {
+    justify-content: right;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Botões de seleção */
+#btn-docente,
+#btn-aluno {
+  width: 300px;
+  height: 75px;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #000;
+  background-color: #C2C2C2;
+  margin: 0 15px 0 -20px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Estado ativo */
+#btn-docente.active,
+#btn-aluno.active {
+  background-color: #acfd3e;
+  color: black;
+  border: 1px solid #000;
+}
+
+/* Botões de ação */
+#btn-cancelar,
+#btn-cadastro {
+  background-color: #fff;
+  color: #004302;
+  border: 1px solid #000;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 30px;
+  transition: background-color 0.3s ease;
+}
+
+#btn-cancelar:hover,
+#btn-cadastro:hover {
+  background-color: #acfd3e;
+}
+
+
+
+@media (max-width: 900px) {
+  main.conteudo-cadastro {
+
+    flex-direction: column;
+  }
+
+  .form-top{
+    flex-direction: column;
+  }
+
+  .form-bottom{
+    flex-direction: column;
+  }
+
+  .form-group{
+    margin: auto;
+  }
+  .form-group-polo {
+    width: 80%;
+    margin: auto;
+  }
+
+  .input-file-cadastro{
+    margin: auto;
+  }
+
+  .user-icon{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  .form-group-about{
+    width: 80%;
+    margin: auto;
+  }
+
+  .form-group-imagem{
+    margin: auto;
+  }
+
+  
+  .form-group-buton{
+    justify-content: center;
+  }
+}
