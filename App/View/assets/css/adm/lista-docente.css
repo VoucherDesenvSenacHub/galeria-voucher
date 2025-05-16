@@ -84,17 +84,20 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   min-height: 100%;
-  max-height: 600px;
+  max-height: 300px;
   overflow-y: auto;
   overflow-x: auto;
 }
-
+.tabela-container{
+  height: 70%;
+}
 /* Estilo da tabela */
 #tabelaUsuarios {
   width: 100%;
   min-width: 600px;
   border-collapse: collapse;
 }
+
 
 /* Cabeçalho da tabela */
 thead {

@@ -2,6 +2,10 @@
 require_once __DIR__ . "/../../componentes/head.php";
 ?>
 
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
 <body>
 
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
@@ -30,102 +34,67 @@ require_once __DIR__ . "/../../componentes/head.php";
               </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Tenma</td>
-                    <td>Japão</td>
-                    <td><button>Editar</button></td>
-                    <td><button>Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Arthur Morgan</td>
-                    <td>EUA</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
-                <tr>
-                    <td>Maestro Jr</td>
-                    <td>Bostil</td>
-                    <td><button onclick="editar()">Editar</button></td>
-                    <td><button onclick="inativar()">Inativar</button></td>
-                </tr>
+            <tr>
+              <td>Tenma</td>
+              <td>Japão</td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
+            </tr>
+            <tr>
+              <td>Arthur Morgan</td>
+              <td>EUA</td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
+            </tr>
+            <tr>
+              <td>Maestro Jr</td>
+              <td>Bostil</td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
+            </tr>
+            <tr>
+              <td>Maestro Jr</td>
+              <td>Bostil</td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
+            </tr>
+            <tr>
+              <td>Maestro Jr</td>
+              <td>Bostil</td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
+            </tr>
+            <tr>
+              <td>Maestro Jr</td>
+              <td>Bostil</td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
+            </tr>
+            <tr>
+              <td>Maestro Jr</td>
+              <td>Bostil</td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
+            </tr>
+            <tr>
+              <td>Maestro Jr</td>
+              <td>Bostil</td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
+            </tr>
+            <tr>
+              <td>Maestro Jr</td>
+              <td>Bostil</td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
+              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
+            </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </main>
-
-  <script>
-    function adjustTableHeight() {
-      const table = document.querySelector('.tabela-principal');
-      const windowHeight = window.innerHeight;
-      const newMinHeight = windowHeight * 0.5 + 200;
-      table.style.minHeight = `${newMinHeight}px`;
-    }
-
-    window.addEventListener('load', adjustTableHeight);
-    window.addEventListener('resize', adjustTableHeight);
-  </script>
+  <script src="../../assets/js/adm/lista-docentes.js"></script>
 
 </body>
 </html>
