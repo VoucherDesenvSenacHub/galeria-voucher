@@ -30,25 +30,24 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
+    margin-bottom: 3rem;
 }
 
     
-    @media (max-width: 480px) {
-    .container {
-        grid-template-columns: repeat(2, 1fr);
-        margin-left: auto;
-        column-gap: 3rem;
+@media (max-width: 1200px) {
+    .container{
+        display: flex;  
+        flex-wrap: wrap;  
     }
-    .card-container {
-        width: 10rem;
-    }
-    .image-container {
-        height: 200px; /* Adjust as needed */
-    }
-    .text-card {
-        padding: 0.1rem;
-    }
-    .imgnome img{
-        max-width: 300px;
-    }
+
+}
+
+@media (max-width: 480px) {
+.container {
+    gap: 55px;
+    
+}
+.titulodev{
+    font-size: 2rem;
+}
 }
