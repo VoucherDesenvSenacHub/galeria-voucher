@@ -1,0 +1,27 @@
+.body-estatisticas {
+    display: flex;
+    background-color: #E2E2E2;
+    width: 100%;
+    height: 100%;
+}
+
+/* conteúdo central da página de estatísticas */
+main.conteudo-estatisticas {
+    margin: 50px 100px 100px 20px;
+    flex: 1;
+    min-height: calc(100vh - 50px);
+    display: flex;
+}
+
+#estatistica-titulo{
+  width: 300px;
+  height: 75px;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #000;
+  background-color: #acfd3e;
+  margin: 0 15px 0 -20px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color:black;
+}
