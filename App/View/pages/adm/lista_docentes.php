@@ -11,7 +11,7 @@ require_once __DIR__ . "/../../componentes/head.php";
     <div style="flex-grow: 1; background: #f5f5f5; display: flex; flex-direction: column;">
         <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
-        <main style="padding: 20px; max-width: 1000px; margin: 0 auto; width: 100%;">
+        <main style="padding: 20px; width: 100%;">
             <style>
                 .docente-container {
                     background: #ffffff;
