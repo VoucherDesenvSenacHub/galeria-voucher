@@ -69,6 +69,10 @@
 
 @media (max-width: 480px) {
   .text-card{
-    width: 12rem;
+    width: 13.5rem;
+    height: 8.5rem;
+  }
+  .card-container{
+    width: 180px;
   }
 }

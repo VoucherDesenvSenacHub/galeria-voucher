@@ -1,17 +1,19 @@
 button, a.primary-button, a.secondary-button {
     height: var(--height-button);
-    border-radius: 5rem;
+    width: 200px;
+    border-radius: 30px;
     font-family: var(--font-secondary);
-    display: inline-block;
     transition: var(--default-transition);
     overflow: hidden;
     white-space: nowrap;
     text-align: center;
-    padding: 0 1.15rem;
-    padding-top: 3px;
+    padding: 0 1.5rem;
     cursor: pointer;
-    font-size: 1.25rem;
+    font-size: var(--l-font);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button:hover, a.primary-button:hover, a.secondary-button:hover {
@@ -53,4 +55,14 @@ button:active, a.primary-button:active, a.secondary-button:active {
 .secondary-button:active, a.secondary-button:active {
     background-color: #d4d4d4;
     box-shadow: var(--boxshadow-secondary-button);
+}
+
+@media (max-width : 481px) {
+    button, a.primary-button, a.secondary-button{
+        height: var(--height-button-phone);
+        font-size: var(--m-font);
+        width: 100px;
+    }
+
+    
 }

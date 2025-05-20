@@ -8,9 +8,7 @@
 }                                  /* BACK E ALINHAMENTO DA PAGINA*/
 
 .header_dev {
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+    padding:  20px 50px;
 }
 
 .titulodev {
@@ -42,12 +40,15 @@
 
 }
 
-@media (max-width: 480px) {
+@media (max-width: 481px) {
 .container {
     gap: 55px;
     
 }
 .titulodev{
     font-size: 2rem;
+}
+.header_dev{
+    padding: 20px;
 }
 }
