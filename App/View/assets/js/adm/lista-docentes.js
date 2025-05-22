@@ -1,20 +1,4 @@
-// Função que ajusta a altura maxi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ma da tabela com base na altura da janela //
+// Função que ajusta a altura maxima da tabela com base na altura da janela //
 function ajustarAlturaMaximaTabela() {
     const container = document.querySelector('.container-lista-docente');
     if (!container) return;
