@@ -66,3 +66,13 @@ button:active, a.primary-button:active, a.secondary-button:active {
 
     
 }
+
+@media (max-width : 961px){
+    button, a.primary-button, a.secondary-button{
+        height: var(--height-button-tablet);
+        font-size: var(--l-font);
+        width: 130px;
+    }
+    
+
+}

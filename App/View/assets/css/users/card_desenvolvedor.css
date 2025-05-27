@@ -76,3 +76,9 @@
     width: 180px;
   }
 }
+
+@media (max-width: 961px){
+  .text-card{
+    width: 13.2rem;
+  }
+}

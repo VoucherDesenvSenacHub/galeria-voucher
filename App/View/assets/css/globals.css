@@ -29,6 +29,7 @@
     --background-nav: rgba(0, 0, 0, 0.7) /*preto com 80% de opacidade*/;
     --height-button: 4rem;
     --height-button-phone: 2rem;
+    --height-button-tablet: 2.7rem;
     --font-primary: "Poppins", sans-serif;
     --font-secondary: "Bebas Neue", sans-serif;
     --s-font: 15px;
