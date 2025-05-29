@@ -5,6 +5,7 @@
 <body class="body-login">
 
     <?php 
+        $esconderPesquisa = true;
         require_once(__DIR__ . '/../../componentes/users/nav.php');
     ?>
     <?php 
@@ -30,7 +31,7 @@
 
                 <div class="form-action">
 
-                    <?php buttonComponent('primary', 'Login'); ?>
+                    <?php buttonComponent('primary', 'Login', false,  null, null); ?>
 
                 </div>
             </div>
