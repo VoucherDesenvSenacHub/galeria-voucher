@@ -30,9 +30,15 @@
     --white-background: #FFFFFF;
     --text-color-button: #000000;
     --background-nav: rgba(0, 0, 0, 0.7) /*preto com 80% de opacidade*/;
-    --height-button: 1.8rem;
+    --height-button: 4rem;
+    --height-button-phone: 2rem;
+    --height-button-tablet: 2.7rem;
     --font-primary: "Poppins", sans-serif;
     --font-secondary: "Bebas Neue", sans-serif;
+    --s-font: 15px;
+    --m-font: 20px;
+    --l-font: 30px;
+    --xl-font: 40px;
     --background-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0.970), rgba(0, 0, 0, 0.900), #0D9C0D, rgba(0, 0, 0, 0.930), #0D9C0D,rgba(0, 0, 0, 0.960),rgba(0, 0, 0, 0.950),rgba(0, 0, 0, 0.900));
     --card-gradient: linear-gradient(to right, #D8DBD6, #AEFF40);
     --dark-green: #0D9C0D;
