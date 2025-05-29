@@ -27,7 +27,7 @@
   color: var(--accent-color);
   text-decoration: none;
   font-family: var(--font-secondary);
-  font-size: var(--height-button);
+  font-size: var(--height-button-adm);
   font-weight: bold;
   letter-spacing: var(--espaco-letras);
   padding: 10px;
@@ -45,7 +45,7 @@
 }
 
 .botao-person .material-symbols-outlined {
-  font-size: var(--height-button);
+  font-size: var(--height-button-adm);
 }
 
 .imgvoucher{
