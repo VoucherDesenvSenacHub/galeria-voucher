@@ -1,46 +1,40 @@
-.material-symbols-outlined {
+.galeria-turma-material-symbols-outlined {
   color: #aEFF40;
   font-size: 35px;
-
 }
 
-a:hover {
+.galeria-turma-nav a:hover {
   opacity: 0.7;
   transform: scale(1.2);
-
 }
 
-ul {
+.galeria-turma-nav ul {
   display: flex;
   list-style: none;
   gap: 30px;
   align-items: center;
   letter-spacing: 2px;
-
 }
 
-ul li {
+.galeria-turma-nav ul li {
   display: inline-flex;
-
 }
 
-.search {
+.galeria-turma-search {
   display: flex;
   align-items: center;
-
 }
 
-.search input {
+.galeria-turma-search input {
   display: inline-flex;
   padding: 7px;
   border: none;
   border-radius: 10px 10px 10px 10px;
   outline: none;
   width: 300px;
-
 }
 
-.search button {
+.galeria-turma-search button {
   display: inline-flex;
   padding: 5px 10px;
   border: none;
@@ -50,7 +44,7 @@ ul li {
   margin-left: -40px;
 }
 
-.codimg {
+.galeria-turma-codimg {
   position: absolute;
   width: 600px;
   height: 300px;
@@ -64,7 +58,7 @@ ul li {
   background-position: left;
 }
 
-.binarynumber {
+.galeria-turma-binarynumber {
   position: absolute;
   width: 90%;
   height: 300vh;
@@ -76,13 +70,13 @@ ul li {
   z-index: -1;
 }
 
-section .dia {
+.galeria-turma-section .galeria-turma-dia {
   position: relative;
   z-index: 1;
 }
 
 /* Estilos gerais */
-body {
+.galeria-turma-body {
   margin: 0;
   padding: 0;
   font-family: "Inter", sans-serif;
@@ -91,28 +85,27 @@ body {
   line-height: 1.5;
 }
 
-h1,
-h5,
-h4 {
+.galeria-turma-h1,
+.galeria-turma-h5,
+.galeria-turma-h4 {
   font-family: "Bebas Neue", sans-serif;
   font-style: normal;
   font-weight: normal;
 }
 
 /*cabeçalho*/
-.projeto {
+.galeria-turma-projeto {
   text-align: center;
   font-size: 25px;
 }
 
-.galeria {
+.galeria-turma-galeria {
   word-spacing: 300px;
   text-align: center;
   font-size: 12px;
-
 }
 
-.senac {
+.galeria-turma-senac {
   position: absolute;
   top: 100px;
   right: 20px;
@@ -123,71 +116,70 @@ h4 {
 }
 
 /* Estilos do cabeçalho */
-header {
+.galeria-turma-header {
   text-align: center;
   padding: 11px;
-
-  .container {
-    position: relative;
-  }
-
-  .topleft {
-    position: absolute;
-    top: 8px;
-    left: 16px;
-    font-size: 18px;
-  }
-
-  img {
-    width: 150px;
-    height: auto;
-    opacity: 100%;
-  }
 }
 
+.galeria-turma-header .galeria-turma-container {
+  position: relative;
+}
+
+.galeria-turma-header .galeria-turma-topleft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+
+.galeria-turma-header img {
+  width: 150px;
+  height: auto;
+  opacity: 100%;
+}
 
 /* Seções gerais */
-section {
+.galeria-turma-section {
   margin: 10px auto;
   padding: 20px;
   max-width: 1200px;
   position: relative;
 }
 
-.dia {
+.galeria-turma-dia {
   display: flex;
 }
 
-.dia p {
+.galeria-turma-dia p {
   font-size: 19px;
 }
 
-.dia h2 {
+.galeria-turma-dia h2 {
   font-size: 48px;
   font-weight: normal;
 }
 
-.margin-top-left-turma-xx {
+.galeria-turma-margin-top-left-turma-xx {
   margin-left: 25px;
   margin-top: 65px;
 }
 
-.margin-top-left-dia-p {
+.galeria-turma-margin-top-left-dia-p {
   margin-left: 25px;
   margin-top: 65px;
 }
 
-.margin-top-left-projeto-xx {
+.galeria-turma-margin-top-left-projeto-xx {
   margin-left: 25px;
   margin-top: 20px;
 }
 
-.margin-top-right-dia-e {
+.galeria-turma-margin-top-right-dia-e {
   margin-right: 25px;
   margin-top: 65px;
 }
 
-section h2 {
+.galeria-turma-section h2 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 28px;
   margin-bottom: 10px;
@@ -195,7 +187,7 @@ section h2 {
   font-weight: normal;
 }
 
-section p {
+.galeria-turma-section p {
   margin: 10px 0;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
@@ -203,7 +195,7 @@ section p {
   padding: 20px;
 }
 
-.cardss p {
+.galeria-turma-cardss p {
   margin: 10px 0;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
@@ -211,17 +203,17 @@ section p {
   padding: 0;
 }
 
-.cardss h1 {
+.galeria-turma-cardss h1 {
   text-align: center;
   font-size: 40px;
 }
 
-.dia h2 {
+.galeria-turma-dia h2 {
   padding: 20px;
 }
 
 /* Estilos das imagens */
-section img {
+.galeria-turma-section img {
   width: 90%;
   max-width: 500px;
   display: block;
@@ -229,11 +221,11 @@ section img {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.image-container img {
+.galeria-turma-image-container img {
   border-radius: 12px;
 }
 
-.dia p {
+.galeria-turma-dia p {
   text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.17);
 }
 
@@ -247,9 +239,6 @@ section#projeto-xx img {
   margin: 20px auto;
   text-align: center;
 }
-
-
-
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -313,19 +302,18 @@ section#projeto-xx img {
   }
 }
 
-
-.container {
+.galeria-turma-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
 }
 
-.botaoprojeto {
+.galeria-turma-botaoprojeto {
   padding-left: 20px;
 }
 
-.btn {
+.galeria-turma-btn {
   background-color: #AEFF40;
   border: none;
   font-size: 40px;
@@ -337,28 +325,26 @@ section#projeto-xx img {
   border-radius: 50px;
 }
 
-.titulo {
+.galeria-turma-titulo {
   margin-bottom: 30px;
   font-size: 2rem;
   text-transform: uppercase;
 }
 
-.grid {
+.galeria-turma-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
-
-main {
+.galeria-turma-main {
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
-.container {
+.galeria-turma-container {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(5, 1fr);
@@ -370,31 +356,28 @@ main {
   padding: 10px;
 }
 
-
-.card-container {
+.galeria-turma-card-container {
   position: relative;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
-.card-container:hover {
+.galeria-turma-card-container:hover {
   font-size: 18px;
 }
 
-.image-container {
+.galeria-turma-image-container {
   width: 120%;
   height: 300px;
   overflow: hidden;
   z-index: 1;
   border-radius: 15px;
-
 }
 
-.image-container img {
+.galeria-turma-image-container img {
   width: 100%;
   border-radius: 20;
   height: 100%;
@@ -425,74 +408,72 @@ main {
 .text-card-turmagaleria p {
   margin: 5px 0;
   font-size: 1.1em;
-
 }
 
-.social-icons {
+.galeria-turma-social-icons {
   display: flex;
 }
 
-.social-icons a {
+.galeria-turma-social-icons a {
   color: #AEFF40;
   font-size: 35px;
   margin: 0 8px;
   text-decoration: none;
 }
 
-.textofinal {
+.galeria-turma-textofinal {
   padding: 70px;
   font-size: 14px;
 }
 
 @media (max-width: 992px) {
-  .container {
+  .galeria-turma-container {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .card-container {
+  .galeria-turma-card-container {
     width: 90%;
     /* Adjust as needed */
   }
 
-  .image-container {
+  .galeria-turma-image-container {
     height: 280px;
     /* Adjust as needed */
   }
 }
 
 @media (max-width: 768px) {
-  .container {
+  .galeria-turma-container {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .card-container {
+  .galeria-turma-card-container {
     width: 95%;
     /* Adjust as needed */
   }
 
-  .image-container {
+  .galeria-turma-image-container {
     height: 250px;
     /* Adjust as needed */
   }
 }
 
 @media (max-width: 480px) {
-  .container {
+  .galeria-turma-container {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .card-container {
+  .galeria-turma-card-container {
     width: 100%;
   }
 
-  .image-container {
+  .galeria-turma-image-container {
     height: 200px;
     /* Adjust as needed */
   }
 }
 
-
-.box {
+.galeria-turma-box {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
