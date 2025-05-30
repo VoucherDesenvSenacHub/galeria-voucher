@@ -21,6 +21,8 @@
 @import url(adm/cadastrar-usuarios.css);
 
 
+@import url(adm/lista-docente.css);
+
 :root {
     --primary-color-button: #AEFF40;
     --secondary-color-button: #9BE836;
