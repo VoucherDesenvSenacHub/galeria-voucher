@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.body-cadastrar-users {
+  display: flex;
+  background-color: #E2E2E2;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo principal da área de cadastro */
+main.conteudo-cadastro {
+  margin: 50px 0 20px 20px;
+  padding-right: 20px;
+  width: 100%;
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Estilização da scrollbar */
+main.conteudo-cadastro::-webkit-scrollbar {
+  width: 10px;
+}
+
+main.conteudo-cadastro::-webkit-scrollbar-track {
+  background: #E2E2E2;
+  border-radius: 5px;
+}
+
+main.conteudo-cadastro::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+main.conteudo-cadastro::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.container-users {
+  width: 100%;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.container-users h1 {
+  font-size: 39px;
+  margin: 30px 0 15px;
+  font-weight: bold;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+}
+
+.form-container-users {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form-dados {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding-top: 1rem;
+  gap: 1rem;
+}
+
+.form-dados .form-top {
+  display: flex;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+/* Estilos base para campos de input, select e textarea */
+input,
+select,
+textarea {
+  background-color: #E2E2E2;
+  border: 2px solid #000000;
+  border-radius: 80px;
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+
+#informacoes-adicionais{
+  width: 100%;
+}
+
+input,
+select {
+  height: 3rem;
+}
+
+.form-group-about {
+  padding: 1rem 0px 1rem 0px;
+  width: 100%;
+}
+
+.form-group-about textarea {
+  border-radius: 30px;
+  padding: 1rem;
+  resize: vertical;
+  width: 100%;
+  max-height: 300px;
+}
+
+/* Agrupamentos */
+.form-group,
+.form-group-polo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  flex: 3;
+}
+
+.form-group-polo {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Área de imagem */
+.form-group-imagem {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  gap: 8px;
+}
+
+.form-group-imagem select {
+  width: 95%;
+}
+
+.input-file-cadastro {
+  position: relative;
+  width: 250px;
+  height: 223px;
+  cursor: pointer;
+}
+
+.input-file-cadastro img {
+  z-index: 1;
+  width: 95%;
+  height: 223px;
+  object-fit: cover;
+  border-radius: 5%;
+  border: 2px solid #000000;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.input-file-cadastro img:hover {
+  transform: scale(1.02);
+}
+
+/* Grupo de botão */
+.form-group-buton {
+  justify-content: right;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-group-buton button {
+  width: 200px !important;
+  height: 60px !important;
+  font-size: 25px !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  letter-spacing: 2px !important;
+}
+
+/* Botões de seleção */
+#btn-docente,
+#btn-aluno {
+  width: 300px;
+  height: 75px;
+  border-radius: 0 0 8px 8px;
+  margin: 0;
+  font-size: 30px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+}
+
+#btn-docente {
+  border-radius: 0 0 0 8px;
+}
+
+#btn-aluno {
+  border-radius: 0 0 8px 0;
+  border-left: none;
+}
+
+/* Estado ativo */
+#btn-docente.active,
+#btn-aluno.active {
+  background-color: var(--primary-color-button);
+  color: var(--color-text-button);
+}
+
+/* Botões de ação */
+#btn-cancelar,
+#btn-cadastro {
+  background-color: #fff;
+  color: #004302;
+  border: 1px solid #000;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 30px;
+  transition: background-color 0.3s ease;
+}
+
+#btn-cancelar:hover,
+#btn-cadastro:hover {
+  background-color: #acfd3e;
+}
+
+.user-profile {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.user-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+.form-container-users .form-bottom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  main.conteudo-cadastro {
+    margin: 50px 10px 0 10px;
+    flex-direction: column;
+  }
+
+  .form-dados .form-top {
+    flex-direction: column;
+  }
+
+  .form-group,
+  .form-group-polo {
+    width: 100%;
+    margin: 0;
+  }
+
+  .form-group-imagem {
+    margin: 20px auto;
+  }
+}
+
+/* Remover estilos antigos de input e button */
+.form-group .input-text,
+.form-group-polo .input-text {
+  width: 100%;
+}
+
+.form-group-about .input-text {
+  border-radius: 20px;
+  padding: 1rem;
+  resize: vertical;
+  width: 100%;
+  max-height: 300px;
+}
+
+.form-group input,
+.form-group-polo input,
+.form-group-polo select,
+.form-group-about textarea {
+  border: 2px solid #000000 !important;
+}
+
+.input-text {
+  border: 2px solid #000000 !important;
+}
+
+#informacoes-adicionais {
+  border: 2px solid #000000 !important;
+}

@@ -9,10 +9,10 @@ require_once __DIR__ . "\.\..\head.php"
         </div>
         <ul>
             <li>
-                <a href="">HOME</a>
+                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'home-adm.php'; ?>">HOME</a>
             </li>
             <li>
-                <a href="">TURMAS</a>
+                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . ''; ?>">TURMAS</a>
             </li>
             <li>
                 <a href="" class="botao-person">

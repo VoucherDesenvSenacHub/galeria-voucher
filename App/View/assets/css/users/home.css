@@ -1,373 +1,407 @@
 .body-user {
-  margin: 0px;
-  padding: 0px;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.97),
-    rgba(0, 0, 0, 0.9),
-    #0d9c0d,
-    #0d9c0d,
-    rgba(0, 0, 0, 0.96),
-    rgba(0, 0, 0, 0.95),
-    rgba(0, 0, 0, 0.9)
-  );
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.97),
+            rgba(0, 0, 0, 0.9),
+            #0d9c0d,
+            #0d9c0d,
+            rgba(0, 0, 0, 0.96),
+            rgba(0, 0, 0, 0.95),
+            rgba(0, 0, 0, 0.9));
 }
+
 .body-turma {
-  margin: 0px;
-  padding: 0px;
-  font-family: Arial, sans-serif;
-  background-image: linear-gradient(#000000, #003100);
-  background-repeat: no-repeat;
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(#000000, #003100);
+    background-repeat: no-repeat;
 }
 
 .main-user {
-  display: flex;
-  flex-direction: column;
-  min-height: 240vh;
-  /* Ajuste conforme necessário */
-  padding: 0px;
-  margin: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 240vh;
+    /* Ajuste conforme necessário */
+    padding: 0px;
+    margin: 0px;
 }
 
 .main-user section {
-  /* Cada seção ocupa o espaço disponível */
-  display: flex;
-  /* align-items: center; */
-  justify-content: center;
+    /* Cada seção ocupa o espaço disponível */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
 }
 
 /* Estilos específicos para cada seção */
 
 /* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
-  min-height: 100vh;
+    min-height: 100vh;
 
-  .content {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
-    /* position: relative;  */
-    /* para posicionar elementos absolutos */
-  }
-
-  /* imagem dos números */
-  .numero {
-    position: absolute;
-    width: 100%;
-    height: 50rem;
-    text-align: right;
-    opacity: 20%;
-    overflow: hidden;
-    padding-left: 5rem;
-
-    img {
-      padding-left:  45rem;
+    .content {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        /* position: relative;  */
+        /* para posicionar elementos absolutos */
     }
-  }
 
-  /* imagem do logo */
-  .nome-voucher {
-    width: 100%;
-    top: calc(25vh + 6.3vw);
-    text-align: center;
-  }
+    /* imagem dos números */
+    .numero {
+        position: absolute;
+        width: 100%;
+        height: 50rem;
+        text-align: right;
+        opacity: 20%;
+        overflow: hidden;
+        padding-left: 5rem;
 
-  /* imagem do mapa do estado */
+        img {
+            padding-left: 45rem;
+        }
+    }
 
-  .mapa {
-    position: absolute;
-    width: 100%;
-    height: 110vh;
-    display: flex;
-    justify-content: right;
-    padding-top: 2rem;
-    opacity: 50%;
-}
+    /* imagem do logo */
+    .nome-voucher {
+        width: 100%;
+        top: calc(25vh + 6.3vw);
+        text-align: center;
+    }
+
+    /* imagem do mapa do estado */
+
+    .mapa {
+        position: absolute;
+        width: 100%;
+        height: 110vh;
+        display: flex;
+        justify-content: right;
+        padding-top: 2rem;
+        opacity: 50%;
+    }
 }
 
 /* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
-  .container {
-    height: 100%;
-    display: flex;
-    gap: 5rem;
-    justify-content: center;
+    .container {
+        height: 100%;
+        display: flex;
+        gap: 5rem;
+        justify-content: center;
 
-    .card {
-      background-color: #0d0d0d;
-      border-top: 3px solid #0d9c0d;
-      border-bottom: 3px solid#073e07;
-      border-left: 2px solid#073e07;
-      border-right: 2px solid#073e07;
-      border-radius: 10px;
-      max-width: 300px;
-      text-align: justify;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
-      /* Sombra sutil */
-      overflow: hidden;
-      /* Esconde o texto que sai do cartão */
-      /* Animação para expandir */
-      padding: var(--default-padding);
-      z-index: 1;
-      max-height: 85px;
-      overflow: hidden;
-      transition: max-height 0.6s ease, box-shadow 0.3s ease;
-    }
+        .card {
+            background-color: #0d0d0d;
+            border-top: 3px solid #0d9c0d;
+            border-bottom: 3px solid#073e07;
+            border-left: 2px solid#073e07;
+            border-right: 2px solid#073e07;
+            border-radius: 10px;
+            max-width: 300px;
+            text-align: justify;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+            /* Sombra sutil */
+            overflow: hidden;
+            /* Esconde o texto que sai do cartão */
+            /* Animação para expandir */
+            padding: var(--default-padding);
+            z-index: 1;
+            max-height: 85px;
+            overflow: hidden;
+            transition: max-height 0.6s ease, box-shadow 0.3s ease;
+        }
 
-    h2 {
-      color: var(--accent-color);
-      /* Verde do título */
-      margin-bottom: 5px;
-      padding: .5rem;
-      font-family: var(--font-secondary);
-      font-size: 210%;
-      text-align: center;
-    }
+        h2 {
+            color: var(--accent-color);
+            /* Verde do título */
+            margin-bottom: 5px;
+            padding: .5rem;
+            font-family: var(--font-secondary);
+            font-size: 210%;
+            text-align: center;
+        }
 
-    .card p {
-      padding: .5rem;
-      font-family: var(--font-primary);
-      font-size: 14px;
-      line-height: 1.5;
-      color: var(--text-white);
-      /* Texto branco */
-      opacity: 0;
-      /* Torna o texto invisível inicialmente */
-      transition: opacity 0.3s ease-in-out;
-      /* Animação para visibilidade */
-    }
+        .card p {
+            padding: .5rem;
+            font-family: var(--font-primary);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-white);
+            /* Texto branco */
+            opacity: 0;
+            /* Torna o texto invisível inicialmente */
+            transition: opacity 0.3s ease-in-out;
+            /* Animação para visibilidade */
+        }
 
-    /* Ao passar o mouse sobre o cartão */
-    .card:hover {
-      max-height: 500px;
-      /* Expande o cartão para exibir o texto */
-    }
+        /* Ao passar o mouse sobre o cartão */
+        .card:hover {
+            max-height: 500px;
+            /* Expande o cartão para exibir o texto */
+        }
 
-    .card:hover p {
-      opacity: 1;
-      /* Mostra o texto */
+        .card:hover p {
+            opacity: 1;
+            /* Mostra o texto */
+        }
     }
-  }
 }
 
 /* estatísticas e call to action (inspire-se) */
 #secao3 {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 10rem;
 
-  .container2 {
-    background: transparent;
-    padding: 20px;
+    .container2 {
+        background: transparent;
+        padding: 20px;
 
-    /* frase "SUA EVOLUÇÃO COMEÇA AQUI" */
-    h1 {
-      font-family: var(--font-secondary);
-      font-size: 2.5em;
-      font-weight: bold;
-      margin: 0 0 20px;
-      color: var(--text-white);
-      padding-top: 0px;
-      padding-bottom: 30px;
-      display: flex;
-      justify-content: center;
+        /* frase "SUA EVOLUÇÃO COMEÇA AQUI" */
+        h1 {
+            font-family: var(--font-secondary);
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 0 0 20px;
+            color: var(--text-white);
+            padding-top: 0px;
+            padding-bottom: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ESTATÍSTICAS */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 180px;
+            font-size: 2rem;
+        }
+
+        .stats div {
+            text-align: center;
+        }
+
+        span {
+            font-family: "Bebas Neue", sans-serif;
+            display: block;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #abfa3d;
+            padding-left: 7px;
+            /* text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
+                      0 0 20px rgba(67, 204, 40, 0.5),
+                      0 0 30px rgba(67, 204, 40, 0.5),
+                      0 0 40px rgba(67, 204, 40, 0.5); */
+        }
+
+        p {
+            font-family: var(--font-primary);
+            font-weight: bold;
+            font-size: 19px;
+            margin: -1px;
+            color: var(--text-white);
+            padding-left: 10px;
+        }
     }
-
-    /* ESTATÍSTICAS */
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 180px;
-      font-size: 2rem;
-    }
-
-    .stats div {
-      text-align: center;
-    }
-
-    span {
-      font-family: "Bebas Neue", sans-serif;
-      display: block;
-      font-size: 2.5em;
-      font-weight: bold;
-      color: #abfa3d;
-      padding-left: 7px;
-      /* text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
-                    0 0 20px rgba(67, 204, 40, 0.5),
-                    0 0 30px rgba(67, 204, 40, 0.5),
-                    0 0 40px rgba(67, 204, 40, 0.5); */
-    }
-
-    p {
-      font-family: var(--font-primary);
-      font-weight: bold;
-      font-size: 19px;
-      margin: -1px;
-      color: var(--text-white);
-      padding-left: 10px;
-    }
-  }
 }
 
 #secao4 {
-  flex-direction: column;
-  padding-top: 10rem;
+    flex-direction: column;
+    padding-top: 10rem;
 
-  .call-to-action {
-    font-family: var(--font-secondary);
-    margin-top: 2remx;
-    font-size: 2.5em;
-    color: white;
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-  }
-
-  .call-to-action span {
-    font-family: "Bebas Neue", sans-serif;
-    color: #abfa3d;
-    font-weight: bold;
-    cursor: pointer;
-    /* text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
-                    0 0 20px rgba(67, 204, 40, 0.5),
-                    0 0 30px rgba(67, 204, 40, 0.5),
-                    0 0 40px rgba(67, 204, 40, 0.5); */
-  }
-
-  .poligono {
-    display: flex;
-    flex-direction: column; /* Alinha as linhas de imagens em coluna */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    margin: 10rem; /* Remove margens padrão */
-    background-color: transparent; /* Cor de fundo */
-    border-radius: 10px;
-
-    .image-row {
-      display: flex;
-      justify-content: center; /* Centraliza as imagens dentro da linha */
-      flex-wrap: wrap; /* Permite que as imagens quebrem para a linha seguinte se necessário */
-      gap: 2px; /* Adiciona espaço entre as imagens */
+    .call-to-action {
+        font-family: var(--font-secondary);
+        margin-top: 2remx;
+        font-size: 2.5em;
+        color: white;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
     }
 
-    .image-turma {
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-      background-image: url("img/foto.png");
-      padding: 5px;
-      margin-left: 2px;
-      display: inline-block;
-      max-width: 140px; /* Define a largura do contêiner */
-      margin-top: -70px;
+    .call-to-action span {
+        font-family: "Bebas Neue", sans-serif;
+        color: #abfa3d;
+        font-weight: bold;
+        cursor: pointer;
+        /* text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
+                      0 0 20px rgba(67, 204, 40, 0.5),
+                      0 0 30px rgba(67, 204, 40, 0.5),
+                      0 0 40px rgba(67, 204, 40, 0.5); */
     }
 
-    .image-turma img {
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-      width: 140px; /* width of container */
-      height: 140px; /* height of container */
-      object-fit: cover;
-      display: block;
+    .poligono {
+        display: flex;
+        flex-direction: column;
+        /* Alinha as linhas de imagens em coluna */
+        justify-content: center;
+        /* Centraliza horizontalmente */
+        align-items: center;
+        /* Centraliza verticalmente */
+        margin: 10rem;
+        /* Remove margens padrão */
+        background-color: transparent;
+        /* Cor de fundo */
+        border-radius: 10px;
+
+        .image-row {
+            display: flex;
+            justify-content: center;
+            /* Centraliza as imagens dentro da linha */
+            flex-wrap: wrap;
+            /* Permite que as imagens quebrem para a linha seguinte se necessário */
+            gap: 2px;
+            /* Adiciona espaço entre as imagens */
+        }
+
+        .image-turma {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            background-image: url("img/foto.png");
+            padding: 5px;
+            margin-left: 2px;
+            display: inline-block;
+            max-width: 140px;
+            /* Define a largura do contêiner */
+            margin-top: -70px;
+        }
+
+        .image-turma img {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            width: 140px;
+            /* width of container */
+            height: 140px;
+            /* height of container */
+            object-fit: cover;
+            display: block;
+        }
     }
-  }
 }
 
 /* responsividade dos elementos e da página */
 @media (max-width: 376px) {
-  body {
-    overflow-x: hidden;
-  }
+    body {
+        overflow-x: hidden;
+    }
 
-  #secao1 .nome img {
-    max-width: 150%; /* Reduz o tamanho das imagens */
-    margin: -50% auto; /* Centraliza e adiciona espaçamento */
-    padding: 50%;
-    margin-left: -50%;
-  }
-  #secao1 .mapa img {
-    position: absolute;
-    left: 20%;
-    max-width: 90%;
-  }
-  #secao1 .numero img {
-    position: absolute;
-    left: 30%;
-    max-width: 50%;
-  }
+    #secao1 .nome img {
+        max-width: 150%;
+        /* Reduz o tamanho das imagens */
+        margin: -50% auto;
+        /* Centraliza e adiciona espaçamento */
+        padding: 50%;
+        margin-left: -50%;
+    }
 
-  #secao3 .container2 {
-    padding: 10px;
-    text-align: center;
-  }
+    #secao1 .mapa img {
+        position: absolute;
+        left: 20%;
+        max-width: 90%;
+    }
 
-  #secao3 .stats {
-    flex-direction: column; /* Alinha estatísticas em coluna */
-    gap: 15px;
-  }
-  #secao2 .container {
-    gap: 20px;
-    margin-top: 10%;
-    margin-left: 8%;
-    position: absolute;
-  }
+    #secao1 .numero img {
+        position: absolute;
+        left: 30%;
+        max-width: 50%;
+    }
 
-  #secao3 .container2 {
-    margin-top: 1250px;
-    z-index: 1;
-    gap: 1%;
-  }
-  #secao3 .container2 .stats {
-    gap: 0;
-  }
-  #secao3 .container2 h1 {
-    position: relative; /* Adicionado para ativar o z-index */
-    z-index: 1; /* Controla a ordem de empilhamento */
-  }
-  #secao3 .container2 .call-to-action {
-    position: relative; /* Adicionado para ativar o z-index */
-    z-index: 1; /* Controla a ordem de empilhamento */
-  }
+    #secao3 .container2 {
+        padding: 10px;
+        text-align: center;
+    }
 
-  .poligono {
-    flex-wrap: wrap;
-  }
-  #secao3 .poligono .image-row {
-    margin-left: -67%;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    gap: 0px;
-  }
+    #secao3 .stats {
+        flex-direction: column;
+        /* Alinha estatísticas em coluna */
+        gap: 15px;
+    }
 
-  #secao3 .image-row .image-row {
-    max-width: 100%;
-    flex-direction: row; /* Organiza as imagens em linha */
+    #secao2 .container {
+        gap: 20px;
+        margin-top: 10%;
+        margin-left: 8%;
+        position: absolute;
+    }
 
-    gap: 0px; /* Ajuste o espaçamento entre as imagens */
-  }
+    #secao3 .container2 {
+        margin-top: 1250px;
+        z-index: 1;
+        gap: 1%;
+    }
 
-  #secao3 .image-row .image-turma {
-    max-width: 100%; /* Reduz o tamanho das imagens para se ajustar à tela */
-    margin-top: 0; /* Remove o deslocamento das imagens */
-  }
+    #secao3 .container2 .stats {
+        gap: 0;
+    }
 
-  #secao3 .image-row .image-turma img {
-    width: 3rem; /* Ajusta a largura para a tela pequena */
-    height: 3rem; /* Ajusta a altura para a tela pequena */
-  }
-  nav {
-    justify-content: start;
-  }
-  .poligono .image-turma:nth-of-type(n + 3) {
-    display: none;
-  }
+    #secao3 .container2 h1 {
+        position: relative;
+        /* Adicionado para ativar o z-index */
+        z-index: 1;
+        /* Controla a ordem de empilhamento */
+    }
 
-  /* Ajusta a largura das imagens para melhorar a visualização no celular */
-  .poligono .image-turma img {
-    width: 100px; /* Ajuste conforme necessário */
-    height: 100px;
-  }
-  #secao {
-    margin-top: 10rem;
-  }
+    #secao3 .container2 .call-to-action {
+        position: relative;
+        /* Adicionado para ativar o z-index */
+        z-index: 1;
+        /* Controla a ordem de empilhamento */
+    }
+
+    .poligono {
+        flex-wrap: wrap;
+    }
+
+    #secao3 .poligono .image-row {
+        margin-left: -67%;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    #secao3 .image-row .image-row {
+        max-width: 100%;
+        flex-direction: row;
+        /* Organiza as imagens em linha */
+
+        gap: 0px;
+        /* Ajuste o espaçamento entre as imagens */
+    }
+
+    #secao3 .image-row .image-turma {
+        max-width: 100%;
+        /* Reduz o tamanho das imagens para se ajustar à tela */
+        margin-top: 0;
+        /* Remove o deslocamento das imagens */
+    }
+
+    #secao3 .image-row .image-turma img {
+        width: 3rem;
+        /* Ajusta a largura para a tela pequena */
+        height: 3rem;
+        /* Ajusta a altura para a tela pequena */
+    }
+
+    nav {
+        justify-content: start;
+    }
+
+    .poligono .image-turma:nth-of-type(n + 3) {
+        display: none;
+    }
+
+    /* Ajusta a largura das imagens para melhorar a visualização no celular */
+    .poligono .image-turma img {
+        width: 100px;
+        /* Ajuste conforme necessário */
+        height: 100px;
+    }
+
+    #secao {
+        margin-top: 10rem;
+    }
 }
