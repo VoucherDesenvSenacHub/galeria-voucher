@@ -13,7 +13,8 @@ main.conteudo-estatisticas {
     display: flex;
 }
 
-#estatistica-titulo{
+/* profile (titulo da página) na parte de cima */
+#profile-titulo{
   width: 300px;
   height: 75px;
   border-radius: 0 0 8px 8px;
@@ -21,7 +22,25 @@ main.conteudo-estatisticas {
   background-color: #acfd3e;
   margin: 0 15px 0 -20px;
   font-size: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  cursor: default;
+  transition: none !important;
   color:black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+}
+
+.titulo-estatistica {
+  height: 55px;
+  font-size: 22.8px;
+  color: black;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
 }
