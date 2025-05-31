@@ -37,10 +37,13 @@ main.conteudo-estatisticas {
 }
 
 .titulo-estatistica {
-  height: 55px;
-  font-size: 22.8px;
+  width: 300px;
+  height: 45px;
+  font-size: 35px;
+  
   color: black;
   display: flex;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
+  justify-content: center;
 }
