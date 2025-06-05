@@ -32,7 +32,7 @@ require_once __DIR__ . "/../../componentes/head.php";
                                 <th>NOME</th>
                                 <th>TIPO</th>
                                 <th>EDITAR</th>
-                                <th>INATIVAR</th>
+                                <th>EXCLUIR</th>
                             </tr>
                         </thead>
                         <tbody>
