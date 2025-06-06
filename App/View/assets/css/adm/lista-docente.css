@@ -1,5 +1,5 @@
 /* Estilo base do corpo da página */
-body {
+.body-lista-docentes {
   display: flex;
   background-color: #e2e2e2;
   overflow: hidden;
