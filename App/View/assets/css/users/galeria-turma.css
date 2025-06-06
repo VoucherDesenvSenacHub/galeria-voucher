@@ -213,7 +213,7 @@
 }
 
 /* Estilos das imagens */
-.galeria-turma-section img {
+/* .galeria-turma-section img {
   width: 90%;
   max-width: 500px;
   display: block;
@@ -227,10 +227,10 @@
 
 .galeria-turma-dia p {
   text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.17);
-}
+} */
 
 /* Estilo específico para alinhar imagens */
-section#turma img,
+/* section#turma img,
 section#dia-i img,
 section#dia-p img,
 section#dia-e img,
@@ -238,7 +238,7 @@ section#projeto-xx img {
   float: none;
   margin: 20px auto;
   text-align: center;
-}
+} */
 
 /* Responsividade */
 @media (max-width: 768px) {
