@@ -11,7 +11,7 @@ require_once __DIR__ . "/../../componentes/head.php";
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
-  <main>
+  <main class="main-lista-docentes">
     <div class="container-lista-docente">
       <div class="topo-lista-docente">
         <button id="btn-nvturma">NOVA TURMA</button>
