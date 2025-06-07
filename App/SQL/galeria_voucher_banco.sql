@@ -46,3 +46,21 @@ CREATE TABLE IF NOT EXISTS projeto (
     polo_id INT,
     FOREIGN KEY (polo_id) REFERENCES polo(polo_id)
 );
+
+-- Tabela imagem
+CREATE TABLE IF NOT EXISTS imagem (
+    imagem_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    url VARCHAR(255) NOT NULL,
+    titulo VARCHAR(255) NOT NULL, -- Nome da chave alterado de "text", text é uma palavra reservacada do sql
+    descricao VARCHAR(255) NOT NULL,
+    data_upload DATE NOT NULL DEFAULT CURRENT_DATE
+);
+-- Tabela imagem_projeto
+CREATE TABLE IF NOT EXISTS imagem_projeto (
+    imagem_projeto_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    projeto_id INT UNSIGNED NOT NULL
+    imagem_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (imagem_id) REFERENCES imagem(imagem_id),
+    FOREIGN KEY (projeto_id) REFERENCES projeto(projeto_id)
+);
+
