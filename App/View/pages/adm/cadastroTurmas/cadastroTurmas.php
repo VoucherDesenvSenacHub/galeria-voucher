@@ -10,24 +10,24 @@ require_once __DIR__ . "/../../../componentes/head.php";
         <?php require_once __DIR__ . "/./../../../componentes/adm/nav.php"; ?>
 
         <main class="main-turmas-turmas">
-            <div class="tabs">
-                <button class="tab active">TURMA</button>
-                <button class="tab">SOBRE</button>
-                <button class="tab">IMAGENS</button>
+            <div class="tabs-adm-turmas">
+                <button class="tab-adm-turmas active">TURMA</button>
+                <button class="tab-adm-turmas">SOBRE</button>
+                <button class="tab-adm-turmas">IMAGENS</button>
             </div>
 
-            <div class="container">
+            <div class="container-main-adm">
                 <div class="form-section">
                 <h1>CADASTRO</h1>
-                <input type="text" placeholder="Nome:" />
-                <input type="text" placeholder="Ano da Turma:" />
-                <input type="text" placeholder="Polo:" />
-                <input type="text" placeholder="Docentes:" />
-                <input type="text" placeholder="Alunos:" />
+                <input class="input-adm-turmas" type="text" placeholder="Nome:" />
+                <input class="input-adm-turmas" type="text" placeholder="Ano da Turma:" />
+                <input class="input-adm-turmas" type="text" placeholder="Polo:" />
+                <input class="input-adm-turmas" type="text" placeholder="Docentes:" />
+                <input class="input-adm-turmas" type="text" placeholder="Alunos:" />
                 </div>
 
                 <div class="profile-pic">
-                <img src="" alt="Ícone de usuário" />
+                <img src="" alt="Foto usuário" />
                 </div>
             </div>
         </main> 

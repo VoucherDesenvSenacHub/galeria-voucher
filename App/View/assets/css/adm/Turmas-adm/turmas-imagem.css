@@ -1,0 +1,99 @@
+.main-turmas-turmas {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-imagens {
+    width: 150vh;
+    margin: 0 auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-height: calc(90vh - 100px);
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    background-color: transparent;
+    scroll-snap-type: y mandatory;
+    font-family: var(--font-primary);
+}
+
+.container-imagens > * {
+    scroll-snap-align: start;
+}
+.container-imagens::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.container-imagens::-webkit-scrollbar-thumb {
+    background-color: rgba(150, 150, 150, 0.4); 
+    border-radius: 0.25rem;
+}
+
+.container-imagens::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.section-imagens {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-imagens h2 {
+    font-size: 1.375rem;
+    font-weight: bold;
+    margin-bottom: 0.625rem;
+    display: flex;
+    align-items: center;
+}
+
+.section-imagens h2 span {
+    font-size: 1.25rem;
+    margin-left: 0.5rem;
+}
+
+.images-row-imagens {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.9375rem;
+}
+
+.img-imagens {
+    width: 100%;
+    height: 6.25rem;
+    object-fit: contain;
+    border: 1px solid #000;
+    border-radius: 0.625rem;
+    padding: 0.625rem;
+}
+
+.buttons-imagens {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.25rem;           
+    margin-top: 2.5rem;     
+    padding-bottom: 1.25rem; 
+}
+
+.cancel-imagens,
+.submit-imagens {
+    display: flex;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.625rem 1.875rem;
+    border-radius: 1.5625rem;
+    border: 1px solid #000;
+    cursor: pointer;
+    align-items: center;
+}
+
+.cancel-imagens {
+    background-color: white;
+    color: darkgreen;
+}
+
+.submit-imagens {
+    background-color: #a8ff00;
+    color: black;
+}

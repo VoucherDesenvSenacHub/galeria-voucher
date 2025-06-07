@@ -18,6 +18,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
             <h1 class="h1-sobre">CADASTRO</h1>
             <div class="form-container-sobre">
+              <div class="input-grupos">
                 <div class="input-group-sobre">
                 <input type="text" class="input-field" placeholder="Nome:">
                 <textarea class="textarea-field" placeholder="Sobre:"></textarea>
@@ -33,10 +34,11 @@ require_once __DIR__ . "/../../../componentes/head.php";
                 <input type="text" class="input-field" placeholder="Dia E">
                 <textarea class="textarea-field" placeholder="Sobre:"></textarea>
                 </div>
-            </div>
-            <div class="link-projeto">
+                <div class="link-projeto">
             <input type="text" class="input-projeto" placeholder="Link de Projeto:">
             <button class="btn-novos-projeto">NOVOS PROJETOS</button>
+            </div>
+            </div>
             </div>
         </main> 
     </div> 

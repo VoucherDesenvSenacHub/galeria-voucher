@@ -17,7 +17,8 @@
 @import url(adm/home-adm.css);
 @import url(adm/login.css);
 @import url(adm/sobre.css);
-
+@import url(adm/cadastroTurmas.css);
+@import url(adm/Turmas-adm/turmas-imagem.css);
 
 :root {
     --primary-color-button: #AEFF40;
@@ -27,6 +28,7 @@
     --color-text-button: #004302;
     --white-background: #FFFFFF;
     --text-color-button: #000000;
+    --background-nav: rgba(0, 0, 0, 0.7) /*preto com 80% de opacidade*/;
     --height-button: 1.8rem;
     --font-primary: "Poppins", sans-serif;
     --font-secondary: "Bebas Neue", sans-serif;
