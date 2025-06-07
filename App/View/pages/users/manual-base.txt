@@ -1,0 +1,19 @@
+Cadastro
+
+
+Nome Completo:                       Data de Nascimento:              imagen perfil
+
+Email:				                Polo (opcao pre-definidad)        Ativo/ Inativo
+
+Link do linkedin:
+
+Link para o GitHub:
+
+Telefone:
+
+
+Sobre o Docente
+
+
+
+obs: criar pasta para cadastrar -docente/ aluno

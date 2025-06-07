@@ -13,6 +13,7 @@
   background-color: var(--sidebar-gray);
   color: var(--text-white);
   width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
   letter-spacing: var(--espaco-letras);
   height: 100vh;
 }
@@ -21,7 +22,7 @@
   display: block;
   color: var(--text-white);
   text-decoration: none;
-  font-size: var(--height-button);
+  font-size: var(--height-button-adm);
   font-family: var(--font-secondary);
   padding: 20px;
   margin-top: 0px;
