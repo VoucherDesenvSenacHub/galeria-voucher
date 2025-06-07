@@ -46,3 +46,14 @@ CREATE TABLE IF NOT EXISTS projeto (
     polo_id INT,
     FOREIGN KEY (polo_id) REFERENCES polo(polo_id)
 );
+
+-- tabela turma
+CREATE TABLE IF NOT EXISTS turma (
+    turma_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    data_inicio DATE NOT NULL,
+    data_fim DATE NOT NULL,
+    imagem_id INT FOREIGN KEY (imagem_id) REFERENCES imagem(imagem_id),
+    polo_id INT FOREIGN KEY (polo_id) REFERENCES polo(polo_id)
+);
