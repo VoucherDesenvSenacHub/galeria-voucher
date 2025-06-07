@@ -22,6 +22,7 @@
 .container-imagens > * {
     scroll-snap-align: start;
 }
+
 .container-imagens::-webkit-scrollbar {
     width: 0.5rem;
 }
@@ -68,20 +69,20 @@
     padding: 0.625rem;
 }
 
-.buttons-imagens {
+.buttons-imagem {
     display: flex;
     justify-content: flex-end;
-    gap: 1.25rem;           
-    margin-top: 2.5rem;     
-    padding-bottom: 1.25rem; 
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+    padding-bottom: 1.25rem;
 }
 
 .cancel-imagens,
-.submit-imagens {
+.componente-botao {
     display: flex;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    padding: 0.625rem 1.875rem;
+    padding: 1.0rem 2.5rem;
     border-radius: 1.5625rem;
     border: 1px solid #000;
     cursor: pointer;

@@ -6,29 +6,39 @@
     .tabs-adm-turmas {
         display: flex;
         justify-content: center;
-        gap:5.5rem;
-        margin-top: 4rem;
+        /* gap:rem; */
+        margin-top: 3.2rem;
         margin-bottom: 0.6rem;
         display: flex;
-        padding: 20px;
+        /* padding: 40px; */
     }
 
     .tab-adm-turmas {
-        display: flex;
+        display: inline-flex; 
         justify-content: center;
-        align-items: center; 
-        padding: 20px;
-        font-weight: bold;
+        align-items: center;
+        height: 4rem;
+        width: 22.5rem;
+        
+        padding: 10px 20px;
+        margin-right: 10px;
+    
         font-size: 2rem;
-        border: 1px solid;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
+        
+        color: #000;
+        background-color: #fff;
+    
+        border: 1px solid #000;
+        border-radius: 10px;
+    
         cursor: pointer;
         transition: 0.3s;
-        height: 4rem;
-        width: 20rem;
-        border-radius: 5px;
-        text-align: center;
-        display: flex;
+        margin:0;
     }
+
 
     .tab-adm-turmas.active{
         display: flex;
@@ -36,7 +46,11 @@
         align-items: center;     
         background-color: #a8ff00;
         text-align: center; 
-        border-radius: 5px;
+        border-radius: 10px;
+        background-color: #a8ff00;
+        color: #000;
+        margin:0;
+      
     }
 
     .container-main-adm {

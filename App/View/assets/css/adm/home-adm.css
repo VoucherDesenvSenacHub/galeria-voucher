@@ -14,3 +14,15 @@
     flex-grow: 1;
     margin-top: 120px;
 }
+
+.componente-botao {
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 1.0rem 2.5rem;
+    border-radius: 1.5625rem;
+    border: 1px solid #000;
+    cursor: pointer;
+    align-items: center;
+    
+}
