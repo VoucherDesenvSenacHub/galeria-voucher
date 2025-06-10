@@ -1,5 +1,5 @@
 /* Estilo base do corpo da página */
-.body-lista-docentes {
+.body-lista-alunos {
   display: flex;
   background-color: #e2e2e2;
   overflow: hidden;
@@ -7,7 +7,7 @@
 }
 
 /* Conteúdo principal */
-.main-lista-docentes {
+.main-lista-alunos {
   width: 100%;
   margin: 50px;
   min-height: calc(100vh - 50px);
@@ -15,8 +15,8 @@
   justify-content: center;
 }
 
-/* Container geral da seção docente */
-.container-lista-docente {
+/* Container geral da seção aluno */
+.container-lista-alunos {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
 }
 
 /* Topo com botão e campo de pesquisa */
-.topo-lista-docente {
+.topo-lista-alunos {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -79,7 +79,7 @@
 }
 
 /* Tabela principal com rolagem */
-.tabela-principal {
+.tabela-principal-lista-alunos {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
@@ -88,11 +88,11 @@
   overflow-y: auto;
   overflow-x: auto;
 }
-.tabela-container{
+.tabela-container-lista-alunos {
   height: 70%;
 }
 /* Estilo da tabela */
-#tabelaUsuarios {
+#tabela-alunos {
   width: 100%;
   min-width: 600px;
   border-collapse: collapse;
@@ -137,16 +137,16 @@ tbody tr:nth-child(odd) {
 }
 
 /* Scrollbar personalizada (Webkit) */
-.tabela-principal::-webkit-scrollbar {
+.tabela-principal-lista-alunos::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
 
-.tabela-principal::-webkit-scrollbar-thumb {
+.tabela-principal-lista-alunos::-webkit-scrollbar-thumb {
   background-color: #c3c3c3;
   border-radius: 6px;
 }
 
-.tabela-principal::-webkit-scrollbar-track {
+.tabela-principal-lista-alunos::-webkit-scrollbar-track {
   background-color: #999;
 }

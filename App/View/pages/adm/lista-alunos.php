@@ -6,14 +6,14 @@ require_once __DIR__ . "/../../componentes/head.php";
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
-<body class="body-lista-docentes">
+<body class="body-lista-alunos">
 
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
-  <main class="main-lista-docentes">
-    <div class="container-lista-docente">
-      <div class="topo-lista-docente">
+  <main class="main-lista-alunos">
+    <div class="container-lista-alunos">
+      <div class="topo-lista-alunos">
         <button id="btn-nvturma">NOVA TURMA</button>
         
         <div class="input-pesquisa-container">
@@ -22,9 +22,9 @@ require_once __DIR__ . "/../../componentes/head.php";
         </div>
       </div>
 
-      <div class="tabela-principal">
-        <div class="tabela-container">
-          <table id="tabelaUsuarios">
+      <div class="tabela-principal-lista-alunos">
+        <div class="tabela-container-lista-alunos">
+          <table id="tabela-alunos">
             <thead>
               <tr>
                 <th>NOME</th>
@@ -94,7 +94,7 @@ require_once __DIR__ . "/../../componentes/head.php";
       </div>
     </div>
   </main>
-  <script src="../../assets/js/adm/lista-docentes.js"></script>
+  <script src="../../assets/js/adm/lista-alunos.js"></script>
 
 </body>
 </html>
