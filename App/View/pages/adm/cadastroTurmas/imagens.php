@@ -37,10 +37,10 @@ require_once __DIR__ . "/../../../componentes/head.php";
           </div>
         <?php endforeach; ?>
 
-        <div class="buttons-imagem">
-          <button class="componente-botao cancel-imagens">CANCELAR</button>
-          <button class="componente-botao submit-imagens">CADASTRAR</button>
-        </div>
+      </div>
+      <div class="buttons-imagem">
+        <button class="componente-botao cancel-imagens">CANCELAR</button>
+        <button class="componente-botao submit-imagens">CADASTRAR</button>
       </div>
     </main>
   </div>
