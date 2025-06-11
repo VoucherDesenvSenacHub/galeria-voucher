@@ -7,7 +7,7 @@
     align-items: center;
     width: 100%;
     padding: 0 var(--default-padding);
-    z-index: 2;
+    z-index: 5;
     top: 0;
 
 

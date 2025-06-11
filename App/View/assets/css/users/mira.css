@@ -6,6 +6,7 @@
     top: 48.8vh;
     left: 25.1vw;
     transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
 
