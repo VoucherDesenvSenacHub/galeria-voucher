@@ -17,8 +17,10 @@
 @import url(adm/main.css);
 @import url(adm/home-adm.css);
 @import url(adm/login.css);
+@import url(adm/sobre.css);
+@import url(adm/cadastroTurmas.css);
+@import url(adm/Turmas-adm/turmas-imagem.css);
 @import url(adm/sidebar.css);
-
 @import url(adm/cadastrar-usuarios.css);
 
 
