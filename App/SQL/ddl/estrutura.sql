@@ -2,32 +2,34 @@
 
 -- conferir se esta de acordo 
 CREATE DATABASE IF NOT EXISTS galeria_voucher;
-USE galeriavoucher;
+USE galeria_voucher;
+
+-- Drop database galeria_voucher;
 
 -- Create the 'imagem' table
-CREATE TABLE imagem (
-    imagem_id INT AUTO_INCREMENT PRIMARY KEY, -- ok
-    url VARCHAR(255) NOT NULL,--ok
-    text TEXT,--ok
-    descricao TEXT,--ok
-    data_upload DATETIME NOT NULL--ok
+CREATE table if not EXISTS imagem (
+    imagem_id INT AUTO_INCREMENT PRIMARY KEY, 
+    url VARCHAR(255) NOT NULL,
+    text TEXT,
+    descricao TEXT,
+    data_upload DATETIME NOT NULL
 );
 
 -- Create the 'pessoa' table
-CREATE TABLE pessoa (
-    pessoa_id INT AUTO_INCREMENT PRIMARY KEY,--ok
-    email VARCHAR(255) NOT NULL UNIQUE,--ok
-    nome VARCHAR(255) NOT NULL,--ok
-    linkedin VARCHAR(255),--ok
-    github VARCHAR(255),--ok
-    imagem_id INT,--ok
-    descricao TEXT,--ok
-    perfil ENUM('aluno', 'professor', 'adm') NOT NULL,--ok
-    FOREIGN KEY (imagem_id) REFERENCES imagem(imagem_id)--ok
+CREATE table if not EXISTS pessoa (
+    pessoa_id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    nome VARCHAR(255) NOT NULL,
+    linkedin VARCHAR(255),
+    github VARCHAR(255),
+    imagem_id INT,
+    descricao TEXT,
+    perfil ENUM('aluno', 'professor', 'adm') NOT NULL,
+    FOREIGN KEY (imagem_id) REFERENCES imagem(imagem_id)
 );
 
 -- Create the 'usuario' table
-CREATE TABLE usuario (
+CREATE table if not EXISTS usuario (
     usuario_id INT AUTO_INCREMENT PRIMARY KEY,
     pessoa_id INT NOT NULL,
     senha VARCHAR(255) NOT NULL,
@@ -35,13 +37,13 @@ CREATE TABLE usuario (
 );
 
 -- Create the 'cidade' table
-CREATE TABLE cidade (
+CREATE table if not EXISTS cidade (
     cidade_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL
 );
 
 -- Create the 'polo' table
-CREATE TABLE polo (
+CREATE table if not EXISTS polo (
     polo_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     cidade_id INT NOT NULL,
@@ -49,7 +51,7 @@ CREATE TABLE polo (
 );
 
 -- Create the 'turma' table
-CREATE TABLE turma (
+CREATE table if not EXISTS turma (
     turma_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT,
@@ -61,8 +63,8 @@ CREATE TABLE turma (
     FOREIGN KEY (polo_id) REFERENCES polo(polo_id)
 );
 
--- Create the 'docente_turma' table (junction table for professores and turmas)
-CREATE TABLE docente_turma (
+-- Create the 'docente_turma' table if not EXISTS (junction table if not EXISTS for professores and turmas)
+CREATE table if not EXISTS docente_turma (
     docente_turma_id INT AUTO_INCREMENT PRIMARY KEY,
     pessoa_id INT NOT NULL,
     turma_id INT NOT NULL,
@@ -72,8 +74,8 @@ CREATE TABLE docente_turma (
     UNIQUE KEY (pessoa_id, turma_id)
 );
 
--- Create the 'aluno_turma' table (junction table for alunos and turmas)
-CREATE TABLE aluno_turma (
+-- Create the 'aluno_turma' table if not EXISTS (junction table if not EXISTS for alunos and turmas)
+CREATE table if not EXISTS aluno_turma (
     aluno_turma_id INT AUTO_INCREMENT PRIMARY KEY,
     pessoa_id INT NOT NULL,
     turma_id INT NOT NULL,
@@ -84,7 +86,7 @@ CREATE TABLE aluno_turma (
 );
 
 -- Create the 'projeto' table
-CREATE TABLE projeto (
+CREATE table if not EXISTS projeto (
     projeto_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     descricao TEXT,
@@ -93,8 +95,8 @@ CREATE TABLE projeto (
     FOREIGN KEY (turma_id) REFERENCES turma(turma_id)
 );
 
--- Create the 'imagem_projeto' table (junction table for projetos and imagens)
-CREATE TABLE imagem_projeto (
+-- Create the 'imagem_projeto' table if not EXISTS (junction table if not EXISTS for projetos and imagens)
+CREATE table if not EXISTS imagem_projeto (
     imagem_projeto_id INT AUTO_INCREMENT PRIMARY KEY,
     imagem_id INT NOT NULL,
     url VARCHAR(255) NOT NULL,
