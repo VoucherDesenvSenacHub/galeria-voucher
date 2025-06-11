@@ -62,5 +62,6 @@
 /* Botão de Ação */
 .main-login .form-action {
     margin-top: 30px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }

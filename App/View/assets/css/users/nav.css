@@ -7,7 +7,7 @@
     align-items: center;
     width: 100%;
     padding: 0 var(--default-padding);
-    z-index: 2;
+    z-index: 5;
     top: 0;
 
 
@@ -45,30 +45,4 @@
         display: inline-flex;
     }
 
-    /*arrumar este*/
-    .search {
-        display: flex;
-        align-items: center;
-    }
-
-    /*arrumar este*/
-    .search input {
-        display: inline-flex;
-        padding: 7px;
-        border: none;
-        border-radius: 10px 10px 10px 10px;
-        outline: none;
-        width: 300px;
-    }
-
-    /*arrumar este*/
-    .search button {
-        display: inline-flex;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 0 5px 5px 0;
-        background-color: var(--white-background);
-        cursor: pointer;
-        margin-left: -40px;
-    }
 }

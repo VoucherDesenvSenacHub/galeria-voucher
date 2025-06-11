@@ -1,0 +1,152 @@
+/* Estilo base do corpo da página */
+.body-lista-alunos {
+  display: flex;
+  background-color: #e2e2e2;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Conteúdo principal */
+.main-lista-alunos {
+  width: 100%;
+  margin: 50px;
+  min-height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+}
+
+/* Container geral da seção aluno */
+.container-lista-alunos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+/* Topo com botão e campo de pesquisa */
+.topo-lista-alunos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0 15px;
+}
+
+/* Campo de pesquisa com ícone de lupa */
+.input-pesquisa-container {
+  position: relative;
+  display: inline-block;
+}
+
+.input-pesquisa-container input[type="text"] {
+  width: 400px;
+  padding: 8px 40px 8px 12px;
+  font-size: 20px;
+  background-color: #d8dbd6;
+  color: #000;
+  border: 1px solid #999;
+  border-radius: 30px;
+  outline: none;
+}
+
+.icone-lupa-img {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Botão Nova Turma */
+#btn-nvturma {
+  width: 200px;
+  height: 60px;
+  padding: 10px 20px;
+  font-size: 30px;
+  text-align: center;
+  color: #004302;
+  background-color: #aeff40;
+  border: 3px solid #004302;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#btn-nvturma:hover {
+  background-color: #9fe83a;
+}
+
+/* Tabela principal com rolagem */
+.tabela-principal-lista-alunos {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+.tabela-container-lista-alunos {
+  height: 70%;
+}
+/* Estilo da tabela */
+#tabela-alunos {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+
+/* Cabeçalho da tabela */
+thead {
+  position: sticky;
+  top: 0;
+  background-color: #b6b6b6;
+  z-index: 2;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Células */
+th,
+td {
+  padding: 15px 18px;
+  text-align: center;
+}
+
+td {
+  font-size: 20px;
+}
+
+/* Linhas divisórias verticais */
+th:not(:last-child),
+td:not(:last-child) {
+  box-shadow: inset -1px 0 black;
+}
+
+/* Linhas alternadas */
+tbody tr:nth-child(even) {
+  background-color: #d1d1d1;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #c1c0c0;
+}
+
+/* Scrollbar personalizada (Webkit) */
+.tabela-principal-lista-alunos::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.tabela-principal-lista-alunos::-webkit-scrollbar-thumb {
+  background-color: #c3c3c3;
+  border-radius: 6px;
+}
+
+.tabela-principal-lista-alunos::-webkit-scrollbar-track {
+  background-color: #999;
+}
