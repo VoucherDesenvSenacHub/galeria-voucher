@@ -1,0 +1,119 @@
+.aluno-container {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-top: 4vh;
+}
+
+.aluno-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 15px 30px;
+    font-weight: bold;
+    font-size: 2rem;
+    border: 2px solid;
+    cursor: pointer;
+    background-color: #ccc;
+    transition: 0.3s;
+    height: 4rem;
+    width: 20rem;
+    border-radius: 5px;
+}
+
+.tab.active {
+    background-color: #c3ff3e;
+    border-radius: 5px;
+}
+
+.btn-novo-aluno {
+    background: #c2ff7f;
+    padding-top: 3px;
+    margin: 10px 0;
+    border: 2px solid black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.pesquisa-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+
+.pesquisar {
+    width: 250px;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    background: #e9efe9;
+    outline: none;
+    font-size: 14px;
+    display: flex; 
+    justify-content: flex-start;
+}
+
+.table-aluno{
+    max-height: 486.8px; /* Ajuste conforme a altura da tabela para rolar o scroll */
+    overflow-y: auto;
+    display: block;
+}
+
+.aluno-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+}
+
+.aluno-table thead th {
+    position: sticky; /* Ajuste para thead ficar fixo e não rolar com scroll */
+    top: 0;
+    background-color: #fff;
+    z-index: 2;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.aluno-table tbody td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.aluno-table th, .aluno-table td {
+    text-align: center;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+}
+
+.aluno-table th {
+    background: #d9d9d9;
+    font-weight: bold;
+}
+
+.aluno-table tr:nth-child(even) {
+    background-color: #e9e9e9;
+}
+
+.editar-icon::before {
+    content: '✏️'; 
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.inativar-icon::before {
+    content: '🗑️'; 
+    cursor: pointer;
+    font-size: 18px;
+}
