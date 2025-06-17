@@ -10,6 +10,7 @@
 @import url(users/nav.css);
 @import url(users/card_desenvolvedor.css);
 @import url(users/pagina_dev.css);
+@import url(users/galeria-turma.css);
 
 
 @import url(adm/nav.css);
@@ -22,6 +23,8 @@
 
 @import url(adm/cadastrar-usuarios.css);
 
+
+@import url(adm/lista-alunos.css);
 
 :root {
     --primary-color-button: #AEFF40;
