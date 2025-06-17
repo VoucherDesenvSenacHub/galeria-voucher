@@ -44,8 +44,6 @@ CREATE TABLE IF NOT EXISTS projeto (
     projeto_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     descricao TEXT,
-    data_inicio DATE,
-    data_fim DATE,
     imagem_id INT UNSIGNED, -- FK para tabela 
     polo_id INT UNSIGNED,--FK tabela polo
     FOREIGN KEY (polo_id) REFERENCES polo(polo_id)
