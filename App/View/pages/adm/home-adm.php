@@ -21,7 +21,7 @@ require_once __DIR__ . "/../../componentes/head.php";
           <div class="welcome-message-adm">
               BEM VINDO
           </div>
-      </main>
+      </main> 
     </div> 
   </body>
 </html>
