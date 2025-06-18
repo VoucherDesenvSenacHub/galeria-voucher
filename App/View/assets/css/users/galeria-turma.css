@@ -1,0 +1,480 @@
+.galeria-turma-material-symbols-outlined {
+  color: #aEFF40;
+  font-size: 35px;
+}
+
+.galeria-turma-nav a:hover {
+  opacity: 0.7;
+  transform: scale(1.2);
+}
+
+.galeria-turma-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+  letter-spacing: 2px;
+}
+
+.galeria-turma-nav ul li {
+  display: inline-flex;
+}
+
+.galeria-turma-search {
+  display: flex;
+  align-items: center;
+}
+
+.galeria-turma-search input {
+  display: inline-flex;
+  padding: 7px;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  outline: none;
+  width: 300px;
+}
+
+.galeria-turma-search button {
+  display: inline-flex;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #ffffff;
+  cursor: pointer;
+  margin-left: -40px;
+}
+
+.galeria-turma-codimg {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  margin: auto 60%;
+  background-image: url("assets/codimg.png");
+  background-color: rgba(255, 255, 255, 0.0);
+  background-blend-mode: luminosity;
+  background-size: cover;
+  opacity: 0.4;
+  z-index: -1;
+  background-position: left;
+}
+
+.galeria-turma-binarynumber {
+  position: absolute;
+  width: 90%;
+  height: 300vh;
+  background-image: url("assets/01.png");
+  background-blend-mode: overlay;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.galeria-turma-section .galeria-turma-dia {
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilos gerais */
+.galeria-turma-body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(to bottom, black, black, #004D00, black, black, black, black, black, black);
+  color: white;
+  line-height: 1.5;
+}
+
+.galeria-turma-h1,
+.galeria-turma-h5,
+.galeria-turma-h4 {
+  font-family: "Bebas Neue", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+/*cabeçalho*/
+.galeria-turma-projeto {
+  text-align: center;
+  font-size: 25px;
+}
+
+.galeria-turma-galeria {
+  word-spacing: 300px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.galeria-turma-senac {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  padding: 5px;
+  border: 0px solid;
+  border-radius: 0px;
+  font-size: 12px;
+}
+
+/* Estilos do cabeçalho */
+.galeria-turma-header {
+  text-align: center;
+  padding: 11px;
+}
+
+.galeria-turma-header .galeria-turma-container {
+  position: relative;
+}
+
+.galeria-turma-header .galeria-turma-topleft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+
+.galeria-turma-header img {
+  width: 150px;
+  height: auto;
+  opacity: 100%;
+}
+
+/* Seções gerais */
+.galeria-turma-section {
+  margin: 10px auto;
+  padding: 20px;
+  max-width: 1200px;
+  position: relative;
+}
+
+.galeria-turma-dia {
+  display: flex;
+}
+
+.galeria-turma-dia p {
+  font-size: 19px;
+}
+
+.galeria-turma-dia h2 {
+  font-size: 48px;
+  font-weight: normal;
+}
+
+.galeria-turma-margin-top-left-turma-xx {
+  margin-left: 25px;
+  margin-top: 65px;
+}
+
+.galeria-turma-margin-top-left-dia-p {
+  margin-left: 25px;
+  margin-top: 65px;
+}
+
+.galeria-turma-margin-top-left-projeto-xx {
+  margin-left: 25px;
+  margin-top: 20px;
+}
+
+.galeria-turma-margin-top-right-dia-e {
+  margin-right: 25px;
+  margin-top: 65px;
+}
+
+.galeria-turma-section h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.galeria-turma-section p {
+  margin: 10px 0;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  text-align: justify;
+  padding: 20px;
+}
+
+/* .galeria-turma-cardss p {
+  margin: 10px 0;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  padding: 0;
+} */
+
+.galeria-turma-cardss h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.galeria-turma-dia h2 {
+  padding: 20px;
+}
+
+/* Estilos das imagens */
+.galeria-turma-section img {
+  width: 90%;
+  max-width: 500px;
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.galeria-turma-image-container img {
+  border-radius: 12px;
+}
+
+.galeria-turma-dia p {
+  text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.17);
+}
+
+/* Estilo específico para alinhar imagens */
+section#turma img,
+section#dia-i img,
+section#dia-p img,
+section#dia-e img,
+section#projeto-xx img {
+  float: none;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    /* Ajusta a fonte para dispositivos móveis */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 24px;
+    /* Ajusta os tamanhos das fontes de títulos */
+  }
+
+  section p {
+    font-size: 14px;
+    /* Reduz o tamanho do texto do parágrafo */
+  }
+
+  .titulo {
+    font-size: 1.5rem;
+    /* Ajusta o tamanho dos títulos principais */
+  }
+}
+
+@media (max-width: 768px) {
+  section img {
+    width: 100%;
+    height: 90%;
+    /* Mantém a proporção */
+  }
+
+  .dia {
+    flex-wrap: wrap;
+  }
+
+  .codimg {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    margin: auto;
+    background-image: url(assets/codimg.png);
+    background-color: rgba(255, 255, 255, 0.0);
+    background-blend-mode: luminosity;
+    background-size: cover;
+    opacity: 0.4;
+    z-index: -1;
+    background-position: left;
+  }
+
+  .binarynumber {
+    width: 100%;
+    height: 100%;
+    background-size: unset;
+  }
+
+  section {
+    padding: 40px;
+  }
+}
+
+.galeria-turma-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.galeria-turma-botaoprojeto {
+  padding-left: 20px;
+}
+
+.galeria-turma-btn {
+  background-color: #AEFF40;
+  border: none;
+  font-size: 40px;
+  padding: 10px 40px;
+  font-family: "Bebas Neue";
+  color: #004302;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.galeria-turma-titulo {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.galeria-turma-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.galeria-turma-main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.galeria-turma-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 70px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 70px;
+  margin-bottom: 71px;
+  padding: 10px;
+}
+
+.galeria-turma-card-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.galeria-turma-card-container:hover {
+  font-size: 18px;
+}
+
+.galeria-turma-image-container {
+  width: 120%;
+  height: 300px;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 15px;
+}
+
+.galeria-turma-image-container img {
+  width: 100%;
+  border-radius: 20;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-card-turmagaleria {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.5px;
+  position: absolute;
+  bottom: -40px;
+  background-color: #161616;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 30px;
+  z-index: 2;
+  letter-spacing: 0.5px;
+}
+
+.text-card-turmagaleria h2 {
+  margin: 0;
+  font-size: 1.3em;
+  letter-spacing: 1px;
+  word-spacing: 10px;
+}
+
+.text-card-turmagaleria p {
+  margin: 5px 0;
+  font-size: 1.1em;
+}
+
+.galeria-turma-social-icons {
+  display: flex;
+}
+
+.galeria-turma-social-icons a {
+  color: #AEFF40;
+  font-size: 35px;
+  margin: 0 8px;
+  text-decoration: none;
+}
+
+.galeria-turma-textofinal {
+  padding: 70px;
+  font-size: 14px;
+}
+
+@media (max-width: 992px) {
+  .galeria-turma-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .galeria-turma-card-container {
+    width: 90%;
+    /* Adjust as needed */
+  }
+
+  .galeria-turma-image-container {
+    height: 280px;
+    /* Adjust as needed */
+  }
+}
+
+@media (max-width: 768px) {
+  .galeria-turma-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .galeria-turma-card-container {
+    width: 95%;
+    /* Adjust as needed */
+  }
+
+  .galeria-turma-image-container {
+    height: 250px;
+    /* Adjust as needed */
+  }
+}
+
+@media (max-width: 480px) {
+  .galeria-turma-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galeria-turma-card-container {
+    width: 100%;
+  }
+
+  .galeria-turma-image-container {
+    height: 200px;
+    /* Adjust as needed */
+  }
+}
+
+.galeria-turma-box {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
