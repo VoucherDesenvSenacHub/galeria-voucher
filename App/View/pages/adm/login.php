@@ -1,15 +1,15 @@
 <?php 
-   require_once(__DIR__ . '/../../componentes/head.php');
+   require_once __DIR__ . '/../../componentes/head.php';
 ?>
 
 <body class="body-login">
 
     <?php 
         $esconderPesquisa = true;
-        require_once(__DIR__ . '/../../componentes/users/nav.php');
+        require_once __DIR__ . '/../../componentes/users/nav.php';
     ?>
     <?php 
-        require_once(__DIR__ . '/../../componentes/users/mira.php');
+        require_once __DIR__ . '/../../componentes/users/mira.php';
     ?>
 
     <main class="main-login">
@@ -31,7 +31,7 @@
 
                 <div class="form-action">
 
-                    <?php buttonComponent('primary', 'Login', false,  null, null); ?>
+                    <?php buttonComponent('primary', 'Login', false,  null); ?>
 
                 </div>
             </div>
@@ -41,7 +41,7 @@
     </main>
     
     <?php 
-        require_once(__DIR__ . '/../../componentes/users/footer.php');
+        require_once __DIR__ . '/../../componentes/users/footer.php';
     ?>
 
 <body>
