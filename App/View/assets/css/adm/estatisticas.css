@@ -40,7 +40,7 @@ main.conteudo-estatisticas {
   width: 300px;
   height: 45px;
   font-size: 35px;
-  
+  margin: 0 15px 0 -26px;
   color: black;
   display: flex;
   align-items: center;
