@@ -1,6 +1,7 @@
 .container-adm {
   display: flex;
   font-family: var(--font-primary);
+  height: 100vh;;
 }
  
 .content-adm {
