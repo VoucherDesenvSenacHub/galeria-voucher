@@ -42,6 +42,27 @@ document.addEventListener('DOMContentLoaded', function() {
             let valorFormatado = formatarNumeroPTBR(numero);
 
             //define o texto no espelho e prefixa o '+' antes do valor
+            espelho.textContent = '+ ' + valorFormatado;
         }
+
+        //no carregamento inicial da página, atualiza o espelho com o valor escrito no input na página de estatísticas
+        //(carregado do servidor)
+        atualizarEspelho();
+
+        //listener para evento 'input' no campo: dispara sempre que tem alguma modificação
+        inputTopo.addEventListener('input', function() {
+            atualizarEspelho();
+        });
+
+        //listerner para keypress para bloquear caracteres que não sejam dígitos
+        inputTopo.addEventListener('keypress', function(e) {
+            const char = String.fromCharCode(e.which || e.keycode);
+            //se não for algum dígito entre 0-9, previne a inserção
+            if(!/[0-9]/.test(char)) {
+                e.preventDefault();
+            }
+        });
+
+        //
     }
 }
