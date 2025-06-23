@@ -1,5 +1,9 @@
 <?php
 require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Config/Database.php";
+require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
+
+use App\Model\EstatisticasModel;
 ?>
 
 <body class="body-user">
