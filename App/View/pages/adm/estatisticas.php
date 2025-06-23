@@ -1,35 +1,47 @@
 <?php 
 require_once __DIR__ . "/../../componentes/head.php";
-// require_once __DIR__ . "/../../Config/Database.php";
+require_once __DIR__ . "/../../../Config/Database.php";
+require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
-// try {
-//     $database = new \App\Config\Database();
-//     $PDO = $database->connect();
-// } catch (Exception $e) {
-//     error_log("Erro conexão BD em estatísticas.php: " . $e->getMessage());
-//     die("Não foi possível conectar ao banco de dados.");
-// }
+use App\Model\EstatisticasModel;
 
-// == leitura dos valores atualizados da página ===
+//cria intância do model que contém os métodos para falar com o banco
+$estatisticasModel = new EstatisticasModel();
+$mensagemDeFeedback = ''; // variável para guardar mensagens de sucesso ou erro para o admin
 
-// $val1 = $val2 = $val3 = $val4 = 0;
-// try {
-//     $stmt = $PDO->query("SELECT alunos, projetos, polos, horas FROM estatisticas WHERE id = 1");
-//     $dados = $stmt->fetch(PDO::FETCH_ASSOC);
-//     if ($dados) {
-//         $val1 = (int) $dados ['alunos'];
-//         $val2 = (int) $dados ['projetos'];
-//         $val3 = (int) $dados ['polos'];
-//         $val4 = (int) $dados ['horas'];
-//     }
-// } catch (Exception $e) {
-//     error_log("Erro ao buscar estatísticas em estatísticas.php: " . $e->getMessage());
-// }
+//verifica se o formlário foi enviado (se o método da requisição for POST)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //valida e limpa os dados recebidos pra garantir que sejam números inteiros
+    $alunos = filter_input(INPUT_POST, 'alunos', FILTER_VALIDATE_INT);
+    $projetos = filter_input(INPUT_POST, 'projetos', FILTER_VALIDATE_INT);
+    $polos = filter_input(INPUT_POST, 'polos', FILTER_VALIDATE_INT);
+    $horas = filter_input(INPUT_POST, 'horas', FILTER_VALIDATE_INT);
 
-// $fmt1 = number_format($val1, 0, ',', '.');
-// $fmt2 = number_format($val2, 0, ',', '.');
-// $fmt3 = number_format($val3, 0, ',', '.');
-// $fmt4 = number_format($val4, 0, ',', '.');
+    //se todos os campos contiverem números válidos
+    if ($alunos !== false && $projetos !== false && $polos !== false && $horas !== false) {
+        //chama o método do model para atualizar os dados no banco
+        if ($estatisticasModel->updateEstatisticas($alunos, $projetos, $polos, $horas)) {
+            $mensagemDeFeedback = '<div class="alerta-sucesso">Estatísticas atualizadas com sucesso!</div>';
+        } else {
+            $mensagemDeFeedback = '<div class="alerta-erro">Ocorreu um erro ao salvar no banco de dados.</div>';
+        }
+    } else {
+        $mensagemDeFeedback = '<div class="alerta-erro">Todos os campos são obrigatórios e devem conter apenas números.</div>';
+    }
+}
+
+//busca dados mais recentes para exibir na página
+$dadosAtuais = $estatisticasModel->getEstatisticas();
+if (!$dadosAtuais) {
+    //caso a tabela esteja vazia, define valores padrão pra evitar erros
+    $dadosAtuais = ['alunos' => 0, 'projetos' => 0, 'polos' => 0, 'horas' => 0];
+}
+
+//formata os os números para o padrão br
+$fmt_alunos = number_format($dadosAtuais['alunos']);
+$fmt_projetos = number_format($dadosAtuais['projetos']);
+$fmt_polos = number_format($dadosAtuais['polos']);
+$fmt_horas = number_format($dadosAtuais['horas']);
 ?>
 
 <body class="body-estatisticas">
@@ -51,80 +63,70 @@ require_once __DIR__ . "/../../componentes/head.php";
                 <h1 class="titulo-estatistica">ATUALIZAR ESTATÍSTICAS</h1>
             </div>
 
+            <?php echo $mensagemDeFeedback; //exibe a mensagem de sucesso ou erro ?>
+
             <div class="div-formulario">
-                <form id="formulario-estatistica" action="pagina-processamento-estatistica.php" method="post">
+                <form id="formulario-estatistica" action="estatistica.php" method="post">
                     <!-- inputs de entrada -->
                     <div class="campo_input">
-                        <label for="input1" class="sr-only">Total de Alunos</label>
                         <Input
-                            type="text"
-                            id="input1"
-                            name="input1"
+                            type="number"
+                            id="input-alunos"
+                            name="alunos"
                             placeholder="Total de alunos:"
-                            inputmode="numeric"
-                            autocomplete="off"
-                            value="<?= htmlspecialchars($val1) ?>"
+                            value="<?php echo htmlspecialchars($dadosAtuais['alunos']); ?>" required
                         />
                     </div>
 
                     <div class="campo_input">
-                        <label for="input2" class="sr-only">Total de Projetos</label>
                         <Input
-                            type="text"
-                            id="input2"
-                            name="input2"
+                            type="number"
+                            id="input-projetos"
+                            name="projetos"
                             placeholder="Total de projetos:"
-                            inputmode="numeric"
-                            autocomplete="off"
-                            value="<?= htmlspecialchars($val2) ?>"
+                            value="<?php echo htmlspecialchars($dadosAtuais['projetos']); ?>" required
                         />
                     </div>
 
                     <div class="campo_input">
-                        <label for="input3" class="sr-only">Total de Polos</label>
                         <Input
-                            type="text"
-                            id="input3"
-                            name="input3"
+                            type="number"
+                            id="input-polos"
+                            name="polos"
                             placeholder="Total de polos:"
-                            inputmode="numeric"
-                            autocomplete="off"
-                            value="<?= htmlspecialchars($val3) ?>"
+                            value="<?php echo htmlspecialchars($dadosAtuais['polos']); ?>" required
                         />
                     </div>
 
                     <div class="campo_input">
-                        <label for="input4" class="sr-only">Horas de curso</label>
                         <Input
-                            type="text"
-                            id="input4"
-                            name="input4"
+                            type="number"
+                            id="input-horas"
+                            name="horas"
                             placeholder="Horas de curso:"
-                            inputmode="numeric"
-                            autocomplete="off"
-                            value="<?= htmlspecialchars($val4) ?>"
+                            value="<?php echo htmlspecialchars($dadosAtuais['horas']); ?>" required
                         />
                     </div>
 
                     <!-- espelho para visualização dos inputs -->
                     <div id="painel-estatisticas" class="painel-estatisticas">
                        <div class="estatistica-item">
-                           <div class="valor"><span id="espelho1"><?= '+ ' . $fmt1 ?></span></div>
+                           <div class="valor"><span id="espelho-alunos"><?= '+ ' . $fmt_alunos ?></span></div>
                            <div class="legenda">DE ALUNOS</div>
                        </div>
 
                        <div class="estatistica-item">
-                           <div class="valor"><span id="espelho2"><?= '+ ' . $fmt2 ?></span></div>
+                           <div class="valor"><span id="espelho-projetos"><?= '+ ' . $fmt_projetos ?></span></div>
                            <div class="legenda">PROJETOS</div>
                        </div>
 
                        <div class="estatistica-item">
-                           <div class="valor"><span id="espelho3"><?= '+ ' . $fmt3 ?></span></div>
+                           <div class="valor"><span id="espelho-polos"><?= '+ ' . $fmt_polos ?></span></div>
                            <div class="legenda">POLOS</div>
                        </div>
 
                        <div class="estatistica-item">
-                           <div class="valor"><span id="espelho4"><?= '+ ' . $fmt4 ?></span></div>
+                           <div class="valor"><span id="espelho-horas"><?= '+ ' . $fmt_horas ?></span></div>
                            <div class="legenda">CURSO COM HORAS</div>
                        </div>
                     </div>
@@ -139,8 +141,7 @@ require_once __DIR__ . "/../../componentes/head.php";
         </div>
     </main>
 
-<!-- import do javascript -->
- <script src="/js/estatisticas.js"></script>
+    <script src="galeria-voucher/App/View/assets/js/estatisticas.js"></script>
 
 </body>
 </html>

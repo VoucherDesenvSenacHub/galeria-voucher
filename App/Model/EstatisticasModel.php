@@ -25,7 +25,7 @@ class EstatisticasModel {
     public function getEstatisticas()
     {
         $query = "SELECT alunos, projetos, polos, horas
-                  FROM" . $this->table_name . " 
+                  FROM " . $this->table_name . "
                   WHERE id = 1";
     
         $stmt = $this->conn->prepare($query);

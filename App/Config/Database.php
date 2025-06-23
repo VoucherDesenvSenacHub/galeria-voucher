@@ -8,8 +8,8 @@ use PDOException;
 class Database
 {
     //credenciais banco
-    private $host = 'localhost';
-    private $db_name = '';
+    private $host = '127.0.0.1';
+    private $db_name = 'galeria_voucher';
     private $username = 'root';
     private $password = '';
 
@@ -21,7 +21,7 @@ class Database
      */
     private function __construct()
     {
-        $dsn = 'mysql:host=' . $this->host . 'db_name=' . $this->db_name . ';charset=utf8mb4';
+        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db_name . ';charset=utf8mb4';
 
         try {
             $this->conn = new PDO($dsn, $this->username, $this->password);
@@ -60,7 +60,7 @@ class Database
     private function __clone(){}
 
     //impede que a instância seja recriada a partir de uma string
-    private function __wakeup(){}
+    public function __wakeup(){}
     
 }
 
