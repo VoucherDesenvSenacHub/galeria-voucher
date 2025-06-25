@@ -2,67 +2,41 @@ document.addEventListener('DOMContentLoaded', function() {
     //números de campos de estatística pra sincronizar
     const totalCampos= 4;
 
-    function formatarNumero(numero) {
-        //garantia de que seja um número inteiro positivo
-        const num = Number.isNaN(numero) ? 0 : numero;
-        //formatação
-        return num.toLocaleString('pt-BR');
+    function formatarNumero(num) {
+        const numeroLimpo = isNaN(num) ? 0 : num;
+        return new Intl.NumberFormat('pt-br').format(numeroLimpo);
     }
 
-    // função para filtrar apenas dígitos de uma string
-    function filtrarDigitos(texto) {
-        //remove qualquer caractere que não seja 0-9
-        return texto.replace(/\D/g, '');
-    }
+    //mapeamento dos id's dos inputs para os id's dos seus espelhos
+    const mapeamento = {
+        'input-alunos' : 'espelho-alunos',
+        'input-projetos' : 'espelho-projetos',
+        'input-polos' : 'espelho-polos',
+        'input-horas' : 'espelho-horas'
+    };
 
-    // inicializa a sincronização para cada par de input/espelho
-    for (let i = 1; i <=totalCampos; i++) {
-        const inputTopo = document.getElementById('input' + i);
-        const espelho = document.getElementById('espelho' + i);
+    Object.keys(mapeamento).forEach(inputId => {
+        const inputElement = document.getElementById(inputId);
+        const espelhoElement = document.getElementById(mapeamento[inputId]);
 
-        //se elemento não existir, pula pro próximo
-        if (!inputTopo || !espelho) continue;
-
-        //função que atualiza o espelho com base no valor do input
-        function atualizarEspelho() {
-            
-            //filtra valor do input para manter apenas dígitos
-            let valorRaw = inputTopo.value;
-            let somenteDigitos = filtrarDigitos(valorRaw);
-
-            // se filtração removeu caracteres, atualiza o campo de entrada
-            if (somenteDigitos !==valorRaw) {
-                inputTopo.value = somenteDigitos;
-            }
-
-            //converte pra inteiro e se estiver vazio, configura como 0
-            let numero = somenteDigitos === '' ? 0 : parseInt(somenteDigitos, 10);
-
-            //formata pra nossa língua com separador de milhar
-            let valorFormatado = formatarNumeroPTBR(numero);
-
-            //define o texto no espelho e prefixa o '+' antes do valor
-            espelho.textContent = '+ ' + valorFormatado;
+        if (inputElement && espelhoElement) {
+            //evento input dispara a cada tecla digitada
+            inputElement.addEventListener('input', function() {
+                const novoValor = this.value;
+                
+                //se o usuário digitou algo..
+                if (novoValor !== '') {
+                    //..atualiza o espelho com o novo valor formatado
+                    espelhoElement.textContent = '+ ' + formatarNumero(parseInt(novoValor, 10));
+                }
+                //se o usuário apagar tudo e deixar campo vazio..
+                else {
+                    //..busca valor original guardado do atributo data-original-value
+                    const valorOriginal = this.dataset.originalValue;
+                    //e reverte o espelho pro valor original
+                    espelhoElement.textContent = '+ ' + formatarNumero(parseInt(valorOriginal, 10));
+                }
+            });
         }
-
-        //no carregamento inicial da página, atualiza o espelho com o valor escrito no input na página de estatísticas
-        //(carregado do servidor)
-        atualizarEspelho();
-
-        //listener para evento 'input' no campo: dispara sempre que tem alguma modificação
-        inputTopo.addEventListener('input', function() {
-            atualizarEspelho();
-        });
-
-        //listerner para keypress para bloquear caracteres que não sejam dígitos
-        inputTopo.addEventListener('keypress', function(e) {
-            const char = String.fromCharCode(e.which || e.keycode);
-            //se não for algum dígito entre 0-9, previne a inserção
-            if(!/[0-9]/.test(char)) {
-                e.preventDefault();
-            }
-        });
-
-        //
-    }
+    });
 });

@@ -12,25 +12,20 @@ $mensagemDeFeedback = ''; // variável para guardar mensagens de sucesso ou erro
 //verifica se o formlário foi enviado (se o método da requisição for POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //valida e limpa os dados recebidos pra garantir que sejam números inteiros
-    $alunos = filter_input(INPUT_POST, 'alunos', FILTER_VALIDATE_INT);
-    $projetos = filter_input(INPUT_POST, 'projetos', FILTER_VALIDATE_INT);
-    $polos = filter_input(INPUT_POST, 'polos', FILTER_VALIDATE_INT);
-    $horas = filter_input(INPUT_POST, 'horas', FILTER_VALIDATE_INT);
+    $alunos = ($_POST['alunos'] !== '') ? (int)$_POST['alunos'] : (int)$_POST['alunos_atual'];
+    $projetos = ($_POST['projetos'] !== '') ? (int)$_POST['projetos'] : (int)$_POST['projetos_atual'];
+    $polos = ($_POST['polos'] !== '') ? (int)$_POST['polos'] : (int)$_POST['polos_atual'];
+    $horas = ($_POST['horas'] !== '') ? (int)$_POST['horas'] : (int)$_POST['horas_atual'];
 
     //se todos os campos contiverem números válidos
-    if ($alunos !== false && $projetos !== false && $polos !== false && $horas !== false) {
-        //chama o método do model para atualizar os dados no banco
-        if ($estatisticasModel->updateEstatisticas($alunos, $projetos, $polos, $horas)) {
-            $mensagemDeFeedback = '<div class="alerta-sucesso">Estatísticas atualizadas com sucesso!</div>';
-        } else {
-            $mensagemDeFeedback = '<div class="alerta-erro">Ocorreu um erro ao salvar no banco de dados.</div>';
-        }
+    if ($estatisticasModel->updateEstatisticas($alunos, $projetos, $polos, $horas)) {
+        $mensagemDeFeedback = '<div class="alerta-sucesso">Estatísticas atualizadas com sucesso!</div>';
     } else {
-        $mensagemDeFeedback = '<div class="alerta-erro">Todos os campos são obrigatórios e devem conter apenas números.</div>';
+        $mensagemDeFeedback = '<div class="alerta-erro">Ocorreu um erro ao salvar no banco de dados.</div>';
     }
 }
 
-//busca dados mais recentes para exibir na página
+//busca dados mais recentes para usar nos inputs e no espelho
 $dadosAtuais = $estatisticasModel->getEstatisticas();
 if (!$dadosAtuais) {
     //caso a tabela esteja vazia, define valores padrão pra evitar erros
@@ -66,46 +61,66 @@ $fmt_horas = number_format($dadosAtuais['horas']);
             <?php echo $mensagemDeFeedback; //exibe a mensagem de sucesso ou erro ?>
 
             <div class="div-formulario">
-                <form id="formulario-estatistica" action="estatistica.php" method="post">
+                <form id="formulario-estatistica" action="estatisticas.php" method="post">
                     <!-- inputs de entrada -->
                     <div class="campo_input">
-                        <Input
+                        <input
                             type="number"
                             id="input-alunos"
                             name="alunos"
                             placeholder="Total de alunos:"
-                            value="<?php echo htmlspecialchars($dadosAtuais['alunos']); ?>" required
+                            data-original-value="<?php echo htmlspecialchars($dadosAtuais['alunos']); ?>"
                         />
+                        <input 
+                            type="hidden" 
+                            name="alunos_atual" 
+                            value="<?php echo htmlspecialchars($dadosAtuais['alunos']); ?>"
+                        >
                     </div>
 
                     <div class="campo_input">
-                        <Input
+                        <input
                             type="number"
                             id="input-projetos"
                             name="projetos"
                             placeholder="Total de projetos:"
-                            value="<?php echo htmlspecialchars($dadosAtuais['projetos']); ?>" required
+                            data-original-value="<?php echo htmlspecialchars($dadosAtuais['projetos']); ?>"
                         />
+                        <input 
+                            type="hidden" 
+                            name="projetos_atual" 
+                            value="<?php echo htmlspecialchars($dadosAtuais['projetos']); ?>"
+                        >
                     </div>
 
                     <div class="campo_input">
-                        <Input
+                        <input
                             type="number"
                             id="input-polos"
                             name="polos"
                             placeholder="Total de polos:"
-                            value="<?php echo htmlspecialchars($dadosAtuais['polos']); ?>" required
+                            data-original-value="<?php echo htmlspecialchars($dadosAtuais['polos']); ?>"
                         />
+                        <input 
+                            type="hidden" 
+                            name="polos_atual" 
+                            value="<?php echo htmlspecialchars($dadosAtuais['polos']); ?>"
+                        >
                     </div>
 
                     <div class="campo_input">
-                        <Input
+                        <input
                             type="number"
                             id="input-horas"
                             name="horas"
                             placeholder="Horas de curso:"
-                            value="<?php echo htmlspecialchars($dadosAtuais['horas']); ?>" required
+                            data-original-value="<?php echo htmlspecialchars($dadosAtuais['horas']); ?>"
                         />
+                        <input 
+                            type="hidden" 
+                            name="horas_atual" 
+                            value="<?php echo htmlspecialchars($dadosAtuais['horas']); ?>"
+                        >
                     </div>
 
                     <!-- espelho para visualização dos inputs -->
@@ -141,7 +156,7 @@ $fmt_horas = number_format($dadosAtuais['horas']);
         </div>
     </main>
 
-    <script src="galeria-voucher/App/View/assets/js/estatisticas.js"></script>
+    <script src="/galeria-voucher/App/View/assets/js/estatisticas.js"></script>
 
 </body>
 </html>

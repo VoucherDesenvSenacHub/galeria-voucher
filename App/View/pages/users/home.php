@@ -4,6 +4,25 @@ require_once __DIR__ . "/../../../Config/Database.php";
 require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
 use App\Model\EstatisticasModel;
+
+//cria instância do model
+$estatisticasModel = new EstatisticasModel();
+//busca os dados mais recentes do banco
+$dadosDoBanco = $estatisticasModel->getEstatisticas();
+
+//se não houver dados, usa valores padrão
+if (!$dadosDoBanco) {
+    $dadosDoBanco = ['alunos' => 0, 'projetos' => 0, 'polos' => 0, 'horas' => 0];
+}
+
+//prepara o array $estatisticas no formato que o foreach procura
+//os dados são recebidos agora da variável $dadosDoBanco
+$estatisticas = [
+    ['valor' => '+' . number_format($dadosDoBanco['alunos']), 'label' => 'DE ALUNOS'],
+    ['valor' => '+' . number_format($dadosDoBanco['projetos']), 'label' => 'PROJETOS'],
+    ['valor' => '+' . number_format($dadosDoBanco['polos']), 'label' => 'POLOS'],
+    ['valor' => number_format($dadosDoBanco['horas']), 'label' => 'CURSO COM HORAS']
+];
 ?>
 
 <body class="body-user">
@@ -76,21 +95,11 @@ use App\Model\EstatisticasModel;
                 <h1>SUA EVOLUÇÃO COMEÇA AQUI</h1>
                 <div class="stats">
                     <?php
-                    //dados dinâmicos de exemplo apenas
-                    $estatisticas = [
-                        ['valor' => '+500', 'label' => 'DE ALUNOS'],
-                        ['valor' => '+50', 'label' => 'PROJETOS'],
-                        ['valor' => '+5', 'label' => 'POLOS'],
-                        ['valor' => '1200', 'label' => 'CURSO COM HORAS']
-                    ];
-                    //foreach percorre aray ($estatisticas) e cria os elementos html (div, span, p)
-                    // evitando repetição manual de código e facilitando na manutenção sem precisar
-                    //alterar a estrutura do html, apenas conectando ao banco de dados
                     foreach ($estatisticas as $estatistica) {
                         echo "<div>
-                                        <span>{$estatistica['valor']}</span>
-                                        <p>{$estatistica['label']}</p>
-                                    </div>";
+                                <span>{$estatistica['valor']}</span>
+                                <p>{$estatistica['label']}</p>
+                              </div>";
                     }
                     ?>
                 </div>
