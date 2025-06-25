@@ -33,10 +33,10 @@ if (!$dadosAtuais) {
 }
 
 //formata os os números para o padrão br
-$fmt_alunos = number_format($dadosAtuais['alunos']);
-$fmt_projetos = number_format($dadosAtuais['projetos']);
-$fmt_polos = number_format($dadosAtuais['polos']);
-$fmt_horas = number_format($dadosAtuais['horas']);
+$fmt_alunos = number_format($dadosAtuais['alunos'], 0, ',', '.');
+$fmt_projetos = number_format($dadosAtuais['projetos'], 0, ',', '.');
+$fmt_polos = number_format($dadosAtuais['polos'], 0, ',', '.');
+$fmt_horas = number_format($dadosAtuais['horas'], 0, ',', '.');
 ?>
 
 <body class="body-estatisticas">
@@ -156,7 +156,7 @@ $fmt_horas = number_format($dadosAtuais['horas']);
         </div>
     </main>
 
-    <script src="/galeria-voucher/App/View/assets/js/estatisticas.js"></script>
+    <script src="/galeria-voucher/App/View/assets/js/adm/estatisticas.js"></script>
 
 </body>
 </html>

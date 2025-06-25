@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function formatarNumero(num) {
         const numeroLimpo = isNaN(num) ? 0 : num;
-        return new Intl.NumberFormat('pt-br').format(numeroLimpo);
+        return new Intl.NumberFormat('de-DE').format(numeroLimpo);
     }
 
     //mapeamento dos id's dos inputs para os id's dos seus espelhos

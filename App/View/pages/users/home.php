@@ -18,10 +18,10 @@ if (!$dadosDoBanco) {
 //prepara o array $estatisticas no formato que o foreach procura
 //os dados são recebidos agora da variável $dadosDoBanco
 $estatisticas = [
-    ['valor' => '+' . number_format($dadosDoBanco['alunos']), 'label' => 'DE ALUNOS'],
-    ['valor' => '+' . number_format($dadosDoBanco['projetos']), 'label' => 'PROJETOS'],
-    ['valor' => '+' . number_format($dadosDoBanco['polos']), 'label' => 'POLOS'],
-    ['valor' => number_format($dadosDoBanco['horas']), 'label' => 'CURSO COM HORAS']
+    ['valor' => '+' . number_format($dadosDoBanco['alunos'], 0, ',', '.'), 'label' => 'DE ALUNOS'],
+    ['valor' => '+' . number_format($dadosDoBanco['projetos'], 0, ',', '.'), 'label' => 'PROJETOS'],
+    ['valor' => '+' . number_format($dadosDoBanco['polos'], 0, ',', '.'), 'label' => 'POLOS'],
+    ['valor' => number_format($dadosDoBanco['horas'], 0, ',', '.'), 'label' => 'CURSO COM HORAS']
 ];
 ?>
 

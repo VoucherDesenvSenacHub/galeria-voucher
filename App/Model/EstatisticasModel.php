@@ -44,7 +44,7 @@ class EstatisticasModel {
      */
     public function updateEstatisticas($alunos, $projetos, $polos, $horas)
     {
-        $query = "UPDATE" . $this-> table_name . " SET
+        $query = "UPDATE " . $this-> table_name . " SET
                     alunos = :alunos,
                     projetos = :projetos,
                     polos = :polos,
