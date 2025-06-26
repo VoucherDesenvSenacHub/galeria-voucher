@@ -54,6 +54,9 @@
 
 .social-icons {
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .social-icons a {
