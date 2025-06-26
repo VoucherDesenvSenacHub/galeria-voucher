@@ -13,7 +13,7 @@
     ?>
 
     <main class="main-login">
-        <form  class="form" action="">
+        <form  class="form" action="home-adm.php" method="get">
 
             <div class="form-header" action="">
                 <h1>Login</h1>
@@ -31,7 +31,7 @@
 
                 <div class="form-action">
 
-                    <?php buttonComponent('primary', 'Login', false,  null, null); ?>
+                    <?php buttonComponent('primary', 'Login', false, 'home-adm.php', null); ?>
 
                 </div>
             </div>
