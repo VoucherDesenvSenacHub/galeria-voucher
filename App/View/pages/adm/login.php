@@ -34,7 +34,7 @@
 
                 <div class="form-action">
 
-                    <?php buttonComponent('primary', 'Login', false,  null, null); ?>
+                    <?php buttonComponent('primary', 'Login', false,  './../users/home.php'); ?>
 
                 </div>
             </div>
