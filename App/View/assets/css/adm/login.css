@@ -21,11 +21,10 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
-
 }
+
 /* Cabeçalho do Formulário */
 .main-login .form-header h1 {
     margin: 0;
