@@ -1,5 +1,8 @@
 <?php 
-   require_once(__DIR__ . '/../../componentes/head.php');
+   require_once __DIR__ . '/../../componentes/head.php';
+   require_once __DIR__ . '/../../componentes/button.php';
+
+   headerComponent('Login');
 ?>
 
 <body class="body-login">
