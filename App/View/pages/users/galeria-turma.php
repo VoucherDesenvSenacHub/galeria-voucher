@@ -81,7 +81,7 @@ require_once __DIR__ . "/../../componentes/head.php";
         <h1 class="galeria-turma-h1">Alunos</h1>
         <li>
             <div class="galeria-turma-container">
-                <?php for ($i = 0; $i <= 14; $i++) { ?>
+                <?php for ($i = 0; $i <= 15; $i++) { ?>
                     <?php require __DIR__ . "/./../../componentes/users/card_desenvolvedores.php" ?>
                 <?php } ?>
             </div>
@@ -90,7 +90,7 @@ require_once __DIR__ . "/../../componentes/head.php";
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Professores</h1>
         <div class="galeria-turma-container">
-            <?php for ($i = 0; $i <= 14; $i++) { ?>
+            <?php for ($i = 0; $i <= 15; $i++) { ?>
                 <?php require __DIR__ . "/./../../componentes/users/card_desenvolvedores.php" ?>
             <?php } ?>
         </div>
