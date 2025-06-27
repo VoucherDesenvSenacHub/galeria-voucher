@@ -87,7 +87,7 @@
     background-color: #8bcf30;
 }
 
-/* Celulares pequenos */
+/* celulares pequenos */
 @media (max-width: 480px) {
     .main-login .form {
         padding: 30px 20px;
