@@ -13,8 +13,7 @@ require_once __DIR__ . '/../../componentes/head.php';
     ?>
 
     <main class="main-login">
-        <form class="form" action="">
-
+        <form class="form" action="home-adm.php" method="get">
             <div class="form-header" action="">
                 <h1>Login</h1>
 
