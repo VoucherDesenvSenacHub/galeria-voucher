@@ -20,11 +20,11 @@
 
         <ul>
 
-            <li><a class="link-nav" href="../../pages/users/home.php">HOME</a></li>
+            <li><a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a></li>
 
-            <li><a class="link-nav" href="../../pages/users/turma.php">TURMAS</a></li>
+            <li><a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>" >TURMAS</a></li>
 
-            <li> <a class="link-nav" href="../../pages/adm/login.php">
+            <li><a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
                 
             <span class="material-symbols-outlined">
                 person
