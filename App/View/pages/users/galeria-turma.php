@@ -16,8 +16,8 @@ require_once __DIR__ . "/../../componentes/head.php";
         <h2>Galeria E-Commerce</h2>
     </section>
     <section class="galeria-turma-senac">
-        <h1 class="galeria-turma-h1">Senac Hub Academy</h1>
-        <h1 class="galeria-turma-h1">Campo Grande - MS</h1>
+        <h2 class="galeria-turma-h2">Senac Hub Academy</h2>
+        <h2 class="galeria-turma-h2">Campo Grande - MS</h2>
     </section>
 
     <section class="galeria-turma-section galeria-turma-dia">
