@@ -22,7 +22,7 @@ headerComponent('Desenvolvedores');
             <?php require_once __DIR__ . "/../../componentes/head.php"; ?>
             <?php
 
-            $numeroDeCards = 15; // Define o número de cards que você quer exibir
+            $numeroDeCards = 16; // Define o número de cards que você quer exibir
 
             for ($i = 0; $i < $numeroDeCards; $i++) {
                 require __DIR__ . "/../../../View/componentes/users/card_desenvolvedores.php"; // importa os cards
