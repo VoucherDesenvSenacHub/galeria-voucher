@@ -7,29 +7,29 @@
 
 <body class="body-login">
 
-    <?php 
-        $esconderPesquisa = true;
-        require_once(__DIR__ . '/../../componentes/users/nav.php');
+    <?php
+    $esconderPesquisa = true;
+    require_once __DIR__ . '/../../componentes/users/nav.php';
     ?>
-    <?php 
-        require_once(__DIR__ . '/../../componentes/users/mira.php');
+    <?php
+    require_once __DIR__ . '/../../componentes/users/mira.php';
     ?>
 
     <main class="main-login">
-        <form  class="form" action="home-adm.php" method="get">
+        <form class="form" action="">
 
             <div class="form-header" action="">
                 <h1>Login</h1>
 
             </div>
-                
+
             <div class="form-content">
 
-                <div class= "form-input required">
+                <div class="form-input required">
 
-                    <input  type="email"  placeholder="Email" required>
+                    <input type="email" placeholder="Email" required>
                     <input type="password" placeholder="Senha" required>
-        
+
                 </div>
 
                 <div class="form-action">
@@ -38,15 +38,15 @@
 
                 </div>
             </div>
-          
+
         </form>
-               
+
     </main>
-    
-    <?php 
-        require_once(__DIR__ . '/../../componentes/users/footer.php');
+
+    <?php
+    require_once __DIR__ . '/../../componentes/users/footer.php';
     ?>
 
-<body>
+    <body>
 
-</html>
+        </html>
