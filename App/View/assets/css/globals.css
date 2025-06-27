@@ -7,13 +7,11 @@
 @import url(users/turma.css);
 @import url(users/footer.css);
 @import url(users/mira.css);
-@import url(users/nav.css);
+@import url(nav.css);
 @import url(users/card_desenvolvedor.css);
 @import url(users/pagina_dev.css);
 @import url(users/galeria-turma.css);
 
-
-@import url(adm/nav.css);
 @import url(adm/main.css);
 @import url(adm/home-adm.css);
 @import url(adm/login.css);
@@ -22,7 +20,6 @@
 @import url(adm/Turmas-adm/turmas-imagem.css);
 @import url(adm/sidebar.css);
 @import url(adm/cadastrar-usuarios.css);
-
 
 @import url(adm/lista-alunos.css);
 

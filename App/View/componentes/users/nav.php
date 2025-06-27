@@ -1,8 +1,11 @@
 <header>
     <nav class = "NavInicial">
 
-        <img class="imgnav" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nomeNav.png" width="150px">
-
+        <div class="imgvoucher">
+            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">
+                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/logo-navbar.png">
+            </a>
+        </div>
         <div class="search">
 
             <div class="search">
@@ -17,11 +20,11 @@
 
         <ul>
 
-            <li><a href="../../pages/users/home.php">HOME</a></li>
+            <li><a class="link-nav" href="../../pages/users/home.php">HOME</a></li>
 
-            <li><a href="../../pages/users/turma.php">TURMAS</a></li>
+            <li><a class="link-nav" href="../../pages/users/turma.php">TURMAS</a></li>
 
-            <li> <a href="../../pages/adm/login.php">
+            <li> <a class="link-nav" href="../../pages/adm/login.php">
                 
             <span class="material-symbols-outlined">
                 person

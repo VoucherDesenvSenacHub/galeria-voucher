@@ -1,5 +1,4 @@
-
-.nav-adm {
+nav-adm {
   background-color: rgba(50, 50, 50, 0.8); 
   justify-content: space-between;
   display: flex;
@@ -11,8 +10,8 @@
   position: fixed;    
   top: 0;            
   left: 0;           
-}
-
+} 
+/* 
 .nav-adm ul {
   display: flex;
 }
@@ -56,4 +55,4 @@
     width: 160px;
     height: 40px;
   }
-}
+} */
