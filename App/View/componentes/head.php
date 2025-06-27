@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . '/./../../Config/env.php';
+require_once __DIR__ . '/../../Config/env.php';
 require_once __DIR__ . '/input.php';
 require_once __DIR__ . '/button.php';
 ?>
