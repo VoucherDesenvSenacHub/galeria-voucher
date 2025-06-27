@@ -30,7 +30,7 @@
     align-items: center;
 }
 
-/* Cabeçalho */
+/* header */
 .main-login .form-header h1 {
     margin: 0;
     font-size: 40px;
@@ -42,7 +42,7 @@
     font-weight: normal;
 }
 
-/* Inputs */
+/* inputs */
 .main-login .form-content {
     width: 100%;
 }
@@ -87,7 +87,7 @@
     background-color: #8bcf30;
 }
 
-/* Celulares pequenos */
+/* celulares pequenos */
 @media (max-width: 480px) {
     .main-login .form {
         padding: 30px 20px;
