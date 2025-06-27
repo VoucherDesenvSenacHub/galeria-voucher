@@ -17,11 +17,11 @@
 
         <ul>
 
-            <li><a href="../../pages/users/home.php">HOME</a></li>
+            <li><a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a></li>
 
-            <li><a href="../../pages/users/turma.php">TURMAS</a></li>
+            <li><a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>" >TURMAS</a></li>
 
-            <li> <a href="../../pages/adm/login.php">
+            <li> <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
                 
             <span class="material-symbols-outlined">
                 person

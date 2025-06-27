@@ -1,5 +1,11 @@
 <?php 
    require_once __DIR__ . '/../../componentes/head.php';
+<<<<<<< HEAD
+=======
+   require_once __DIR__ . '/../../componentes/button.php';
+
+   headerComponent('Login');
+>>>>>>> d5be2f442b853bfdffa7c5542b1cd95756f8f5a2
 ?>
 
 <body class="body-login">
@@ -13,7 +19,7 @@
     ?>
 
     <main class="main-login">
-        <form  class="form" action="">
+        <form  class="form" action="home-adm.php" method="get">
 
             <div class="form-header" action="">
                 <h1>Login</h1>
@@ -31,7 +37,7 @@
 
                 <div class="form-action">
 
-                    <?php buttonComponent('primary', 'Login', false,  null); ?>
+                    <?php buttonComponent('primary', 'Login', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'home-adm.php'); ?>
 
                 </div>
             </div>
