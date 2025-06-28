@@ -14,7 +14,7 @@ require_once __DIR__ . "/../../componentes/head.php";
   <main class="main-lista-alunos">
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">
-      <?php buttonComponent('primary', 'Novo Professor', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
+        <?php buttonComponent('primary', 'Novo Professor', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
         
         <div class="input-pesquisa-container">
           <input type="text" id="pesquisa" placeholder="Pesquisar">
@@ -28,7 +28,7 @@ require_once __DIR__ . "/../../componentes/head.php";
             <thead>
               <tr>
                 <th>NOME</th>
-                <th>POLO</th>
+                <th>TIPO</th>
                 <th>EDITAR</th>
                 <th>INATIVAR</th>
               </tr>
@@ -36,55 +36,55 @@ require_once __DIR__ . "/../../componentes/head.php";
             <tbody>
             <tr>
               <td>Tenma</td>
-              <td>Japão</td>
+              <td>Professor</td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
             </tr>
             <tr>
               <td>Arthur Morgan</td>
-              <td>EUA</td>
+              <td>Professor</td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
             </tr>
             <tr>
               <td>Maestro Jr</td>
-              <td>Bostil</td>
+              <td>Professor</td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
             </tr>
             <tr>
               <td>Maestro Jr</td>
-              <td>Bostil</td>
+              <td>Professor</td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
             </tr>
             <tr>
               <td>Maestro Jr</td>
-              <td>Bostil</td>
+              <td>Professor</td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
             </tr>
             <tr>
               <td>Maestro Jr</td>
-              <td>Bostil</td>
+              <td>Professor</td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
             </tr>
             <tr>
               <td>Maestro Jr</td>
-              <td>Bostil</td>
+              <td>Professor</td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
             </tr>
             <tr>
               <td>Maestro Jr</td>
-              <td>Bostil</td>
+              <td>Professor</td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
             </tr>
             <tr>
               <td>Maestro Jr</td>
-              <td>Bostil</td>
+              <td>Professor</td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
               <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
             </tr>

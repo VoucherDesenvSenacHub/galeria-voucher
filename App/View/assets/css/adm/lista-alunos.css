@@ -31,10 +31,26 @@
   margin: 50px 0 15px;
 }
 
+.topo-lista-alunos a {
+  position: relative;
+  left: 58px;
+}
+
+.topo-lista-alunos input {
+  position: relative;
+  right: 50px ;
+}
+
+
 /* Campo de pesquisa com ícone de lupa */
 .input-pesquisa-container {
   position: relative;
   display: inline-block;
+}
+.input-pesquisa-container img {
+  position: relative;
+  right: 90px;
+  top: 13px;
 }
 
 .input-pesquisa-container input[type="text"] {
@@ -59,24 +75,6 @@
   pointer-events: none;
 }
 
-/* Botão Nova Turma */
-#btn-nvturma {
-  width: 200px;
-  height: 60px;
-  padding: 10px 20px;
-  font-size: 30px;
-  text-align: center;
-  color: #004302;
-  background-color: #aeff40;
-  border: 3px solid #004302;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#btn-nvturma:hover {
-  background-color: #9fe83a;
-}
 
 /* Tabela principal com rolagem */
 .tabela-principal-lista-alunos {
