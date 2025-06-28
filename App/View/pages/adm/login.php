@@ -1,8 +1,5 @@
 <?php 
-   require_once __DIR__ . '/../../componentes/head.php';
-   require_once __DIR__ . '/../../componentes/button.php';
-
-   headerComponent('Login');
+   require_once(__DIR__ . '/../../componentes/head.php');
 ?>
 
 <body class="body-login">
@@ -34,7 +31,7 @@
 
                 <div class="form-action">
 
-                    <?php buttonComponent('primary', 'Login', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'home-adm.php'); ?>
+                    <?php buttonComponent('primary', 'Login', false, 'home-adm.php', null); ?>
 
                 </div>
             </div>
