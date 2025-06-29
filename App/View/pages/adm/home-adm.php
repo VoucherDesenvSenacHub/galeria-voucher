@@ -9,7 +9,10 @@ headerComponent('Página inicial - ADM');
     <div class="container-adm">
        
         <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
-        <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
+        <?php 
+            $isAdmin = true; // Para páginas de admin
+            require_once __DIR__ . "/../../componentes/nav.php"; 
+        ?>
 
       <main class="content-adm">
           <div class="user-profile-adm">

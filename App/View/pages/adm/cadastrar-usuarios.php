@@ -8,7 +8,10 @@ headerComponent('Cadastro de Usuários')
 
 <body class="body-cadastrar-users">
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
-  <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
+  <?php 
+      $isAdmin = true; // Para páginas de admin
+      require_once __DIR__ . "/../../componentes/nav.php"; 
+  ?>
 
   <main class="conteudo-cadastro">
     <div class="user-profile">
