@@ -86,6 +86,7 @@
 }
 
 .galeria-turma-h1,
+.galeria-turma-h2,
 .galeria-turma-h5,
 .galeria-turma-h4 {
   font-family: "Bebas Neue", sans-serif;
@@ -347,7 +348,7 @@ section#projeto-xx img {
 .galeria-turma-container {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 70px;
   max-width: 1200px;
   margin: 0 auto;

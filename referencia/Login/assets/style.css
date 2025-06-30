@@ -7,6 +7,8 @@ nav {
     justify-content: space-around;
     align-items: center;
     height: 10vh;
+
+    
 }
 
 a {
@@ -54,6 +56,7 @@ ul li{
     width: 300px;
     background-color: #d8dbd6;
     z-index: 1;
+    
 }
 
 .search button {
@@ -64,6 +67,7 @@ ul li{
     background-color: #d8dbd6;
     cursor: pointer;
     margin-left: -40px;
+    
 }
 
 /* AQUI TERMINA COMEÇA A NAVBAR */
@@ -177,6 +181,7 @@ main {
     border: 3px solid #aEFF40; /* Borda verde */
     top: 18vh; /* Posição vertical inicial */
     left: 20vw; /* Posição horizontal inicial */
+    
 }
 
 .square1 {
@@ -186,6 +191,7 @@ main {
     background-color: #95ff00; /* Cor verde */
     top: 0; /* Começa no topo */
     left: 23vw; /* Posiciona a linha à direita do quadrado */
+    
 }
 
 .square2 {
@@ -195,6 +201,7 @@ main {
     background-color: #aEFF40; /* Cor verde */
     top: calc(18vh + 3vw); /* A linha passa no meio do quadrado */
     left: 0; /* Começa na borda esquerda */
+    
 }
 
 .rodape {

@@ -1,67 +1,152 @@
-/* Geral */
 
 .body-login {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
     height: 100vh;
     background-image: linear-gradient(#000000, #003100);
-}
-
-.main-login{
-    padding-top: 20rem;
-    width: 100vw;
-    height: calc(100vh - 85px);
-}
-
-.main-login .form{
- 
-    width: 50%;
-    height: 60%;
-    margin: auto;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
-
     justify-content: center;
     align-items: center;
-
 }
-/* Cabeçalho do Formulário */
+
+.main-login {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-login .form {
+    width: 90%;
+    max-width: 500px;
+    padding: 40px 30px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* header */
 .main-login .form-header h1 {
     margin: 0;
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
-    color:#aEFF40;
+    color: #aEFF40;
     font-family: "Bebas Neue", sans-serif;
     letter-spacing: 2px;
-    margin-top: -30px;
+    margin-bottom: 20px;
     font-weight: normal;
 }
 
-/* Conteúdo do Formulário */
+/* inputs */
 .main-login .form-content {
-    margin-top: 20px;
+    width: 100%;
 }
 
 .main-login .form-input {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
+    align-items: center;
 }
 
 .main-login .form-input input {
-    width: 400px;
-    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    padding: 16px;
     font-size: 16px;
     border: 1px solid #ccc;
     background-color: #d8dbd6;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 50px;
     outline: none;
+    box-sizing: border-box;
 }
 
-/* Botão de Ação */
+/* Botão */
 .main-login .form-action {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
+
+.main-login .form-action button {
+    padding: 12px 30px;
+    background-color: #aEFF40;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.main-login .form-action button:hover {
+    background-color: #8bcf30;
+}
+
+/* celulares pequenos */
+@media (max-width: 480px) {
+    .main-login .form {
+        padding: 30px 20px;
+    }
+
+    .main-login .form-input input {
+        width: 100%;
+        max-width: 250px;
+        font-size: 14px;
+        padding: 14px;
+    }
+
+    .main-login .form-header h1 {
+        font-size: 28px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .main-login .form-input input {
+        max-width: 300px;
+    }
+}
+
+/* Monitores grandes */
+@media (min-width: 1024px) {
+    .main-login .form-input input {
+        max-width: 500px;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .main-login {
+        padding: 16px;
+        height: 100vh;
+    }
+
+    .main-login .form {
+        width: 100%;
+        max-width: 90%;
+        padding: 24px;
+    }
+
+    .main-login .form-input input {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .main-login .form-header h1 {
+        font-size: 24px;
+    }
+}
+
+  .body-login footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  

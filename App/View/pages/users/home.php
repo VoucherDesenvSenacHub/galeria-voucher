@@ -23,6 +23,8 @@ $estatisticas = [
     ['valor' => '+' . number_format($dadosDoBanco['polos'], 0, ',', '.'), 'label' => 'POLOS'],
     ['valor' => number_format($dadosDoBanco['horas'], 0, ',', '.'), 'label' => 'CURSO COM HORAS']
 ];
+
+headerComponent('Página Inicial')
 ?>
 
 <body class="body-user">
