@@ -95,7 +95,7 @@ headerComponent('Galeria da Turma')
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Professores</h1>
         <div class="galeria-turma-container">
-            <?php for ($i = 0; $i <= 15; $i++) { ?>
+            <?php for ($i = 0; $i <= 3; $i++) { ?>
                 <?php require __DIR__ . "/./../../componentes/users/card_desenvolvedores.php" ?>
             <?php } ?>
         </div>
