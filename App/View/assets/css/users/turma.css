@@ -1,4 +1,3 @@
-
 .ver-mais-cont {
     display: flex;
     justify-content: center;
@@ -101,3 +100,10 @@
 
 /* agora o vermais icon --ok  */
 
+.card-turma.extra {
+    display: none;
+}
+
+.card-turma.extra.show {
+    display: block;
+}

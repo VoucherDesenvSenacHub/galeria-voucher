@@ -1,4 +1,3 @@
-
 .body-login {
     margin: 0;
     padding: 0;
@@ -142,11 +141,30 @@
     }
 }
 
-  .body-login footer {
+@media (min-width: 992px) {
+    .body-login .footer {
+        justify-content: center !important;
+        padding-left: 0 !important;
+    }
+}
+
+/* Footer fixo e centralizado */
+.body-login footer {
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
     z-index: 999;
-  }
+}
+
+.body-login .footer .row {
+    justify-content: center !important;
+}
+
+.body-login .footer .col-100 {
+    text-align: center;
+}
   
