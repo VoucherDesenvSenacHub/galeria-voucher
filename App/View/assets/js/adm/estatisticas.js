@@ -39,4 +39,41 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+    //alertas da página
+    const alertaElemento = document.querySelector('.alerta');
+
+    if (alertaElemento) {
+        let timerId; //variável para guardar o id do timer
+
+        //função pra fecha o alerta
+        const fecharAlerta = () => {
+            alertaElemento.style.display = 'none';
+            clearTimeout(timerId); //limpa o timer se ainda estiver ativo
+        };
+
+        //função para iniciar ou reiniciar o timer de 8 segundos
+        const iniciarTimer = () => {
+            //limpa qualquer timer antigo pra evitar duplicação
+            clearTimeout(timerId);
+            //define um timer novo pra fecha o alerta
+            timerId = setTimeout(fecharAlerta, 8000);
+        };
+
+        //encontra o botão de fechar
+        const botaoFechar = alertaElemento.querySelector('.alerta-fechar');
+        if (botaoFechar) {
+            botaoFechar.addEventListener('click', fecharAlerta);
+        }
+
+        //evento pra pausa o timer quando o mouse passa em cima do alerta
+        alertaElemento.addEventListener('mouseenter', () => {
+            clearTimeout(timerId);
+        });
+        //evento pra reiniciar o timer quando o mouse sai de cima do alerta
+        alertaElemento.addEventListener('mouseleave', iniciarTimer);
+
+        //inicia o timer pela primeria vez quando a página carrega
+        iniciarTimer();
+    }
 });

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Config/Database.php";
 require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
@@ -12,17 +13,28 @@ $mensagemDeFeedback = ''; // variável para guardar mensagens de sucesso ou erro
 //verifica se o formlário foi enviado (se o método da requisição for POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //valida e limpa os dados recebidos pra garantir que sejam números inteiros
-    $alunos = ($_POST['alunos'] !== '') ? (int)$_POST['alunos'] : (int)$_POST['alunos_atual'];
+    $alunos   = ($_POST['alunos']   !== '') ? (int)$_POST['alunos']   : (int)$_POST['alunos_atual'];
     $projetos = ($_POST['projetos'] !== '') ? (int)$_POST['projetos'] : (int)$_POST['projetos_atual'];
-    $polos = ($_POST['polos'] !== '') ? (int)$_POST['polos'] : (int)$_POST['polos_atual'];
-    $horas = ($_POST['horas'] !== '') ? (int)$_POST['horas'] : (int)$_POST['horas_atual'];
+    $polos    = ($_POST['polos']    !== '') ? (int)$_POST['polos']    : (int)$_POST['polos_atual'];
+    $horas    = ($_POST['horas']    !== '') ? (int)$_POST['horas']    : (int)$_POST['horas_atual'];
 
     //se todos os campos contiverem números válidos
     if ($estatisticasModel->updateEstatisticas($alunos, $projetos, $polos, $horas)) {
-        $mensagemDeFeedback = '<div class="alerta-sucesso">Estatísticas atualizadas com sucesso!</div>';
+        $_SESSION['feedback_message'] = '<div class="alerta-sucesso">Estatísticas atualizadas com sucesso!</div>';
     } else {
-        $mensagemDeFeedback = '<div class="alerta-erro">Ocorreu um erro ao salvar no banco de dados.</div>';
+        $_SESSION['feedback_message'] = '<div class="alerta-erro">Ocorreu um erro ao salvar no banco de dados.</div>';
     }
+
+    header('Location: estatisticas.php'); //redireciona para a mesma página pra evitar reenvio do formulário
+    exit();
+}
+
+//verifica se existe uma mensagem na sessão (acesso GET)
+if (isset($_SESSION['feedback_message'])) {
+    //se existir, coloca na variável que vai ser exibida
+    $mensagemDeFeedback = $_SESSION['feedback_message'];
+    //apaga da sessão pra não exibir novamente
+    unset($_SESSION['feedback_message']);
 }
 
 //busca dados mais recentes para usar nos inputs e no espelho
@@ -44,21 +56,12 @@ $fmt_horas = number_format($dadosAtuais['horas'], 0, ',', '.');
     <?php require_once __DIR__ . "/./../../componentes/adm/nav.php"; ?>
 
     <main class="conteudo-estatisticas">
-        <div>
-            <!-- profile (titulo da página) na parte de cima -->
-            <div class="estatistica-profile">
-                <div class="user-icon">
-                    <div>
-                        <button id="profile-titulo">ESTATÍSTICA</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
+            <div class="estatistica-header">
+                <button id="profile-titulo">ESTATÍSTICA</button>
                 <h1 class="titulo-estatistica">ATUALIZAR ESTATÍSTICAS</h1>
             </div>
 
-            <?php echo $mensagemDeFeedback; //exibe a mensagem de sucesso ou erro ?>
+            <?php echo $mensagemDeFeedback; ?>
 
             <div class="div-formulario">
                 <form id="formulario-estatistica" action="estatisticas.php" method="post">
@@ -153,7 +156,6 @@ $fmt_horas = number_format($dadosAtuais['horas'], 0, ',', '.');
 
                 </form>
             </div>
-        </div>
     </main>
 
     <script src="/galeria-voucher/App/View/assets/js/adm/estatisticas.js"></script>
