@@ -30,7 +30,7 @@ require_once __DIR__ . "/../../componentes/head.php";
               <tr>
                 <th>NOME</th>
                 <th>POLO</th>
-                <th>AÇÃO</th>
+                <th>AÇÕES</th>
               </tr>
             </thead>
             <tbody>
