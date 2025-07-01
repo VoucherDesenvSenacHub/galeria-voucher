@@ -1,34 +1,23 @@
 <header>
-    <nav class = "NavInicial">
+    <nav class="NavInicial">
+        <div class="nav-inner">
+            <img class="logo" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nomeNav.png" width="150px" alt="Logo Voucher">
 
-        <img class="imgnav" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nomeNav.png" width="150px">
-
-        <div class="search">
-
-            <div class="search">
-
-                <?php if (!isset($esconderPesquisa) || 
-                !$esconderPesquisa) { ?>
+            <?php if (!isset($esconderPesquisa) || !$esconderPesquisa) { ?>
+                <div class="search">
                     <input class="pesquisa" type="text" placeholder="Pesquisar">
-                    <?php } ?>
-            </div>
+                </div>
+            <?php } ?>
 
+            <!-- Ícone menu mobile -->
+            <span class="material-symbols-outlined hamburger" id="hamburger">menu</span>
+
+            <ul class="menu-links" id="nav-links">
+                <li><a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a></li>
+                <li><a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>">TURMAS</a></li>
+                <li><a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>"><span class="material-symbols-outlined">person</span></a></li>
+            </ul>
         </div>
-
-        <ul>
-
-            <li><a href="../../pages/users/home.php">HOME</a></li>
-
-            <li><a href="../../pages/users/turma.php">TURMAS</a></li>
-
-            <li> <a href="../../pages/adm/login.php">
-                
-            <span class="material-symbols-outlined">
-                person
-            </span>
-
-                </a>
-            </li>
-        </ul>
     </nav>
+    <script src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_JS']; ?>users/nav.js" defer></script>
 </header>
