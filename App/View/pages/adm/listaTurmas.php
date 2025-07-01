@@ -29,65 +29,36 @@ require_once __DIR__ . "/../../componentes/head.php";
               <tr>
                 <th>NOME</th>
                 <th>POLO</th>
-                <th>EDITAR</th>
-                <th>INATIVAR</th>
+                <th>AÇÃO</th>
               </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>Tenma</td>
-              <td>Japão</td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
-            </tr>
-            <tr>
-              <td>Arthur Morgan</td>
-              <td>EUA</td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
-            </tr>
-            <tr>
-              <td>Maestro Jr</td>
-              <td>Bostil</td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
-            </tr>
-            <tr>
-              <td>Maestro Jr</td>
-              <td>Bostil</td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
-            </tr>
-            <tr>
-              <td>Maestro Jr</td>
-              <td>Bostil</td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
-            </tr>
-            <tr>
-              <td>Maestro Jr</td>
-              <td>Bostil</td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
-            </tr>
-            <tr>
-              <td>Maestro Jr</td>
-              <td>Bostil</td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
-            </tr>
-            <tr>
-              <td>Maestro Jr</td>
-              <td>Bostil</td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
-            </tr>
-            <tr>
-              <td>Maestro Jr</td>
-              <td>Bostil</td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">edit</span></td>
-              <td><span class="material-symbols-outlined" style="cursor: pointer;">delete</span></td>
-            </tr>
+              <?php
+              // Array com dados fakes de turmas
+              $turmas = [
+                  ['nome' => 'Turma A - Desenvolvimento Web', 'polo' => 'São Paulo'],
+                  ['nome' => 'Turma B - Programação Mobile', 'polo' => 'Rio de Janeiro'],
+                  ['nome' => 'Turma C - Data Science', 'polo' => 'Belo Horizonte'],
+                  ['nome' => 'Turma D - UX/UI Design', 'polo' => 'Salvador'],
+                  ['nome' => 'Turma E - DevOps', 'polo' => 'Recife'],
+                  ['nome' => 'Turma F - Inteligência Artificial', 'polo' => 'Fortaleza'],
+                  ['nome' => 'Turma G - Cybersecurity', 'polo' => 'Brasília'],
+                  ['nome' => 'Turma H - Cloud Computing', 'polo' => 'Curitiba'],
+                  ['nome' => 'Turma I - Blockchain', 'polo' => 'Porto Alegre'],
+                  ['nome' => 'Turma J - IoT', 'polo' => 'Manaus']
+              ];
+
+              foreach ($turmas as $turma) {
+                  echo '<tr>';
+                  echo '<td>' . $turma['nome'] . '</td>';
+                  echo '<td>' . $turma['polo'] . '</td>';
+                  echo '<td class="acoes">';
+                  echo '<span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>';
+                  echo '<span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>';
+                  echo '</td>';
+                  echo '</tr>';
+              }
+              ?>
             </tbody>
           </table>
         </div>
