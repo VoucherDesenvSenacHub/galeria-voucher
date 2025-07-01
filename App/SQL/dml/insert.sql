@@ -103,3 +103,10 @@ INSERT INTO imagem_projeto (imagem_id, url, projeto_id) VALUES
 (1, 'https://example.com/projects/turismo.jpg', 2),
 (1, 'https://example.com/projects/rede.jpg', 3),
 (1, 'https://example.com/projects/escola.jpg', 4);
+
+-- INSERT statement for 'estatisticas'
+-- insere a linha de dados com id=1, mas somente se ela ainda não existir
+-- isso evita criar duplicatas se você executar o script mais de uma vez
+INSERT INTO estatisticas (id, alunos, projetos, polos, horas)
+SELECT 1, 0, 0, 0, 0 FROM DUAL
+WHERE NOT EXISTS (SELECT id FROM estatisticas WHERE id = 1);
