@@ -34,19 +34,22 @@ require_once __DIR__ . "/../../componentes/head.php";
             </thead>
             <tbody>
               <?php
-              // Array com dados fakes de turmas
-              $turmas = [
-                  ['nome' => 'Turma A - Desenvolvimento Web', 'polo' => 'São Paulo'],
-                  ['nome' => 'Turma B - Programação Mobile', 'polo' => 'Rio de Janeiro'],
-                  ['nome' => 'Turma C - Data Science', 'polo' => 'Belo Horizonte'],
-                  ['nome' => 'Turma D - UX/UI Design', 'polo' => 'Salvador'],
-                  ['nome' => 'Turma E - DevOps', 'polo' => 'Recife'],
-                  ['nome' => 'Turma F - Inteligência Artificial', 'polo' => 'Fortaleza'],
-                  ['nome' => 'Turma G - Cybersecurity', 'polo' => 'Brasília'],
-                  ['nome' => 'Turma H - Cloud Computing', 'polo' => 'Curitiba'],
-                  ['nome' => 'Turma I - Blockchain', 'polo' => 'Porto Alegre'],
-                  ['nome' => 'Turma J - IoT', 'polo' => 'Manaus']
-              ];
+                              // Array com dados fakes de turmas
+                $turmas = [
+                    ['nome' => 'Turma 138 - Voucher Desenvolvedor', 'polo' => 'Campo Grande'],
+                    ['nome' => 'Turma 139 - Voucher Desenvolvedor', 'polo' => 'Campo Grande'],
+                    ['nome' => 'Turma 140 - Voucher Desenvolvedor', 'polo' => 'Campo Grande'],
+                    ['nome' => 'Turma 141 - Voucher Desenvolvedor', 'polo' => 'Campo Grande'],
+                    ['nome' => 'Turma 142 - Voucher Desenvolvedor', 'polo' => 'Campo Grande'],
+                    ['nome' => 'Turma 143 - Voucher Desenvolvedor', 'polo' => 'Campo Grande'],
+                    ['nome' => 'Turma 144 - Voucher Desenvolvedor', 'polo' => 'Campo Grande'],
+                    ['nome' => 'Turma 145 - Voucher Desenvolvedor', 'polo' => 'Campo Grande'],
+                    ['nome' => 'Turma 146 - Voucher Desenvolvedor', 'polo' => 'Campo Grande'],
+                    ['nome' => 'Turma 147 - Voucher Desenvolvedor', 'polo' => 'Dourados'],
+                    ['nome' => 'Turma 148 - Voucher Desenvolvedor', 'polo' => 'Dourados'],
+                    ['nome' => 'Turma 149 - Voucher Desenvolvedor', 'polo' => 'Três Lagoas'],
+                    ['nome' => 'Turma 150 - Voucher Desenvolvedor', 'polo' => 'Três Lagoas']
+                ];
 
               foreach ($turmas as $turma) {
                   echo '<tr>';
