@@ -17,6 +17,9 @@ require_once __DIR__ . '/button.php';
 <!-- Script para controle da barra de pesquisa -->
 <script src="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_JS"] ?>searchControl.js"></script>
 
+<!-- Script para controle do menu hambúrguer -->
+<script src="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_JS"] ?>users/nav.js"></script>
+
 <?php
 function headerComponent($titulo){
     echo "

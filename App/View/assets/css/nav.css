@@ -2,11 +2,7 @@
     height: var(--nav-height);
     position: fixed;
     background-color: var(--background-nav);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    padding: 0 45px;
     z-index: 5;
     top: 0;
 
@@ -87,6 +83,95 @@
 }
 
 .nav-adm {
-    background-color: rgba(50, 50, 50, 0.8);               
-    left: 0;           
-} 
+    background-color: rgba(50, 50, 50, 0.8);
+    left: 0;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    padding: 0 45px;
+    position: relative;
+}
+
+.hamburger {
+    display: none;
+    color: var(--accent-color);
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 10;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* mobile */
+@media(max-width:768px) {
+    .NavInicial .nav-inner {
+        padding: 0 20px;
+    }
+
+    .NavInicial .search {
+        display: none !important;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .menu-links {
+        position: absolute;
+        top: var(--nav-height);
+        right: 0;
+        background: var(--background-nav);
+        flex-direction: column;
+        width: 200px;
+        padding: 20px;
+        transform: translateX(100%);
+        transition: var(--default-transition);
+        box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 0 0 10px 0;
+        z-index: 1000;
+    }
+
+    .menu-links.open {
+        transform: translateX(0);
+    }
+
+    .menu-links li {
+        margin: 10px 0;
+    }
+
+    .menu-links .link-nav {
+        font-size: 20px;
+    }
+
+    /* Ajustes específicos para admin */
+    .nav-adm .menu-links {
+        background: rgba(50, 50, 50, 0.95);
+    }
+
+    /* Ajustar posicionamento do hambúrguer no mobile */
+    .hamburger {
+        right: 20px;
+        z-index: 15;
+    }
+
+    /* Garantir que a barra de pesquisa não apareça */
+    .pesquisa {
+        display: none !important;
+    }
+}

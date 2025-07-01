@@ -18,35 +18,40 @@ $useHeader = isset($useHeader) ? $useHeader : !$isAdmin; // true para users, fal
 <?php endif; ?>
 
 <nav class="NavInicial<?php echo $isAdmin ? ' nav-adm' : ''; ?>">
-    <div class="imgvoucher">
-        <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">
-            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/logo-navbar.png" alt="Logo Voucher">
-        </a>
-    </div>
-    
-    <?php if (!$isAdmin): ?>
-    <div class="search" id="searchBar">
-        <?php if (!isset($esconderPesquisa) || !$esconderPesquisa) { ?>
-            <input class="pesquisa" type="text" placeholder="Pesquisar" id="searchInput">
-        <?php } ?>
-    </div>
-    <?php endif; ?>
-
-    <ul>
-        <li>
-            <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a>
-        </li>
-        <li>
-            <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>">TURMAS</a>
-        </li>
-        <li>
-            <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
-                <span class="material-symbols-outlined">person</span>
+    <div class="nav-inner">
+        <div class="imgvoucher">
+            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">
+                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/logo-navbar.png" alt="Logo Voucher">
             </a>
-        </li>
-    </ul>
+        </div>
+
+        <?php if (!$isAdmin): ?>
+        <div class="search" id="searchBar">
+            <?php if (!isset($esconderPesquisa) || !$esconderPesquisa) { ?>
+                <input class="pesquisa" type="text" placeholder="Pesquisar" id="searchInput">
+            <?php } ?>
+        </div>
+        <?php endif; ?>
+
+        <!-- Ícone menu mobile -->
+        <span class="material-symbols-outlined hamburger" id="hamburger">menu</span>
+        
+        <ul class="menu-links" id="nav-links">
+            <li>
+                <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a>
+            </li>
+            <li>
+                <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>">TURMAS</a>
+            </li>
+            <li>
+                <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
+                    <span class="material-symbols-outlined">person</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <?php if ($useHeader): ?>
 </header>
-<?php endif; ?> 
+<?php endif; ?>
