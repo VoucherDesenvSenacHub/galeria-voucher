@@ -21,7 +21,7 @@ headerComponent('Turmas Voucher')
             <!-- Cards das Turmas -->
             <?php
                 $turmas = range(130, 177);
-                $limiteVisiveis = 32; // quantidade de turmas que aparecem inicialmente
+                $limiteVisiveis = 30; // quantidade de turmas que aparecem inicialmente
             ?>
             <div class="cards" id="cards-container">
                 <?php foreach ($turmas as $index => $turmaNumero) {
