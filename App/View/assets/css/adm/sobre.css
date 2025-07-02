@@ -22,14 +22,17 @@ body {
 
 .h1-sobre {
   font-weight: bold;
-  margin: 5px 0 10px 120px;
-  font-family: Arial, Helvetica, sans-serif;
+  max-width: 1200px;
+  width: 100%;
+  margin: 5px 0 20px;
+  padding-left: 1.25rem;
+  font-family: var(--font-secondary);
   font-size: 2rem;
-  margin-bottom: 20px;
 }
 
 .form-container-sobre {
-  width: 150vh;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 1.25rem;
   display: flex;
@@ -41,7 +44,6 @@ body {
   background-color: transparent;
   scroll-snap-type: y mandatory;
 }
-
 
 .form-container-sobre::-webkit-scrollbar {
   width: 0.5rem;
@@ -60,7 +62,7 @@ body {
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .container-imagens > * {
@@ -69,11 +71,31 @@ body {
 
 .input-group-sobre,
 .input-group-sobre-big {
-  flex: 1;
+  flex: 1 1 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 500px;
+  max-width: 100%;
+}
+
+.input-group-sobre-big .input-field,
+.input-group-sobre-big .textarea-field {
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .input-group-sobre,
+  .input-group-sobre-big {
+    flex: 1 1 45%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .input-group-sobre,
+  .input-group-sobre-big {
+    max-width: 500px;
+  }
 }
 
 .input-field {
