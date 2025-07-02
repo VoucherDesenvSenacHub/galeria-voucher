@@ -1,0 +1,62 @@
+/*
+ * layout.css – utilidades de grid e breakpoints globais
+ * Importado em globals.css
+ */
+
+/* ----- Container genérico ----- */
+.container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--default-padding);
+    max-width: 1200px;
+}
+
+/* ----- Helpers de row/col com flexbox ----- */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-inline: -10px;
+}
+
+.col {
+    padding-inline: 10px;
+    box-sizing: border-box;
+    flex: 1 0 0%; /* base flexível */
+}
+
+/* Tamanhos de colunas proporcionais */
+.col-25 { flex: 0 0 25%; }
+.col-33 { flex: 0 0 33.333%; }
+.col-50 { flex: 0 0 50%; }
+.col-100 { flex: 0 0 100%; }
+
+/* -------------------------------------------------- */
+/* Breakpoints globais                               */
+/* -------------------------------------------------- */
+
+/* Desktop grande ≥ 1200px – default, nada a fazer */
+
+/* Laptop */
+@media (max-width: 1199px) {
+    .col-25 { flex: 0 0 33.333%; }
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+    .col-25,
+    .col-33 { flex: 0 0 50%; }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .row { margin-inline: -5px; }
+    .col { padding-inline: 5px; }
+
+    .col-25,
+    .col-33,
+    .col-50 { flex: 0 0 100%; }
+}
+
+/* Utilitários de exibição */
+.hide-desktop { display: none !important; }
+@media (max-width: 767px) { .hide-mobile { display: none !important; } .hide-desktop { display: block !important; } }
