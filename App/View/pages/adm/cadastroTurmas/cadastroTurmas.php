@@ -11,9 +11,10 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
     <main class="main-turmas-turmas">
       <div class="tabs-adm-turmas">
-        <a class="tab-adm-turmas active" href="cadastroTurmas.php">TURMA</a>
-        <a class="tab-adm-turmas" href="sobre.php">SOBRE</a>
-        <a class="tab-adm-turmas" href="imagens.php">IMAGENS</a>
+        <a class="tab-adm-turmas active" href="cadastroTurmas.php">DADOS GERAIS</a>
+        <a class="tab-adm-turmas" href="sobre.php">PROJETOS</a>
+        <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
+        <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
       </div>
 
       <div class="container-main-adm">
