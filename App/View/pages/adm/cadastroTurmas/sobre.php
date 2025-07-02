@@ -16,30 +16,9 @@ require_once __DIR__ . "/../../../componentes/head.php";
         <a class="tab-adm-turmas" href="imagens.php">IMAGENS</a>
       </div>
 
-      <h1 class="h1-sobre">CADASTRO</h1>
 
-      <div class="form-container-sobre">
-        <div class="input-grupos">
-          <div class="input-group-sobre">
-            <input type="text" class="input-field" placeholder="Nome:">
-            <textarea class="textarea-field" placeholder="Sobre:"></textarea>
-            <input type="text" class="input-field" placeholder="Dia P">
-            <textarea class="textarea-field" placeholder="Sobre:"></textarea>
-            <input type="text" class="input-field" placeholder="Projeto XX">
-            <textarea class="textarea-field" placeholder="Sobre:"></textarea>
-          </div>
-
-          <div class="input-group-sobre-big">
-            <input type="text" class="input-field" placeholder="Dia I">
-            <textarea class="textarea-field" placeholder="Sobre:"></textarea>
-            <input type="text" class="input-field" placeholder="Dia E">
-            <textarea class="textarea-field" placeholder="Sobre:"></textarea>
-          </div>
-
-          <div class="link-projeto">
-            <input type="text" class="input-projeto" placeholder="Link de Projeto:">
             <div class="btn-novos-projeto">
-              <button class="componente-botao btn-imagens">NOVOS PROJETOS</button>
+              <button class="componente-botao btn-imagens">+ ADICIONAR PROJETOS</button>
             </div>
           </div>
         </div>
