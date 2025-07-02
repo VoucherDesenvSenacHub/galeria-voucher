@@ -72,7 +72,7 @@ main.conteudo-estatisticas {
 
 /*painel espelho*/
 .painel-estatisticas {
-  margin-top: 5rem;
+  margin-top: 2.5rem;
   padding:1.5rem 1%;
   background-color: var(--darker-green);
   border-radius: 35px;
@@ -121,8 +121,8 @@ main.conteudo-estatisticas {
 
 .botao-atualizar {
   position: absolute;
-  bottom: -7rem;
-  right: 8rem;
+  bottom: -1rem;
+  right: 2rem;
 }
 
 #btn-atualizar {
