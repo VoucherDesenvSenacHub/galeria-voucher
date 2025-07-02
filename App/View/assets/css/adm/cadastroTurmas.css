@@ -1,56 +1,43 @@
 .main-turmas-turmas {
-    width:200vh;
+    width: 100%;          /* preenche toda a largura disponível */
+    max-width: 100vw;     /* nunca ultrapassa a viewport */
+    overflow-x: hidden;   /* garante que não haverá scroll horizontal */
     font-family: Arial, sans-serif;
     background-color: #ccc;
 
     .tabs-adm-turmas {
         display: flex;
+        flex-wrap: wrap;       /* quebra linha quando não couber */
         justify-content: center;
-        /* gap:rem; */
+        gap: 0; /* remover espaçamento horizontal entre abas */
         margin-top: 3.2rem;
         margin-bottom: 0.6rem;
-        display: flex;
-        /* padding: 40px; */
     }
 
     .tab-adm-turmas {
-        display: inline-flex; 
-        justify-content: center;
-        align-items: center;
+        flex: 1 1 160px;       /* base 160 px, cresce até caber */
+        max-width: 220px;      /* evita botões gigantes em telas largas */
         height: 4rem;
-        width: 22.5rem;
-        
-        padding: 10px 20px;
-        margin-right: 10px;
-    
-        font-size: 2rem;
+        padding: 0 10px; /* menor padding horizontal */
+        font-size: 1.6rem;
         font-weight: bold;
         text-decoration: none;
         text-align: center;
-        
         color: #000;
         background-color: #fff;
-    
         border: 1px solid #000;
-        border-radius: 10px;
-    
+        display: flex; /* centraliza texto verticalmente */
+        align-items: center;
+        justify-content: center;
+        border-radius: 0; /* abas se encostam */
         cursor: pointer;
         transition: 0.3s;
-        margin:0;
+        font-family: var(--font-secondary);
     }
 
-
-    .tab-adm-turmas.active{
-        display: flex;
-        justify-content: center; 
-        align-items: center;     
-        background-color: #a8ff00;
-        text-align: center; 
-        border-radius: 10px;
+    .tab-adm-turmas.active {
         background-color: #a8ff00;
         color: #000;
-        margin:0;
-      
     }
 
     .container-main-adm {
@@ -73,6 +60,7 @@
 
     .form-section {
         width: 60%;
+        font-family: var(--font-secondary);
     }
 
     .form-section h1 {
@@ -109,5 +97,15 @@
         padding: 40px;
         object-fit: contain;
         border: 1px solid #333;
+    }
+
+    /* Bordas arredondadas somente nas extremidades externas */
+    .tab-adm-turmas:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .tab-adm-turmas:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 }
