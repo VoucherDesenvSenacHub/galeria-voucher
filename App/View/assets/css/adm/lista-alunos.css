@@ -37,7 +37,7 @@
 
 .topo-lista-alunos a {
   position: relative;
-  left: 58px;
+  left: 0px;
 }
 
 .topo-lista-alunos input {
@@ -59,7 +59,7 @@
 
 .input-pesquisa-container input[type="text"] {
   width: 400px;
-  padding: 8px 40px 8px 12px;
+  padding: 8px 0px 8px 12px;
   font-size: 20px;
   background-color: #d8dbd6;
   color: #000;
