@@ -17,7 +17,7 @@ require_once __DIR__ . "/../../componentes/head.php";
   <main class="main-lista-alunos">
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">
-        <?php buttonComponent('primary', 'Novo Professor', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
+        <?php buttonComponent('primary', 'Novo Cadastro', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
 
         <div class="input-pesquisa-container">
           <input type="text" id="pesquisa" placeholder="Pesquisar">

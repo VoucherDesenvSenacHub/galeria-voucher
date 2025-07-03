@@ -21,12 +21,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
       ];
     ?>
 
-    <main class="main-turmas-turmas">
-      <div class="tabs-adm-turmas">
-        <a class="tab-adm-turmas" href="cadastroTurmas.php">TURMA</a>
-        <a class="tab-adm-turmas" href="sobre.php">SOBRE</a>
-        <a class="tab-adm-turmas active" href="imagens.php">IMAGENS</a>
-      </div>
+    <main class="main-turmas-imagens">
 
       <div class="container-imagens">
         <?php foreach ($imagens as $imagem): ?>

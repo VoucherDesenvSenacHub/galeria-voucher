@@ -1,7 +1,9 @@
-.main-turmas-turmas {
+.main-turmas-imagens {
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding-top: calc(var(--nav-height) + 1rem);
+    background-color: #ccc;
 }
 
 .container-imagens {
