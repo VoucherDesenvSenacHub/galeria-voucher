@@ -18,14 +18,19 @@ require_once __DIR__ . "/../../../componentes/head.php";
       </div>
 
       <div class="container-main-adm">
-        <div class="form-section">
+      <div class="form-section">
           <h1>CADASTRO</h1>
-          <input class="input-adm-turmas" type="text" placeholder="Nome:" />
-          <input class="input-adm-turmas" type="text" placeholder="Ano da Turma:" />
-          <input class="input-adm-turmas" type="text" placeholder="Polo:" />
-          <input class="input-adm-turmas" type="text" placeholder="Docentes:" />
-          <input class="input-adm-turmas" type="text" placeholder="Alunos:" />
+          <?php inputComponent("Nome:", "text", "nome"); ?>
+          <?php inputComponent("Ano da Turma:", "text", "ano"); ?>
+          <?php inputComponent("Polo:", "text", "polo"); ?>
+          <?php inputComponent("Docentes:", "text", "docentes"); ?>
+          <?php inputComponent("Alunos:", "text", "alunos"); ?>
         </div>
+
+        <div class="profile-pic">
+          <img src="" alt="Foto usuário" />
+        </div>
+      </div>
 
         <div class="profile-pic">
           <img src="" alt="Foto usuário" />
