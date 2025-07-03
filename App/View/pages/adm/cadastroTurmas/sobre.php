@@ -8,17 +8,29 @@ require_once __DIR__ . "/../../../componentes/head.php";
     
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php require_once __DIR__ . "/../../../componentes/adm/nav.php"; ?>
-
+    <?php
+      $imagens = [
+          ["titulo" => "IMAGEM DA TURMA", "quantidade" => 6],
+          ["titulo" => "IMAGEM DO DIA I", "quantidade" => 6],
+          ["titulo" => "IMAGEM DO DIA P", "quantidade" => 6],
+          ["titulo" => "IMAGEM DO DIA E", "quantidade" => 6],
+      ];
+    ?>
+    
     <main class="main-turmas-turmas">
       <div class="tabs-adm-turmas">
-        <a class="tab-adm-turmas" href="cadastroTurmas.php">TURMA</a>
-        <a class="tab-adm-turmas active" href="sobre.php">SOBRE</a>
-        <a class="tab-adm-turmas" href="imagens.php">IMAGENS</a>
+        <a class="tab-adm-turmas" href="cadastroTurmas.php">DADOS GERAIS</a>
+        <a class="tab-adm-turmas active" href="sobre.php">PROJETOS</a>
+        <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
+        <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
       </div>
 
 
             <div class="btn-novos-projeto">
-              <button class="componente-botao btn-imagens">+ ADICIONAR PROJETOS</button>
+              <a href="imagens.php">
+                <button class="componente-botao btn-imagens">NOVOS PROJETOS</button>
+              </a>
+              
             </div>
           </div>
         </div>
