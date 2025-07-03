@@ -13,7 +13,8 @@ function ajustarAlturaMaximaTabela() {
 window.addEventListener('load', ajustarAlturaMaximaTabela);
 window.addEventListener('resize', ajustarAlturaMaximaTabela);
 
-// Função para filtrar a tabela por tipo de usuário
+
+
 function filtrarPorTipo() {
     const selectTipo = document.getElementById('pessoa');
     const tabela = document.getElementById('tabela-alunos');
@@ -23,7 +24,7 @@ function filtrarPorTipo() {
     
     for (let i = 0; i < linhas.length; i++) {
         const linha = linhas[i];
-        const celulaTipo = linha.cells[1]; // Segunda coluna (TIPO)
+        const celulaTipo = linha.cells[1];
         const tipoUsuario = celulaTipo.textContent.trim();
         
         if (tipoSelecionado === 'todos' || 
@@ -36,7 +37,6 @@ function filtrarPorTipo() {
     }
 }
 
-// Função para pesquisar por nome
 function pesquisarPorNome() {
     const inputPesquisa = document.getElementById('pesquisa');
     const tabela = document.getElementById('tabela-alunos');
@@ -57,7 +57,6 @@ function pesquisarPorNome() {
     }
 }
 
-// Adicionar eventos aos elementos
 document.addEventListener('DOMContentLoaded', function() {
     const selectTipo = document.getElementById('pessoa');
     const inputPesquisa = document.getElementById('pesquisa');

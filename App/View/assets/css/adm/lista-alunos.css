@@ -45,6 +45,9 @@
   right: 50px ;
 }
 
+.acoes{
+  width: 200px;
+}
 
 /* Campo de pesquisa com ícone de lupa */
 .input-pesquisa-container {
