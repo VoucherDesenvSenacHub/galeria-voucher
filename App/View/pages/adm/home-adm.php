@@ -4,6 +4,8 @@ require_once __DIR__ . "/../../componentes/head.php";
 
 headerComponent('Página inicial - ADM');
 ?>
+<link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/home-adm.css">
+<link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/nav.css">
 
   <body class="body-adm">
     <div class="container-adm">
