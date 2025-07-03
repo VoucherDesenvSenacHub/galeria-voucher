@@ -113,7 +113,16 @@
             max-height: 85px;
             overflow: hidden;
             transition: max-height 0.6s ease, box-shadow 0.3s ease;
+
+            /* p:after,
+                h1:after {
+                    content: "";
+                    display: inline-block;
+                    width: 100%;
+                } */
         }
+
+
 
         h2 {
             color: var(--accent-color);

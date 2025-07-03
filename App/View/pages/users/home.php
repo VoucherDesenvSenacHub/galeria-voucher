@@ -38,7 +38,10 @@ headerComponent('Página Inicial')
                         Qualifique-se para uma das áreas mais promissoras da atualidade com o Programa Voucher
                         Desenvolvedor.
                         Oferecemos vagas gratuitas para o curso Técnico em Desenvolvimento de Sistemas,
-                        com carga horária de 1.200 horas. Beneficie-se de uma experiência prática com interação direta
+                        com carga horária de 1.200 horas.
+                    </p> 
+                    <p>
+                        Beneficie-se de uma experiência prática com interação direta
                         com empresas de tecnologia e, a partir do sexto mês, tenha a chance de conseguir um estágio
                         remunerado e se destacar no curso. Invista no seu futuro e abra portas para uma carreira de
                         sucesso em TI.
@@ -65,9 +68,15 @@ headerComponent('Página Inicial')
                     <h2>POR QUE FAZER ?</h2>
                     <p>
                         A área de Tecnologia da Informação está em expansão, com uma alta demanda por profissionais de
-                        Desenvolvimento de Sistemas. Especializar-se nessa área oferece maior empregabilidade, inclusive
+                        Desenvolvimento de Sistemas. 
+                    </p>
+                    <p>
+                        Especializar-se nessa área oferece maior empregabilidade, inclusive
                         internacional, uma boa remuneração (a média é de R$ 2.221,00), e a possibilidade de novas
-                        carreiras e desenvolvimento. É um setor em constante crescimento, apresentando excelentes
+                        carreiras e desenvolvimento.
+                    </p>
+                    <p>
+                        É um setor em constante crescimento, apresentando excelentes
                         perspectivas para quem busca se destacar.
                     </p>
                 </div>
