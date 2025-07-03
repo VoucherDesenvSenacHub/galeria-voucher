@@ -2,6 +2,8 @@
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/input.php";
 require_once __DIR__ . "/../../componentes/button.php";
+
+headerComponent('Cadastro de Usuários')
 ?>
 
 <body class="body-cadastrar-users">
@@ -9,14 +11,6 @@ require_once __DIR__ . "/../../componentes/button.php";
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
   <main class="conteudo-cadastro">
-    <div class="user-profile">
-      <div class="user-icon">
-        <button id="btn-docente" class="secondary-button">DOCENTE</button>
-        <button id="btn-aluno" class="secondary-button">ALUNOS</button>
-      </div>
-
-    </div>
-
     <div class="container-users">
       <div class="form-container-users">
         <h1>CADASTRO</h1>
@@ -32,7 +26,11 @@ require_once __DIR__ . "/../../componentes/button.php";
             </div>
 
             <div class="form-group-polo">
-              <input type="date" class="input-text" placeholder="Data de Nascimento" id="data-nascimento" name="data-nascimento" style="cursor: pointer;">
+              <select id="tipo-usuario" class="input-text" style="cursor: pointer;">
+                <option value="professor" selected>Professor</option>
+                <option value="aluno">Aluno</option>
+              </select>
+
               <select id="polo" name="polo" class="input-text" style="cursor: pointer;">
                 <option value="">Polo:</option>
                 <option value="polo1">Campo Grande</option>
@@ -41,6 +39,7 @@ require_once __DIR__ . "/../../componentes/button.php";
                 <option value="polo2">Corumba</option>
                 <option value="polo2">Ponta Pora</option>
               </select>
+
               <select id="campo-turma" name="turma" class="input-text" style="cursor: pointer;">
                 <option value="">Turma:</option>
                 <option value="turma1">Turma 144</option>
@@ -62,7 +61,7 @@ require_once __DIR__ . "/../../componentes/button.php";
           </div>
           <div class="form-bottom">
             <div class="form-group-about">
-              <textarea id="informacoes-adicionais" class="input-text" name="informacoes-adicionais" rows="15" cols="140" placeholder="Digite algo sobre o docente..." ></textarea>
+              <textarea id="informacoes-adicionais" class="input-text" name="informacoes-adicionais" rows="15" cols="140" placeholder="Digite algo sobre o docente..."></textarea>
             </div>
 
             <div class="form-group-buton">
@@ -77,6 +76,39 @@ require_once __DIR__ . "/../../componentes/button.php";
     </div>
   </main>
 
-  <script src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_JS'] . 'alunos/cadastrar_usuarios.js'; ?>"></script>
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const previewImg = document.getElementById('preview');
+
+    fileInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImg.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    const tipoUsuario = document.getElementById('tipo-usuario');
+    const textareaSobre = document.getElementById('informacoes-adicionais');
+
+    function atualizarPlaceholder(tipo) {
+      if (tipo === 'professor') {
+        textareaSobre.placeholder = 'Digite algo sobre o professor...';
+      } else {
+        textareaSobre.placeholder = 'Digite algo sobre o aluno...';
+      }
+    }
+
+    window.addEventListener('load', () => {
+      atualizarPlaceholder(tipoUsuario.value);
+    });
+
+    tipoUsuario.addEventListener('change', () => {
+      atualizarPlaceholder(tipoUsuario.value);
+    });
+  </script>
 </body>
 </html>

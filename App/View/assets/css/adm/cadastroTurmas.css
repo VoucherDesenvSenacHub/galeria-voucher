@@ -1,0 +1,111 @@
+.main-turmas-turmas {
+    width: 100%;          /* preenche toda a largura disponível */
+    max-width: 100vw;     /* nunca ultrapassa a viewport */
+    overflow-x: hidden;   /* garante que não haverá scroll horizontal */
+    font-family: Arial, sans-serif;
+    background-color: #ccc;
+
+    .tabs-adm-turmas {
+        display: flex;
+        flex-wrap: wrap;       /* quebra linha quando não couber */
+        justify-content: center;
+        gap: 0; /* remover espaçamento horizontal entre abas */
+        margin-top: 3.2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .tab-adm-turmas {
+        flex: 1 1 160px;       /* base 160 px, cresce até caber */
+        max-width: 220px;      /* evita botões gigantes em telas largas */
+        height: 4rem;
+        padding: 0 10px; /* menor padding horizontal */
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
+        color: #000;
+        background-color: #fff;
+        border: 1px solid #000;
+        display: flex; /* centraliza texto verticalmente */
+        align-items: center;
+        justify-content: center;
+        border-radius: 0; /* abas se encostam */
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: var(--font-secondary);
+    }
+
+    .tab-adm-turmas.active {
+        background-color: #a8ff00;
+        color: #000;
+    }
+
+    .container-main-adm {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 5rem;
+        padding: 1.25rem;
+        width: 150vh;
+        margin: 0 auto;
+        max-height: calc(90vh - 100px);
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        background-color: transparent;
+        scroll-snap-type: y mandatory;
+        font-family: var(--font-primary);
+    }
+    
+
+    .form-section {
+        width: 60%;
+        font-family: var(--font-secondary);
+    }
+
+    .form-section h1 {
+        font-size: 25px;
+        font-weight: bold;
+        
+        margin-bottom: 30px;
+    }
+
+    .input-adm-turmas[type="text"] {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 30px;
+        border: 1px solid #333;
+        border-radius: 30px;
+        background-color: #e5e9e4;
+        font-size: 16px;
+    }
+
+    .profile-pic {
+        height: 20rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 5rem 2rem;
+    }
+
+    .profile-pic img {
+        width: 300px;
+        height: 300px;
+        border-radius: 20px;
+        background-color: #e5e9e4;
+        padding: 40px;
+        object-fit: contain;
+        border: 1px solid #333;
+    }
+
+    /* Bordas arredondadas somente nas extremidades externas */
+    .tab-adm-turmas:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .tab-adm-turmas:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}

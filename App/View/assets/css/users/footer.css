@@ -1,19 +1,25 @@
 /* posicionamento na grid */
 
-  .footer {
-    padding: 35px 0;
-    height: 85px;
-    font-size: 1.05rem;
-    padding-left: 28px;
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+    font-size: 1rem;
     font-family: var(--font-secondary);
-    align-items: flex-end;
+}
 
-    a{
+.footer a {
     text-decoration: none;
     color: var(--text-white);
-  }
-  }
+}
 
+@media (min-width: 992px) {
+    .footer {
+        justify-content: flex-start;
+        padding-left: var(--default-padding);
+    }
+}
 
 /* Telas menores (tablets e celulares) */
 @media (max-width: 768px) {
