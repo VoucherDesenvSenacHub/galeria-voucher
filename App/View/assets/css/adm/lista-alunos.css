@@ -150,3 +150,14 @@ tbody tr:nth-child(odd) {
 .tabela-principal-lista-alunos::-webkit-scrollbar-track {
   background-color: #999;
 }
+
+/* Fix para o menu hamburger nas páginas de lista */
+@media (max-width: 768px) {
+  .body-lista-alunos .menu-links {
+    transform: translateX(100%) !important;
+  }
+  
+  .body-lista-alunos .menu-links.open {
+    transform: translateX(0) !important;
+  }
+}
