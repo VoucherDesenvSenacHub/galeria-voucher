@@ -126,7 +126,13 @@
         }
 
         .card p {
-            padding: .5rem;
+            margin: .5rem 0;
+            text-align: justify;
+            /* Evita espaçamento exagerado na última linha em navegadores que
+               justificam texto inter-palavra e alinha a última linha à esquerda */
+            text-justify: inter-word;
+            text-align-last: left;
+            hyphens: auto;
             font-family: var(--font-primary);
             font-size: 14px;
             line-height: 1.5;
