@@ -30,28 +30,30 @@ require_once __DIR__ . "/../../../componentes/head.php";
       <div class="form-container-sobre">
         <div class="input-grupos">
           <div class="input-group-sobre">
-            <input type="text" class="input-field" placeholder="Nome:">
+            <?php inputComponent("Nome:", "text", "nome"); ?>
             <textarea class="textarea-field" placeholder="Sobre:"></textarea>
-            <input type="text" class="input-field" placeholder="Dia P">
+
+            <?php inputComponent("Dia P", "text", "dia_p"); ?>
             <textarea class="textarea-field" placeholder="Sobre:"></textarea>
-            <input type="text" class="input-field" placeholder="Projeto XX">
+
+            <?php inputComponent("Projeto XX", "text", "projeto_xx"); ?>
             <textarea class="textarea-field" placeholder="Sobre:"></textarea>
           </div>
 
           <div class="input-group-sobre-big">
-            <input type="text" class="input-field" placeholder="Dia I">
+            <?php inputComponent("Dia I", "text", "dia_i"); ?>
             <textarea class="textarea-field" placeholder="Sobre:"></textarea>
-            <input type="text" class="input-field" placeholder="Dia E">
+
+            <?php inputComponent("Dia E", "text", "dia_e"); ?>
             <textarea class="textarea-field" placeholder="Sobre:"></textarea>
           </div>
 
           <div class="link-projeto">
-            <input type="text" class="input-projeto" placeholder="Link de Projeto:">
+            <?php inputComponent("Link de Projeto:", "text", "link_projeto"); ?>
             <div class="btn-novos-projeto">
               <a href="imagens.php">
                 <button class="componente-botao btn-imagens">NOVOS PROJETOS</button>
               </a>
-              
             </div>
           </div>
         </div>
