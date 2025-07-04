@@ -39,8 +39,12 @@ headerComponent('Página Inicial')
                     <h2>O QUE É ?</h2>
                     <p>
                         Qualifique-se para uma das áreas mais promissoras da atualidade com o Programa Voucher
-                        Desenvolvedor. Oferecemos vagas gratuitas para o curso Técnico em Desenvolvimento de Sistemas,
-                        com carga horária de 1.200 horas. Beneficie-se de uma experiência prática com interação direta
+                        Desenvolvedor.
+                        Oferecemos vagas gratuitas para o curso Técnico em Desenvolvimento de Sistemas,
+                        com carga horária de 1.200 horas.
+                    </p> 
+                    <p>
+                        Beneficie-se de uma experiência prática com interação direta
                         com empresas de tecnologia e, a partir do sexto mês, tenha a chance de conseguir um estágio
                         remunerado e se destacar no curso. Invista no seu futuro e abra portas para uma carreira de
                         sucesso em TI.
@@ -51,8 +55,13 @@ headerComponent('Página Inicial')
                     <h2>PARA QUEM É ?</h2>
                     <p>
                         Podem participar do processo seletivo pessoas com renda per capita familiar de até 2 salários
-                        mínimos. São elegíveis estudantes do ensino médio (1º, 2º ou 3º ano) matriculados em
+                        mínimos.
+                    </p>
+                    <p>
+                        São elegíveis estudantes do ensino médio (1º, 2º ou 3º ano) matriculados em
                         instituições públicas de ensino em Mato Grosso do Sul, desde que estejam, no mínimo, no 2º ano.
+                    </p>
+                    <p>
                         Também podem participar aqueles que estão concluindo ou já concluíram o ensino médio, em
                         instituições públicas ou privadas.
                     </p>
@@ -62,9 +71,15 @@ headerComponent('Página Inicial')
                     <h2>POR QUE FAZER ?</h2>
                     <p>
                         A área de Tecnologia da Informação está em expansão, com uma alta demanda por profissionais de
-                        Desenvolvimento de Sistemas. Especializar-se nessa área oferece maior empregabilidade, inclusive
+                        Desenvolvimento de Sistemas. 
+                    </p>
+                    <p>
+                        Especializar-se nessa área oferece maior empregabilidade, inclusive
                         internacional, uma boa remuneração (a média é de R$ 2.221,00), e a possibilidade de novas
-                        carreiras e desenvolvimento. É um setor em constante crescimento, apresentando excelentes
+                        carreiras e desenvolvimento.
+                    </p>
+                    <p>
+                        É um setor em constante crescimento, apresentando excelentes
                         perspectivas para quem busca se destacar.
                     </p>
                 </div>
