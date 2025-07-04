@@ -8,15 +8,16 @@ require_once __DIR__ . "/../../../componentes/head.php";
     
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php require_once __DIR__ . "/../../../componentes/adm/nav.php"; ?>
+
     <?php
       $imagens = [
-          ["titulo" => "IMAGEM DA TURMA", "quantidade" => 6],
-          ["titulo" => "IMAGEM DO DIA I", "quantidade" => 6],
-          ["titulo" => "IMAGEM DO DIA P", "quantidade" => 6],
-          ["titulo" => "IMAGEM DO DIA E", "quantidade" => 6],
+        ["titulo" => "IMAGEM DA TURMA", "quantidade" => 6],
+        ["titulo" => "IMAGEM DO DIA I", "quantidade" => 6],
+        ["titulo" => "IMAGEM DO DIA P", "quantidade" => 6],
+        ["titulo" => "IMAGEM DO DIA E", "quantidade" => 6],
       ];
     ?>
-    
+
     <main class="main-turmas-turmas">
       <div class="tabs-adm-turmas">
         <a class="tab-adm-turmas" href="cadastroTurmas.php">DADOS GERAIS</a>
@@ -29,6 +30,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
       <div class="form-container-sobre">
         <div class="input-grupos">
+          
           <div class="input-group-sobre">
             <?php inputComponent("Nome:", "text", "nome"); ?>
             <textarea class="textarea-field" placeholder="Sobre:"></textarea>
@@ -40,7 +42,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
             <textarea class="textarea-field" placeholder="Sobre:"></textarea>
           </div>
 
-          <div class="input-group-sobre-big">
+          <div class="input-group-sobre">
             <?php inputComponent("Dia I", "text", "dia_i"); ?>
             <textarea class="textarea-field" placeholder="Sobre:"></textarea>
 
@@ -56,6 +58,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </main>

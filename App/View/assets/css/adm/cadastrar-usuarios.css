@@ -67,14 +67,12 @@ main.conteudo-cadastro::-webkit-scrollbar-thumb:hover {
   align-items: center;
   width: 100%;
   height: auto;
-  padding-top: 1rem;
-  gap: 1rem;
+  padding: 1.8rem 4rem;
 }
 
 .form-dados .form-top {
   display: flex;
   width: 100%;
-  gap: 1.5rem;
 }
 
 /* Estilos base para campos de input, select e textarea */
@@ -98,7 +96,7 @@ select {
 }
 
 .form-group-about {
-  padding: 1rem 0px 1rem 0px;
+  /* padding: 1rem 0px 1rem 0px; */
   width: 100%;
 }
 
@@ -293,3 +291,12 @@ select {
 #informacoes-adicionais {
   border: 2px solid #000000 !important;
 }
+.h1-usuario {
+  font-weight: bold;
+  max-width: 1200px;
+  width: 100%;
+  margin-left: 80px;
+  padding-top: 40px;
+  font-family: var(--font-secondary);
+  font-size: 1.8rem;
+} 

@@ -11,9 +11,10 @@ headerComponent('Cadastro de Usuários')
   <?php require_once __DIR__ . "/../../componentes/adm/nav.php"; ?>
 
   <main class="conteudo-cadastro">
+    <h1 class='h1-usuario' >CADASTRO</h1>
     <div class="container-users">
       <div class="form-container-users">
-        <h1>CADASTRO</h1>
+        
         <form class="form-dados">
           <div class="form-top">
             <div class="form-group">
