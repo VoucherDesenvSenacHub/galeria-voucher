@@ -1,15 +1,13 @@
 <?php 
-   require_once __DIR__ . '/../../componentes/head.php';
-   require_once __DIR__ . '/../../componentes/button.php';
-
-   headerComponent('Login');
+   require_once(__DIR__ . '/../../componentes/head.php');
 ?>
 
 <body class="body-login">
 
-    <?php
-    $esconderPesquisa = true;
-    require_once __DIR__ . '/../../componentes/users/nav.php';
+    <?php 
+        $esconderPesquisa = true;
+        $isAdmin = false; // Para login, usamos o estilo de users mas escondemos a pesquisa
+        require_once(__DIR__ . '/../../componentes/nav.php');
     ?>
     <?php
     require_once __DIR__ . '/../../componentes/users/mira.php';
@@ -47,6 +45,6 @@
     require_once __DIR__ . '/../../componentes/users/footer.php';
     ?>
 
-    <body>
+</body>
 
         </html>

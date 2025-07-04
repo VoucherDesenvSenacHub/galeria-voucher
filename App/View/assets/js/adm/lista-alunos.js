@@ -12,3 +12,11 @@ function ajustarAlturaMaximaTabela() {
 // Ajusta a altura ao carregar a página e ao redimensionar a janela
 window.addEventListener('load', ajustarAlturaMaximaTabela);
 window.addEventListener('resize', ajustarAlturaMaximaTabela);
+
+// Fix para o menu hamburger - garantir que sempre comece fechado
+document.addEventListener('DOMContentLoaded', function() {
+  const menuLinks = document.querySelector('.menu-links');
+  if (menuLinks) {
+    menuLinks.classList.remove('open');
+  }
+});
