@@ -5,7 +5,10 @@ headerComponent('Página Inicial')
 ?>
 
 <body class="body-user">
-    <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
+    <?php 
+        $isAdmin = false; // Para páginas de users
+        require_once __DIR__ . "/./../../componentes/nav.php" 
+    ?>
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
     <main class="main-user">
@@ -107,7 +110,9 @@ headerComponent('Página Inicial')
                 <div class="image-row">
                     <?php for ($i = 0; $i <= 5; $i++) { ?>
                         <div class='image-turma'>
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            </a>
                         </div>
                     <?php } ?>
                 </div>
@@ -115,7 +120,9 @@ headerComponent('Página Inicial')
                 <div class="image-row">
                     <?php for ($i = 0; $i <= 4; $i++) { ?>
                         <div class='image-turma'>
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            </a>
                         </div>
                     <?php } ?>
 
@@ -124,7 +131,9 @@ headerComponent('Página Inicial')
                 <div class="image-row">
                     <?php for ($i = 0; $i <= 5; $i++) { ?>
                         <div class='image-turma'>
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            </a>
                         </div>
                     <?php } ?>
                 </div>
