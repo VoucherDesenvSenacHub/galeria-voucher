@@ -20,3 +20,33 @@ document.addEventListener('DOMContentLoaded', function() {
     menuLinks.classList.remove('open');
   }
 });
+
+
+
+// Feito para ordenar a pesquisar por nome, aluno-docente,cidade
+document.addEventListener("DOMContentLoaded", function () {
+  const inputPesquisa = document.getElementById("pesquisa");
+  const tabela = document.getElementById("tabela-alunos");
+  const linhas = tabela.getElementsByTagName("tr");
+
+  inputPesquisa.addEventListener("keyup", function () {
+    const termo = inputPesquisa.value.toLowerCase();
+
+    // Percorre todas as linhas da tabela (ignorando o cabeçalho)
+    for (let i = 1; i < linhas.length; i++) {
+      const colunas = linhas[i].getElementsByTagName("td");
+      let corresponde = false;
+
+      // Verifica as 3 primeiras colunas: nome, tipo e polo
+      for (let j = 0; j < 3; j++) {
+        const texto = colunas[j].textContent.toLowerCase();
+        if (texto.includes(termo)) {
+          corresponde = true;
+          break;
+        }
+      }
+
+      linhas[i].style.display = corresponde ? "" : "none";
+    }
+  });
+});
