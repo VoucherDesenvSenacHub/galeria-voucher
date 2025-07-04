@@ -284,6 +284,12 @@
             max-width: 140px;
             /* Define a largura do contêiner */
             margin-top: -70px;
+            transition: .5s;
+        }
+
+        .image-turma:hover {
+            z-index: 2;
+            transform: scale(1.1);
         }
 
         .image-turma img {
