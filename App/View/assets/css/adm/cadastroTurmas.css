@@ -3,8 +3,8 @@
     max-width: 100vw;     /* nunca ultrapassa a viewport */
     overflow-x: hidden;   /* garante que não haverá scroll horizontal */
     font-family: Arial, sans-serif;
-    background-color: #ccc;
-    padding: 20px;
+    background-color: #ccc;    
+    padding: 70px 20px 20px 20px;
 
     .tabs-adm-turmas {
         display: flex;

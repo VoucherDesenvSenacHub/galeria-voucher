@@ -1,5 +1,7 @@
 body {
-  overflow-y: hidden; /* Scroll removido */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
   background-color: transparent;
 }
 
