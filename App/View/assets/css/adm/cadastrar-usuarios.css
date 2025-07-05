@@ -42,7 +42,6 @@ main.conteudo-cadastro::-webkit-scrollbar-thumb:hover {
 
 .container-users {
   width: 100%;
-  margin: auto;
   padding-bottom: 30px;
 }
 
@@ -95,18 +94,6 @@ select {
   height: 3rem;
 }
 
-.form-group-about {
-  /* padding: 1rem 0px 1rem 0px; */
-  width: 100%;
-}
-
-.form-group-about textarea {
-  border-radius: 30px;
-  padding: 1rem;
-  resize: vertical;
-  width: 100%;
-  max-height: 300px;
-}
 
 /* Agrupamentos */
 .form-group,
@@ -123,7 +110,10 @@ select {
 .form-group-polo {
   flex: 1;
   min-width: 200px;
+  align-items: center;
+  text-align: center;
 }
+
 
 /* Área de imagem */
 .form-group-imagem {
@@ -166,7 +156,7 @@ select {
   flex-direction: row;
   width: 100%;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 8rem;
 }
 
 .form-group-buton button {
@@ -291,6 +281,9 @@ select {
 #informacoes-adicionais {
   border: 2px solid #000000 !important;
 }
+
+
+
 .h1-usuario {
   font-weight: bold;
   max-width: 1200px;

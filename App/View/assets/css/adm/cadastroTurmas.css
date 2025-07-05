@@ -116,4 +116,14 @@
         margin-top: 10px;
     } 
     
+    .form-group-buton {
+        justify-content: end;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 1rem;
+        margin: 0;
+        padding-right: 2rem;
+    }
+    
 }
