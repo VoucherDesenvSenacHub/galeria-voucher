@@ -91,13 +91,14 @@
     }
 
     .profile-pic img {
-        width: 300px;
-        height: 300px;
-        border-radius: 20px;
-        background-color: #e5e9e4;
-        padding: 40px;
-        object-fit: contain;
-        border: 1px solid #333;
+        z-index: 1;
+        width: 95%;
+        height: 223px;
+        object-fit: cover;
+        border-radius: 5%;
+        border: 2px solid #000000;
+        cursor: pointer;
+        transition: transform 0.3s ease;
     }
 
     /* Bordas arredondadas somente nas extremidades externas */

@@ -31,7 +31,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
         </div>
 
         <div class="profile-pic">
-          <img src="" alt="Foto usuário" />
+        <img id="preview" src="http://localhost/galeria-voucher/App/View/assets/img/utilitarios/avatar.png" alt="Upload">
         </div>
       </div>
     </main>
