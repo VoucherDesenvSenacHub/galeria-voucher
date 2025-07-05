@@ -134,6 +134,8 @@ body {
 
 .btn-novos-projeto {
   display: flex;
+  justify-content: flex-end;
+  padding: 20px;
   align-items: center;
   font-weight: bold;
   text-transform: uppercase;
@@ -145,4 +147,7 @@ body {
 .btn-imagens {
   background-color: #a8ff00;
   color: black;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
 }

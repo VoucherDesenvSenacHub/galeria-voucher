@@ -7,7 +7,10 @@ require_once __DIR__ . "/../../../componentes/head.php";
   <div class="container-adm">
     
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
-    <?php require_once __DIR__ . "/../../../componentes/adm/nav.php"; ?>
+    <?php 
+      $isAdmin = true; // Para páginas de admin
+      require_once __DIR__ . "/../../../componentes/nav.php"; 
+    ?>
 
     <?php
       $imagens = [
@@ -26,7 +29,6 @@ require_once __DIR__ . "/../../../componentes/head.php";
         <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
       </div>
 
-      <h1 class="h1-sobre">CADASTRO</h1>
 
       <div class="form-container-sobre">
         <div class="input-grupos">
