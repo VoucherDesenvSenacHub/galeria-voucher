@@ -30,11 +30,8 @@ require_once __DIR__ . "/../../../componentes/head.php";
       </div>
 
 
-            <div class="btn-novos-projeto">
-              <a href="imagens.php">
-                <button class="componente-botao btn-imagens">NOVOS PROJETOS</button>
-              </a>
-              
+            <div class="topo-lista-alunos">
+            <?php buttonComponent('primary', 'NOVO PROJETO', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/sobre.php'); ?>
             </div>
           </div>
         </div>
