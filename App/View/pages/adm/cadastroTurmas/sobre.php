@@ -50,6 +50,8 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
               <?php inputComponent("Projeto XX", "text", "Projeto_xx"); ?>
               <textarea class="textarea-field" placeholder="Sobre:"></textarea>
+            <div class="topo-lista-alunos">
+            <?php buttonComponent('primary', 'NOVO PROJETO', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/sobre.php'); ?>
             </div>
 
             <div class="input-group-sobre">

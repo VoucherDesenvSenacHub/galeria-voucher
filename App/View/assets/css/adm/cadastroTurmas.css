@@ -4,7 +4,7 @@
     overflow-x: hidden;   /* garante que não haverá scroll horizontal */
     font-family: Arial, sans-serif;
     background-color: #ccc;
-    margin-top: 50px;
+    padding: 20px;
 
     .tabs-adm-turmas {
         display: flex;

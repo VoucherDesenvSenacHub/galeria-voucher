@@ -9,8 +9,8 @@ $currentTab = 'alunos';
         <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
 
         <?php
-            $isAdmin = true; // Para páginas de admin
-            require_once __DIR__ . "/../../../componentes/nav.php";
+        $isAdmin = true; // Para páginas de admin
+        require_once __DIR__ . "/../../../componentes/nav.php";
         ?>
 
         <main class="main-turmas-turmas">
@@ -21,9 +21,13 @@ $currentTab = 'alunos';
                 <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : '' ?>" href="cadastroTurmas.php">DADOS GERAIS</a>
             </div>
 
-            <div class="form-group-buton" style="margin: 20px 0;">
-                <input type="text" id="pesquisa" class="input-text" placeholder="Pesquisar Aluno" />
-                <?php buttonComponent('primary', 'Pesquisar', true); ?>
+            <div class="topo-lista-alunos">
+                <?php buttonComponent('primary', 'PESQUISAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
+
+                <div class="input-pesquisa-container">
+                    <input type="text" id="pesquisa" placeholder="Pesquisar">
+                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
+                </div>
             </div>
 
             <div class="tabela-principal-lista-alunos">
@@ -80,7 +84,6 @@ $currentTab = 'alunos';
                                 echo '<td>' . $usuario['nome'] . '</td>';
                                 echo '<td>' . $usuario['polo'] . '</td>';
                                 echo '<td class="acoes">';
-                                echo '<span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>';
                                 echo '<span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>';
                                 echo '</td>';
                                 echo '</tr>';
