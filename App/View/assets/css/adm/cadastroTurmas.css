@@ -4,13 +4,13 @@
     overflow-x: hidden;   /* garante que não haverá scroll horizontal */
     font-family: Arial, sans-serif;
     background-color: #ccc;
+    margin-top: 50px;
 
     .tabs-adm-turmas {
         display: flex;
         flex-wrap: wrap;       /* quebra linha quando não couber */
         justify-content: center;
         gap: 0; /* remover espaçamento horizontal entre abas */
-        margin-top: 3.2rem;
         margin-bottom: 0.6rem;
     }
 
@@ -55,6 +55,7 @@
         background-color: transparent;
         scroll-snap-type: y mandatory;
         font-family: var(--font-primary);
+        
     }
     
 
@@ -63,7 +64,7 @@
         font-family: var(--font-secondary);
     }
 
-    .form-section h1 {
+    .form-section {
         font-size: 25px;
         font-weight: bold;
         
@@ -118,4 +119,21 @@
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
     }
+    
+    .h1-turma {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    } 
+    
+    .form-group-buton {
+        justify-content: end;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 1rem;
+        margin: 0;
+        padding-right: 2rem;
+    }
+    
 }

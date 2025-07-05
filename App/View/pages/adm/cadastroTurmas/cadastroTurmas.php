@@ -22,17 +22,26 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
       <div class="container-main-adm">
         <div class="form-section">
-          <h1>CADASTRO</h1>
-          <input class="input-adm-turmas" type="text" placeholder="Nome:" />
-          <input class="input-adm-turmas" type="text" placeholder="Ano da Turma:" />
-          <input class="input-adm-turmas" type="text" placeholder="Polo:" />
-          <input class="input-adm-turmas" type="text" placeholder="Docentes:" />
-          <input class="input-adm-turmas" type="text" placeholder="Alunos:" />
-        </div>
+            <h1 class='h1-turma' >CADASTRO</h1>
+            <?php inputComponent("Nome:", "text", "Nome"); ?>
+            <?php inputComponent("Ano da Turma:", "text", "Ano"); ?>
+            <?php inputComponent("Polo:", "text", "Polo"); ?>
+            <?php inputComponent("Docentes:", "text", "Docentes"); ?>
+            <?php inputComponent("Alunos:", "text", "Alunos"); ?>
+          </div>
 
-        <div class="profile-pic">
-          <img src="" alt="Foto usuário" />
+          <div class="profile-pic">
+            <img src="" alt="Foto usuário" />
+          </div>
         </div>
+        <div class="form-bottom">
+            <div class="form-group-buton">
+              <?php 
+                buttonComponent('secondary', 'Cancelar', false);
+                buttonComponent('primary', 'Cadastrar', true);
+              ?>
+            </div>
+
       </div>
     </main>
   </div>
