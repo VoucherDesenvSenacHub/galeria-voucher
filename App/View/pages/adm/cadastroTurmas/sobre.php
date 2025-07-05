@@ -31,13 +31,13 @@ require_once __DIR__ . "/../../../componentes/head.php";
       </div>
 
 
-      <<<<<<< HEAD
+     
         <div class="btn-novos-projeto">
         <a href="imagens.php">
           <button class="componente-botao btn-imagens">NOVOS PROJETOS</button>
         </a>
 
-        =======
+       
         <div class="form-container-sobre">
           <div class="input-grupos">
 
@@ -72,7 +72,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
             </div>
 
           </div>
-          >>>>>>> origin/feature/PI-111
+          
         </div>
   </div>
   </div>
