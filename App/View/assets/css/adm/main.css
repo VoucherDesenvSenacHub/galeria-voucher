@@ -87,4 +87,13 @@
     .welcome-message-adm {
       font-size: 36px;
     }
+    
+    /* Garantir que o menu hamburger sempre comece fechado nas páginas de admin */
+    .nav-adm .menu-links {
+      transform: translateX(100%) !important;
+    }
+    
+    .nav-adm .menu-links.open {
+      transform: translateX(0) !important;
+    }
 }
