@@ -10,8 +10,8 @@ $currentTab = 'docentes';
         <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
 
         <?php
-            $isAdmin = true; // Para páginas de admin
-            require_once __DIR__ . "/../../../componentes/nav.php";
+        $isAdmin = true; // Para páginas de admin
+        require_once __DIR__ . "/../../../componentes/nav.php";
         ?>
 
         <main class="main-turmas-turmas">
@@ -28,9 +28,14 @@ $currentTab = 'docentes';
 
 
 
-            <div class="form-group-buton" style="margin: 20px 0;">
-                <input type="text" id="pesquisa" class="input-text" placeholder="Pesquisar Docentes" />
-                <?php buttonComponent('primary', 'Pesquisar', true); ?>
+            <div class="topo-lista-alunos">
+                <?php buttonComponent('primary', 'Novo Cadastro', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
+
+                <div class="input-pesquisa-container">
+                    <input type="text" id="pesquisa" placeholder="Pesquisar Docente">
+                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
+                        class="icone-lupa-img">
+                </div>
             </div>
 
             <div class="tabela-principal-lista-alunos">
