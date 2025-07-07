@@ -14,9 +14,10 @@ headerComponent('Cadastro de Usuários')
   ?>
 
   <main class="conteudo-cadastro">
+    <h1 class='h1-usuario' >CADASTRO</h1>
     <div class="container-users">
       <div class="form-container-users">
-        <h1>CADASTRO</h1>
+        
         <form class="form-dados">
           <div class="form-top">
             <div class="form-group">
@@ -27,8 +28,7 @@ headerComponent('Cadastro de Usuários')
                 inputComponent('text', 'github', 'Link para o GitHub');
               ?>
             </div>
-
-            <div class="form-group-polo">
+            <div class="form-group-polo div-center">
               <select id="tipo-usuario" class="input-text" style="cursor: pointer;">
                 <option value="professor" selected>Professor</option>
                 <option value="aluno">Aluno</option>
@@ -42,15 +42,6 @@ headerComponent('Cadastro de Usuários')
                 <option value="polo2">Corumba</option>
                 <option value="polo2">Ponta Pora</option>
               </select>
-
-              <select id="campo-turma" name="turma" class="input-text" style="cursor: pointer;">
-                <option value="">Turma:</option>
-                <option value="turma1">Turma 144</option>
-                <option value="turma2">Turma 145</option>
-                <option value="turma3">Turma 146</option>
-                <option value="turma4">Turma 147</option>
-                <option value="turma5">Turma 148</option>
-              </select>
             </div>
 
             <div class="form-group-imagem">
@@ -63,10 +54,6 @@ headerComponent('Cadastro de Usuários')
             </div>
           </div>
           <div class="form-bottom">
-            <div class="form-group-about">
-              <textarea id="informacoes-adicionais" class="input-text" name="informacoes-adicionais" rows="15" cols="140" placeholder="Digite algo sobre o docente..."></textarea>
-            </div>
-
             <div class="form-group-buton">
               <?php 
                 buttonComponent('secondary', 'Cancelar', false);
