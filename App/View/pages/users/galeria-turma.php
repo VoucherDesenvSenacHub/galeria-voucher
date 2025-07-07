@@ -86,19 +86,25 @@ headerComponent('Galeria da Turma')
         <h1 class="galeria-turma-h1">Alunos</h1>
         <li>
             <div class="galeria-turma-container">
-                <?php for ($i = 0; $i <= 15; $i++) { ?>
-                    <?php require __DIR__ . "/./../../componentes/users/card_desenvolvedores.php" ?>
-                <?php } ?>
-            </div>
+        <?php
+            require __DIR__ . "/../../componentes/users/desenvolvedores.php";
+            foreach ($desenvolvedores as $dev) {
+                require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
+            }
+        ?>
+    </div>
     </section>
 
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Professores</h1>
         <div class="galeria-turma-container">
-            <?php for ($i = 0; $i <= 3; $i++) { ?>
-                <?php require __DIR__ . "/./../../componentes/users/card_desenvolvedores.php" ?>
-            <?php } ?>
-        </div>
+        <?php
+            require __DIR__ . "/../../componentes/users/desenvolvedores.php";
+            foreach ($orientadores as $orientador) {
+                require __DIR__ . "/../../componentes/users/card_orientadores.php";
+            }
+        ?>
+    </div>
     </section>
 
     <footer class="galeria-turma-footer">
