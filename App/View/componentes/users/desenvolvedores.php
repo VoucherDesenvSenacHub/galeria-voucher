@@ -82,7 +82,7 @@ $desenvolvedores = [
         'nome' => 'Bruno Oliveira',
         'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/brunoDevfull',
-        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
+        'linkedin' => 'https://www.linkedin.com/in/bruno-ribeiro-553b27330',
         'foto' => 'https://avatars.githubusercontent.com/u/126524545?v=4'
     ],
     [
