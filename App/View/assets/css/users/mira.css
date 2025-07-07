@@ -10,7 +10,7 @@
 }
 
 
-/* linha horizontal */
+/* linha vertical com degradê na parte de baixo */
 .mira1 {
     position: absolute;
     width: 2px;
@@ -20,6 +20,9 @@
     left: 25vw;
     border: 2px solid var(--accent-color);
     z-index: -1;
+
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
 /* linha horizontal */

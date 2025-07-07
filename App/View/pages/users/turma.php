@@ -6,7 +6,10 @@ headerComponent('Turmas Voucher')
 ?>
 <body class="body-turma">
 
-    <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
+    <?php 
+        $isAdmin = false; // Para páginas de users
+        require_once __DIR__ . "/./../../componentes/nav.php" 
+    ?>
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
     <main>

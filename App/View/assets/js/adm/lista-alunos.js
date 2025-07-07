@@ -13,59 +13,40 @@ function ajustarAlturaMaximaTabela() {
 window.addEventListener('load', ajustarAlturaMaximaTabela);
 window.addEventListener('resize', ajustarAlturaMaximaTabela);
 
-
-
-function filtrarPorTipo() {
-    const selectTipo = document.getElementById('pessoa');
-    const tabela = document.getElementById('tabela-alunos');
-    const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-    
-    const tipoSelecionado = selectTipo.value;
-    
-    for (let i = 0; i < linhas.length; i++) {
-        const linha = linhas[i];
-        const celulaTipo = linha.cells[1];
-        const tipoUsuario = celulaTipo.textContent.trim();
-        
-        if (tipoSelecionado === 'todos' || 
-            (tipoSelecionado === 'aluno' && tipoUsuario === 'Aluno') ||
-            (tipoSelecionado === 'professor' && tipoUsuario === 'Professor')) {
-            linha.style.display = '';
-        } else {
-            linha.style.display = 'none';
-        }
-    }
-}
-
-function pesquisarPorNome() {
-    const inputPesquisa = document.getElementById('pesquisa');
-    const tabela = document.getElementById('tabela-alunos');
-    const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-    
-    const termoPesquisa = inputPesquisa.value.toLowerCase();
-    
-    for (let i = 0; i < linhas.length; i++) {
-        const linha = linhas[i];
-        const celulaNome = linha.cells[0]; // Primeira coluna (NOME)
-        const nomeUsuario = celulaNome.textContent.toLowerCase();
-        
-        if (nomeUsuario.includes(termoPesquisa)) {
-            linha.style.display = '';
-        } else {
-            linha.style.display = 'none';
-        }
-    }
-}
-
+// Fix para o menu hamburger - garantir que sempre comece fechado
 document.addEventListener('DOMContentLoaded', function() {
-    const selectTipo = document.getElementById('pessoa');
-    const inputPesquisa = document.getElementById('pesquisa');
-    
-    if (selectTipo) {
-        selectTipo.addEventListener('change', filtrarPorTipo);
+  const menuLinks = document.querySelector('.menu-links');
+  if (menuLinks) {
+    menuLinks.classList.remove('open');
+  }
+});
+
+
+
+// Feito para ordenar a pesquisar por nome, aluno-docente,cidade
+document.addEventListener("DOMContentLoaded", function () {
+  const inputPesquisa = document.getElementById("pesquisa");
+  const tabela = document.getElementById("tabela-alunos");
+  const linhas = tabela.getElementsByTagName("tr");
+
+  inputPesquisa.addEventListener("keyup", function () {
+    const termo = inputPesquisa.value.toLowerCase();
+
+    // Percorre todas as linhas da tabela (ignorando o cabeçalho)
+    for (let i = 1; i < linhas.length; i++) {
+      const colunas = linhas[i].getElementsByTagName("td");
+      let corresponde = false;
+
+      // Verifica as 3 primeiras colunas: nome, tipo e polo
+      for (let j = 0; j < 3; j++) {
+        const texto = colunas[j].textContent.toLowerCase();
+        if (texto.includes(termo)) {
+          corresponde = true;
+          break;
+        }
+      }
+
+      linhas[i].style.display = corresponde ? "" : "none";
     }
-    
-    if (inputPesquisa) {
-        inputPesquisa.addEventListener('input', pesquisarPorNome);
-    }
+  });
 });

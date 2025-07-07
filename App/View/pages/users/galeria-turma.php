@@ -1,11 +1,16 @@
 <?php
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
+
+headerComponent('Galeria da Turma')
 ?>
 
 <body class="galeria-turma-body">
     <header class="galeria-turma-header">
-        <?php require_once __DIR__ . "/./../../componentes/users/nav.php" ?>
+        <?php 
+            $isAdmin = false; // Para páginas de users
+            require_once __DIR__ . "/./../../componentes/nav.php" 
+        ?>
         <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
     </header>
     <!-- parte das linhas -->
@@ -90,7 +95,7 @@ require_once __DIR__ . "/../../componentes/head.php";
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Professores</h1>
         <div class="galeria-turma-container">
-            <?php for ($i = 0; $i <= 15; $i++) { ?>
+            <?php for ($i = 0; $i <= 3; $i++) { ?>
                 <?php require __DIR__ . "/./../../componentes/users/card_desenvolvedores.php" ?>
             <?php } ?>
         </div>
