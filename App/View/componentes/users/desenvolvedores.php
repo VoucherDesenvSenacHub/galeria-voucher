@@ -9,17 +9,17 @@ $desenvolvedores = [
     ],
     [
         'nome' => 'José Otávio',
-        'funcao' => 'Desenvolvedor',    
+        'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/OtavioDayrots',
-        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
+        'linkedin' => 'https://www.linkedin.com/in/joseotaviodayrots/',
         'foto' => 'https://avatars.githubusercontent.com/u/152044189?v=4'
     ],
     [
         'nome' => 'Luiz Oliveira',
-        'funcao' => 'Desenvolvedora',
+        'funcao' => 'Desenvolvedor',
         'github' => '',
         'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
-        'foto' => 'https://avatars.githubusercontent.com/u/118494854?v=4'   
+        'foto' => 'https://avatars.githubusercontent.com/u/118494854?v=4'
     ],
     [
         'nome' => 'Jonatan Samuel',
@@ -32,44 +32,67 @@ $desenvolvedores = [
         'nome' => 'Anuar El',
         'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/AnuarRezz',
-        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6', 
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
         'foto' => 'https://avatars.githubusercontent.com/u/172449471?v=4'
     ],
     [
         'nome' => 'Rodrigo Santos',
         'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/rodrigo570282',
-        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',  
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
         'foto' => 'https://avatars.githubusercontent.com/u/172452119?v=4'
-    ],  
+    ],
     [
         'nome' => 'Saambrc',
         'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/Saambrc',
-        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',  
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
         'foto' => 'https://avatars.githubusercontent.com/u/172451323?v=4'
     ],
-    [   
+    [
         'nome' => 'Matheus Corsine',
         'funcao' => 'Desenvolvedor',
-        'github' => 'https://github.com/matheuscorsine',    
-        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',  
-        'foto' => 'https://avatars.githubusercontent.com/u/172449520?v=4'   
+        'github' => 'https://github.com/matheuscorsine',
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
+        'foto' => 'https://avatars.githubusercontent.com/u/172449520?v=4'
     ],
     [
         'nome' => 'LucasAjpert',
         'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/LucasAjpert',
-        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',  
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
         'foto' => 'https://avatars.githubusercontent.com/u/173213330?v=4'
     ],
     [
         'nome' => 'Henrique Guisa',
         'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/henriguisatec',
-        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',  
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
         'foto' => 'https://avatars.githubusercontent.com/u/172449651?v=4'
-    ]   
+    ],
+    [
+        'nome' => 'Carlos Eduardo',
+        'funcao' => 'Desenvolvedor',
+        'github' => 'https://github.com/yonnnxr',
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
+        'foto' => 'https://avatars.githubusercontent.com/u/184676631?v=4'
+
+    ],
+    [
+        'nome' => 'Bruno Oliveira',
+        'funcao' => 'Desenvolvedor',
+        'github' => 'https://github.com/brunoDevfull',
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
+        'foto' => 'https://avatars.githubusercontent.com/u/126524545?v=4'
+    ],
+    [
+        'nome' => 'Lourran',
+        'funcao' => 'Desenvolvedor',
+        'github' => 'https://github.com/ribinha-code',
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
+        'foto' => 'https://avatars.githubusercontent.com/u/173212118?v=4'
+    ]
+
 ];
 
 usort($desenvolvedores, function ($a, $b) {
