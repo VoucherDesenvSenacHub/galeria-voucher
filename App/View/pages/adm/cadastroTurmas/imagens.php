@@ -1,6 +1,8 @@
 <?php 
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
+require_once __DIR__ . "/../../../componentes/input.php";
+require_once __DIR__ . "/../../../componentes/button.php";
 ?>
 
 <body class="body-cadastro-turmas">
@@ -53,7 +55,8 @@ require_once __DIR__ . "/../../../componentes/head.php";
           <div class="projeto-pic">
           <img src="" alt="Foto Turma" />
         </div>
-            <div><?php buttonComponent('primary', 'Cancelar', true); ?></div>
+            <div>
+              <?php buttonComponent('secondary', 'Cancelar', false); ?></div>
             <div><?php buttonComponent('primary', 'Salvar', true); ?></div>
 
        
