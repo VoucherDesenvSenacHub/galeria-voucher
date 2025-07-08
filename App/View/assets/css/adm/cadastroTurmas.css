@@ -3,15 +3,14 @@
     max-width: 100vw;     /* nunca ultrapassa a viewport */
     overflow-x: hidden;   /* garante que não haverá scroll horizontal */
     font-family: Arial, sans-serif;
-    background-color: #ccc;
-    padding: 20px;
+    background-color: #ccc;    
+    padding: 70px 20px 20px 20px;
 
     .tabs-adm-turmas {
         display: flex;
         flex-wrap: wrap;       /* quebra linha quando não couber */
         justify-content: center;
         gap: 0; /* remover espaçamento horizontal entre abas */
-        margin-top: 3.2rem;
         margin-bottom: 0.6rem;
     }
 
@@ -56,6 +55,7 @@
         background-color: transparent;
         scroll-snap-type: y mandatory;
         font-family: var(--font-primary);
+        
     }
     
 
@@ -64,7 +64,7 @@
         font-family: var(--font-secondary);
     }
 
-    .form-section h1 {
+    .form-section {
         font-size: 25px;
         font-weight: bold;
         
@@ -99,6 +99,16 @@
         object-fit: contain;
         border: 1px solid #333;
     }
+  /* css do card imagem do novo projeto */
+    .projeto-pic img {
+        width: 300px;
+        height: 300px;
+        border-radius: 20px;
+        background-color: #e5e9e4;
+        padding: 40px;
+        object-fit: contain;
+        border: 1px solid #333;
+    }
 
     /* Bordas arredondadas somente nas extremidades externas */
     .tab-adm-turmas:first-child {
@@ -109,4 +119,21 @@
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
     }
+    
+    .h1-turma {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    } 
+    
+    .form-group-buton {
+        justify-content: end;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 1rem;
+        margin: 0;
+        padding-right: 2rem;
+    }
+    
 }

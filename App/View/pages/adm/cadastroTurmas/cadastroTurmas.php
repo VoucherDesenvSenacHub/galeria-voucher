@@ -1,40 +1,50 @@
-<?php 
+<?php
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 ?>
 
 <body class="body-adm">
   <div class="container-adm">
-    
+
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
-    <?php 
-      $isAdmin = true; // Para páginas de admin
-      require_once __DIR__ . "/../../../componentes/nav.php"; 
+    <?php
+    $isAdmin = true; // Para páginas de admin
+    require_once __DIR__ . "/../../../componentes/nav.php";
     ?>
 
     <main class="main-turmas-turmas">
       <div class="tabs-adm-turmas">
-        <a class="tab-adm-turmas active" href="cadastroTurmas.php">DADOS GERAIS</a>
-        <a class="tab-adm-turmas" href="sobre.php">PROJETOS</a>
-        <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
-        <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
+        <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>" href="docentes.php">DOCENTES</a>
+        <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>
+        <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>" href="sobre.php">PROJETOS</a>
+        <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : 'active' ?>" href="cadastroTurmas.php">DADOS GERAIS</a>
       </div>
 
       <div class="container-main-adm">
         <div class="form-section">
-          <h1>CADASTRO</h1>
-          <input class="input-adm-turmas" type="text" placeholder="Nome:" />
-          <input class="input-adm-turmas" type="text" placeholder="Ano da Turma:" />
-          <input class="input-adm-turmas" type="text" placeholder="Polo:" />
-          <input class="input-adm-turmas" type="text" placeholder="Docentes:" />
-          <input class="input-adm-turmas" type="text" placeholder="Alunos:" />
-        </div>
+            <h1 class='h1-turma' >CADASTRO</h1>
+            <?php inputComponent("Nome:", "text", "Nome"); ?>
+            <?php inputComponent("Ano da Turma:", "text", "Ano"); ?>
+            <?php inputComponent("Polo:", "text", "Polo"); ?>
+            <?php inputComponent("Docentes:", "text", "Docentes"); ?>
+            <?php inputComponent("Alunos:", "text", "Alunos"); ?>
+          </div>
 
-        <div class="profile-pic">
-          <img src="" alt="Foto usuário" />
+          <div class="profile-pic">
+            <img src="" alt="Foto usuário" />
+          </div>
         </div>
+        <div class="form-bottom">
+            <div class="form-group-buton">
+              <?php 
+                buttonComponent('secondary', 'Cancelar', false);
+                buttonComponent('primary', 'Cadastrar', true);
+              ?>
+            </div>
+
       </div>
     </main>
   </div>
 </body>
+
 </html>

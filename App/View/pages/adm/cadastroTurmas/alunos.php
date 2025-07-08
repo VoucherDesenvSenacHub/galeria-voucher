@@ -22,6 +22,8 @@ $currentTab = 'alunos';
                 <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>"
                     href="docentes.php">DOCENTES</a>
                 <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>
+                <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>" href="sobre.php">PROJETOS</a>
+                <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : '' ?>" href="cadastroTurmas.php">DADOS GERAIS</a>
             </div>
 
             <div class="topo-lista-alunos">
@@ -87,7 +89,6 @@ $currentTab = 'alunos';
                                 echo '<td>' . $usuario['nome'] . '</td>';
                                 echo '<td>' . $usuario['polo'] . '</td>';
                                 echo '<td class="acoes">';
-                                echo '<span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>';
                                 echo '<span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>';
                                 echo '</td>';
                                 echo '</tr>';
