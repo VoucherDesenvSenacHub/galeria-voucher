@@ -1,0 +1,54 @@
+dialog {
+
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    width: 60%;
+    background-color: white;
+    box-shadow: 0 0 10px grey;
+    border: none;
+
+    form {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            width: 80%;
+            height: 2rem;
+            margin: .5rem 0;
+            border-radius: 5px;
+            border: 1px solid #a3a3a3;
+        }
+
+        button {
+            margin-top: 1rem;
+        }
+
+        #variacoes-container .variacao-item {
+            display: flex;
+            flex-direction: column;
+
+            .variacao-item.template {
+                display: none;
+                background-color: red;
+            }
+        }
+
+
+    }
+
+    button.close {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        border: 1px solid;
+        color: red;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}

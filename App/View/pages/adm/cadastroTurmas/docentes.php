@@ -23,7 +23,7 @@ $currentTab = 'docentes';
             </div>
 
             <div class="topo-lista-alunos">
-                <button  id="btn-cadastrar-produto" class="primary-button">NOVO</button>
+                <button  id="btn-cadastrar-pessoa" onclick="abrirModalCadastro()" class="primary-button">NOVO</button>
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
@@ -65,6 +65,10 @@ $currentTab = 'docentes';
                     </table>
                 </div>
             </div>
+
+            <section class="section_modal">
+
+            </section>x'
         </main>
     </div>
 
@@ -86,7 +90,7 @@ $currentTab = 'docentes';
         });
     </script>
 
-    <script src=""></script>
+    <script src="../../../assets/js/main.js"></script>
 </body>
 
 </html>
