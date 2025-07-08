@@ -13,6 +13,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
     ?>
 
     <main class="main-turmas-turmas">
+
       <div class="tabs-adm-turmas">
         <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>" href="docentes.php">DOCENTES</a>
         <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>
@@ -20,9 +21,10 @@ require_once __DIR__ . "/../../../componentes/head.php";
         <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : 'active' ?>" href="cadastroTurmas.php">DADOS GERAIS</a>
       </div>
 
-      <div class="container-main-adm">
-        <div class="form-section">
-            <h1 class='h1-turma' >CADASTRO</h1>
+      <div class="form-top">
+        <div class="container-main-adm">
+          <div class="form-section">
+            <h1 class='h1-turma'>CADASTRO</h1>
             <?php inputComponent("Nome:", "text", "Nome"); ?>
             <?php inputComponent("Ano da Turma:", "text", "Ano"); ?>
             <?php inputComponent("Polo:", "text", "Polo"); ?>
@@ -30,19 +32,32 @@ require_once __DIR__ . "/../../../componentes/head.php";
             <?php inputComponent("Alunos:", "text", "Alunos"); ?>
           </div>
 
+<<<<<<< Updated upstream
         <div class="profile-pic">
         <img id="preview" src="http://localhost/galeria-voucher/App/View/assets/img/utilitarios/avatar.png" alt="Upload">
+=======
+          <div class="profile-pic">
+          <label class="input-file-wrapper">
+            <img id="preview" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/avatar.png" alt="Upload" />
+            <input type="file" id="fileInput" accept="image/*" style="display: none;" />
+          </label>
         </div>
-        <div class="form-bottom">
-            <div class="form-group-buton">
-              <?php 
-                buttonComponent('secondary', 'Cancelar', false);
-                buttonComponent('primary', 'Cadastrar', true);
-              ?>
-            </div>
-
+>>>>>>> Stashed changes
+        </div>
       </div>
-    </main>
+
+
+
+      <div class="form-bottom">
+        <div class="form-group-buton">
+          <?php
+          buttonComponent('secondary', 'Cancelar', false);
+          buttonComponent('primary', 'Cadastrar', true);
+          ?>
+        </div>
+      </div>
+  </div>
+  </main>
   </div>
 </body>
 
