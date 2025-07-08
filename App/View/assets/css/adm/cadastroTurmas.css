@@ -91,7 +91,6 @@
     }
 
     .profile-pic img {
-<<<<<<< Updated upstream
         z-index: 1;
         width: 95%;
         height: 223px;
@@ -100,14 +99,6 @@
         border: 2px solid #000000;
         cursor: pointer;
         transition: transform 0.3s ease;
-=======
-        width: 95%;
-        height: 223px;
-        border-radius: 5px;
-        background-color: #e5e9e4;
-        object-fit: cover;
-        border: 1px solid #333;
->>>>>>> Stashed changes
     }
   /* css do card imagem do novo projeto */
     .projeto-pic img {
