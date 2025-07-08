@@ -14,6 +14,10 @@ $currentTab = 'alunos';
         ?>
 
         <main class="main-turmas-turmas">
+
+            <section class="section_modal">
+
+            </section>  
             <div class="tabs-adm-turmas">
                 <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>" href="docentes.php">DOCENTES</a>
                 <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>

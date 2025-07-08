@@ -23,8 +23,7 @@ $currentTab = 'docentes';
             </div>
 
             <div class="topo-lista-alunos">
-                <?php buttonComponent('primary', 'NOVO', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
-
+                <button  id="btn-cadastrar-produto" class="primary-button">NOVO</button>
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
@@ -86,6 +85,8 @@ $currentTab = 'docentes';
             });
         });
     </script>
+
+    <script src=""></script>
 </body>
 
 </html>
