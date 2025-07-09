@@ -50,24 +50,24 @@
 /* ===== CABEÇALHO ===== */
 .galeria-turma-projeto {
   text-align: center;
-  font-size: 25px;
-  margin-top: 80px;
+  font-size: 1.5625rem; /* 25px */
+  margin-top: 5rem; /* 80px */
 }
 
 .galeria-turma-galeria {
-  word-spacing: 300px;
+  word-spacing: 18.75rem; /* 300px */
   text-align: center;
-  font-size: 12px;
+  font-size: 0.75rem; /* 12px */
 }
 
 .galeria-turma-senac {
   position: absolute;
-  top: 100px;
-  right: 20px;
-  padding: 5px;
-  border: 0px solid;
-  border-radius: 0px;
-  font-size: 12px;
+  top: 6.25rem; /* 100px */
+  right: 1.25rem; /* 20px */
+  padding: 0.3125rem; /* 5px */
+  border: 0;
+  border-radius: 0;
+  font-size: 0.75rem; /* 12px */
 }
 
 .galeria-turma-header {
@@ -77,7 +77,7 @@
 }
 
 .galeria-turma-header img {
-  width: 150px;
+  width: 9.375rem; /* 150px */
   height: auto;
   opacity: 100%;
 }
@@ -118,91 +118,86 @@
 
 /* ===== SEÇÕES PRINCIPAIS ===== */
 .galeria-turma-section {
-  margin: 10px auto;
-  padding: 20px;
-  max-width: 1200px;
+  margin: 0.625rem auto; /* 10px */
+  padding: 1.25rem; /* 20px */
+  max-width: 75rem; /* 1200px */
   position: relative;
 }
 
 .galeria-turma-dia {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 1.25rem; /* 20px */
 }
 
 .galeria-turma-dia h2 {
-  font-size: 48px;
-  font-weight: normal;
-  padding: 20px;
+  font-size: 3rem; /* 48px */
+  padding: 1.25rem; /* 20px */
 }
 
 .galeria-turma-dia p {
-  font-size: 19px;
+  font-size: 1.1875rem; /* 19px */
   text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.17);
 }
 
 .galeria-turma-section h2 {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 1.75rem; /* 28px */
+  margin-bottom: 0.625rem; /* 10px */
   text-transform: uppercase;
   font-weight: normal;
 }
 
 .galeria-turma-section p {
-  margin: 10px 0;
-  font-size: 16px;
+  margin: 0.625rem 0; /* 10px */
+  font-size: 1rem; /* 16px */
   font-family: "Poppins", sans-serif;
   text-align: justify;
-  padding: 20px;
+  padding: 1.25rem; /* 20px */
 }
 
 /* ===== MARGENS ESPECÍFICAS ===== */
-.galeria-turma-margin-top-left-turma-xx {
-  margin-left: 25px;
-  margin-top: 65px;
-}
-
+.galeria-turma-margin-top-left-turma-xx,
 .galeria-turma-margin-top-left-dia-p {
-  margin-left: 25px;
-  margin-top: 65px;
+  margin-left: 1.5625rem; /* 25px */
+  margin-top: 4.0625rem; /* 65px */
 }
 
 .galeria-turma-margin-top-left-projeto-xx {
-  margin-left: 25px;
-  margin-top: 20px;
+  margin-left: 1.5625rem; /* 25px */
+  margin-top: 1.25rem; /* 20px */
 }
 
 .galeria-turma-margin-top-right-dia-e {
-  margin-right: 25px;
-  margin-top: 65px;
+  margin-right: 1.5625rem; /* 25px */
+  margin-top: 4.0625rem; /* 65px */
 }
 
 /* ===== IMAGENS ===== */
 .galeria-turma-section img {
   width: 90%;
-  max-width: 500px;
+  max-width: 31.25rem; /* 500px */
   display: block;
-  margin: 20px auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 1.25rem auto; /* 20px */
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.3); /* 4px 8px */
 }
 
 /* ===== CARDS ===== */
 .galeria-turma-cardss h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 2.5rem; /* 40px */
 }
 
 .galeria-turma-container {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 70px;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); /* 240px */
+  gap: 4.375rem; /* 70px */
+  max-width: 75rem; /* 1200px */
   margin: 0 auto;
-  margin-top: 70px;
-  margin-bottom: 71px;
-  padding: 10px;
+  margin-top: 4.375rem; /* 70px */
+  margin-bottom: 4.4375rem; /* 71px */
+  padding: 0.625rem; /* 10px */
 }
 
 .galeria-turma-card-container {
