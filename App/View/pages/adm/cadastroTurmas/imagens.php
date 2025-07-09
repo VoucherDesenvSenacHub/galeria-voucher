@@ -33,31 +33,41 @@ require_once __DIR__ . "/../../../componentes/button.php";
 
       <h1 class="h1-sobre">NOVO PROJETO</h1>
 
-      <div class="form-container-sobre">
+      <div class="form-container-projeto">
         <div class="input-grupos">
           <div class="input-group-sobre">
             <input type="text" class="input-field" placeholder="Nome do Projeto:">
             <textarea class="textarea-field" placeholder="Descrição:"></textarea>
             <h2> DIA I</h2>
             <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+            <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
             <h2> DIA P</h2>
             <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+            <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+            
             <h2> DIA D</h2>
+            <div class="container-D">
             <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-          </div>
+            <img src="" alt="Foto Turma" class="foto-projetoturma-novo" /></div>
+            </div>
 
-          <div class="projeto-pic">
-          <img src="" alt="Foto Turma" />
-        </div>
-          <div class="projeto-pic">
-          <img src="" alt="Foto Turma" />
-        </div>
-          <div class="projeto-pic">
-          <img src="" alt="Foto Turma" />
-        </div>
-            <div>
+          <div class="button-projeto">
               <?php buttonComponent('secondary', 'Cancelar', false); ?></div>
-            <div><?php buttonComponent('primary', 'Salvar', true); ?></div>
+              <div><?php buttonComponent('primary', 'Salvar', true); ?></div>
+            </div>
+
+          <!-- <div class="projeto-fotos"> -->
+          <!-- <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+        
+          
+          <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+        
+          
+          <img src="" alt="Foto Turma" class="foto-projetoturma-novo" /> -->
+
+          <!-- </div> -->
+        
+
 
        
 
