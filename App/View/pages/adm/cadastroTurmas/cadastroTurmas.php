@@ -34,20 +34,21 @@ require_once __DIR__ . "/../../../componentes/head.php";
           <div class="profile-pic">
             <img id="preview" src="http://localhost/galeria-voucher/App/View/assets/img/utilitarios/avatar.png" alt="Upload">
           </div>
-
         </div>
-      </div>
-
-
-
         <div class="form-bottom">
-          <div class="form-group-buton">
-            <?php
-            buttonComponent('secondary', 'Cancelar', false);
-            buttonComponent('primary', 'Cadastrar', true);
-            ?>
+            <div class="form-group-buton">
+              <?php
+              buttonComponent('secondary', 'Cancelar', false);
+              buttonComponent('primary', 'Cadastrar', true);
+              ?>
+            </div>
+
           </div>
         </div>
+
+
+
+
       </div>
     </main>
   </div>
