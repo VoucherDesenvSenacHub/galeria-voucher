@@ -16,6 +16,11 @@ dialog {
     .btn-close {
         color: aliceblue;
         background-color: rgb(129, 40, 40);
+
+        width: 10%;
+        height: 10%;
+
+        border-radius: 5px;
     }
 
     form {
@@ -86,15 +91,5 @@ dialog {
             cursor: pointer;
         }
 
-    }
-
-    button.close {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-        border: 1px solid;
-        color: red;
-        background-color: transparent;
-        cursor: pointer;
     }
 }
