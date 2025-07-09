@@ -17,7 +17,7 @@ $desenvolvedores = [
     [
         'nome' => 'Luiz Oliveira',
         'funcao' => 'Desenvolvedor',
-        'github' => '',
+        'github' => 'https://github.com/LuizzOliveira',
         'linkedin' => 'https://forms.gle/xsEzD6xCHFagFu3k6',
         'foto' => 'https://avatars.githubusercontent.com/u/118494854?v=4'
     ],
@@ -117,7 +117,7 @@ $desenvolvedores = [
         'nome' => 'Wendril Ferreira ',
         'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/WendrilSFS',
-        'linkedin' => 'https://www.linkedin.com/in/wendril-ferreira-394417315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+        'linkedin' => 'https://www.linkedin.com/in/wendril-ferreira-394417315',
         'foto' => 'https://avatars.githubusercontent.com/u/175409953?v=4'
     ],
     [
@@ -131,16 +131,24 @@ $desenvolvedores = [
         'nome' => 'Riquelme Gomes',
         'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/RiquelmeG22',
-        'linkedin' => '',
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFag',
         'foto' => 'https://avatars.githubusercontent.com/u/175407904?v=4'
     ],
     [
         'nome' => 'joao heitor',
         'funcao' => 'Desenvolvedor',
         'github' => 'https://github.com/joaoheitoror',
-        'linkedin' => 'https://www.linkedin.com/in/joao-heitor-0',
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFag',
         'foto' => 'https://avatars.githubusercontent.com/u/175051829?v=4'
+    ],
+     [
+        'nome' => 'Frederico Soares',
+        'funcao' => 'Desenvolvedor',
+        'github' => 'https://github.com/Fred-Curso-Do-Senac-2024-Tc-ADS',
+        'linkedin' => 'https://forms.gle/xsEzD6xCHFag',
+        'foto' => 'https://avatars.githubusercontent.com/u/172449485?v=4'
     ]
+
 
 
 ];
