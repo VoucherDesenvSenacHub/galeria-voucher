@@ -17,7 +17,7 @@ $currentTab = 'alunos';
 
             <section class="section_modal">
 
-            </section>  
+            </section>
             <div class="tabs-adm-turmas">
                 <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>" href="docentes.php">DOCENTES</a>
                 <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>
@@ -26,8 +26,7 @@ $currentTab = 'alunos';
             </div>
 
             <div class="topo-lista-alunos">
-                <?php buttonComponent('primary', 'NOVO', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
-
+                <button id="btn-cadastrar-pessoa" onclick="abrirModalCadastro('aluno')" class="primary-button">NOVO</button>
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
@@ -118,6 +117,7 @@ $currentTab = 'alunos';
             });
         });
     </script>
+    <script src="../../../assets/js/main.js"></script>
 </body>
 
 </html>

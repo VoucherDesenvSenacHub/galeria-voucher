@@ -1,8 +1,7 @@
 const button = document.querySelector("#btn-cadastrar-pessoa");
 const section_modal = document.querySelector('.section_modal');
 
-function abrirModalCadastro() {
-    // Evita múltiplos modais
+function abrirModalCadastro(classificacao) {
     if (document.querySelector('dialog#modal-cadastro')) return;
 
     const modal = document.createElement('dialog');
@@ -19,7 +18,8 @@ function abrirModalCadastro() {
         modal.remove();
     });
 
-    const url = '/galeria-voucher/app/View/componentes/adm/form-cadastro-pessoas.php?t=' + new Date().getTime();
+    // Passa a classificação como parâmetro GET
+    const url = `/galeria-voucher/app/View/componentes/adm/form-cadastro-pessoas.php?classificacao=${encodeURIComponent(classificacao)}&t=${new Date().getTime()}`;
 
     fetch(url)
         .then(response => {
@@ -27,11 +27,10 @@ function abrirModalCadastro() {
             return response.text();
         })
         .then(html => {
-            console.log('Modal carregado')
             modal.innerHTML = html;
             modal.prepend(closeButton);
             section_modal.appendChild(modal);
-            modal.showModal(); // <- aqui é onde o modal aparece
+            modal.showModal();
         })
         .catch(error => {
             console.error('Erro ao carregar o modal:', error);

@@ -23,7 +23,7 @@ $currentTab = 'docentes';
             </div>
 
             <div class="topo-lista-alunos">
-                <button  id="btn-cadastrar-pessoa" onclick="abrirModalCadastro()" class="primary-button">NOVO</button>
+                <button  id="btn-cadastrar-pessoa" onclick="abrirModalCadastro('professor')" class="primary-button">NOVO</button>
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
