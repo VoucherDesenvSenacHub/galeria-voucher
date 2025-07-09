@@ -1,4 +1,4 @@
-const button = document.querySelector("#btn-cadastrar-pessoa");
+
 const section_modal = document.querySelector('.section_modal');
 
 function abrirModalCadastro(classificacao) {
@@ -18,21 +18,23 @@ function abrirModalCadastro(classificacao) {
         modal.remove();
     });
 
-    // Passa a classificação como parâmetro GET
     const url = `/galeria-voucher/app/View/componentes/adm/form-cadastro-pessoas.php?classificacao=${encodeURIComponent(classificacao)}&t=${new Date().getTime()}`;
 
     fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error('Arquivo não encontrado!');
-            return response.text();
-        })
+        .then(res => res.text())
         .then(html => {
+            // Só insere o HTML puro, sem scripts
             modal.innerHTML = html;
             modal.prepend(closeButton);
             section_modal.appendChild(modal);
             modal.showModal();
+
+            // Chama a função para ativar autocomplete no conteúdo do modal
+            if (typeof ativarAutocomplete === 'function') {
+                ativarAutocomplete();
+            } else {
+                console.warn('Função ativarAutocomplete não está definida.');
+            }
         })
-        .catch(error => {
-            console.error('Erro ao carregar o modal:', error);
-        });
+        .catch(console.error);
 }
