@@ -68,7 +68,7 @@ $currentTab = 'docentes';
 
             <section class="section_modal">
 
-            </section>x'
+            </section>
         </main>
     </div>
 
