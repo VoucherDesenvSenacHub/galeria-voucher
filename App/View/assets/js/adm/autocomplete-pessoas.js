@@ -16,7 +16,7 @@ function ativarAutocomplete() {
         if (valor.length === 0) return;
 
         pessoas.forEach(nome => {
-            if (nome.toLowerCase().includes(valor) && !adicionados.has(nome)) {
+            if (nome.toLowerCase().startsWith(valor) && !adicionados.has(nome)) {
                 const div = document.createElement("div");
                 div.textContent = nome;
                 div.style.cursor = "pointer";

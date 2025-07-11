@@ -8,10 +8,10 @@ function abrirModalCadastro(classificacao) {
     modal.id = 'modal-cadastro';
 
     const closeButton = document.createElement('button');
-    closeButton.textContent = 'X';
+    closeButton.innerHTML = '<span class="material-symbols-outlined">close</span>';
     closeButton.classList.add('btn-close');
-    closeButton.style.float = 'left';
-    closeButton.style.margin = '10px';
+    closeButton.type = 'button';
+    closeButton.setAttribute('aria-label', 'Fechar');
 
     closeButton.addEventListener('click', () => {
         modal.close();
@@ -26,6 +26,13 @@ function abrirModalCadastro(classificacao) {
             // Só insere o HTML puro, sem scripts
             modal.innerHTML = html;
             modal.prepend(closeButton);
+
+            // Se o input não vier com id, atribui aqui para compatibilidade
+            const inputPesq = modal.querySelector('input[name="pesquisar-pessoa"]');
+            if (inputPesq && !inputPesq.id) {
+                inputPesq.id = 'pesquisar-pessoa';
+            }
+
             section_modal.appendChild(modal);
             modal.showModal();
 

@@ -5,30 +5,42 @@ header('Content-Type: text/html; charset=UTF-8');
 
 $classificacao = $_GET['classificacao'] ?? '';
 
+require_once __DIR__ . '/../input.php';
+
 if ($classificacao === 'aluno') {
-    echo '
+?>
     <form id="form-cadastro-pessoa" action="">
-        <span> 
+        <span>
             <label for="pesquisar-pessoa">Pesquisar aluno:</label>
-            <input type="text" id="pesquisar-pessoa" placeholder="Digite um nome" autocomplete="off">
+            <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome'); ?>
             <div id="sugestoes"></div>
         </span>
         <div id="pessoas-selecionadas"></div>
         <button class="primary-button" type="submit">Cadastrar</button>
     </form>
-    ';
+    <script>
+      // Garante que o input gerado pelo componente tenha o ID necessário
+      const inputGerado = document.querySelector('input[name="pesquisar-pessoa"]');
+      if (inputGerado) inputGerado.id = 'pesquisar-pessoa';
+    </script>
+<?php
 } elseif ($classificacao === 'professor') {
-    echo '
+?>
     <form id="form-cadastro-pessoa" action="">
-        <span> 
+        <span>
             <label for="pesquisar-pessoa">Pesquisar professor:</label>
-            <input type="text" id="pesquisar-pessoa" placeholder="Digite um nome" autocomplete="off">
+            <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome'); ?>
             <div id="sugestoes"></div>
         </span>
         <div id="pessoas-selecionadas"></div>
         <button class="primary-button" type="submit">Cadastrar</button>
     </form>
-    ';
+    <script>
+      const inputGerado = document.querySelector('input[name="pesquisar-pessoa"]');
+      if (inputGerado) inputGerado.id = 'pesquisar-pessoa';
+    </script>
+<?php
 } else {
     echo '<p>Nenhum formulário disponível para esta classificação.</p>';
 }
+?>

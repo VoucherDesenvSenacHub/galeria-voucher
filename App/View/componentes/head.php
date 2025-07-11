@@ -11,8 +11,10 @@ require_once __DIR__ . '/button.php';
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 <link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>globals.css">
+<link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/modal-cadastro.css">
 
 <!-- Script para controle da barra de pesquisa -->
 <script src="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_JS"] ?>searchControl.js"></script>
