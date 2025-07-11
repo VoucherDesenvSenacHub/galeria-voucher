@@ -14,6 +14,9 @@ headerComponent('Página Inicial')
     <main class="main-user">
         <!-- Seção 1 -->
         <section id="secao1">
+
+            <canvas id="matrix-canvas"></canvas>
+
             <div class="content">
                 <div class="nome-voucher">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nome.png"
@@ -240,4 +243,7 @@ headerComponent('Página Inicial')
         </section>
     </main>
     <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
+
+    <script src="<?php echo VARIAVEIS['APP_URL'] . '/App/View/assets/js/users/matrix.js' ?>"></script>
+
 </body>
