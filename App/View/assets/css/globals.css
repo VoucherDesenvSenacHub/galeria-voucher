@@ -27,6 +27,7 @@
 :root {
     --primary-color-button: #AEFF40;
     --secondary-color-button: #9BE836;
+    --bg-color: #E2E2E2;
     --boxshadow-primary-button: 0 0 10px rgba(174, 255, 64, 0.7);
     --boxshadow-secondary-button: 0 0 10px rgba(91, 91, 91, 0.7);
     --color-text-button: #004302;

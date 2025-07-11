@@ -12,7 +12,7 @@ body {
 }
 
 .field-group {
-  background-color: #e8ece8;
+  background-color: var(--bg-color);
   border: 2px solid black;
   padding: 10px;
   flex: 1 1 45%;

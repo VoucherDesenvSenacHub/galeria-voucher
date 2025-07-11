@@ -1,7 +1,7 @@
 /* Estilo base do corpo da página */
 .body-lista-alunos {
   display: flex;
-  background-color: #e2e2e2;
+  background-color: var(--bg-color);
   overflow: hidden;
   font-family: Arial, sans-serif;
 }

@@ -5,7 +5,7 @@
 }
  
 .content-adm {
-  background-color: var(--white-background);
+  background-color: var(--bg-color);
   flex-grow: 1;
   margin-top: 120px;
 }
