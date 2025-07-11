@@ -1,13 +1,12 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 <?php
-require_once __DIR__ . "/../../../Config/env.php"; // 
+require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/button.php";
-require_once __DIR__ . "/../../componentes/head.php"; // importa as fontes
+require_once __DIR__ . "/../../componentes/head.php";
 
 headerComponent('Desenvolvedores');
-
-// botão voltar
 ?>
-
 <body class="body_dev">
     <header class="header_dev">
         <?php buttonComponent('primary', 'VOLTAR', false, './home.php'); ?>
@@ -16,23 +15,23 @@ headerComponent('Desenvolvedores');
         </div>
     </header>
     <main class="main_dev">
-        <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; //componente da mira 
-        ?>
-        <div class="container">
-            <?php require_once __DIR__ . "/../../componentes/head.php"; ?>
-            <?php
+        <?php require_once __DIR__ . "/../../componentes/users/mira.php"; ?>
 
-            $numeroDeCards = 16; // Define o número de cards que você quer exibir
+        <section class="galeria-turma-cardss">
+            <h1 class="galeria-turma-h1">Alunos</h1>
+            <div class="galeria-turma-container">
+                <?php
+                require __DIR__ . "/../../componentes/users/desenvolvedores.php";
+                foreach ($desenvolvedores as $dev) {
+                    require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
+                }
+                ?>
+            </div>
+        </section>
 
-            for ($i = 0; $i < $numeroDeCards; $i++) {
-                require __DIR__ . "/../../../View/componentes/users/card_desenvolvedores.php"; // importa os cards
-            }
-            ?>
-        </div>
+        <footer class="galeria-turma-footer">
+            <?php require_once __DIR__ . "/../../componentes/users/footer.php"; ?>
+        </footer>
     </main>
-        <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; // rodapé 
-        ?>
-
 </body>
-
 </html>
