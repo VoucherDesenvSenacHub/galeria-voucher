@@ -120,6 +120,32 @@
     transform: translateX(0);
 }
 
+.menu-links .mobile-only { display: none; }
+.menu-links .desktop-only { display: inline-flex; }
+
+@media(max-width:768px) {
+  .menu-links .mobile-only { display: inline-flex; }
+  .menu-links .desktop-only { display: none; }
+}
+
+/* Esconde o botão SAIR no layout desktop/admin */
+.nav-adm .primary-button {
+  display: none;
+}
+
+/* No mobile (menu sanduíche aberto) o botão aparece com tamanho ajustado */
+@media(max-width:768px) {
+  .nav-adm .menu-links .primary-button {
+    display: flex;
+    height: 2.5rem;        /* botão mais alto */
+    width: 100%;
+    padding: 0.4rem 1.2rem;/* mais espaço interno */
+    font-size: var(--m-font); /* 20px */
+    border-radius: 25px;
+    justify-content: center;
+  }
+}
+
 /* mobile */
 @media(max-width:768px) {
     .NavInicial .nav-inner {
