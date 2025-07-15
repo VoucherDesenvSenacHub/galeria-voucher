@@ -9,11 +9,11 @@ headerComponent('Página Inicial')
         $isAdmin = false; // Para páginas de users
         require_once __DIR__ . "/./../../componentes/nav.php" 
     ?>
-    <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
-    <main class="main-user">
-        <!-- Seção 1 -->
-        <section id="secao1">
+<main class="main-user">
+    <!-- Seção 1 -->
+    <section id="secao1">
+            <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
             <canvas id="matrix-canvas"></canvas>
 
@@ -245,5 +245,4 @@ headerComponent('Página Inicial')
     <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
 
     <script src="<?php echo VARIAVEIS['APP_URL'] . '/App/View/assets/js/users/matrix.js' ?>"></script>
-
 </body>
