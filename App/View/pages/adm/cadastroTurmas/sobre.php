@@ -31,17 +31,17 @@ require_once __DIR__ . "/../../../componentes/head.php";
       </div>
 
 
-     
-        <div class="btn-novos-projeto">
+
+      <div class="primaty-button">
         <a href="imagens.php">
-          <button class="componente-botao btn-imagens">NOVOS PROJETOS</button>
+          <?php buttonComponent('primary', 'ADICIONAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
         </a>
 
-       
 
-          </div>
-          
-        </div>
+
+      </div>
+
+  </div>
   </div>
   </div>
   </div>
