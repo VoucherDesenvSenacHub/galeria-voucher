@@ -1,50 +1,56 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     const canvas = document.getElementById('matrix-canvas');
-    if (!canvas) return;
+    if (!canvas) {
+        console.error("Elemento canvas com ID 'matrix-canvas' não foi encontrado.");
+        return;
+    }
 
     const ctx = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const setCanvasSize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    };
+    setCanvasSize();
 
-    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const nums = '0123456789';
-    const alphabet = katakana + latin + nums;
+    const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?";
+    const alphabet = matrixChars.split('');
 
-    const fontsize = 16;
-    const columns = Math.ceil(canvas.width / fontSize);
+    const fontSize = 16;
+    let columns = Math.ceil(canvas.width / fontSize);
 
-    const rainDrops = [];
+    let drops = [];
     for (let x = 0; x < columns; x++) {
-        rainDrops[x] = -Math.random() * canvas.height;
+        drops[x] = 1;
     }
 
-    const draw = () => {
+    function draw() {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = '#0D9C0D';
+        ctx.fillStyle = '#0F0';
         ctx.font = fontSize + 'px monospace';
 
-        for (let i = 0; i < rainDrops.length; i++) {
-            const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        for (let i = 0; i < drops.length; i++) {
+            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
-            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                rainDrops[i] = 0;
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
             }
-
-            rainDrops[i]++;
+            
+            drops[i]++;
         }
-    };
+    }
 
-    setInterval(draw, 30);
+    setInterval(draw, 33);
 
     window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        setCanvasSize();
+        columns = Math.ceil(canvas.width / fontSize);
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
     });
 });
