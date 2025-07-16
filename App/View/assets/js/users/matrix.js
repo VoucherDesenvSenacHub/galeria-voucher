@@ -8,49 +8,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const ctx = canvas.getContext('2d');
 
+    // Função para definir o tamanho do canvas
     const setCanvasSize = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     };
     setCanvasSize();
 
-    const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?";
-    const alphabet = matrixChars.split('');
+    // Usamos um conjunto de caracteres completo para um efeito mais rico
+    const alphabet = 'オォコソトノホモヨョロヲッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%+-/~{[|`]}';
 
     const fontSize = 16;
     let columns = Math.ceil(canvas.width / fontSize);
 
-    let drops = [];
+    // Array para guardar a posição Y de cada "gota"
+    let rainDrops = [];
+    // Inicializa todas as gotas no topo, como no exemplo do CodePen, para criar a cascata
     for (let x = 0; x < columns; x++) {
-        drops[x] = 1;
+        rainDrops[x] = 1;
     }
 
+    // A função principal de desenho
     function draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        // Usamos um gradiente para criar o fundo e o efeito de desvanecer
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        
+        // CORREÇÃO: A maior parte do fundo (85%) é preto semi-transparente
+        gradient.addColorStop(0, 'rgba(0, 0, 0, 0.05)');
+        gradient.addColorStop(0.85, 'rgba(0, 0, 0, 0.05)');
+        
+        // Nos últimos 15%, ele transita para o verde do seu tema
+        gradient.addColorStop(1, 'rgba(13, 156, 13, 0.05)');
+        
+        ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = '#0F0';
+        // Cor das letras
+        ctx.fillStyle = '#0D9C0D'; 
         ctx.font = fontSize + 'px monospace';
 
-        for (let i = 0; i < drops.length; i++) {
-            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        for (let i = 0; i < rainDrops.length; i++) {
+            const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
 
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
+            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                rainDrops[i] = 0;
             }
             
-            drops[i]++;
+            rainDrops[i]++;
         }
     }
 
+    // Inicia o loop da animação
     setInterval(draw, 33);
 
+    // Adapta a animação se a janela for redimensionada
     window.addEventListener('resize', () => {
         setCanvasSize();
         columns = Math.ceil(canvas.width / fontSize);
         for (let x = 0; x < columns; x++) {
-            drops[x] = 1;
+            rainDrops[x] = 1;
         }
     });
 });
