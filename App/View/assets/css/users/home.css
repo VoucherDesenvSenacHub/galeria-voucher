@@ -40,7 +40,7 @@
 
 /* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
-    min-height: 125vh;
+    min-height: 110vh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -90,6 +90,7 @@
     position: relative;
     z-index: 2;
     text-align: center;
+    transform: translateY(-48px);
 }
 
 #secao1 .nome-voucher img {

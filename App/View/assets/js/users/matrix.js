@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setCanvasSize();
 
     // Usamos um conjunto de caracteres completo para um efeito mais rico
-    const alphabet = 'オォコソトノホモヨョロヲッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%+-/~{[|`]}';
+    const alphabet = '01';
 
     const fontSize = 16;
     let columns = Math.ceil(canvas.width / fontSize);
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Cor das letras
-        ctx.fillStyle = '#0D9C0D'; 
+        ctx.fillStyle = '#AEFF40'; 
         ctx.font = fontSize + 'px monospace';
 
         for (let i = 0; i < rainDrops.length; i++) {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Inicia o loop da animação
-    setInterval(draw, 33);
+    setInterval(draw, 38);
 
     // Adapta a animação se a janela for redimensionada
     window.addEventListener('resize', () => {
