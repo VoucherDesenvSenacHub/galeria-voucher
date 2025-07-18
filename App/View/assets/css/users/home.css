@@ -90,7 +90,7 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    transform: translateY(-48px);
+    transform: translateY(-40px);
 }
 
 #secao1 .nome-voucher img {

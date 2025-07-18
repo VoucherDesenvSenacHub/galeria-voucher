@@ -44,8 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Cor das letras
-        ctx.fillStyle = '#AEFF40'; 
-        ctx.font = fontSize + 'px monospace';
+        ctx.fillStyle = '#AEFF40';
+
+        ctx.font = fontSize + 'px "Poppins", sans-serif';
 
         for (let i = 0; i < rainDrops.length; i++) {
             const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Inicia o loop da animação
-    setInterval(draw, 38);
+    setInterval(draw, 33);
 
     // Adapta a animação se a janela for redimensionada
     window.addEventListener('resize', () => {
