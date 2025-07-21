@@ -18,7 +18,8 @@ headerComponent('Galeria da Turma')
         <h1 class="galeria-turma-h1">Projetos da turma</h1>
     </section>
     <section class="galeria-turma-section galeria-turma-galeria">
-        <h2>Galeria E-Commerce</h2>
+        <h2>Galeria</h2>
+        <h2>E-Commerce</h2>
     </section>
     <section class="galeria-turma-senac">
         <h2 class="galeria-turma-h2">Senac Hub Academy</h2>
