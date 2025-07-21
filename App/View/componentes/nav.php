@@ -33,21 +33,44 @@ $useHeader = isset($useHeader) ? $useHeader : !$isAdmin; // true para users, fal
         </div>
         <?php endif; ?>
 
-        <!-- Ícone menu mobile -->
+        <!-- Ícone menu mobile - NÂO MECHER PELO AMOR DE DEUS VAI QUEBRAR-->
         <span class="material-symbols-outlined hamburger" id="hamburger">menu</span>
         
         <ul class="menu-links" id="nav-links">
-            <li>
-                <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a>
-            </li>
-            <li>
-                <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>">TURMAS</a>
-            </li>
-            <li>
-                <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
-                    <span class="material-symbols-outlined">person</span>
-                </a>
-            </li>
+            <?php if ($isAdmin): ?>
+                <li class="desktop-only">
+                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a>
+                </li>
+                <li class="desktop-only">
+                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>">TURMAS</a>
+                </li>
+                <li class="desktop-only">
+                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
+                        <span class="material-symbols-outlined">person</span>
+                    </a>
+                </li>
+                <li class="mobile-only">
+                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listarUsuarios.php'; ?>">PESSOAS</a>
+                </li>
+                <li class="mobile-only">
+                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php'; ?>">TURMAS</a>
+                </li>
+                <li class="mobile-only">
+                    <?php buttonComponent('primary', 'SAIR', false, VARIAVEIS['APP_URL'] . 'index.php'); ?>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a>
+                </li>
+                <li>
+                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>">TURMAS</a>
+                </li>
+                <li>
+                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
+                        <span class="material-symbols-outlined">person</span>
+                    </a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
