@@ -146,7 +146,7 @@
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 0.5px;
   position: absolute;
-  bottom: -50px;
+  bottom: -140px; /* Alterei de -50 px para -140  */
   left: 50%;
   transform: translateX(-50%);
   background-color: #161616;
