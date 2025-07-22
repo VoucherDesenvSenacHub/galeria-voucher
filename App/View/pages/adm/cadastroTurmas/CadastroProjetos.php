@@ -26,7 +26,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
         <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
         <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
-        <a class="tab-adm-turmas active" href="sobre.php">PROJETOS</a>
+        <a class="tab-adm-turmas active" href="CadastroProjetos.php">PROJETOS</a>
         <a class="tab-adm-turmas" href="cadastroTurmas.php">DADOS GERAIS</a>
       </div>
 
@@ -34,7 +34,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
       <div class="primaty-button">
         <a href="imagens.php">
-          <?php buttonComponent('primary', 'ADICIONAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
+          <?php buttonComponent('primary', 'ADICIONAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/Projeto.php'); ?>
         </a>
 
 
