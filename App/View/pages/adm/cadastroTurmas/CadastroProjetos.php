@@ -26,22 +26,22 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
         <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
         <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
-        <a class="tab-adm-turmas active" href="sobre.php">PROJETOS</a>
+        <a class="tab-adm-turmas active" href="CadastroProjetos.php">PROJETOS</a>
         <a class="tab-adm-turmas" href="cadastroTurmas.php">DADOS GERAIS</a>
       </div>
 
 
-     
-        <div class="btn-novos-projeto">
+
+      <div class="primaty-button">
         <a href="imagens.php">
-          <button class="componente-botao btn-imagens">NOVOS PROJETOS</button>
+          <?php buttonComponent('primary', 'ADICIONAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/Projeto.php'); ?>
         </a>
 
-       
 
-          </div>
-          
-        </div>
+
+      </div>
+
+  </div>
   </div>
   </div>
   </div>

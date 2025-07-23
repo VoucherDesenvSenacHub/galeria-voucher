@@ -23,6 +23,7 @@
 @import url(adm/cadastrar-usuarios.css);
 
 @import url(adm/lista-alunos.css);
+@import url(adm/modal-cadastro.css);
 
 :root {
     --primary-color-button: #AEFF40;

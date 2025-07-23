@@ -14,15 +14,19 @@ $currentTab = 'alunos';
         ?>
 
         <main class="main-turmas-turmas">
+
+            <section class="section_modal">
+
+            </section>
             <div class="tabs-adm-turmas">
                 <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>" href="docentes.php">DOCENTES</a>
                 <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>" href="sobre.php">PROJETOS</a>
+                <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>" href="CadastroProjetos.php">PROJETOS</a>
                 <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : '' ?>" href="cadastroTurmas.php">DADOS GERAIS</a>
             </div>
 
             <div class="topo-lista-alunos">
-                <?php buttonComponent('primary', 'PESQUISAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
+                <?php buttonComponent('primary', 'ADICIONAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\""); ?>
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar">
@@ -114,6 +118,8 @@ $currentTab = 'alunos';
             });
         });
     </script>
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/adm/autocomplete-pessoas.js"></script>
 </body>
 
 </html>
