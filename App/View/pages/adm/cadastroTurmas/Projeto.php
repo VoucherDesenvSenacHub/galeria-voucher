@@ -31,9 +31,10 @@ require_once __DIR__ . "/../../../componentes/button.php";
         <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
       </div>
 
-      <h1 class="h1-sobre">NOVO PROJETO</h1>
+      
 
       <div class="form-container-projeto">
+      <h1 class="h1-sobre">NOVO PROJETO</h1>
         <div class="input-grupos">
           <div class="input-group-sobre">
 
@@ -69,12 +70,13 @@ require_once __DIR__ . "/../../../componentes/button.php";
             <div class="btn-novos-projeto">
           </div>
           </div>
-        </div>
-      </div>
-            <div class="button-projeto">
+          <div class="button-projeto">
               <?php buttonComponent('secondary', 'Cancelar', false); ?>
               <?php buttonComponent('primary', 'Salvar', true); ?>
-            </div>
+        </div>
+        </div>
+      </div>
+           
     </main>
   </div>
 </body>
