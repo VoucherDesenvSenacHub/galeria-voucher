@@ -1,0 +1,10 @@
+# Envs
+.env
+.config
+
+
+
+
+# Misc
+.vscode
+.idea
