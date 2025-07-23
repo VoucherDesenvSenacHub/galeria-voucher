@@ -36,51 +36,45 @@ require_once __DIR__ . "/../../../componentes/button.php";
       <div class="form-container-projeto">
         <div class="input-grupos">
           <div class="input-group-sobre">
-            <input type="text" class="input-field" placeholder="Nome do Projeto:">
-            <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+
+            <h2>DESCRIÇÃO DO PROJETO</h2>
+            <div class="Container_Dia">
+              <div class="nome-e-descricao">
+                <input type="text" class="input-field" placeholder="Nome do Projeto:">
+                <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+              </div>
+                <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+            </div>
+
             <h2> DIA I</h2>
-            <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-            <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+            <div class="Container_Dia">
+              <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+              <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+            </div>
+
             <h2> DIA P</h2>
-            <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-            <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
-            
+            <div class="Container_Dia">
+              <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+              <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+            </div>
+
             <h2> DIA D</h2>
-            <div class="container-D">
-            <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-            <img src="" alt="Foto Turma" class="foto-projetoturma-novo" /></div>
+            <div class="Container_Dia">
+              <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+              <img src="" alt="Foto Turma" class="foto-projetoturma-novo" /></div>
             </div>
-
-          <div class="button-projeto">
-              <?php buttonComponent('secondary', 'Cancelar', false); ?></div>
-              <div><?php buttonComponent('primary', 'Salvar', true); ?></div>
-            </div>
-
-          <!-- <div class="projeto-fotos"> -->
-          <!-- <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
-        
-          
-          <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
-        
-          
-          <img src="" alt="Foto Turma" class="foto-projetoturma-novo" /> -->
-
-          <!-- </div> -->
-        
-
-
-       
 
           <div class="link-projeto">
             <input type="text" class="input-projeto" placeholder="Link de Projeto:">
             <div class="btn-novos-projeto">
-
-          
-              
-            </div>
+          </div>
           </div>
         </div>
       </div>
+            <div class="button-projeto">
+              <?php buttonComponent('secondary', 'Cancelar', false); ?>
+              <?php buttonComponent('primary', 'Salvar', true); ?>
+            </div>
     </main>
   </div>
 </body>

@@ -141,16 +141,14 @@ body {
 }
 
 
-.foto-projetoturma-novo  {
+.foto-projetoturma-novo {
   width: 250px;
-  height: 200px;
   border-radius: 20px;
   background-color: #e5e9e4;
-  padding: 40px;
+  padding: 10px;
   object-fit: contain;
   border: 1px solid #333;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-shrink: 0;
 }
 
 .link-projeto {
@@ -194,11 +192,23 @@ body {
   margin-right: 20px;
 }
 
-.container-D {
-  display: flex; /* Faz com que os filhos se comportem como itens flex */
-  gap: 20px; /* Adiciona um espaço entre os itens (opcional, ajuste o valor) */
-  
-  /* Opcional: Opções de alinhamento */
-  align-items: flex-start; /* Alinha os itens ao topo se eles tiverem alturas diferentes */
-  justify-content: center; /* Centraliza os itens horizontalmente dentro do container */
+.Container_Dia {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.button-projeto {
+  display: flex;
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  gap: 20px; /* Adiciona um espaço de 20px entre os botões */
+  margin-top: 30px; /* Adiciona um espaço acima do container, para separar do conteúdo */
+}
+
+.nome-e-descricao {
+  display: flex;
+  flex-direction: column; /* Coloca os itens um abaixo do outro */
+  gap: 10px; /* Adiciona um pequeno espaço entre o input e a textarea */
+  flex-grow: 1; /* Permite que este container ocupe o espaço restante */
 }
