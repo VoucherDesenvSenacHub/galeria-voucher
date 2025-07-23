@@ -1,5 +1,5 @@
 .galeria-turma-material-symbols-outlined {
-  color: #aEFF40;
+  color: #aeff40;
   font-size: 35px;
 }
 
@@ -50,7 +50,7 @@
   height: 300px;
   margin: auto 60%;
   background-image: url("assets/codimg.png");
-  background-color: rgba(255, 255, 255, 0.0);
+  background-color: rgba(255, 255, 255, 0);
   background-blend-mode: luminosity;
   background-size: cover;
   opacity: 0.4;
@@ -80,7 +80,18 @@
   margin: 0;
   padding: 0;
   font-family: "Inter", sans-serif;
-  background: linear-gradient(to bottom, black, black, #004D00, black, black, black, black, black, black);
+  background: linear-gradient(
+    to bottom,
+    black,
+    black,
+    #004d00,
+    black,
+    black,
+    black,
+    black,
+    black,
+    black
+  );
   color: white;
   line-height: 1.5;
 }
@@ -93,7 +104,12 @@
   font-style: normal;
   font-weight: normal;
 }
-
+.galeria-turma-h1 {
+  padding-top: 20px;
+  padding-right: 60px;
+  font-size: 30px;
+  text-align: center;
+}
 /*cabeçalho*/
 .galeria-turma-projeto {
   text-align: center;
@@ -101,14 +117,18 @@
 }
 
 .galeria-turma-galeria {
-  word-spacing: 300px;
   text-align: center;
   font-size: 12px;
 }
 
+.galeria-turma-galeria h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
 .galeria-turma-senac {
   position: absolute;
-  top: 100px;
+  top: 78px;
   right: 20px;
   padding: 5px;
   border: 0px solid;
@@ -141,10 +161,11 @@
 
 /* Seções gerais */
 .galeria-turma-section {
+  max-width: 1200px;
   margin: 10px auto;
   padding: 20px;
-  max-width: 1200px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .galeria-turma-dia {
@@ -165,21 +186,6 @@
   margin-top: 65px;
 }
 
-.galeria-turma-margin-top-left-dia-p {
-  margin-left: 25px;
-  margin-top: 65px;
-}
-
-.galeria-turma-margin-top-left-projeto-xx {
-  margin-left: 25px;
-  margin-top: 20px;
-}
-
-.galeria-turma-margin-top-right-dia-e {
-  margin-right: 25px;
-  margin-top: 65px;
-}
-
 .galeria-turma-section h2 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 28px;
@@ -196,14 +202,6 @@
   padding: 20px;
 }
 
-/* .galeria-turma-cardss p {
-  margin: 10px 0;
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  padding: 0;
-} */
-
 .galeria-turma-cardss h1 {
   text-align: center;
   font-size: 40px;
@@ -218,7 +216,6 @@
   width: 90%;
   max-width: 500px;
   display: block;
-  margin: 20px auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -230,22 +227,266 @@
   text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.17);
 }
 
-/* Estilo específico para alinhar imagens */
-section#turma img,
-section#dia-i img,
-section#dia-p img,
-section#dia-e img,
-section#projeto-xx img {
-  float: none;
-  margin: 20px auto;
+.projetos-turma {
+  margin: 50px 0;
+}
+
+/* ===== ESTILOS PARA ABAS PRINCIPAIS (PROJETOS) ===== */
+
+/* Navegação das abas principais */
+.galeria-turma-main-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px 0;
+  flex-wrap: wrap;
+}
+
+.galeria-turma-main-tab-btn {
+  display: flex;
+  align-items: center;       /* Alinha verticalmente */
+  justify-content: center;   /* Alinha horizontalmente */
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  color: white;
+  padding: 5px 20px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
   text-align: center;
+}
+
+
+.galeria-turma-main-tab-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.galeria-turma-main-tab-btn:hover {
+  border: 2px solid var(--cor-tema, #aeff40);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(174, 255, 64, 0.3);
+}
+
+.galeria-turma-main-tab-btn:hover::before {
+  left: 100%;
+}
+
+.galeria-turma-main-tab-btn.active {
+  border: 2px solid var(--cor-tema, #aeff40);
+  color: var(--cor-tema, #aeff40);
+  border-color: var(--cor-tema, #aeff40);
+  box-shadow: 0 0 30px rgba(174, 255, 64, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Conteúdo das abas principais */
+.galeria-turma-main-tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.galeria-turma-main-tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUpMain 0.8s ease;
+}
+
+@keyframes fadeInUpMain {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Introdução do projeto */
+.galeria-turma-projeto-intro {
+  text-align: center;
+  padding: 20px;
+}
+
+.galeria-turma-projeto-intro h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 36px;
+  color: #aeff40;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.galeria-turma-projeto-intro p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ccc;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ===== ESTILOS PARA SUB-ABAS (DIA I, DIA P, etc.) ===== */
+
+/* Navegação das sub-abas */
+.galeria-turma-sub-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 80px 0px;
+}
+
+.galeria-turma-sub-tab-btn {
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.galeria-turma-sub-tab-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(174, 255, 64, 0.15),
+    transparent
+  );
+  transition: left 0.4s ease;
+}
+
+.galeria-turma-sub-tab-btn:hover {
+  border: 2px solid var(--cor-tema, #aeff40);
+  color: var(--cor-tema, #aeff40);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(174, 255, 64, 0.2);
+}
+
+.galeria-turma-sub-tab-btn:hover::before {
+  left: 100%;
+}
+
+.galeria-turma-sub-tab-btn.active {
+  border: 2px solid var(--cor-tema, #aeff40);
+  color: var(--cor-tema, #aeff40);
+  border-color: var(--cor-tema, #aeff40);
+  box-shadow: 0 0 15px rgba(174, 255, 64, 0.4);
+}
+
+/* Conteúdo das sub-abas */
+.galeria-turma-sub-tabs-content {
+  margin: 80px auto;
+}
+
+.galeria-turma-sub-tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.galeria-turma-sub-tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUpSub 0.6s ease;
+}
+
+@keyframes fadeInUpSub {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.galeria-turma-tab-inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  min-height: 400px;
+  padding: 20px;
+  margin-left: 50px;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  border-radius: 15px;
+  border: 1px solid #333;
+}
+
+.galeria-turma-tab-text {
+  flex: 1;
+  padding: 20px;
+}
+
+.galeria-turma-tab-text h4 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 42px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  color: #aeff40;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.galeria-turma-tab-text p {
+  font-size: 17px;
+  line-height: 1.7;
+  text-align: justify;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+
+.galeria-turma-tab-image {
+  flex: 1;
+  text-align: center;
+}
+
+.galeria-turma-tab-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.galeria-turma-tab-image img:hover {
+  transform: scale(1.05);
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
   body {
     font-size: 14px;
-    /* Ajusta a fonte para dispositivos móveis */
   }
 
   h1,
@@ -253,17 +494,61 @@ section#projeto-xx img {
   h3,
   h4 {
     font-size: 24px;
-    /* Ajusta os tamanhos das fontes de títulos */
   }
 
   section p {
     font-size: 14px;
-    /* Reduz o tamanho do texto do parágrafo */
   }
 
-  .titulo {
-    font-size: 1.5rem;
-    /* Ajusta o tamanho dos títulos principais */
+  /* Responsividade para abas principais */
+  .galeria-turma-main-tabs-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .galeria-turma-main-tab-btn {
+    width: 100%;
+    max-width: 300px;
+    font-size: 20px;
+    padding: 15px 30px;
+  }
+
+  /* Responsividade para sub-abas */
+  .galeria-turma-sub-tabs-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .galeria-turma-sub-tab-btn {
+    width: 100%;
+    max-width: 250px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .galeria-turma-tab-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    min-height: auto;
+  }
+
+  .galeria-turma-tab-text h4 {
+    font-size: 32px;
+  }
+
+  .galeria-turma-tab-text p {
+    font-size: 15px;
+  }
+
+  .galeria-turma-projeto-intro h3 {
+    font-size: 28px;
+  }
+
+  .galeria-turma-projeto-intro p {
+    font-size: 16px;
   }
 }
 
@@ -271,7 +556,6 @@ section#projeto-xx img {
   section img {
     width: 100%;
     height: 90%;
-    /* Mantém a proporção */
   }
 
   .dia {
@@ -284,7 +568,7 @@ section#projeto-xx img {
     height: 40%;
     margin: auto;
     background-image: url(assets/codimg.png);
-    background-color: rgba(255, 255, 255, 0.0);
+    background-color: rgba(255, 255, 255, 0);
     background-blend-mode: luminosity;
     background-size: cover;
     opacity: 0.4;
@@ -312,18 +596,28 @@ section#projeto-xx img {
 
 .galeria-turma-botaoprojeto {
   padding-left: 20px;
+  margin-top: 20px;
 }
 
 .galeria-turma-btn {
-  background-color: #AEFF40;
+  background-color: #aeff40;
   border: none;
-  font-size: 40px;
-  padding: 10px 40px;
+  font-size: 32px;
+  padding: 12px 35px;
   font-family: "Bebas Neue";
   color: #004302;
   font-weight: normal;
   cursor: pointer;
   border-radius: 50px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.galeria-turma-btn:hover {
+  background-color: #8fd632;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(174, 255, 64, 0.5);
 }
 
 .galeria-turma-titulo {
@@ -416,7 +710,7 @@ section#projeto-xx img {
 }
 
 .galeria-turma-social-icons a {
-  color: #AEFF40;
+  color: #aeff40;
   font-size: 35px;
   margin: 0 8px;
   text-decoration: none;
@@ -434,12 +728,10 @@ section#projeto-xx img {
 
   .galeria-turma-card-container {
     width: 90%;
-    /* Adjust as needed */
   }
 
   .galeria-turma-image-container {
     height: 280px;
-    /* Adjust as needed */
   }
 }
 
@@ -450,12 +742,10 @@ section#projeto-xx img {
 
   .galeria-turma-card-container {
     width: 95%;
-    /* Adjust as needed */
   }
 
   .galeria-turma-image-container {
     height: 250px;
-    /* Adjust as needed */
   }
 }
 
@@ -470,7 +760,6 @@ section#projeto-xx img {
 
   .galeria-turma-image-container {
     height: 200px;
-    /* Adjust as needed */
   }
 }
 
@@ -478,4 +767,29 @@ section#projeto-xx img {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+/* Classes específicas para margens dos projetos */
+.galeria-turma-margin-top-left-projeto1-dia-i,
+.galeria-turma-margin-top-left-projeto2-dia-i {
+  margin-left: 25px;
+  margin-top: 20px;
+}
+
+.galeria-turma-margin-top-right-projeto1-dia-p,
+.galeria-turma-margin-top-right-projeto2-dia-p {
+  margin-right: 25px;
+  margin-top: 20px;
+}
+
+.galeria-turma-margin-top-left-projeto1-dia-e,
+.galeria-turma-margin-top-left-projeto2-dia-e {
+  margin-left: 25px;
+  margin-top: 20px;
+}
+
+.galeria-turma-margin-top-right-projeto1-final,
+.galeria-turma-margin-top-right-projeto2-final {
+  margin-right: 25px;
+  margin-top: 20px;
 }
