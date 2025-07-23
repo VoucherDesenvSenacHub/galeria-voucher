@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Usamos um conjunto de caracteres completo para um efeito mais rico
     const alphabet = '01';
 
-    const fontSize = 16;
+    const fontSize = 14;
     let columns = Math.ceil(canvas.width / fontSize);
 
     // Array para guardar a posição Y de cada "gota"
@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
         
         // CORREÇÃO: A maior parte do fundo (85%) é preto semi-transparente
-        gradient.addColorStop(0, 'rgba(0, 0, 0, 0.05)');
-        gradient.addColorStop(0.85, 'rgba(0, 0, 0, 0.05)');
+        gradient.addColorStop(0, 'rgba(0, 0, 0, 0.082)');
+        gradient.addColorStop(0.75, 'rgba(0, 0, 0, 0.082)');
         
         // Nos últimos 15%, ele transita para o verde do seu tema
-        gradient.addColorStop(1, 'rgba(13, 156, 13, 0.05)');
+        gradient.addColorStop(1, 'rgba(13, 156, 13,  0.05)');
         
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Inicia o loop da animação
-    setInterval(draw, 33);
+    setInterval(draw, 40);
 
     // Adapta a animação se a janela for redimensionada
     window.addEventListener('resize', () => {

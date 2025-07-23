@@ -40,7 +40,7 @@
 
 /* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
-    min-height: 110vh;
+    min-height: 130vh;
     position: relative;
     display: flex;
     justify-content: center;
