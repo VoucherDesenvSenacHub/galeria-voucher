@@ -152,7 +152,7 @@
   left: 16px;
   font-size: 18px;
 }
-
+h1
 .galeria-turma-header img {
   width: 150px;
   height: auto;
@@ -630,6 +630,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+}
+
+h1,h2,h3{
+  font-family: var(--font-primary);
 }
 
 .galeria-turma-main {
