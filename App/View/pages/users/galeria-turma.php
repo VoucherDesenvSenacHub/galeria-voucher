@@ -107,8 +107,8 @@ $projetosTurmas = [
 
 
         <section class="galeria-turma-senac">
-            <h3>Senac Hub Academy</h3>
-            <h3>Campo Grande - MS</h3>
+            <h3 class="galeria-turma-h3">Senac Hub Academy</h3>
+            <h3 class="galeria-turma-h3">Campo Grande - MS</h3>
         </section>
 
         <section class="galeria-turma-tab-inner ">
