@@ -70,12 +70,7 @@
   z-index: -1;
 }
 
-.galeria-turma-section .galeria-turma-dia {
-  position: relative;
-  z-index: 1;
-}
-
-/* Estilos gerais */
+/* ===== ESTILOS GERAIS ===== */
 .galeria-turma-body {
   margin: 0;
   padding: 0;
@@ -94,6 +89,7 @@
   );
   color: white;
   line-height: 1.5;
+  padding-top: 80px; /* Espaço para a navbar fixa */
 }
 
 .galeria-turma-h1,
@@ -113,7 +109,8 @@
 /*cabeçalho*/
 .galeria-turma-projeto {
   text-align: center;
-  font-size: 25px;
+  font-size: 1.5625rem; /* 25px */
+  margin-top: 5rem; /* 80px */
 }
 
 .galeria-turma-galeria {
@@ -136,30 +133,53 @@
   font-size: 12px;
 }
 
-/* Estilos do cabeçalho */
 .galeria-turma-header {
   text-align: center;
   padding: 11px;
-}
-
-.galeria-turma-header .galeria-turma-container {
-  position: relative;
-}
-
-.galeria-turma-header .galeria-turma-topleft {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-  font-size: 18px;
+  margin: 0;
 }
 h1
 .galeria-turma-header img {
-  width: 150px;
+  width: 9.375rem; /* 150px */
   height: auto;
   opacity: 100%;
 }
 
-/* Seções gerais */
+/* Garantir que a navegação não tenha margem */
+.galeria-turma-header {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.galeria-turma-header .NavInicial {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.galeria-turma-header .nav-inner {
+  margin: 0 !important;
+  padding: 0 45px !important;
+  width: 100% !important;
+}
+
+/* Para mobile */
+@media (max-width: 768px) {
+  .galeria-turma-header .nav-inner {
+    padding: 0 20px !important;
+  }
+}
+
+/* Forçar remoção de margens em todos os elementos da navegação */
+.galeria-turma-header * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ===== SEÇÕES PRINCIPAIS ===== */
 .galeria-turma-section {
   max-width: 1200px;
   margin: 10px auto;
@@ -170,36 +190,30 @@ h1
 
 .galeria-turma-dia {
   display: flex;
-}
-
-.galeria-turma-dia p {
-  font-size: 19px;
+  align-items: flex-start;
+  gap: 1.25rem; /* 20px */
 }
 
 .galeria-turma-dia h2 {
-  font-size: 48px;
-  font-weight: normal;
-}
-
-.galeria-turma-margin-top-left-turma-xx {
-  margin-left: 25px;
-  margin-top: 65px;
+  font-size: 3rem; /* 48px */
+  padding: 1.25rem; /* 20px */
 }
 
 .galeria-turma-section h2 {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 1.75rem; /* 28px */
+  width: 10rem;
+  margin-bottom: 0.625rem; /* 10px */
   text-transform: uppercase;
   font-weight: normal;
 }
 
 .galeria-turma-section p {
-  margin: 10px 0;
-  font-size: 16px;
+  margin: 0.625rem 0; /* 10px */
+  font-size: 1rem; /* 16px */
   font-family: "Poppins", sans-serif;
   text-align: justify;
-  padding: 20px;
+  padding: 1.25rem; /* 20px */
 }
 
 .galeria-turma-cardss h1 {
@@ -207,14 +221,15 @@ h1
   font-size: 40px;
 }
 
-.galeria-turma-dia h2 {
-  padding: 20px;
+.galeria-turma-margin-top-right-dia-e {
+  margin-right: 1.5625rem; /* 25px */
+  margin-top: 4.0625rem; /* 65px */
 }
 
-/* Estilos das imagens */
+/* ===== IMAGENS ===== */
 .galeria-turma-section img {
   width: 90%;
-  max-width: 500px;
+  max-width: 31.25rem; /* 500px */
   display: block;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -646,13 +661,13 @@ h1,h2,h3{
 .galeria-turma-container {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 70px;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); /* 240px */
+  gap: 4.375rem; /* 70px */
+  max-width: 75rem; /* 1200px */
   margin: 0 auto;
-  margin-top: 70px;
-  margin-bottom: 71px;
-  padding: 10px;
+  margin-top: 4.375rem; /* 70px */
+  margin-bottom: 4.4375rem; /* 71px */
+  padding: 0.625rem; /* 10px */
 }
 
 .galeria-turma-card-container {
@@ -694,7 +709,6 @@ h1,h2,h3{
   text-align: center;
   border-radius: 30px;
   z-index: 2;
-  letter-spacing: 0.5px;
 }
 
 .text-card-turmagaleria h2 {
@@ -709,6 +723,24 @@ h1,h2,h3{
   font-size: 1.1em;
 }
 
+/* ===== BOTÃO ===== */
+.galeria-turma-botaoprojeto {
+  padding-left: 20px;
+}
+
+.galeria-turma-btn {
+  background-color: #AEFF40;
+  border: none;
+  font-size: 24px;
+  padding: 8px 20px;
+  font-family: "Bebas Neue";
+  color: #004302;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+/* ===== ÍCONES SOCIAIS ===== */
 .galeria-turma-social-icons {
   display: flex;
 }
@@ -720,11 +752,15 @@ h1,h2,h3{
   text-decoration: none;
 }
 
+/* ===== FOOTER ===== */
 .galeria-turma-textofinal {
   padding: 70px;
   font-size: 14px;
 }
 
+/* ===== RESPONSIVIDADE ===== */
+
+/* Tablet - 992px e abaixo */
 @media (max-width: 992px) {
   .galeria-turma-container {
     grid-template-columns: repeat(4, 1fr);
@@ -740,6 +776,10 @@ h1,h2,h3{
 }
 
 @media (max-width: 768px) {
+  .galeria-turma-body {
+    padding-top: 60px; /* Espaço menor para navbar fixa no mobile */
+  }
+
   .galeria-turma-container {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -755,13 +795,218 @@ h1,h2,h3{
 
 @media (max-width: 480px) {
   .galeria-turma-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(100px, 1fr)) !important;
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 5px;
   }
 
-  .galeria-turma-card-container {
+  .galeria-turma-image-container {
+    height: 200px;
     width: 100%;
   }
 
+  .galeria-turma-dia {
+    gap: 10px;
+  }
+
+  .galeria-turma-dia h2 {
+    font-size: 24px;
+    padding: 8px;
+  }
+
+  .galeria-turma-dia p {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .galeria-turma-section {
+    padding: 8px;
+  }
+
+  .galeria-turma-btn {
+    font-size: 20px;
+    padding: 5px 15px;
+  }
+
+  .galeria-turma-cardss h1 {
+    font-size: 24px;
+  }
+
+  .galeria-turma-projeto {
+    font-size: 16px;
+    margin-top: 50px;
+  }
+
+  .galeria-turma-galeria {
+    word-spacing: 50px;
+    font-size: 8px;
+  }
+
+  .text-card-turmagaleria {
+    padding: 12px;
+    bottom: -25px;
+  }
+
+  .text-card-turmagaleria h2 {
+    font-size: 1em;
+  }
+
+  .text-card-turmagaleria p {
+    font-size: 0.9em;
+  }
+
+  .galeria-turma-social-icons a {
+    font-size: 24px;
+    margin: 0 3px;
+  }
+
+  .galeria-turma-botaoprojeto {
+    padding-left: 8px;
+  }
+
+  .galeria-turma-textofinal {
+    padding: 30px 15px;
+    font-size: 11px;
+  }
+
+  .galeria-turma-header {
+    padding: 8px;
+  }
+
+  .galeria-turma-header img {
+    width: 120px;
+  }
+
+  .galeria-turma-search input {
+    width: 200px;
+    padding: 5px;
+  }
+
+  .galeria-turma-margin-top-left-turma-xx,
+  .galeria-turma-margin-top-left-dia-p,
+  .galeria-turma-margin-top-left-projeto-xx,
+  .galeria-turma-margin-top-right-dia-e {
+    margin: 0;
+  }
+}
+
+/* iPhone 12 e similares - 380px e abaixo */
+@media (max-width: 380px) {
+  .galeria-turma-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 1px;
+    max-width: 100% !important;
+  }
+
+  .galeria-turma-projeto {
+    font-size: 10px;
+    margin-top: 25px;
+  }
+
+  .galeria-turma-galeria {
+    word-spacing: 20px;
+    font-size: 6px;
+  }
+
+  .galeria-turma-dia h2 {
+    font-size: 14px;
+    padding: 3px;
+  }
+
+  .galeria-turma-dia p {
+    font-size: 9px;
+    padding: 3px;
+  }
+
+  .galeria-turma-section {
+    padding: 3px;
+    margin: 2px auto;
+  }
+
+  .galeria-turma-btn {
+    font-size: 10px;
+  }
+
+  .galeria-turma-cardss h1 {
+    font-size: 14px;
+  }
+
+  .text-card-turmagaleria {
+    padding: 8px;
+    bottom: -15px;
+  }
+
+  .text-card-turmagaleria h2 {
+    font-size: 0.8em;
+  }
+
+  .text-card-turmagaleria p {
+    font-size: 0.7em;
+  }
+
+  .galeria-turma-social-icons a {
+    font-size: 16px;
+    margin: 0 1px;
+  }
+
+  .galeria-turma-header {
+    padding: 3px;
+  }
+
+  .galeria-turma-header img {
+    width: 80px;
+  }
+
+  .galeria-turma-search input {
+    width: 120px;
+    padding: 3px;
+  }
+
+  .galeria-turma-textofinal {
+    padding: 15px 8px;
+    font-size: 9px;
+  }
+
+  .galeria-turma-image-container {
+    height: 120px;
+    width: 100%;
+  }
+
+  .galeria-turma-margin-top-left-turma-xx,
+  .galeria-turma-margin-top-left-dia-p,
+  .galeria-turma-margin-top-left-projeto-xx,
+  .galeria-turma-margin-top-right-dia-e {
+    margin: 0;
+  }
+}
+
+/* Forçar layout ultra-compacto para 380px */
+@media (max-width: 380px) {
+  * {
+    box-sizing: border-box;
+  }
+  
+  .galeria-turma-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 3px !important;
+    margin: 5px !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  .galeria-turma-card-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
   .galeria-turma-image-container {
     height: 200px;
   }
