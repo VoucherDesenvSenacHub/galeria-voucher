@@ -35,9 +35,7 @@ require_once __DIR__ . "/../../../componentes/button.php";
 
       <div class="form-container-projeto">
       <h1 class="h1-sobre">NOVO PROJETO</h1>
-        <div class="input-grupos">
-          <div class="input-group-sobre">
-
+      
             <h2>DESCRIÇÃO DO PROJETO</h2>
             <div class="Container_Dia">
               <div class="nome-e-descricao">
@@ -63,19 +61,20 @@ require_once __DIR__ . "/../../../componentes/button.php";
             <div class="Container_Dia">
               <textarea class="textarea-field" placeholder="Descrição:"></textarea>
               <img src="" alt="Foto Turma" class="foto-projetoturma-novo" /></div>
-            </div>
 
-          <div class="link-projeto">
-            <input type="text" class="input-projeto" placeholder="Link de Projeto:">
-            <div class="btn-novos-projeto">
-          </div>
-          </div>
-          <div class="button-projeto">
+            <div class="link-projeto">
+              <input type="text" class="input-projeto" placeholder="Link de Projeto:">
+              <div class="btn-novos-projeto">
+            </div>
+            </div>
+            <div class="button-projeto">
               <?php buttonComponent('secondary', 'Cancelar', false); ?>
               <?php buttonComponent('primary', 'Salvar', true); ?>
-        </div>
-        </div>
-      </div>
+            </div>
+
+
+            </div>
+
            
     </main>
   </div>
