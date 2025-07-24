@@ -105,7 +105,6 @@ $projetosTurmas = [
     <section class="galeria-turma-section galeria-turma-projeto">
         <h1 class="galeria-turma-h1 projetos-turma">Projetos da turma</h1>
 
-
         <section class="galeria-turma-senac">
             <h3 class="galeria-turma-h3">Senac Hub Academy</h3>
             <h3 class="galeria-turma-h3">Campo Grande - MS</h3>
@@ -124,7 +123,7 @@ $projetosTurmas = [
 
         <!-- Sistema de Abas Aninhadas para Projetos -->
         <section class="galeria-turma-section galeria-turma-galeria projetos-turma">
-            <h2>Galeria de Projetos</h2>
+            <h1 class="galeria-turma-h1">Galeria de Projetos</h1>
 
             <!-- Navegação das Abas Principais (Projetos) -->
             <div class="galeria-turma-main-tabs-nav">
