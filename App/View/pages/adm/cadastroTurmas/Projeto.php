@@ -1,6 +1,8 @@
 <?php 
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
+require_once __DIR__ . "/../../../componentes/input.php";
+require_once __DIR__ . "/../../../componentes/button.php";
 ?>
 
 <body class="body-cadastro-turmas">
@@ -29,45 +31,52 @@ require_once __DIR__ . "/../../../componentes/head.php";
         <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
       </div>
 
-      <h1 class="h1-sobre">NOVO PROJETO</h1>
+      
 
-      <div class="form-container-sobre">
-        <div class="input-grupos">
-          <div class="input-group-sobre">
-            <input type="text" class="input-field" placeholder="Nome do Projeto:">
-            <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-            <h2> DIA I</h2>
-            <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-            <h2> DIA P</h2>
-            <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-            <h2> DIA D</h2>
-            <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-          </div>
-
-          <div class="projeto-pic">
-          <img src="" alt="Foto Turma" />
-        </div>
-          <div class="projeto-pic">
-          <img src="" alt="Foto Turma" />
-        </div>
-          <div class="projeto-pic">
-          <img src="" alt="Foto Turma" />
-        </div>
-            <div><?php buttonComponent('primary', 'Cancelar', true); ?></div>
-            <div><?php buttonComponent('primary', 'Salvar', true); ?></div>
-
-       
-
-          <div class="link-projeto">
-            <input type="text" class="input-projeto" placeholder="Link de Projeto:">
-            <div class="btn-novos-projeto">
-
-          
-              
+      <div class="form-container-projeto">
+      
+      
+            <h1 class="h1-sobre">DESCRIÇÃO DO PROJETO</h1>
+            <div class="Container_Dia">
+              <div class="nome-e-descricao">
+                <input type="text" class="input-field" placeholder="Nome do Projeto:">
+                <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+              </div>
+                <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png"alt="Foto Turma" class="foto-projetoturma-novo" />
             </div>
-          </div>
-        </div>
-      </div>
+                
+
+            <h1 class="h1-sobre"> DIA I</h1>
+            <div class="Container_Dia">
+              <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+              <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma" class="foto-projetoturma-novo" />
+            </div>
+
+            <h1 class="h1-sobre"> DIA P</h1>
+            <div class="Container_Dia">
+              <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+              <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma" class="foto-projetoturma-novo" />
+            </div>
+
+            <h1 class="h1-sobre"> DIA D</h1>
+            <div class="Container_Dia">
+              <textarea class="textarea-field" placeholder="Descrição:"></textarea>
+              <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma" class="foto-projetoturma-novo" /></div>
+
+            <div class="link-projeto">
+              <input type="text" class="input-projeto" placeholder="Link de Projeto:">
+              <div class="btn-novos-projeto">
+            </div>
+            </div>
+            <div class="button-projeto">
+              <?php buttonComponent('secondary', 'Cancelar', false); ?>
+              <?php buttonComponent('primary', 'Salvar', true); ?>
+            </div>
+
+
+            </div>
+
+           
     </main>
   </div>
 </body>
