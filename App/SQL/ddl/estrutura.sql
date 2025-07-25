@@ -106,6 +106,7 @@ CREATE table if not EXISTS imagem_projeto (
 );
 
 -- Create the 'estatisticas' table
+-- Tabela está estatica então descidi usar COUNT(*)
 CREATE TABLE IF NOT EXISTS estatisticas (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     alunos INT(11) UNSIGNED NOT NULL DEFAULT 0,
