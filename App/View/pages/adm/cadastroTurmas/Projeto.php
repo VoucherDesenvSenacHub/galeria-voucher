@@ -34,33 +34,34 @@ require_once __DIR__ . "/../../../componentes/button.php";
       
 
       <div class="form-container-projeto">
-      <h1 class="h1-sobre">NOVO PROJETO</h1>
       
-            <h2>DESCRIÇÃO DO PROJETO</h2>
+      
+            <h1 class="h1-sobre">DESCRIÇÃO DO PROJETO</h1>
             <div class="Container_Dia">
               <div class="nome-e-descricao">
                 <input type="text" class="input-field" placeholder="Nome do Projeto:">
                 <textarea class="textarea-field" placeholder="Descrição:"></textarea>
               </div>
-                <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+                <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png"alt="Foto Turma" class="foto-projetoturma-novo" />
             </div>
+                
 
-            <h2> DIA I</h2>
+            <h1 class="h1-sobre"> DIA I</h1>
             <div class="Container_Dia">
               <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-              <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+              <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma" class="foto-projetoturma-novo" />
             </div>
 
-            <h2> DIA P</h2>
+            <h1 class="h1-sobre"> DIA P</h1>
             <div class="Container_Dia">
               <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-              <img src="" alt="Foto Turma" class="foto-projetoturma-novo" />
+              <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma" class="foto-projetoturma-novo" />
             </div>
 
-            <h2> DIA D</h2>
+            <h1 class="h1-sobre"> DIA D</h1>
             <div class="Container_Dia">
               <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-              <img src="" alt="Foto Turma" class="foto-projetoturma-novo" /></div>
+              <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma" class="foto-projetoturma-novo" /></div>
 
             <div class="link-projeto">
               <input type="text" class="input-projeto" placeholder="Link de Projeto:">
