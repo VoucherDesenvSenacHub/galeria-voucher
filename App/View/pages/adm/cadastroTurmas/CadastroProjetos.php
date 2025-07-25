@@ -5,7 +5,6 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
 <body class="body-adm">
   <div class="container-adm">
-
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true; // Para páginas de admin
@@ -15,7 +14,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
     <?php
     $imagens = [
       ["titulo" => "IMAGEM DA TURMA", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA I", "quantidade" => 6],
+      ["titulo" => "IMAGEM DO DIA I", "quantidade" => 6], 
       ["titulo" => "IMAGEM DO DIA P", "quantidade" => 6],
       ["titulo" => "IMAGEM DO DIA E", "quantidade" => 6],
     ];
@@ -23,14 +22,11 @@ require_once __DIR__ . "/../../../componentes/head.php";
 
     <main class="main-turmas-turmas">
       <div class="tabs-adm-turmas">
-
         <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
         <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
         <a class="tab-adm-turmas active" href="CadastroProjetos.php">PROJETOS</a>
         <a class="tab-adm-turmas" href="cadastroTurmas.php">DADOS GERAIS</a>
       </div>
-
-
 
       <div class="primaty-button">
         <a href="imagens.php">
@@ -38,20 +34,29 @@ require_once __DIR__ . "/../../../componentes/head.php";
         </a>
       </div>
 
-      <div class="PrimeiroProjeto">
-            <div class="nome-e-descricao">
-              <input type="text" class="input-field" placeholder="Nome do Projeto:">
-              <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-            </div>
-              <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png"alt="Foto Turma" class="foto-projeto" />
+      <div class="card-projeto">
+        <div class="card-content">
+          <div class="card-imagem">
+            <img src="../../../assets/img/turmas/turma-galeria.png" alt="Imagem do Projeto" class="img-projeto">
+          </div>
+          <div class="card-info">
+            <h3 class="projeto-titulo">Projeto 1</h3>
+            <p class="projeto-descricao">Descrição do projeto vai aqui. Este é um exemplo de texto descritivo para o projeto.</p>
+          </div>
+        </div>
       </div>
-
-  </div>
-  </div>
-  </div>
-  </div>
-  </main>
+      <div class="card-projeto">
+        <div class="card-content">
+          <div class="card-imagem">
+            <img src="../../../assets/img/turmas/turma-galeria.png" alt="Imagem do Projeto" class="img-projeto">
+          </div>
+          <div class="card-info">
+            <h3 class="projeto-titulo">Projeto 2</h3>
+            <p class="projeto-descricao">Descrição do projeto vai aqui. Este é um exemplo de texto descritivo para o projeto.</p>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </body>
-
 </html>
