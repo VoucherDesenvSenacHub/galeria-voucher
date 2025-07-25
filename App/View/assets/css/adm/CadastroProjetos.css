@@ -25,3 +25,52 @@
     z-index: 1000;      /* Coloca a imagem em uma camada muito alta, garantindo que fique à frente de outros elementos. Ajuste o valor se necessário. */
   
   }
+
+/* Estilos para o card de projeto */
+.card-projeto {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin: 20px 0; /* Remove margin lateral, mantém apenas vertical */
+  padding: 15px;
+  transition: transform 0.2s ease;
+  max-width: 100%; /* Garante que não ultrapasse a largura do container */
+}
+
+.card-projeto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.card-imagem {
+  flex: 0 0 200px;
+}
+
+.img-projeto {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.projeto-titulo {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.projeto-descricao {
+  color: #666;
+  line-height: 1.5;
+  font-size: 1rem;
+}
