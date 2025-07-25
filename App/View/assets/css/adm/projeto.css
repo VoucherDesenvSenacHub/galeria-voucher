@@ -28,7 +28,7 @@ body {
   padding-left: 1.25rem;
   font-family: var(--font-secondary);
   font-size: 2rem;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .form-container-projeto {
@@ -139,13 +139,15 @@ body {
   font-family: "Poppins", sans-serif;
   margin-left: 0;      /* Garante que não haja margem empurrando da esquerda */
   margin-right: auto;  /* Empurra o elemento o máximo possível para a esquerda, consumindo o espaço restante */
+  width: 80%;
+  height: 150px;
 }
 
 
 
 .foto-projetoturma-novo {
   width: 120px;
-  height: 120px;
+  height: 150px;
   border-radius: 20px;
   background-color: #e5e9e4;
   padding: 10px;
