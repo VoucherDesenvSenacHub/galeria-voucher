@@ -36,3 +36,38 @@
     border: 2px solid var(--accent-color);
     z-index: -1;
 }
+
+/*celular pequeno*/
+@media (max-width: 320px) {
+    
+}
+
+/*celular medio*/
+@media (max-width: 375px) {
+
+}
+
+/*celular grande*/
+@media (max-width: 425px) {
+
+}
+
+/*tablet*/
+@media (max-width: 768px) {
+
+}
+
+/*laptop*/
+@media (max-width: 1024px) {
+
+}
+
+/*laptop largo*/
+@media (max-width: 1440px) {
+
+}
+
+/*4k*/
+@media (max-width: 2560px) {
+    
+}

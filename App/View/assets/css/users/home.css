@@ -40,7 +40,7 @@
 
 /* Estilo para a seção 1 (informações visuais da página)*/
 #secao1 {
-    min-height: 130vh;
+    min-height: 120vh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -89,7 +89,6 @@
 #secao1 .nome-voucher {
     position: relative;
     z-index: 2;
-    text-align: center;
     transform: translateY(-40px);
 }
 
@@ -321,31 +320,24 @@
     }
 }
 
-/* responsividade dos elementos e da página */
-@media (max-width: 376px) {
+/* responsividade celular pequeno */
+@media (max-width: 320px) {
     body {
         overflow-x: hidden;
     }
 
-    #secao1 .nome img {
-        max-width: 150%;
-        /* Reduz o tamanho das imagens */
-        margin: -50% auto;
-        /* Centraliza e adiciona espaçamento */
-        padding: 50%;
-        margin-left: -50%;
+    #secao1 {
+        min-height: 50vh;
     }
 
-    #secao1 .mapa img {
-        position: absolute;
-        left: 20%;
-        max-width: 90%;
+    #secao1 .nome-voucher img {
+        max-width: 200px;
+        width: 75vw;
+        transform: translateY(-10px);
     }
-
-    #secao1 .numero img {
-        position: absolute;
-        left: 30%;
-        max-width: 50%;
+    .mapa-svg-container {
+        width: 100vw;
+        opacity: 0.1;
     }
 
     #secao3 .container2 {
