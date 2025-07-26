@@ -61,15 +61,19 @@
 
 #secao1 .content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .mapa-svg-container {
     position: absolute;
-    top: 15%;
-    left: 55%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 67vw;
+    width: 100%;
     max-width: 830px;
     z-index: 1;
     opacity: 0.20;
@@ -327,17 +331,41 @@
     }
 
     #secao1 {
-        min-height: 50vh;
+        padding: 20px 0;
     }
 
-    #secao1 .nome-voucher img {
-        max-width: 200px;
-        width: 75vw;
-        transform: translateY(-10px);
+    .content {
+        gap: 30px;
+        transform: translateY(-20px);
     }
+
+    .nome-voucher img {
+        max-width: 180px !important;
+        width: 70vw !important; 
+    }
+
     .mapa-svg-container {
-        width: 100vw;
+        width: 150vw;
+        max-width: none;
         opacity: 0.1;
+        top: 45%;
+    }
+
+    .mapa-svg path {
+        stroke-width: 8px !important;
+    }
+
+    .componente_mira {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .mira, .mira1, .mira2 {
+        border-width: 1px !important;
+    }
+
+    #matrix-canvas {
+        font-size: 10px;
     }
 
     #secao3 .container2 {
