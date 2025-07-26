@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../includes/verificarLogin.php";
 ?>
 
 <head>
