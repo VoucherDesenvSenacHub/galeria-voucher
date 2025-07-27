@@ -7,10 +7,6 @@
   border: 0;
   box-sizing: border-box;
 }
-.sair{
-  margin-top: 655px;
-  border-top: 1px solid var(--border-gray);
-}
 
 .sidebar-adm {
   padding-top: 50px;

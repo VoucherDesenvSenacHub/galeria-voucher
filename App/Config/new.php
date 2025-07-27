@@ -52,10 +52,10 @@ function criarBancoEGerarUsuario()
         echo "Tabelas criadas ou já existentes.\n";
 
         // Inserir usuário padrão
-        $email = 'usuario@exemplo.com';
+        $email = 'admin@admin.com';
         $nome = 'Usuário Teste';
         $perfil = 'professor';
-        $senha_texto = 'minhaSenha123';
+        $senha_texto = 'admin';
         $senha_hash = password_hash($senha_texto, PASSWORD_DEFAULT);
 
         // Verificar se já existe

@@ -3,7 +3,7 @@ require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/input.php";
 require_once __DIR__ . "/../../../componentes/button.php";
-require_once __DIR__ . "/../../../includes/verificarLogin.php";
+require_once __DIR__ . "/../../../componentes/adm/auth.php";
 ?>
 
 <body class="body-cadastro-turmas">

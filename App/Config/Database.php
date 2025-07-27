@@ -1,9 +1,10 @@
 <?php
-
-class Database {
-    public static function conectar(): PDO {
+class Database
+{
+    public static function conectar(): PDO
+    {
         $host = 'localhost';
-        $port = '3306';
+        $port = '3308';
         $dbname = 'galeriavoucher';
         $user = 'root';
         $pass = '';
@@ -13,7 +14,8 @@ class Database {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
         } catch (PDOException $e) {
-            die("Erro na conexão com o banco de dados: " . $e->getMessage());
+            // Lança a exceção para ser tratada em outro lugar
+            throw new Exception("Erro ao conectar ao banco de dados.");
         }
     }
 }

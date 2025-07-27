@@ -17,13 +17,20 @@ class UsuarioModel
             WHERE p.email = :email
             LIMIT 1
         ";
+
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':email', $email);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 
+    /**
+     * Valida login pelo email e senha
+     * @param string $email
+     * @param string $senha
+     * @return array|false Retorna dados do usuário sem senha ou false se inválido
+     */
     public function validarLogin(string $email, string $senha): array|false
     {
         $usuario = $this->buscarPorEmail($email);
@@ -33,7 +40,7 @@ class UsuarioModel
         }
 
         if (password_verify($senha, $usuario['senha'])) {
-            unset($usuario['senha']); // Remove a senha do array
+            unset($usuario['senha']);
             return $usuario;
         }
 
