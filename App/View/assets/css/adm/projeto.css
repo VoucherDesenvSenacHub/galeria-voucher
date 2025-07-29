@@ -1,0 +1,227 @@
+body {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  background-color: transparent;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.field-group {
+  background-color: #e8ece8;
+  border: 2px solid black;
+  padding: 10px;
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.h1-sobre {
+  font-weight: bold;
+  max-width: 1200px;
+  width: 100%;
+  margin: 5px 0 20px;
+  padding-left: 0;
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  /* text-align: center; */
+}
+
+.form-container-projeto {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-height: calc(90vh - 100px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background-color: transparent;
+  scroll-snap-type: y mandatory;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.form-container-sobre {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-height: calc(90vh - 100px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background-color: transparent;
+  scroll-snap-type: y mandatory;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.form-container-sobre::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.form-container-sobre::-webkit-scrollbar-thumb {
+  background-color: rgba(150, 150, 150, 0.4); 
+  border-radius: 0.25rem;
+}
+
+.form-container-sobre::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.input-grupos {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container-imagens > * {
+  scroll-snap-align: start;
+}
+
+.input-group-sobre,
+.input-group-sobre-big {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.input-group-sobre-big .input-field,
+.input-group-sobre-big .textarea-field {
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .input-group-sobre,
+  .input-group-sobre-big {
+    flex: 1 1 45%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .input-group-sobre,
+  .input-group-sobre-big {
+    max-width: 500px;
+  }
+}
+
+.input-field {
+  background-color: #d9ddd9;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 10px 15px;
+  font-size: 16px;
+  box-sizing: border-box;
+  width: 345px;
+  max-width: 450px;
+}
+
+.textarea-field {
+  background-color: #d9ddd9;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  box-sizing: border-box;
+  min-height: 120px;
+  resize: none;
+  font-family: "Poppins", sans-serif;
+  margin-left: 0;      /* Garante que não haja margem empurrando da esquerda */
+  margin-right: auto;  /* Empurra o elemento o máximo possível para a esquerda, consumindo o espaço restante */
+  width: 80%;
+  height: 150px;
+}
+
+
+
+.foto-projetoturma-novo {
+  width: 120px;
+  height: 150px;
+  border-radius: 20px;
+  background-color: #e5e9e4;
+  padding: 10px;
+  object-fit: contain;
+  border: 1px solid #333;
+  flex-shrink: 0;
+  position: absolute; /* Tira a imagem do fluxo normal do documento */
+  right: 0;           /* Alinha a imagem à direita do seu contêiner pai posicionado */
+  bottom: 0;             /* Alinha a imagem ao topo do seu contêiner pai posicionado */
+  z-index: 1000;      /* Coloca a imagem em uma camada muito alta, garantindo que fique à frente de outros elementos. Ajuste o valor se necessário. */
+
+}
+
+.link-projeto {
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.input-projeto {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: #cccccc;
+  font-size: 18px;
+  color: #333;
+}
+
+.input-projeto::placeholder {
+  color: #666;
+}
+
+.btn-novos-projeto {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  align-items: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 250px;
+  color: #007b19;
+} 
+
+.btn-imagens {
+  background-color: #a8ff00;
+  color: black;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.Container_Dia {
+  position: relative;
+  display: flex;      /* Torna este um contêiner flexível */
+  flex-direction: row; /* Coloca a descrição e a imagem lado a lado */
+  align-items: flex-start; /* Alinha o topo da descrição e da imagem */
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.button-projeto {
+  display: flex;
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  gap: 20px; /* Adiciona um espaço de 20px entre os botões */
+  margin-top: 10px; 
+}
+
+.nome-e-descricao {
+  display: flex;
+  flex-direction: column; /* Coloca os itens um abaixo do outro */
+  gap: 10px; /* Adiciona um pequeno espaço entre o input e a textarea */
+  flex-grow: 1; /* Permite que este container ocupe o espaço restante */
+}
