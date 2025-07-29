@@ -1,3 +1,8 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .body-user {
     margin: 0px;
     padding: 0px;
@@ -327,6 +332,7 @@
 /* responsividade celular pequeno */
 @media (max-width: 320px) {
     body {
+        max-width: 100%;
         overflow-x: hidden;
     }
 
@@ -345,27 +351,23 @@
     }
 
     .mapa-svg-container {
-        width: 150vw;
+        width: 100vw;
+        /* left: 30vw; */
         max-width: none;
-        opacity: 0.1;
-        top: 45%;
+        opacity: 0.15;
+        top: 15%;
     }
 
     .mapa-svg path {
-        stroke-width: 8px !important;
-    }
-
-    .componente_mira {
-        width: 40px !important;
-        height: 40px !important;
-    }
-
-    .mira, .mira1, .mira2 {
-        border-width: 1px !important;
+        stroke-width: 6px !important;
     }
 
     #matrix-canvas {
         font-size: 10px;
+        width: 100vw;
+        left: 0;
+        right: 0;
+        z-index: 0;
     }
 
     #secao3 .container2 {

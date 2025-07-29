@@ -39,7 +39,32 @@
 
 /*celular pequeno*/
 @media (max-width: 320px) {
-    
+    .componente-mira {
+        width: 35px !important;
+        height: 35px !important;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+    }
+
+    .mira {
+        border-width: 3px !important;
+        top: 49.5vh;
+        left: 12.1vw;
+    }
+
+    .mira1 {
+        border-width: 1.6px !important;
+        left: 11.9vw;
+        top: 48.8px;
+    }
+
+    .mira2 {
+        border-width: 1px !important;
+        top: 49.4vh;
+        left: 0;
+    }
 }
 
 /*celular medio*/

@@ -15,7 +15,7 @@ headerComponent('Página Inicial')
     <section id="secao1">
             <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
-            <canvas id="matrix-canvas"></canvas>
+            <!-- <canvas id="matrix-canvas"></canvas> -->
 
             <div class="content">
                 <div class="nome-voucher">
