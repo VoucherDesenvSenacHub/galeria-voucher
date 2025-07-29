@@ -1,7 +1,11 @@
 <?php
 require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
-headerComponent('Página Inicial')
+headerComponent('Página Inicial');
+
+$estatisticasModel = new EstatisticasModel();
+$resultado = $estatisticasModel->getEstatisticas();
 ?>
 
 <body class="body-user">
@@ -94,9 +98,9 @@ headerComponent('Página Inicial')
                     <?php
                     //dados dinâmicos de exemplo apenas
                     $estatisticas = [
-                        ['valor' => '+500', 'label' => 'DE ALUNOS'],
-                        ['valor' => '+50', 'label' => 'PROJETOS'],
-                        ['valor' => '+5', 'label' => 'POLOS'],
+                        ['valor' => '+' . $resultado['alunos'], 'label' => 'DE ALUNOS'],
+                        ['valor' => '+' . $resultado['projetos'], 'label' => 'PROJETOS'],
+                        ['valor' => $resultado['polos'], 'label' => 'POLOS'],
                         ['valor' => '1200', 'label' => 'CURSO COM HORAS']
                     ];
                     //foreach percorre aray ($estatisticas) e cria os elementos html (div, span, p)

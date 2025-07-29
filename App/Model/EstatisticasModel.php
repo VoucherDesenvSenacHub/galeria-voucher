@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/../Config/Database.php";
 
-class Estatisticas {
+class EstatisticasModel {
 
     private $db;
     private $conn;
@@ -42,10 +42,3 @@ class Estatisticas {
         ];
     }
 }
-
-$estatisticas = new Estatisticas();
-$resultado = $estatisticas->getEstatisticas();
-
-echo "<pre>";
-print_r($resultado);
-echo "</pre>";
