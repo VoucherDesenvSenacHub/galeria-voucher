@@ -368,15 +368,8 @@ html, body {
         left: 0;
         right: 0;
         z-index: 0;
-    }   
-    
-    #secao2 .container {
-        gap: 20px;
-        margin-top: 10%;
-        margin-left: 8%;
-        position: absolute;
     }
-    
+
     #secao3 .container2 {
         padding: 10px;
         text-align: center;
@@ -388,6 +381,12 @@ html, body {
         gap: 15px;
     }
 
+    #secao2 .container {
+        gap: 20px;
+        margin-top: 10%;
+        margin-left: 8%;
+        position: absolute;
+    }
 
     #secao3 .container2 {
         margin-top: 1250px;
@@ -447,23 +446,22 @@ html, body {
         /* Ajusta a altura para a tela pequena */
     }
 
-    
+    nav {
+        justify-content: start;
+    }
+
     .poligono .image-turma:nth-of-type(n + 3) {
         display: none;
     }
-    
+
     /* Ajusta a largura das imagens para melhorar a visualização no celular */
     .poligono .image-turma img {
         width: 100px;
         /* Ajuste conforme necessário */
         height: 100px;
     }
-    
+
     #secao {
         margin-top: 10rem;
-    }
-    
-    nav {
-        justify-content: start;
     }
 }
