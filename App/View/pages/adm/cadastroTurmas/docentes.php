@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 
+headerComponent("Voucher Desenvolvedor - Docentes");
 $currentTab = 'docentes';
 ?>
 
@@ -16,10 +17,10 @@ $currentTab = 'docentes';
 
         <main class="main-turmas-turmas">
             <div class="tabs-adm-turmas">
+                <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : '' ?>"href="cadastroTurmas.php">DADOS GERAIS</a>
+                <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>"href="CadastroProjetos.php">PROJETOS</a>
                 <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>"href="docentes.php">DOCENTES</a>
                 <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>"href="CadastroProjetos.php">PROJETOS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : '' ?>"href="cadastroTurmas.php">DADOS GERAIS</a>
             </div>
 
             <div class="topo-lista-alunos">

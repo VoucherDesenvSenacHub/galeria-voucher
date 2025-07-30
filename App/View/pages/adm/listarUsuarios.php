@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../../componentes/head.php";
+headerComponent("Voucher Desenvolvedor - Pessoas");
 ?>
 
 <head>
