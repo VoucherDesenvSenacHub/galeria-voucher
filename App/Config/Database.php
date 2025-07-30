@@ -5,7 +5,7 @@ class Database
     {
         $host = 'localhost';
         $port = '3306';
-        $dbname = 'galeriavoucher';
+        $dbname = 'galeria_voucher';
         $user = 'root';
         $pass = '';
 
