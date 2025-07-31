@@ -18,11 +18,6 @@ if ($classificacao === 'aluno') {
         <div id="pessoas-selecionadas"></div>
         <button class="primary-button" type="submit">Cadastrar</button>
     </form>
-    <script>
-      // Garante que o input gerado pelo componente tenha o ID necessário
-      const inputGerado = document.querySelector('input[name="pesquisar-pessoa"]');
-      if (inputGerado) inputGerado.id = 'pesquisar-pessoa';
-    </script>
 <?php
 } elseif ($classificacao === 'professor') {
 ?>
@@ -35,12 +30,13 @@ if ($classificacao === 'aluno') {
         <div id="pessoas-selecionadas"></div>
         <button class="primary-button" type="submit">Cadastrar</button>
     </form>
-    <script>
-      const inputGerado = document.querySelector('input[name="pesquisar-pessoa"]');
-      if (inputGerado) inputGerado.id = 'pesquisar-pessoa';
-    </script>
 <?php
 } else {
     echo '<p>Nenhum formulário disponível para esta classificação.</p>';
 }
 ?>
+
+<script>
+  const inputGerado = document.querySelector('input[name="pesquisar-pessoa"]');
+  if (inputGerado) inputGerado.id = 'pesquisar-pessoa';
+</script>

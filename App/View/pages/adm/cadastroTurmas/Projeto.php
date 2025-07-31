@@ -4,6 +4,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/input.php";
 require_once __DIR__ . "/../../../componentes/button.php";
 headerComponent("Voucher Desenvolvedor - Criar Projeto");
+require_once __DIR__ . "/../../../componentes/adm/auth.php";
 ?>
 
 <body class="body-cadastro-turmas">

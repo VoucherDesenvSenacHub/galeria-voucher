@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Turma");
+require_once __DIR__ . "/../../../componentes/adm/auth.php";
 ?>
 
 <body class="body-adm">

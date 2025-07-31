@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Projetos");
+require_once __DIR__ . "/../../../componentes/adm/auth.php";
 ?>
 <link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>adm/CadastroProjetos.css">
 
