@@ -15,7 +15,7 @@ headerComponent('Página Inicial')
     <section id="secao1">
             <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
-            <!-- <canvas id="matrix-canvas"></canvas> -->
+            <canvas id="matrix-canvas"></canvas>
 
             <div class="content">
                 <div class="nome-voucher">
@@ -118,7 +118,27 @@ headerComponent('Página Inicial')
         </section>
 
         <!-- Seção 4 (transição da página inicial para a página de "turmas" e animação dos losângos) -->
+        
         <section id="secao4">
+            <div class="call-to-action">
+                <p>SELECIONE UMA TURMA E <span>INSPIRI_SE</span></p>
+            </div>
+
+            <div class="diamond-grid">
+                <?php
+                //cria 17 poligonos sempre
+                for ($i = 0; $i < 17; $i++) { 
+                ?>
+                    <div class="image-turma">
+                        <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER']?>galeria-turma.php">
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG']?>utilitarios/foto.png">
+                        </a>
+                    </div>
+                <?php } ?>
+            </div>
+        </section>
+        
+        <!-- <section id="secao4">
 
             <div class="call-to-action">
                 <p>SELECIONE UMA TURMA E <span>INSPIRE-SE</span></p>
@@ -160,7 +180,7 @@ headerComponent('Página Inicial')
             </div>
 
             </div>
-        </section>
+        </section> -->
     </main>
     <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
 

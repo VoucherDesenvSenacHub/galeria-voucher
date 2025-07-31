@@ -331,25 +331,39 @@ html, body {
 
 /* responsividade celular pequeno */
 @media (max-width: 320px) {
-    body {
+    .body-user {
         max-width: 100%;
         overflow-x: hidden;
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.97),
+            rgba(0, 0, 0, 0.9),
+            #0d9c0d,
+            #0d9c0d,
+            #0d9c0d,
+            #0d9c0d,
+            #0d9c0d,
+            #0d9c0d,
+            rgba(0, 0, 0, 0.96),
+            rgba(0, 0, 0, 0.96),
+            rgba(0, 0, 0, 0.95),
+            rgba(0, 0, 0, 0.9));
     }
 
+    /*SECTION 1 RESPONSIVIDADE*/
     #secao1 {
         padding: 20px 0;
     }
-
+    
     .content {
         gap: 30px;
         transform: translateY(-20px);
     }
-
+    
     .nome-voucher img {
         max-width: 180px !important;
         width: 70vw !important; 
     }
-
+    
     .mapa-svg-container {
         width: 100vw;
         /* left: 30vw; */
@@ -357,11 +371,11 @@ html, body {
         opacity: 0.15;
         top: 15%;
     }
-
+    
     .mapa-svg path {
         stroke-width: 6px !important;
     }
-
+    
     #matrix-canvas {
         font-size: 10px;
         width: 100vw;
@@ -370,6 +384,17 @@ html, body {
         z-index: 0;
     }
 
+    /*SECTION 2 RESPONSIVIDADE*/
+    #secao2 .container {
+        gap: 20px;
+        margin-top: 10%;
+        /* margin-left: 8%; */
+        position: absolute;
+        max-width: 275px;
+    }
+
+    /*SECTION 3 RESPONSIVIDADE*/
+    
     #secao3 .container2 {
         padding: 10px;
         text-align: center;
@@ -381,21 +406,14 @@ html, body {
         gap: 15px;
     }
 
-    #secao2 .container {
-        gap: 20px;
-        margin-top: 10%;
-        margin-left: 8%;
-        position: absolute;
-    }
-
     #secao3 .container2 {
-        margin-top: 1250px;
+        margin-top: 525px;
         z-index: 1;
         gap: 1%;
     }
 
     #secao3 .container2 .stats {
-        gap: 0;
+        gap: 45px;
     }
 
     #secao3 .container2 h1 {
@@ -446,10 +464,6 @@ html, body {
         /* Ajusta a altura para a tela pequena */
     }
 
-    nav {
-        justify-content: start;
-    }
-
     .poligono .image-turma:nth-of-type(n + 3) {
         display: none;
     }
@@ -459,9 +473,5 @@ html, body {
         width: 100px;
         /* Ajuste conforme necessário */
         height: 100px;
-    }
-
-    #secao {
-        margin-top: 10rem;
     }
 }
