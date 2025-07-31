@@ -2,7 +2,6 @@
    require_once(__DIR__ . '/../../componentes/head.php');
 headerComponent("Voucher Desenvolvedor - Login");
 
-<?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
