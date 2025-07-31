@@ -2,8 +2,9 @@
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/input.php";
 require_once __DIR__ . "/../../componentes/button.php";
+require_once __DIR__ . "/../../componentes/adm/auth.php";
 
-headerComponent('Cadastro de Usuários')
+headerComponent('Cadastro de Pessoa')
 ?>
 
 <body class="body-cadastrar-users">
