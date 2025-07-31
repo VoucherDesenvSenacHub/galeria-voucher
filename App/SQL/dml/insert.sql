@@ -62,13 +62,13 @@ INSERT INTO pessoa (email, nome, linkedin, github, perfil) VALUES
 -- 5. INSERTS PARA TABELA 'usuario' (senhas criptografadas)
 INSERT INTO usuario (pessoa_id, senha) VALUES 
 -- Administradores
-((SELECT pessoa_id FROM pessoa WHERE email = 'admin@adm.com'), '123'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'admin@adm.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC'),
 
 -- Professores
-((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), '123'),
-((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), '123'),
-((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), '123'),
-((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), '123');
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC');
 
 -- 6. INSERTS PARA TABELA 'turma'
 INSERT INTO turma (nome, descricao, data_inicio, data_fim, polo_id) VALUES 
