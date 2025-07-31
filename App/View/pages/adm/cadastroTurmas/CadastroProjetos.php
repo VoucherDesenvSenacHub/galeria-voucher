@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
+headerComponent("Voucher Desenvolvedor - Projetos");
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
 ?>
 <link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>adm/CadastroProjetos.css">
@@ -24,10 +25,10 @@ require_once __DIR__ . "/../../../componentes/adm/auth.php";
 
     <main class="main-turmas-turmas">
       <div class="tabs-adm-turmas">
+        <a class="tab-adm-turmas" href="cadastroTurmas.php">DADOS GERAIS</a>
+        <a class="tab-adm-turmas active" href="CadastroProjetos.php">PROJETOS</a>
         <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
         <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
-        <a class="tab-adm-turmas active" href="CadastroProjetos.php">PROJETOS</a>
-        <a class="tab-adm-turmas" href="cadastroTurmas.php">DADOS GERAIS</a>
       </div>
 
       <div class="primaty-button">
