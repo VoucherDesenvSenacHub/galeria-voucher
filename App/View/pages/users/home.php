@@ -1,26 +1,18 @@
 <?php
-// Inclui o novo Model e o Head
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../../Model/TurmaModel.php";
-
-// Instancia o modelo e busca as turmas
-try {
-    $turmaModel = new TurmaModel();
-    $turmas = $turmaModel->buscarTurmasParaGaleria();
-} catch (Exception $e) {
-    // Em caso de erro, inicializa como um array vazio para não quebrar a página
-    $turmas = [];
-    error_log($e->getMessage()); // Loga o erro para depuração
-}
+require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
 headerComponent('Página Inicial');
+
+$estatisticasModel = new EstatisticasModel();
+$resultado = $estatisticasModel->getEstatisticas();
 ?>
 
 <body class="body-user">
-    <?php 
-        $isAdmin = false; // Para páginas de users
-        require_once __DIR__ . "/./../../componentes/nav.php" 
-    ?>
+    <?php
+    $isAdmin = false; // Para páginas de users
+    require_once __DIR__ . "/./../../componentes/nav.php"
+        ?>
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
     <main class="main-user">
@@ -54,7 +46,7 @@ headerComponent('Página Inicial');
                         Desenvolvedor.
                         Oferecemos vagas gratuitas para o curso Técnico em Desenvolvimento de Sistemas,
                         com carga horária de 1.200 horas.
-                    </p> 
+                    </p>
                     <p>
                         Beneficie-se de uma experiência prática com interação direta
                         com empresas de tecnologia e, a partir do sexto mês, tenha a chance de conseguir um estágio
@@ -83,7 +75,7 @@ headerComponent('Página Inicial');
                     <h2>POR QUE FAZER ?</h2>
                     <p>
                         A área de Tecnologia da Informação está em expansão, com uma alta demanda por profissionais de
-                        Desenvolvimento de Sistemas. 
+                        Desenvolvimento de Sistemas.
                     </p>
                     <p>
                         Especializar-se nessa área oferece maior empregabilidade, inclusive
@@ -105,10 +97,14 @@ headerComponent('Página Inicial');
                 <div class="stats">
                     <?php
                     //dados dinâmicos de exemplo apenas
+                    $numAlunos = $resultado['alunos'];
+                    $numProjetos = $resultado['projetos'];
+                    $numPolos = $resultado['polos'];
+
                     $estatisticas = [
-                        ['valor' => '+500', 'label' => 'DE ALUNOS'],
-                        ['valor' => '+50', 'label' => 'PROJETOS'],
-                        ['valor' => '+5', 'label' => 'POLOS'],
+                        ['valor' => $numAlunos > 100 ? '+' . floor(num: $numAlunos / 100) * 100 : $numAlunos, 'label' => 'DE ALUNOS'],
+                        ['valor' => $numProjetos > 10 ? '+' . floor(num: $numProjetos / 10) * 10 : $numProjetos, 'label' => 'PROJETOS'],
+                        ['valor' => $numPolos, 'label' => 'POLOS'],
                         ['valor' => '1200', 'label' => 'CURSO COM HORAS']
                     ];
                     //foreach percorre aray ($estatisticas) e cria os elementos html (div, span, p)
@@ -116,9 +112,9 @@ headerComponent('Página Inicial');
                     //alterar a estrutura do html, apenas conectando ao banco de dados
                     foreach ($estatisticas as $estatistica) {
                         echo "<div>
-                                        <span>{$estatistica['valor']}</span>
-                                        <p>{$estatistica['label']}</p>
-                                    </div>";
+                                <span>{$estatistica['valor']}</span>
+                                <p>{$estatistica['label']}</p>
+                            </div>";
                     }
                     ?>
                 </div>
@@ -127,40 +123,46 @@ headerComponent('Página Inicial');
 
         <!-- Seção 4 (transição da página inicial para a página de "turmas" e animação dos losângos) -->
         <section id="secao4">
+
             <div class="call-to-action">
                 <p>SELECIONE UMA TURMA E <span>INSPIRE-SE</span></p>
             </div>
 
             <div class="poligono">
-                <?php if (!empty($turmas)): ?>
-                    <?php
-                        // Lógica para dividir as turmas em 3 linhas para o layout de losangos
-                        $turmasPorLinha1 = ceil(count($turmas) / 3);
-                        $turmasPorLinha2 = ceil((count($turmas) - $turmasPorLinha1) / 2);
-                        $turmasPorLinha3 = count($turmas) - $turmasPorLinha1 - $turmasPorLinha2;
 
-                        $linhas = [
-                            array_slice($turmas, 0, $turmasPorLinha1),
-                            array_slice($turmas, $turmasPorLinha1, $turmasPorLinha2),
-                            array_slice($turmas, $turmasPorLinha1 + $turmasPorLinha2)
-                        ];
-                    ?>
-
-                    <?php foreach ($linhas as $linha): ?>
-                        <div class="image-row">
-                            <?php foreach ($linha as $turma): ?>
-                                <div class='image-turma'>
-                                    <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
-                                        <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
-                                    </a>
-                                </div>
-                            <?php endforeach; ?>
+                <div class="image-row">
+                    <?php for ($i = 0; $i <= 5; $i++) { ?>
+                        <div class='image-turma'>
+                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            </a>
                         </div>
-                    <?php endforeach; ?>
+                    <?php } ?>
+                </div>
 
-                <?php else: ?>
-                    <p style="text-align: center; font-size: 1.2rem; color: #fff;">Nenhuma turma encontrada.</p>
-                <?php endif; ?>
+                <div class="image-row">
+                    <?php for ($i = 0; $i <= 4; $i++) { ?>
+                        <div class='image-turma'>
+                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            </a>
+                        </div>
+                    <?php } ?>
+
+                </div>
+
+                <div class="image-row">
+                    <?php for ($i = 0; $i <= 5; $i++) { ?>
+                        <div class='image-turma'>
+                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            </a>
+                        </div>
+                    <?php } ?>
+                </div>
+
+            </div>
+
             </div>
         </section>
     </main>
