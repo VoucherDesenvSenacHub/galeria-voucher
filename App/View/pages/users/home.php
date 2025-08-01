@@ -1,14 +1,18 @@
 <?php
 require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
-headerComponent('Página Inicial')
+headerComponent('Página Inicial');
+
+$estatisticasModel = new EstatisticasModel();
+$resultado = $estatisticasModel->getEstatisticas();
 ?>
 
 <body class="body-user">
-    <?php 
-        $isAdmin = false; // Para páginas de users
-        require_once __DIR__ . "/./../../componentes/nav.php" 
-    ?>
+    <?php
+    $isAdmin = false; // Para páginas de users
+    require_once __DIR__ . "/./../../componentes/nav.php"
+        ?>
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
     <main class="main-user">
@@ -42,7 +46,7 @@ headerComponent('Página Inicial')
                         Desenvolvedor.
                         Oferecemos vagas gratuitas para o curso Técnico em Desenvolvimento de Sistemas,
                         com carga horária de 1.200 horas.
-                    </p> 
+                    </p>
                     <p>
                         Beneficie-se de uma experiência prática com interação direta
                         com empresas de tecnologia e, a partir do sexto mês, tenha a chance de conseguir um estágio
@@ -71,7 +75,7 @@ headerComponent('Página Inicial')
                     <h2>POR QUE FAZER ?</h2>
                     <p>
                         A área de Tecnologia da Informação está em expansão, com uma alta demanda por profissionais de
-                        Desenvolvimento de Sistemas. 
+                        Desenvolvimento de Sistemas.
                     </p>
                     <p>
                         Especializar-se nessa área oferece maior empregabilidade, inclusive
@@ -93,10 +97,14 @@ headerComponent('Página Inicial')
                 <div class="stats">
                     <?php
                     //dados dinâmicos de exemplo apenas
+                    $numAlunos = $resultado['alunos'];
+                    $numProjetos = $resultado['projetos'];
+                    $numPolos = $resultado['polos'];
+
                     $estatisticas = [
-                        ['valor' => '+500', 'label' => 'DE ALUNOS'],
-                        ['valor' => '+50', 'label' => 'PROJETOS'],
-                        ['valor' => '+5', 'label' => 'POLOS'],
+                        ['valor' => $numAlunos > 100 ? '+' . floor(num: $numAlunos / 100) * 100 : $numAlunos, 'label' => 'DE ALUNOS'],
+                        ['valor' => $numProjetos > 10 ? '+' . floor(num: $numProjetos / 10) * 10 : $numProjetos, 'label' => 'PROJETOS'],
+                        ['valor' => $numPolos, 'label' => 'POLOS'],
                         ['valor' => '1200', 'label' => 'CURSO COM HORAS']
                     ];
                     //foreach percorre aray ($estatisticas) e cria os elementos html (div, span, p)
@@ -104,9 +112,9 @@ headerComponent('Página Inicial')
                     //alterar a estrutura do html, apenas conectando ao banco de dados
                     foreach ($estatisticas as $estatistica) {
                         echo "<div>
-                                        <span>{$estatistica['valor']}</span>
-                                        <p>{$estatistica['label']}</p>
-                                    </div>";
+                                <span>{$estatistica['valor']}</span>
+                                <p>{$estatistica['label']}</p>
+                            </div>";
                     }
                     ?>
                 </div>
