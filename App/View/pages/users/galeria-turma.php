@@ -1,8 +1,31 @@
 <?php
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Model/TurmaModel.php"; // Inclui o novo Model
 
-headerComponent('Galeria da Turma');
+// Pega o ID da turma a partir da URL. Se não existir, define como 0.
+$turma_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$turma = null;
+
+if ($turma_id > 0) {
+    try {
+        $turmaModel = new TurmaModel();
+        $turma = $turmaModel->buscarTurmaPorId($turma_id);
+    } catch (Exception $e) {
+        error_log($e->getMessage()); // Loga o erro
+    }
+}
+
+// Se a turma não for encontrada, você pode redirecionar ou mostrar uma mensagem de erro
+if (!$turma) {
+    header("Location: turmas.php"); // Opção 1: Redirecionar
+    exit;
+    echo "<p>Turma não encontrada!</p>"; // Opção 2: Mostrar mensagem
+    exit;
+}
+
+
+headerComponent('Galeria da Turma - ' . htmlspecialchars($turma['nome']));
 
 // Lista de projetos principais (escalável para futuros projetos)
 $projetosTurmas = [
