@@ -1,19 +1,7 @@
 <?php
-// Inclui o novo Model e o Head
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../../Model/TurmaModel.php";
 
-// Instancia o modelo e busca as turmas
-try {
-    $turmaModel = new TurmaModel();
-    $turmas = $turmaModel->buscarTurmasParaGaleria();
-} catch (Exception $e) {
-    // Em caso de erro, inicializa como um array vazio para não quebrar a página
-    $turmas = [];
-    error_log($e->getMessage()); // Loga o erro para depuração
-}
-
-headerComponent('Página Inicial');
+headerComponent('Página Inicial')
 ?>
 
 <body class="body-user">
@@ -127,40 +115,46 @@ headerComponent('Página Inicial');
 
         <!-- Seção 4 (transição da página inicial para a página de "turmas" e animação dos losângos) -->
         <section id="secao4">
+
             <div class="call-to-action">
                 <p>SELECIONE UMA TURMA E <span>INSPIRE-SE</span></p>
             </div>
 
             <div class="poligono">
-                <?php if (!empty($turmas)): ?>
-                    <?php
-                        // Lógica para dividir as turmas em 3 linhas para o layout de losangos
-                        $turmasPorLinha1 = ceil(count($turmas) / 3);
-                        $turmasPorLinha2 = ceil((count($turmas) - $turmasPorLinha1) / 2);
-                        $turmasPorLinha3 = count($turmas) - $turmasPorLinha1 - $turmasPorLinha2;
 
-                        $linhas = [
-                            array_slice($turmas, 0, $turmasPorLinha1),
-                            array_slice($turmas, $turmasPorLinha1, $turmasPorLinha2),
-                            array_slice($turmas, $turmasPorLinha1 + $turmasPorLinha2)
-                        ];
-                    ?>
-
-                    <?php foreach ($linhas as $linha): ?>
-                        <div class="image-row">
-                            <?php foreach ($linha as $turma): ?>
-                                <div class='image-turma'>
-                                    <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
-                                        <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
-                                    </a>
-                                </div>
-                            <?php endforeach; ?>
+                <div class="image-row">
+                    <?php for ($i = 0; $i <= 5; $i++) { ?>
+                        <div class='image-turma'>
+                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            </a>
                         </div>
-                    <?php endforeach; ?>
+                    <?php } ?>
+                </div>
 
-                <?php else: ?>
-                    <p style="text-align: center; font-size: 1.2rem; color: #fff;">Nenhuma turma encontrada.</p>
-                <?php endif; ?>
+                <div class="image-row">
+                    <?php for ($i = 0; $i <= 4; $i++) { ?>
+                        <div class='image-turma'>
+                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            </a>
+                        </div>
+                    <?php } ?>
+
+                </div>
+
+                <div class="image-row">
+                    <?php for ($i = 0; $i <= 5; $i++) { ?>
+                        <div class='image-turma'>
+                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
+                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
+                            </a>
+                        </div>
+                    <?php } ?>
+                </div>
+
+            </div>
+
             </div>
         </section>
     </main>
