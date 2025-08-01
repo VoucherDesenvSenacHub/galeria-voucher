@@ -98,8 +98,8 @@ $resultado = $estatisticasModel->getEstatisticas();
                     <?php
                     //dados dinâmicos de exemplo apenas
                     $estatisticas = [
-                        ['valor' => '+' . $resultado['alunos'], 'label' => 'DE ALUNOS'],
-                        ['valor' => '+' . $resultado['projetos'], 'label' => 'PROJETOS'],
+                        ['valor' => '+' . floor($resultado['alunos'] / 100) * 100, 'label' => 'DE ALUNOS'],
+                        ['valor' => '+' . floor($resultado['projetos'] / 10) * 10, 'label' => 'PROJETOS'],
                         ['valor' => $resultado['polos'], 'label' => 'POLOS'],
                         ['valor' => '1200', 'label' => 'CURSO COM HORAS']
                     ];
