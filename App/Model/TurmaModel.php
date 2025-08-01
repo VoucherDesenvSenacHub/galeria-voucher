@@ -41,4 +41,29 @@ class TurmaModel extends BaseModel
         $stmt->execute([':id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Busca todas as turmas com o nome do respectivo polo, ordenadas alfabeticamente.
+     * @return array
+     */
+    public function buscarTodasTurmasComPolo(): array
+    {
+        $query = "
+            SELECT 
+                t.turma_id,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO
+            FROM 
+                turma t
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+            ORDER BY 
+                t.nome ASC
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
