@@ -364,11 +364,16 @@ html, body {
         width: 70vw !important; 
     }
     
+    #secao1 .nome-voucher {
+        position: inherit;
+        transform: translateY(-64px);
+        left: 10px;
+    }
+
     .mapa-svg-container {
         width: 100vw;
-        /* left: 30vw; */
         max-width: none;
-        opacity: 0.15;
+        opacity: 0.6;
         top: 15%;
     }
     
@@ -474,4 +479,5 @@ html, body {
         /* Ajuste conforme necessário */
         height: 100px;
     }
+
 }
