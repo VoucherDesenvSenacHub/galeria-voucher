@@ -1,19 +1,21 @@
 <?php
-
 class Database
 {
-
-    static function connect()
+    public static function conectar(): PDO
     {
         $host = 'localhost';
         $port = '3306';
-        $username = 'root';
-        $password = '';
-        $database = 'galeria_voucher';
+        $dbname = 'galeria_voucher';
+        $user = 'root';
+        $pass = '';
 
-        $conectionUrl = "mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4";
-
-        return new \PDO($conectionUrl, $username, $password);
+        try {
+            $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4", $user, $pass);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            return $pdo;
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao conectar ao banco de dados: " . $e->getMessage());
+        }
     }
-
 }

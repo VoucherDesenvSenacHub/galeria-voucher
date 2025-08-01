@@ -73,6 +73,16 @@
     width: 100%;
 }
 
+.erro-geral {
+    display: flex;
+    position: absolute;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    z-index: 2;
+    margin-top: 350px;
+}
+
 .main-login .form-action button {
     padding: 12px 30px;
     background-color: #aEFF40;

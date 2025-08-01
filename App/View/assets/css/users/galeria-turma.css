@@ -138,7 +138,7 @@
   padding: 11px;
   margin: 0;
 }
-h1
+
 .galeria-turma-header img {
   width: 9.375rem; /* 150px */
   height: auto;
@@ -206,6 +206,7 @@ h1
   margin-bottom: 0.625rem; /* 10px */
   text-transform: uppercase;
   font-weight: normal;
+
 }
 
 .galeria-turma-section p {
@@ -243,7 +244,8 @@ h1
 }
 
 .projetos-turma {
-  margin: 50px 0;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 /* ===== ESTILOS PARA ABAS PRINCIPAIS (PROJETOS) ===== */
@@ -367,7 +369,6 @@ h1
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin: 80px 0px;
 }
 
 .galeria-turma-sub-tab-btn {
