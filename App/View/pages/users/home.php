@@ -121,7 +121,7 @@ headerComponent('Página Inicial')
         
         <section id="secao4">
             <div class="call-to-action">
-                <p>SELECIONE UMA TURMA E <span>INSPIRI_SE</span></p>
+                <p>SELECIONE UMA TURMA E <span>INSPIRE_SE</span></p>
             </div>
 
             <div class="diamond-grid">
@@ -138,49 +138,6 @@ headerComponent('Página Inicial')
             </div>
         </section>
         
-        <!-- <section id="secao4">
-
-            <div class="call-to-action">
-                <p>SELECIONE UMA TURMA E <span>INSPIRE-SE</span></p>
-            </div>
-
-            <div class="poligono">
-
-                <div class="image-row">
-                    <?php for ($i = 0; $i <= 5; $i++) { ?>
-                        <div class='image-turma'>
-                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
-                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
-                            </a>
-                        </div>
-                    <?php } ?>
-                </div>
-
-                <div class="image-row">
-                    <?php for ($i = 0; $i <= 4; $i++) { ?>
-                        <div class='image-turma'>
-                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
-                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
-                            </a>
-                        </div>
-                    <?php } ?>
-
-                </div>
-
-                <div class="image-row">
-                    <?php for ($i = 0; $i <= 5; $i++) { ?>
-                        <div class='image-turma'>
-                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
-                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
-                            </a>
-                        </div>
-                    <?php } ?>
-                </div>
-
-            </div>
-
-            </div>
-        </section> -->
     </main>
     <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
 

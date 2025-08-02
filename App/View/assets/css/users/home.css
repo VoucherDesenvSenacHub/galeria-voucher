@@ -250,83 +250,78 @@ html, body {
         }
     }
 }
-
+/*=============================    SEÇÃO 4     ==================================*/
 #secao4 {
+    padding: 60px 20px;
+    display: flex;
     flex-direction: column;
-    padding-top: 10rem;
+    align-items: center;
+    justify-content: center;
+}
 
-    .call-to-action {
-        font-family: var(--font-secondary);
-        margin-top: 2remx;
-        font-size: 2.5em;
-        color: white;
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
-    }
+/* --- titulo --- */
+#secao4 .call-to-action {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    text-align: center;
+    margin: 0 0 40px 0; /* Espaçamento zerado nas laterais e embaixo */
+}
 
-    .call-to-action span {
-        font-family: "Bebas Neue", sans-serif;
-        color: #abfa3d;
-        font-weight: bold;
-        cursor: pointer;
-        /* text-shadow: 0 0 10px rgba(67, 204, 40, 0.5),
-                      0 0 20px rgba(67, 204, 40, 0.5),
-                      0 0 30px rgba(67, 204, 40, 0.5),
-                      0 0 40px rgba(67, 204, 40, 0.5); */
-    }
+#secao4 .call-to-action span {
+    color: #abfa3d;
+    font-weight: bold;
+}
 
-    .poligono {
-        display: flex;
-        flex-direction: column;
-        /* Alinha as linhas de imagens em coluna */
-        justify-content: center;
-        /* Centraliza horizontalmente */
-        align-items: center;
-        /* Centraliza verticalmente */
-        margin: 10rem;
-        /* Remove margens padrão */
-        background-color: transparent;
-        /* Cor de fundo */
-        border-radius: 10px;
+/* --- o container da grade de losangos --- */
+.diamond-grid {
+    display: grid;
+    /* Define 4 colunas como base para o layout 4-3-4 */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    width: 100%;
+    padding-bottom: 30px;
+}
 
-        .image-row {
-            display: flex;
-            justify-content: center;
-            /* Centraliza as imagens dentro da linha */
-            flex-wrap: wrap;
-            /* Permite que as imagens quebrem para a linha seguinte se necessário */
-            gap: 2px;
-            /* Adiciona espaço entre as imagens */
-        }
+/* Cria o recuo para a segunda linha; a segunda linha começa no 5º item. Dizemos para ele começar na 2ª coluna da grade. */
+.image-turma:nth-child(5),
+.image-turma:nth-child(6),
+.image-turma:nth-child(7) {
+    transform: translateX(calc(50% + 2.5px));
+}
 
-        .image-turma {
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            background-image: url("img/foto.png");
-            padding: 5px;
-            margin-left: 2px;
-            display: inline-block;
-            max-width: 140px;
-            /* Define a largura do contêiner */
-            margin-top: -70px;
-            transition: .5s;
-        }
+.image-turma:nth-child(8) {
+    grid-column-start: 1;
+}
 
-        .image-turma:hover {
-            z-index: 2;
-            transform: scale(1.1);
-        }
+.image-turma:nth-child(n+5) {
+    margin-top: -30px;
+}
 
-        .image-turma img {
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            width: 140px;
-            /* width of container */
-            height: 140px;
-            /* height of container */
-            object-fit: cover;
-            display: block;
-        }
-    }
+/* Mostra apenas 11 itens (4+3+4), esconde todos os itens a partir do 12º. */
+.image-turma:nth-child(n + 12) {
+    display: none;
+}
+
+/* --- Losango e Imagem --- */
+
+.image-turma {
+    aspect-ratio: 1 / 1; 
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transition: transform 0.3s ease;
+}
+
+.image-turma a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.image-turma img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* responsividade celular pequeno */
