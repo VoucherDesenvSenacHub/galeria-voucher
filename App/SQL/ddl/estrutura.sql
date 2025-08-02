@@ -84,8 +84,28 @@ CREATE table if not EXISTS aluno_turma (
     UNIQUE KEY (pessoa_id, turma_id)
 );
 
--- Create the 'projeto' table
-CREATE table if not EXISTS projeto (
+-- -- Create the 'projeto' table
+-- CREATE table if not EXISTS projeto (
+--     projeto_id INT AUTO_INCREMENT PRIMARY KEY,
+--     nome VARCHAR(255) NOT NULL,
+--     descricao TEXT,
+--     link VARCHAR(255),
+--     turma_id INT NOT NULL,
+--     FOREIGN KEY (turma_id) REFERENCES turma(turma_id)
+-- );
+
+-- -- Create the 'imagem_projeto' table if not EXISTS (junction table if not EXISTS for projetos and imagens)
+-- CREATE table if not EXISTS imagem_projeto (
+--     imagem_projeto_id INT AUTO_INCREMENT PRIMARY KEY,
+--     imagem_id INT NOT NULL,
+--     url VARCHAR(255) NOT NULL,
+--     projeto_id INT NOT NULL,
+--     FOREIGN KEY (imagem_id) REFERENCES imagem(imagem_id),
+--     FOREIGN KEY (projeto_id) REFERENCES projeto(projeto_id)
+-- );
+
+-- Manter: Tabela projeto
+CREATE TABLE IF NOT EXISTS projeto (
     projeto_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     descricao TEXT,
@@ -94,12 +114,23 @@ CREATE table if not EXISTS projeto (
     FOREIGN KEY (turma_id) REFERENCES turma(turma_id)
 );
 
--- Create the 'imagem_projeto' table if not EXISTS (junction table if not EXISTS for projetos and imagens)
-CREATE table if not EXISTS imagem_projeto (
-    imagem_projeto_id INT AUTO_INCREMENT PRIMARY KEY,
+-- ⚠️ ALTERAÇÃO: Renomeando e ajustando imagem_projeto para imagem_projeto_dia
+DROP TABLE IF EXISTS imagem_projeto;
+
+CREATE TABLE IF NOT EXISTS imagem_projeto_dia (
+    imagem_projeto_dia_id INT AUTO_INCREMENT PRIMARY KEY,
     imagem_id INT NOT NULL,
     url VARCHAR(255) NOT NULL,
-    projeto_id INT NOT NULL,
+    projeto_dia_id INT NOT NULL,
     FOREIGN KEY (imagem_id) REFERENCES imagem(imagem_id),
+    FOREIGN KEY (projeto_dia_id) REFERENCES projeto_dia(projeto_dia_id)
+);
+
+-- ✅ NOVA: Tabela projeto_dia
+CREATE TABLE IF NOT EXISTS projeto_dia (
+    projeto_dia_id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_dia ENUM('I', 'P', 'E') NOT NULL,
+    descricao TEXT,
+    projeto_id INT NOT NULL,
     FOREIGN KEY (projeto_id) REFERENCES projeto(projeto_id)
 );
