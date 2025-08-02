@@ -19,7 +19,7 @@ require_once __DIR__ . "/../../componentes/adm/auth.php";
   <main class="main-lista-alunos">
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">
-        <?php buttonComponent('primary', 'Novo', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
+        <?php buttonComponent('primary', 'CADASTRAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
 
         <div class="input-pesquisa-container">
           <input type="text" id="pesquisa" placeholder="Pesquisar">
