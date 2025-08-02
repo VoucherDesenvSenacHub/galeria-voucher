@@ -25,7 +25,7 @@ $currentTab = 'docentes';
             </div>
 
             <div class="topo-lista-alunos">
-                <?php buttonComponent('primary', 'ADICIONAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor')\""); ?>
+                <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor')\""); ?>
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar">
