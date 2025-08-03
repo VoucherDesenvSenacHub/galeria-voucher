@@ -23,7 +23,6 @@ CREATE table if not EXISTS pessoa (
     linkedin VARCHAR(255),
     github VARCHAR(255),
     imagem_id INT,
-    descricao TEXT,
     perfil ENUM('aluno', 'professor', 'adm') NOT NULL,
     FOREIGN KEY (imagem_id) REFERENCES imagem(imagem_id)
 );
@@ -104,13 +103,3 @@ CREATE table if not EXISTS imagem_projeto (
     FOREIGN KEY (imagem_id) REFERENCES imagem(imagem_id),
     FOREIGN KEY (projeto_id) REFERENCES projeto(projeto_id)
 );
-
--- Create the 'estatisticas' table
-CREATE TABLE IF NOT EXISTS estatisticas (
-    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    alunos INT(11) UNSIGNED NOT NULL DEFAULT 0,
-    projetos INT(11) UNSIGNED NOT NULL DEFAULT 0,
-    polos INT(11) UNSIGNED NOT NULL DEFAULT 0,
-    horas INT(11) UNSIGNED NOT NULL DEFAULT 0,
-    data_atualizacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)

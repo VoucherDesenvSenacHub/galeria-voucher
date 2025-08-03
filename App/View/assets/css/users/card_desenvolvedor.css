@@ -6,7 +6,122 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto 80px;
+  margin: 0 auto 10rem;
+}
+
+/* Garantir que os cards não sejam muito largos em mobile */
+@media (max-width: 768px) {
+  .card-container {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* Responsividade para cards menores em mobile */
+@media (max-width: 768px) {
+  .card-container {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .image-dev {
+    height: 250px;
+  }
+  
+  .text-card {
+    bottom: -40px;
+    padding: 15px;
+    width: 85%;
+  }
+  
+  .text-card h2 {
+    font-size: 1.1em;
+  }
+  
+  .text-card p {
+    font-size: 1em;
+  }
+  
+  .social-icons a {
+    font-size: 28px;
+    margin: 0 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-container {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* iPhone 12 e similares - 380px e abaixo */
+@media (max-width: 380px) {
+  .card-container {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .image-dev {
+    height: 110px;
+  }
+  
+  .text-card {
+    bottom: -15px;
+    padding: 4px;
+    width: 80%;
+  }
+  
+  .text-card h2 {
+    font-size: 0.7em;
+    margin: 0;
+  }
+  
+  .text-card p {
+    font-size: 0.6em;
+    margin: 1px 0;
+  }
+  
+  .social-icons {
+    margin-top: 3px;
+    gap: 2px;
+  }
+  
+  .social-icons a {
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 280px) {
+  .card-container {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .image-dev {
+    height: 180px;
+  }
+  
+  .text-card {
+    bottom: -30px;
+    padding: 10px;
+    width: 95%;
+  }
+  
+  .text-card h2 {
+    font-size: 0.9em;
+  }
+  
+  .text-card p {
+    font-size: 0.8em;
+  }
+  
+  .social-icons a {
+    font-size: 20px;
+    margin: 0 2px;
+  }
 }
 
 .image-dev {
@@ -74,18 +189,3 @@
   transform: scale(1.2);
 }
 
-@media (max-width: 480px) {
-  .text-card{
-    width: 13.5rem;
-    height: 8.5rem;
-  }
-  .card-container{
-    width: 180px;
-  }
-}
-
-@media (max-width: 961px){
-  .text-card{
-    width: 13.2rem;
-  }
-}

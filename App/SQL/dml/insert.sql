@@ -1,112 +1,131 @@
-
--- INSERT statements for 'cidade'
+-- 1. INSERTS PARA TABELA 'cidade'
 INSERT INTO cidade (nome) VALUES 
 ('Campo Grande'),
 ('Dourados'),
 ('Corumbá'),
 ('Três Lagoas'),
-('Ponta Porã');
+('Ponta Porã'),
+('Naviraí'),
+('Aquidauana'),
+('Coxim');
 
--- INSERT statements for 'polo'
+-- 2. INSERTS PARA TABELA 'polo'
 INSERT INTO polo (nome, cidade_id) VALUES 
-('SENAC Centro', 1),
-('SENAC Universitário', 1),
-('SENAC Dourados', 2),
-('SENAC Corumbá', 3),
-('SENAC Três Lagoas', 4),
-('SENAC Ponta Porã', 5);
+('SENAC Centro', (SELECT cidade_id FROM cidade WHERE nome = 'Campo Grande')),
+('SENAC Universitário', (SELECT cidade_id FROM cidade WHERE nome = 'Campo Grande')),
+('SENAC Dourados', (SELECT cidade_id FROM cidade WHERE nome = 'Dourados')),
+('SENAC Corumbá', (SELECT cidade_id FROM cidade WHERE nome = 'Corumbá')),
+('SENAC Três Lagoas', (SELECT cidade_id FROM cidade WHERE nome = 'Três Lagoas')),
+('SENAC Ponta Porã', (SELECT cidade_id FROM cidade WHERE nome = 'Ponta Porã')),
+('SENAC Naviraí', (SELECT cidade_id FROM cidade WHERE nome = 'Naviraí')),
+('SENAC Aquidauana', (SELECT cidade_id FROM cidade WHERE nome = 'Aquidauana')),
+('SENAC Coxim', (SELECT cidade_id FROM cidade WHERE nome = 'Coxim'));
 
--- INSERT statements for 'turma'
-INSERT INTO turma (nome, descricao, data_inicio, data_fim, polo_id) VALUES 
-('Turma 144', 'Turma de Desenvolvimento de Sistemas - Manhã', '2023-02-01', '2023-12-15', 1),
-('Turma 145', 'Turma de Desenvolvimento de Sistemas - Tarde', '2023-02-01', '2023-12-15', 2),
-('Turma 146', 'Turma de Redes de Computadores', '2023-03-01', '2023-11-30', 3),
-('Turma 147', 'Turma de Administração', '2023-04-01', '2023-10-31', 4);
+-- 3. INSERTS PARA TABELA 'pessoa' (professores e administradores)
+INSERT INTO pessoa (email, nome, linkedin, github, perfil) VALUES 
+-- Administradores
+('admin@adm.com', 'Administrador Sistema', NULL, NULL, 'adm'),
 
--- INSERT statements for 'imagem' (profile pictures)
-INSERT INTO imagem (url, text, descricao, data_upload) VALUES 
-('https://example.com/profiles/default.jpg', 'Default profile', 'Imagem padrão de perfil', NOW()),
-('https://example.com/profiles/teacher1.jpg', 'Teacher profile', 'Foto do professor João', NOW()),
-('https://example.com/profiles/teacher2.jpg', 'Teacher profile', 'Foto da professora Maria', NOW());
+-- Professores
+('joao.silva@senac.com', 'João Silva', 'linkedin.com/in/joaosilva', 'github.com/joaosilva', 'professor'),
+('maria.souza@senac.com', 'Maria Souza', 'linkedin.com/in/mariasouza', 'github.com/mariasouza', 'professor'),
+('carlos.santos@senac.com', 'Carlos Santos', 'linkedin.com/in/carlossantos', 'github.com/carlossantos', 'professor'),
+('ana.costa@senac.com', 'Ana Costa', 'linkedin.com/in/anacosta', 'github.com/anacosta', 'professor');
 
--- INSERT statements for 'pessoa' (professores)
-INSERT INTO pessoa (email, nome, linkedin, github, imagem_id, descricao, perfil) VALUES 
-('joao.silva@senac.com', 'João Silva', 'linkedin.com/joaosilva', 'github.com/joaosilva', 2, 'Professor de Desenvolvimento de Sistemas', 'professor'),
-('maria.souza@senac.com', 'Maria Souza', 'linkedin.com/mariasouza', 'github.com/mariasouza', 3, 'Professora de Redes de Computadores', 'professor'),
-('admin@senac.com', 'Administrador', NULL, NULL, 1, 'Administrador do sistema', 'adm');
 
--- INSERT statements for 'pessoa' (alunos - biblical names)
-INSERT INTO pessoa (email, nome, linkedin, github, imagem_id, descricao, perfil) VALUES 
-('adão.silva@aluno.senac.com', 'Adão Silva', NULL, NULL, 1, 'Aluno da turma 144', 'aluno'),
-('eva.souza@aluno.senac.com', 'Eva Souza', NULL, NULL, 1, 'Aluna da turma 144', 'aluno'),
-('noe.pereira@aluno.senac.com', 'Noé Pereira', NULL, NULL, 1, 'Aluno da turma 144', 'aluno'),
-('abraao.oliveira@aluno.senac.com', 'Abraão Oliveira', NULL, NULL, 1, 'Aluno da turma 145', 'aluno'),
-('sara.costa@aluno.senac.com', 'Sara Costa', NULL, NULL, 1, 'Aluna da turma 145', 'aluno'),
-('davi.santos@aluno.senac.com', 'Davi Santos', NULL, NULL, 1, 'Aluno da turma 145', 'aluno'),
-('salomao.rodrigues@aluno.senac.com', 'Salomão Rodrigues', NULL, NULL, 1, 'Aluno da turma 146', 'aluno'),
-('ester.martins@aluno.senac.com', 'Ester Martins', NULL, NULL, 1, 'Aluna da turma 146', 'aluno'),
-('daniel.fernandes@aluno.senac.com', 'Daniel Fernandes', NULL, NULL, 1, 'Aluno da turma 146', 'aluno'),
-('josue.almeida@aluno.senac.com', 'Josué Almeida', NULL, NULL, 1, 'Aluno da turma 147', 'aluno'),
-('raquel.gomes@aluno.senac.com', 'Raquel Gomes', NULL, NULL, 1, 'Aluna da turma 147', 'aluno'),
-('samuel.lima@aluno.senac.com', 'Samuel Lima', NULL, NULL, 1, 'Aluno da turma 147', 'aluno');
+-- 4. INSERTS PARA TABELA 'pessoa' (alunos)
+INSERT INTO pessoa (email, nome, linkedin, github, perfil) VALUES 
+-- Turma 144 - Desenvolvimento de Sistemas
+('lucas.oliveira@aluno.senac.com', 'Lucas Oliveira', 'linkedin.com/in/lucasoliveira', 'github.com/lucasoliveira', 'aluno'),
+('julia.santos@aluno.senac.com', 'Julia Santos', 'linkedin.com/in/juliasantos', 'github.com/juliasantos', 'aluno'),
+('rafael.costa@aluno.senac.com', 'Rafael Costa', 'linkedin.com/in/rafaelcosta', 'github.com/rafaelcosta', 'aluno'),
+('amanda.pereira@aluno.senac.com', 'Amanda Pereira', 'linkedin.com/in/amandapereira', 'github.com/amandapereira', 'aluno'),
 
--- INSERT statements for 'usuario'
+-- Turma 145 - Desenvolvimento Web
+('gabriel.rodrigues@aluno.senac.com', 'Gabriel Rodrigues', 'linkedin.com/in/gabrielrodrigues', 'github.com/gabrielrodrigues', 'aluno'),
+('carolina.lima@aluno.senac.com', 'Carolina Lima', 'linkedin.com/in/carolinalima', 'github.com/carolinalima', 'aluno'),
+('thiago.martins@aluno.senac.com', 'Thiago Martins', 'linkedin.com/in/thiagomartins', 'github.com/thiagomartins', 'aluno'),
+('beatriz.fernandes@aluno.senac.com', 'Beatriz Fernandes', 'linkedin.com/in/beatrizfernandes', 'github.com/beatrizfernandes', 'aluno'),
+
+-- Turma 146 - Redes de Computadores
+('marcos.almeida@aluno.senac.com', 'Marcos Almeida', 'linkedin.com/in/marcosalmeida', 'github.com/marcosalmeida', 'aluno'),
+('laura.gomes@aluno.senac.com', 'Laura Gomes', 'linkedin.com/in/lauragomes', 'github.com/lauragomes', 'aluno'),
+('pedro.silva@aluno.senac.com', 'Pedro Silva', 'linkedin.com/in/pedrosilva', 'github.com/pedrosilva', 'aluno'),
+('isabela.carvalho@aluno.senac.com', 'Isabela Carvalho', 'linkedin.com/in/isabelacarvalho', 'github.com/isabelacarvalho', 'aluno'),
+
+-- Turma 147 - Administração
+('daniel.oliveira@aluno.senac.com', 'Daniel Oliveira', 'linkedin.com/in/danieloliveira', 'github.com/danieloliveira', 'aluno'),
+('sofia.rodrigues@aluno.senac.com', 'Sofia Rodrigues', 'linkedin.com/in/sofiarodrigues', 'github.com/sofiarodrigues', 'aluno'),
+('matheus.costa@aluno.senac.com', 'Matheus Costa', 'linkedin.com/in/matheuscosta', 'github.com/matheuscosta', 'aluno'),
+('valentina.lima@aluno.senac.com', 'Valentina Lima', 'linkedin.com/in/valentinalima', 'github.com/valentinalima', 'aluno');
+
+-- 5. INSERTS PARA TABELA 'usuario' (senhas criptografadas)
 INSERT INTO usuario (pessoa_id, senha) VALUES 
-(1, SHA2('joao123', 256)),
-(2, SHA2('maria123', 256)),
-(3, SHA2('admin123', 256)),
-(4, SHA2('adao123', 256)),
-(5, SHA2('eva123', 256)),
-(6, SHA2('noe123', 256)),
-(7, SHA2('abraao123', 256)),
-(8, SHA2('sara123', 256)),
-(9, SHA2('davi123', 256)),
-(10, SHA2('salomao123', 256)),
-(11, SHA2('ester123', 256)),
-(12, SHA2('daniel123', 256)),
-(13, SHA2('josue123', 256)),
-(14, SHA2('raquel123', 256)),
-(15, SHA2('samuel123', 256));
+-- Administradores
+((SELECT pessoa_id FROM pessoa WHERE email = 'admin@adm.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC'),
 
--- INSERT statements for 'docente_turma'
+-- Professores
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), '$2y$10$8tL6uFsbg4xzhYaoDU9JVeYDvJZtMXdd3jEsJppMSHis.atBmHutC');
+
+-- 6. INSERTS PARA TABELA 'turma'
+INSERT INTO turma (nome, descricao, data_inicio, data_fim, polo_id) VALUES 
+('Turma 144', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
+('Turma 145', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
+('Turma 146', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
+('Turma 147', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas'));
+
+-- 7. INSERTS PARA TABELA 'docente_turma'
 INSERT INTO docente_turma (pessoa_id, turma_id, data_associacao) VALUES 
-(1, 1, '2023-01-15'),
-(1, 2, '2023-01-15'),
-(2, 3, '2023-02-10'),
-(2, 4, '2023-03-05');
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 144'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 145'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 146'), '2024-02-10'), 
+((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-05');
 
--- INSERT statements for 'aluno_turma'
+-- 8. INSERTS PARA TABELA 'aluno_turma'
 INSERT INTO aluno_turma (pessoa_id, turma_id, data_matricula) VALUES 
-(4, 1, '2023-01-20'),
-(5, 1, '2023-01-20'),
-(6, 1, '2023-01-21'),
-(7, 2, '2023-01-22'),
-(8, 2, '2023-01-22'),
-(9, 2, '2023-01-23'),
-(10, 3, '2023-02-15'),
-(11, 3, '2023-02-15'),
-(12, 3, '2023-02-16'),
-(13, 4, '2023-03-10'),
-(14, 4, '2023-03-10'),
-(15, 4, '2023-03-11');
+-- Turma 144
+((SELECT pessoa_id FROM pessoa WHERE email = 'lucas.oliveira@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 144'), '2024-01-20'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'julia.santos@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 144'), '2024-01-20'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'rafael.costa@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 144'), '2024-01-21'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'amanda.pereira@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 144'), '2024-01-21'),
 
--- INSERT statements for 'projeto'
+-- Turma 145
+((SELECT pessoa_id FROM pessoa WHERE email = 'gabriel.rodrigues@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 145'), '2024-01-22'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carolina.lima@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 145'), '2024-01-22'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'thiago.martins@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 145'), '2024-01-23'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'beatriz.fernandes@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 145'), '2024-01-23'),
+
+-- Turma 146
+((SELECT pessoa_id FROM pessoa WHERE email = 'marcos.almeida@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 146'), '2024-02-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'laura.gomes@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 146'), '2024-02-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'pedro.silva@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 146'), '2024-02-16'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'isabela.carvalho@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 146'), '2024-02-16'),
+
+-- Turma 147
+((SELECT pessoa_id FROM pessoa WHERE email = 'daniel.oliveira@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-10'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'sofia.rodrigues@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-10'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'matheus.costa@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-11'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'valentina.lima@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-11');
+
+-- 9. INSERTS PARA TABELA 'projeto'
 INSERT INTO projeto (nome, descricao, link, turma_id) VALUES 
-('Sistema de Biblioteca', 'Sistema para gerenciamento de bibliotecas escolares', 'https://github.com/turma144/biblioteca', 1),
-('App de Turismo', 'Aplicativo para pontos turísticos de MS', 'https://github.com/turma145/turismo', 2),
-('Monitoramento de Rede', 'Sistema de monitoramento de redes locais', 'https://github.com/turma146/rede', 3),
-('Gestão Escolar', 'Sistema de gestão para escolas', 'https://github.com/turma147/escola', 4);
+-- Projetos Turma 144
+('Sistema de Gestão Escolar', 'Sistema completo para gerenciamento de escolas, incluindo matrículas, notas e frequência', 'https://github.com/turma144/gestao-escolar', (SELECT turma_id FROM turma WHERE nome = 'Turma 144')),
+('App de Delivery', 'Aplicativo mobile para delivery de alimentos com geolocalização e pagamento online', 'https://github.com/turma144/delivery-app', (SELECT turma_id FROM turma WHERE nome = 'Turma 144')),
 
--- INSERT statements for 'imagem_projeto'
-INSERT INTO imagem_projeto (imagem_id, url, projeto_id) VALUES 
-(1, 'https://example.com/projects/biblioteca.jpg', 1),
-(1, 'https://example.com/projects/turismo.jpg', 2),
-(1, 'https://example.com/projects/rede.jpg', 3),
-(1, 'https://example.com/projects/escola.jpg', 4);
+-- Projetos Turma 145
+('E-commerce Responsivo', 'Loja virtual completa com carrinho de compras, pagamento e painel administrativo', 'https://github.com/turma145/ecommerce', (SELECT turma_id FROM turma WHERE nome = 'Turma 145')),
+('Portal de Notícias', 'Portal de notícias com sistema de categorias, busca e área de comentários', 'https://github.com/turma145/portal-noticias', (SELECT turma_id FROM turma WHERE nome = 'Turma 145')),
 
--- INSERT statement for 'estatisticas'
--- insere a linha de dados com id=1, mas somente se ela ainda não existir
--- isso evita criar duplicatas se você executar o script mais de uma vez
-INSERT INTO estatisticas (id, alunos, projetos, polos, horas)
-SELECT 1, 0, 0, 0, 0 FROM DUAL
-WHERE NOT EXISTS (SELECT id FROM estatisticas WHERE id = 1);
+-- Projetos Turma 146
+('Monitoramento de Rede', 'Sistema de monitoramento de redes locais com alertas e relatórios', 'https://github.com/turma146/monitoramento-rede', (SELECT turma_id FROM turma WHERE nome = 'Turma 146')),
+('Sistema de Backup', 'Solução automatizada de backup para servidores e estações de trabalho', 'https://github.com/turma146/sistema-backup', (SELECT turma_id FROM turma WHERE nome = 'Turma 146')),
+
+-- Projetos Turma 147
+('Gestão de TI', 'Sistema de gestão de ativos de TI com controle de licenças e manutenção', 'https://github.com/turma147/gestao-ti', (SELECT turma_id FROM turma WHERE nome = 'Turma 147')),
+('Help Desk', 'Sistema de suporte técnico com tickets e acompanhamento de chamados', 'https://github.com/turma147/help-desk', (SELECT turma_id FROM turma WHERE nome = 'Turma 147'));
+
+

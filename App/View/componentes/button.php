@@ -7,6 +7,7 @@
  * @param bool   $isSubmit (Opcional) Define se o botão será do tipo 'submit' (true) ou 'button' (false). Padrão: false.
  * @param string $link     (Opcional) URL para o link. Se fornecido, renderiza um elemento <a> ao invés de <button>.
  * @param string $action   (Opcional) URL para a action do formulário quando o botão for submit.
+ * @param string $extraAttributes (Opcional) Atributos adicionais para injetar no elemento renderizado (id, onclick, data-*, etc.).
  *
  * Exemplo de uso:
  * buttonComponent('primary', 'Salvar');                      // botão verde padrão
@@ -14,7 +15,7 @@
  * buttonComponent('primary', 'Enviar', true);                // botão verde do tipo submit
  * buttonComponent('primary', 'Entrar', false, '/home');      // link estilizado como botão
  */
-function buttonComponent($style, $content, $isSubmit = false, $link = null) {
+function buttonComponent($style, $content, $isSubmit = false, $link = null, $action = null, $extraAttributes = '') {
     // Define a classe CSS com base no estilo informado
     if ($style === 'primary') {
         $class = 'primary-button';
@@ -29,11 +30,12 @@ function buttonComponent($style, $content, $isSubmit = false, $link = null) {
     
     // Se um link for fornecido, renderiza um elemento <a>
     if ($link !== null) {
-        echo "<a href='$link' class='$class'>$content</a>";
+        echo "<a href='$link' class='$class' $extraAttributes>$content</a>";
         // ! cuidado com esse if e else, pois se houver algo no $link ele vira um button.
     } else {
         // Caso contrário, renderiza um <button>
-        echo "<button class='$class' type='$type' >$content</button>";
+        $actionAttr = $action ? "formaction='$action'" : '';
+        echo "<button class='$class' type='$type' $actionAttr $extraAttributes>$content</button>";
     }
 }
 ?>
