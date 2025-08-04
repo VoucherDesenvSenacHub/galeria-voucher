@@ -1,30 +1,37 @@
 <?php
-// Inclui o novo Model e o Head
 require_once __DIR__ . "/../../componentes/head.php";
+// 1. INCLUSÃO DOS ARQUIVOS NECESSÁRIOS
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
 
-// Instancia o modelo e busca as turmas
+headerComponent('Página Inicial');
+
+// 2. BUSCA DAS TURMAS NO BANCO DE DADOS
 try {
     $turmaModel = new TurmaModel();
+    // Usei a função que criamos, que busca apenas turmas com imagem
     $turmas = $turmaModel->buscarTurmasParaGaleria();
 } catch (Exception $e) {
-    // Em caso de erro, inicializa como um array vazio para não quebrar a página
+    // Se houver erro na conexão ou consulta, a página não quebra
     $turmas = [];
-    error_log($e->getMessage()); // Loga o erro para depuração
+    error_log("Erro ao buscar turmas: " . $e->getMessage());
 }
 
-headerComponent('Página Inicial');
+// 3. LÓGICA PARA DIVIDIR AS TURMAS NAS LINHAS EXISTENTES
+// Mantém a sua estrutura de 3 linhas
+$turmasLinha1 = array_slice($turmas, 0, 6);
+$turmasLinha2 = array_slice($turmas, 6, 5);
+$turmasLinha3 = array_slice($turmas, 11, 6);
+
 ?>
 
 <body class="body-user">
-    <?php 
+    <?php
         $isAdmin = false; // Para páginas de users
-        require_once __DIR__ . "/./../../componentes/nav.php" 
+        require_once __DIR__ . "/./../../componentes/nav.php";
     ?>
-    <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
+    <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; ?>
 
     <main class="main-user">
-        <!-- Seção 1 -->
         <section id="secao1">
             <div class="content">
                 <div class="numero">
@@ -44,9 +51,8 @@ headerComponent('Página Inicial');
             </div>
         </section>
 
-        <!-- Seção 2 (cards Oque é?, Para quem é? e Porque fazer?) -->
         <section id="secao2">
-            <div class="container">
+             <div class="container">
                 <div class="card">
                     <h2>O QUE É ?</h2>
                     <p>
@@ -54,7 +60,7 @@ headerComponent('Página Inicial');
                         Desenvolvedor.
                         Oferecemos vagas gratuitas para o curso Técnico em Desenvolvimento de Sistemas,
                         com carga horária de 1.200 horas.
-                    </p> 
+                    </p>
                     <p>
                         Beneficie-se de uma experiência prática com interação direta
                         com empresas de tecnologia e, a partir do sexto mês, tenha a chance de conseguir um estágio
@@ -83,7 +89,7 @@ headerComponent('Página Inicial');
                     <h2>POR QUE FAZER ?</h2>
                     <p>
                         A área de Tecnologia da Informação está em expansão, com uma alta demanda por profissionais de
-                        Desenvolvimento de Sistemas. 
+                        Desenvolvimento de Sistemas.
                     </p>
                     <p>
                         Especializar-se nessa área oferece maior empregabilidade, inclusive
@@ -98,7 +104,6 @@ headerComponent('Página Inicial');
             </div>
         </section>
 
-        <!-- Seção 3 (estatísticas) -->
         <section id="secao3">
             <div class="container2">
                 <h1>SUA EVOLUÇÃO COMEÇA AQUI</h1>
@@ -111,22 +116,19 @@ headerComponent('Página Inicial');
                         ['valor' => '+5', 'label' => 'POLOS'],
                         ['valor' => '1200', 'label' => 'CURSO COM HORAS']
                     ];
-                    //foreach percorre aray ($estatisticas) e cria os elementos html (div, span, p)
-                    // evitando repetição manual de código e facilitando na manutenção sem precisar
-                    //alterar a estrutura do html, apenas conectando ao banco de dados
                     foreach ($estatisticas as $estatistica) {
                         echo "<div>
-                                        <span>{$estatistica['valor']}</span>
-                                        <p>{$estatistica['label']}</p>
-                                    </div>";
+                                    <span>{$estatistica['valor']}</span>
+                                    <p>{$estatistica['label']}</p>
+                              </div>";
                     }
                     ?>
                 </div>
             </div>
         </section>
 
-        <!-- Seção 4 (transição da página inicial para a página de "turmas" e animação dos losângos) -->
         <section id="secao4">
+
             <div class="call-to-action">
                 <p>SELECIONE UMA TURMA E <span>INSPIRE-SE</span></p>
             </div>
@@ -189,5 +191,5 @@ headerComponent('Página Inicial');
             </div>
         </section>
     </main>
-    <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
+    <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; ?>
 </body>
