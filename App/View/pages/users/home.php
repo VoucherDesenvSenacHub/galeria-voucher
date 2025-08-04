@@ -16,20 +16,14 @@ try {
     error_log("Erro ao buscar turmas: " . $e->getMessage());
 }
 
-// 3. LÓGICA PARA DIVIDIR AS TURMAS NAS LINHAS EXISTENTES
-// Mantém a sua estrutura de 3 linhas
-$turmasLinha1 = array_slice($turmas, 0, 6);
-$turmasLinha2 = array_slice($turmas, 6, 5);
-$turmasLinha3 = array_slice($turmas, 11, 6);
-
 ?>
 
 <body class="body-user">
     <?php
         $isAdmin = false; // Para páginas de users
-        require_once __DIR__ . "/./../../componentes/nav.php";
+        require_once __DIR__ . "/../../componentes/nav.php";
     ?>
-    <?php require_once __DIR__ . "/./../../componentes/users/mira.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/users/mira.php"; ?>
 
     <main class="main-user">
         <section id="secao1">
