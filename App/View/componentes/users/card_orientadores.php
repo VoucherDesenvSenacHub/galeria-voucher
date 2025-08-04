@@ -34,10 +34,10 @@ $github = !empty($orientador['github']) ? $orientador['github'] : '#';
         <p><?= $funcao ?></p>
         <div class="social-icons">
             <a href="<?= htmlspecialchars($linkedin) ?>" target="_blank" rel="noopener noreferrer">
-                <img src="<?= VARIAVEIS['DIR_IMG'] ?>utilitarios/icons8-linkedin-50.png" alt="LinkedIn">
+                <img src="<?= '../../../../' . VARIAVEIS['DIR_IMG'] ?>utilitarios/icons8-linkedin-50.png" alt="LinkedIn">
             </a>
             <a href="<?= htmlspecialchars($github) ?>" target="_blank" rel="noopener noreferrer">
-                <img src="<?= VARIAVEIS['DIR_IMG'] ?>utilitarios/icons8-github-50.png" alt="GitHub">
+                <img src="<?= '../../../../' . VARIAVEIS['DIR_IMG'] ?>utilitarios/icons8-github-50.png" alt="GitHub">
             </a>
         </div>
     </div>

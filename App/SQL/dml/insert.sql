@@ -150,14 +150,14 @@ VALUES
 
 -- 12. Usar variáveis para armazenar IDs e evitar erro de subquery múltipla
 -- Pegar IDs das imagens
-SELECT imagem_id INTO @img_inicio FROM imagem WHERE text = 'Início do projeto' AND url = 'turma-galeria.png' LIMIT 1;
-SELECT imagem_id INTO @img_desenvolvimento FROM imagem WHERE text = 'Desenvolvimento' AND url = 'turma-galeria.png' LIMIT 1;
-SELECT imagem_id INTO @img_entrega FROM imagem WHERE text = 'Entrega final' AND url = 'turma-galeria.png' LIMIT 1;
+SET @img_inicio = (SELECT TOP 1 imagem_id FROM imagem WHERE text = 'Início do projeto' AND url = 'turma-galeria.png');
+SET @img_desenvolvimento = (SELECT TOP 1 imagem_id FROM imagem WHERE text = 'Desenvolvimento' AND url = 'turma-galeria.png');
+SET @img_entrega = (SELECT TOP 1 imagem_id FROM imagem WHERE text = 'Entrega final' AND url = 'turma-galeria.png');
 
 -- Pegar IDs dos dias do projeto
-SELECT projeto_dia_id INTO @dia_inicio FROM projeto_dia WHERE tipo_dia = 'I' AND projeto_id = (SELECT projeto_id FROM projeto WHERE nome = 'Galeria Web - Projeto Integrador') LIMIT 1;
-SELECT projeto_dia_id INTO @dia_desenvolvimento FROM projeto_dia WHERE tipo_dia = 'P' AND projeto_id = (SELECT projeto_id FROM projeto WHERE nome = 'Galeria Web - Projeto Integrador') LIMIT 1;
-SELECT projeto_dia_id INTO @dia_entrega FROM projeto_dia WHERE tipo_dia = 'E' AND projeto_id = (SELECT projeto_id FROM projeto WHERE nome = 'Galeria Web - Projeto Integrador') LIMIT 1;
+SET @dia_inicio = (SELECT TOP 1 projeto_dia_id FROM projeto_dia WHERE tipo_dia = 'I' AND projeto_id = (SELECT projeto_id FROM projeto WHERE nome = 'Galeria Web - Projeto Integrador'));
+SET @dia_desenvolvimento = (SELECT TOP 1 projeto_dia_id FROM projeto_dia WHERE tipo_dia = 'P' AND projeto_id = (SELECT projeto_id FROM projeto WHERE nome = 'Galeria Web - Projeto Integrador'));
+SET @dia_entrega = (SELECT TOP 1 projeto_dia_id FROM projeto_dia WHERE tipo_dia = 'E' AND projeto_id = (SELECT projeto_id FROM projeto WHERE nome = 'Galeria Web - Projeto Integrador'));
 
 -- Inserir nas imagens do projeto_dia
 INSERT INTO imagem_projeto_dia (imagem_id, projeto_dia_id)
