@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . "/BaseModel.php";
-
 class ImagemProjetoDiaModel
 {
     private PDO $pdo;
@@ -12,13 +10,11 @@ class ImagemProjetoDiaModel
 
     public function buscarPorProjetoDia(int $projetoDiaId): array
     {
-        $sql = "SELECT ipd.*, i.caminho AS imagem
+        $sql = "SELECT ipd.url 
                 FROM imagem_projeto_dia ipd
-                INNER JOIN imagem i ON i.imagem_id = ipd.imagem_id
-                WHERE ipd.projeto_dia_id = :projeto_dia_id";
-
+                WHERE ipd.projeto_dia_id = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':projeto_dia_id', $projetoDiaId);
+        $stmt->bindParam(':id', $projetoDiaId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

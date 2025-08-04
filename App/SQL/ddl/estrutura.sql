@@ -84,25 +84,6 @@ CREATE table if not EXISTS aluno_turma (
     UNIQUE KEY (pessoa_id, turma_id)
 );
 
--- -- Create the 'projeto' table
--- CREATE table if not EXISTS projeto (
---     projeto_id INT AUTO_INCREMENT PRIMARY KEY,
---     nome VARCHAR(255) NOT NULL,
---     descricao TEXT,
---     link VARCHAR(255),
---     turma_id INT NOT NULL,
---     FOREIGN KEY (turma_id) REFERENCES turma(turma_id)
--- );
-
--- -- Create the 'imagem_projeto' table if not EXISTS (junction table if not EXISTS for projetos and imagens)
--- CREATE table if not EXISTS imagem_projeto (
---     imagem_projeto_id INT AUTO_INCREMENT PRIMARY KEY,
---     imagem_id INT NOT NULL,
---     url VARCHAR(255) NOT NULL,
---     projeto_id INT NOT NULL,
---     FOREIGN KEY (imagem_id) REFERENCES imagem(imagem_id),
---     FOREIGN KEY (projeto_id) REFERENCES projeto(projeto_id)
--- );
 
 -- Manter: Tabela projeto
 CREATE TABLE IF NOT EXISTS projeto (

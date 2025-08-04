@@ -1,21 +1,23 @@
 <?php
-class DocenteModel {
+class DocenteModel
+{
     private PDO $pdo;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->pdo = Database::conectar();
     }
 
-    public function buscarDocentesPorTurma(int $turmaId): array {
-        $sql = "
-            SELECT d.*, p.nome, p.email, i.caminho AS imagem
-            FROM docente d
-            JOIN pessoa p ON d.pessoa_id = p.pessoa_id
-            LEFT JOIN imagem i ON p.pessoa_id = i.pessoa_id
-            WHERE d.turma_id = :turmaId
-        ";
+    public function buscarPorTurma(int $turmaId): array
+    {
+        $sql = "SELECT p.*, i.url AS imagem 
+                FROM docente_turma dt
+                INNER JOIN pessoa p ON dt.pessoa_id = p.pessoa_id
+                LEFT JOIN imagem i ON p.imagem_id = i.imagem_id
+                WHERE dt.turma_id = :turma_id
+                ORDER BY p.nome ASC";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':turmaId', $turmaId);
+        $stmt->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

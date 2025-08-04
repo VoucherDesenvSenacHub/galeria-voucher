@@ -1,5 +1,5 @@
 <?php
-class ProjetoModel
+class TurmaModel
 {
     private PDO $pdo;
 
@@ -8,23 +8,15 @@ class ProjetoModel
         $this->pdo = Database::conectar();
     }
 
-    public function buscarProjetosPorTurma(int $turmaId): array
+    public function buscarPorId(int $id): ?array
     {
-        $sql = "SELECT * FROM projeto WHERE turma_id = :turmaId";
+        $sql = "SELECT t.*, i.url AS imagem 
+                FROM turma t
+                LEFT JOIN imagem i ON t.imagem_id = i.imagem_id
+                WHERE t.turma_id = :id LIMIT 1";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':turmaId', $turmaId, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $resultado ?: [];
-    }
-
-    public function buscarPorId(int $projetoId): ?array
-    {
-        $sql = "SELECT * FROM projeto WHERE projeto_id = :projetoId LIMIT 1";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':projetoId', $projetoId, PDO::PARAM_INT);
-        $stmt->execute();
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado ?: null;
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 }

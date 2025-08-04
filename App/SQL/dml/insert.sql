@@ -110,22 +110,22 @@ INSERT INTO aluno_turma (pessoa_id, turma_id, data_matricula) VALUES
 ((SELECT pessoa_id FROM pessoa WHERE email = 'matheus.costa@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-11'),
 ((SELECT pessoa_id FROM pessoa WHERE email = 'valentina.lima@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-11');
 
--- 9. INSERTS PARA TABELA 'projeto'
-INSERT INTO projeto (nome, descricao, link, turma_id) VALUES 
--- Projetos Turma 144
-('Sistema de Gestão Escolar', 'Sistema completo para gerenciamento de escolas, incluindo matrículas, notas e frequência', 'https://github.com/turma144/gestao-escolar', (SELECT turma_id FROM turma WHERE nome = 'Turma 144')),
-('App de Delivery', 'Aplicativo mobile para delivery de alimentos com geolocalização e pagamento online', 'https://github.com/turma144/delivery-app', (SELECT turma_id FROM turma WHERE nome = 'Turma 144')),
+-- -- 9. INSERTS PARA TABELA 'projeto'
+-- INSERT INTO projeto (nome, descricao, link, turma_id) VALUES 
+-- -- Projetos Turma 144
+-- ('Sistema de Gestão Escolar', 'Sistema completo para gerenciamento de escolas, incluindo matrículas, notas e frequência', 'https://github.com/turma144/gestao-escolar', (SELECT turma_id FROM turma WHERE nome = 'Turma 144')),
+-- ('App de Delivery', 'Aplicativo mobile para delivery de alimentos com geolocalização e pagamento online', 'https://github.com/turma144/delivery-app', (SELECT turma_id FROM turma WHERE nome = 'Turma 144')),
 
--- Projetos Turma 145
-('E-commerce Responsivo', 'Loja virtual completa com carrinho de compras, pagamento e painel administrativo', 'https://github.com/turma145/ecommerce', (SELECT turma_id FROM turma WHERE nome = 'Turma 145')),
-('Portal de Notícias', 'Portal de notícias com sistema de categorias, busca e área de comentários', 'https://github.com/turma145/portal-noticias', (SELECT turma_id FROM turma WHERE nome = 'Turma 145')),
+-- -- Projetos Turma 145
+-- ('E-commerce Responsivo', 'Loja virtual completa com carrinho de compras, pagamento e painel administrativo', 'https://github.com/turma145/ecommerce', (SELECT turma_id FROM turma WHERE nome = 'Turma 145')),
+-- ('Portal de Notícias', 'Portal de notícias com sistema de categorias, busca e área de comentários', 'https://github.com/turma145/portal-noticias', (SELECT turma_id FROM turma WHERE nome = 'Turma 145')),
 
--- Projetos Turma 146
-('Monitoramento de Rede', 'Sistema de monitoramento de redes locais com alertas e relatórios', 'https://github.com/turma146/monitoramento-rede', (SELECT turma_id FROM turma WHERE nome = 'Turma 146')),
-('Sistema de Backup', 'Solução automatizada de backup para servidores e estações de trabalho', 'https://github.com/turma146/sistema-backup', (SELECT turma_id FROM turma WHERE nome = 'Turma 146')),
+-- -- Projetos Turma 146
+-- ('Monitoramento de Rede', 'Sistema de monitoramento de redes locais com alertas e relatórios', 'https://github.com/turma146/monitoramento-rede', (SELECT turma_id FROM turma WHERE nome = 'Turma 146')),
+-- ('Sistema de Backup', 'Solução automatizada de backup para servidores e estações de trabalho', 'https://github.com/turma146/sistema-backup', (SELECT turma_id FROM turma WHERE nome = 'Turma 146')),
 
--- Projetos Turma 147
-('Gestão de TI', 'Sistema de gestão de ativos de TI com controle de licenças e manutenção', 'https://github.com/turma147/gestao-ti', (SELECT turma_id FROM turma WHERE nome = 'Turma 147')),
-('Help Desk', 'Sistema de suporte técnico com tickets e acompanhamento de chamados', 'https://github.com/turma147/help-desk', (SELECT turma_id FROM turma WHERE nome = 'Turma 147'));
+-- -- Projetos Turma 147
+-- ('Gestão de TI', 'Sistema de gestão de ativos de TI com controle de licenças e manutenção', 'https://github.com/turma147/gestao-ti', (SELECT turma_id FROM turma WHERE nome = 'Turma 147')),
+-- ('Help Desk', 'Sistema de suporte técnico com tickets e acompanhamento de chamados', 'https://github.com/turma147/help-desk', (SELECT turma_id FROM turma WHERE nome = 'Turma 147'));
 
 

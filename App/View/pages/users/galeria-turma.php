@@ -19,8 +19,8 @@ require_once __DIR__ . "/../../../Model/ImagemProjetoDiaModel.php";
 require_once __DIR__ . "/../../../Model/AlunoModel.php";
 require_once __DIR__ . "/../../../Model/DocenteModel.php";
 
-$turmaModell = new TurmaModel();
-$turma = $turmaModell->buscarPorId($turmaId);
+$turmaModel = new TurmaModel();
+$turma = $turmaModel->buscarPorId($turmaId);
 if (!$turma) {
     header("Location: /turmas");
     exit;
