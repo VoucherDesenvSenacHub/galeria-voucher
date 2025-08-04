@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . "/BaseModel.php";
+require_once __DIR__ . "/ImagemProjetoDiaModel.php"; // <-- ESSENCIAL
+
 class ProjetoModel
 {
     private PDO $pdo;
@@ -25,12 +28,13 @@ class ProjetoModel
         $stmt->execute();
         $dias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Para cada dia, buscar as imagens
         $imagemProjetoDiaModel = new ImagemProjetoDiaModel();
         foreach ($dias as &$dia) {
+            // Use a chave correta conforme o banco
             $dia['id'] = $dia['projeto_dia_id'];
             $dia['imagens'] = $imagemProjetoDiaModel->buscarPorProjetoDia($dia['projeto_dia_id']);
         }
         return $dias;
     }
+
 }

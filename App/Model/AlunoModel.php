@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/BaseModel.php';
 class AlunoModel
 {
     private PDO $pdo;
