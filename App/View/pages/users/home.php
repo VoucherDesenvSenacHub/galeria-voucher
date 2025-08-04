@@ -4,8 +4,8 @@ require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
 headerComponent('Página Inicial');
 
-$estatisticasModel = new EstatisticasModel();
-$resultado = $estatisticasModel->getEstatisticas();
+// $estatisticasModel = new EstatisticasModel();
+// $resultado = $estatisticasModel->getEstatisticas();
 ?>
 
 <body class="body-user">

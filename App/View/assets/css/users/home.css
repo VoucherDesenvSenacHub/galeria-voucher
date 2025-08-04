@@ -250,73 +250,54 @@ html, body {
         }
     }
 }
-/*=============================    SEÇÃO 4     ==================================*/
+
 #secao4 {
-    padding: 60px 20px;
+    padding-top: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
-/* --- titulo --- */
 #secao4 .call-to-action {
     font-family: "Bebas Neue", sans-serif;
-    font-size: 1.8rem;
+    font-size: 2.5em;
     color: white;
     text-align: center;
-    margin: 0 0 40px 0; /* Espaçamento zerado nas laterais e embaixo */
+    margin: 0 0 40px 0;
 }
-
 #secao4 .call-to-action span {
     color: #abfa3d;
     font-weight: bold;
 }
-
-/* --- o container da grade de losangos --- */
 .diamond-grid {
     display: grid;
-    /* Define 4 colunas como base para o layout 4-3-4 */
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(6, 1fr);
     width: 100%;
-    padding-bottom: 30px;
+    max-width: 980px;
+    gap: 2px;
 }
-
-/* Cria o recuo para a segunda linha; a segunda linha começa no 5º item. Dizemos para ele começar na 2ª coluna da grade. */
-.image-turma:nth-child(5),
-.image-turma:nth-child(6),
+/* Regra de recuo do desktop (6-5-6) */
 .image-turma:nth-child(7) {
-    transform: translateX(calc(50% + 2.5px));
+    grid-column-start: 2;
 }
-
-.image-turma:nth-child(8) {
-    grid-column-start: 1;
+/* Margem negativa para encaixe no desktop */
+.image-turma:nth-child(n+7) {
+    margin-top: -70px;
 }
-
-.image-turma:nth-child(n+5) {
-    margin-top: -30px;
-}
-
-/* Mostra apenas 11 itens (4+3+4), esconde todos os itens a partir do 12º. */
-.image-turma:nth-child(n + 12) {
-    display: none;
-}
-
-/* --- Losango e Imagem --- */
-
 .image-turma {
     aspect-ratio: 1 / 1; 
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
-
+.image-turma:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
 .image-turma a {
     display: block;
     width: 100%;
     height: 100%;
 }
-
 .image-turma img {
     width: 100%;
     height: 100%;
@@ -324,8 +305,46 @@ html, body {
     display: block;
 }
 
-/* responsividade celular pequeno */
-@media (max-width: 320px) {
+@media (max-width: 1024px) {
+
+    /* --- Seção 4 (Tablet - Layout 5-4-5) --- */
+    .diamond-grid {
+        grid-template-columns: repeat(5, 1fr); /* Base de 5 colunas */
+        gap: 10px;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    /* mostra apenas os 14 itens necessários (5+4+5) */
+    .image-turma:nth-child(n + 15) {
+        display: none;
+    }
+
+    /* reseta as regras do desktop */
+    .image-turma:nth-child(7) {
+        grid-column-start: auto;
+    }
+    .image-turma:nth-child(n+7) {
+        margin-top: 0;
+    }
+
+    /* aplica as novas regras de encaixe do tablet */
+    .image-turma:nth-child(n+6) {
+        margin-top: -40px; /* Encaixe vertical */
+    }
+    .image-turma:nth-child(6),
+    .image-turma:nth-child(7),
+    .image-turma:nth-child(8),
+    .image-turma:nth-child(9) {
+        transform: translateX(calc(50% + 5px)); /* deslocamento da 2ª linha */
+    }
+    .image-turma:nth-child(10) {
+        grid-column-start: 1; /* correção da 3ª linha */
+    }
+}
+
+/* responsividade para celulares */
+@media (max-width: 425px) {
     .body-user {
         max-width: 100%;
         overflow-x: hidden;
@@ -392,87 +411,81 @@ html, body {
         position: absolute;
         max-width: 275px;
     }
-
+    
     /*SECTION 3 RESPONSIVIDADE*/
+    
+    #secao3 .container2 {
+        margin-top: 700px;
+        z-index: 1;
+        gap: 1%;
+    }
+    
+    #secao3 .stats {
+        flex-direction: column;
+        /* Alinha estatísticas em coluna */
+        gap: 15px;
+    }
     
     #secao3 .container2 {
         padding: 10px;
         text-align: center;
     }
 
-    #secao3 .stats {
-        flex-direction: column;
-        /* Alinha estatísticas em coluna */
-        gap: 15px;
-    }
+    /* secao4 responsividade */
 
-    #secao3 .container2 {
-        margin-top: 525px;
-        z-index: 1;
-        gap: 1%;
+    #secao4 {
+        padding: 60px 20px;
     }
-
-    #secao3 .container2 .stats {
-        gap: 45px;
+    
+    #secao4 .call-to-action {
+        font-size: 1.8rem;
     }
-
-    #secao3 .container2 h1 {
-        position: relative;
-        /* Adicionado para ativar o z-index */
-        z-index: 1;
-        /* Controla a ordem de empilhamento */
-    }
-
-    #secao3 .container2 .call-to-action {
-        position: relative;
-        /* Adicionado para ativar o z-index */
-        z-index: 1;
-        /* Controla a ordem de empilhamento */
-    }
-
-    .poligono {
-        flex-wrap: wrap;
-    }
-
-    #secao3 .poligono .image-row {
-        margin-left: -67%;
-        flex-wrap: nowrap;
-        flex-direction: column;
-        gap: 0px;
-    }
-
-    #secao3 .image-row .image-row {
+    
+    .diamond-grid {
+        display: inline-grid;
+        grid-template-columns: repeat(4, 20vw);
+        gap: 5px;
+        padding-bottom: 30px;
         max-width: 100%;
-        flex-direction: row;
-        /* Organiza as imagens em linha */
-
-        gap: 0px;
-        /* Ajuste o espaçamento entre as imagens */
     }
 
-    #secao3 .image-row .image-turma {
-        max-width: 100%;
-        /* Reduz o tamanho das imagens para se ajustar à tela */
-        margin-top: 0;
-        /* Remove o deslocamento das imagens */
+    /* mostra apenas 11 losangos (4+3+4) */
+    .image-turma:nth-child(n + 12) {
+        display: none;
     }
-
-    #secao3 .image-row .image-turma img {
-        width: 3rem;
-        /* Ajusta a largura para a tela pequena */
-        height: 3rem;
-        /* Ajusta a altura para a tela pequena */
-    }
-
-    .poligono .image-turma:nth-of-type(n + 3) {
+    /* garante que os losangos 12, 13, 14 que estavam ocultos no layout de tablet continuem ocultos */
+    .image-turma:nth-child(n + 15) {
         display: none;
     }
 
-    /* Ajusta a largura das imagens para melhorar a visualização no celular */
-    .poligono .image-turma img {
-        width: 100px;
-        /* Ajuste conforme necessário */
-        height: 100px;
+
+    /* reseta as regras do tablet */
+    .image-turma:nth-child(n+6) {
+        margin-top: 0;
     }
 
+    .image-turma:nth-child(6),
+    .image-turma:nth-child(7),
+    .image-turma:nth-child(8),
+    .image-turma:nth-child(9) {
+        transform: translateX(0);
+    }
+
+    .image-turma:nth-child(10) {
+        grid-column-start: auto;
+    }
+
+    .image-turma:nth-child(n+5) {
+        margin-top: -30px; 
+    }
+
+    .image-turma:nth-child(5),
+    .image-turma:nth-child(6),
+    .image-turma:nth-child(7) {
+        transform: translateX(calc(50% + 2.5px));
+    }
+
+    .image-turma:nth-child(8) {
+        grid-column-start: 1;
+    }
 }
