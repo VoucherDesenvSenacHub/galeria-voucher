@@ -50,6 +50,30 @@ class TurmaModel extends BaseModel
         }
     }
 
+    public function buscarTodasTurmasComPolo(): array
+    {
+        try {
+            $query = "
+                SELECT 
+                    t.turma_id,
+                    t.nome AS NOME_TURMA,
+                    p.nome AS NOME_POLO
+                FROM " . self::$tabela . " t
+                JOIN polo p ON t.polo_id = p.polo_id
+                ORDER BY t.nome ASC
+            ";
+
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar turmas com polo: " . $e->getMessage());
+            return []; // Retorna um array vazio em caso de erro
+        }
+    }
+
     public function salvar() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
@@ -147,28 +171,6 @@ class TurmaModel extends BaseModel
      *
      * @return array Retorna uma lista de turmas com os nomes dos polos.
      */
-    public function buscarTodasTurmasComPolo(): array
-    {
-        try {
-            $query = "
-                SELECT 
-                    t.turma_id,
-                    t.nome AS NOME_TURMA,
-                    p.nome AS NOME_POLO
-                FROM " . self::$tabela . " t
-                JOIN polo p ON t.polo_id = p.polo_id
-                ORDER BY t.nome ASC
-            ";
-
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute();
-            
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        } catch (PDOException $e) {
-            error_log("Erro ao buscar turmas com polo: " . $e->getMessage());
-            return []; // Retorna um array vazio em caso de erro
-        }
-    }
+    
 
 }
