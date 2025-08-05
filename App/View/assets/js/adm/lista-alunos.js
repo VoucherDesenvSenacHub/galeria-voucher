@@ -1,52 +1,46 @@
-// Função que ajusta a altura maxima da tabela com base na altura da janela //
-function ajustarAlturaMaximaTabela() {
-    const container = document.querySelector('.container-lista-alunos');
-    if (!container) return;
-  
-    const alturaJanela = window.innerHeight;
-    const alturaMaxima = alturaJanela * 0.7;
-  
-    container.style.maxHeight = `${alturaMaxima}px`;
-  }
-  
-// Ajusta a altura ao carregar a página e ao redimensionar a janela
-window.addEventListener('load', ajustarAlturaMaximaTabela);
-window.addEventListener('resize', ajustarAlturaMaximaTabela);
+const pesquisa = document.getElementById('pesquisa');
+const tabela = document.getElementById('tabela-alunos');
+const linhas = tabela.getElementsByTagName('tr');
 
-// Fix para o menu hamburger - garantir que sempre comece fechado
-document.addEventListener('DOMContentLoaded', function() {
-  const menuLinks = document.querySelector('.menu-links');
-  if (menuLinks) {
-    menuLinks.classList.remove('open');
-  }
-});
-
-
-
-// Feito para ordenar a pesquisar por nome, aluno-docente,cidade
-document.addEventListener("DOMContentLoaded", function () {
-  const inputPesquisa = document.getElementById("pesquisa");
-  const tabela = document.getElementById("tabela-alunos");
-  const linhas = tabela.getElementsByTagName("tr");
-
-  inputPesquisa.addEventListener("keyup", function () {
-    const termo = inputPesquisa.value.toLowerCase();
-
-    // Percorre todas as linhas da tabela (ignorando o cabeçalho)
-    for (let i = 1; i < linhas.length; i++) {
-      const colunas = linhas[i].getElementsByTagName("td");
-      let corresponde = false;
-
-      // Verifica as 3 primeiras colunas: nome, tipo e polo
-      for (let j = 0; j < 3; j++) {
-        const texto = colunas[j].textContent.toLowerCase();
-        if (texto.includes(termo)) {
-          corresponde = true;
-          break;
-        }
-      }
-
-      linhas[i].style.display = corresponde ? "" : "none";
+/**
+ * Função para remover acentos de uma string.
+ * Ex: "Pólo" se torna "Polo".
+ * @param {string} texto O texto para normalizar.
+ * @returns {string} O texto sem acentos.
+ */
+function removerAcentos(texto) {
+    if (texto && typeof texto.normalize === 'function') {
+        return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
-  });
-});
+    return texto;
+}
+
+if (pesquisa && tabela) {
+    pesquisa.addEventListener('keyup', () => {
+        // 1. Pega o valor da pesquisa, remove espaços extras no início/fim, e converte para minúsculas.
+        const termoPesquisaInput = pesquisa.value.trim().toLowerCase();
+        
+        // 2. Remove os acentos do termo da pesquisa.
+        const termoPesquisaNormalizado = removerAcentos(termoPesquisaInput);
+
+        // Itera sobre as linhas da tabela, começando em 1 para ignorar o cabeçalho (thead).
+        for (let i = 1; i < linhas.length; i++) {
+            const linha = linhas[i];
+            
+            // Pega todo o conteúdo de texto da linha.
+            const conteudoLinha = linha.textContent || linha.innerText || "";
+
+            // 3. Converte o conteúdo da linha para minúsculas e remove os acentos.
+            const conteudoLinhaNormalizado = removerAcentos(conteudoLinha.toLowerCase());
+
+            // 4. Compara o texto da linha (normalizado) com o termo da pesquisa (normalizado).
+            if (conteudoLinhaNormalizado.includes(termoPesquisaNormalizado)) {
+                // Se corresponder, exibe a linha.
+                linha.style.display = '';
+            } else {
+                // Se não, esconde a linha.
+                linha.style.display = 'none';
+            }
+        }
+    });
+}
