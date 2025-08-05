@@ -14,7 +14,8 @@ class TurmaModel extends BaseModel {
      */
     public function buscarTurmasParaGaleria(): array
     {
-        // Busca todas as turmas, procurando imagem real primeiro, senão usa padrão - QUANDO TIVER IMAGENS NO BANCO RETIRAR O COALESE
+        // Esta query junta a tabela 'turma' com a 'imagem' para buscar a URL da imagem de cada turma.
+        // Se quiser adicionar um IS NOT NULL para garantir que apenas turmas com imagem sejam exibidas. WHERE t.imagem_id IS NOT NULL 
         $query = "
             SELECT 
                 t.turma_id,
@@ -43,4 +44,29 @@ class TurmaModel extends BaseModel {
         $stmt->execute([':id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-} 
+
+    /**
+     * Busca todas as turmas com o nome do respectivo polo, ordenadas alfabeticamente.
+     * @return array
+     */
+    public function buscarTodasTurmasComPolo(): array
+    {
+        $query = "
+            SELECT 
+                t.turma_id,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO
+            FROM 
+                turma t
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+            ORDER BY 
+                t.nome ASC
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
