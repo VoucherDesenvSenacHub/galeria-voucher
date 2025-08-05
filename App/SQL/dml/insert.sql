@@ -75,14 +75,55 @@ INSERT INTO turma (nome, descricao, data_inicio, data_fim, polo_id) VALUES
 ('Turma 144', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
 ('Turma 145', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
 ('Turma 146', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
-('Turma 147', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas'));
+('Turma 147', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas')),
+('Turma 148', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
+('Turma 149', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
+('Turma 150', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
+('Turma 151', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas')),
+('Turma 152', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
+('Turma 153', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
+('Turma 154', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
+('Turma 155', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas')),
+('Turma 156', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
+('Turma 157', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
+('Turma 158', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
+('Turma 159', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas')),
+('Turma 160', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
+('Turma 161', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
+('Turma 162', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
+('Turma 163', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas')),
+('Turma 164', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
+('Turma 165', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
+('Turma 166', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
+('Turma 167', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas'));
+
 
 -- 7. INSERTS PARA TABELA 'docente_turma'
 INSERT INTO docente_turma (pessoa_id, turma_id, data_associacao) VALUES 
 ((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 144'), '2024-01-15'),
 ((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 145'), '2024-01-15'),
 ((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 146'), '2024-02-10'), 
-((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-05');
+((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-05'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 148'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 149'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 150'), '2024-02-10'), 
+((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 151'), '2024-03-05'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 152'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 153'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 154'), '2024-02-10'), 
+((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 155'), '2024-03-05'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 156'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 157'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 158'), '2024-02-10'), 
+((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 159'), '2024-03-05'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 160'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 161'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 162'), '2024-02-10'), 
+((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 163'), '2024-03-05'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.silva@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 164'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'maria.souza@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 165'), '2024-01-15'),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.santos@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 166'), '2024-02-10'), 
+((SELECT pessoa_id FROM pessoa WHERE email = 'ana.costa@senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 167'), '2024-03-05');
 
 -- 8. INSERTS PARA TABELA 'aluno_turma'
 INSERT INTO aluno_turma (pessoa_id, turma_id, data_matricula) VALUES 
@@ -109,6 +150,9 @@ INSERT INTO aluno_turma (pessoa_id, turma_id, data_matricula) VALUES
 ((SELECT pessoa_id FROM pessoa WHERE email = 'sofia.rodrigues@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-10'),
 ((SELECT pessoa_id FROM pessoa WHERE email = 'matheus.costa@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-11'),
 ((SELECT pessoa_id FROM pessoa WHERE email = 'valentina.lima@aluno.senac.com'), (SELECT turma_id FROM turma WHERE nome = 'Turma 147'), '2024-03-11');
+
+
+
 
 -- 9. INSERTS PARA TABELA 'projeto'
 INSERT INTO projeto (nome, descricao, link, turma_id) VALUES 

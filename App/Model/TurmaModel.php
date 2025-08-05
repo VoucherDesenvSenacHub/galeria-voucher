@@ -1,9 +1,13 @@
 <?php
 
-require_once __DIR__ . '/BaseModel.php';
+require_once __DIR__ . "/BaseModel.php";
 
-class TurmaModel extends BaseModel
-{
+class TurmaModel extends BaseModel {
+
+    public function __construct() {
+        parent::__construct();
+    }
+
     /**
      * Busca todas as turmas ativas com suas respectivas imagens de capa.
      * @return array
@@ -16,10 +20,9 @@ class TurmaModel extends BaseModel
             SELECT 
                 t.turma_id,
                 t.nome AS nome_turma,
-                i.url AS imagem_url
+                COALESCE(i.url, 'App/View/assets/img/utilitarios/foto.png') AS imagem_url
             FROM turma t
             LEFT JOIN imagem i ON t.imagem_id = i.imagem_id
-            
             ORDER BY t.nome ASC
         ";
 
