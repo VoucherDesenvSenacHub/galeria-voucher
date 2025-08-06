@@ -6,4 +6,4 @@ $alunoTurma = new AlunoTurmaModel();
 
 
 
-var_dump($alunoTurma->lista());
+var_dump($alunoTurma->Turma146());
