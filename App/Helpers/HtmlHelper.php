@@ -12,7 +12,7 @@ namespace App\Helpers;
 function renderSubTabBtn(array $dia, int $index, int $projetoId, ?string $linkProjeto = null): void {
     $btnClass = $index === 0 ? 'active' : '';
     $btnLabel = 'DIA ' . htmlspecialchars($dia['tipo_dia']);
-    $dataSubtab = $dia['id'];
+    $dataSubtab = $dia['projeto_dia_id'];
     ?>
     <div class="galeria-turma-sub-tab-wrapper" style="display: inline-flex; align-items: center; gap: 8px; margin-right: 10px;">
         <button class="galeria-turma-sub-tab-btn <?= $btnClass ?>"

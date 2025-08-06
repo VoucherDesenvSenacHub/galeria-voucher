@@ -1,12 +1,13 @@
 <?php
 require_once __DIR__ . '/BaseModel.php';
-class AlunoModel
+
+class AlunoModel extends BaseModel
 {
-    private PDO $pdo;
+    public static $tabela = "aluno";
 
     public function __construct()
     {
-        $this->pdo = Database::conectar();
+        parent::__construct();
     }
 
     public function buscarPorTurma(int $turmaId): array

@@ -1,11 +1,11 @@
 <?php
-class DocenteModel
+class DocenteModel extends BaseModel
 {
-    private PDO $pdo;
+    public static $tabela = "docente";
 
     public function __construct()
     {
-        $this->pdo = Database::conectar();
+        parent::__construct();
     }
 
     public function buscarPorTurma(int $turmaId): array

@@ -1,12 +1,13 @@
 <?php
 require_once __DIR__ . '/BaseModel.php';
-class ImagemProjetoDiaModel
+
+class ImagemProjetoDiaModel extends BaseModel
 {
-    private PDO $pdo;
+    public static $tabela = "usuario";
 
     public function __construct()
     {
-        $this->pdo = Database::conectar();
+        parent::__construct();
     }
 
     public function buscarPorProjetoDia(int $diaId): array

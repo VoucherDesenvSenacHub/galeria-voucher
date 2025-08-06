@@ -1,13 +1,13 @@
 <?php
 require_once __DIR__ . '/BaseModel.php';
 
-class TurmaModel
+class TurmaModel extends BaseModel
 {
-    private PDO $pdo;
+    public static $tabela = "turma";
 
     public function __construct()
     {
-        $this->pdo = Database::conectar();
+        parent::__construct();
     }
 
     public function buscarPorId(int $id): ?array

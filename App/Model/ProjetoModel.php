@@ -2,15 +2,15 @@
 require_once __DIR__ . "/BaseModel.php";
 require_once __DIR__ . "/ImagemProjetoDiaModel.php"; // <-- ESSENCIAL
 
-class ProjetoModel
+class ProjetoModel extends BaseModel
 {
-    private PDO $pdo;
+    public static $tabela = "projeto";
 
     public function __construct()
     {
-        $this->pdo = Database::conectar();
+        parent::__construct();
     }
-
+    
     public function buscarProjetosPorTurma(int $turmaId): array
     {
         $sql = "SELECT * FROM projeto WHERE turma_id = :turma_id";

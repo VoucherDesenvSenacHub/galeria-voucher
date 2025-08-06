@@ -111,7 +111,6 @@ CREATE TABLE IF NOT EXISTS imagem_projeto_dia (
 
 
 
-
 -- -- Create the database
 
 -- -- conferir se esta de acordo 
