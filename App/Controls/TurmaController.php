@@ -3,6 +3,7 @@ session_start();
 
 require_once __DIR__ . '/../Config/env.php';
 require_once __DIR__ . '/../Model/TurmaModel.php';
+require_once __DIR__ . '/../Model/ImagemModel.php'; // Incluímos o novo modelo
 
 class TurmaController {
     
@@ -16,33 +17,40 @@ class TurmaController {
             $polo_id = filter_input(INPUT_POST, 'polo_id', FILTER_VALIDATE_INT);
             $imagem_id = null;
 
-            $erros = [];
-            if (empty($nome)) $erros[] = "O campo 'Nome' é obrigatório.";
-            if (empty($data_inicio)) $erros[] = "A 'Data de Início' é obrigatória.";
-            if ($polo_id === false || $polo_id <= 0) {
-                $erros[] = "Por favor, selecione um Polo válido.";
-            }
-            
-            if (!empty($data_fim) && $data_fim < $data_inicio) {
-                $erros[] = "A data de fim não pode ser anterior à data de início.";
-            }
+            // --- LÓGICA DE UPLOAD DA IMAGEM ---
+            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
+                $imagemModel = new ImagemModel();
+                
+                $nomeArquivo = uniqid() . '-' . basename($_FILES['imagem_turma']['name']);
+                $caminhoDestino = __DIR__ . '/../View/assets/img/turmas/' . $nomeArquivo;
+                
+                // Caminho relativo para salvar no banco de dados
+                $urlRelativa = 'App/View/assets/img/turmas/' . $nomeArquivo;
 
-            if (!empty($erros)) {
-                $_SESSION['erros_turma'] = $erros;
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
-                exit;
+                if (move_uploaded_file($_FILES['imagem_turma']['tmp_name'], $caminhoDestino)) {
+                    $imagem_id = $imagemModel->salvarImagem($urlRelativa, "Imagem da turma " . $nome);
+                    if (!$imagem_id) {
+                         $_SESSION['erros_turma'] = ["Erro ao salvar as informações da imagem no banco de dados."];
+                         header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
+                         exit;
+                    }
+                } else {
+                    $_SESSION['erros_turma'] = ["Falha ao mover o arquivo de imagem."];
+                    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
+                    exit;
+                }
             }
+            // --- FIM DA LÓGICA DE UPLOAD ---
 
             $turmaModel = new TurmaModel();
             $resultado = $turmaModel->criarTurma($nome, $descricao, $data_inicio, $data_fim, $polo_id, $imagem_id);
 
             if ($resultado) {
                 $_SESSION['sucesso_turma'] = "Turma '".htmlspecialchars($nome)."' cadastrada com sucesso! Redirecionando...";
-                // REDIRECIONA DE VOLTA PARA A PÁGINA DE CADASTRO
                 header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
                 exit;
             } else {
-                $_SESSION['erros_turma'] = ["Ocorreu um erro inesperado ao salvar a turma. Tente novamente."];
+                $_SESSION['erros_turma'] = ["Ocorreu um erro ao salvar a turma. Tente novamente."];
                 header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
                 exit;
             }
