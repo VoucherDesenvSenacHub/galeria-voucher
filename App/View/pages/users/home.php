@@ -1,32 +1,26 @@
 <?php
 require_once __DIR__ . "/../../componentes/head.php";
-// 1. INCLUSÃO DOS ARQUIVOS NECESSÁRIOS
-require_once __DIR__ . "/../../../Model/TurmaModel.php";
+require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
 headerComponent('Página Inicial');
 
-// 2. BUSCA DAS TURMAS NO BANCO DE DADOS
-try {
-    $turmaModel = new TurmaModel();
-    // Usei a função que criamos, que busca apenas turmas com imagem
-    $turmas = $turmaModel->buscarTurmasParaGaleria();
-} catch (Exception $e) {
-    // Se houver erro na conexão ou consulta, a página não quebra
-    $turmas = [];
-    error_log("Erro ao buscar turmas: " . $e->getMessage());
-}
-
+// $estatisticasModel = new EstatisticasModel();
+// $resultado = $estatisticasModel->getEstatisticas();
 ?>
 
 <body class="body-user">
-    <?php
+    <?php 
         $isAdmin = false; // Para páginas de users
-        require_once __DIR__ . "/../../componentes/nav.php";
+        require_once __DIR__ . "/./../../componentes/nav.php" 
     ?>
-    <?php require_once __DIR__ . "/../../componentes/users/mira.php"; ?>
 
-    <main class="main-user">
-        <section id="secao1">
+<main class="main-user">
+    <!-- Seção 1 -->
+    <section id="secao1">
+            <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
+
+            <canvas id="matrix-canvas"></canvas>
+
             <div class="content">
                 <div class="nome-voucher">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nome.png"
@@ -46,8 +40,9 @@ try {
             </div>
         </section>
 
+        <!-- Seção 2 (cards Oque é?, Para quem é? e Porque fazer?) -->
         <section id="secao2">
-             <div class="container">
+            <div class="container">
                 <div class="card">
                     <h2>O QUE É ?</h2>
                     <p>
@@ -99,6 +94,7 @@ try {
             </div>
         </section>
 
+        <!-- Seção 3 (estatísticas) -->
         <section id="secao3">
             <div class="container2">
                 <h1>SUA EVOLUÇÃO COMEÇA AQUI</h1>
@@ -122,69 +118,29 @@ try {
             </div>
         </section>
 
+        <!-- Seção 4 (transição da página inicial para a página de "turmas" e animação dos losângos) -->
+        
         <section id="secao4">
             <div class="call-to-action">
                 <p>SELECIONE UMA TURMA E <span>INSPIRE_SE</span></p>
             </div>
 
-            <div class="poligono">
-                <?php if (!empty($turmas)): ?>
-                    <div class="image-row">
-                        <?php 
-                        $count = 0;
-                        foreach ($turmas as $turma) {
-                            if ($count > 5) break;
-                        ?>
-                            <div class='image-turma'>
-                                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
-                                    <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
-                                </a>
-                            </div>
-                        <?php 
-                            $count++;
-                        } 
-                        ?>
+            <div class="diamond-grid">
+                <?php
+                //cria 17 poligonos sempre
+                for ($i = 0; $i < 17; $i++) { 
+                ?>
+                    <div class="image-turma">
+                        <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER']?>galeria-turma.php">
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG']?>utilitarios/foto.png">
+                        </a>
                     </div>
-
-                    <div class="image-row">
-                        <?php 
-                        $count = 0;
-                        foreach (array_slice($turmas, 6) as $turma) {
-                            if ($count > 4) break;
-                        ?>
-                            <div class='image-turma'>
-                                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
-                                    <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
-                                </a>
-                            </div>
-                        <?php 
-                            $count++;
-                        } 
-                        ?>
-                    </div>
-
-                    <div class="image-row">
-                        <?php 
-                        $count = 0;
-                        foreach (array_slice($turmas, 11) as $turma) {
-                            if ($count > 5) break;
-                        ?>
-                            <div class='image-turma'>
-                                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
-                                    <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
-                                </a>
-                            </div>
-                        <?php 
-                            $count++;
-                        } 
-                        ?>
-                    </div>
-                <?php else: ?>
-                    <p style="text-align: center; font-size: 1.2rem; color: #fff;">Nenhuma turma encontrada.</p>
-                <?php endif; ?>
+                <?php } ?>
             </div>
         </section>
         
     </main>
-    <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; ?>
+    <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
+
+    <script src="<?php echo VARIAVEIS['APP_URL'] . '/App/View/assets/js/users/matrix.js' ?>"></script>
 </body>

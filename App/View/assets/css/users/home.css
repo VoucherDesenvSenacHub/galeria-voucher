@@ -305,46 +305,8 @@ html, body {
     display: block;
 }
 
-@media (max-width: 1024px) {
-
-    /* --- Seção 4 (Tablet - Layout 5-4-5) --- */
-    .diamond-grid {
-        grid-template-columns: repeat(5, 1fr); /* Base de 5 colunas */
-        gap: 10px;
-        max-width: 90%;
-        margin: 0 auto;
-    }
-
-    /* mostra apenas os 14 itens necessários (5+4+5) */
-    .image-turma:nth-child(n + 15) {
-        display: none;
-    }
-
-    /* reseta as regras do desktop */
-    .image-turma:nth-child(7) {
-        grid-column-start: auto;
-    }
-    .image-turma:nth-child(n+7) {
-        margin-top: 0;
-    }
-
-    /* aplica as novas regras de encaixe do tablet */
-    .image-turma:nth-child(n+6) {
-        margin-top: -40px; /* Encaixe vertical */
-    }
-    .image-turma:nth-child(6),
-    .image-turma:nth-child(7),
-    .image-turma:nth-child(8),
-    .image-turma:nth-child(9) {
-        transform: translateX(calc(50% + 5px)); /* deslocamento da 2ª linha */
-    }
-    .image-turma:nth-child(10) {
-        grid-column-start: 1; /* correção da 3ª linha */
-    }
-}
-
 /* responsividade para celulares */
-@media (max-width: 425px) {
+@media (max-width: 320px) {
     .body-user {
         max-width: 100%;
         overflow-x: hidden;
@@ -380,8 +342,8 @@ html, body {
     
     #secao1 .nome-voucher {
         position: inherit;
-        transform: translateY(-64px);
-        left: 10px;
+        /* transform: translateY(-64px); */
+        left: -2px;
     }
 
     .mapa-svg-container {
@@ -420,10 +382,10 @@ html, body {
         gap: 1%;
     }
     
-    #secao3 .stats {
+    #secao3 .container2 .stats {
         flex-direction: column;
         /* Alinha estatísticas em coluna */
-        gap: 15px;
+        gap: 100px;
     }
     
     #secao3 .container2 {
@@ -443,7 +405,7 @@ html, body {
     
     .diamond-grid {
         display: inline-grid;
-        grid-template-columns: repeat(4, 20vw);
+        grid-template-columns: repeat(4, 1fr);
         gap: 5px;
         padding-bottom: 30px;
         max-width: 100%;
