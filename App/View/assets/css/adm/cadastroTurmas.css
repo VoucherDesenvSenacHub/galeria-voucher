@@ -95,9 +95,11 @@
     .profile-pic {
         height: 20rem;
         display: flex;
+        flex-direction: column; /* Adicionado para empilhar os itens verticalmente */
         align-items: center;
         justify-content: center;
         margin: 5rem 2rem;
+        margin-left: 10%;
     }
 
     .profile-pic img {

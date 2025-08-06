@@ -82,19 +82,21 @@ if (session_status() === PHP_SESSION_NONE) {
                 <label for="data_inicio" class="input-adm-turmas">Início:</label>
                 <input type="date" name="data_inicio" class="input-adm-turmas" required>
 
-                <label for="data_fim" class="input-adm-turmas">Término</label>
+                <label for="data_fim" class="input-adm-turmas">Término:</label>
 
                 <input type="date" name="data_fim" class="input-adm-turmas">
 
               </div>
 
-              <div class="profile-pic" style="display: flex; flex-direction: column; align-items: center;">
-                <small style="text-align: center; display: block; margin-bottom: 5px;">Clique na imagem para alterar</small>
+              <div class="profile-pic">
+                <small style="text-align: center; display: block; margin-bottom: 8px;">Clique na imagem para alterar</small>
+                
                 <label for="imagem_turma" style="cursor: pointer;">
                     <img id="preview" src="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/avatar.png" alt="Upload de Imagem">
                 </label>
                 <input type="file" id="imagem_turma" name="imagem_turma" accept="image/*" style="display: none;">
               </div>
+              
             </div>
             <div class="form-bottom">
                 <div class="form-group-buton">
