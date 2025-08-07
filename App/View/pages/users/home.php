@@ -1,22 +1,31 @@
 <?php
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
+// 1. INCLUSÃO DOS ARQUIVOS NECESSÁRIOS
+require_once __DIR__ . "/../../../Model/TurmaModel.php";
 
 headerComponent('Página Inicial');
 
-$estatisticasModel = new EstatisticasModel();
-$resultado = $estatisticasModel->getEstatisticas();
+// 2. BUSCA DAS TURMAS NO BANCO DE DADOS
+try {
+    $turmaModel = new TurmaModel();
+    // Usei a função que criamos, que busca apenas turmas com imagem
+    $turmas = $turmaModel->buscarTurmasParaGaleria();
+} catch (Exception $e) {
+    // Se houver erro na conexão ou consulta, a página não quebra
+    $turmas = [];
+    error_log("Erro ao buscar turmas: " . $e->getMessage());
+}
+
 ?>
 
 <body class="body-user">
     <?php
-    $isAdmin = false; // Para páginas de users
-    require_once __DIR__ . "/./../../componentes/nav.php"
-        ?>
-    <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
+        $isAdmin = false; // Para páginas de users
+        require_once __DIR__ . "/../../componentes/nav.php";
+    ?>
+    <?php require_once __DIR__ . "/../../componentes/users/mira.php"; ?>
 
     <main class="main-user">
-        <!-- Seção 1 -->
         <section id="secao1">
             <div class="content">
                 <div class="numero">
@@ -36,9 +45,8 @@ $resultado = $estatisticasModel->getEstatisticas();
             </div>
         </section>
 
-        <!-- Seção 2 (cards Oque é?, Para quem é? e Porque fazer?) -->
         <section id="secao2">
-            <div class="container">
+             <div class="container">
                 <div class="card">
                     <h2>O QUE É ?</h2>
                     <p>
@@ -90,38 +98,29 @@ $resultado = $estatisticasModel->getEstatisticas();
             </div>
         </section>
 
-        <!-- Seção 3 (estatísticas) -->
         <section id="secao3">
             <div class="container2">
                 <h1>SUA EVOLUÇÃO COMEÇA AQUI</h1>
                 <div class="stats">
                     <?php
                     //dados dinâmicos de exemplo apenas
-                    $numAlunos = $resultado['alunos'];
-                    $numProjetos = $resultado['projetos'];
-                    $numPolos = $resultado['polos'];
-
                     $estatisticas = [
-                        ['valor' => $numAlunos > 100 ? '+' . floor(num: $numAlunos / 100) * 100 : $numAlunos, 'label' => 'DE ALUNOS'],
-                        ['valor' => $numProjetos > 10 ? '+' . floor(num: $numProjetos / 10) * 10 : $numProjetos, 'label' => 'PROJETOS'],
-                        ['valor' => $numPolos, 'label' => 'POLOS'],
+                        ['valor' => '+500', 'label' => 'DE ALUNOS'],
+                        ['valor' => '+50', 'label' => 'PROJETOS'],
+                        ['valor' => '+5', 'label' => 'POLOS'],
                         ['valor' => '1200', 'label' => 'CURSO COM HORAS']
                     ];
-                    //foreach percorre aray ($estatisticas) e cria os elementos html (div, span, p)
-                    // evitando repetição manual de código e facilitando na manutenção sem precisar
-                    //alterar a estrutura do html, apenas conectando ao banco de dados
                     foreach ($estatisticas as $estatistica) {
                         echo "<div>
-                                <span>{$estatistica['valor']}</span>
-                                <p>{$estatistica['label']}</p>
-                            </div>";
+                                    <span>{$estatistica['valor']}</span>
+                                    <p>{$estatistica['label']}</p>
+                              </div>";
                     }
                     ?>
                 </div>
             </div>
         </section>
 
-        <!-- Seção 4 (transição da página inicial para a página de "turmas" e animação dos losângos) -->
         <section id="secao4">
 
             <div class="call-to-action">
@@ -129,42 +128,62 @@ $resultado = $estatisticasModel->getEstatisticas();
             </div>
 
             <div class="poligono">
+                <?php if (!empty($turmas)): ?>
+                    <div class="image-row">
+                        <?php 
+                        $count = 0;
+                        foreach ($turmas as $turma) {
+                            if ($count > 5) break;
+                        ?>
+                            <div class='image-turma'>
+                                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
+                                    <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
+                                </a>
+                            </div>
+                        <?php 
+                            $count++;
+                        } 
+                        ?>
+                    </div>
 
-                <div class="image-row">
-                    <?php for ($i = 0; $i <= 5; $i++) { ?>
-                        <div class='image-turma'>
-                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
-                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
-                            </a>
-                        </div>
-                    <?php } ?>
-                </div>
+                    <div class="image-row">
+                        <?php 
+                        $count = 0;
+                        foreach (array_slice($turmas, 6) as $turma) {
+                            if ($count > 4) break;
+                        ?>
+                            <div class='image-turma'>
+                                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
+                                    <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
+                                </a>
+                            </div>
+                        <?php 
+                            $count++;
+                        } 
+                        ?>
+                    </div>
 
-                <div class="image-row">
-                    <?php for ($i = 0; $i <= 4; $i++) { ?>
-                        <div class='image-turma'>
-                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
-                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
-                            </a>
-                        </div>
-                    <?php } ?>
-
-                </div>
-
-                <div class="image-row">
-                    <?php for ($i = 0; $i <= 5; $i++) { ?>
-                        <div class='image-turma'>
-                            <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php">
-                                <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/foto.png">
-                            </a>
-                        </div>
-                    <?php } ?>
-                </div>
-
-            </div>
-
+                    <div class="image-row">
+                        <?php 
+                        $count = 0;
+                        foreach (array_slice($turmas, 11) as $turma) {
+                            if ($count > 5) break;
+                        ?>
+                            <div class='image-turma'>
+                                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
+                                    <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
+                                </a>
+                            </div>
+                        <?php 
+                            $count++;
+                        } 
+                        ?>
+                    </div>
+                <?php else: ?>
+                    <p style="text-align: center; font-size: 1.2rem; color: #fff;">Nenhuma turma encontrada.</p>
+                <?php endif; ?>
             </div>
         </section>
     </main>
-    <?php require_once __DIR__ . "/./../../componentes/users/footer.php" //componente do rodapé ?>
+    <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; ?>
 </body>
