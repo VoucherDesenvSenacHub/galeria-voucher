@@ -68,17 +68,20 @@
         width: 100%;
     }
     
+    .form-label {
+        font-size: 28px;
+        margin-left: 1px;
+
+    }
+
+    
 
     .form-section {
         width: 60%;
         font-family: var(--font-secondary);
-    }
-
-    .form-section {
-        font-size: 25px;
-        font-weight: bold;
-        
-        margin-bottom: 30px;
+        font-size: 1.5rem; 
+        margin-left: 15px; 
+        margin-top: 15px;
     }
 
     .input-adm-turmas[type="text"] {

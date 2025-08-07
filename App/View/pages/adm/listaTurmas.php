@@ -35,12 +35,9 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     ?>
 
     <main class="main-lista-alunos">
-
-        
-        
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
-                <?php buttonComponent('primary', 'NOVA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
+                <?php buttonComponent('primary', 'NOVA TURMA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
