@@ -36,11 +36,11 @@ class TurmaController {
             $resultado = $turmaModel->criarTurma($nome, $descricao, $data_inicio, $data_fim, $polo_id, $imagem_id);
 
             if ($resultado) {
-                $_SESSION['sucesso_turma'] = "Turma '".htmlspecialchars($nome)."' cadastrada com sucesso!";
+                $_SESSION['sucesso_turma'] = "'".htmlspecialchars($nome)."' Criada Com Sucesso !!!";
             } else {
                 $_SESSION['erros_turma'] = ["Ocorreu um erro ao salvar a turma."];
             }
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
             exit;
         }
     }
@@ -81,8 +81,9 @@ class TurmaController {
             } else {
                 $_SESSION['erros_turma'] = ["Erro ao atualizar a turma."];
             }
-            // Redireciona para a lista de turmas após a atualização
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
+            
+            // REDIRECIONA DE VOLTA PARA A PÁGINA DE EDIÇÃO PARA EXIBIR O MODAL
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . "cadastroTurmas/cadastroTurmas.php?id=$turma_id");
             exit;
         }
     }

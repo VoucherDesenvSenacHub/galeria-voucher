@@ -121,6 +121,17 @@ headerComponent($tituloPagina);
       </div>
     </main>
   </div>
+
+  <?php if (isset($_SESSION['sucesso_turma'])): ?>
+    <script>
+        // Exibe o alerta com a mensagem de sucesso
+        alert("<?= htmlspecialchars($_SESSION['sucesso_turma']) ?>");
+
+        // Opcional: limpa os campos do formulário para um novo cadastro
+        document.getElementById('form-turma').reset();
+    </script>
+    <?php unset($_SESSION['sucesso_turma']); // Limpa a sessão para não mostrar o alerta novamente ?>
+  <?php endif; ?>
   
   <script>
     const inputFile = document.getElementById('imagem_turma');
