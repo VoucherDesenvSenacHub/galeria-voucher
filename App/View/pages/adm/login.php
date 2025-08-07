@@ -30,6 +30,11 @@ if (isset($_SESSION['usuario']) && in_array($_SESSION['usuario']['perfil'], ['ad
 
 // Processa o login quando o formulário for enviado e conexão estiver ok
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuarioModel !== null) {
+    echo '<pre>'; // uso pra debbugar
+    var_dump($_POST);
+    echo '</pre>';
+    exit;
+
     $email = trim($_POST['email'] ?? '');
     $senha = $_POST['senha'] ?? '';
 
