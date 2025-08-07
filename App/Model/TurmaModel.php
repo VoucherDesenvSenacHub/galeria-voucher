@@ -74,56 +74,6 @@ class TurmaModel extends BaseModel
         }
     }
 
-    public function salvar() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
-            // Recebendo os dados do formulário
-            $nome = trim($_POST['nome'] ?? '');
-            $descricao = trim($_POST['descricao'] ?? '');
-            $data_inicio = $_POST['data_inicio'] ?? '';
-            $data_fim = !empty($_POST['data_fim']) ? $_POST['data_fim'] : null;
-            $polo_nome = trim($_POST['polo'] ?? '');
-            $imagem_id = null; // Placeholder para o ID da imagem
-
-            $erros = [];
-            if (empty($nome)) $erros[] = "O campo 'Nome' é obrigatório.";
-            if (empty($data_inicio)) $erros[] = "A 'Data de Início' é obrigatória.";
-            if (empty($polo_nome)) $erros[] = "O campo 'Polo' é obrigatório.";
-            
-            // Validação de datas
-            if (!empty($data_fim) && $data_fim < $data_inicio) {
-                $erros[] = "A data de fim não pode ser anterior à data de início.";
-            }
-
-            // Futuramente, aqui será o código para tratar o upload da imagem
-            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] == 0) {
-                // Lógica para salvar a imagem e obter o ID para a variável $imagem_id
-            }
-            
-            // Em um sistema real, o ID do polo seria buscado no banco.
-            $polo_id = 1; // Exemplo: ID do 'SENAC Centro'
-
-            if (!empty($erros)) {
-                $_SESSION['erros_turma'] = $erros;
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
-                exit;
-            }
-
-            $turmaModel = new TurmaModel();
-            $resultado = $turmaModel->criarTurma($nome, $descricao, $data_inicio, $data_fim, $polo_id, $imagem_id);
-
-            if ($resultado) {
-                $_SESSION['sucesso_turma'] = "Turma cadastrada com sucesso!";
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
-                exit;
-            } else {
-                $_SESSION['erros_turma'] = ["Ocorreu um erro ao salvar a turma. Tente novamente."];
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
-                exit;
-            }
-        }
-    }
-
     /**
      * Busca todas as turmas ativas com suas respectivas imagens de capa.
      * @return array
