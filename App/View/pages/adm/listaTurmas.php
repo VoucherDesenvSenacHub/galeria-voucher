@@ -58,7 +58,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                 <th>AÇÕES</th>
                             </tr>
                         </thead>
-                        <tbody>
+                       <tbody>
                             <?php if (!empty($turmas)) : ?>
                                 <?php foreach ($turmas as $turma) : ?>
                                     <tr>
@@ -66,11 +66,18 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         <td><?= htmlspecialchars($turma['NOME_POLO']) ?></td>
                                         
                                         <td class="acoes">
-                                            <span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-                                            
-                                            <?php if ($is_admin) : ?>
-                                                <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
-                                            <?php endif; ?>
+                                            <div class="acoes-container">
+                                                <a href="cadastroTurmas/cadastroTurmas.php?id=<?= $turma['turma_id'] ?>" title="Editar">
+                                                    <span class="material-symbols-outlined acao-edit">edit</span>
+                                                </a>
+                                                
+                                                <form method="POST" action="<?= VARIAVEIS['APP_URL'] ?>App/Controls/TurmaController.php?action=excluir" onsubmit="return confirm('Atenção! Excluir esta turma também removerá todos os seus projetos, alunos e professores vinculados. Esta ação é irreversível. Deseja continuar?');">
+                                                    <input type="hidden" name="turma_id" value="<?= $turma['turma_id'] ?>">
+                                                    <button type="submit" class="btn-acao-delete" title="Excluir">
+                                                        <span class="material-symbols-outlined acao-delete">delete</span>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
