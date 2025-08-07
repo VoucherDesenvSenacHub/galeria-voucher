@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/BaseModel.php";
+namespace App\Model;
 
 class EstatisticasModel extends BaseModel {
 

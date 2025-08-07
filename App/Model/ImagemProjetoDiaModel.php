@@ -1,5 +1,7 @@
 <?php
-require_once __DIR__ . '/BaseModel.php';
+namespace App\Model;
+
+use PDO;
 
 class ImagemProjetoDiaModel extends BaseModel
 {

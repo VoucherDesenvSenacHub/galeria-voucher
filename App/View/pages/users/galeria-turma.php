@@ -4,10 +4,6 @@
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
 
-// Importa helpers personalizados para manipulação de imagens e componentes HTML
-require_once __DIR__ . "/../../../Helpers/ImageHelper.php";
-require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
-
 use function App\Helpers\urlImagem;
 use function App\Helpers\renderSubTabBtn;
 use function App\Helpers\renderRepoBtn;

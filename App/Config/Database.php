@@ -1,4 +1,9 @@
 <?php
+namespace App\Config;
+
+use PDO, PDOException;
+use Exception;
+
 class Database
 {
     public static function conectar(): PDO

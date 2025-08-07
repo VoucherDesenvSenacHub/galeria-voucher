@@ -1,6 +1,7 @@
 <?php
+namespace App\Model;
 
-require_once __DIR__ . '/BaseModel.php';
+use PDO;
 
 class UsuarioModel extends BaseModel
 {
