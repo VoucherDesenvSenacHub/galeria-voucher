@@ -64,14 +64,14 @@ html, body {
     
 }
 
-#secao1 .content {
+/* #secao1 .content {
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-}
+} */
 
 .mapa-svg-container {
     position: absolute;
@@ -95,21 +95,21 @@ html, body {
     fill: transparent;
 }
 
-#secao1 .nome-voucher {
+/* #secao1 .nome-voucher {
     position: relative;
     z-index: 2;
     transform: translateY(-40px);
-}
+} */
 
-#secao1 .nome-voucher img {
+/* #secao1 .nome-voucher img {
     max-width: 470px;
     width: 60vw;
     height: auto;
-}
+} */
 
-#secao1 .mira, #secao1 .mira1, #secao1 .mira2 {
+/* #secao1 .mira, #secao1 .mira1, #secao1 .mira2 {
     z-index: 3;
-}
+} */
     
 /* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
@@ -330,11 +330,11 @@ html, body {
         padding: 20px 0;
     }
     
-    .content {
+    /* .content {
         gap: 30px;
         transform: translateY(-20px);
-    }
-    
+    } */
+/*     
     .nome-voucher img {
         max-width: 180px !important;
         width: 70vw !important; 
@@ -342,9 +342,9 @@ html, body {
     
     #secao1 .nome-voucher {
         position: inherit;
-        /* transform: translateY(-64px); */
+        transform: translateY(-64px);
         left: -2px;
-    }
+    } */
 
     .mapa-svg-container {
         width: 100vw;

@@ -1,75 +1,90 @@
-.mira {
-    position: absolute;
-    width: 8vh;
-    height: 8vh;
-    border: 4px solid var(--accent-color);
-    top: 48.8vh;
-    left: 25.1vw;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-}
+.componente_mira {
+    .mira {
+        position: absolute;
+        width: 8vh;
+        height: 8vh;
+        border: 4px solid var(--accent-color);
+        top: 48.8vh;
+        left: 25.1vw;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
 
 
-/* linha vertical com degradê na parte de baixo */
-.mira1 {
-    position: absolute;
-    width: 2px;
-    min-height: calc(100vh - 48.8px);
-    background-color: var(--accent-color);
-    top: 48.8px;
-    left: 25vw;
-    border: 2px solid var(--accent-color);
-    z-index: -1;
+    /* linha vertical com degradê na parte de baixo */
+    .mira1 {
+        position: absolute;
+        width: 2px;
+        min-height: calc(100vh - 48.8px);
+        background-color: var(--accent-color);
+        top: 48.8px;
+        left: 25vw;
+        border: 2px solid var(--accent-color);
+        z-index: 2;
 
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-}
+        -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    }
 
-/* linha horizontal */
-.mira2 {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: var(--accent-color);
-    top: 48.5vh;
-    left: 0;
-    border: 2px solid var(--accent-color);
-    z-index: -1;
+    /* linha horizontal */
+    .mira2 {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: var(--accent-color);
+        top: 48.5vh;
+        left: 0;
+        border: 2px solid var(--accent-color);
+        z-index: 2;
+    }
+
+    .nome-voucher {
+        z-index: 3;
+        position: absolute;
+        top: 42.5vh;
+        left: calc((100vw - 400px) / 2);
+        /* left: 38.1vw; */
+        width: 400px;
+        /* transform: translateY(-40px); */
+
+        img {
+            width: 100%;
+            /* height: auto; */
+        }
+    }
 }
 
 /*celular pequeno*/
 @media (max-width: 320px) {
-    .componente-mira {
+    /*.componente-mira {
         width: 35px !important;
         height: 35px !important;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 3;
-    }
 
-    .mira {
-        border-width: 3px !important;
-        top: 49.5vh;
-        left: 12.1vw;
-        position: absolute;
-    }
+        .mira {
+            border-width: 3px !important;
+            top: 49.5vh;
+            left: 12.1vw;
+            position: absolute;
+        }
+    
+        .mira1 {
+            border-width: 1.6px !important;
+            left: 11.9vw;
+            top: 48.8px;
+            position: absolute;
+        }
+    
+        .mira2 {
+            border-width: 1px !important;
+            top: 49.4vh;
+            left: 0;
+            position: absolute;
+        }
+    } */
 
-    .mira1 {
-        border-width: 1.6px !important;
-        left: 11.9vw;
-        top: 48.8px;
-        position: absolute;
-    }
 
-    .mira2 {
-        border-width: 1px !important;
-        top: 49.4vh;
-        left: 0;
-        position: absolute;
-    }
 }
-
-* {
-    border: 1px solid red !important;
-  }

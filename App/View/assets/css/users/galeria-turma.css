@@ -569,10 +569,10 @@
 }
 
 @media (max-width: 768px) {
-  section img {
+  /* section img {
     width: 100%;
     height: 90%;
-  }
+  } */
 
   .dia {
     flex-wrap: wrap;

@@ -19,13 +19,10 @@ headerComponent('Página Inicial');
     <section id="secao1">
             <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
-            <canvas id="matrix-canvas"></canvas>
+            <!-- <canvas id="matrix-canvas"></canvas> -->
 
             <div class="content">
-                <div class="nome-voucher">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nome.png"
-                        alt="Voucher Desenvolvedor">
-                </div>
+                
 
                 <div class="mapa-svg-container">
                     <svg class="mapa-svg" version="1.0" xmlns="http://www.w3.org/2000/svg"
