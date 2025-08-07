@@ -17,6 +17,7 @@ $modoEdicao = false;
 $turma = null;
 $tituloPagina = "Cadastro de Turma";
 $actionUrl = VARIAVEIS['APP_URL'] . "App/Controls/TurmaController.php?action=salvar";
+$imagemUrl = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png'; // Imagem padrão
 
 if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
     $modoEdicao = true;
@@ -24,16 +25,22 @@ if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
     $turma = $turmaModel->buscarPorId($_GET['id']);
     
     if (!$turma) {
-        $_SESSION['erros_turma'] = ["Turma não encontrada."];
         header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
         exit;
     }
 
     $tituloPagina = "Editar Turma";
     $actionUrl = VARIAVEIS['APP_URL'] . "App/Controls/TurmaController.php?action=atualizar";
+
+    // Busca o URL da imagem atual da turma
+    if (!empty($turma['imagem_id'])) {
+        $url = $turmaModel->buscarUrlDaImagem($turma['imagem_id']);
+        if ($url) {
+            $imagemUrl = VARIAVEIS['APP_URL'] . $url;
+        }
+    }
 }
 
-// Busca os polos para o dropdown
 $poloModel = new PoloModel();
 $polos = $poloModel->buscarTodos();
 
@@ -59,20 +66,8 @@ headerComponent($tituloPagina);
       </div>
 
       <div class="container-main-adm">
-        
-        <?php if (isset($_SESSION['erros_turma'])): ?>
-            <div style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin: 20px auto; width: 80%;">
-                <strong>Ocorreram os seguintes erros:</strong>
-                <ul>
-                    <?php foreach ($_SESSION['erros_turma'] as $erro): ?>
-                        <li><?= htmlspecialchars($erro) ?></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-            <?php unset($_SESSION['erros_turma']); ?>
-        <?php endif; ?>
 
-        <form id="form-turma" method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data" style="width: 100%;">
+        <form id="form-turma" method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data">
             
             <?php if ($modoEdicao): ?>
                 <input type="hidden" name="turma_id" value="<?= htmlspecialchars($turma['turma_id']) ?>">
@@ -109,7 +104,7 @@ headerComponent($tituloPagina);
               <div class="profile-pic" style="display: flex; flex-direction: column; align-items: center;">
                 <small style="text-align: center; display: block; margin-bottom: 5px;">Clique na imagem para alterar</small>
                 <label for="imagem_turma" style="cursor: pointer;">
-                    <img id="preview" src="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/avatar.png" alt="Upload de Imagem">
+                    <img id="preview" src="<?= htmlspecialchars($imagemUrl) ?>" alt="Upload de Imagem">
                 </label>
                 <input type="file" id="imagem_turma" name="imagem_turma" accept="image/*" style="display: none;">
               </div>

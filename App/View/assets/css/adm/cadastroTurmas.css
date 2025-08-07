@@ -56,6 +56,10 @@
         
     }
 
+    #form-turma {
+        width: 100%;
+    }
+
     .form-top {
         display: flex;
         width: 100%;
@@ -73,8 +77,6 @@
         margin-left: 1px;
 
     }
-
-    
 
     .form-section {
         width: 60%;

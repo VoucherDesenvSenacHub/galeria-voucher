@@ -174,6 +174,24 @@ class TurmaModel extends BaseModel
             error_log("Erro ao excluir turma: " . $e->getMessage());
             return false;
         }
-    }    
+    }
+
+     /**
+     * MÉTODO ADICIONADO: Busca o URL de uma imagem pelo seu ID.
+     * @param int $imagem_id O ID da imagem.
+     * @return string|null O URL da imagem ou null se não for encontrada.
+     */
+    public function buscarUrlDaImagem(int $imagem_id): ?string
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT url FROM imagem WHERE imagem_id = :id");
+            $stmt->execute([':id' => $imagem_id]);
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $resultado ? $resultado['url'] : null;
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar URL da imagem: " . $e->getMessage());
+            return null;
+        }
+    }
 
 }
