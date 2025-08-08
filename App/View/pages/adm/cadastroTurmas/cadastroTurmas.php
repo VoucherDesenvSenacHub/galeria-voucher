@@ -108,13 +108,18 @@ headerComponent($tituloPagina);
     </main>
   </div>
   
-  <?php if (isset($_SESSION['sucesso_cadastro_alert'])): ?>
+  <?php if (isset($_SESSION['sucesso_cadastro'])): ?>
     <script>
-        alert("<?= htmlspecialchars($_SESSION['sucesso_cadastro_alert']) ?>");
-        document.getElementById('form-turma').reset();
-        document.getElementById('preview').src = "<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png' ?>";
+        document.addEventListener('DOMContentLoaded', function() {
+            // Exibe o alerta com a mensagem de sucesso
+            alert("<?= htmlspecialchars($_SESSION['sucesso_cadastro']) ?>");
+            // Limpa os campos do formulário para um novo cadastro
+            document.getElementById('form-turma').reset();
+            // Reseta a imagem de preview para a padrão
+            document.getElementById('preview').src = "<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png' ?>";
+        });
     </script>
-    <?php unset($_SESSION['sucesso_cadastro_alert']); ?>
+    <?php unset($_SESSION['sucesso_cadastro']); // Limpa a sessão para não mostrar o alerta novamente ?>
   <?php endif; ?>
 
   <?php if (isset($_SESSION['sucesso_edicao_alert'])): ?>

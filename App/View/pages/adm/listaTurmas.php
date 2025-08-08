@@ -34,7 +34,7 @@ try {
     <main class="main-lista-alunos">
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
-                <a href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php' ?>" class="primary-button" style="text-decoration: none;">NOVA</a>
+                <a href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php' ?>" class="primary-button" style="text-decoration: none;">NOVA TURMA</a>
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
