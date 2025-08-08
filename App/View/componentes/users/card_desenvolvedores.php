@@ -1,49 +1,20 @@
-<?php
-require_once __DIR__ . "/../head.php";
-
-
-
-// Garante que $aluno está definido (renomeia para $dev para compatibilidade com o restante do código)
-if (!isset($aluno) || !is_array($aluno)) {
-    return;
-}
-
-$dev = $aluno;
-
-$foto = '';
-
-// Se vier uma URL completa (começa com http), use direto
-if (!empty($dev['imagem']) && preg_match('/^https?:\/\//', $dev['imagem'])) {
-    $foto = $dev['imagem'];
-}
-// Se vier um caminho relativo (ex: "alunos/foto.jpg"), adiciona DIR_IMG
-elseif (!empty($dev['imagem'])) {
-    $foto = VARIAVEIS['DIR_IMG'] . ltrim($dev['imagem'], '/');
-}
-// Se não tiver nada, usa o placeholder
-else {
-    $foto = VARIAVEIS['DIR_IMG'] . 'utilitarios/placeholder-user.png';
-}
-
-$nome = htmlspecialchars($dev['nome'] ?? 'Nome não informado');
-$funcao = htmlspecialchars($dev['funcao'] ?? 'Função não informada');
-$linkedin = !empty($dev['linkedin']) ? $dev['linkedin'] : '#';
-$github = !empty($dev['github']) ? $dev['github'] : '#';
+<?php 
+    require_once __DIR__ . "/../head.php";
 ?>
 
 <div class="card-container">
     <div class="image-dev">
-        <img src="<?= $foto ?>" alt="Foto de <?= $nome ?>">
+        <img src="<?php echo $dev['foto']; ?>" alt="Foto de <?php echo $dev['nome']; ?>">
     </div>
     <div class="text-card">
-        <h2><?= $nome ?></h2>
-        <p><?= $funcao ?></p>
+        <h2><?php echo $dev['nome']; ?></h2>
+        <p><?php echo $dev['funcao']; ?></p>
         <div class="social-icons">
-            <a href="<?= htmlspecialchars($linkedin) ?>" target="_blank" rel="noopener noreferrer">
-                <img src="<?= '../../../../' . VARIAVEIS['DIR_IMG'] ?>utilitarios/icons8-linkedin-50.png" alt="LinkedIn">
+            <a href="<?php echo $dev['linkedin']; ?>" target="_blank">
+                <img src="../../assets/img/utilitarios/icons8-linkedin-50.png" alt="LinkedIn">
             </a>
-            <a href="<?= htmlspecialchars($github) ?>" target="_blank" rel="noopener noreferrer">
-                <img src="<?= '../../../../' . VARIAVEIS['DIR_IMG'] ?>utilitarios/icons8-github-50.png" alt="GitHub">
+            <a href="<?php echo $dev['github']; ?>" target="_blank">
+                <img src="../../assets/img/utilitarios/icons8-github-50.png" alt="GitHub">
             </a>
         </div>
     </div>
