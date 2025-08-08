@@ -1,8 +1,6 @@
 async function buscarAlunos() {
-    console.log('buscarAlunos chamada');
     const response = await fetch('/galeria-voucher/app/Controls/AlunoController.php?acao=alunos');
     const dados = await response.json();
-    console.log(await dados)
     return dados;
 }
 // Função para ativar autocomplete no form dentro do modal
