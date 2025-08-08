@@ -1,36 +1,24 @@
 <?php
-
-// Importa configurações globais e o cabeçalho HTML
-require_once __DIR__ . "/../../../Config/env.php";
-require_once __DIR__ . "/../../componentes/head.php";
-
-// Importa helpers personalizados para manipulação de imagens e componentes HTML
-require_once __DIR__ . "/../../../Helpers/ImageHelper.php";
-require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
-
-use function App\Helpers\urlImagem;
-use function App\Helpers\renderSubTabBtn;
-use function App\Helpers\renderRepoBtn;
-
-// Define o título da página
-headerComponent('Galeria da Turma');
-
 // Valida se o parâmetro "turma_id" existe e é válido
 if (!isset($_GET['turma_id']) || !is_numeric($_GET['turma_id'])) {
-    header("Location: galeria-turma.php");
+    header("Location: turma.php");
     exit;
 }
 
-$turmaId = (int) $_GET['turma_id'];
 
-// ------------------- IMPORTAÇÃO DOS MODELS ------------------- //
-
-// Importa os models responsáveis por acessar dados da turma, projeto, aluno e docente
-foreach (["TurmaModel", "ProjetoModel", "AlunoModel", "DocenteModel"] as $model) {
-    require_once __DIR__ . "/../../../Model/{$model}.php";
-}
+require_once __DIR__ . "/../../../Config/env.php";
+require_once __DIR__ . "/../../../Helpers/ImageHelper.php";
+require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
+use function App\Helpers\urlImagem;
+use function App\Helpers\renderSubTabBtn;
+use function App\Helpers\renderRepoBtn;
+require_once __DIR__ . "/../../../Model/TurmaModel.php";
+require_once __DIR__ . "/../../../Model/ProjetoModel.php";
+require_once __DIR__ . "/../../../Model/AlunoModel.php";
+require_once __DIR__ . "/../../../Model/DocenteModel.php";
 
 // ------------------- OBTÉM DADOS DA TURMA ------------------- //
+$turmaId = (int) $_GET['turma_id'];
 
 $turmaModel = new TurmaModel();
 $turma = $turmaModel->buscarPorId($turmaId);
@@ -50,6 +38,13 @@ $docenteModel = new DocenteModel();
 $docentes = $docenteModel->buscarPorTurma($turmaId);
 ?>
 
+<?php
+// Importa configurações globais e o cabeçalho HTML
+require_once __DIR__ . "/../../componentes/head.php";
+
+// Define o título da página 
+headerComponent('Galeria da Turma');
+?>
 <body class="galeria-turma-body">
 
 <!-- ------------------- CABEÇALHO COM MENU ------------------- -->

@@ -1,13 +1,3 @@
-```sql
--- ===================================================================
--- SCRIPT DML CORRIGIDO - GALERIA VOUCHER
--- Correções aplicadas:
--- 1. Adicionada a criação de imagens genéricas para turmas e admin.
--- 2. Corrigido o INSERT na tabela 'turma' para incluir o 'imagem_id' obrigatório.
--- 3. Corrigido o INSERT na tabela 'pessoa' para o admin usar uma imagem própria.
--- 4. Corrigida a sintaxe de 'TOP 1' para 'LIMIT 1' para compatibilidade com MySQL.
--- ===================================================================
-```
 -- 1. INSERTS PARA TABELA 'cidade'
 INSERT INTO cidade (nome) VALUES 
 ('Campo Grande'), ('Dourados'), ('Corumbá'), ('Três Lagoas'),
@@ -132,7 +122,7 @@ INSERT INTO projeto (nome, descricao, link, turma_id)
 VALUES (
   'Galeria Web - Projeto Integrador',
   'Projeto desenvolvido pelos alunos da Turma 144 no curso de Desenvolvimento de Sistemas.',
-  'https://github.com/seu-repositorio/galeria-web',
+  'https://github.com/VoucherDesenvSenacHub/galeria-voucher',
   1
 );
 

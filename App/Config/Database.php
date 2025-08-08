@@ -4,7 +4,7 @@ class Database
     public static function conectar(): PDO
     {
         $host = 'localhost';
-        $port = '3308';
+        $port = '3306';
         $dbname = 'galeria_voucher';
         $user = 'root';
         $pass = '';
