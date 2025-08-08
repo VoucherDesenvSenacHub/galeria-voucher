@@ -1,12 +1,12 @@
-
 <?php
 require_once __DIR__ . '/../Model/PessoaModel.php';
 
 $model = new PessoaModel();
-$mensagem = '';
+$mensagem = 'criado';
 $pessoaCriada = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    var_dump($_POST);
     $dados = [
         'nome' => $_POST['nome'] ?? '',
         'email' => $_POST['email'] ?? '',
@@ -15,24 +15,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'github' => $_POST['github'] ?? ''
     ];
 
+
     $criado = $model->criarPessoa($dados, null); // sem imagem por enquanto
 
-    if ($criado) {
-        $ultimoId = $model->obterUltimoIdInserido();
-        $pessoaCriada = $model->buscarPessoaPorId($ultimoId);
-        $mensagem = "✅ Pessoa criada com sucesso! ID: {$ultimoId}";
-    } else {
-        $mensagem = "❌ Erro ao cadastrar pessoa.";
-    }
+    // if ($criado) {
+        
+    //     $pessoaCriada = $model->buscarPessoaPorId($ultimoId);
+    //     $mensagem = "✅ Pessoa criada com sucesso! ID: {$ultimoId}";
+    // } else {
+    //     $mensagem = "❌ Erro ao cadastrar pessoa.";
+    // }
+
+
+
+
+    $perfis = $model->listarPerfisPermitidos();
+
 }
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Pessoa</title>
 </head>
+
 <body>
     <h1>Cadastro de Pessoa</h1>
 
@@ -41,7 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if ($pessoaCriada): ?>
             <pre><?php print_r($pessoaCriada); ?></pre>
         <?php endif; ?>
+        <?php echo 'SALVOU'; ?> 
     <?php endif; ?>
+    <?php 
+    $perfis = $model->listarPerfisPermitidos();
+    ?>
 
     <form method="POST">
         <label>Nome:</label><br>
@@ -52,9 +67,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <label>Perfil:</label><br>
         <select name="perfil" required>
-            <option value="aluno">Aluno</option>
-            <option value="professor">Professor</option>
-        </select><br><br>
+            <option value="">-- Selecione --</option>
+            <?php foreach ($perfis as $perfil): ?>
+                <option value="<?= $perfil ?>"><?= ucfirst($perfil) ?></option>
+            <?php endforeach; ?>
+        </select>
+
 
         <label>LinkedIn:</label><br>
         <input type="text" name="linkedin"><br><br>
@@ -65,4 +83,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Cadastrar</button>
     </form>
 </body>
+
 </html>

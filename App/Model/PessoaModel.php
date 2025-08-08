@@ -71,4 +71,26 @@ class PessoaModel extends BaseModel {
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+    // Funcao par listamso 
+    public function listarPerfisPermitidos(): array {  
+        $sql = "SHOW COLUMNS FROM pessoa WHERE Field = 'perfil'";
+        $stmt = $this->pdo->query($sql);
+        $coluna = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if (!$coluna) return [];
+    
+        preg_match("/^enum\((.*)\)$/", $coluna['Type'], $matches);
+    
+        if (!isset($matches[1])) return [];
+    
+        $valores = explode(',', $matches[1]);
+        $valores = array_map(function($valor) {
+            return trim($valor, " '");
+        }, $valores);
+    
+        return $valores;
+    }
+    
 }
