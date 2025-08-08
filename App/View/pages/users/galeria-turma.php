@@ -66,7 +66,7 @@ $docentes = $docenteModel->buscarPorTurma($turmaId);
     <h1 class="galeria-turma-h1 projetos-turma">Projetos da turma</h1>
 
     <section class="galeria-turma-tab-inner">
-        <img class="galeria-turma-imagem-direita" src="<?= urlImagem($turma['imagem'], 'turmas/', 'turma-galeria.png') ?>" alt="Imagem da Turma">
+        <img class="galeria-turma-imagem-direita" src="<?= urlImagem($turma['imagem'], 'turmas/', 'turma-galeria.pg') ?>" alt="Imagem da Turma">
         <div class="galeria-turma-margin-top-left-projeto1-dia-i">
             <h2><?= htmlspecialchars($turma['nome']) ?></h2>
             <p><?= nl2br(htmlspecialchars($turma['descricao'])) ?></p>
@@ -127,7 +127,7 @@ $docentes = $docenteModel->buscarPorTurma($turmaId);
 
                         <!-- Aba final com botão para repositório -->
                         <div class="galeria-turma-sub-tab-content <?= empty($dias) ? 'active' : '' ?>" id="sub-tab-projeto-<?= $projeto['projeto_id'] ?>">
-                            <div class="galeria-turma-tab-inner" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; min-height: 200px; font-size: 1.5rem;">
+                            <div class="galeria-turma-tab-inner galeria-repos">
                                 <h1>Acesse o repositório</h1>
                                 <?php if (!empty($projeto['link'])): ?>
                                     <button class="galeria-turma-btn" type="button" onclick="window.open('<?= htmlspecialchars($projeto['link']) ?>', '_blank')">
