@@ -51,6 +51,7 @@ headerComponent('Cadastro de Pessoa')
                   <img id="preview" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/avatar.png" alt="Upload" />
                   <input type="file" id="fileInput" accept="image/*" style="display: none;" />
                 </label>
+                
               </div>
             </div>
           </div>

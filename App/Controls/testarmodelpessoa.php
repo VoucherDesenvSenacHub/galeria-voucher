@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../Model/PessoaModel.php';
+require_once __DIR__ . '/../Model/ImagemModel.php';
 
 $model = new PessoaModel();
 $mensagem = 'criado';
@@ -12,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'email' => $_POST['email'] ?? '',
         'perfil' => $_POST['perfil'] ?? '',
         'linkedin' => $_POST['linkedin'] ?? '',
-        'github' => $_POST['github'] ?? ''
+        'github' => $_POST['github'] ?? '',
+        'imagem' => $_POST['imagem'] ?? ''
     ];
 
 

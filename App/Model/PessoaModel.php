@@ -4,12 +4,21 @@ require_once __DIR__ . '/BaseModel.php';
 class PessoaModel extends BaseModel {
      // crud  criado conferir e testar!
     // Criar pessoa (Create)
+
     public function criarPessoa(array $dados, ?int $imagemId) : bool {
+        if ($imagemId === null) {
+            require_once __DIR__ . '/ImagemModel.php';
+            $imagemModel = new ImagemModel($this->pdo);
+    
+            $imagem = $imagemModel->buscarImagemPorUrl('App/View/assets/img/utilitarios/avatar.png');
+            $imagemId = $imagem ? (int)$imagem['imagem_id'] : null;
+        }
+    
         $sql = "INSERT INTO pessoa (nome, email, perfil, linkedin, github, imagem_id) 
                 VALUES (:nome, :email, :perfil, :linkedin, :github, :imagem_id)";
-
+    
         $stmt = $this->pdo->prepare($sql);
-
+    
         return $stmt->execute([
             ':nome' => $dados['nome'],
             ':email' => $dados['email'],
@@ -19,7 +28,7 @@ class PessoaModel extends BaseModel {
             ':imagem_id' => $imagemId
         ]);
     }
-
+    
     // Buscar pessoa por ID (Read)
     public function buscarPessoaPorId(int $id) : ?array {
         $sql = "SELECT * FROM pessoa WHERE pessoa_id = :id";
@@ -44,7 +53,7 @@ class PessoaModel extends BaseModel {
 
         $params = [
             ':nome' => $dados['nome'],
-            ':email' => $dados['email'],
+            ':email' => $dados['email'], 
             ':perfil' => $dados['perfil'],
             ':linkedin' => $dados['linkedin'] ?? null,
             ':github' => $dados['github'] ?? null,
