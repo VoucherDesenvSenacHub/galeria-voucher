@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Componente de Navegação Unificado
  * 
@@ -8,13 +9,18 @@
  * - $useHeader (boolean): Se true, envolve o nav em uma tag header (padrão: true para users)
  */
 
-// Define valores padrão se não foram passados
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $isAdmin = isset($isAdmin) ? $isAdmin : false;
-$useHeader = isset($useHeader) ? $useHeader : !$isAdmin; // true para users, false para admin
+$useHeader = isset($useHeader) ? $useHeader : !$isAdmin;
+$logado = isset($_SESSION['usuario']);
+$perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
 ?>
 
 <?php if ($useHeader): ?>
-<header>
+    <header>
 <?php endif; ?>
 
 <nav class="NavInicial<?php echo $isAdmin ? ' nav-adm' : ''; ?>">
@@ -26,28 +32,28 @@ $useHeader = isset($useHeader) ? $useHeader : !$isAdmin; // true para users, fal
         </div>
 
         <?php if (!$isAdmin): ?>
-        <div class="search" id="searchBar">
-            <?php if (!isset($esconderPesquisa) || !$esconderPesquisa) { ?>
-                <input class="pesquisa" type="text" placeholder="Pesquisar" id="searchInput">
-            <?php } ?>
-        </div>
+            <div class="search" id="searchBar">
+                <?php if (!isset($esconderPesquisa) || !$esconderPesquisa) { ?>
+                    <input class="pesquisa" type="text" placeholder="Pesquisar" id="searchInput">
+                <?php } ?>
+            </div>
         <?php endif; ?>
 
-        <!-- Ícone menu mobile - NÂO MECHER PELO AMOR DE DEUS VAI QUEBRAR-->
         <span class="material-symbols-outlined hamburger" id="hamburger">menu</span>
-        
+
         <ul class="menu-links" id="nav-links">
+            <!-- HOME e TURMAS (admin ou comum) -->
+            <li class="<?php echo $isAdmin ? 'desktop-only' : ''; ?>">
+                <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a>
+            </li>
+            <li class="<?php echo $isAdmin ? 'desktop-only' : ''; ?>">
+                <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>">TURMAS</a>
+            </li>
+
             <?php if ($isAdmin): ?>
-                <li class="desktop-only">
+                <!-- ADMIN - MOBILE LINKS -->
+                <li class="mobile-only">
                     <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a>
-                </li>
-                <li class="desktop-only">
-                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>">TURMAS</a>
-                </li>
-                <li class="desktop-only">
-                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
-                        <span class="material-symbols-outlined">person</span>
-                    </a>
                 </li>
                 <li class="mobile-only">
                     <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listarUsuarios.php'; ?>">PESSOAS</a>
@@ -55,26 +61,50 @@ $useHeader = isset($useHeader) ? $useHeader : !$isAdmin; // true para users, fal
                 <li class="mobile-only">
                     <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php'; ?>">TURMAS</a>
                 </li>
-                <li class="mobile-only">
-                    <?php buttonComponent('primary', 'SAIR', false, VARIAVEIS['APP_URL'] . 'index.php'); ?>
-                </li>
+
+                <?php if (!$logado): ?>
+                    <li class="desktop-only">
+                        <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
+                            <span class="material-symbols-outlined">person</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+                <?php if ($logado && in_array($perfil, ['adm', 'professor'])): ?>
+                    <!-- Sair visível apenas uma vez -->
+                    <li class="desktop-only">
+                        <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_LOGOUT'] . 'logout.php'; ?>" title="Sair">
+                            <span class="material-symbols-outlined">logout</span>
+                        </a>
+                    </li>
+                    <li class="mobile-only">
+                        <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_LOGOUT'] . 'logout.php'; ?>" title="Sair"><span class="material-symbols-outlined">logout</span></a>
+                    </li>
+                <?php endif; ?>
+
             <?php else: ?>
-                <li>
-                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'home.php'; ?>">HOME</a>
-                </li>
-                <li>
-                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] . 'turma.php'; ?>">TURMAS</a>
-                </li>
-                <li>
-                    <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
-                        <span class="material-symbols-outlined">person</span>
-                    </a>
-                </li>
+                <!-- USUÁRIO COMUM -->
+                <?php if ($logado && in_array($perfil, ['adm', 'professor'])): ?>
+                    <li>
+                        <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'home-adm.php'; ?>">ADMINISTRATIVO</a>
+                    </li>
+                    <li>
+                        <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_LOGOUT'] . 'logout.php'; ?>" title="Sair">
+                            <span class="material-symbols-outlined">logout</span>
+                        </a>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a class="link-nav" href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php'; ?>">
+                            <span class="material-symbols-outlined">person</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
             <?php endif; ?>
         </ul>
     </div>
 </nav>
 
 <?php if ($useHeader): ?>
-</header>
+    </header>
 <?php endif; ?>
