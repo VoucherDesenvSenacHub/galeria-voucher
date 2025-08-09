@@ -4,10 +4,9 @@ require_once __DIR__ . '/BaseModel.php';
 
 class UsuarioModel extends BaseModel
 {
-    public static $tabela = "usuario";
-    
     public function __construct()
     {
+        $this->tabela = "usuario";
         parent::__construct();
     }
 
@@ -43,7 +42,7 @@ class UsuarioModel extends BaseModel
         $query = "
             SELECT p.pessoa_id, p.email, p.nome, p.perfil, u.senha
             FROM pessoa p
-            INNER JOIN " . self::$tabela . " u ON u.pessoa_id = p.pessoa_id
+            INNER JOIN " . $this->tabela . " u ON u.pessoa_id = p.pessoa_id
             WHERE p.email = :email
             LIMIT 1
         ";
