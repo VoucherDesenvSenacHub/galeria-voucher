@@ -4,19 +4,28 @@ require_once __DIR__ . '/BaseModel.php';
 class ImagemModel extends BaseModel {
 
     // Criar imagem
-    public function criarImagem(string $url, ?string $text, ?string $descricao): int {
+    public function criarImagem(?string $url, ?string $text, ?string $descricao): int {
+        // Se não passou URL ou está vazio, usa a imagem padrão
+        if (empty($url)) {
+            $url = 'App/View/assets/img/utilitarios/avatar.png';
+        }
+    
         $sql = "INSERT INTO imagem (url, text, descricao, data_upload)
                 VALUES (:url, :text, :descricao, NOW())";
-
+    
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             ':url' => $url,
             ':text' => $text,
             ':descricao' => $descricao
         ]);
+    
+
 
         return (int)$this->pdo->lastInsertId(); // Retorna o ID da imagem criada
     }
+ 
+    
 
     // Buscar imagem por ID
     public function buscarImagemPorId(int $id): ?array {

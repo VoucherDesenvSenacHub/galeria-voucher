@@ -1,24 +1,35 @@
 <?php
 require_once __DIR__ . '/BaseModel.php';
 
-class PessoaModel extends BaseModel {
-     // crud  criado conferir e testar!
+class PessoaModel extends BaseModel
+{
+    // crud  criado conferir e testar!
     // Criar pessoa (Create)
 
-    public function criarPessoa(array $dados, ?int $imagemId) : bool {
+    public function criarPessoa(array $dados, ?int $imagemId = null): bool
+    {
+        // Se não foi passada uma imagem, usa a padrão
         if ($imagemId === null) {
-            require_once __DIR__ . '/ImagemModel.php';
             $imagemModel = new ImagemModel($this->pdo);
-    
-            $imagem = $imagemModel->buscarImagemPorUrl('App/View/assets/img/utilitarios/avatar.png');
-            $imagemId = $imagem ? (int)$imagem['imagem_id'] : null;
+            $imagemPadrao = $imagemModel->buscarImagemPorUrl('App/View/assets/img/utilitarios/avatar.png');
+
+            if ($imagemPadrao) {
+                $imagemId = (int)$imagemPadrao['imagem_id'];
+            } else {
+                // Se a imagem padrão não existe, cria ela
+                $imagemId = $imagemModel->criarImagem(
+                    'App/View/assets/img/utilitarios/avatar.png',
+                    'Imagem padrão de perfil',
+                    'Avatar padrão para usuários sem foto'
+                );
+            }
         }
-    
+
         $sql = "INSERT INTO pessoa (nome, email, perfil, linkedin, github, imagem_id) 
                 VALUES (:nome, :email, :perfil, :linkedin, :github, :imagem_id)";
-    
+
         $stmt = $this->pdo->prepare($sql);
-    
+
         return $stmt->execute([
             ':nome' => $dados['nome'],
             ':email' => $dados['email'],
@@ -28,9 +39,10 @@ class PessoaModel extends BaseModel {
             ':imagem_id' => $imagemId
         ]);
     }
-    
+
     // Buscar pessoa por ID (Read)
-    public function buscarPessoaPorId(int $id) : ?array {
+    public function buscarPessoaPorId(int $id): ?array
+    {
         $sql = "SELECT * FROM pessoa WHERE pessoa_id = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id]);
@@ -40,7 +52,8 @@ class PessoaModel extends BaseModel {
     }
 
     // Atualizar pessoa (Update)
-    public function atualizarPessoa(int $id, array $dados, ?int $imagemId = null) : bool {
+    public function atualizarPessoa(int $id, array $dados, ?int $imagemId = null): bool
+    {
         $sql = "UPDATE pessoa SET nome = :nome, email = :email, perfil = :perfil, linkedin = :linkedin, github = :github";
 
         if ($imagemId !== null) {
@@ -53,7 +66,7 @@ class PessoaModel extends BaseModel {
 
         $params = [
             ':nome' => $dados['nome'],
-            ':email' => $dados['email'], 
+            ':email' => $dados['email'],
             ':perfil' => $dados['perfil'],
             ':linkedin' => $dados['linkedin'] ?? null,
             ':github' => $dados['github'] ?? null,
@@ -68,38 +81,40 @@ class PessoaModel extends BaseModel {
     }
 
     // Deletar pessoa (Delete)
-    public function deletarPessoa(int $id) : bool {
+    public function deletarPessoa(int $id): bool
+    {
         $sql = "DELETE FROM pessoa WHERE pessoa_id = :id";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([':id' => $id]);
     }
 
     // Listar todas as pessoas
-    public function listarPessoas() : array {
+    public function listarPessoas(): array
+    {
         $sql = "SELECT * FROM pessoa";
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
-    // Funcao par listamso 
-    public function listarPerfisPermitidos(): array {  
+    // Funcao para listamos 
+    public function listarPerfisPermitidos(): array
+    {
         $sql = "SHOW COLUMNS FROM pessoa WHERE Field = 'perfil'";
         $stmt = $this->pdo->query($sql);
         $coluna = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
         if (!$coluna) return [];
-    
+
         preg_match("/^enum\((.*)\)$/", $coluna['Type'], $matches);
-    
+
         if (!isset($matches[1])) return [];
-    
+
         $valores = explode(',', $matches[1]);
-        $valores = array_map(function($valor) {
+        $valores = array_map(function ($valor) {
             return trim($valor, " '");
         }, $valores);
-    
+
         return $valores;
     }
-    
 }
