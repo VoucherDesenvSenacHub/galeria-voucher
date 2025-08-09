@@ -51,11 +51,11 @@ headerComponent($tituloPagina);
     ?>
 
     <main class="main-turmas-turmas">
-      <div class="tabs-adm-turmas">
-        <a class="tab-adm-turmas active" href="#">DADOS GERAIS</a>
-        <a class="tab-adm-turmas" href="#">PROJETOS</a>
-        <a class="tab-adm-turmas" href="#">DOCENTES</a>
-        <a class="tab-adm-turmas" href="#">ALUNOS</a>
+    <div class="tabs-adm-turmas">
+        <a class="tab-adm-turmas active" href="cadastroTurmas.php">DADOS GERAIS</a>
+        <a class="tab-adm-turmas" href="CadastroProjetos.php">PROJETOS</a>
+        <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
+        <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
       </div>
 
       <div class="container-main-adm">
@@ -70,15 +70,21 @@ headerComponent($tituloPagina);
               <div class="form-section">
                 <h1 class='h1-turma'><?= $modoEdicao ? 'EDITAR TURMA' : 'CADASTRO DE TURMA' ?></h1>
                 
-                <input type="text" name="nome" placeholder="Nome da Turma:" class="input-adm-turmas" value="<?= htmlspecialchars($turma['nome'] ?? '') ?>" required>
-                <textarea name="descricao" placeholder="Descrição da Turma" class="input-adm-turmas" style="height: 100px; border-radius: 15px; padding: 15px;"><?= htmlspecialchars($turma['descricao'] ?? '') ?></textarea>
-                <label style="font-size: 1rem; margin-left: 15px; margin-top: 15px;">Data de Início:</label>
-                <input type="date" name="data_inicio" class="input-adm-turmas" value="<?= htmlspecialchars($turma['data_inicio'] ?? '') ?>" required>
-                <label style="font-size: 1rem; margin-left: 15px; margin-top: 15px;">Data de Fim (opcional):</label>
+                <label class="form-label" >Nome</label>
+                <input type="text" name="nome" class="input-adm-turmas" value="<?= htmlspecialchars($turma['nome'] ?? '') ?>">
+
+                <label class="form-label" >Descrição</label>
+                <textarea name="descricao" class="input-adm-turmas" ><?= htmlspecialchars($turma['descricao'] ?? '') ?></textarea>
+
+                <label class="form-label" >Início</label>
+                <input type="date" name="data_inicio" class="input-adm-turmas" value="<?= htmlspecialchars($turma['data_inicio'] ?? '') ?>">
+
+                <label class="form-label" >Término</label>
                 <input type="date" name="data_fim" class="input-adm-turmas" value="<?= htmlspecialchars($turma['data_fim'] ?? '') ?>">
-                <label style="font-size: 1rem; margin-left: 15px; margin-top: 15px;">Polo:</label>
-                <select name="polo_id" class="input-adm-turmas" required>
-                    <option value="">Selecione um Polo</option>
+
+                <label class="form-label" >Pólo</label>
+                <select name="polo_id" class="input-adm-turmas">
+                    <option value="">Selecione um Pólo</option>
                     <?php foreach ($polos as $polo): ?>
                         <option value="<?= $polo['polo_id'] ?>" <?= ($modoEdicao && isset($turma) && $polo['polo_id'] == $turma['polo_id']) ? 'selected' : '' ?>>
                             <?= htmlspecialchars($polo['nome']) ?>
@@ -87,8 +93,8 @@ headerComponent($tituloPagina);
                 </select>
               </div>
 
-              <div class="profile-pic" style="display: flex; flex-direction: column; align-items: center;">
-                <small style="text-align: center; display: block; margin-bottom: 5px;">Clique na imagem para alterar</small>
+              <div class="profile-pic">
+                <small>Clique na imagem para alterar</small>
                 <label for="imagem_turma" style="cursor: pointer;">
                     <img id="preview" src="<?= htmlspecialchars($imagemUrl) ?>" alt="Upload de Imagem">
                 </label>
@@ -107,6 +113,20 @@ headerComponent($tituloPagina);
       </div>
     </main>
   </div>
+
+  <?php if (isset($_SESSION['erros_turma'])): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const erros = <?= json_encode($_SESSION['erros_turma']) ?>;
+            let mensagemErro = "Ocorreram os seguintes erros:\n\n";
+            erros.forEach(erro => {
+                mensagemErro += "- " + erro + "\n";
+            });
+            alert(mensagemErro);
+        });
+    </script>
+    <?php unset($_SESSION['erros_turma']); ?>
+  <?php endif; ?>
   
   <?php if (isset($_SESSION['sucesso_cadastro'])): ?>
     <script>
@@ -129,6 +149,7 @@ headerComponent($tituloPagina);
     <?php unset($_SESSION['sucesso_edicao_alert']); ?>
   <?php endif; ?>
 
+  
   <script>
     // Script de preview da imagem (sem alterações)
     const inputFile = document.getElementById('imagem_turma');

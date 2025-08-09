@@ -17,6 +17,26 @@ class TurmaController {
             $polo_id = filter_input(INPUT_POST, 'polo_id', FILTER_VALIDATE_INT);
             $imagem_id = null;
 
+            // --- INÍCIO DA VALIDAÇÃO OBRIGATÓRIA ---
+            $erros = [];
+            if (empty($nome)) {
+                $erros[] = "O campo 'Nome da Turma' é obrigatório.";
+            }
+            if (empty($data_inicio)) {
+                $erros[] = "O campo 'Início' é obrigatório.";
+            }
+            if ($polo_id === false || $polo_id <= 0) {
+                $erros[] = "É obrigatório selecionar um 'Polo'.";
+            }
+
+            // Se houver erros, redireciona de volta com as mensagens
+            if (!empty($erros)) {
+                $_SESSION['erros_turma'] = $erros;
+                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
+                exit;
+            }
+            // --- FIM DA VALIDAÇÃO OBRIGATÓRIA ---
+
             if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
                 $imagemModel = new ImagemModel();
                 $nomeArquivo = uniqid() . '-' . basename($_FILES['imagem_turma']['name']);
@@ -51,6 +71,26 @@ class TurmaController {
             $data_fim = !empty($_POST['data_fim']) ? $_POST['data_fim'] : null;
             $polo_id = filter_input(INPUT_POST, 'polo_id', FILTER_VALIDATE_INT);
             $imagem_id = filter_input(INPUT_POST, 'imagem_id_atual', FILTER_VALIDATE_INT) ?: null;
+
+            // --- INÍCIO DA VALIDAÇÃO OBRIGATÓRIA ---
+            $erros = [];
+            if (empty($nome)) {
+                $erros[] = "O campo 'Nome da Turma' é obrigatório.";
+            }
+            if (empty($data_inicio)) {
+                $erros[] = "O campo 'Início' é obrigatório.";
+            }
+            if ($polo_id === false || $polo_id <= 0) {
+                $erros[] = "É obrigatório selecionar um 'Polo'.";
+            }
+            
+            // Se houver erros, redireciona de volta com as mensagens
+            if (!empty($erros)) {
+                $_SESSION['erros_turma'] = $erros;
+                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . "cadastroTurmas/cadastroTurmas.php?id=$turma_id");
+                exit;
+            }
+            // --- FIM DA VALIDAÇÃO OBRIGATÓRIA ---
 
             if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
                 $imagemModel = new ImagemModel();
