@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -7,29 +6,15 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
-=======
-// 1. INCLUDES E AUTENTICAÇÃO
-require_once __DIR__ . "/../../../Config/env.php";
-require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../componentes/adm/auth.php"; // Garante que apenas usuários logados acessem
->>>>>>> e6bc4b973c6f2f69a4ff8870f3b76264d0bcd04b
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
 
 headerComponent("Voucher Desenvolvedor - Turmas");
 
-<<<<<<< HEAD
-=======
 // 2. LÓGICA DE BUSCA DE DADOS
->>>>>>> e6bc4b973c6f2f69a4ff8870f3b76264d0bcd04b
 try {
     $turmaModel = new TurmaModel();
     $turmas = $turmaModel->buscarTodasTurmasComPolo();
 } catch (Exception $e) {
-<<<<<<< HEAD
-    $turmas = [];
-    error_log("Erro ao buscar turmas: " . $e->getMessage());
-}
-=======
     // Em caso de erro, define $turmas como um array vazio e loga o erro
     $turmas = [];
     error_log("Erro ao buscar turmas: " . $e->getMessage());
@@ -38,7 +23,6 @@ try {
 // Verifica se o usuário logado é um administrador para exibir o botão de excluir
 $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
 
->>>>>>> e6bc4b973c6f2f69a4ff8870f3b76264d0bcd04b
 ?>
 
 <head>
@@ -49,23 +33,15 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
     <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
-<<<<<<< HEAD
-    $isAdmin = true;
-=======
     $isAdmin = true; // Define que esta é uma página de admin para o nav.php
->>>>>>> e6bc4b973c6f2f69a4ff8870f3b76264d0bcd04b
     require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
     <main class="main-lista-alunos">
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
-<<<<<<< HEAD
-                <a href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php' ?>" class="primary-button" style="text-decoration: none;">NOVA TURMA</a>
-=======
-                <?php buttonComponent('primary', 'NOVA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
+                <?php buttonComponent('primary', 'NOVA TURMA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
 
->>>>>>> e6bc4b973c6f2f69a4ff8870f3b76264d0bcd04b
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
@@ -88,7 +64,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                     <tr>
                                         <td><?= htmlspecialchars($turma['NOME_TURMA']) ?></td>
                                         <td><?= htmlspecialchars($turma['NOME_POLO']) ?></td>
-<<<<<<< HEAD
                                         <td class="acoes">
                                             <div class="acoes-container">
                                                 <a href="cadastroTurmas/cadastroTurmas.php?id=<?= $turma['turma_id'] ?>" title="Editar">
@@ -101,15 +76,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                                     </button>
                                                 </form>
                                             </div>
-=======
-                                        
-                                        <td class="acoes">
-                                            <span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-                                            
-                                            <?php if ($is_admin) : ?>
-                                                <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
-                                            <?php endif; ?>
->>>>>>> e6bc4b973c6f2f69a4ff8870f3b76264d0bcd04b
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -125,7 +91,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </div>
     </main>
     
-<<<<<<< HEAD
     <?php if (isset($_SESSION['sucesso_exclusao'])): ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -137,10 +102,4 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     
     <script src="../../assets/js/adm/lista-alunos.js"></script>
 </body>
-=======
-    <script src="../../assets/js/adm/lista-alunos.js"></script>
-
-</body>
-
->>>>>>> e6bc4b973c6f2f69a4ff8870f3b76264d0bcd04b
 </html>
