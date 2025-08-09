@@ -9,9 +9,9 @@ $pessoaCriada = null;
 
 
 
-  // trim($url) remove espaços do início e fim.
+// trim($url) remove espaços do início e fim.
 
- // empty(...) verifica se a string está vazia após o trim.
+// empty(...) verifica se a string está vazia após o trim.
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Validação básica da imagem
             $tipoPermitido = ['image/jpeg', 'image/png', 'image/gif'];
             $tamanhoMaximo = 2 * 1024 * 1024; // 2MB
-            
+
             if (!in_array($_FILES['imagem']['type'], $tipoPermitido)) {
                 throw new Exception("Tipo de arquivo não permitido. Use apenas JPEG, PNG ou GIF.");
             }
-            
+
             if ($_FILES['imagem']['size'] > $tamanhoMaximo) {
                 throw new Exception("Arquivo muito grande. Tamanho máximo: 2MB.");
             }
@@ -71,7 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $criado = $pessoaModel->criarPessoa($dados, $imagemId);
 
         if ($criado) {
-            $ultimoId = $pessoaModel->pdo->lastInsertId();
+            $pessoaModel->criarPessoa($dados, $imagemId);
+            $ultimoId = $pessoaModel->getLastInsertId(); // ✅ agora funciona
+
             $pessoaCriada = $pessoaModel->buscarPessoaPorId($ultimoId);
             $mensagem = "✅ Pessoa criada com sucesso! ID: {$ultimoId}";
         } else {
@@ -87,14 +89,21 @@ $perfis = $pessoaModel->listarPerfisPermitidos();
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Pessoa</title>
     <style>
-        .success { color: green; }
-        .error { color: red; }
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
     </style>
 </head>
+
 <body>
     <h1>Cadastro de Pessoa</h1>
 
@@ -124,7 +133,7 @@ $perfis = $pessoaModel->listarPerfisPermitidos();
             <select name="perfil" required>
                 <option value="">-- Selecione --</option>
                 <?php foreach ($perfis as $perfil): ?>
-                    <option value="<?= htmlspecialchars($perfil) ?>" 
+                    <option value="<?= htmlspecialchars($perfil) ?>"
                         <?= ($_POST['perfil'] ?? '') === $perfil ? 'selected' : '' ?>>
                         <?= ucfirst(htmlspecialchars($perfil)) ?>
                     </option>
@@ -150,4 +159,5 @@ $perfis = $pessoaModel->listarPerfisPermitidos();
         <button type="submit">Cadastrar</button>
     </form>
 </body>
+
 </html>
