@@ -121,6 +121,7 @@ class TurmaModel extends BaseModel
     }
 
     /**
+<<<<<<< HEAD
      *Atualiza os dados de uma turma.
      */
     public function atualizarTurma(int $turma_id, string $nome, ?string $descricao, string $data_inicio, ?string $data_fim, int $polo_id, ?int $imagem_id)
@@ -195,3 +196,29 @@ class TurmaModel extends BaseModel
     }
 
 }
+=======
+     * Busca todas as turmas com o nome do respectivo polo, ordenadas alfabeticamente.
+     * @return array
+     */
+    public function buscarTodasTurmasComPolo(): array
+    {
+        $query = "
+            SELECT 
+                t.turma_id,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO
+            FROM 
+                turma t
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+            ORDER BY 
+                t.nome ASC
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+>>>>>>> e6bc4b973c6f2f69a4ff8870f3b76264d0bcd04b
