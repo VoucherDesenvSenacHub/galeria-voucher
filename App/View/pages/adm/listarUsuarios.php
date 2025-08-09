@@ -2,6 +2,8 @@
 require_once __DIR__ . "/../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Pessoas");
 require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . '/../../../Model/PessoaModel.php';
+
 ?>
 
 <head>
@@ -11,9 +13,9 @@ require_once __DIR__ . "/../../componentes/adm/auth.php";
 <body class="body-lista-alunos">
 
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
-  <?php 
-      $isAdmin = true; // Para páginas de admin
-      require_once __DIR__ . "/../../componentes/nav.php"; 
+  <?php
+  $isAdmin = true; // Para páginas de admin
+  require_once __DIR__ . "/../../componentes/nav.php";
   ?>
 
   <main class="main-lista-alunos">
@@ -40,62 +42,50 @@ require_once __DIR__ . "/../../componentes/adm/auth.php";
               </tr>
             </thead>
             <tbody>
+
               <?php
-              // Array com dados fakes
-              $usuarios = [
-                ['nome' => 'João Silva', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Maria Santos', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Pedro Oliveira', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Ana Costa', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Carlos Ferreira', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Lucia Rodrigues', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Roberto Almeida', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Fernanda Lima', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Marcos Pereira', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Juliana Martins', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Rafael Souza', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Patricia Santos', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Lucas Mendes', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Camila Alves', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Diego Costa', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Amanda Silva', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Thiago Oliveira', 'polo' => 'Dourados', 'tipo' => 'Docente'],
-                ['nome' => 'Carolina Lima', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Bruno Santos', 'polo' => 'Dourados', 'tipo' => 'Docente'],
-                ['nome' => 'Isabela Costa', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Gabriel Ferreira', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Mariana Rodrigues', 'polo' => 'Dourados', 'tipo' => 'Docente'],
-                ['nome' => 'Leonardo Almeida', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Beatriz Martins', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Ricardo Pereira', 'polo' => 'Três Lagoas', 'tipo' => 'Docente'],
-                ['nome' => 'Vanessa Silva', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno'],
-                ['nome' => 'Felipe Santos', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno'],
-                ['nome' => 'Daniela Costa', 'polo' => 'Três Lagoas', 'tipo' => 'Docente'],
-                ['nome' => 'André Oliveira', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno'],
-                ['nome' => 'Tatiana Lima', 'polo' => 'Três Lagoas', 'tipo' => 'Docente'],
-                ['nome' => 'Rodrigo Ferreira', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno'],
-                ['nome' => 'Cristina Alves', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno']
-              ];
+              $model = new PessoaModel();
 
+              $pagina = isset($_GET['pagina']) && is_numeric($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+              $itensPorPagina = 10;
+              $offset = ($pagina - 1) * $itensPorPagina;
 
-              usort($usuarios, function ($a, $b) {
-                return strcasecmp($a['nome'], $b['nome']);
-              });
-
-              foreach ($usuarios as $usuario) {
-                echo '<tr>';
-                echo '<td>' . $usuario['nome'] . '</td>';
-                echo '<td>' . $usuario['tipo'] . '</td>';
-                echo '<td>' . $usuario['polo'] . '</td>';
-                echo '<td class="acoes">';
-                echo '<span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>';
-                echo '<span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>';
-                echo '</td>';
-                echo '</tr>';
-              }
+              $usuarios = $model->listarPessoasTable($itensPorPagina, $offset);
               ?>
+
+              <?php foreach ($usuarios as $usuario): ?>
+                <tr>
+                  <td><?= htmlspecialchars($usuario['nome']) ?></td>
+                  <td><?= htmlspecialchars($usuario['perfil']) ?></td>
+                  <td><?= htmlspecialchars($usuario['nome_polo']) ?></td>
+                  <td class="acoes">
+                    <span class="material-symbols-outlined acao-edit"
+                      style="cursor: pointer; margin-right: 10px;"
+                      title="Editar">
+                      edit
+                    </span>
+                    <span class="material-symbols-outlined acao-delete"
+                      style="cursor: pointer;"
+                      title="Excluir">
+                      delete
+                    </span>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+
+
             </tbody>
           </table>
+          <div class="paginacao">
+            <?php if ($pagina > 1): ?>
+              <a href="?pagina=<?= $pagina - 1 ?>">Anterior</a>
+            <?php endif; ?>
+            <span>Página <?= $pagina ?></span>
+            <?php if (count($usuarios) == $itensPorPagina): ?>
+              <a href="?pagina=<?= $pagina + 1 ?>">Próximo</a>
+            <?php endif; ?>
+          </div>
+
         </div>
       </div>
     </div>

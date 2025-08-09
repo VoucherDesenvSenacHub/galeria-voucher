@@ -96,6 +96,34 @@ class PessoaModel extends BaseModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function listarPessoasTable(int $limit, int $offset): array {
+        $sql = "SELECT * FROM (
+                SELECT DISTINCT p.nome, p.perfil, po.nome AS nome_polo
+                FROM pessoa p
+                INNER JOIN aluno_turma at ON p.pessoa_id = at.pessoa_id
+                INNER JOIN turma t ON at.turma_id = t.turma_id
+                INNER JOIN polo po ON t.polo_id = po.polo_id
+                WHERE p.perfil = 'aluno'
+
+                UNION
+
+                SELECT DISTINCT p.nome, p.perfil, po.nome AS nome_polo
+                FROM pessoa p
+                INNER JOIN docente_turma dt ON p.pessoa_id = dt.pessoa_id
+                INNER JOIN turma t ON dt.turma_id = t.turma_id
+                INNER JOIN polo po ON t.polo_id = po.polo_id
+                WHERE p.perfil = 'professor'
+                ) AS resultado
+                ORDER BY nome ASC
+                LIMIT :limit OFFSET :offset;";  
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     // Funcao para listamos 
     public function listarPerfisPermitidos(): array
