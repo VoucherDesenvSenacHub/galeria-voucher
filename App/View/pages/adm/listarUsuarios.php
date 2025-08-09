@@ -59,11 +59,9 @@ require_once __DIR__ . '/../../../Model/PessoaModel.php';
                   <td><?= htmlspecialchars($usuario['perfil']) ?></td>
                   <td><?= htmlspecialchars($usuario['nome_polo']) ?></td>
                   <td class="acoes">
-                    <span class="material-symbols-outlined acao-edit"
-                      style="cursor: pointer; margin-right: 10px;"
-                      title="Editar">
-                      edit
-                    </span>
+                    <a href="cadastrar-usuarios.php?acao=editar&id=<?= $usuario['pessoa_id'] ?>">
+                      <span class="material-symbols-outlined acao-edit" title="Editar">edit</span>
+                    </a>
                     <span class="material-symbols-outlined acao-delete"
                       style="cursor: pointer;"
                       title="Excluir">

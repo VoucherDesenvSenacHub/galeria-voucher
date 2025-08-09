@@ -43,12 +43,12 @@ class PessoaModel extends BaseModel
     // Buscar pessoa por ID (Read)
     public function buscarPessoaPorId(int $id): ?array
     {
-        $sql = "SELECT * FROM pessoa WHERE pessoa_id = :id";
+        $sql = "SELECT * FROM pessoa WHERE pessoa_id = :id LIMIT 1";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id]);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        return $resultado ?: null;
+        return $resultado ? $resultado : null;
     }
 
     // Atualizar pessoa (Update)
@@ -98,7 +98,7 @@ class PessoaModel extends BaseModel
 
     public function listarPessoasTable(int $limit, int $offset): array {
         $sql = "SELECT * FROM (
-                SELECT DISTINCT p.nome, p.perfil, po.nome AS nome_polo
+                SELECT DISTINCT p.pessoa_id, p.nome, p.perfil, po.nome AS nome_polo
                 FROM pessoa p
                 INNER JOIN aluno_turma at ON p.pessoa_id = at.pessoa_id
                 INNER JOIN turma t ON at.turma_id = t.turma_id
@@ -107,7 +107,7 @@ class PessoaModel extends BaseModel
 
                 UNION
 
-                SELECT DISTINCT p.nome, p.perfil, po.nome AS nome_polo
+                SELECT DISTINCT p.pessoa_id, p.nome, p.perfil, po.nome AS nome_polo
                 FROM pessoa p
                 INNER JOIN docente_turma dt ON p.pessoa_id = dt.pessoa_id
                 INNER JOIN turma t ON dt.turma_id = t.turma_id
