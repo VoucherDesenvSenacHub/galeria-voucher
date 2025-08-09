@@ -4,10 +4,9 @@ require_once __DIR__ . '/BaseModel.php';
 
 class UsuarioModel extends BaseModel
 {
-    public static $tabela = "usuario";
-    
     public function __construct()
     {
+        $this->tabela = "usuario";
         parent::__construct();
     }
 
