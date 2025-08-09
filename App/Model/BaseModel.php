@@ -10,5 +10,9 @@ class BaseModel {
     {
         $this->pdo = Database::conectar();
     }
+    
+    public function getLastInsertId(): int {
+        return (int)$this->pdo->lastInsertId();
+    }
 
 }
