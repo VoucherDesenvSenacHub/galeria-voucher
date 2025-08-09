@@ -1,6 +1,4 @@
 <?php
-namespace App\Helpers;
-
 /**
  * Gera a URL completa de uma imagem, aplicando regras de fallback e subpasta.
  * 
@@ -27,7 +25,7 @@ function urlImagem(?string $nomeImagem, string $subpastaDefault = 'turmas/', str
     $subpasta = (str_contains($nomeImagem, '/') && !str_contains($nomeImagem, ' ')) ? '' : $subpastaDefault;
 
     // 4. Monta a URL base usando as variáveis globais definidas no sistema (APP_URL e DIR_IMG)
-    $base = rtrim(\VARIAVEIS['APP_URL'], '/') . '/' . trim(\VARIAVEIS['DIR_IMG'], '/') . '/';
+    $base = '/galeria-voucher/';  //alterarndo caminho ./upload/turma-galeria.png
 
     // 5. Retorna a URL completa (base + subpasta + nome da imagem)
     return $base . $subpasta . $nomeImagem;

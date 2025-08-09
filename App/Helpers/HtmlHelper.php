@@ -1,5 +1,4 @@
 <?php
-namespace App\Helpers;
 
 /**
  * Renderiza um botão de subtabs (dias/projeto).
@@ -9,27 +8,36 @@ namespace App\Helpers;
  * @param int $projetoId ID do projeto relacionado.
  * @param string|null $linkProjeto Link opcional para o projeto do dia.
  */
-function renderSubTabBtn(array $dia, int $index, int $projetoId, ?string $linkProjeto = null): void {
+function renderSubTabBtn(array $dia, int $index, int $projetoId, ?string $linkProjeto = null): void
+{
     $btnClass = $index === 0 ? 'active' : '';
     $btnLabel = 'DIA ' . htmlspecialchars($dia['tipo_dia']);
-    $dataSubtab = $dia['projeto_dia_id'];
-    ?>
+
+    // Usa 'projeto_dia_id' se existir, senão tenta 'id', senão null
+    $dataSubtab = $dia['projeto_dia_id'] ?? $dia['id'] ?? null;
+
+    if ($dataSubtab === null) {
+        // Evita continuar se não tiver ID
+        return;
+    }
+?>
     <div class="galeria-turma-sub-tab-wrapper" style="display: inline-flex; align-items: center; gap: 8px; margin-right: 10px;">
         <button class="galeria-turma-sub-tab-btn <?= $btnClass ?>"
-                data-subtab="<?= $dataSubtab ?>"
-                data-projeto="<?= $projetoId ?>">
+            data-subtab="<?= htmlspecialchars($dataSubtab) ?>"
+            data-projeto="<?= htmlspecialchars($projetoId) ?>">
             <?= $btnLabel ?>
         </button>
         <?php if (!empty($linkProjeto)): ?>
             <button class="galeria-turma-btn ver-projeto-btn"
-                    type="button"
-                    onclick="window.open('<?= htmlspecialchars($linkProjeto) ?>', '_blank')">
+                type="button"
+                onclick="window.open('<?= htmlspecialchars($linkProjeto) ?>', '_blank')">
                 Ver Projeto
             </button>
         <?php endif; ?>
     </div>
-    <?php
+<?php
 }
+
 
 /**
  * Renderiza o botão do repositório da aba final.
@@ -37,24 +45,25 @@ function renderSubTabBtn(array $dia, int $index, int $projetoId, ?string $linkPr
  * @param array $projeto Dados do projeto.
  * @param array $dias Lista de dias do projeto.
  */
-function renderRepoBtn(array $projeto, array $dias): void {
+function renderRepoBtn(array $projeto, array $dias): void
+{
     $hasLinkProjeto = !empty($projeto['linkProjeto']);
     $activeClass = empty($dias) ? 'active' : '';
-    ?>
+?>
     <div class="galeria-turma-sub-tab-wrapper" style="display: inline-flex; align-items: center; gap: 8px; margin-right: 10px;">
         <?php if ($hasLinkProjeto): ?>
             <button class="galeria-turma-sub-tab-btn"
-                    type="button"
-                    onclick="window.open('<?= htmlspecialchars($projeto['linkProjeto']) ?>', '_blank')">
+                type="button"
+                onclick="window.open('<?= htmlspecialchars($projeto['linkProjeto']) ?>', '_blank')">
                 REPOSITÓRIO
             </button>
         <?php else: ?>
             <button class="galeria-turma-sub-tab-btn <?= $activeClass ?>"
-                    data-subtab="projeto-<?= $projeto['projeto_id'] ?>"
-                    data-projeto="<?= $projeto['projeto_id'] ?>">
+                data-subtab="projeto-<?= $projeto['projeto_id'] ?>"
+                data-projeto="<?= $projeto['projeto_id'] ?>">
                 REPOSITÓRIO
             </button>
         <?php endif; ?>
     </div>
-    <?php
+<?php
 }
