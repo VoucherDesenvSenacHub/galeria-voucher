@@ -56,6 +56,10 @@
         
     }
 
+    #form-turma {
+        width: 100%;
+    }
+
     .form-top {
         display: flex;
         width: 100%;
@@ -68,17 +72,18 @@
         width: 100%;
     }
     
+    .form-label {
+        font-size: 28px;
+        margin-left: 1px;
+
+    }
 
     .form-section {
         width: 60%;
         font-family: var(--font-secondary);
-    }
-
-    .form-section {
-        font-size: 25px;
-        font-weight: bold;
-        
-        margin-bottom: 30px;
+        font-size: 1.5rem; 
+        margin-left: 15px; 
+        margin-top: 15px;
     }
 
     .input-adm-turmas[type="text"] {
@@ -95,9 +100,11 @@
     .profile-pic {
         height: 20rem;
         display: flex;
+        flex-direction: column; /* Adicionado para empilhar os itens verticalmente */
         align-items: center;
         justify-content: center;
         margin: 5rem 2rem;
+        margin-left: 10%;
     }
 
     .profile-pic img {

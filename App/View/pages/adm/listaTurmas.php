@@ -1,25 +1,30 @@
 <?php
-// 1. INCLUDES E AUTENTICAÇÃO
+// Garante que a sessão está ativa para gerenciar o login e exibir mensagens de sucesso.
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Inclui arquivos essenciais de configuração, componentes e o Model.
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../componentes/adm/auth.php"; // Garante que apenas usuários logados acessem
+require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
 
+// Define o título da página.
 headerComponent("Voucher Desenvolvedor - Turmas");
 
-// 2. LÓGICA DE BUSCA DE DADOS
+// --- LÓGICA DE BUSCA DE DADOS ---
 try {
+    // Cria uma instância do TurmaModel.
     $turmaModel = new TurmaModel();
+    // Chama o método que busca todas as turmas junto com o nome do polo correspondente.
     $turmas = $turmaModel->buscarTodasTurmasComPolo();
 } catch (Exception $e) {
-    // Em caso de erro, define $turmas como um array vazio e loga o erro
+    // Bloco de segurança: se a busca no banco falhar, define $turmas como um array vazio
+    // para evitar erros na renderização da tabela e registra o erro no log do servidor.
     $turmas = [];
     error_log("Erro ao buscar turmas: " . $e->getMessage());
 }
-
-// Verifica se o usuário logado é um administrador para exibir o botão de excluir
-$is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
-
 ?>
 
 <head>
@@ -28,16 +33,16 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
 <body class="body-lista-alunos">
 
-    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; // Inclui a barra lateral ?>
     <?php
-    $isAdmin = true; // Define que esta é uma página de admin para o nav.php
-    require_once __DIR__ . "/../../componentes/nav.php";
+    $isAdmin = true; // Informa ao componente de navegação que esta é uma página de admin.
+    require_once __DIR__ . "/../../componentes/nav.php"; // Inclui a barra de navegação superior.
     ?>
 
     <main class="main-lista-alunos">
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
-                <?php buttonComponent('primary', 'NOVA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
+                <?php buttonComponent('primary', 'NOVA TURMA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
@@ -56,22 +61,28 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($turmas)) : ?>
-                                <?php foreach ($turmas as $turma) : ?>
+                            <?php if (!empty($turmas)) : // Verifica se existem turmas para exibir. ?>
+                                <?php foreach ($turmas as $turma) : // Loop para criar uma linha <tr> para cada turma. ?>
                                     <tr>
                                         <td><?= htmlspecialchars($turma['NOME_TURMA']) ?></td>
                                         <td><?= htmlspecialchars($turma['NOME_POLO']) ?></td>
-                                        
                                         <td class="acoes">
-                                            <span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-                                            
-                                            <?php if ($is_admin) : ?>
-                                                <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
-                                            <?php endif; ?>
+                                            <div class="acoes-container">
+                                                <a href="cadastroTurmas/cadastroTurmas.php?id=<?= $turma['turma_id'] ?>" title="Editar">
+                                                    <span class="material-symbols-outlined acao-edit">edit</span>
+                                                </a>
+                                                
+                                                <form method="POST" action="<?= VARIAVEIS['APP_URL'] ?>App/Controls/TurmaController.php?action=excluir" onsubmit="return confirm('ATENÇÃO!!! Excluir esta turma também removerá todos os seus projetos, alunos e professores vinculados. Esta ação é irreversível. Deseja continuar?');">
+                                                    <input type="hidden" name="turma_id" value="<?= $turma['turma_id'] ?>">
+                                                    <button type="submit" class="btn-acao-delete" title="Excluir">
+                                                        <span class="material-symbols-outlined acao-delete">delete</span>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else : ?>
+                            <?php else : // Se o array $turmas estiver vazio... ?>
                                 <tr>
                                     <td colspan="3" style="text-align: center;">Nenhuma turma encontrada.</td>
                                 </tr>
@@ -83,8 +94,16 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </div>
     </main>
     
+    <?php // Script para exibir a mensagem de sucesso após a exclusão de uma turma. ?>
+    <?php if (isset($_SESSION['sucesso_exclusao'])): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            alert("<?= htmlspecialchars($_SESSION['sucesso_exclusao']) ?>");
+        });
+    </script>
+    <?php unset($_SESSION['sucesso_exclusao']); // Limpa a sessão para não mostrar o alerta novamente. ?>
+    <?php endif; ?>
+    
     <script src="../../assets/js/adm/lista-alunos.js"></script>
-
 </body>
-
 </html>
