@@ -118,4 +118,80 @@ class TurmaModel extends BaseModel
             return false;
         }
     }
+
+     /**
+     *Atualiza os dados de uma turma.
+     */
+    public function atualizarTurma(int $turma_id, string $nome, ?string $descricao, string $data_inicio, ?string $data_fim, int $polo_id, ?int $imagem_id)
+    {
+        try {
+            $query = "UPDATE turma SET 
+                        nome = :nome, 
+                        descricao = :descricao, 
+                        data_inicio = :data_inicio, 
+                        data_fim = :data_fim, 
+                        polo_id = :polo_id,
+                        imagem_id = :imagem_id
+                      WHERE turma_id = :turma_id";
+            $stmt = $this->pdo->prepare($query);
+            return $stmt->execute([
+                ':turma_id' => $turma_id,
+                ':nome' => $nome,
+                ':descricao' => $descricao,
+                ':data_inicio' => $data_inicio,
+                ':data_fim' => $data_fim,
+                ':polo_id' => $polo_id,
+                ':imagem_id' => $imagem_id
+            ]);
+        } catch (PDOException $e) {
+            error_log("Erro ao atualizar turma: " . $e->getMessage());
+            return false;
+        }
+    }
+
+     /**
+     *Exclui uma turma.
+     */
+    public function excluirTurma(int $id): bool
+    {
+        try {
+            // Exclui dependências antes para evitar erros de chave estrangeira
+            $this->pdo->beginTransaction();
+            $stmt1 = $this->pdo->prepare("DELETE FROM aluno_turma WHERE turma_id = :id");
+            $stmt1->execute([':id' => $id]);
+            $stmt2 = $this->pdo->prepare("DELETE FROM docente_turma WHERE turma_id = :id");
+            $stmt2->execute([':id' => $id]);
+            $stmt3 = $this->pdo->prepare("DELETE FROM projeto WHERE turma_id = :id");
+            $stmt3->execute([':id' => $id]);
+            
+            $stmtFinal = $this->pdo->prepare("DELETE FROM turma WHERE turma_id = :id");
+            $stmtFinal->execute([':id' => $id]);
+            $this->pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            $this->pdo->rollBack();
+            error_log("Erro ao excluir turma: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Busca o URL de uma imagem pelo seu ID.
+     * @param int $imagem_id O ID da imagem.
+     * @return string|null O URL da imagem ou null se não for encontrada.
+     */
+    public function buscarUrlDaImagem(int $imagem_id): ?string
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT url FROM imagem WHERE imagem_id = :id");
+            $stmt->execute([':id' => $imagem_id]);
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $resultado ? $resultado['url'] : null;
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar URL da imagem: " . $e->getMessage());
+            return null;
+        }
+    }
+
+
 }
