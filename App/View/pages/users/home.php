@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../../componentes/head.php";
 // 1. INCLUSÃO DOS ARQUIVOS NECESSÁRIOS
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
+require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
 headerComponent('Página Inicial');
 
@@ -104,10 +105,13 @@ try {
                 <div class="stats">
                     <?php
                     //dados dinâmicos de exemplo apenas
+                    $estatisticasModel = new EstatisticasModel();
+                    $dados = $estatisticasModel->getEstatisticas();
+
                     $estatisticas = [
-                        ['valor' => '+500', 'label' => 'DE ALUNOS'],
-                        ['valor' => '+50', 'label' => 'PROJETOS'],
-                        ['valor' => '+5', 'label' => 'POLOS'],
+                        ['valor' => $dados['alunos'] > 100 ? '+' . floor($dados['alunos'] / 100) * 100 : $dados['alunos'], 'label' => 'DE ALUNOS'],
+                        ['valor' => $dados['projetos'] > 10 ? '+' . floor($dados['projetos'] / 10) * 10 : $dados['projetos'], 'label' => 'PROJETOS'],
+                        ['valor' => $dados['polos'], 'label' => 'POLOS'],
                         ['valor' => '1200', 'label' => 'CURSO COM HORAS']
                     ];
                     foreach ($estatisticas as $estatistica) {
