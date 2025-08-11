@@ -171,3 +171,5 @@ INSERT INTO projeto (nome, descricao, link, turma_id) VALUES
 -- Projetos Turma 147
 ('Gestão de TI', 'Sistema de gestão de ativos de TI com controle de licenças e manutenção', 'https://github.com/turma147/gestao-ti', (SELECT turma_id FROM turma WHERE nome = 'Turma 147')),
 ('Help Desk', 'Sistema de suporte técnico com tickets e acompanhamento de chamados', 'https://github.com/turma147/help-desk', (SELECT turma_id FROM turma WHERE nome = 'Turma 147'));
+
+
