@@ -3,10 +3,10 @@ require_once __DIR__ . '/BaseModel.php';
 
 class ImagemProjetoDiaModel extends BaseModel
 {
-    public static $tabela = "usuario";
 
     public function __construct()
     {
+        $this->tabela = "imagem_projeto_dia";
         parent::__construct();
     }
 

@@ -4,10 +4,10 @@ require_once __DIR__ . "/ImagemProjetoDiaModel.php"; // <-- ESSENCIAL
 
 class ProjetoModel extends BaseModel
 {
-    public static $tabela = "projeto";
-
+    
     public function __construct()
     {
+        $this->tabela = "projeto";
         parent::__construct();
     }
     

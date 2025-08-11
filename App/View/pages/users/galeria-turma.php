@@ -13,36 +13,21 @@ require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../Model/ProjetoModel.php";
 require_once __DIR__ . "/../../../Model/AlunoModel.php";
 require_once __DIR__ . "/../../../Model/DocenteModel.php";
+require_once __DIR__ . "/../../../Controls/GaleriaTurmaController.php";
 
 // ------------------- OBTÉM DADOS DA TURMA ------------------- //
 $turmaId = (int) $_GET['turma_id'];
 
-$turmaModel = new TurmaModel();
-$turma = $turmaModel->buscarPorId($turmaId);
+// Use the correct controller class name as defined in GaleriaTurmaController.php
+$controller = new GaleriaTurmaController();
+$dados = $controller->mostrarTurma($turmaId);
 
-if (!$turma) {
+if (!is_array($dados) || empty($dados)) {
     header("Location: turma.php");
     exit;
 }
 
-$projetoModel = new ProjetoModel();
-$projetos = $projetoModel->buscarProjetosPorTurma($turmaId);
-
-$alunoModel = new AlunoModel();
-$alunos = $alunoModel->buscarPorTurma($turmaId);
-
-$docenteModel = new DocenteModel();
-$docentes = $docenteModel->buscarPorTurma($turmaId);
-
-$imagemTurmaUrl = urlImagem($turma['imagem'], 'turmas/', 'turma-galeria.pg');
-$nomeTurma = htmlspecialchars($turma['nome']);
-$descricaoTurma = nl2br(htmlspecialchars($turma['descricao']));
-
-$dadosProjetos = formatarProjetos($projetos, $projetoModel);
-
-$tabsProjetos = $dadosProjetos['tabsProjetos'];
-$projetosFormatados = $dadosProjetos['projetosFormatados'];
-
+extract($dados, EXTR_SKIP);
 ?>
 
 <?php
@@ -149,20 +134,11 @@ headerComponent('Galeria da Turma');
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Alunos</h1>
         <div class="galeria-turma-container">
-            <?php foreach ($alunos as $aluno): ?>
-                <?php
-                // Prepara a variável $pessoa com os dados do aluno
-                $pessoa = [
-                    'nome' => $aluno['nome'],
-                    'imagem' => $aluno['imagem'], // Certifique-se que o nome da chave está correto
-                    'funcao' => 'Aluno', // Define a função explicitamente
-                    'linkedin' => $aluno['linkedin'],
-                    'github' => $aluno['github']
-                ];
-                // Inclui o componente, que agora encontrará a variável $pessoa pronta
-                include __DIR__ . "/../../componentes/users/cards_pessoas.php";
-                ?>
-            <?php endforeach; ?>
+            <?php
+            foreach ($alunos as $aluno) {
+                require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
+            }
+            ?>
         </div>
     </section>
 
@@ -170,27 +146,13 @@ headerComponent('Galeria da Turma');
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Professores</h1>
         <div class="galeria-turma-container">
-            <?php if (!empty($docentes)): ?>
-                <?php foreach ($docentes as $docente): ?>
-                    <?php
-                    // Prepara a variável $pessoa com os dados do docente
-                    $pessoa = [
-                        'nome' => $docente['nome'],
-                        'imagem' => $docente['imagem'], // Certifique-se que o nome da chave está correto
-                        'funcao' => 'Professor', // Define a função explicitamente
-                        'linkedin' => $docente['linkedin'],
-                        'github' => $docente['github']
-                    ];
-                    // Reutiliza o mesmo componente, que também usará a variável $pessoa
-                    include __DIR__ . "/../../componentes/users/cards_pessoas.php";
-                    ?>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Sem professores cadastrados para esta turma.</p>
-            <?php endif; ?>
+            <?php
+            foreach ($orientadores as $orientador) {
+                require __DIR__ . "/../../componentes/users/card_orientadores.php";
+            }
+            ?>
         </div>
     </section>
-
 
     <footer class="galeria-turma-footer">
         <?php require_once __DIR__ . "/../../componentes/users/footer.php"; ?>
