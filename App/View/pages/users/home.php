@@ -134,26 +134,61 @@ try {
             </div>
             <div class="poligono">
                 <?php if (!empty($turmas)): ?>
-                    <?php
-                        // Divide as turmas em grupos para as linhas da galeria
-                        $linhasDaGaleria = array_chunk($turmas, 6);
-                    ?>
-                    <?php foreach ($linhasDaGaleria as $linha): ?>
-                        <div class="image-row">
-                            <?php foreach ($linha as $turma): ?>
-                                <div class='image-turma'>
-                                    <a href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
-                                        <img src="<?= VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
-                                    </a>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endforeach; ?>
+                    <div class="image-row">
+                        <?php 
+                        $count = 0;
+                        foreach ($turmas as $turma) {
+                            if ($count > 5) break;
+                        ?>
+                            <div class='image-turma'>
+                                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
+                                    <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
+                                </a>
+                            </div>
+                        <?php 
+                            $count++;
+                        } 
+                        ?>
+                    </div>
+
+                    <div class="image-row">
+                        <?php 
+                        $count = 0;
+                        foreach (array_slice($turmas, 6) as $turma) {
+                            if ($count > 4) break;
+                        ?>
+                            <div class='image-turma'>
+                                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
+                                    <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
+                                </a>
+                            </div>
+                        <?php 
+                            $count++;
+                        } 
+                        ?>
+                    </div>
+
+                    <div class="image-row">
+                        <?php 
+                        $count = 0;
+                        foreach (array_slice($turmas, 11) as $turma) {
+                            if ($count > 5) break;
+                        ?>
+                            <div class='image-turma'>
+                                <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
+                                    <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>" alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
+                                </a>
+                            </div>
+                        <?php 
+                            $count++;
+                        } 
+                        ?>
+                    </div>
                 <?php else: ?>
-                    <p style="text-align: center; color: white;">Nenhuma turma com imagem encontrada para exibir na galeria.</p>
+                    <p style="text-align: center; font-size: 1.2rem; color: #fff;">Nenhuma turma encontrada.</p>
                 <?php endif; ?>
             </div>
         </section>
     </main>
-    <?php require_once __DIR__ . "/../../componentes/users/footer.php"; ?>
+    <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; ?>
 </body>
