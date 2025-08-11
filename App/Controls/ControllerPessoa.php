@@ -12,6 +12,22 @@ $linkedin = $_POST['linkedin'] ?? '';
 $github = $_POST['github'] ?? '';
 $perfil = $_POST['perfil'] ?? '';
 $polo = $_POST['polo'] ?? '';
-$imagem = $_FILES['imagem'] ?? null;
 
-var_dump($acao, $id);
+if ($acao === 'editar' && $id) {
+
+    $dados = [
+        'nome' => $nome,
+        'email' => $email,
+        'perfil' => $perfil,
+        'linkedin' => $linkedin,
+        'github' => $github,
+        'polo' => $polo
+    ];
+
+    if ($model->atualizarPessoa((int)$id, $dados, null)) {
+        header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}");
+        exit;
+    } else {
+        echo "Erro ao atualizar pessoa.";
+    }
+}

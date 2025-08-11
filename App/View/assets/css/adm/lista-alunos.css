@@ -104,6 +104,18 @@
   border-collapse: collapse;
 }
 
+a{
+  text-decoration: none;
+  color: #000;
+  transition: 0.2s linear;
+  cursor: pointer;
+    
+  &:hover{
+    transition: 0.2s linear;
+    color:#9fe83a;
+  }
+}
+
 /* Cabeçalho da tabela */
 thead {
   top: 0;
