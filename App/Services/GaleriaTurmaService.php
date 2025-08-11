@@ -6,7 +6,6 @@ use App\Model\ProjetoModel;
 use App\Model\AlunoModel;
 use App\Model\DocenteModel;
 
-use App\Model as Model;
 class GaleriaTurmaService {
 
     private TurmaModel $turmaModel;

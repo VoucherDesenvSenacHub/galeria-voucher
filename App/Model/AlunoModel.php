@@ -1,5 +1,6 @@
 <?php
 namespace App\Model;
+
 use PDO;
 
 class AlunoModel extends BaseModel

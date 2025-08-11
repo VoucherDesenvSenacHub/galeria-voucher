@@ -1,22 +1,21 @@
 <?php 
-   require_once(__DIR__ . '/../../componentes/head.php');
+require_once(__DIR__ . '/../../componentes/head.php');
+require_once __DIR__ . '/../../../Config/autoload.php';
 headerComponent("Voucher Desenvolvedor - Login");
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../../../config/Database.php';
-require_once __DIR__ . '/../../../model/UsuarioModel.php';
+use App\Model\UsuarioModel;
+
 require_once __DIR__ . '/../../componentes/head.php';
 
 $erro = '';
-$pdo = null;
 $usuarioModel = null;
 
 // Tenta conectar ao banco antes de processar login
 try {
-    $pdo = Database::conectar();
     $usuarioModel = new UsuarioModel($pdo);
 } catch (Exception $e) {
     $erro = "Erro ao conectar ao banco de dados!";

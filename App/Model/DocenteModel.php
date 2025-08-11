@@ -1,7 +1,6 @@
 <?php
 namespace App\Model;
 
-use App\Model\BaseModel;
 use PDO;
 
 class DocenteModel extends BaseModel

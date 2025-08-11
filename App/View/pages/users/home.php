@@ -1,6 +1,9 @@
 <?php
+require_once __DIR__ . '/../../../Config/autoload.php';
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
+// require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
+
+use App\Model\EstatisticasModel;
 
 headerComponent('Página Inicial');
 
