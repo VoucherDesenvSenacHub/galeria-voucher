@@ -9,40 +9,13 @@ class ImagensModel extends BaseModel
         parent::__construct();
     }
 
-
         /**
-     * Salva metadados da imagem no banco
-     * @param array $imagem
-     *      [ 'descricao' ]
-     * @return array|null
-     */
-    public function salvar($imagem)
-    {
-        $query = "INSERT INTO $this->tabela (descricao)
-            VALUES (:descricao)";
-
-        $stmt = $this->tabela->prepare($query);
-
-        $salvou = $stmt->execute([
-            ':descricao' => $imagem['descricao']
-        ]);
-
-        if ($salvou) {
-            $query = "SELECT * FROM $this->tabela ORDER BY id DESC LIMIT 1";
-            $stmt = $this->tabela->prepare($query);
-            $stmt->execute();
-            return $stmt->fetch();
-        }
-        return null;
-    }
-
-
-    /**
      * Faz upload da imagem e salva no banco
      * @param array $imagem Arquivo recebido de $_FILES['campo']
      * @return array|null
      */
-    public function upload($imagem)
+
+    public static function upload($imagem)
     {
         // Tipos de arquivos permitidos
         $mimeTypesPermitidas = ['image/jpeg', 'image/png'];
@@ -77,12 +50,41 @@ class ImagensModel extends BaseModel
 
         if ($salvou) {
             // Salva no banco e retorna registro
-            return $this->salvar([
+            $instancia = new self();
+            return $instancia->salvar([
                 'descricao' => $caminhoImagemBanco  
             ]);
         }
         return null;
     }
+
+
+        /**
+     * Salva metadados da imagem no banco
+     * @param array $imagem
+     *      [ 'descricao' ]
+     * @return array|null
+     */
+    public  function salvar($imagem)
+    {
+        $query = "INSERT INTO $this->tabela (descricao)
+            VALUES (:descricao)";
+
+        $stmt = $this->pdo->prepare($query);
+
+        $salvou = $stmt->execute([
+            ':descricao' => $imagem['descricao']
+        ]);
+
+        if ($salvou) {
+            $query = "SELECT * FROM $this->tabela ORDER BY id DESC LIMIT 1";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
+            return $stmt->fetch();
+        }
+        return null;
+    }
+
 
     /**
      * Busca todas as imagens salvas
@@ -92,7 +94,7 @@ class ImagensModel extends BaseModel
     {
         $query = "SELECT * FROM $this->tabela";
 
-        $stmt = $this->tabela->prepare($query);
+        $stmt = $this->pdo->prepare($query);
         $stmt->execute();
 
         return $stmt->fetchAll();

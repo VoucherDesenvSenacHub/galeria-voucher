@@ -1,55 +1,32 @@
-<?php 
+<?php
 
-require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . '/../../../Model/TurmasImageModel.php';
 
-headerComponent('Turmas Voucher')
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_FILES['foto'])) {
+        $imagem = $_FILES['foto'];
+
+        $imagemSalva = ImagensModel::upload($imagem);
+    }
+}
+
+
 ?>
-<body class="body-turma">
 
-    <?php 
-        $isAdmin = false; // Para páginas de users
-        require_once __DIR__ . "/./../../componentes/nav.php" 
-    ?>
-    <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
-
-    <main>
-            
-        <div class="conteudotodo">
-
-            <div class="turmatitulo">
-                <h1>TURMAS </h1>
-            </div>
-        
-        
-            <!-- Cards das Turmas -->
-            <?php
-                $turmas = range(130, 177);
-                $limiteVisiveis = 30; // quantidade de turmas que aparecem inicialmente
-            ?>
-            <div class="cards" id="cards-container">
-                <?php foreach ($turmas as $index => $turmaNumero) {
-                    $extraClass = ($index >= $limiteVisiveis) ? 'extra' : '';
-                ?>
-                    <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER']; ?>galeria-turma.php" class="card-turma <?php echo $extraClass; ?>">
-                        <div class="card-content">
-                            <h3 class="card-title">TURMA <?php echo $turmaNumero; ?></h3>
-                            <img class="card-image" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG']; ?>turmas/turma.jpg" alt="Imagem turma <?php echo $turmaNumero; ?>">
-                        </div>
-                    </a>
-                <?php } ?>
-            </div>
-        </div>
-
-        <div class = "ver-mais-cont">
-            <div class="vermais" id="vermais">
-                <h3>VER MAIS</h3>
-                <span class="material-symbols-outlined" id="arrow-icon">
-                    arrow_downward
-                </span>
-            </div>
-        </div>   
-    </main>  
-    <?php require_once __DIR__ . "/./../../componentes/users/footer.php" ?>
-    <script src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_JS'] ?>alunos/turma.js" defer></script>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+<body>
+    <?php if ($imagemSalva): ?>
+        <p>
+            Imagem salva com sucesso em <?= $imagemSalva['descricao'] ?>.
+            <a href="index.php">Voltar</a>
+        </p>
+    <?php endif ?>
 </body>
 </html>
