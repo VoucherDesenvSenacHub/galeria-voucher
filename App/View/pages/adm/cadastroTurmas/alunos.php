@@ -1,11 +1,30 @@
 <?php
+// 1. INCLUDES E AUTENTICAÇÃO
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
-headerComponent("Voucher Desenvolvedor - Alunos");
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../../Model/AlunoModel.php"; // Inclui o AlunoModel
 
+headerComponent("Voucher Desenvolvedor - Alunos");
 $currentTab = 'alunos';
+
+// 2. LÓGICA DE BUSCA DE DADOS
+try {
+    $alunoModel = new AlunoModel();
+    $alunos = $alunoModel->buscarTodosAlunosComPolo();
+} catch (Exception $e) {
+    // Em caso de erro, define $alunos como um array vazio e loga o erro
+    $alunos = [];
+    error_log("Erro ao buscar alunos: " . $e->getMessage());
+}
+
+// Verifica se o usuário logado é um administrador para exibir o botão de excluir
+$is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
 ?>
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
 
 <body class="body-adm">
     <div class="container-adm">
@@ -32,7 +51,7 @@ $currentTab = 'alunos';
                 <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\""); ?>
 
                 <div class="input-pesquisa-container">
-                    <input type="text" id="pesquisa" placeholder="Pesquisar">
+                    <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
                 </div>
             </div>
@@ -48,54 +67,23 @@ $currentTab = 'alunos';
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            $usuarios = [
-                                ['nome' => 'João Silva', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Maria Santos', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Pedro Oliveira', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Ana Costa', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Carlos Ferreira', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Lucia Rodrigues', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Roberto Almeida', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Fernanda Lima', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Marcos Pereira', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Juliana Martins', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Rafael Souza', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Patricia Santos', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Lucas Mendes', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Camila Alves', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Diego Costa', 'polo' => 'Campo Grande'],
-                                ['nome' => 'Amanda Silva', 'polo' => 'Dourados'],
-                                ['nome' => 'Thiago Oliveira', 'polo' => 'Dourados'],
-                                ['nome' => 'Carolina Lima', 'polo' => 'Dourados'],
-                                ['nome' => 'Bruno Santos', 'polo' => 'Dourados'],
-                                ['nome' => 'Isabela Costa', 'polo' => 'Dourados'],
-                                ['nome' => 'Gabriel Ferreira', 'polo' => 'Dourados'],
-                                ['nome' => 'Mariana Rodrigues', 'polo' => 'Dourados'],
-                                ['nome' => 'Leonardo Almeida', 'polo' => 'Dourados'],
-                                ['nome' => 'Beatriz Martins', 'polo' => 'Dourados'],
-                                ['nome' => 'Ricardo Pereira', 'polo' => 'Três Lagoas'],
-                                ['nome' => 'Vanessa Silva', 'polo' => 'Três Lagoas'],
-                                ['nome' => 'Felipe Santos', 'polo' => 'Três Lagoas'],
-                                ['nome' => 'Daniela Costa', 'polo' => 'Três Lagoas'],
-                                ['nome' => 'André Oliveira', 'polo' => 'Três Lagoas'],
-                                ['nome' => 'Tatiana Lima', 'polo' => 'Três Lagoas'],
-                                ['nome' => 'Rodrigo Ferreira', 'polo' => 'Três Lagoas'],
-                                ['nome' => 'Cristina Alves', 'polo' => 'Três Lagoas']
-                            ];
-                            usort($usuarios, function ($a, $b) {
-                                return strcasecmp($a['nome'], $b['nome']);
-                            });
-                            foreach ($usuarios as $usuario) {
-                                echo '<tr>';
-                                echo '<td>' . $usuario['nome'] . '</td>';
-                                echo '<td>' . $usuario['polo'] . '</td>';
-                                echo '<td class="acoes">';
-                                echo '<span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>';
-                                echo '</td>';
-                                echo '</tr>';
-                            }
-                            ?>
+                            <?php if (!empty($alunos)) : ?>
+                                <?php foreach ($alunos as $aluno) : ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($aluno['nome']) ?></td>
+                                        <td><?= htmlspecialchars($aluno['polo']) ?></td>
+                                        <td class="acoes">
+                                            <?php if ($is_admin) : ?>
+                                                <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <tr>
+                                    <td colspan="3" style="text-align: center;">Nenhum aluno encontrado.</td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -103,24 +91,7 @@ $currentTab = 'alunos';
         </main>
     </div>
 
-    <script>
-        // Filtro de pesquisa simples
-        document.querySelector('.form-group-buton button').addEventListener('click', () => {
-            const termo = document.getElementById('pesquisa').value.toLowerCase();
-            const linhas = document.querySelectorAll('#tabela-alunos tbody tr');
-
-            linhas.forEach(linha => {
-                const nome = linha.children[0].textContent.toLowerCase();
-                const polo = linha.children[1].textContent.toLowerCase();
-
-                if (nome.includes(termo) || polo.includes(termo)) {
-                    linha.style.display = '';
-                } else {
-                    linha.style.display = 'none';
-                }
-            });
-        });
-    </script>
+    <script src="../../../assets/js/adm/lista-alunos.js"></script>
     <script src="../../../assets/js/main.js"></script>
     <script src="../../../assets/js/adm/autocomplete-pessoas.js"></script>
 </body>
