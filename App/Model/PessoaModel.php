@@ -82,11 +82,33 @@ class PessoaModel extends BaseModel
 
     // Deletar pessoa (Delete)
     public function deletarPessoa(int $id): bool
-    {
-        $sql = "DELETE FROM pessoa WHERE pessoa_id = :id";
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([':id' => $id]);
+{
+    try {
+        // Inicia a transação
+        $this->pdo->beginTransaction();
+
+        // Deleta dependências na tabela aluno_turma
+        $sql1 = "DELETE FROM aluno_turma WHERE pessoa_id = :id";
+        $stmt1 = $this->pdo->prepare($sql1);
+        $stmt1->execute([':id' => $id]);
+
+        // Deleta a pessoa
+        $sql2 = "DELETE FROM pessoa WHERE pessoa_id = :id";
+        $stmt2 = $this->pdo->prepare($sql2);
+        $stmt2->execute([':id' => $id]);
+
+        // Confirma a transação
+        $this->pdo->commit();
+
+        return true;
+    } catch (PDOException $e) {
+        // Em caso de erro, desfaz a transação
+        $this->pdo->rollBack();
+        // Pode logar o erro aqui ou lançar exceção novamente
+        return false;
     }
+}
+
 
     // Listar todas as pessoas
     public function listarPessoas(): array

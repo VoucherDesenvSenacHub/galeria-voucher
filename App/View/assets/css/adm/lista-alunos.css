@@ -102,19 +102,21 @@
   min-width: 1000px;
   /* força scroll horizontal se necessário */
   border-collapse: collapse;
-}
 
-a{
+  a{
   text-decoration: none;
   color: #000;
   transition: 0.2s linear;
   cursor: pointer;
-    
+
   &:hover{
     transition: 0.2s linear;
     color:#9fe83a;
   }
+  }
+
 }
+
 
 /* Cabeçalho da tabela */
 thead {
@@ -170,6 +172,7 @@ tbody tr:nth-child(odd) {
 .paginacao {
   margin: auto;
 }
+
 
 /* Fix para o menu hamburger nas páginas de lista */
 @media (max-width: 768px) {
