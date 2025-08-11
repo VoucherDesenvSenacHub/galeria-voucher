@@ -17,8 +17,10 @@ class TurmaController {
             $polo_id = filter_input(INPUT_POST, 'polo_id', FILTER_VALIDATE_INT);
             $imagem_id = null;
 
-            // --- INÍCIO DA VALIDAÇÃO OBRIGATÓRIA ---
+           // --- INÍCIO DA VALIDAÇÃO ---
             $erros = [];
+            
+            // 1. Validação de campos obrigatórios
             if (empty($nome)) {
                 $erros[] = "O campo 'Nome da Turma' é obrigatório.";
             }
@@ -29,13 +31,27 @@ class TurmaController {
                 $erros[] = "É obrigatório selecionar um 'Polo'.";
             }
 
-            // Se houver erros, redireciona de volta com as mensagens
+            // 2. Validação de datas (agora executa na mesma verificação)
+            if (!empty($data_inicio) && !empty($data_fim)) {
+                try {
+                    $inicioObj = new DateTime($data_inicio);
+                    $fimObj = new DateTime($data_fim);
+
+                    if ($fimObj < $inicioObj) {
+                        $erros[] = "A data de término não pode ser anterior à data de início.";
+                    }
+                } catch (Exception $e) {
+                    $erros[] = "O formato de uma ou ambas as datas é inválido.";
+                }
+            }
+            
+            // 3. Verificação ÚNICA: Se houver QUALQUER erro na lista, redireciona.
             if (!empty($erros)) {
                 $_SESSION['erros_turma'] = $erros;
                 header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
                 exit;
             }
-            // --- FIM DA VALIDAÇÃO OBRIGATÓRIA ---
+            // --- FIM DA VALIDAÇÃO ---
 
             if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
                 $imagemModel = new ImagemModel();
@@ -91,6 +107,10 @@ class TurmaController {
 
             // --- Validação obrigatória (seu código existente) ---
             $erros = [];
+        
+            // ▼▼▼ VALIDAÇÃO CORRIGIDA E COMPLETA ▼▼▼
+                
+            // 1. Validação de campos obrigatórios (incluindo o NOME)
             if (empty($nome)) {
                 $erros[] = "O campo 'Nome' é obrigatório.";
             }
@@ -100,11 +120,28 @@ class TurmaController {
             if ($polo_id === false || $polo_id <= 0) {
                 $erros[] = "É obrigatório selecionar um 'Polo'.";
             }
+                
+            // 2. Validação de datas
+            if (!empty($data_inicio) && !empty($data_fim)) {
+                $inicioObj = DateTime::createFromFormat('Y-m-d', $data_inicio);
+                $fimObj = DateTime::createFromFormat('Y-m-d', $data_fim);
+
+                if ($inicioObj && $fimObj) {
+                    if ($fimObj < $inicioObj) {
+                            $erros[] = "A data de término não pode ser anterior à data de início.";
+                    }
+                } else {
+                    $erros[] = "O formato das datas é inválido. Utilize o formato Ano-Mês-Dia.";
+                }
             
-            if (!empty($erros)) {
-                $_SESSION['erros_turma'] = $erros;
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . "cadastroTurmas/cadastroTurmas.php?id=$turma_id");
-                exit;
+                
+        // 3. Verificação ÚNICA: Se houver QUALQUER erro na lista, redireciona e PARA a execução.
+        if (!empty($erros)) {
+            $_SESSION['erros_turma'] = $erros;
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . "cadastroTurmas/cadastroTurmas.php?id=$turma_id");
+            exit; // A função exit() é CRUCIAL para impedir que o resto do código execute.
+        }
+            
             }
             // --- Fim da Validação ---
 
