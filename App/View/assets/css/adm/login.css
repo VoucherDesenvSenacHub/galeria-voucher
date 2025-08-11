@@ -86,6 +86,7 @@
 .main-login .form-action button {
     padding: 12px 30px;
     background-color: #aEFF40;
+    color: var(--color-text-button);
     border: none;
     border-radius: 50px;
     cursor: pointer;

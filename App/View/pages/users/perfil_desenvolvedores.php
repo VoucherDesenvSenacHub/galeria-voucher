@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-br">
 <?php
-require_once __DIR__ . "/../../../Config/env.php";
-require_once __DIR__ . "/../../componentes/button.php";
 require_once __DIR__ . "/../../componentes/head.php";
+require __DIR__ . "/../../../Model/AlunoTurmaModel.php";
+
+$alunoTurma = new AlunoTurmaModel();
+$alunos = $alunoTurma->Turma146();
 
 headerComponent('Desenvolvedores');
 ?>
@@ -21,8 +21,7 @@ headerComponent('Desenvolvedores');
             <h1 class="galeria-turma-h1">Alunos</h1>
             <div class="galeria-turma-container">
                 <?php
-                require __DIR__ . "/../../componentes/users/desenvolvedores.php";
-                foreach ($desenvolvedores as $dev) {
+                foreach ($alunos as $aluno) {
                     require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
                 }
                 ?>
