@@ -105,7 +105,7 @@ headerComponent($tituloPagina);
                 <label class="form-label" >Término</label>
                 <input type="date" name="data_fim" class="input-adm-turmas" value="<?= htmlspecialchars($turma['data_fim'] ?? '') ?>">
 
-                <label class="form-label" >Pólo</label>
+                <label class="form-label" >Polo</label>
                 <select name="polo_id" class="input-adm-turmas">
                     <option value="">Selecione um Pólo</option>
                     <?php foreach ($polos as $polo): // Loop para criar as opções do select a partir dos dados do banco. ?>

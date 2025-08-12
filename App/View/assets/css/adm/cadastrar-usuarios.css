@@ -76,7 +76,7 @@ main.conteudo-cadastro::-webkit-scrollbar-thumb:hover {
 }
 
 /* Estilos base para campos de input, select e textarea */
-input,
+.input-adm-turmas,
 select,
 textarea {
   display: block;
@@ -87,6 +87,7 @@ textarea {
   border-radius: 30px;
   background-color: #e5e9e4;
   font-size: 16px;
+  resize: vertical;
 }
 
 #informacoes-adicionais{
@@ -165,10 +166,10 @@ select {
 
 .form-group-buton button {
   width: 200px !important;
-  height: 60px !important;
   font-size: 25px !important;
   font-family: 'Bebas Neue', sans-serif !important;
   letter-spacing: 2px !important;
+  border: 1px solid var(--text-black);
 }
 
 /* Botões de seleção */
