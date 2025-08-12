@@ -3,6 +3,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/input.php";
 require_once __DIR__ . "/../../componentes/button.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../Controls/testarmodelpessoa.php";
 
 headerComponent('Cadastro de Pessoa')
 ?>
@@ -19,7 +20,7 @@ headerComponent('Cadastro de Pessoa')
     <div class="container-users">
       <div class="form-container-users">
         
-        <form class="form-dados">
+        <form class="form-dados" method="POST" enctype="multipart/form-data">
           <div class="form-top">
             <div class="form-group">
               <?php 
@@ -31,8 +32,13 @@ headerComponent('Cadastro de Pessoa')
             </div>
             <div class="form-group-polo div-center">
               <select id="tipo-usuario" class="input-text" style="cursor: pointer;">
-                <option value="professor" selected>Professor</option>
-                <option value="aluno">Aluno</option>
+               <option value="">-- Selecione --</option>
+                <?php foreach ($perfis as $perfil): ?>
+                    <option value="<?= htmlspecialchars($perfil) ?>"
+                        <?= ($_POST['perfil'] ?? '') === $perfil ? 'selected' : '' ?>>
+                        <?= ucfirst(htmlspecialchars($perfil)) ?>
+                    </option>
+                <?php endforeach; ?>
               </select>
 
               <select id="polo" name="polo" class="input-text" style="cursor: pointer;">
