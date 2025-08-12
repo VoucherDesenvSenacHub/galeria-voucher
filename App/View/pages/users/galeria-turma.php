@@ -61,7 +61,6 @@ headerComponent('Galeria da Turma');
             </div>
         </section>
 
-
         <!-- ------------------- SEÇÃO DE PROJETOS ------------------- -->
         <section class="galeria-turma-section galeria-turma-galeria projetos-turma">
             <h1 class="galeria-turma-h1">Galeria de Projetos</h1>
