@@ -16,14 +16,14 @@ if (isset($_POST["acao"])) {
     if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
         echo "Arquivo enviado com sucesso!<br>";
 
-        // ID da turma vindo do formulário
-        $idTurma = intval($_POST['id_turma']);
+    //     // ID da turma vindo do formulário
+    //     $idTurma = intval($_POST['id_turma']);
 
-        // Salva no banco
-        $stmt = $pdo->prepare("UPDATE turmas SET imagem = :imagem WHERE id = :id");
-        $stmt->bindParam(':imagem', $novoNome);
-        $stmt->bindParam(':id', $idTurma);
-        $stmt->execute();
+    //     // Salva no banco
+    //     $stmt = $pdo->prepare("UPDATE turmas SET imagem = :imagem WHERE id = :id");
+    //     $stmt->bindParam(':imagem', $novoNome);
+    //     $stmt->bindParam(':id', $idTurma);
+    //     $stmt->execute();
     }
 
 }
