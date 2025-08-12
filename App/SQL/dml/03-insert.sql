@@ -28,10 +28,10 @@ INSERT INTO imagem (url, data_upload) VALUES
 
 -- 4. INSERTS PARA TABELA 'turma' (com imagem_id obrigatório)
 INSERT INTO turma (nome, descricao, data_inicio, data_fim, imagem_id, polo_id) VALUES 
-('Turma 1440', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', 25, (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
-('Turma 1450', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', 25, (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
-('Turma 1460', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', 25, (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
-('Turma 1470', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', 25, (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas'));
+('Turma 1440', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', 1, (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
+('Turma 1450', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', 1, (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
+('Turma 1460', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', 1, (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
+('Turma 1470', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', 1, (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas'));
 
 -- 5. INSERTS PARA TABELA 'pessoa' (alunos, professores, administradores)
 INSERT INTO pessoa (email, nome, linkedin, github, imagem_id, perfil) VALUES
@@ -66,32 +66,32 @@ INSERT INTO usuario (pessoa_id, senha) VALUES
 
 -- 7. INSERTS PARA TABELA 'aluno_turma'
 INSERT INTO aluno_turma (pessoa_id, turma_id, data_matricula) VALUES
-((SELECT pessoa_id FROM pessoa WHERE email = 'wellington.xavier@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'jose.otavio@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'luiz.oliveira@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'jonatan.samuel@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'anuar.el@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'rodrigo.santos@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'sambegara.cristaldo@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'matheus.corsine@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'lucas.ajpert@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'henrique.guisa@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.eduardo@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'bruno.ribeiro@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'lourran@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'manoel.oliveira@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'gustavo.santos@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'joao.pedro@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'wendril.ferreira@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'luis.cunha@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'riquelme.gomes@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'joao.heitor@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'frederico.soares@example.com'), 1, NOW());
+((SELECT pessoa_id FROM pessoa WHERE email = 'wellington.xavier@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'jose.otavio@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'luiz.oliveira@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'jonatan.samuel@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'anuar.el@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'rodrigo.santos@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'sambegara.cristaldo@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'matheus.corsine@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'lucas.ajpert@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'henrique.guisa@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'carlos.eduardo@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'bruno.ribeiro@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'lourran@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'manoel.oliveira@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'gustavo.santos@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.pedro@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'wendril.ferreira@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'luis.cunha@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'riquelme.gomes@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'joao.heitor@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'frederico.soares@example.com'), 25, NOW());
 
 -- 8. INSERTS PARA TABELA 'docente_turma'
 INSERT INTO docente_turma (pessoa_id, turma_id, data_associacao) VALUES
-((SELECT pessoa_id FROM pessoa WHERE email = 'mauricio.souza@example.com'), 1, NOW()),
-((SELECT pessoa_id FROM pessoa WHERE email = 'thiago.suzuqui@example.com'), 1, NOW());
+((SELECT pessoa_id FROM pessoa WHERE email = 'mauricio.souza@example.com'), 25, NOW()),
+((SELECT pessoa_id FROM pessoa WHERE email = 'thiago.suzuqui@example.com'), 25, NOW());
 
 -- 9. INSERIR PROJETO
 INSERT INTO projeto (nome, descricao, link, turma_id)
@@ -99,7 +99,7 @@ VALUES (
   'Galeria Web - Projeto Integrador',
   'Projeto desenvolvido pelos alunos da Turma 144 no curso de Desenvolvimento de Sistemas.',
   'https://github.com/VoucherDesenvSenacHub/galeria-voucher',
-  1
+  25
 );
 
 -- Captura o ID do projeto inserido
