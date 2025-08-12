@@ -1,5 +1,4 @@
 <?php
-// src/Service/GaleriaTurmaService.php
 
 class GaleriaTurmaService
 {
