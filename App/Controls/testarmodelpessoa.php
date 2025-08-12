@@ -81,10 +81,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } catch (Exception $e) {
         $mensagem = "❌ Erro: " . $e->getMessage();
+        echo "Rodrigo Salgado";
     }
 }
 
 $perfis = $pessoaModel->listarPerfisPermitidos();
+$perill= $pessoaModel ->listarPessoas();
+var_dump($perill);
 ?>
 
 <!DOCTYPE html>
