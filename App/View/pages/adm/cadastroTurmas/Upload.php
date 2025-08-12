@@ -1,24 +1,31 @@
 <?php
 if (isset($_POST["acao"])) { 
-    echo "Enviado...";
     $arquivo = $_FILES["turma"]; 
+    $extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
 
-
-    $extensao = pathinfo($arquivo['name'], PATHINFO_EXTENSION);
-    
-
-    if (!in_array(strtolower($extensao), ['jpeg', 'png', 'jpg'])) {
-        die("Você não pode fazer o upload desse arquivo. Apenas JPEG, JPG ou PNG são permitidos.");
-    } else {
-        echo "Enviando turma...";
-
-        $destino = '../../../img' . $arquivo['name'];
-        if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
-            echo "Arquivo enviado com sucesso!";
-        } else {
-            echo "Erro ao enviar o arquivo.";
-        }
+    // Valida extensão
+    if (!in_array($extensao, ['jpeg', 'png', 'jpg'])) {
+        die("Apenas JPEG, JPG ou PNG são permitidos.");
     }
+
+    // Nome aleatório
+    $novoNome = uniqid('', true) . '.' . $extensao;
+    $destino = __DIR__ . '/../../../../../Upload/' . $novoNome;
+
+    // Move o arquivo
+    if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
+        echo "Arquivo enviado com sucesso!<br>";
+
+        // ID da turma vindo do formulário
+        $idTurma = intval($_POST['id_turma']);
+
+        // Salva no banco
+        $stmt = $pdo->prepare("UPDATE turmas SET imagem = :imagem WHERE id = :id");
+        $stmt->bindParam(':imagem', $novoNome);
+        $stmt->bindParam(':id', $idTurma);
+        $stmt->execute();
+    }
+
 }
 ?>
 
