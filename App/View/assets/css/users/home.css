@@ -12,6 +12,40 @@
             rgba(0, 0, 0, 0.9));
 }
 
+/* mapa svg */
+.mapa-svg-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 830px;
+    z-index: 1;
+    opacity: 0.20;
+}
+
+.mapa-svg {
+    width: 100%;
+    height: auto;
+}
+
+.mapa-svg path {
+    stroke: var(--accent-color);
+    stroke-width: 15px;
+    fill: transparent;
+}
+
+/*animação matrix*/
+#matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    
+}
+
 .body-turma {
     margin: 0px;
     padding: 0px;
@@ -71,6 +105,7 @@
         width: 100%;
         top: calc(25vh + 6.3vw);
         text-align: center;
+        z-index: 1;
     }
 
     /* imagem do mapa do estado */

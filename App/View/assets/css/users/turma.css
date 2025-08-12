@@ -49,6 +49,7 @@
     text-decoration: none;
     background-color: black; /* Cor de fundo do card */
     border-radius: 30px;  
+    z-index: 2;
 }
 
 .card-content {
