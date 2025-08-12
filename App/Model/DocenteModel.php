@@ -1,3 +1,7 @@
+<!-- Atualizar o model para pesquisar o docente por nome, ver a pagina 'editar-turma.php' se vai ser necessario criar, e/ou já é algo criado
+     
+        -->
+
 <?php
 
 require_once __DIR__ . "/BaseModel.php";
