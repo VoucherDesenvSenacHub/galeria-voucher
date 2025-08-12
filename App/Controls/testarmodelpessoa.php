@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $criado = $pessoaModel->criarPessoa($dados, $imagemId);
 
         if ($criado) {
-            $pessoaModel->criarPessoa($dados, $imagemId);
+            
             $ultimoId = $pessoaModel->getLastInsertId(); // ✅ agora funciona
 
             $pessoaCriada = $pessoaModel->buscarPessoaPorId($ultimoId);
