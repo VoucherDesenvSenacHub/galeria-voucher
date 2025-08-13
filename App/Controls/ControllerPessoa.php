@@ -18,18 +18,6 @@ $polo = $_POST['polo'] ?? '';
 $t = '';
 
 switch ($acao) {
-    case 'listarJson':
-        $json = $model->listarPessoas();
-
-        if ($json) {
-            header('Content-Type: application/json');
-            echo json_encode($json);
-        } else {
-            echo json_encode([]);
-        }
-        exit;  // para evitar qualquer saída extra depois
-
-        break;
     case 'editar':
         if ($id) {
             $dados = [
