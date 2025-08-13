@@ -81,33 +81,42 @@ class PessoaModel extends BaseModel
     }
 
     // Deletar pessoa (Delete)
-    public function deletarPessoa(int $id): bool
-{
-    try {
-        // Inicia a transação
-        $this->pdo->beginTransaction();
+    public function deletarPessoa(int $id, string $perfil): bool
+    {
+        $tabelaDependencia = '';
+        if ($perfil === 'aluno') {
+            $tabelaDependencia = 'aluno_turma';
+        } elseif ($perfil === 'professor') {
+            $tabelaDependencia = 'docente_turma';
+        }
 
-        // Deleta dependências na tabela aluno_turma
-        $sql1 = "DELETE FROM aluno_turma WHERE pessoa_id = :id";
-        $stmt1 = $this->pdo->prepare($sql1);
-        $stmt1->execute([':id' => $id]);
+        try {
+            $this->pdo->beginTransaction();
 
-        // Deleta a pessoa
-        $sql2 = "DELETE FROM pessoa WHERE pessoa_id = :id";
-        $stmt2 = $this->pdo->prepare($sql2);
-        $stmt2->execute([':id' => $id]);
+            // 1. Deleta da tabela de dependência de perfil (aluno_turma ou docente_turma)
+            if ($tabelaDependencia) {
+                $sql1 = "DELETE FROM {$tabelaDependencia} WHERE pessoa_id = :id";
+                $stmt1 = $this->pdo->prepare($sql1);
+                $stmt1->execute([':id' => $id]);
+            }
 
-        // Confirma a transação
-        $this->pdo->commit();
+            // 2. Deleta da tabela 'usuario' (A LINHA QUE FALTAVA)
+            $sql_usuario = "DELETE FROM usuario WHERE pessoa_id = :id";
+            $stmt_usuario = $this->pdo->prepare($sql_usuario);
+            $stmt_usuario->execute([':id' => $id]);
 
-        return true;
-    } catch (PDOException $e) {
-        // Em caso de erro, desfaz a transação
-        $this->pdo->rollBack();
-        // Pode logar o erro aqui ou lançar exceção novamente
-        return false;
+            // 3. Finalmente, deleta da tabela principal 'pessoa'
+            $sql2 = "DELETE FROM pessoa WHERE pessoa_id = :id";
+            $stmt2 = $this->pdo->prepare($sql2);
+            $stmt2->execute([':id' => $id]);
+
+            $this->pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            $this->pdo->rollBack();
+            return false;
+        }
     }
-}
 
 
     // Listar todas as pessoas
@@ -118,7 +127,8 @@ class PessoaModel extends BaseModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function listarPessoasTable(int $limit, int $offset): array {
+    public function listarPessoasTable(int $limit, int $offset): array
+    {
         $sql = "SELECT * FROM (
                 SELECT DISTINCT p.pessoa_id, p.nome, p.perfil, po.nome AS nome_polo
                 FROM pessoa p
@@ -137,7 +147,7 @@ class PessoaModel extends BaseModel
                 WHERE p.perfil = 'professor'
                 ) AS resultado
                 ORDER BY nome ASC
-                LIMIT :limit OFFSET :offset;";  
+                LIMIT :limit OFFSET :offset;";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
