@@ -71,7 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $criado = $pessoaModel->criarPessoa($dados, $imagemId);
 
         if ($criado) {
-            $ultimoId = $pessoaModel->getLastInsertId();
+            
+            $ultimoId = $pessoaModel->getLastInsertId(); // ✅ agora funciona
+
             $pessoaCriada = $pessoaModel->buscarPessoaPorId($ultimoId);
             $mensagem = "✅ Pessoa criada com sucesso! ID: {$ultimoId}";
         } else {
@@ -79,10 +81,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } catch (Exception $e) {
         $mensagem = "❌ Erro: " . $e->getMessage();
+        echo "Rodrigo Salgado";
     }
 }
 
 $perfis = $pessoaModel->listarPerfisPermitidos();
+$perill= $pessoaModel ->listarPessoas();
+var_dump($perill);
 ?>
 
 <!DOCTYPE html>
@@ -137,6 +142,15 @@ $perfis = $pessoaModel->listarPerfisPermitidos();
                     </option>
                 <?php endforeach; ?>
             </select>
+
+            <select id="polo" name="polo" class="input-text" style="cursor: pointer;">
+                <option value="">Polo:</option>
+                <option value="polo1">Campo Grande</option>
+                <option value="polo2">Tres Lagoas</option>
+                <option value="polo2">Dourados</option>
+                <option value="polo2">Corumba</option>
+                <option value="polo2">Ponta Pora</option>
+              </select>
         </div><br>
 
         <div>
@@ -148,6 +162,8 @@ $perfis = $pessoaModel->listarPerfisPermitidos();
             <label>GitHub:</label><br>
             <input type="text" name="github" value="<?= htmlspecialchars($_POST['github'] ?? '') ?>">
         </div><br>
+
+        
 
         <div>
             <label>Imagem (JPEG, PNG ou GIF - máximo 2MB):</label><br>
