@@ -1,16 +1,17 @@
 <?php
 
+require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../componentes/head.php";
 
 headerComponent('Turmas Voucher')
-?>
+    ?>
 
 <body class="body-turma">
 
     <?php
     $isAdmin = false; // Para páginas de users
     require_once __DIR__ . "/./../../componentes/nav.php"
-    ?>
+        ?>
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
     <main>
@@ -23,9 +24,21 @@ headerComponent('Turmas Voucher')
 
             <!-- Cards das Turmas -->
             <?php
-            $turmas = range(130, 177);
+            // 2. BUSCA DAS TURMAS NO BANCO DE DADOS
+            try {
+                $turmaModel = new TurmaModel();
+                // Usei a função que criamos, que busca apenas turmas com imagem
+                $turmas = $turmaModel->buscarTurmasParaGaleria();
+            } catch (Exception $e) {
+                // Se houver erro na conexão ou consulta, a página não quebra
+                $turmas = [];
+                error_log("Erro ao buscar turmas: " . $e->getMessage());
+            }
+
+            // var_dump($turmas);
+
             $itensPorPagina = 12; // Cards por página
-            $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+            $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
             $totalItens = count($turmas);
             $totalPaginas = ceil($totalItens / $itensPorPagina);
             $inicio = ($paginaAtual - 1) * $itensPorPagina;
@@ -33,11 +46,14 @@ headerComponent('Turmas Voucher')
             ?>
 
             <div class="cards" id="cards-container">
-                <?php foreach ($turmasPagina as $turmaNumero) { ?>
-                    <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER']; ?>galeria-turma.php" class="card-turma">
+                <?php foreach ($turmasPagina as $turmas['nome_turma']) { ?>
+                    <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER']; ?>galeria-turma.php"
+                        class="card-turma">
                         <div class="card-content">
-                            <h3 class="card-title">TURMA<?php echo $turmaNumero; ?></h3>
-                            <img class="card-image" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG']; ?>turmas/turma.jpg" alt="Imagem turma <?php echo $turmaNumero; ?>">
+                            <h3 class="card-title">TURMA<?php echo $turmas['nome_turma']; ?></h3>
+                            <img class="card-image"
+                                src="<?php echo VARIAVEIS['APP_URL'] . $turmas['imagem_url'] ?>"
+                                alt="Imagem turma <?php echo $turmas['nome_turma']; ?>">
                         </div>
                     </a>
                 <?php } ?>

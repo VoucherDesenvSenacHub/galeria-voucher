@@ -55,19 +55,17 @@ class ImagesUploadService
         }
 
         $imagensModel = new ImagensModel();
-        $imagensModel->salvar([
+        $imagemSalva = $imagensModel->salvar([
             'nome' => $nomeUnico,
             'nome_original' => $this->imagem['name'],
             'caminho' => $caminhoDaImagem
         ]);
 
-        return true;
-
-        // return [
-        //     'salvou' => true,
-        //     'id' => $imagemSalva['id'],
-        //     'caminho' => $caminhoDaImagem,
-        //     'nome_original' => $this->imagem['name']
-        // ];
+        return [
+            'salvou' => true,
+            'id' => $imagemSalva['id'],
+            'caminho' => $caminhoDaImagem,
+            'nome_original' => $this->imagem['name']
+        ];
     }
 }
