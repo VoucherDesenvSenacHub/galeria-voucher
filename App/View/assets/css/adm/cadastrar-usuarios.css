@@ -233,6 +233,11 @@ select {
   margin-top: 20px;
 }
 
+a{
+  text-decoration: none;
+  color: #000;
+}
+
 @media (max-width: 900px) {
   main.conteudo-cadastro {
     margin: 50px 10px 0 10px;
