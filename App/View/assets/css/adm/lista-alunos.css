@@ -151,6 +151,14 @@ tbody tr:nth-child(odd) {
 .tabela-principal-lista-alunos::-webkit-scrollbar-track {
   background-color: #999;
 }
+.acoes-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+#edite{
+  color: #000;
+}
 
 /* Fix para o menu hamburger nas páginas de lista */
 @media (max-width: 768px) {

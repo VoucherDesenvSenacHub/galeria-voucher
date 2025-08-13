@@ -15,27 +15,30 @@
  * buttonComponent('primary', 'Enviar', true);                // botão verde do tipo submit
  * buttonComponent('primary', 'Entrar', false, '/home');      // link estilizado como botão
  */
-function buttonComponent($style, $content, $isSubmit = false, $link = null, $action = null, $extraAttributes = '') {
+function buttonComponent($style, $content, $isSubmit = false, $link = null, $action = null, $extraAttributes = '', $extraClass = '') {
     // Define a classe CSS com base no estilo informado
     if ($style === 'primary') {
         $class = 'primary-button';
     } elseif ($style === 'secondary') {
         $class = 'secondary-button';
     } else {
-        // Se o estilo for inválido, usa 'primary' como padrão
         $class = 'primary-button';
     }
-    
+
+    // Concatena a classe extra se existir
+    if (!empty($extraClass)) {
+        $class .= ' ' . $extraClass;
+    }
+
     $type = $isSubmit ? 'submit' : 'button';
-    
+
     // Se um link for fornecido, renderiza um elemento <a>
     if ($link !== null) {
         echo "<a href='$link' class='$class' $extraAttributes>$content</a>";
-        // ! cuidado com esse if e else, pois se houver algo no $link ele vira um button.
     } else {
-        // Caso contrário, renderiza um <button>
         $actionAttr = $action ? "formaction='$action'" : '';
         echo "<button class='$class' type='$type' $actionAttr $extraAttributes>$content</button>";
     }
 }
+
 ?>

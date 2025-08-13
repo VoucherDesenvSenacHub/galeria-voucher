@@ -42,11 +42,23 @@ try {
     <main class="main-lista-alunos">
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
-                <?php buttonComponent('primary', 'NOVA TURMA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'); ?>
+                <?php
+                buttonComponent(
+                    'primary',
+                    'NOVA TURMA',
+                    false,
+                    VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php',
+                    null,
+                    '',
+                    'no-style'
+                );
+                ?>
+
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
+                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
+                        class="icone-lupa-img">
                 </div>
             </div>
 
@@ -61,20 +73,23 @@ try {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($turmas)) : // Verifica se existem turmas para exibir. ?>
-                                <?php foreach ($turmas as $turma) : // Loop para criar uma linha <tr> para cada turma. ?>
+                            <?php if (!empty($turmas)):  // Verifica se existem turmas para exibir. ?>
+                                <?php foreach ($turmas as $turma): // Loop para criar uma linha <tr> para cada turma. ?>
                                     <tr>
                                         <td><?= htmlspecialchars($turma['NOME_TURMA']) ?></td>
                                         <td><?= htmlspecialchars($turma['NOME_POLO']) ?></td>
                                         <td class="acoes">
                                             <div class="acoes-container">
-                                                <a href="cadastroTurmas/cadastroTurmas.php?id=<?= $turma['turma_id'] ?>" title="Editar">
-                                                    <span class="material-symbols-outlined acao-edit">edit</span>
+                                                <a href="cadastroTurmas/cadastroTurmas.php?id=<?= $turma['turma_id'] ?>"
+                                                    title="Editar">
+                                                    <span class="material-symbols-outlined" id="edite">edit</span>
                                                 </a>
-                                                
-                                                <form method="POST" action="<?= VARIAVEIS['APP_URL'] ?>App/Controls/TurmaController.php?action=excluir" onsubmit="return confirm('ATENÇÃO!!! Excluir esta turma também removerá todos os seus projetos, alunos e professores vinculados. Esta ação é irreversível. Deseja continuar?');">
+
+                                                <form method="POST"
+                                                    action="<?= VARIAVEIS['APP_URL'] ?>App/Controls/TurmaController.php?action=excluir"
+                                                    onsubmit="return confirm('ATENÇÃO!!! Excluir esta turma também removerá todos os seus projetos, alunos e professores vinculados. Esta ação é irreversível. Deseja continuar?');">
                                                     <input type="hidden" name="turma_id" value="<?= $turma['turma_id'] ?>">
-                                                    <button type="submit" class="btn-acao-delete" title="Excluir">
+                                                    <button type="submit" class="no-style" title="Excluir">
                                                         <span class="material-symbols-outlined acao-delete">delete</span>
                                                     </button>
                                                 </form>
@@ -82,7 +97,7 @@ try {
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else : // Se o array $turmas estiver vazio... ?>
+                            <?php else:  // Se o array $turmas estiver vazio... ?>
                                 <tr>
                                     <td colspan="3" style="text-align: center;">Nenhuma turma encontrada.</td>
                                 </tr>
@@ -93,17 +108,18 @@ try {
             </div>
         </div>
     </main>
-    
+
     <?php // Script para exibir a mensagem de sucesso após a exclusão de uma turma. ?>
     <?php if (isset($_SESSION['sucesso_exclusao'])): ?>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            alert("<?= htmlspecialchars($_SESSION['sucesso_exclusao']) ?>");
-        });
-    </script>
-    <?php unset($_SESSION['sucesso_exclusao']); // Limpa a sessão para não mostrar o alerta novamente. ?>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                alert("<?= htmlspecialchars($_SESSION['sucesso_exclusao']) ?>");
+            });
+        </script>
+        <?php unset($_SESSION['sucesso_exclusao']); // Limpa a sessão para não mostrar o alerta novamente. ?>
     <?php endif; ?>
-    
+
     <script src="../../assets/js/adm/lista-alunos.js"></script>
 </body>
+
 </html>
