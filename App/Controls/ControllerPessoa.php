@@ -15,6 +15,8 @@ $github = $_POST['github'] ?? '';
 $perfil = $_POST['perfil'] ?? '';
 $polo = $_POST['polo'] ?? '';
 
+$t = '';
+
 switch ($acao) {
     case 'listarJson':
         $json = $model->listarPessoas();
