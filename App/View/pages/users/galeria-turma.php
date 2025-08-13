@@ -219,6 +219,7 @@ $projetosTurmas = [
             <div class="galeria-turma-container">
                 <?php
                 require __DIR__ . "/../../componentes/users/desenvolvedores.php";
+
                 foreach ($desenvolvedores as $dev) {
                     require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
                 }

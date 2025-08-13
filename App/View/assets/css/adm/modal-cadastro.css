@@ -75,25 +75,30 @@ dialog#modal-cadastro form button.primary-button {
 #sugestoes {
   position: absolute;
   top: calc(100% - 1px); /* encosta no input */
-  left: 0;
+  left: 30%;
   right: 0;
   z-index: 1000; /* acima dos demais elementos */
   max-height: 150px;
   overflow-y: auto;
-  border: 1px solid #e0e0e0;
+  border: none;
   border-top: none;
-  background: #ffffff;
+  background: none;
   border-radius: 0 0 4px 4px;
+
+  text-align: start;
 }
 
 #sugestoes div {
   padding: 0.4rem 0.75rem;
   cursor: pointer;
   transition: background 0.2s ease;
+  background-color: #f5f5f5;
+
+  width: 50%;
 }
 
 #sugestoes div:hover {
-  background: #f0f8ff;
+  background-color:#e0f2ff;
 }
 
 /* Chips das pessoas selecionadas */
@@ -171,13 +176,3 @@ dialog#modal-cadastro .primary-button {
   width: 180px;
 }
 
-/* Lista de sugestões com bordas suaves */
-#sugestoes {
-  border: 1px solid #cbe7ff;
-  border-top: none;
-  background: #ffffff;
-}
-
-#sugestoes div:hover {
-  background: #e6f4ff;
-}
