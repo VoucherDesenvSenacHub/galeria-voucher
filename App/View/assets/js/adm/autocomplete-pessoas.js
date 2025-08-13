@@ -1,10 +1,21 @@
-// pessoas para autocomplete — pode receber via fetch, mas vamos hardcode por enquanto
-const pessoas = ['Manoel Victor', 'Amanda Lima', 'José Pereira', 'Lucas Silva', 'Thauanny Souza'];
+let pessoas = [];  // variável global para armazenar os nomes
 
-// Função para ativar autocomplete no form dentro do modal
+async function buscarPessoa(){
+    const response = await fetch("/galeria-voucher/app/Controls/ControllerPessoa.php?acao=listarJson");
+    const dados = await response.json();
+
+    // Supondo que dados seja um array de objetos com campo nome, por exemplo:
+    // [{ nome: "João" }, { nome: "Maria" }, ...]
+    pessoas = dados.map(p => p.nome);
+
+    ativarAutocomplete();  // chama a função depois de carregar os dados
+}
+
+buscarPessoa();
+
 function ativarAutocomplete() {
     const input = document.getElementById("pesquisar-pessoa");
-    if (!input) return; // só executa se input existir (modal aberto)
+    if (!input) return;
 
     const sugestoes = document.getElementById("sugestoes");
     const selecionados = document.getElementById("pessoas-selecionadas");

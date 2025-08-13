@@ -109,11 +109,10 @@ class PessoaModel extends BaseModel
     }
 }
 
-
     // Listar todas as pessoas
     public function listarPessoas(): array
     {
-        $sql = "SELECT * FROM pessoa";
+        $sql = "SELECT * FROM `pessoa` WHERE nome != 'Administrador Sistema'";
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
