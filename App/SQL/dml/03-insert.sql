@@ -28,10 +28,10 @@ INSERT INTO imagem (url, data_upload) VALUES
 
 -- 4. INSERTS PARA TABELA 'turma' (com imagem_id obrigatório)
 INSERT INTO turma (nome, descricao, data_inicio, data_fim, imagem_id, polo_id) VALUES 
-('Turma 1440', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', 1, (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
-('Turma 1450', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', 1, (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
-('Turma 1460', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', 1, (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
-('Turma 1470', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', 1, (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas'));
+('Turma 1440', 'Desenvolvimento de Sistemas - Manhã', '2024-02-01', '2024-12-15', 25, (SELECT polo_id FROM polo WHERE nome = 'SENAC Centro')),
+('Turma 1450', 'Desenvolvimento Web - Tarde', '2024-02-01', '2024-12-15', 25, (SELECT polo_id FROM polo WHERE nome = 'SENAC Dourados')),
+('Turma 1460', 'Redes de Computadores - Noite', '2024-03-01', '2024-11-30', 25, (SELECT polo_id FROM polo WHERE nome = 'SENAC Corumbá')),
+('Turma 1470', 'Administração de Sistemas - Manhã', '2024-04-01', '2024-10-31', 25, (SELECT polo_id FROM polo WHERE nome = 'SENAC Três Lagoas'));
 
 -- 5. INSERTS PARA TABELA 'pessoa' (alunos, professores, administradores)
 INSERT INTO pessoa (email, nome, linkedin, github, imagem_id, perfil) VALUES

@@ -1,7 +1,7 @@
 <?php
 // Valida se o parâmetro "turma_id" existe e é válido
 if (!isset($_GET['turma_id']) || !is_numeric($_GET['turma_id'])) {
-    header("Location: turma.php");
+    header("Location: galeria-turma.php?turma_id=25");
     exit;
 }
 
