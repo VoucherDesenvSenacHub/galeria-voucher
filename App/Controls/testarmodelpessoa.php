@@ -71,9 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $criado = $pessoaModel->criarPessoa($dados, $imagemId);
 
         if ($criado) {
-            $pessoaModel->criarPessoa($dados, $imagemId);
-            $ultimoId = $pessoaModel->getLastInsertId(); // ✅ agora funciona
-
+            $ultimoId = $pessoaModel->getLastInsertId();
             $pessoaCriada = $pessoaModel->buscarPessoaPorId($ultimoId);
             $mensagem = "✅ Pessoa criada com sucesso! ID: {$ultimoId}";
         } else {

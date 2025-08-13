@@ -26,6 +26,19 @@ function cadastrar_pessoa($dados, $arquivoFoto) {
         $erros[] = "perfil";
     }
 
+    // Verifica se e-mail já existe
+    $sqlCheckEmail = "SELECT COUNT(*) AS total FROM pessoa WHERE email = ?";
+    $stmtCheck = $conn->prepare($sqlCheckEmail);
+    $stmtCheck->bind_param("s", $email);
+    $stmtCheck->execute();
+    $result = $stmtCheck->get_result();
+    $row = $result->fetch_assoc();
+    $stmtCheck->close();
+    
+    if ($row['total'] > 0) {
+        $erros[] = "e-mail (já cadastrado)";
+    }
+
     // Foto (obrigatória)
     $imagem_id = null;
     if (isset($arquivoFoto) && $arquivoFoto["error"] === 0) {
