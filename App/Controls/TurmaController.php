@@ -16,6 +16,29 @@ require_once __DIR__ . '/../Model/ImagemModel.php';
  */
 class TurmaController {
     
+    
+    /**
+     * FUNÇÃO AUXILIAR PARA FORMATAR O NOME DA IMAGEM
+     * Converte uma string para um formato "slug" amigável para URL.
+     * Ex: "Programação Web 2025" se torna "programacao-web-2025".
+     * @param string $text O texto a ser formatado.
+     * @return string O texto formatado.
+     */
+    private function slugify(string $text): string 
+    {
+        // Remove acentos
+        $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
+        // Converte para minúsculas
+        $text = strtolower($text);
+        // Remove caracteres que não são letras, números, espaços ou hífens
+        $text = preg_replace('/[^a-z0-9\s-]/', '', $text);
+        // Substitui espaços e múltiplos hífens por um único hífen
+        $text = preg_replace('/[\s-]+/', '-', $text);
+        // Remove hífens do início e do fim
+        $text = trim($text, '-');
+        return $text;
+    }
+
     /**
      * Processa a criação (salvamento) de uma nova turma.
      * Lida com a submissão de um formulário de cadastro.
@@ -41,7 +64,7 @@ class TurmaController {
            // --- INÍCIO DA VALIDAÇÃO DOS DADOS ---
             $erros = []; // Array para acumular todas as mensagens de erro.
             
-            // 1. Valida se campos obrigatórios foram preenchidos.
+            // 1. Valida se os campos obrigatórios foram preenchidos.
             if (empty($nome)) {
                 $erros[] = "O campo 'Nome da Turma' é obrigatório.";
             }
@@ -68,7 +91,7 @@ class TurmaController {
                 }
             }
 
-            // ▼▼▼ NOVA VALIDAÇÃO DE IMAGEM ▼▼▼
+            // 3. Validação da Imagem
             if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
                 $caminhoTemporario = $_FILES['imagem_turma']['tmp_name'];
                 $infoImagem = @getimagesize($caminhoTemporario);
@@ -79,9 +102,9 @@ class TurmaController {
                     $erros[] = "Formato de imagem inválido. Apenas arquivos JPEG e PNG são permitidos.";
                 }
             }
-            // ▲▲▲ FIM DA VALIDAÇÃO DE IMAGEM ▲▲▲
             
-            // 3. VERIFICAÇÃO FINAL: Se o array de erros não estiver vazio, algo deu errado.
+            
+            // 4. VERIFICAÇÃO FINAL: Se o array de erros não estiver vazio, algo deu errado.
             if (!empty($erros)) {
                 // Armazena os erros na sessão para que possam ser exibidos na página do formulário.
                 $_SESSION['erros_turma'] = $erros;
@@ -96,8 +119,16 @@ class TurmaController {
             // Verifica se um arquivo foi enviado (`isset`) e se o upload ocorreu sem erros.
             if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
                 $imagemModel = new ImagemModel();
-                // Cria um nome de arquivo único para evitar sobreposição de arquivos com o mesmo nome.
-                $nomeArquivo = uniqid() . '-' . basename($_FILES['imagem_turma']['name']);
+
+                // 2. Lógica de nomeação do Arquivo
+                // Pega a extensão original do arquivo (ex: 'png')
+                $extensao = strtolower(pathinfo($_FILES['imagem_turma']['name'], PATHINFO_EXTENSION));
+                // Cria um nome base usando o nome da turma formatado pela nossa função
+                $nomeBase = $this->slugify($nome);
+                // Monta o nome final com o timestamp para garantir que seja único
+                $nomeArquivo = $nomeBase . '-' . time() . '.' . $extensao;
+                
+
                 // Define o caminho absoluto no servidor onde o arquivo será salvo.
                 $caminhoDestino = __DIR__ . '/../View/assets/img/turmas/' . $nomeArquivo;
                 // Define a URL relativa que será salva no banco de dados.
@@ -199,7 +230,13 @@ class TurmaController {
             // --- Lógica para salvar nova imagem (idêntica ao método salvar) ---
             if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
                 $imagemModel = new ImagemModel();
-                $nomeArquivo = uniqid() . '-' . basename($_FILES['imagem_turma']['name']);
+
+                // ▼▼▼ 2. LÓGICA DE NOMEAÇÃO DO ARQUIVO ATUALIZADA (IDÊNTICA À DO MÉTODO SALVAR) ▼▼▼
+                $extensao = strtolower(pathinfo($_FILES['imagem_turma']['name'], PATHINFO_EXTENSION));
+                $nomeBase = $this->slugify($nome);
+                $nomeArquivo = $nomeBase . '-' . time() . '.' . $extensao;
+                // ▲▲▲ FIM DA ATUALIZAÇÃO ▲▲▲
+                
                 $caminhoDestino = __DIR__ . '/../View/assets/img/turmas/' . $nomeArquivo;
                 $urlRelativa = 'App/View/assets/img/turmas/' . $nomeArquivo;
                 if (move_uploaded_file($_FILES['imagem_turma']['tmp_name'], $caminhoDestino)) {
