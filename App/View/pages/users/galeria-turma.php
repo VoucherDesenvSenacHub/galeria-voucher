@@ -1,9 +1,6 @@
 <?php
 // Valida se o parâmetro "turma_id" existe e é válido
-if (!isset($_GET['turma_id']) || !is_numeric($_GET['turma_id'])) {
-    header("Location: galeria-turma.php?turma_id=25");
-    exit;
-}
+
 
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../../Helpers/ImageHelper.php";
@@ -16,16 +13,14 @@ require_once __DIR__ . "/../../../Model/DocenteModel.php";
 require_once __DIR__ . "/../../../Controls/GaleriaTurmaController.php";
 
 // ------------------- OBTÉM DADOS DA TURMA ------------------- //
-$turmaId = (int) $_GET['turma_id'];
 
 // Use the correct controller class name as defined in GaleriaTurmaController.php
 $controller = new GaleriaTurmaController();
-$dados = $controller->mostrarTurma($turmaId);
 
-if (!is_array($dados) || empty($dados)) {
-    header("Location: turma.php");
-    exit;
-}
+$turmaId = $controller->verificarIdNaUrl();
+
+
+$dados = $controller->carregarDadosTurma($turmaId);
 
 extract($dados, EXTR_SKIP);
 ?>
