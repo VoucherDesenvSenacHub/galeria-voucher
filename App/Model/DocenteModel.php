@@ -43,4 +43,17 @@ class DocenteModel extends BaseModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function PesquisarDocente($nome)
+    {
+        $query = "SELECT p.nome 
+                  FROM pessoa p 
+                  where nome LIKE :nome and p.perfil = 'professor'";
+        
+        $stmt = $this->pdo->prepare($query);
+
+        $stmt->bindValue(':nome', "'%" .  $nome . "%'" );
+
+        $stmt->execute();
+
+    }
 }
