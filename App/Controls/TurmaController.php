@@ -67,6 +67,19 @@ class TurmaController {
                     $erros[] = "O formato de uma ou ambas as datas é inválido.";
                 }
             }
+
+            // ▼▼▼ NOVA VALIDAÇÃO DE IMAGEM ▼▼▼
+            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
+                $caminhoTemporario = $_FILES['imagem_turma']['tmp_name'];
+                $infoImagem = @getimagesize($caminhoTemporario);
+                
+                $tiposPermitidos = ['image/jpeg', 'image/png'];
+
+                if ($infoImagem === false || !in_array($infoImagem['mime'], $tiposPermitidos)) {
+                    $erros[] = "Formato de imagem inválido. Apenas arquivos JPEG e PNG são permitidos.";
+                }
+            }
+            // ▲▲▲ FIM DA VALIDAÇÃO DE IMAGEM ▲▲▲
             
             // 3. VERIFICAÇÃO FINAL: Se o array de erros não estiver vazio, algo deu errado.
             if (!empty($erros)) {
@@ -161,6 +174,19 @@ class TurmaController {
             if (!empty($data_inicio) && !empty($data_fim)) {
                 // ... (lógica de validação de data idêntica à de salvar) ...
             }
+
+            // ▼▼▼ NOVA VALIDAÇÃO DE IMAGEM ▼▼▼
+            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
+                $caminhoTemporario = $_FILES['imagem_turma']['tmp_name'];
+                $infoImagem = @getimagesize($caminhoTemporario);
+                
+                $tiposPermitidos = ['image/jpeg', 'image/png'];
+
+                if ($infoImagem === false || !in_array($infoImagem['mime'], $tiposPermitidos)) {
+                    $erros[] = "Formato de imagem inválido. Apenas arquivos JPEG e PNG são permitidos.";
+                }
+            }
+            // ▲▲▲ FIM DA VALIDAÇÃO DE IMAGEM ▲▲▲
         
             if (!empty($erros)) {
                 $_SESSION['erros_turma'] = $erros;
