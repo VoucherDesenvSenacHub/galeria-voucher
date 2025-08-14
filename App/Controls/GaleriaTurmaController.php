@@ -16,12 +16,12 @@ class GaleriaTurmaController
     }
 
     public function verificarIdNaUrl(): int {
-        if (!isset($_GET['turma_id']) || !is_numeric($_GET['turma_id'])) {
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
             header("Location: ./turma.php");
             exit();
         }
 
-        return intval($_GET['turma_id']);
+        return intval($_GET['id']);
     }
 
     /**
@@ -42,8 +42,6 @@ class GaleriaTurmaController
 
         $projetos = $this->projetoModel->buscarProjetosPorTurma($turmaId);
         $alunos = $this->alunoModel->buscarPorTurma($turmaId);
-        echo var_dump($alunos[0]);
-        exit();
         $orientadores = $this->docenteModel->buscarPorTurma($turmaId);
 
         // Funções auxiliares como urlImagem e formatarProjetos devem continuar em helpers
