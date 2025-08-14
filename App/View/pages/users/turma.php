@@ -4,14 +4,14 @@ require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../componentes/head.php";
 
 headerComponent('Turmas Voucher')
-    ?>
+?>
 
 <body class="body-turma">
 
     <?php
     $isAdmin = false; // Para páginas de users
     require_once __DIR__ . "/./../../componentes/nav.php"
-        ?>
+    ?>
     <?php require_once __DIR__ . "/./../../componentes/users/mira.php" ?>
 
     <main>
@@ -35,8 +35,6 @@ headerComponent('Turmas Voucher')
                 error_log("Erro ao buscar turmas: " . $e->getMessage());
             }
 
-            // var_dump($turmas);
-
             $itensPorPagina = 12; // Cards por página
             $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
             $totalItens = count($turmas);
@@ -46,17 +44,18 @@ headerComponent('Turmas Voucher')
             ?>
 
             <div class="cards" id="cards-container">
-                <?php foreach ($turmasPagina as $turmas['nome_turma']) { ?>
+                <?php foreach ($turmasPagina as $turma) { ?>
                     <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER']; ?>galeria-turma.php"
                         class="card-turma">
                         <div class="card-content">
-                            <h3 class="card-title">TURMA<?php echo $turmas['nome_turma']; ?></h3>
+                            <h3 class="card-title"><?php echo htmlspecialchars($turma['nome_turma']); ?></h3>
                             <img class="card-image"
-                                src="<?php echo VARIAVEIS['APP_URL'] . $turmas['imagem_url'] ?>"
-                                alt="Imagem turma <?php echo $turmas['nome_turma']; ?>">
+                                src="<?php echo VARIAVEIS['APP_URL'] . $turma['imagem_url']; ?>"
+                                alt="Imagem turma <?php echo htmlspecialchars($turma['nome_turma']); ?>">
                         </div>
                     </a>
                 <?php } ?>
+
             </div>
 
             <!-- Paginação -->
