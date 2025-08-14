@@ -65,7 +65,7 @@ headerComponent('Cadastro de Pessoa')
           <div class="form-bottom">
             <div class="form-group-buton">
               <?php
-              buttonComponent('secondary', 'Cancelar', false);
+              buttonComponent('secondary', 'Cancelar', 'reset', false);
               buttonComponent('primary', 'Cadastrar', true);
               ?>
             </div>
