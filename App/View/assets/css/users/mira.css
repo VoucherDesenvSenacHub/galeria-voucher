@@ -6,7 +6,7 @@
     top: 48.8vh;
     left: 25.1vw;
     transform: translate(-50%, -50%);
-    z-index: -1;
+    z-index: 1;
 }
 
 
@@ -19,7 +19,7 @@
     top: 48.8px;
     left: 25vw;
     border: 2px solid var(--accent-color);
-    z-index: -1;
+    z-index: 1;
 
     -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
@@ -34,5 +34,5 @@
     top: 48.5vh;
     left: 0;
     border: 2px solid var(--accent-color);
-    z-index: -1;
+    z-index: 1;
 }
