@@ -4,7 +4,6 @@ require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/input.php";
 require_once __DIR__ . "/../../componentes/button.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
- 
 
 headerComponent('Cadastro de Pessoa')
 ?>
@@ -25,13 +24,14 @@ headerComponent('Cadastro de Pessoa')
           <div class="form-top">
             <div class="form-group">
               <?php
-              inputComponent('text', 'nome', 'Nome Completo');
-              inputComponent('text', 'email', 'Email');
+              inputComponent('text', 'nome', 'Nome Completo *');
+              inputComponent('text', 'email', 'Email *');
               inputComponent('text', 'linkedin', 'Link do linkedin');
               inputComponent('text', 'github', 'Link para o GitHub');
               ?>
             </div>
             <div class="form-group-polo div-center">
+              <label for="tipo-usuario" style="font-weight: bold;">Perfil *</label>
               <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;">
                 <option value="">-- Selecione --</option>
                 <?php foreach ($perfis as $perfil): ?>
@@ -42,23 +42,24 @@ headerComponent('Cadastro de Pessoa')
                 <?php endforeach; ?>
               </select>
 
+              <label for="polo" style="font-weight: bold;">Polo *</label>
               <select id="polo" name="polo" class="input-text" style="cursor: pointer;">
-                <option value="">Polo:</option>
+                <option value="">-- Selecione --</option>
                 <option value="polo1">Campo Grande</option>
                 <option value="polo2">Tres Lagoas</option>
-                <option value="polo2">Dourados</option>
-                <option value="polo2">Corumba</option>
-                <option value="polo2">Ponta Pora</option>
+                <option value="polo3">Dourados</option>
+                <option value="polo4">Corumba</option>
+                <option value="polo5">Ponta Pora</option>
               </select>
             </div>
 
             <div class="form-group-imagem">
+              <label style="font-weight: bold;">Imagem *</label>
               <div class="input-file-cadastro">
                 <label class="input-file-wrapper">
                   <img id="preview" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/avatar.png" alt="Upload" />
                   <input type="file" name="imagem" id="fileInput" accept="image/*" style="display: none;" />
                 </label>
-
               </div>
             </div>
           </div>
@@ -113,7 +114,6 @@ headerComponent('Cadastro de Pessoa')
     <script>
       alert("<?= addslashes($mensagem) ?>");
       window.location.href = 'listarUsuarios.php';
-
     </script>
   <?php endif; ?>
 
