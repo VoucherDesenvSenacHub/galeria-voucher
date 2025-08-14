@@ -4,6 +4,9 @@ require_once __DIR__ . "/../../componentes/head.php";
 
 headerComponent('Galeria da Turma');
 
+$acao = $_GET['acao'] ?? '';
+echo "Nome da turma: " . $acao;
+
 // Lista de projetos principais (escalável para futuros projetos)
 $projetosTurmas = [
     [

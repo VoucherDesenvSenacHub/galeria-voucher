@@ -27,7 +27,7 @@ async function ativarAutocomplete() {
                 div.textContent = pessoa.nome_pessoa;        // mostrar nome_pessoa
                 div.style.cursor = "pointer";
                 div.onclick = () => {
-                    const url = `/galeria-voucher/App/View/pages/users/galeria-turma.php?nome=${encodeURIComponent(pessoa.nome_pessoa)}`;
+                    const url = `/galeria-voucher/App/View/pages/users/galeria-turma.php?acao=${encodeURIComponent(pessoa.nome_turma)}`;
                     window.location.href = url;
                 };
                 sugestoes.appendChild(div);
