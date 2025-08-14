@@ -1,109 +1,266 @@
-.ver-mais-cont {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* ===== ESTILOS GERAIS DA PÁGINA ===== */
+.body-turma {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 25%, #1f3a1f 50%, #1a1a1a 75%, #0f0f0f 100%);
+    min-height: 100vh;
+    color: var(--text-white);
+    position: relative;
+    overflow-x: hidden;
 }
 
+/* ===== CONTAINER PRINCIPAL ===== */
 .conteudotodo {
+    position: relative;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 120px;
+    z-index: 2;
+}
+
+/* ===== TÍTULO DA PÁGINA ===== */
+.turmatitulo {
+    text-align: center;
+    margin-bottom: 60px;
     position: relative;
 }
 
-/* turma titulo h1 -- ok */
-
-.turmatitulo h1{
-    margin-top: 100px;
-    text-align: center;
-    color: white;
-    font-size: 30px;
-    font-size: 40px;
-    padding: 15px 10px;
-    font-family: bebas neue;
-    margin-bottom: 40px;
+.turmatitulo h1 {
+    font-family: var(--font-secondary);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--accent-color);
+    margin: 0;
+    padding: 30px 0;
+    letter-spacing: var(--space-letters);
 }
-/* turma titulo h1  -- ok */
 
-/* cards testando --ok */
-
+/* ===== CONTAINER DOS CARDS ===== */
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    padding: 7rem 0 0 0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.ocultos {
-    display: none;
-    flex-wrap: wrap;
-    gap: 25px;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
+/* ===== ESTILOS DOS CARDS ===== */
 .card-turma {
     display: block;
-    width: 200px; /* Ajuste a largura do card conforme necessário */
-    height: 220px;
-    border: 1px solid var(--accent-color); /* Borda do card */
-    padding: 10px; /* Espaçamento dentro do card */
-    text-align: center;
     text-decoration: none;
-    background-color: black; /* Cor de fundo do card */
-    border-radius: 30px;  
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(174, 255, 64, 0.15);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.card-turma:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .card-content {
     position: relative;
+    z-index: 2;
 }
 
 .card-title {
-    font-size: 18px; /* Tamanho do título */
-    margin-bottom: 10px; /* Espaço entre o título e a imagem */
-    color: var(--accent-color); /* Cor do título - amarelo */
-    font-family: "bebas neue";
+    font-family: var(--font-secondary);
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    letter-spacing: var(--space-letters);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.card-turma:hover .card-title {
+    transform: scale(1.02);
 }
 
 .card-image {
-    width: 100%; /* A imagem ocupará 100% da largura do card */
-    height: 160px; /* A altura será ajustada proporcionalmente */
-    max-height: 160px; /* Limita a altura máxima da imagem */
-    object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid rgba(174, 255, 64, 0.15);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-turma:hover .card-image {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* ===== PAGINAÇÃO ===== */
+.paginacao-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 60px;
+    padding: 30px 0;
+}
+
+.paginacao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.paginacao-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
     border-radius: 10px;
-    border: 1px solid var(--accent-color); /* Borda do card */
-}
-/* cards testando --ok */
-
-
-/* agora o vermais icon --ok  */
-.vermais {
-    text-align: center; /* Centraliza o conteúdo horizontalmente */
-    margin-top: 20px;
-    color: rgb(237, 246, 237);
-    font-size: 30px;
-    font-family: "bebas neue";
-    margin-bottom: 10px;
-    padding: 15px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(174, 255, 64, 0.2);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-family: var(--font-secondary);
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.vermais h3 {
-    margin-bottom: 10px; /* Adiciona um pequeno espaço entre o título e o ícone */
-    font-size: 30px;
-    font-family: "bebas neue";
-    cursor: pointer;
+.paginacao-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-.vermais span {
-    font-size: 30px; /* Tamanho do ícone */
-    color: rgb(237, 246, 237);
-    cursor: pointer;
+.paginacao-item.paginacao-ativa {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 15px rgba(174, 255, 64, 0.3);
 }
 
-
-/* agora o vermais icon --ok  */
-
-.card-turma.extra {
-    display: none;
+.paginacao-item.paginacao-ativa:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(174, 255, 64, 0.4);
 }
 
-.card-turma.extra.show {
-    display: block;
+.paginacao-ellipsis {
+    color: var(--accent-color);
+    font-weight: bold;
+    padding: 0 8px;
+    font-size: 14px;
+}
+
+.paginacao-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent-color);
+    font-family: var(--font-primary);
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.paginacao-info span {
+    text-align: center;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 1024px) {
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .conteudotodo {
+        padding: 15px;
+        padding-top: 100px;
+    }
+    
+    .turmatitulo {
+        margin-bottom: 40px;
+    }
+    
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .card-turma {
+        padding: 20px;
+    }
+    
+    .card-image {
+        height: 150px;
+    }
+    
+    .paginacao {
+        gap: 6px;
+    }
+    
+    .paginacao-item {
+        min-width: 35px;
+        height: 35px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+    }
+    
+    .card-turma {
+        padding: 15px;
+    }
+    
+    .card-title {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    
+    .card-image {
+        height: 120px;
+    }
+    
+    .paginacao {
+        gap: 4px;
+    }
+    
+    .paginacao-item {
+        min-width: 32px;
+        height: 32px;
+        font-size: 12px;
+        padding: 0 8px;
+    }
+    
+    .paginacao-info {
+        font-size: 12px;
+    }
 }
