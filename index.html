@@ -1,196 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Teste Final do Componente SVG</title>
+    <!-- Adicionando as fontes para o logotipo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&display=swap" rel="stylesheet">
+
     <style>
+        /* Estilos básicos para a visualização */
         body {
-            background-color: #1a1a1a; /* Fundo escuro para contraste */
-            display: flex;
-            justify-content: center;
+            background-color: #1a1a1a;
+            /* CORREÇÃO: Removemos o display flex para que o container possa ocupar 100% */
+            margin: 0;
+            padding: 0; /* Removemos o padding para que o SVG toque as bordas */
+        }
+
+        /* O container principal do nosso componente */
+        .componente-svg-container {
+            width: 100%;
+            max-width: none; 
+            display: flex; /* Usamos flex aqui para centralizar o SVG verticalmente */
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
         }
 
-        .componente_mira {
-            .mira {
-                position: absolute;
-                width: 8vh;
-                height: 8vh;
-                border: 4px solid #aeff40;
-                top: 48.8vh;
-                left: 25.1vw;
-                transform: translate(-50%, -50%);
-                z-index: 2;
-            }
-
-
-            /* linha vertical com degradê na parte de baixo */
-            .mira1 {
-                position: absolute;
-                width: 2px;
-                min-height: calc(100vh - 48.8px);
-                background-color: #aeff40;
-                top: 48.8px;
-                left: 25vw;
-                border: 2px solid #aeff40;
-                z-index: 2;
-
-                -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-                mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-            }
-
-            /* linha horizontal */
-            .mira2 {
-                position: absolute;
-                width: 100%;
-                height: 2px;
-                background-color: #aeff40;
-                top: 48.5vh;
-                left: 0;
-                border: 2px solid #aeff40;
-                z-index: 2;
-            }
-
-            .nome-voucher {
-                z-index: 3;
-                position: absolute;
-                top: 42.5vh;
-                left: calc((100vw - 400px) / 2);
-                /* left: 38.1vw; */
-                width: 400px;
-                /* transform: translateY(-40px); */
-
-                img {
-                    width: 100%;
-                    /* height: auto; */
-                }
-            }
-        }
-
-        svg {
-            max-width: 90%; /* Garante que o SVG não ultrapasse a tela */
+        /* O SVG em si é fluido e responsivo */
+        .componente-svg-unificado {
+            width: 100%;
             height: auto;
         }
     </style>
 </head>
 
 <body>
-    <div class="componente_mira">
-        <div class="mira"></div>
-        <div class="mira1"></div>
-        <div class="mira2">
 
-        </div>
-        <!-- <div class="nome-voucher">
-            <img src="nome.png" alt="Voucher Desenvolvedor">
-        </div> -->
+    <div class="componente-svg-container">
+        <svg 
+            class="componente-svg-unificado" 
+            viewBox="0 0 1920 1105" 
+            preserveAspectRatio="xMidYMid meet">
+
+            <!-- 1. A MIRA (baseada no seu último SVG, com coordenadas corrigidas) -->
+            <g class="mira-svg-grupo" fill="none" stroke="#AEFF40" stroke-width="5.5">
+                
+                <!-- Linha Horizontal (dividida para o logo) -->
+                <!-- A linha agora vai de 0 a 1920, tocando as bordas da "tela" (viewBox) -->
+                <line y1="379" x1="0" x2="750" y2="379" />
+                <line y1="379" x1="1170" x2="1920" y2="379" />
+
+                <!-- Linha Vertical -->
+                <line x1="354" y1="1105" x2="354" y2="58" />
+                
+                <!-- Quadrado da Mira -->
+                <rect x="319" y="344" width="70.5" height="70.5" />
+            </g>
+
+            <!-- 2. O LOGOTIPO (recriado com texto para fidelidade e controle) -->
+            <!-- O 'transform' posiciona o grupo do logo exatamente no centro (960) 
+                 e na altura da linha horizontal (379) -->
+            <g class="logotipo-svg-grupo" transform="translate(960, 379)">
+                <!-- Fundo verde para a palavra "VOUCHER" -->
+                <rect x="-200" y="-50" width="400" height="45" fill="#abfa3d" />
+                
+                <!-- Texto "VOUCHER" -->
+                <text x="0" y="-18" font-family="'Bebas Neue', sans-serif" font-size="38" fill="#000000" text-anchor="middle" letter-spacing="3">VOUCHER</text>
+                
+                <!-- Texto "DESENVOLVEDOR" -->
+                <text x="0" y="40" font-family="'Oswald', sans-serif" font-weight="700" font-size="50" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">DESENVOLVEDOR</text>
+            </g>
+        </svg>
     </div>
 
-    <!-- <?xml version="1.0" standalone="no"?>
-    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-    width="1024.000000pt" height="1024.000000pt" viewBox="0 0 1024.000000 1024.000000"
-    preserveAspectRatio="xMidYMid meet">
-
-    <g transform="translate(0.000000,1024.000000) scale(0.100000,-0.100000)"
-    fill="#FFFFFF" stroke="none"> Mudei o fill para branco para ser visível no fundo escuro -->
-    <!-- <path d="M3003 6726 c-179 -58 -281 -224 -251 -410 20 -128 110 -243 226 -286
-    81 -31 206 -31 285 -1 249 96 317 403 133 599 -68 72 -146 105 -261 109 -57 2
-    -105 -2 -132 -11z m265 -81 c97 -52 152 -138 160 -246 7 -103 -17 -169 -86
-    -239 -73 -73 -132 -94 -241 -88 -119 7 -200 59 -250 160 -27 53 -31 72 -31
-    143 0 71 4 90 31 143 55 111 150 164 284 159 66 -3 90 -8 133 -32z"/>
-    <path d="M5279 6727 c-146 -42 -246 -165 -257 -317 -14 -206 107 -364 307
-    -400 80 -14 185 0 258 36 45 21 51 28 44 43 -22 40 -34 41 -95 11 -74 -38
-    -175 -41 -260 -10 -142 53 -218 228 -170 390 23 78 109 162 189 186 72 20 157
-    15 218 -15 54 -26 51 -26 71 4 l17 26 -56 26 c-69 31 -194 40 -266 20z"/>
-    <path d="M8080 6376 l0 -366 35 0 35 0 0 145 0 145 69 0 c38 0 76 3 84 6 10 4
-    45 -39 118 -145 l104 -150 43 -1 44 0 -36 48 c-19 26 -68 95 -109 153 l-73
-    105 48 27 c113 63 146 222 65 314 -56 63 -101 77 -274 81 l-153 4 0 -366z
-    m328 281 c44 -24 72 -72 72 -125 0 -63 -25 -108 -78 -139 -38 -23 -59 -27
-    -148 -31 l-104 -5 0 163 0 162 113 -4 c82 -3 121 -9 145 -21z"/>
-    <path d="M1733 6718 c2 -7 68 -165 146 -351 78 -186 141 -343 141 -348 0 -5
-    17 -9 38 -9 l37 1 151 359 151 360 -37 0 -37 0 -60 -147 c-34 -82 -92 -223
-    -129 -315 -63 -152 -84 -191 -84 -155 0 6 -56 147 -124 312 l-123 300 -38 3
-    c-28 3 -36 0 -32 -10z"/>
-    <path d="M3972 6468 l3 -263 29 -58 c47 -97 125 -139 256 -140 91 0 164 26
-    215 78 69 69 75 99 75 392 l0 253 -35 0 -35 0 0 -250 c0 -204 -3 -258 -15
-    -288 -35 -82 -102 -122 -205 -122 -108 0 -178 47 -209 139 -7 22 -11 122 -11
-    277 l0 244 -36 0 -35 0 3 -262z"/>
-    <path d="M6100 6370 l0 -360 35 0 35 0 0 180 0 180 230 0 230 0 0 -180 0 -180
-    35 0 35 0 0 360 0 360 -35 0 -35 0 0 -150 0 -150 -230 0 -230 0 0 150 0 150
-    -35 0 -35 0 0 -360z"/>
-    <path d="M7200 6370 l0 -360 195 0 195 0 0 30 0 30 -160 0 -160 0 0 151 0 150
-    130 -3 130 -3 0 28 0 27 -130 0 -130 0 0 128 0 127 157 0 158 0 3 28 3 27
-    -195 0 -196 0 0 -360z"/>
-    <path d="M620 4770 l0 -1070 4500 0 4500 0 0 1070 0 1070 -4500 0 -4500 0 0
-    -1070z m624 770 c48 -15 119 -85 137 -136 11 -31 14 -152 14 -624 0 -658 1
-    -645 -74 -713 -61 -55 -93 -61 -311 -62 l-195 0 -3 765 c-1 421 0 771 3 779 4
-    11 41 12 198 8 105 -3 209 -10 231 -17z m764 -72 l3 -88 -146 0 -145 0 0 -245
-    0 -245 125 0 126 0 -3 -92 -3 -93 -125 -3 -125 -3 3 -259 3 -260 145 0 145 0
-    -3 -87 -3 -88 -235 0 -235 0 -3 778 -2 777 237 -2 238 -3 3 -87z m541 76 c70
-    -20 125 -75 145 -145 11 -36 16 -94 16 -181 l0 -128 -89 0 -89 0 -4 114 c-4
-    139 -17 166 -90 180 -65 13 -118 -14 -136 -69 -19 -56 -10 -182 17 -238 12
-    -24 86 -122 165 -217 95 -113 157 -198 183 -247 l38 -76 3 -163 c4 -181 -7
-    -237 -55 -295 -46 -54 -96 -72 -212 -77 -133 -6 -196 8 -249 54 -64 54 -77
-    101 -77 279 l0 150 88 3 87 3 0 -116 c0 -135 12 -175 59 -195 45 -18 127 -8
-    154 19 20 20 22 32 22 154 0 124 -2 135 -27 188 -16 31 -56 89 -90 130 -34 41
-    -100 119 -145 173 -46 55 -98 129 -116 165 -30 61 -32 74 -36 185 -6 216 34
-    302 164 353 45 17 212 16 274 -3z m759 -76 l3 -88 -141 0 -140 0 2 -242 3
-    -242 80 -1 c44 -1 99 -2 123 -3 l43 -2 -3 -92 -3 -93 -122 -3 -123 -3 0 -259
-    0 -260 145 0 146 0 -3 -87 -3 -88 -230 0 -230 1 -3 764 c-1 421 0 771 3 778 3
-    10 54 12 227 10 l223 -3 3 -87z m312 55 c9 -33 227 -857 248 -937 4 -16 7 195
-    7 470 l0 499 88 3 87 3 -2 -778 -3 -778 -82 -3 -82 -3 -20 68 c-28 98 -165
-    606 -203 755 l-33 126 0 -471 0 -472 -80 0 -80 0 -3 778 -2 777 75 0 74 0 11
-    -37z m710 15 c5 -13 25 -167 44 -343 51 -459 86 -758 90 -775 2 -8 4 4 5 27 2
-    75 119 1092 127 1105 8 13 184 10 184 -3 0 -6 -11 -95 -25 -197 -29 -209 -34
-    -245 -70 -522 -14 -107 -37 -274 -50 -370 -13 -96 -31 -233 -41 -305 -10 -71
-    -22 -136 -27 -142 -6 -9 -41 -13 -109 -13 -70 0 -100 4 -103 13 -3 6 -29 192
-    -59 412 -30 220 -73 531 -95 690 -22 160 -43 325 -47 368 l-7 77 87 0 c80 0
-    87 -2 96 -22z m1020 -2 c48 -25 88 -64 113 -111 22 -39 22 -48 25 -615 3 -515
-    1 -582 -14 -639 -33 -125 -112 -171 -295 -171 -167 0 -250 47 -284 162 -22 74
-    -23 1149 -1 1222 20 65 53 111 99 137 62 34 86 39 207 36 87 -3 124 -8 150
-    -21z m470 -666 l0 -690 155 0 156 0 -3 -87 -3 -88 -242 -2 -243 -2 0 773 c0
-    425 3 776 7 779 3 4 44 7 90 7 l83 0 0 -690z m505 679 c4 -6 36 -256 71 -557
-    69 -594 71 -606 73 -547 3 101 111 1062 122 1093 8 20 14 22 94 22 78 0 85 -2
-    85 -20 0 -21 -27 -231 -128 -1009 l-68 -515 -34 -9 c-34 -9 -175 -5 -185 5 -5
-    5 -215 1511 -215 1544 0 10 179 3 185 -7z m1020 0 c4 -5 4 -46 0 -90 l-7 -79
-    -144 0 -144 0 0 -245 0 -245 125 0 126 0 -3 -92 -3 -93 -122 -3 -123 -3 0
-    -259 0 -259 148 -3 147 -3 3 -76 c2 -56 -1 -79 -11 -88 -10 -8 -78 -11 -238
-    -9 l-224 3 -3 765 c-1 421 0 771 3 778 6 16 460 18 470 1z m568 -9 c54 -16
-    113 -73 134 -128 17 -43 18 -91 18 -622 0 -651 1 -645 -71 -717 -60 -60 -95
-    -67 -324 -67 l-195 -1 -3 779 -2 778 202 -5 c113 -2 220 -10 241 -17z m713 5
-    c71 -21 119 -65 144 -131 20 -55 21 -68 18 -653 -3 -588 -3 -597 -25 -636 -25
-    -47 -54 -75 -103 -101 -50 -26 -237 -32 -312 -10 -76 22 -132 82 -147 158 -8
-    38 -11 230 -9 634 l3 579 24 48 c27 55 72 93 133 112 59 19 213 19 274 0z
-    m724 -11 c25 -12 59 -37 76 -56 55 -62 59 -88 59 -363 0 -234 -1 -253 -21
-    -296 -22 -46 -78 -99 -106 -99 -26 0 -28 -12 -8 -51 11 -21 31 -82 45 -136 29
-    -114 98 -513 90 -521 -9 -10 -172 -15 -178 -6 -3 5 -19 101 -37 214 -49 324
-    -80 434 -128 455 -20 9 -22 16 -22 92 l0 83 49 0 c63 0 96 12 116 44 14 21 17
-    56 16 219 0 124 -4 204 -12 220 -16 34 -49 47 -124 47 l-65 0 -2 -687 -3 -688
-    -87 -3 -88 -3 0 782 0 781 193 -4 c166 -4 198 -7 237 -24z"/>
-    <path d="M990 4781 l0 -601 79 0 c70 0 83 3 108 24 l28 24 0 551 0 550 -23 23
-    c-19 20 -35 24 -107 27 l-85 3 0 -601z"/>
-    <path d="M5120 5372 c-61 -30 -61 -34 -58 -616 3 -567 2 -553 60 -577 16 -6
-    51 -9 80 -7 40 4 57 11 75 32 l23 27 0 545 c0 372 -3 552 -11 566 -13 23 -67
-    48 -106 48 -15 0 -44 -8 -63 -18z"/>
-    <path d="M7650 4781 l0 -601 74 0 c91 0 131 13 145 48 8 19 11 185 9 564 l-3
-    537 -23 23 c-19 20 -35 23 -112 26 l-90 4 0 -601z"/>
-    <path d="M8444 5384 c-12 -3 -32 -16 -45 -30 l-24 -26 0 -554 0 -553 22 -22
-    c26 -26 112 -37 156 -20 56 22 57 32 57 588 0 308 -4 522 -10 544 -6 20 -18
-    43 -28 52 -19 17 -91 29 -128 21z"/>
-    </g>
-    </svg> -->
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100">
-        <!-- Texto -->
-        <text x="50%" y="50%" font-family="Poppins, sans-serif" font-weight="300" font-size="48" fill="#000000" text-anchor="middle" dominant-baseline="middle" letter-spacing="10">
-          VOUCHER
-        </text>
-      </svg>
 </body>
+</html>
