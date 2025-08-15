@@ -2,6 +2,21 @@
 require_once __DIR__ . "/../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Pessoas");
 require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../Model/PessoaModel.php";
+
+// LÓGICA DE BUSCA DE DADOS
+try {
+    $pessoaModel = new PessoaModel();
+    $usuarios = $pessoaModel->buscarTodasPessoasComPolo();
+} catch (Exception $e) {
+    // Em caso de erro, define $usuarios como um array vazio e loga o erro
+    $usuarios = [];
+    error_log("Erro ao buscar usuários: " . $e->getMessage());
+}
+
+// Verifica se o usuário logado é um administrador para exibir o botão de excluir
+$is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
+
 ?>
 
 <head>
@@ -11,9 +26,9 @@ require_once __DIR__ . "/../../componentes/adm/auth.php";
 <body class="body-lista-alunos">
 
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
-  <?php 
+  <?php
       $isAdmin = true; // Para páginas de admin
-      require_once __DIR__ . "/../../componentes/nav.php"; 
+      require_once __DIR__ . "/../../componentes/nav.php";
   ?>
 
   <main class="main-lista-alunos">
@@ -22,7 +37,7 @@ require_once __DIR__ . "/../../componentes/adm/auth.php";
         <?php buttonComponent('primary', 'CADASTRAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
 
         <div class="input-pesquisa-container">
-          <input type="text" id="pesquisa" placeholder="Pesquisar">
+          <input type="text" id="pesquisa" placeholder="Pesquisar por nome, tipo ou polo">
           <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
             class="icone-lupa-img">
         </div>
@@ -40,60 +55,25 @@ require_once __DIR__ . "/../../componentes/adm/auth.php";
               </tr>
             </thead>
             <tbody>
-              <?php
-              // Array com dados fakes
-              $usuarios = [
-                ['nome' => 'João Silva', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Maria Santos', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Pedro Oliveira', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Ana Costa', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Carlos Ferreira', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Lucia Rodrigues', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Roberto Almeida', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Fernanda Lima', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Marcos Pereira', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Juliana Martins', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Rafael Souza', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Patricia Santos', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Lucas Mendes', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Camila Alves', 'polo' => 'Campo Grande', 'tipo' => 'Docente'],
-                ['nome' => 'Diego Costa', 'polo' => 'Campo Grande', 'tipo' => 'Aluno'],
-                ['nome' => 'Amanda Silva', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Thiago Oliveira', 'polo' => 'Dourados', 'tipo' => 'Docente'],
-                ['nome' => 'Carolina Lima', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Bruno Santos', 'polo' => 'Dourados', 'tipo' => 'Docente'],
-                ['nome' => 'Isabela Costa', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Gabriel Ferreira', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Mariana Rodrigues', 'polo' => 'Dourados', 'tipo' => 'Docente'],
-                ['nome' => 'Leonardo Almeida', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Beatriz Martins', 'polo' => 'Dourados', 'tipo' => 'Aluno'],
-                ['nome' => 'Ricardo Pereira', 'polo' => 'Três Lagoas', 'tipo' => 'Docente'],
-                ['nome' => 'Vanessa Silva', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno'],
-                ['nome' => 'Felipe Santos', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno'],
-                ['nome' => 'Daniela Costa', 'polo' => 'Três Lagoas', 'tipo' => 'Docente'],
-                ['nome' => 'André Oliveira', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno'],
-                ['nome' => 'Tatiana Lima', 'polo' => 'Três Lagoas', 'tipo' => 'Docente'],
-                ['nome' => 'Rodrigo Ferreira', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno'],
-                ['nome' => 'Cristina Alves', 'polo' => 'Três Lagoas', 'tipo' => 'Aluno']
-              ];
-
-
-              usort($usuarios, function ($a, $b) {
-                return strcasecmp($a['nome'], $b['nome']);
-              });
-
-              foreach ($usuarios as $usuario) {
-                echo '<tr>';
-                echo '<td>' . $usuario['nome'] . '</td>';
-                echo '<td>' . $usuario['tipo'] . '</td>';
-                echo '<td>' . $usuario['polo'] . '</td>';
-                echo '<td class="acoes">';
-                echo '<span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>';
-                echo '<span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>';
-                echo '</td>';
-                echo '</tr>';
-              }
-              ?>
+              <?php if (!empty($usuarios)) : ?>
+                  <?php foreach ($usuarios as $usuario) : ?>
+                      <tr>
+                          <td><?= htmlspecialchars($usuario['nome']) ?></td>
+                          <td><?= htmlspecialchars(ucfirst($usuario['tipo'])) ?></td>
+                          <td><?= htmlspecialchars($usuario['polo']) ?></td>
+                          <td class="acoes">
+                              <span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
+                              <?php if ($is_admin) : ?>
+                                  <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
+                              <?php endif; ?>
+                          </td>
+                      </tr>
+                  <?php endforeach; ?>
+              <?php else : ?>
+                  <tr>
+                      <td colspan="4" style="text-align: center;">Nenhum usuário encontrado.</td>
+                  </tr>
+              <?php endif; ?>
             </tbody>
           </table>
         </div>
