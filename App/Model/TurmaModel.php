@@ -77,7 +77,7 @@ class TurmaModel extends BaseModel {
                 p.descricao as descricaoProjeto, 
                 p.link linkProjeto 
                 from turma as t 
-                INNER join projeto as p 
+                Left join projeto as p 
                 on t.turma_id = p.turma_id
                 where t.turma_id = $idTurma";
 

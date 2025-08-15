@@ -5,17 +5,22 @@ require_once __DIR__ . "/../../../Model/TurmaModel.php";
 
 headerComponent('Galeria da Turma');
 
-$acao = $_GET['id'] ?? '';
-if ($acao == '') {
+$idTurma = (int) ($_GET['id'] ?? 0);
+
+// valida se é número positivo
+if ($idTurma <= 0) {
     header('Location: /galeria-voucher/App/View/pages/users/turma.php');
     exit;
-} else {
-    $idTurma = $acao;
-
-    $model = new TurmaModel();
-    $dadosTurma = $model->buscarTurmaProjetoID($idTurma);
 }
 
+$model = new TurmaModel();
+$dadosTurma = $model->buscarTurmaProjetoID($idTurma);
+
+if (empty($dadosTurma)) {
+    // Nenhuma turma encontrada para esse ID
+    header('Location: /galeria-voucher/App/View/pages/users/turma.php?erro=turma_nao_encontrada');
+    exit;
+}
 
 // Construção dinâmica dos projetos a partir do SQL
 $projetosTurmas = [];
