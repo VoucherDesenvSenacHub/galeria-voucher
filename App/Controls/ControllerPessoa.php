@@ -26,7 +26,7 @@ switch ($acao) {
             ];
 
             if ($model->atualizarPessoa((int)$id, $dados, null)) {
-                header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}");
+                header("Location: /galeria-voucher/App/View/pages/adm/listarUsuarios.php");
                 exit;
             } else {
                 echo "Erro ao atualizar pessoa.";
