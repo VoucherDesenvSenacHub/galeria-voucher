@@ -69,4 +69,22 @@ class TurmaModel extends BaseModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function buscarTurmaProjetoID($idTurma): array
+    {
+        $query = "SELECT t.nome as nomeTurma, 
+                t.descricao as descricaoTurma, 
+                p.nome as nomeProjeto, 
+                p.descricao as descricaoProjeto, 
+                p.link linkProjeto 
+                from turma as t 
+                INNER join projeto as p 
+                on t.turma_id = p.turma_id
+                where t.turma_id = $idTurma";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
