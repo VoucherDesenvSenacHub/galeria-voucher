@@ -4,7 +4,7 @@
  *
  * @param string $style    Define o estilo do botão ('primary' ou 'secondary').
  * @param string $content  Conteúdo (texto ou HTML) que será exibido dentro do botão.
- * @param bool   $isSubmit (Opcional) Define se o botão será do tipo 'submit' (true) ou 'button' (false). Padrão: false.
+ * @param bool|string $isSubmit (Opcional) Define se o botão será do tipo 'submit' (true), 'reset' (string 'reset') ou 'button' (false). Padrão: false.
  * @param string $link     (Opcional) URL para o link. Se fornecido, renderiza um elemento <a> ao invés de <button>.
  * @param string $action   (Opcional) URL para a action do formulário quando o botão for submit.
  * @param string $extraAttributes (Opcional) Atributos adicionais para injetar no elemento renderizado (id, onclick, data-*, etc.).
@@ -13,6 +13,7 @@
  * buttonComponent('primary', 'Salvar');                      // botão verde padrão
  * buttonComponent('secondary', '<i>Cancelar</i>');           // botão secundário (branco) com HTML
  * buttonComponent('primary', 'Enviar', true);                // botão verde do tipo submit
+ * buttonComponent('secondary', 'Cancelar', 'reset');         // botão para resetar o formulário
  * buttonComponent('primary', 'Entrar', false, '/home');      // link estilizado como botão
  */
 function buttonComponent($style, $content, $isSubmit = false, $link = null, $action = null, $extraAttributes = '') {
@@ -26,12 +27,18 @@ function buttonComponent($style, $content, $isSubmit = false, $link = null, $act
         $class = 'primary-button';
     }
     
-    $type = $isSubmit ? 'submit' : 'button';
-    
+    // Define o type do botão
+    if ($isSubmit === true) {
+        $type = 'submit';
+    } elseif ($isSubmit === 'reset') {
+        $type = 'reset';
+    } else {
+        $type = 'button';
+    }
+
     // Se um link for fornecido, renderiza um elemento <a>
     if ($link !== null) {
         echo "<a href='$link' class='$class' $extraAttributes>$content</a>";
-        // ! cuidado com esse if e else, pois se houver algo no $link ele vira um button.
     } else {
         // Caso contrário, renderiza um <button>
         $actionAttr = $action ? "formaction='$action'" : '';
