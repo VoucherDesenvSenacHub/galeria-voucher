@@ -33,7 +33,7 @@ if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
   $modoEdicao = true;
   $turmaModel = new TurmaModel();
   // Busca no banco os dados da turma com o ID fornecido.
-  $turma = $turmaModel->buscarPorId($_GET['id']);
+  $turma = $turmaModel->buscarTurmaPorId($_GET['id']);
 
   // Se a turma com o ID especificado não for encontrada, redireciona para a lista.
   if (!$turma) {

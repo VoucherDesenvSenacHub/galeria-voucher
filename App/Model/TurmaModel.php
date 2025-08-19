@@ -1,18 +1,12 @@
 <?php
 
-// Requer o BaseModel para a conexão com o banco.
-require_once __DIR__ . '/BaseModel.php';
+require_once __DIR__ . "/BaseModel.php";
 
-/**
- * Classe TurmaModel
- * Centraliza toda a lógica de banco de dados para a entidade 'turma'.
- */
 class TurmaModel extends BaseModel
 {
-    // Define o nome da tabela principal para esta classe, facilitando a reutilização em queries.
+
     public function __construct()
     {
-        $this->tabela = "turma";
         parent::__construct();
     }
 
@@ -48,10 +42,9 @@ class TurmaModel extends BaseModel
             $stmt->bindParam(':imagem_id', $imagem_id, PDO::PARAM_INT);
 
             $stmt->execute();
-            
+
             // Retorna o ID do último registro inserido.
             return $this->pdo->lastInsertId();
-
         } catch (PDOException $e) {
             error_log("Erro ao criar turma: " . $e->getMessage());
             return false;
@@ -59,51 +52,72 @@ class TurmaModel extends BaseModel
     }
 
     /**
-     * Busca todas as turmas com o nome do respectivo polo.
-     * Útil para listagens administrativas onde se precisa saber a qual polo a turma pertence.
-     * @return array Um array de turmas, cada uma com seu ID, nome e o nome do polo.
+     * Busca todas as turmas com o nome do respectivo polo, ordenadas alfabeticamente.
+     * @return array
      */
     public function buscarTodasTurmasComPolo(): array
     {
-        try {
-            // A cláusula JOIN combina linhas da tabela 'turma' (alias 't') com a tabela 'polo' (alias 'p')
-            // onde a condição t.polo_id = p.polo_id é verdadeira.
-            // AS é usado para renomear as colunas no resultado, evitando conflito de nomes (ambas têm 'nome').
-            $query = "
-                SELECT 
-                    t.turma_id,
-                    t.nome AS NOME_TURMA,
-                    p.nome AS NOME_POLO
-                FROM " . $this->tabela . " t
-                JOIN polo p ON t.polo_id = p.polo_id
-                ORDER BY t.nome ASC
-            ";
+        $query = "
+            SELECT 
+                t.turma_id,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO
+            FROM 
+                turma t
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+            ORDER BY 
+                t.nome ASC
+        ";
 
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute();
-            
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
 
-        } catch (PDOException $e) {
-            error_log("Erro ao buscar turmas com polo: " . $e->getMessage());
-            return []; // Retorna array vazio para consistência.
-        }
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
-     * Busca turmas para exibição em uma galeria pública.
-     * Seleciona os dados essenciais para mostrar um card de turma (nome e imagem).
-     * @return array Um array de turmas com id, nome e a URL da imagem.
+     * Busca turmas por nome ou polo.
+     * @param string $termo O termo para buscar.
+     * @return array
+     */
+    public function buscarTurmasPorNomeOuPolo(string $termo): array
+    {
+        $query = "
+            SELECT 
+                t.turma_id,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO
+            FROM 
+                turma t
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+            WHERE 
+                t.nome LIKE :termo OR p.nome LIKE :termo
+            ORDER BY 
+                t.nome ASC
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':termo' => '%' . $termo . '%']);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    /**
+     * Busca todas as turmas ativas com suas respectivas imagens de capa.
+     * @return array
      */
     public function buscarTurmasParaGaleria(): array
     {
-        // LEFT JOIN é usado aqui para garantir que TODAS as turmas sejam retornadas,
-        // mesmo aquelas que não possuem uma imagem associada (nesse caso, imagem_url será NULL).
+        // Esta query junta a tabela 'turma' com a 'imagem' para buscar a URL da imagem de cada turma.
+        // Se quiser adicionar um IS NOT NULL para garantir que apenas turmas com imagem sejam exibidas. WHERE t.imagem_id IS NOT NULL 
         $query = "
             SELECT 
                 t.turma_id,
                 t.nome AS nome_turma,
-                i.url AS imagem_url
+                COALESCE(i.url, 'App/View/assets/img/utilitarios/foto.png') AS imagem_url
             FROM turma t
             LEFT JOIN imagem i ON t.imagem_id = i.imagem_id
             ORDER BY t.nome ASC
@@ -116,23 +130,20 @@ class TurmaModel extends BaseModel
     }
 
     /**
-     * Busca os dados de uma única turma pelo seu ID.
+     * Busca os dados de uma turma específica pelo ID.
      * @param int $id O ID da turma.
-     * @return array|false Um array associativo com todos os dados da turma, ou false se não for encontrada.
+     * @return array|false
      */
-    public function buscarPorId(int $id)
+    public function buscarTurmaPorId(int $id)
     {
-        try {
-            $stmt = $this->pdo->prepare("SELECT * FROM turma WHERE turma_id = :id");
-            $stmt->execute([':id' => $id]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Erro ao buscar turma por ID: " . $e->getMessage());
-            return false;
-        }
+        $query = "SELECT * FROM turma WHERE turma_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-     /**
+
+    /**
      * Atualiza os dados de uma turma existente no banco.
      * @return bool Retorna `true` em caso de sucesso e `false` em caso de falha.
      */
@@ -165,7 +176,8 @@ class TurmaModel extends BaseModel
         }
     }
 
-     /**
+
+    /**
      * Exclui uma turma e todos os seus registros dependentes.
      * Usa uma transação para garantir a integridade dos dados.
      * @param int $id O ID da turma a ser excluída.
@@ -189,7 +201,7 @@ class TurmaModel extends BaseModel
             // 3. Exclui os projetos associados a esta turma.
             $stmt3 = $this->pdo->prepare("DELETE FROM projeto WHERE turma_id = :id");
             $stmt3->execute([':id' => $id]);
-            
+
             // 4. Finalmente, exclui a própria turma.
             $stmtFinal = $this->pdo->prepare("DELETE FROM turma WHERE turma_id = :id");
             $stmtFinal->execute([':id' => $id]);
@@ -197,7 +209,6 @@ class TurmaModel extends BaseModel
             // Se todas as queries foram executadas com sucesso, confirma as alterações no banco.
             $this->pdo->commit();
             return true;
-
         } catch (PDOException $e) {
             // Se qualquer query falhar, desfaz todas as operações feitas desde o beginTransaction().
             $this->pdo->rollBack();

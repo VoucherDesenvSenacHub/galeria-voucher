@@ -180,7 +180,7 @@ class TurmaController {
             
             // 1. Busca os dados atuais da turma no banco ANTES de qualquer alteração.
             // Isso é crucial para comparar o que foi alterado.
-            $dadosAntigos = $turmaModel->buscarPorId($turma_id);
+            $dadosAntigos = $turmaModel->buscarTurmaPorId($turma_id);
             if (!$dadosAntigos) {
                 $_SESSION['erros_turma'] = ["Turma não encontrada para atualização."];
                 header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
@@ -295,7 +295,7 @@ class TurmaController {
 
                 // 1. Busca os dados da turma para obter o nome ANTES de excluí-la.
                 // Isso permite usar o nome na mensagem de sucesso.
-                $turma = $turmaModel->buscarPorId($turma_id);
+                $turma = $turmaModel->buscarTurmaPorId($turma_id);
                 $nomeDaTurma = $turma ? $turma['nome'] : '';
 
                 // 2. Tenta excluir a turma (o Model cuida da transação e das dependências).

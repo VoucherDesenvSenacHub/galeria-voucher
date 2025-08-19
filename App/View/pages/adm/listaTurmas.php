@@ -1,9 +1,4 @@
 <?php
-// Garante que a sessão está ativa para gerenciar o login e exibir mensagens de sucesso.
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 // Inclui arquivos essenciais de configuração, componentes e o Model.
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
@@ -13,18 +8,25 @@ require_once __DIR__ . "/../../../Model/TurmaModel.php";
 // Define o título da página.
 headerComponent("Voucher Desenvolvedor - Turmas");
 
-// --- LÓGICA DE BUSCA DE DADOS ---
+// 2. LÓGICA DE BUSCA DE DADOS
 try {
-    // Cria uma instância do TurmaModel.
     $turmaModel = new TurmaModel();
-    // Chama o método que busca todas as turmas junto com o nome do polo correspondente.
-    $turmas = $turmaModel->buscarTodasTurmasComPolo();
+    $termoPesquisa = $_GET['pesquisa'] ?? '';
+
+    if (!empty($termoPesquisa)) {
+        $turmas = $turmaModel->buscarTurmasPorNomeOuPolo($termoPesquisa);
+    } else {
+        $turmas = $turmaModel->buscarTodasTurmasComPolo();
+    }
 } catch (Exception $e) {
-    // Bloco de segurança: se a busca no banco falhar, define $turmas como um array vazio
-    // para evitar erros na renderização da tabela e registra o erro no log do servidor.
+    // Em caso de erro, define $turmas como um array vazio e loga o erro
     $turmas = [];
     error_log("Erro ao buscar turmas: " . $e->getMessage());
 }
+
+// Verifica se o usuário logado é um administrador para exibir o botão de excluir
+$is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
+
 ?>
 
 <head>
@@ -44,22 +46,16 @@ try {
             <div class="topo-lista-alunos">
                 <?php
                 buttonComponent(
-                    'primary',
-                    'NOVA TURMA',
-                    false,
-                    VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php',
-                    null,
-                    '',
-                    'no-style'
-                );
+                    'primary','NOVA TURMA',false,VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
                 ?>
-
-
+                
+                <form method="GET" action="">
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
                         class="icone-lupa-img">
                 </div>
+                </form>
             </div>
 
             <div class="tabela-principal-lista-alunos">
