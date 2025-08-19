@@ -20,4 +20,6 @@ class UsuarioModelTeste extends BaseModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    
 }

@@ -48,7 +48,6 @@ $usuarios = $usuarioModel->listar();
             <tbody>
               <?php if (!empty($usuarios)): ?>
                 <?php foreach ($usuarios as $usuario): ?>
-                  <tr data-aluno-id="<?= htmlspecialchars($usuario['pessoa_id']) ?>">
                     <td><?= htmlspecialchars($usuario['nome']) ?></td>
                     <td><?= htmlspecialchars($usuario['tipo']) ?></td>
                     <td><?= htmlspecialchars($usuario['polo'] ?? 'Não definido') ?></td>
