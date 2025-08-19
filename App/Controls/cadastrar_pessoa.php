@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $criado = $pessoaModel->criarPessoa($dados, $imagemId);
 
         if ($criado) {
-            
+
             $ultimoId = $pessoaModel->getLastInsertId(); // ✅ agora funciona
 
             $pessoaCriada = $pessoaModel->buscarPessoaPorId($ultimoId);
@@ -80,13 +80,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mensagem = "❌ Erro ao cadastrar pessoa.";
         }
     } catch (Exception $e) {
-        $mensagem = "❌ Erro: " . $e->getMessage();
-        // echo "Testando xx";
+        
+        if (strpos($e->getMessage(), '1062 Duplicate entry') !== false) {
+            $mensagem = "❌ Este email já está cadastrado.";
+        } else {
+            $mensagem = "❌ Erro ao cadastrar: " . $e->getMessage(); 
+        }
     }
 }
- 
-$perfis = $pessoaModel->listarPerfisPermitidos();
-$perill= $pessoaModel ->listarPessoas();
-// var_dump($perill);
-?>
 
+$perfis = $pessoaModel->listarPerfisPermitidos();
+$perill = $pessoaModel->listarPessoas();
+// var_dump($perill);
