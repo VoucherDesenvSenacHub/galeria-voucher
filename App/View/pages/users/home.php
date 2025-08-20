@@ -6,22 +6,25 @@ require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
 headerComponent('Página Inicial');
 
-// 2. BUSCA DAS TURMAS NO BANCO DE DADOS
+// 2. BUSCA DAS TURMAS E ESTATÍSTICAS
 try {
     $turmaModel = new TurmaModel();
-    // Usei a função que criamos, que busca apenas turmas com imagem
     $turmas = $turmaModel->buscarTurmasParaGaleria();
-} catch (Exception $e) {
-    // Se houver erro na conexão ou consulta, a página não quebra
-    $turmas = [];
-    error_log("Erro ao buscar turmas: " . $e->getMessage());
-}
+    
+    $estatisticasModel = new EstatisticasModel();
+    $resultado = $estatisticasModel->getEstatisticas();
 
+} catch (Exception $e) {
+    // Se houver erro, a página não quebra
+    $turmas = [];
+    $resultado = ['alunos' => 0, 'projetos' => 0, 'polos' => 0];
+    error_log("Erro na home.php: " . $e->getMessage());
+}
 ?>
 
 <body class="body-user">
     <?php
-        $isAdmin = false; // Para páginas de users
+        $isAdmin = false;
         require_once __DIR__ . "/../../componentes/nav.php";
     ?>
     <?php require_once __DIR__ . "/../../componentes/users/mira.php"; ?>
@@ -34,10 +37,6 @@ try {
         <canvas id="matrix-canvas"></canvas>
             
             <div class="content">
-                <div class="numero">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/numeros.png"
-                        alt="Números">
-                </div>
 
                 <div class="nome-voucher">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nome.png"
@@ -111,9 +110,8 @@ try {
                 </div>
             </div>
         </section>
-
         <section id="secao3">
-            <div class="container2">
+             <div class="container2">
                 <h1>SUA EVOLUÇÃO COMEÇA AQUI</h1>
                 <div class="stats">
                     <?php
@@ -127,11 +125,12 @@ try {
                         ['valor' => $dados['polos'], 'label' => 'POLOS'],
                         ['valor' => '1200', 'label' => 'CURSO COM HORAS']
                     ];
+                    
                     foreach ($estatisticas as $estatistica) {
                         echo "<div>
-                                    <span>{$estatistica['valor']}</span>
-                                    <p>{$estatistica['label']}</p>
-                              </div>";
+                                <span>{$estatistica['valor']}</span>
+                                <p>{$estatistica['label']}</p>
+                            </div>";
                     }
                     ?>
                 </div>
@@ -139,11 +138,9 @@ try {
         </section>
 
         <section id="secao4">
-
             <div class="call-to-action">
                 <p>SELECIONE UMA TURMA E <span>INSPIRE-SE</span></p>
             </div>
-
             <div class="poligono">
                 <?php if (!empty($turmas)): ?>
                     <div class="image-row">
