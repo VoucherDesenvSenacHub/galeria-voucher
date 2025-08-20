@@ -105,6 +105,13 @@ if ($acao === 'editar' && $id) {
     const tipoUsuario = document.getElementById('tipo-usuario');
     // Aqui você pode adicionar lógica para mudar placeholder etc, se quiser
   </script>
+  <?php if (!empty($mensagem)): ?>
+    <script>
+      alert("<?= addslashes($mensagem) ?>");
+      window.location.href = 'listarUsuarios.php';
+    </script>
+  <?php endif; ?>
+
 </body>
 
 </html>
