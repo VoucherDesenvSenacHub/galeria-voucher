@@ -8,28 +8,24 @@ require_once __DIR__ . "/../../../Model/TurmaModel.php";
 // Define o título da página.
 headerComponent("Voucher Desenvolvedor - Turmas");
 
-// 2. LÓGICA DE BUSCA DE DADOS
-try {
-    $turmaModel = new TurmaModel();
-    // A variável $termoPesquisa irá receber o valor do campo de busca da URL.
-    $termoPesquisa = $_GET['pesquisa'] ?? '';
+// --- LÓGICA DE PAGINAÇÃO E BUSCA ---
+$turmaModel = new TurmaModel();
+$termoPesquisa = $_GET['pesquisa'] ?? '';
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$turmasPorPagina = 10;
+$offset = ($paginaAtual - 1) * $turmasPorPagina;
 
-    // Se houver um termo de pesquisa, chama a função de busca filtrada.
-    if (!empty($termoPesquisa)) {
-        $turmas = $turmaModel->buscarTurmasPorNomeOuPolo($termoPesquisa);
-    } else {
-        // Caso contrário, busca todas as turmas.
-        $turmas = $turmaModel->buscarTodasTurmasComPolo();
-    }
+try {
+    $totalTurmas = $turmaModel->contarTotalTurmas($termoPesquisa);
+    $totalPaginas = ceil($totalTurmas / $turmasPorPagina);
+    $turmas = $turmaModel->buscarTurmasPaginado($turmasPorPagina, $offset, $termoPesquisa);
 } catch (Exception $e) {
-    // Em caso de erro, define $turmas como um array vazio e loga o erro.
     $turmas = [];
+    $totalPaginas = 0;
     error_log("Erro ao buscar turmas: " . $e->getMessage());
 }
 
-// Verifica se o usuário logado é um administrador para exibir o botão de excluir.
 $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
-
 ?>
 
 <head>
@@ -114,6 +110,31 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                         </tbody>
                     </table>
                 </div>
+            </div>
+
+            <div class="paginacao-container">
+                <?php if ($totalPaginas > 1): ?>
+                    <div class="paginacao">
+                        <a href="?pagina=1<?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&laquo;</a>
+                        
+                        <?php if ($paginaAtual > 1): ?>
+                            <a href="?pagina=<?= $paginaAtual - 1 ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&lsaquo;</a>
+                        <?php endif; ?>
+
+                        <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                            <a href="?pagina=<?= $i ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" 
+                               class="paginacao-item <?= ($i == $paginaAtual) ? 'paginacao-ativa' : '' ?>">
+                                <?= $i ?>
+                            </a>
+                        <?php endfor; ?>
+
+                        <?php if ($paginaAtual < $totalPaginas): ?>
+                            <a href="?pagina=<?= $paginaAtual + 1 ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&rsaquo;</a>
+                        <?php endif; ?>
+
+                        <a href="?pagina=<?= $totalPaginas ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&raquo;</a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </main>

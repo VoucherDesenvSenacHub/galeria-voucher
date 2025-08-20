@@ -237,4 +237,69 @@ class TurmaModel extends BaseModel
             return null;
         }
     }
+
+    /**
+     * Conta o total de turmas, opcionalmente filtrando por um termo de busca.
+     * @param string $termo O termo para filtrar a contagem.
+     * @return int O número total de turmas.
+     */
+    public function contarTotalTurmas(string $termo = ''): int
+    {
+        $query = "SELECT COUNT(t.turma_id) 
+                  FROM turma t
+                  JOIN polo p ON t.polo_id = p.polo_id";
+        
+        if (!empty($termo)) {
+            $query .= " WHERE t.nome LIKE :termo OR p.nome LIKE :termo";
+        }
+
+        $stmt = $this->pdo->prepare($query);
+        
+        if (!empty($termo)) {
+            $stmt->execute([':termo' => '%' . $termo . '%']);
+        } else {
+            $stmt->execute();
+        }
+
+        return (int)$stmt->fetchColumn();
+    }
+
+    /**
+     * Busca turmas com paginação e filtro.
+     * @param int $limite O número de registros por página.
+     * @param int $offset O deslocamento (a partir de qual registro buscar).
+     * @param string $termo O termo de busca.
+     * @return array A lista de turmas da página.
+     */
+    public function buscarTurmasPaginado(int $limite, int $offset, string $termo = ''): array
+    {
+        $query = "
+            SELECT 
+                t.turma_id,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO
+            FROM 
+                turma t
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+        ";
+        
+        if (!empty($termo)) {
+            $query .= " WHERE t.nome LIKE :termo OR p.nome LIKE :termo";
+        }
+
+        $query .= " ORDER BY t.nome ASC LIMIT :limite OFFSET :offset";
+
+        $stmt = $this->pdo->prepare($query);
+
+        if (!empty($termo)) {
+            $stmt->bindValue(':termo', '%' . $termo . '%', PDO::PARAM_STR);
+        }
+        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
