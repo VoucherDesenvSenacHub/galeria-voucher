@@ -53,7 +53,7 @@ $usuarios = $usuarioModel->listar();
                     <td><?= htmlspecialchars($usuario['polo'] ?? 'Não definido') ?></td>
                     <td class="acoes">
                       <span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-                      <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
+                      <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="DESVINCULAR">delete</span>
                     </td>
                   </tr>
                 <?php endforeach; ?>
