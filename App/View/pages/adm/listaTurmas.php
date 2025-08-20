@@ -33,32 +33,9 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 ?>
 
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <style>
-        /* Estilos para o botão de pesquisa */
-        .search-button {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            right: 14px;
-            transform: translateY(-50%);
-            padding: 0;
-        }
-        .acoes-container {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-        .no-style {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            color: inherit;
-        }
-    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />                                                                                                                     
+
 </head>
 
 <body class="body-lista-alunos">

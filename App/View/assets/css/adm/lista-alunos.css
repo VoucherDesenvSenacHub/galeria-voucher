@@ -63,6 +63,29 @@
   pointer-events: none;
 }
 
+/* Estilos para o botão de pesquisa */
+.search-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: -15%;
+  right: 14px;
+  padding: 0;
+}
+.acoes-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.no-style {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+}
+
 
 
 /* Botão Nova Turma */
