@@ -3,10 +3,10 @@ require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Projetos");
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 ?>
-<link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>adm/CadastroProjetos.css">
 
-<!-- Ícones Google -->
+<link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>adm/CadastroProjetos.css">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 <body class="body-adm">
@@ -15,15 +15,6 @@ require_once __DIR__ . "/../../../componentes/adm/auth.php";
     <?php
     $isAdmin = true;
     require_once __DIR__ . "/../../../componentes/nav.php";
-    ?>
-
-    <?php
-    $imagens = [
-      ["titulo" => "IMAGEM DA TURMA", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA I", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA P", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA E", "quantidade" => 6],
-    ];
     ?>
 
     <main class="main-turmas-turmas">
@@ -40,38 +31,40 @@ require_once __DIR__ . "/../../../componentes/adm/auth.php";
         </a>
       </div>
 
-      <div class="card-projeto">
-        <div class="card-content" style="display: flex; align-items: center; justify-content: space-between;">
-          <div class="card-imagem">
-            <img src="../../../assets/img/turmas/turma-galeria.png" alt="Imagem do Projeto" class="img-projeto">
-          </div>
-          <div class="card-info">
-            <h3 class="projeto-titulo">Projeto 1</h3>
-            <p class="projeto-descricao">Descrição do projeto vai aqui. Este é um exemplo de texto descritivo para o projeto.</p>
-          </div>
-          <div style="display: flex; align-items: center; margin-left: auto;">
-            <span class="material-symbols-outlined" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-            <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
-          </div>
-        </div>
-      </div>
+      <?php
+      try {
+        $turmaModel = new TurmaModel();
+        $projetos = $turmaModel->BuscarTurmascomDescricao(); // Deve retornar ['titulo','descricao','imagem_url']
+        if (!is_array($projetos)) $projetos = [];
+      } catch (Exception $e) {
+        $projetos = [];
+        error_log("Erro ao buscar projetos: " . $e->getMessage());
+      }
+      ?>
 
-      <div class="card-projeto">
-        <div class="card-content" style="display: flex; align-items: center; justify-content: space-between;">
-          <div class="card-imagem">
-            <img src="../../../assets/img/turmas/turma-galeria.png" alt="Imagem do Projeto" class="img-projeto">
-          </div>
-          <div class="card-info">
-            <h3 class="projeto-titulo">Projeto 2</h3>
-            <p class="projeto-descricao">Descrição do projeto vai aqui. Este é um exemplo de texto descritivo para o projeto.</p>
-          </div>
-          <div style="display: flex; align-items: center; margin-left: auto;">
-            <span class="material-symbols-outlined" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-            <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
+      <?php foreach ($projetos as $projeto): ?>
+        <div class="card-projeto">
+          <div class="card-content" style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="card-imagem">
+              <img src="<?= VARIAVEIS['APP_URL'] . $projeto['URL_IMAGEM'] ?>"
+                alt="Imagem da <?= htmlspecialchars($projeto['NOME_TURMA']) ?>"
+                class="img-projeto">
+            </div>
+            <div class="card-info">
+              <h3 class="projeto-titulo"><?= htmlspecialchars($projeto['NOME_TURMA']) ?></h3>
+              <p class="projeto-descricao"><?= htmlspecialchars($projeto['DESCRICAO_TURMA']) ?></p>
+              <small class="projeto-polo"><?= htmlspecialchars($projeto['NOME_POLO']) ?></small>
+            </div>
+            <div style="display: flex; align-items: center; margin-left: auto;">
+              <span class="material-symbols-outlined" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
+              <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
+            </div>
           </div>
         </div>
-      </div>
+      <?php endforeach; ?>
+
     </main>
   </div>
 </body>
+
 </html>

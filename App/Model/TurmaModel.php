@@ -2,9 +2,11 @@
 
 require_once __DIR__ . "/BaseModel.php";
 
-class TurmaModel extends BaseModel {
+class TurmaModel extends BaseModel
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
@@ -67,6 +69,32 @@ class TurmaModel extends BaseModel {
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function BuscarTurmascomDescricao()
+    {
+        $query = "
+        SELECT 
+            t.turma_id,
+            t.nome AS NOME_TURMA,
+            t.descricao AS DESCRICAO_TURMA,
+            p.nome AS NOME_POLO,
+            i.url AS URL_IMAGEM,
+            i.descricao AS DESCRICAO_IMAGEM
+        FROM 
+            turma t
+        JOIN 
+            polo p ON t.polo_id = p.polo_id
+        LEFT JOIN 
+            imagem i ON t.imagem_id = i.imagem_id
+        ORDER BY 
+            t.nome ASC
+    ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
