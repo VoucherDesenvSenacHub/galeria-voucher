@@ -1,6 +1,6 @@
 async function buscarAlunos() {
   console.log('buscarAlunos chamada');
-  const response = await fetch('/galeria-voucher/app/Controls/AlunoController.php?acao=alunos');
+  const response = await fetch('/galeria-voucher/app/Controls/AlunoController.php?acao=alunoSemTurma');
   const dados = await response.json();
   console.log(await dados)
   return dados;

@@ -27,7 +27,24 @@ class AlunoModel extends BaseModel{
 
         return $dados;
     }
+    public function buscarAlunosSemTurma(){
 
+        $sql = "SELECT p.pessoa_id, p.nome, 'Sem turma' AS status
+        FROM pessoa p
+        LEFT JOIN aluno_turma at 
+            ON p.pessoa_id = at.pessoa_id
+        WHERE p.perfil = 'aluno'
+          AND at.pessoa_id IS NULL";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dados;
+    }
+
+    
     /**
      * Busca todos os alunos com seus respectivos polos.
      * @return array
