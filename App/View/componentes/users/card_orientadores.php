@@ -3,7 +3,7 @@
 
 <div class="card-container">
     <div class="image-dev">
-        <img src="<?php echo $orientador['foto']; ?>" alt="Foto de <?php echo $orientador['nome']; ?>">
+        <img src="<?php echo $orientador['foto'] ?? VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png'; ?>" alt="Foto de <?php echo $orientador['nome']; ?>">
     </div>
     <div class="text-card">
         <h2><?php echo $orientador['nome']; ?></h2>

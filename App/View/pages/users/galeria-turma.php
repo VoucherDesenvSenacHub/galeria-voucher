@@ -49,7 +49,7 @@ headerComponent('Galeria da Turma');
         <h1 class="galeria-turma-h1 projetos-turma">Projetos da turma</h1>
 
         <section class="galeria-turma-tab-inner">
-            <img class="galeria-turma-imagem-direita" src="<?= $imagemTurmaUrl ?>" alt="Imagem da Turma">
+            <img class="galeria-turma-imagem-direita" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . $imagemTurmaUrl ?>" alt="Imagem da Turma">
             <div class="galeria-turma-margin-top-left-projeto1-dia-i">
                 <h2><?= $nomeTurma ?></h2>
                 <p><?= $descricaoTurma ?></p>
