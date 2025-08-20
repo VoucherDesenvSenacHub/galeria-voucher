@@ -4,6 +4,7 @@ require_once __DIR__ . "/BaseModel.php";
 
 class TurmaModel extends BaseModel
 {
+    protected $tabela = 'turma';
 
     public function __construct()
     {

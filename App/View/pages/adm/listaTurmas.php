@@ -11,26 +11,54 @@ headerComponent("Voucher Desenvolvedor - Turmas");
 // 2. LÓGICA DE BUSCA DE DADOS
 try {
     $turmaModel = new TurmaModel();
+    // A variável $termoPesquisa irá receber o valor do campo de busca da URL.
     $termoPesquisa = $_GET['pesquisa'] ?? '';
 
+    // Se houver um termo de pesquisa, chama a função de busca filtrada.
     if (!empty($termoPesquisa)) {
         $turmas = $turmaModel->buscarTurmasPorNomeOuPolo($termoPesquisa);
     } else {
+        // Caso contrário, busca todas as turmas.
         $turmas = $turmaModel->buscarTodasTurmasComPolo();
     }
 } catch (Exception $e) {
-    // Em caso de erro, define $turmas como um array vazio e loga o erro
+    // Em caso de erro, define $turmas como um array vazio e loga o erro.
     $turmas = [];
     error_log("Erro ao buscar turmas: " . $e->getMessage());
 }
 
-// Verifica se o usuário logado é um administrador para exibir o botão de excluir
+// Verifica se o usuário logado é um administrador para exibir o botão de excluir.
 $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
 
 ?>
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        /* Estilos para o botão de pesquisa */
+        .search-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            right: 14px;
+            transform: translateY(-50%);
+            padding: 0;
+        }
+        .acoes-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .no-style {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: inherit;
+        }
+    </style>
 </head>
 
 <body class="body-lista-alunos">
@@ -50,13 +78,21 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 ?>
                 
                 <form method="GET" action="">
-                <div class="input-pesquisa-container">
-                    <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
-                        class="icone-lupa-img">
-                </div>
+                    <div class="input-pesquisa-container">
+                        <input 
+                            type="text" 
+                            id="pesquisa" 
+                            name="pesquisa"  
+                            placeholder="Pesquisar por nome ou polo" 
+                            value="<?= htmlspecialchars($termoPesquisa) ?>">
+                        
+                        <button type="submit" class="search-button">
+                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
+                                class="icone-lupa-img">
+                        </button>
+                    </div>
                 </form>
-            </div>
+                 </div>
 
             <div class="tabela-principal-lista-alunos">
                 <div class="tabela-container-lista-alunos">
@@ -82,7 +118,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                                 </a>
 
                                                 <form method="POST"
-                                                    action="<?= VARIAVEIS['APP_URL'] ?>App/Controls/TurmaController.php?action=excluir"
+                                                    action="<?= VARIAVEIS['APP_URL'] ?>App/Controller/TurmaController.php?action=excluir"
                                                     onsubmit="return confirm('ATENÇÃO!!! Excluir esta turma também removerá todos os seus projetos, alunos e professores vinculados. Esta ação é irreversível. Deseja continuar?');">
                                                     <input type="hidden" name="turma_id" value="<?= $turma['turma_id'] ?>">
                                                     <button type="submit" class="no-style" title="Excluir">
