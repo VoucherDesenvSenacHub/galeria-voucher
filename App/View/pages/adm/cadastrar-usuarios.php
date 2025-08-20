@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../../../Controls/cadastrar_pessoa.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . '/../../../Model/PessoaModel.php';
@@ -20,11 +21,14 @@ if ($acao === 'editar' && $id) {
 <body class="body-cadastrar-users">
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php
-  $isAdmin = true;
+
+  $isAdmin = true; // Para páginas de admin
+  
   require_once __DIR__ . "/../../componentes/nav.php";
   ?>
 
   <main class="conteudo-cadastro">
+
     <h1 class='h1-usuario'><?= $acao === 'editar' ? 'Editar Pessoa' : 'Cadastro' ?></h1>
     <div class="container-users">
       <div class="form-container-users">
@@ -81,6 +85,61 @@ if ($acao === 'editar' && $id) {
                   <?= $acao === 'editar' ? 'Salvar alterações' : 'Cadastrar' ?>
                 </button>
               </div>
+=======
+    <h1 class='h1-usuario'>CADASTRO</h1>
+    <div class="container-users">
+      <div class="form-container-users">
+
+        <form class="form-dados" method="POST" enctype="multipart/form-data">
+          <div class="form-top">
+            <div class="form-group">
+              <?php
+              inputComponent('text', 'nome', 'Nome Completo *');
+              inputComponent('text', 'email', 'Email *');
+              inputComponent('text', 'linkedin', 'Link do linkedin');
+              inputComponent('text', 'github', 'Link para o GitHub');
+              ?>
+            </div>
+            <div class="form-group-polo div-center">
+              <label for="tipo-usuario" style="font-weight: bold;">Perfil *</label>
+              <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;">
+                <option value="">-- Selecione --</option>
+                <?php foreach ($perfis as $perfil): ?>
+                  <option value="<?= htmlspecialchars($perfil) ?>"
+                    <?= ($_POST['perfil'] ?? '') === $perfil ? 'selected' : '' ?>>
+                    <?= ucfirst(htmlspecialchars($perfil)) ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
+
+              <label for="polo" style="font-weight: bold;">Polo *</label>
+              <select id="polo" name="polo" class="input-text" style="cursor: pointer;">
+                <option value="">-- Selecione --</option>
+                <option value="polo1">Campo Grande</option>
+                <option value="polo2">Tres Lagoas</option>
+                <option value="polo3">Dourados</option>
+                <option value="polo4">Corumba</option>
+                <option value="polo5">Ponta Pora</option>
+              </select>
+            </div>
+
+            <div class="form-group-imagem">
+              <label style="font-weight: bold;">Imagem *</label>
+              <div class="input-file-cadastro">
+                <label class="input-file-wrapper">
+                  <img id="preview" src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/avatar.png" alt="Upload" />
+                  <input type="file" name="imagem" id="fileInput" accept="image/*" style="display: none;" />
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-bottom">
+            <div class="form-group-buton">
+              <?php
+              buttonComponent('secondary', 'Cancelar', 'reset', false);
+              buttonComponent('primary', 'Cadastrar', true);
+              ?>
+
             </div>
             </form>
       </div>
@@ -105,6 +164,14 @@ if ($acao === 'editar' && $id) {
     const tipoUsuario = document.getElementById('tipo-usuario');
     // Aqui você pode adicionar lógica para mudar placeholder etc, se quiser
   </script>
+  <?php if (!empty($mensagem)): ?>
+    <script>
+      alert("<?= addslashes($mensagem) ?>");
+      window.location.href = 'listarUsuarios.php';
+    </script>
+  <?php endif; ?>
+
 </body>
 
 </html>
+

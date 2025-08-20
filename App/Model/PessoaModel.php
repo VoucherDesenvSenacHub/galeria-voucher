@@ -43,12 +43,14 @@ class PessoaModel extends BaseModel
     // Buscar pessoa por ID (Read)
     public function buscarPessoaPorId(int $id): ?array
     {
+
         $sql = "SELECT * FROM pessoa WHERE pessoa_id = :id LIMIT 1";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
         return $resultado ? $resultado : null;
+
     }
 
     // Atualizar pessoa (Update)
@@ -126,6 +128,7 @@ class PessoaModel extends BaseModel
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     public function listarPessoasTable(int $limit, int $offset): array
     {
