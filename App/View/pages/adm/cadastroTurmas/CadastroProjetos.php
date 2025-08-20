@@ -34,7 +34,8 @@ require_once __DIR__ . "/../../../../Model/TurmaModel.php";
       <?php
       try {
         $turmaModel = new TurmaModel();
-        $projetos = $turmaModel->BuscarTurmascomDescricao(); // Deve retornar ['titulo','descricao','imagem_url']
+        $projetos = $turmaModel->BuscarProjetosComDescricao();
+
         if (!is_array($projetos)) $projetos = [];
       } catch (Exception $e) {
         $projetos = [];
@@ -46,13 +47,13 @@ require_once __DIR__ . "/../../../../Model/TurmaModel.php";
         <div class="card-projeto">
           <div class="card-content" style="display: flex; align-items: center; justify-content: space-between;">
             <div class="card-imagem">
-              <img src="<?= VARIAVEIS['APP_URL'] . $projeto['URL_IMAGEM'] ?>"
+              <img src="<?= $projeto['URL_IMAGEM'] ?>"
                 alt="Imagem da <?= htmlspecialchars($projeto['NOME_TURMA']) ?>"
                 class="img-projeto">
             </div>
             <div class="card-info">
-              <h3 class="projeto-titulo"><?= htmlspecialchars($projeto['NOME_TURMA']) ?></h3>
-              <p class="projeto-descricao"><?= htmlspecialchars($projeto['DESCRICAO_TURMA']) ?></p>
+              <h3 class="projeto-titulo"><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></h3>
+              <p class="projeto-descricao"><?= htmlspecialchars($projeto['DESCRICAO_PROJETO']) ?></p>
               <small class="projeto-polo"><?= htmlspecialchars($projeto['NOME_POLO']) ?></small>
             </div>
             <div style="display: flex; align-items: center; margin-left: auto;">

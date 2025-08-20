@@ -79,3 +79,11 @@
 .projeto-polo{
   font-family: var(--font-primary); 
 }
+
+.projeto-titulo{
+  font-family: var(--font-primary); 
+}
+
+.projeto-descricao{
+  font-family: var(--font-primary); 
+}

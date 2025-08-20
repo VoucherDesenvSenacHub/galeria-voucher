@@ -73,28 +73,35 @@ class TurmaModel extends BaseModel
     }
 
 
-    public function BuscarTurmascomDescricao()
+    public function BuscarProjetosComDescricao()
     {
         $query = "
-        SELECT 
-            t.turma_id,
-            t.nome AS NOME_TURMA,
-            t.descricao AS DESCRICAO_TURMA,
-            p.nome AS NOME_POLO,
-            i.url AS URL_IMAGEM,
-            i.descricao AS DESCRICAO_IMAGEM
-        FROM 
-            turma t
-        JOIN 
-            polo p ON t.polo_id = p.polo_id
-        LEFT JOIN 
-            imagem i ON t.imagem_id = i.imagem_id
-        ORDER BY 
-            t.nome ASC
-    ";
-
+            SELECT 
+                pr.projeto_id,
+                pr.nome AS NOME_PROJETO,
+                pr.descricao AS DESCRICAO_PROJETO,
+                pr.link AS LINK_PROJETO,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO,
+                i.url AS URL_IMAGEM,
+                i.descricao AS DESCRICAO_IMAGEM
+            FROM 
+                projeto pr
+            JOIN 
+                turma t ON pr.turma_id = t.turma_id
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+            LEFT JOIN 
+                imagem_projeto ip ON pr.projeto_id = ip.projeto_id
+            LEFT JOIN 
+                imagem i ON ip.imagem_id = i.imagem_id
+            ORDER BY 
+                pr.nome ASC
+        ";
+    
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 }
