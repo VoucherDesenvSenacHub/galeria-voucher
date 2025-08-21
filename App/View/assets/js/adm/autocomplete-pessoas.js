@@ -10,22 +10,17 @@ function ativarAutocomplete() {
     const selecionados = document.getElementById("pessoas-selecionadas");
     const adicionados = new Set();
 
-    input.addEventListener("input", () => {
-        const valor = input.value.toLowerCase();
-        sugestoes.innerHTML = "";
-        if (valor.length === 0) return;
-
-        pessoas.forEach(nome => {
-            if (nome.toLowerCase().startsWith(valor) && !adicionados.has(nome)) {
-                const div = document.createElement("div");
-                div.textContent = nome;
-                div.style.cursor = "pointer";
-                div.onclick = () => adicionarPessoa(nome);
-                sugestoes.appendChild(div);
-            }
-        });
+    input.addEventListener("keydown", async function(event) {
+        if (event.key === 'Enter') {
+        event.preventDefault();
+        const resposta = await fetch("/galeria-voucher/teste.php");
+        console.log(await resposta.json());
+        const div = document.createElement("div");
+        sugestoes.appendChild(div);
+        div.textContent = (resposta);
+        }
     });
-
+// alterar para o banco de dados, mudar a pesquisa fixa para busca nas tabelas
     function adicionarPessoa(nome) {
         adicionados.add(nome);
         input.value = "";
@@ -49,3 +44,38 @@ function ativarAutocomplete() {
         selecionados.appendChild(chip);
     }
 }
+
+// input.addEventListener("input", () => {
+//     const valor = input.value.toLowerCase();
+//     sugestoes.innerHTML = "";
+//     if (valor.length === 0) return;
+
+//     pessoas.forEach(nome => {
+//         if (nome.toLowerCase().startsWith(valor) && !adicionados.has(nome)) {
+//             const div = document.createElement("div");
+//             div.textContent = nome;
+//             div.style.cursor = "pointer";
+//             div.onclick = () => adicionarPessoa(nome);
+//             sugestoes.appendChild(div);
+//         }
+//     });
+// });
+
+
+
+
+// input.addEventListener("input", () => {
+//     const valor = input.value.toLowerCase();
+//     sugestoes.innerHTML = "";
+//     if (valor.length === 0) return;
+
+//     echo 
+//             const div = document.createElement("div");
+//             div.do arquivo = nome;
+//             div.style.cursor = "pointer";
+//             div.onclick = () => adicionarPessoa(nome);
+//             sugestoes.appendChild(div);
+//         }
+//     });
+// });
+
