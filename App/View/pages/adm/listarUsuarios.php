@@ -4,19 +4,22 @@ headerComponent("Voucher Desenvolvedor - Pessoas");
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../Model/PessoaModel.php";
 
-// LÓGICA DE BUSCA DE DADOS
+// Lógica para buscar os dados
+$pessoaModel = new PessoaModel();
+$termoPesquisa = $_GET['pesquisa'] ?? '';
+$usuarios = [];
+
 try {
-    $pessoaModel = new PessoaModel();
-    $usuarios = $pessoaModel->buscarTodasPessoasComPolo();
+    if (!empty($termoPesquisa)) {
+        // Se houver um termo de pesquisa, busca os usuários filtrados
+        $usuarios = $pessoaModel->buscarPessoasPorNomeOuPolo($termoPesquisa);
+    } else {
+        // Caso contrário, lista todos os usuários
+        $usuarios = $pessoaModel->listarPessoasComPolo();
+    }
 } catch (Exception $e) {
-    // Em caso de erro, define $usuarios como um array vazio e loga o erro
-    $usuarios = [];
     error_log("Erro ao buscar usuários: " . $e->getMessage());
 }
-
-// Verifica se o usuário logado é um administrador para exibir o botão de excluir
-$is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
-
 ?>
 
 <head>
@@ -36,11 +39,15 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
       <div class="topo-lista-alunos">
         <?php buttonComponent('primary', 'CADASTRAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
 
-        <div class="input-pesquisa-container">
-          <input type="text" id="pesquisa" placeholder="Pesquisar por nome, tipo ou polo">
-          <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
-            class="icone-lupa-img">
-        </div>
+        <form method="GET" action="">
+          <div class="input-pesquisa-container"> 
+          <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar por nome ou polo" value="<?= htmlspecialchars($termoPesquisa) ?>">
+            <button type="submit" class="search-button">
+              <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
+              class="icone-lupa-img">
+            </button>
+          </div>
+        </form>
       </div>
 
       <div class="tabela-principal-lista-alunos">
@@ -55,21 +62,19 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
               </tr>
             </thead>
             <tbody>
-              <?php if (!empty($usuarios)) : ?>
-                  <?php foreach ($usuarios as $usuario) : ?>
+              <?php if (!empty($usuarios)): ?>
+                  <?php foreach ($usuarios as $usuario): ?>
                       <tr>
                           <td><?= htmlspecialchars($usuario['nome']) ?></td>
                           <td><?= htmlspecialchars(ucfirst($usuario['tipo'])) ?></td>
-                          <td><?= htmlspecialchars($usuario['polo']) ?></td>
+                          <td><?= htmlspecialchars($usuario['polo'] ?? 'N/A') ?></td>
                           <td class="acoes">
                               <span class="material-symbols-outlined acao-edit" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-                              <?php if ($is_admin) : ?>
-                                  <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
-                              <?php endif; ?>
+                              <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
                           </td>
                       </tr>
                   <?php endforeach; ?>
-              <?php else : ?>
+              <?php else: ?>
                   <tr>
                       <td colspan="4" style="text-align: center;">Nenhum usuário encontrado.</td>
                   </tr>

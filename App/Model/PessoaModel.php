@@ -161,6 +161,77 @@ class PessoaModel extends BaseModel {
 
         return $valores;
     }
+
+    /**
+     * Lista todas as pessoas com seus respectivos polos.
+     * @return array
+     */
+    public function listarPessoasComPolo(): array
+    {
+        $query = "
+            SELECT
+                p.pessoa_id,
+                p.nome,
+                p.perfil AS tipo,
+                polo.nome AS polo
+            FROM
+                pessoa p
+            LEFT JOIN
+                aluno_turma at ON p.pessoa_id = at.pessoa_id
+            LEFT JOIN
+                docente_turma dt ON p.pessoa_id = dt.pessoa_id
+            LEFT JOIN
+                turma t ON at.turma_id = t.turma_id OR dt.turma_id = t.turma_id
+            LEFT JOIN
+                polo ON t.polo_id = polo.polo_id
+            GROUP BY
+                p.pessoa_id
+            ORDER BY
+                p.nome ASC
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Busca pessoas por nome ou polo.
+     * @param string $termo O termo para buscar.
+     * @return array
+     */
+    public function buscarPessoasPorNomeOuPolo(string $termo): array
+    {
+        $query = "
+            SELECT
+                p.pessoa_id,
+                p.nome,
+                p.perfil AS tipo,
+                polo.nome AS polo
+            FROM
+                pessoa p
+            LEFT JOIN
+                aluno_turma at ON p.pessoa_id = at.pessoa_id
+            LEFT JOIN
+                docente_turma dt ON p.pessoa_id = dt.pessoa_id
+            LEFT JOIN
+                turma t ON at.turma_id = t.turma_id OR dt.turma_id = t.turma_id
+            LEFT JOIN
+                polo ON t.polo_id = polo.polo_id
+            WHERE
+                p.nome LIKE :termo OR polo.nome LIKE :termo
+            GROUP BY
+                p.pessoa_id
+            ORDER BY
+                p.nome ASC
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':termo' => '%' . $termo . '%']);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 
