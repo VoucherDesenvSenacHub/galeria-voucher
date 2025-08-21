@@ -45,7 +45,7 @@ class GaleriaTurmaController
         $orientadores = $this->docenteModel->buscarPorTurma($turmaId);
 
         // Funções auxiliares como urlImagem e formatarProjetos devem continuar em helpers
-        $imagemTurmaUrl = $turma['imagem'] ?? 'utilitarios/foto.png';
+        $imagemTurmaUrl = $turma['imagem'] ?? VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
         $nomeTurma = htmlspecialchars($turma['nome']);
         $descricaoTurma = nl2br(htmlspecialchars($turma['descricao']));
 
