@@ -1,7 +1,3 @@
-const pesquisa = document.getElementById('pesquisa');
-const tabela = document.getElementById('tabela-alunos');
-const linhas = tabela.getElementsByTagName('tr');
-
 /**
  * Função para remover acentos de uma string.
  * Ex: "Pólo" se torna "Polo".
@@ -14,5 +10,4 @@ function removerAcentos(texto) {
     }
     return texto;
 }
-
 
