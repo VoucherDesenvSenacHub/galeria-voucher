@@ -64,29 +64,29 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             ?>
 
             <?php if (isset($error_message)) : ?>
-                <div class="error-message" style="background: #ffebee; color: #c62828; padding: 1rem; margin: 1rem 0; border-radius: 8px; border: 1px solid #ffcdd2;">
+                <div class="error-message">
                     <?= htmlspecialchars($error_message) ?>
                 </div>
             <?php endif; ?>
 
             <?php if (isset($_SESSION['erro'])) : ?>
-                <div class="error-message" style="background: #ffebee; color: #c62828; padding: 1rem; margin: 1rem 0; border-radius: 8px; border: 1px solid #ffcdd2;">
+                <div class="error-message">
                     <?= htmlspecialchars($_SESSION['erro']) ?>
                 </div>
                 <?php unset($_SESSION['erro']); ?>
             <?php endif; ?>
 
             <?php if (isset($_SESSION['sucesso'])) : ?>
-                <div class="success-message" style="background: #e8f5e8; color: #2e7d32; padding: 1rem; margin: 1rem 0; border-radius: 8px; border: 1px solid #c8e6c9;">
+                <div class="success-message">
                     <?= htmlspecialchars($_SESSION['sucesso']) ?>
                 </div>
                 <?php unset($_SESSION['sucesso']); ?>
             <?php endif; ?>
 
             <!-- Título dinâmico baseado no modo -->
-            <div style="text-align: center; margin: 2rem 0;">
-                <h1 style="color: #2c3e50; font-size: 2rem; font-weight: 700;">
-                    <?= $isEditMode ? 'Editar Docentes da Turma' : 'Cadastrar Docentes' ?>
+            <div class="page-title-container">
+                <h1 class="page-title">
+                    <?= $isEditMode ? 'Editar Docentes da Turma' : 'Cadastrar Docentes da Turma' ?>
                 </h1>
             </div>
 
@@ -121,7 +121,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         <td class="acoes">
                                             <?php if ($is_admin) : ?>
                                                 <span class="material-symbols-outlined acao-delete" 
-                                                     style="cursor: pointer;" 
                                                      title="Desvincular docente" 
                                                      onclick="confirmarDesvinculacao(<?= $docente['pessoa_id'] ?>, <?= $turmaId ?>, '<?= htmlspecialchars($docente['nome']) ?>')">delete</span>
                                             <?php endif; ?>
@@ -130,13 +129,13 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                 <?php endforeach; ?>
                             <?php else : ?>
                                 <tr>
-                                    <td colspan="3" style="text-align: center; padding: 2rem; color: #6c757d;">
+                                    <td colspan="3" class="empty-table-cell">
                                         <?php if ($isEditMode) : ?>
                                             <?= isset($error_message) ? 'Erro ao carregar dados' : 'Nenhum docente vinculado a esta turma.' ?>
                                         <?php else : ?>
-                                            <div style="text-align: center;">
-                                                <p style="margin-bottom: 1rem; font-size: 1.1rem;">Nenhum docente cadastrado ainda.</p>
-                                                <p style="color: #6c757d; font-size: 0.9rem;">Clique em "VINCULAR DOCENTE" para adicionar docentes à turma.</p>
+                                            <div class="empty-state-container">
+                                                <p class="empty-state-title">Nenhum docente cadastrado ainda.</p>
+                                                <p class="empty-state-description">Clique em "VINCULAR DOCENTE" para adicionar docentes à turma.</p>
                                             </div>
                                         <?php endif; ?>
                                     </td>

@@ -44,7 +44,7 @@ $currentTab = 'projetos';
       </div>
 
       <div class="card-projeto">
-        <div class="card-content" style="display: flex; align-items: center; justify-content: space-between;">
+        <div class="card-content">
           <div class="card-imagem">
             <img src="../../../assets/img/turmas/turma-galeria.png" alt="Imagem do Projeto" class="img-projeto">
           </div>
@@ -52,15 +52,15 @@ $currentTab = 'projetos';
             <h3 class="projeto-titulo">Projeto 1</h3>
             <p class="projeto-descricao">Descrição do projeto vai aqui. Este é um exemplo de texto descritivo para o projeto.</p>
           </div>
-          <div style="display: flex; align-items: center; margin-left: auto;">
-            <span class="material-symbols-outlined" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-            <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
+          <div class="card-actions">
+            <span class="material-symbols-outlined action-icon" title="Editar">edit</span>
+            <span class="material-symbols-outlined action-icon" title="Excluir">delete</span>
           </div>
         </div>
       </div>
 
       <div class="card-projeto">
-        <div class="card-content" style="display: flex; align-items: center; justify-content: space-between;">
+        <div class="card-content">
           <div class="card-imagem">
             <img src="../../../assets/img/turmas/turma-galeria.png" alt="Imagem do Projeto" class="img-projeto">
           </div>
@@ -68,9 +68,9 @@ $currentTab = 'projetos';
             <h3 class="projeto-titulo">Projeto 2</h3>
             <p class="projeto-descricao">Descrição do projeto vai aqui. Este é um exemplo de texto descritivo para o projeto.</p>
           </div>
-          <div style="display: flex; align-items: center; margin-left: auto;">
-            <span class="material-symbols-outlined" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-            <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
+          <div class="card-actions">
+            <span class="material-symbols-outlined action-icon" title="Editar">edit</span>
+            <span class="material-symbols-outlined action-icon" title="Excluir">delete</span>
           </div>
         </div>
       </div>

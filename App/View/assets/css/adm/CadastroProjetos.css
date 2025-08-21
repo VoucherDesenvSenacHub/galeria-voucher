@@ -74,3 +74,19 @@
   line-height: 1.5;
   font-size: 1rem;
 }
+
+/* Estilos para ações dos cards */
+.card-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.action-icon {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.action-icon:last-child {
+  margin-right: 0;
+}

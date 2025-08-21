@@ -3,7 +3,7 @@ function confirmarDesvinculacao(pessoaId, turmaId, nomeDocente) {
         // Cria um formulário temporário para enviar os dados
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = '/App/Controls/DocenteController.php?action=desvincular';
+        form.action = '/galeria-voucher/App/Controls/DocenteController.php?action=desvincular';
         
         // Adiciona os campos necessários
         const pessoaIdInput = document.createElement('input');
