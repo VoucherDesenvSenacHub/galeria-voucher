@@ -56,6 +56,12 @@ button:active, a.primary-button:active, a.secondary-button:active {
     background-color: #d4d4d4;
     box-shadow: var(--boxshadow-secondary-button);
 }
+button.no-style {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+}
+
 
 @media (max-width : 481px) {
     button, a.primary-button, a.secondary-button{
