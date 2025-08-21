@@ -4,13 +4,10 @@ require_once __DIR__ . "/../../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Projetos");
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
+require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 
 // Define a aba atual
 $currentTab = 'projetos';
-?>
-<link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>adm/CadastroProjetos.css">
-require_once __DIR__ . "/../../../../Model/TurmaModel.php";
-
 
     try {
       $projetos = [];
@@ -24,9 +21,6 @@ require_once __DIR__ . "/../../../../Model/TurmaModel.php";
       $projetos = [];
       error_log("Erro ao buscar projetos: " . $e->getMessage());
 }
-
-
-
 
 ?>
 
