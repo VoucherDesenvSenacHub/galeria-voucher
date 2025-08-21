@@ -34,10 +34,6 @@ try {
         <canvas id="matrix-canvas"></canvas>
             
             <div class="content">
-                <div class="numero">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/numeros.png"
-                        alt="Números">
-                </div>
 
                 <div class="nome-voucher">
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nome.png"

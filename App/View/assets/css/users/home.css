@@ -43,7 +43,7 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    
+
 }
 
 .body-turma {
@@ -86,19 +86,6 @@
     }
 
     /* imagem dos números */
-    .numero {
-        position: absolute;
-        width: 100%;
-        height: 50rem;
-        text-align: right;
-        opacity: 20%;
-        overflow: hidden;
-        padding-left: 5rem;
-
-        img {
-            padding-left: 45rem;
-        }
-    }
 
     /* imagem do logo */
     .nome-voucher {
@@ -360,11 +347,6 @@
         max-width: 90%;
     }
 
-    #secao1 .numero img {
-        position: absolute;
-        left: 30%;
-        max-width: 50%;
-    }
 
     #secao3 .container2 {
         padding: 10px;
@@ -461,3 +443,71 @@
         margin-top: 10rem;
     }
 }
+
+@media (max-width: 391px) {
+    #matrix-canvas {
+        width: 110%;
+        height: 110%;
+        -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    }
+
+    #secao1 .mapa {
+        width: 100%;
+        height: 45vh;
+    }
+
+    #secao1 .nome-voucher {
+        width: 75%;
+        margin-left: 90px;
+        margin-bottom: 91px;
+    }
+
+    #secao2 {
+        display: flex;
+    }
+
+    #secao2 .container {
+        margin-right: -20px;
+    }
+
+    #secao3 .container2 .stats {
+        flex-direction: column;
+        gap: 90px;
+    }
+
+    #secao3 .container2 {
+        margin-left: 40px;
+    }
+
+    #secao4 .call-to-action p {
+        margin-left: 45px;
+        font-size: 40px;
+        text-align: center;
+    }
+    #secao4 .poligono .image-row{
+        flex-wrap: nowrap;
+        padding: 10px;
+        margin-left: 30px;
+    }
+    #secao4 .poligono .image-turma img{
+        width: 90px;
+        height: 90px;
+    }
+
+    /* Linha 1 (só 4 imagens) */
+    #secao4 .poligono .image-row:nth-of-type(1) .image-turma:nth-of-type(n+5) {
+        display: none;
+    }
+
+    /* Linha 2 (só 3 imagens) */
+    #secao4 .poligono .image-row:nth-of-type(2) .image-turma:nth-of-type(n+4) {
+        display: none;
+    }
+
+    /* Linha 3 (só 4 imagens) */
+    #secao4 .poligono .image-row:nth-of-type(3) .image-turma:nth-of-type(n+3) {
+        display: none;
+    }
+}
+
