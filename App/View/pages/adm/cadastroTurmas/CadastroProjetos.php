@@ -9,8 +9,28 @@ require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 $currentTab = 'projetos';
 ?>
 <link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>adm/CadastroProjetos.css">
+require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 
-<!-- Ícones Google -->
+
+    try {
+      $projetos = [];
+
+      if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $turmaId = (int) $_GET['id'];
+        $turmaModel = new TurmaModel();
+        $projetos = $turmaModel->BuscarProjetosPorTurma($turmaId);
+      }
+    } catch (Exception $e) {
+      $projetos = [];
+      error_log("Erro ao buscar projetos: " . $e->getMessage());
+}
+
+
+
+
+?>
+
+<link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>adm/CadastroProjetos.css">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 <body class="body-adm">
@@ -19,15 +39,6 @@ $currentTab = 'projetos';
     <?php
     $isAdmin = true;
     require_once __DIR__ . "/../../../componentes/nav.php";
-    ?>
-
-    <?php
-    $imagens = [
-      ["titulo" => "IMAGEM DA TURMA", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA I", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA P", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA E", "quantidade" => 6],
-    ];
     ?>
 
     <main class="main-turmas-turmas">
@@ -43,38 +54,30 @@ $currentTab = 'projetos';
         </a>
       </div>
 
-      <div class="card-projeto">
-        <div class="card-content">
-          <div class="card-imagem">
-            <img src="../../../assets/img/turmas/turma-galeria.png" alt="Imagem do Projeto" class="img-projeto">
-          </div>
-          <div class="card-info">
-            <h3 class="projeto-titulo">Projeto 1</h3>
-            <p class="projeto-descricao">Descrição do projeto vai aqui. Este é um exemplo de texto descritivo para o projeto.</p>
-          </div>
-          <div class="card-actions">
-            <span class="material-symbols-outlined action-icon" title="Editar">edit</span>
-            <span class="material-symbols-outlined action-icon" title="Excluir">delete</span>
-          </div>
+      <?php if (empty($projetos)): ?>
+    <p>Nenhum projeto encontrado para esta turma.</p>
+<?php else: ?>
+    <?php foreach ($projetos as $projeto): ?>
+        <div class="card-projeto">
+            <div class="card-content" style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="card-imagem">
+                    <img src="<?= $projeto['URL_IMAGEM'] ?>" alt="Imagem do <?= htmlspecialchars($projeto['NOME_PROJETO']) ?>" class="img-projeto">
+                </div>
+                <div class="card-info">
+                    <h3 class="projeto-titulo"><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></h3>
+                    <p class="projeto-descricao"><?= htmlspecialchars($projeto['DESCRICAO_PROJETO']) ?></p>
+                </div>
+                <div style="display: flex; align-items: center; margin-left: auto;">
+                    <span class="material-symbols-outlined" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
+                    <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
+                </div>
+            </div>
         </div>
-      </div>
+    <?php endforeach; ?>
+<?php endif; ?>
 
-      <div class="card-projeto">
-        <div class="card-content">
-          <div class="card-imagem">
-            <img src="../../../assets/img/turmas/turma-galeria.png" alt="Imagem do Projeto" class="img-projeto">
-          </div>
-          <div class="card-info">
-            <h3 class="projeto-titulo">Projeto 2</h3>
-            <p class="projeto-descricao">Descrição do projeto vai aqui. Este é um exemplo de texto descritivo para o projeto.</p>
-          </div>
-          <div class="card-actions">
-            <span class="material-symbols-outlined action-icon" title="Editar">edit</span>
-            <span class="material-symbols-outlined action-icon" title="Excluir">delete</span>
-          </div>
-        </div>
-      </div>
     </main>
   </div>
 </body>
+
 </html>
