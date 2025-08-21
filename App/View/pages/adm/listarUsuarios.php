@@ -4,20 +4,20 @@ headerComponent("Voucher Desenvolvedor - Pessoas");
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../Model/PessoaModel.php";
 
-// Lógica para buscar os dados
+// --- LÓGICA DE PAGINAÇÃO E BUSCA ---
 $pessoaModel = new PessoaModel();
 $termoPesquisa = $_GET['pesquisa'] ?? '';
-$usuarios = [];
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$usuariosPorPagina = 10;
+$offset = ($paginaAtual - 1) * $usuariosPorPagina;
 
 try {
-    if (!empty($termoPesquisa)) {
-        // Se houver um termo de pesquisa, busca os usuários filtrados
-        $usuarios = $pessoaModel->buscarPessoasPorNomeOuPolo($termoPesquisa);
-    } else {
-        // Caso contrário, lista todos os usuários
-        $usuarios = $pessoaModel->listarPessoasComPolo();
-    }
+    $totalUsuarios = $pessoaModel->contarTotalPessoas($termoPesquisa);
+    $totalPaginas = ceil($totalUsuarios / $usuariosPorPagina);
+    $usuarios = $pessoaModel->buscarPessoasPaginado($usuariosPorPagina, $offset, $termoPesquisa);
 } catch (Exception $e) {
+    $usuarios = [];
+    $totalPaginas = 0;
     error_log("Erro ao buscar usuários: " . $e->getMessage());
 }
 ?>
@@ -83,8 +83,33 @@ try {
           </table>
         </div>
       </div>
-    </div>
-  </main>
+
+      <div class="paginacao-container">
+                <?php if ($totalPaginas > 1): ?>
+                    <div class="paginacao">
+                        <a href="?pagina=1<?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&laquo;</a>
+                        
+                        <?php if ($paginaAtual > 1): ?>
+                            <a href="?pagina=<?= $paginaAtual - 1 ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&lsaquo;</a>
+                        <?php endif; ?>
+
+                        <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                            <a href="?pagina=<?= $i ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" 
+                               class="paginacao-item <?= ($i == $paginaAtual) ? 'paginacao-ativa' : '' ?>">
+                                <?= $i ?>
+                            </a>
+                        <?php endfor; ?>
+
+                        <?php if ($paginaAtual < $totalPaginas): ?>
+                            <a href="?pagina=<?= $paginaAtual + 1 ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&rsaquo;</a>
+                        <?php endif; ?>
+
+                        <a href="?pagina=<?= $totalPaginas ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&raquo;</a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </main>
   <script src="../../assets/js/adm/lista-alunos.js"></script>
 
 </body>
