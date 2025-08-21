@@ -302,7 +302,13 @@ class TurmaModel extends BaseModel
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function buscarTurmaProjetoID($idTurma): array
+
+    /**
+     * Busca uma turma específica com seus projetos associados.
+     * @param int $idTurma O ID da turma.
+     * @return array Array com dados da turma e projetos.
+     */
+    public function buscarTurmaProjetoID(int $idTurma): array
     {
         $query = "SELECT t.nome as nomeTurma, 
                 t.descricao as descricaoTurma, 
@@ -312,11 +318,86 @@ class TurmaModel extends BaseModel
                 from turma as t 
                 Left join projeto as p 
                 on t.turma_id = p.turma_id
-                where t.turma_id = $idTurma";
+                where t.turma_id = :idTurma";
 
         $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':idTurma', $idTurma, PDO::PARAM_INT);
         $stmt->execute();
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Busca todos os projetos com descrições completas, incluindo turma, polo e imagem.
+     * @return array Array com todos os projetos e suas informações relacionadas.
+     */
+    public function buscarProjetosComDescricao(): array
+    {
+        $query = "
+            SELECT 
+                pr.projeto_id,
+                pr.nome AS NOME_PROJETO,
+                pr.descricao AS DESCRICAO_PROJETO,
+                pr.link AS LINK_PROJETO,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO,
+                i.url AS URL_IMAGEM,
+                i.descricao AS DESCRICAO_IMAGEM
+            FROM 
+                projeto pr
+            JOIN 
+                turma t ON pr.turma_id = t.turma_id
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+            LEFT JOIN 
+                imagem_projeto ip ON pr.projeto_id = ip.projeto_id
+            LEFT JOIN 
+                imagem i ON ip.imagem_id = i.imagem_id
+            ORDER BY 
+                pr.nome ASC
+        ";
+    
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Busca projetos de uma turma específica com descrições completas.
+     * @param int $turmaId O ID da turma.
+     * @return array Array com projetos da turma e suas informações relacionadas.
+     */
+    public function buscarProjetosPorTurma(int $turmaId): array
+    {
+        $query = "
+            SELECT 
+                pr.projeto_id,
+                pr.nome AS NOME_PROJETO,
+                pr.descricao AS DESCRICAO_PROJETO,
+                pr.link AS LINK_PROJETO,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO,
+                i.url AS URL_IMAGEM,
+                i.descricao AS DESCRICAO_IMAGEM
+            FROM 
+                projeto pr
+            JOIN 
+                turma t ON pr.turma_id = t.turma_id
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+            LEFT JOIN 
+                imagem_projeto ip ON pr.projeto_id = ip.projeto_id
+            LEFT JOIN 
+                imagem i ON ip.imagem_id = i.imagem_id
+            WHERE 
+                t.turma_id = :turmaId
+            ORDER BY 
+                pr.nome ASC
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':turmaId', $turmaId, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
