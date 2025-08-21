@@ -4,6 +4,24 @@ require_once __DIR__ . "/../../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Projetos");
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
+
+
+    try {
+      $projetos = [];
+
+      if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $turmaId = (int) $_GET['id'];
+        $turmaModel = new TurmaModel();
+        $projetos = $turmaModel->BuscarProjetosPorTurma($turmaId);
+      }
+    } catch (Exception $e) {
+      $projetos = [];
+      error_log("Erro ao buscar projetos: " . $e->getMessage());
+}
+
+
+
+
 ?>
 
 <link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>adm/CadastroProjetos.css">
@@ -31,38 +49,27 @@ require_once __DIR__ . "/../../../../Model/TurmaModel.php";
         </a>
       </div>
 
-      <?php
-      try {
-        $turmaModel = new TurmaModel();
-        $projetos = $turmaModel->BuscarProjetosComDescricao();
-
-        if (!is_array($projetos)) $projetos = [];
-      } catch (Exception $e) {
-        $projetos = [];
-        error_log("Erro ao buscar projetos: " . $e->getMessage());
-      }
-      ?>
-
-      <?php foreach ($projetos as $projeto): ?>
+      <?php if (empty($projetos)): ?>
+    <p>Nenhum projeto encontrado para esta turma.</p>
+<?php else: ?>
+    <?php foreach ($projetos as $projeto): ?>
         <div class="card-projeto">
-          <div class="card-content" style="display: flex; align-items: center; justify-content: space-between;">
-            <div class="card-imagem">
-              <img src="<?= $projeto['URL_IMAGEM'] ?>"
-                alt="Imagem da <?= htmlspecialchars($projeto['NOME_TURMA']) ?>"
-                class="img-projeto">
+            <div class="card-content" style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="card-imagem">
+                    <img src="<?= $projeto['URL_IMAGEM'] ?>" alt="Imagem do <?= htmlspecialchars($projeto['NOME_PROJETO']) ?>" class="img-projeto">
+                </div>
+                <div class="card-info">
+                    <h3 class="projeto-titulo"><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></h3>
+                    <p class="projeto-descricao"><?= htmlspecialchars($projeto['DESCRICAO_PROJETO']) ?></p>
+                </div>
+                <div style="display: flex; align-items: center; margin-left: auto;">
+                    <span class="material-symbols-outlined" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
+                    <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
+                </div>
             </div>
-            <div class="card-info">
-              <h3 class="projeto-titulo"><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></h3>
-              <p class="projeto-descricao"><?= htmlspecialchars($projeto['DESCRICAO_PROJETO']) ?></p>
-              <small class="projeto-polo"><?= htmlspecialchars($projeto['NOME_POLO']) ?></small>
-            </div>
-            <div style="display: flex; align-items: center; margin-left: auto;">
-              <span class="material-symbols-outlined" style="cursor: pointer; margin-right: 10px;" title="Editar">edit</span>
-              <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
-            </div>
-          </div>
         </div>
-      <?php endforeach; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
 
     </main>
   </div>
