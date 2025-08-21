@@ -39,11 +39,18 @@ class DocenteModel extends BaseModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    /**
+     * Desvincula um docente de uma turma específica
+     * @param int $pessoa_id ID da pessoa (docente)
+     * @return array
+     */
 
     public function buscarDocentesPorTurmaId(int $id): array 
     {
         $query = "
             SELECT 
+                p.pessoa_id,
                 p.nome,
                 polo.nome AS polo
             FROM 
@@ -65,5 +72,25 @@ class DocenteModel extends BaseModel {
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([':id' => $id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Desvincula um docente de uma turma específica
+     * @param int $pessoa_id ID da pessoa (docente)
+     * @param int $turma_id ID da turma
+     * @return bool
+     */
+    
+    public function desvincularDocenteDaTurma(int $pessoa_id, int $turma_id): bool
+    {
+        $query = "DELETE FROM docente_turma WHERE pessoa_id = :pessoa_id AND turma_id = :turma_id";
+        
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([
+            ':pessoa_id' => $pessoa_id,
+            ':turma_id' => $turma_id
+        ]);
+        
+        return $stmt->rowCount() > 0;
     }
 }

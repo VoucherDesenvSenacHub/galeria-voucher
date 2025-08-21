@@ -3,7 +3,8 @@
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/adm/auth.php"; 
-require_once __DIR__ . "/../../../../Model/DocenteModel.php"; 
+require_once __DIR__ . "/../../../../Model/DocenteModel.php";
+require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php"; 
 
 headerComponent("Voucher Desenvolvedor - Docentes");
 $currentTab = 'docentes';
@@ -57,12 +58,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         ?>
 
         <main class="main-turmas-turmas">
-            <div class="tabs-adm-turmas">
-                <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : '' ?>" href="cadastroTurmas.php<?= $turmaId ? '?id=' . $turmaId : '' ?>">DADOS GERAIS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>" href="CadastroProjetos.php<?= $turmaId ? '?id=' . $turmaId : '' ?>">PROJETOS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>" href="docentes.php<?= $turmaId ? '?id=' . $turmaId : '' ?>">DOCENTES</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php<?= $turmaId ? '?id=' . $turmaId : '' ?>">ALUNOS</a>
-            </div>
+            <?php 
+            // Usa o componente de abas das turmas
+            tabsTurmaComponent($currentTab, $turmaId);
+            ?>
 
             <?php if (isset($error_message)) : ?>
                 <div class="error-message" style="background: #ffebee; color: #c62828; padding: 1rem; margin: 1rem 0; border-radius: 8px; border: 1px solid #ffcdd2;">
@@ -70,16 +69,25 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 </div>
             <?php endif; ?>
 
+            <?php if (isset($_SESSION['erro'])) : ?>
+                <div class="error-message" style="background: #ffebee; color: #c62828; padding: 1rem; margin: 1rem 0; border-radius: 8px; border: 1px solid #ffcdd2;">
+                    <?= htmlspecialchars($_SESSION['erro']) ?>
+                </div>
+                <?php unset($_SESSION['erro']); ?>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['sucesso'])) : ?>
+                <div class="success-message" style="background: #e8f5e8; color: #2e7d32; padding: 1rem; margin: 1rem 0; border-radius: 8px; border: 1px solid #c8e6c9;">
+                    <?= htmlspecialchars($_SESSION['sucesso']) ?>
+                </div>
+                <?php unset($_SESSION['sucesso']); ?>
+            <?php endif; ?>
+
             <!-- Título dinâmico baseado no modo -->
             <div style="text-align: center; margin: 2rem 0;">
                 <h1 style="color: #2c3e50; font-size: 2rem; font-weight: 700;">
-                    <?= $isEditMode ? 'Editar Docentes da Turma' : 'Cadastrar Nova Turma - Docentes' ?>
+                    <?= $isEditMode ? 'Editar Docentes da Turma' : 'Cadastrar Docentes' ?>
                 </h1>
-                <?php if ($isEditMode) : ?>
-                    <p style="color: #6c757d; font-size: 1.1rem; margin-top: 0.5rem;">
-                        ID da Turma: <?= $turmaId ?>
-                    </p>
-                <?php endif; ?>
             </div>
 
             <div class="topo-lista-alunos">
@@ -112,7 +120,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         <td><?= htmlspecialchars($docente['polo']) ?></td>
                                         <td class="acoes">
                                             <?php if ($is_admin) : ?>
-                                                <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
+                                                <span class="material-symbols-outlined acao-delete" 
+                                                     style="cursor: pointer;" 
+                                                     title="Desvincular docente" 
+                                                     onclick="confirmarDesvinculacao(<?= $docente['pessoa_id'] ?>, <?= $turmaId ?>, '<?= htmlspecialchars($docente['nome']) ?>')">delete</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
@@ -143,6 +154,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     <script src="../../../assets/js/adm/lista-alunos.js"></script>
     <script src="../../../assets/js/main.js"></script>
     <script src="../../../assets/js/adm/autocomplete-pessoas.js"></script>
+    <script src="../../../assets/js/adm/desvincula-docente.js"></script>
 
 </body>
 

@@ -63,6 +63,9 @@ $polos = $poloModel->buscarTodos();
 
 // Renderiza o componente do cabeçalho HTML, passando o título dinâmico da página.
 headerComponent($tituloPagina);
+
+// Define a aba atual
+$currentTab = 'dados-gerais';
 ?>
 
 <body class="body-adm">
@@ -71,15 +74,15 @@ headerComponent($tituloPagina);
     <?php
     $isAdmin = true; // Variável para o componente nav.php saber que é uma página de admin.
     require_once __DIR__ . "/../../../componentes/nav.php"; // Inclui a barra de navegação superior.
+    require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php"; // Inclui o componente de abas das turmas
     ?>
 
     <main class="main-turmas-turmas">
-      <div class="tabs-adm-turmas">
-        <a class="tab-adm-turmas active" href="cadastroTurmas.php">DADOS GERAIS</a>
-        <a class="tab-adm-turmas" href="CadastroProjetos.php">PROJETOS</a>
-        <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
-        <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
-      </div>
+      <?php 
+      // Usa o componente de abas das turmas
+      $turmaId = isset($_GET['id']) ? (int)$_GET['id'] : null;
+      tabsTurmaComponent($currentTab, $turmaId);
+      ?>
 
       <div class="container-main-adm">
         <form id="form-turma" method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data"

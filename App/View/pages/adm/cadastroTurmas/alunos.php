@@ -4,6 +4,7 @@ require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../../Model/AlunoModel.php"; // Inclui o AlunoModel
+require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 
 headerComponent("Voucher Desenvolvedor - Alunos");
 $currentTab = 'alunos';
@@ -40,12 +41,11 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             <section class="section_modal">
 
             </section>
-            <div class="tabs-adm-turmas">
-                <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : '' ?>" href="cadastroTurmas.php">DADOS GERAIS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>" href="CadastroProjetos.php">PROJETOS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>" href="docentes.php">DOCENTES</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>
-            </div>
+            <?php 
+            // Usa o componente de abas das turmas
+            $turmaId = isset($_GET['id']) ? (int)$_GET['id'] : null;
+            tabsTurmaComponent($currentTab, $turmaId);
+            ?>
 
             <div class="topo-lista-alunos">
                 <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\""); ?>
