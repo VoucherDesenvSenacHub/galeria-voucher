@@ -21,71 +21,11 @@ if ($acao === 'editar' && $id) {
 <body class="body-cadastrar-users">
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php
-
   $isAdmin = true; // Para páginas de admin
-  
   require_once __DIR__ . "/../../componentes/nav.php";
   ?>
 
   <main class="conteudo-cadastro">
-
-    <h1 class='h1-usuario'><?= $acao === 'editar' ? 'Editar Pessoa' : 'Cadastro' ?></h1>
-    <div class="container-users">
-      <div class="form-container-users">
-
-        <?php if ($acao === 'editar'): ?>
-          <form class="form-dados" action="../../../Controls/ControllerPessoa.php?acao=editar" method="post" enctype="multipart/form-data">
-          <?php else: ?>
-            <form class="form-dados" action="../../../Controls/ControllerPessoa.php?acao=cadastrar" method="post" enctype="multipart/form-data">
-            <?php endif; ?>
-
-            <input type="hidden" name="acao" value="<?= htmlspecialchars($acao) ?>">
-            <?php if ($acao === 'editar'): ?>
-              <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
-            <?php endif; ?>
-
-            <div class="form-top">
-              <div class="form-group">
-                <input type="text" name="nome" id="nome" value="<?= htmlspecialchars($pessoa['nome'] ?? '') ?>" placeholder="Nome Completo" required />
-                <input type="email" name="email" id="email" value="<?= htmlspecialchars($pessoa['email'] ?? '') ?>" placeholder="Email" required />
-                <input type="text" name="linkedin" id="linkedin" value="<?= htmlspecialchars($pessoa['linkedin'] ?? '') ?>" placeholder="Link do linkedin" />
-                <input type="text" name="github" id="github" value="<?= htmlspecialchars($pessoa['github'] ?? '') ?>" placeholder="Link para o GitHub" />
-              </div>
-
-              <div class="form-group-polo div-center">
-                <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;">
-                  <option value="professor" <?= (($pessoa['perfil'] ?? '') === 'professor') ? 'selected' : '' ?>>Professor</option>
-                  <option value="aluno" <?= (($pessoa['perfil'] ?? '') === 'aluno') ? 'selected' : '' ?>>Aluno</option>
-                </select>
-
-                <select id="polo" name="polo" class="input-text" style="cursor: pointer;">
-                  <option value="">Polo:</option>
-                  <option value="polo1" <?= (($pessoa['polo'] ?? '') === 'polo1') ? 'selected' : '' ?>>Campo Grande</option>
-                  <option value="polo2" <?= (($pessoa['polo'] ?? '') === 'polo2') ? 'selected' : '' ?>>Tres Lagoas</option>
-                  <option value="polo3" <?= (($pessoa['polo'] ?? '') === 'polo3') ? 'selected' : '' ?>>Dourados</option>
-                  <option value="polo4" <?= (($pessoa['polo'] ?? '') === 'polo4') ? 'selected' : '' ?>>Corumba</option>
-                  <option value="polo5" <?= (($pessoa['polo'] ?? '') === 'polo5') ? 'selected' : '' ?>>Ponta Pora</option>
-                </select>
-              </div>
-
-              <div class="form-group-imagem">
-                <div class="input-file-cadastro">
-                  <label class="input-file-wrapper">
-                    <img id="preview" src="<?= htmlspecialchars($pessoa['imagem_url'] ?? VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png') ?>" alt="Upload" />
-                    <input type="file" id="fileInput" name="imagem" accept="image/*" style="display: none;" />
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-bottom">
-              <div class="form-group-buton">
-                <button type="button" class="secondary-button"><a href="../adm/listarUsuarios.php">Cancelar</a></button>
-                <button type="submit" class="primary-button">
-                  <?= $acao === 'editar' ? 'Salvar alterações' : 'Cadastrar' ?>
-                </button>
-              </div>
-=======
     <h1 class='h1-usuario'>CADASTRO</h1>
     <div class="container-users">
       <div class="form-container-users">
@@ -139,9 +79,8 @@ if ($acao === 'editar' && $id) {
               buttonComponent('secondary', 'Cancelar', 'reset', false);
               buttonComponent('primary', 'Cadastrar', true);
               ?>
-
             </div>
-            </form>
+          </form>
       </div>
     </div>
   </main>
@@ -172,6 +111,5 @@ if ($acao === 'editar' && $id) {
   <?php endif; ?>
 
 </body>
-
 </html>
 
