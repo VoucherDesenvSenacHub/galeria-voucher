@@ -59,7 +59,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             placeholder="Pesquisar por nome ou polo" 
                             value="<?= htmlspecialchars($termoPesquisa) ?>">
                         
-                        <button type="submit" class="search-button">
+                        <button type="submit" id="search-button">
                             <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
                                 class="icone-lupa-img">
                         </button>

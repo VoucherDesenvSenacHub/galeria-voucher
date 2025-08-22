@@ -64,7 +64,7 @@
 }
 
 /* Estilos para o botão de pesquisa */
-.search-button {
+#search-button {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -72,6 +72,7 @@
   top: -15%;
   right: 14px;
   padding: 0;
+  width: 32px;
 }
 .acoes-container {
   display: flex;
