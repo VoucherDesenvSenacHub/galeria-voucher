@@ -1,8 +1,14 @@
-// pessoas para autocomplete — pode receber via fetch, mas vamos hardcode por enquanto
-const pessoas = ['Manoel Victor', 'Amanda Lima', 'José Pereira', 'Lucas Silva', 'Thauanny Souza'];
-
+async function buscarAlunos() {
+  console.log('buscarAlunos chamada');
+  const response = await fetch('/galeria-voucher/app/Controls/AlunoController.php?acao=alunos');
+  const dados = await response.json();
+  console.log(await dados)
+  return dados;
+}
 // Função para ativar autocomplete no form dentro do modal
-function ativarAutocomplete() {
+async function ativarAutocomplete() {
+    const pessoas = await buscarAlunos();
+    
     const input = document.getElementById("pesquisar-pessoa");
     if (!input) return; // só executa se input existir (modal aberto)
 
@@ -11,22 +17,25 @@ function ativarAutocomplete() {
     const adicionados = new Set();
 
     input.addEventListener("input", () => {
+    
         const valor = input.value.toLowerCase();
         sugestoes.innerHTML = "";
         if (valor.length === 0) return;
 
-        pessoas.forEach(nome => {
-            if (nome.toLowerCase().startsWith(valor) && !adicionados.has(nome)) {
+        pessoas.forEach(pessoa => {
+            const nome = pessoa.nome_pessoa.toLowerCase();  
+            if (nome.startsWith(valor) && !adicionados.has(nome)) {
                 const div = document.createElement("div");
-                div.textContent = nome;
+                div.textContent = pessoa.nome_pessoa;        // mostrar nome_pessoa
                 div.style.cursor = "pointer";
-                div.onclick = () => adicionarPessoa(nome);
+                div.onclick = () => adicionarPessoa(pessoa.nome_pessoa);
                 sugestoes.appendChild(div);
             }
         });
     });
 
-    function adicionarPessoa(nome) {
+
+    async function adicionarPessoa(nome) {
         adicionados.add(nome);
         input.value = "";
         sugestoes.innerHTML = "";

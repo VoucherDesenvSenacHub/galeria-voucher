@@ -43,12 +43,14 @@ class PessoaModel extends BaseModel
     // Buscar pessoa por ID (Read)
     public function buscarPessoaPorId(int $id): ?array
     {
-        $sql = "SELECT * FROM pessoa WHERE pessoa_id = :id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id]);
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $resultado ?: null;
+        $sql = "SELECT * FROM pessoa WHERE pessoa_id = :id LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado ? $resultado : null;
+
     }
 
     // Atualizar pessoa (Update)
@@ -81,18 +83,79 @@ class PessoaModel extends BaseModel
     }
 
     // Deletar pessoa (Delete)
-    public function deletarPessoa(int $id): bool
+    public function deletarPessoa(int $id, string $perfil): bool
     {
-        $sql = "DELETE FROM pessoa WHERE pessoa_id = :id";
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([':id' => $id]);
+        $tabelaDependencia = '';
+        if ($perfil === 'aluno') {
+            $tabelaDependencia = 'aluno_turma';
+        } elseif ($perfil === 'professor') {
+            $tabelaDependencia = 'docente_turma';
+        }
+
+        try {
+            $this->pdo->beginTransaction();
+
+            // 1. Deleta da tabela de dependência de perfil (aluno_turma ou docente_turma)
+            if ($tabelaDependencia) {
+                $sql1 = "DELETE FROM {$tabelaDependencia} WHERE pessoa_id = :id";
+                $stmt1 = $this->pdo->prepare($sql1);
+                $stmt1->execute([':id' => $id]);
+            }
+
+            // 2. Deleta da tabela 'usuario' (A LINHA QUE FALTAVA)
+            $sql_usuario = "DELETE FROM usuario WHERE pessoa_id = :id";
+            $stmt_usuario = $this->pdo->prepare($sql_usuario);
+            $stmt_usuario->execute([':id' => $id]);
+
+            // 3. Finalmente, deleta da tabela principal 'pessoa'
+            $sql2 = "DELETE FROM pessoa WHERE pessoa_id = :id";
+            $stmt2 = $this->pdo->prepare($sql2);
+            $stmt2->execute([':id' => $id]);
+
+            $this->pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            $this->pdo->rollBack();
+            return false;
+        }
     }
+
 
     // Listar todas as pessoas
     public function listarPessoas(): array
     {
         $sql = "SELECT * FROM pessoa";
         $stmt = $this->pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function listarPessoasTable(int $limit, int $offset): array
+    {
+        $sql = "SELECT * FROM (
+                SELECT DISTINCT p.pessoa_id, p.nome, p.perfil, po.nome AS nome_polo
+                FROM pessoa p
+                INNER JOIN aluno_turma at ON p.pessoa_id = at.pessoa_id
+                INNER JOIN turma t ON at.turma_id = t.turma_id
+                INNER JOIN polo po ON t.polo_id = po.polo_id
+                WHERE p.perfil = 'aluno'
+
+                UNION
+
+                SELECT DISTINCT p.pessoa_id, p.nome, p.perfil, po.nome AS nome_polo
+                FROM pessoa p
+                INNER JOIN docente_turma dt ON p.pessoa_id = dt.pessoa_id
+                INNER JOIN turma t ON dt.turma_id = t.turma_id
+                INNER JOIN polo po ON t.polo_id = po.polo_id
+                WHERE p.perfil = 'professor'
+                ) AS resultado
+                ORDER BY nome ASC
+                LIMIT :limit OFFSET :offset;";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

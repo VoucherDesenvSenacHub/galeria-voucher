@@ -1,11 +1,21 @@
 <?php
 require_once __DIR__ . "/../../../Controls/cadastrar_pessoa.php";
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../componentes/input.php";
-require_once __DIR__ . "/../../componentes/button.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . '/../../../Model/PessoaModel.php';
 
-headerComponent('Cadastro de Pessoa')
+headerComponent('Cadastro de Pessoa');
+
+$acao = $_GET['acao'] ?? 'cadastrar';
+$id = $_GET['id'] ?? null;
+
+$model = new PessoaModel();
+$pessoa = null;
+
+if ($acao === 'editar' && $id) {
+  $pessoa = $model->buscarPessoaPorId($id);
+}
+
 ?>
 
 <body class="body-cadastrar-users">
@@ -70,8 +80,7 @@ headerComponent('Cadastro de Pessoa')
               buttonComponent('primary', 'Cadastrar', true);
               ?>
             </div>
-          </div>
-        </form>
+          </form>
       </div>
     </div>
   </main>
@@ -92,23 +101,7 @@ headerComponent('Cadastro de Pessoa')
     });
 
     const tipoUsuario = document.getElementById('tipo-usuario');
-    const textareaSobre = document.getElementById('informacoes-adicionais');
-
-    function atualizarPlaceholder(tipo) {
-      if (tipo === 'professor') {
-        textareaSobre.placeholder = 'Digite algo sobre o professor...';
-      } else {
-        textareaSobre.placeholder = 'Digite algo sobre o aluno...';
-      }
-    }
-
-    window.addEventListener('load', () => {
-      atualizarPlaceholder(tipoUsuario.value);
-    });
-
-    tipoUsuario.addEventListener('change', () => {
-      atualizarPlaceholder(tipoUsuario.value);
-    });
+    // Aqui você pode adicionar lógica para mudar placeholder etc, se quiser
   </script>
   <?php if (!empty($mensagem)): ?>
     <script>
@@ -118,5 +111,5 @@ headerComponent('Cadastro de Pessoa')
   <?php endif; ?>
 
 </body>
-
 </html>
+
