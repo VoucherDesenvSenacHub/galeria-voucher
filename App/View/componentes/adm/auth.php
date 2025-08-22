@@ -1,4 +1,4 @@
-tem problema ficar assimno auth? <?php
+<?php
 require_once __DIR__ . '/../../../model/UsuarioModel.php';
 
 if (session_status() === PHP_SESSION_NONE) {
