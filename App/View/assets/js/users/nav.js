@@ -50,23 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('sub-tab-' + subtabId).classList.add('active');
         });
 
-        btn.addEventListener('mouseleave', () => {
-            const activeId = subTabState[projetoId];
-            if (activeId) {
-                subTabBtns.forEach(b => {
-                    b.classList.toggle('active', b.dataset.subtab === activeId);
-                });
-                subContents.forEach(c => {
-                    c.classList.toggle('active', c.id === 'sub-tab-' + activeId);
-                });
-            } else {
-                if (subTabBtns.length > 0 && subContents.length > 0) {
-                    subTabBtns.forEach((b, idx) => b.classList.toggle('active', idx === 0));
-                    subContents.forEach((c, idx) => c.classList.toggle('active', idx === 0));
-                }
-            }
-        });
-
         btn.addEventListener('click', () => {
             subTabState[projetoId] = subtabId;
         });

@@ -179,6 +179,11 @@
   margin-right: 0 !important;
 }
 
+.galeria-turma-no-side-padding{
+  padding-left: 0!important;
+  padding-right: 0!important;
+}
+
 /* ===== SEÇÕES PRINCIPAIS ===== */
 .galeria-turma-section {
   max-width: 1200px;
@@ -244,6 +249,7 @@
 }
 
 .projetos-turma {
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 30px;
 }
@@ -454,7 +460,6 @@
   gap: 40px;
   min-height: 400px;
   padding: 20px;
-  margin-left: 50px;
   background: linear-gradient(135deg, #0a0a0a90, #1a1a1a);
   border-radius: 15px;
   border: 1px solid #333;
@@ -729,7 +734,6 @@ h1,h2,h3{
   gap: 20px;
   min-height: 200px;
   font-size: 1.5rem;
-  padding-left: 100px;
   background: linear-gradient(135deg, #0b0b0b53, #1a1a1a);
 }
 

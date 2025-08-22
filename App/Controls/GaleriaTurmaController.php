@@ -59,6 +59,8 @@ class GaleriaTurmaController
             'orientadores' => $orientadores,
             'tabsProjetos' => $dadosProjetos['tabsProjetos'],
             'projetosFormatados' => $dadosProjetos['projetosFormatados'],
+            "polo" => $turma["polo"],
+            "cidade"=> $turma["cidade"],
         ];
     }
 }

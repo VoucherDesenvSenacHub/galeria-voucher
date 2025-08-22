@@ -48,6 +48,11 @@ headerComponent('Galeria da Turma');
     <section class="galeria-turma-section galeria-turma-projeto">
         <h1 class="galeria-turma-h1 projetos-turma">Projetos da turma</h1>
 
+        <section class="galeria-turma-senac">
+            <h3 class="galeria-turma-h3"><?= $polo?></h3>
+            <h3 class="galeria-turma-h3"><?= $cidade?></h3>
+        </section>
+
         <section class="galeria-turma-tab-inner">
             <img class="galeria-turma-imagem-direita" src="<?php echo VARIAVEIS['APP_URL'] . $imagemTurmaUrl ?>" alt="Imagem da Turma">
             <div class="galeria-turma-margin-top-left-projeto1-dia-i">
@@ -57,7 +62,7 @@ headerComponent('Galeria da Turma');
         </section>
 
         <!-- ------------------- SEÇÃO DE PROJETOS ------------------- -->
-        <section class="galeria-turma-section galeria-turma-galeria projetos-turma">
+        <section class="galeria-turma-section galeria-turma-galeria projetos-turma galeria-turma-no-side-padding">
             <h1 class="galeria-turma-h1">Galeria de Projetos</h1>
 
             <!-- Navegação principal dos projetos -->
