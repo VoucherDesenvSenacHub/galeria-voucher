@@ -73,4 +73,22 @@
   color: #666;
   line-height: 1.5;
   font-size: 1rem;
+  font-family: var(--font-primary);
+}
+
+.projeto-polo{
+  font-family: var(--font-primary); 
+}
+
+.projeto-titulo{
+  font-family: var(--font-primary); 
+}
+
+.projeto-descricao{
+  font-family: var(--font-primary); 
+}
+
+.p{
+  font-family: var(--font-primary); 
+
 }
