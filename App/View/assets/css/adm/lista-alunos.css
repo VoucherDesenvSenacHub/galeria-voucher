@@ -215,14 +215,11 @@ tbody tr:nth-child(odd) {
 
 /* Estilos para o título da página */
 .page-title-container {
-  text-align: center;
-  margin: 2rem 0;
+  margin: 1.5rem 0.5rem;
 }
 
 .page-title {
   color: #2c3e50;
-  font-size: 2rem;
-  font-weight: 700;
 }
 
 /* Estilos para células vazias da tabela */
