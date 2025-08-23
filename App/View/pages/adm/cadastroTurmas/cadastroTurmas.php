@@ -94,9 +94,10 @@ $currentTab = 'Dados-gerais';
 
       <div class="page-title-container">
         <h1 class="page-title">
-          <?= $isEditMode ? 'Editar > ' . $currentTab : 'Cadastrar > ' . $currentTab ?>
+          <?= 'Turmas > ' . $currentTab ?>
         </h1>
       </div>
+
 
       <div class="container-main-adm">
         <form id="form-turma" method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data"

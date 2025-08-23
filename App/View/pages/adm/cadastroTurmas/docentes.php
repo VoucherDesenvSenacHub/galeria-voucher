@@ -83,10 +83,9 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 <?php unset($_SESSION['sucesso']); ?>
             <?php endif; ?>
 
-            <!-- Título dinâmico baseado no modo -->
             <div class="page-title-container">
                 <h1 class="page-title">
-                    <?= $isEditMode ? 'Editar > ' . $currentTab : 'Cadastrar > ' . $currentTab ?>
+                    <?='Turmas > ' . $currentTab ?>
                 </h1>
             </div>
 
