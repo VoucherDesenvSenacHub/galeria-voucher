@@ -20,9 +20,9 @@ headerComponent('Página inicial - ADM');
     <main class="content-adm">
       <div class="user-profile-adm">
         <div>
-          <img src="<?= $usuarioImagem ?>"
+          <img class="img-Adm" src="<?= $usuarioImagem ?>"
             alt="Foto de <?= $usuarioNome ?>"
-            style="width:300px; height:300px; border-radius:100%; object-fit:cover;">
+          >
         </div>
 
         <div class="welcome-message-adm">

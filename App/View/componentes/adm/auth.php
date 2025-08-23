@@ -1,19 +1,11 @@
 <?php
-require_once __DIR__ . '/../../../model/UsuarioModel.php';
+require_once __DIR__ . '/../../../Controls/UsuarioController.php';
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+$usuarioController = new UsuarioController();
 
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php');
-    exit;
-}
+// Verifica se está logado
+$usuarioController->verificarLogin();
 
-// Variáveis de usuário seguras para usar no home
-$usuarioNome = htmlspecialchars($_SESSION['usuario']['nome'] ?? '');
-
-$model = new UsuarioModel();
-
-// Buscar só imagem
-$usuarioImagem = $model->buscarImagemPorPessoaId($_SESSION['usuario']['pessoa_id']);
+// Dados do usuário
+$usuarioNome   = $usuarioController->getUsuarioNome();
+$usuarioImagem = $usuarioController->getUsuarioImagem();
