@@ -303,6 +303,24 @@ class TurmaModel extends BaseModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function buscarPorId(int $id): ?array
+    {
+        $sql = "SELECT
+                t.*,
+                i.url AS imagem,
+                p.nome AS polo,
+                c.nome AS cidade
+                FROM turma t
+                LEFT JOIN imagem i ON t.imagem_id = i.imagem_id
+                LEFT JOIN polo p ON t.polo_id = p.polo_id
+                LEFT JOIN cidade c ON p.cidade_id = c.cidade_id
+                WHERE t.turma_id = :id LIMIT 1";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
 
     public function BuscarProjetosComDescricao()
     {
