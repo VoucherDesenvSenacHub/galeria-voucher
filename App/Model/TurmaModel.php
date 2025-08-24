@@ -328,6 +328,30 @@ class TurmaModel extends BaseModel
     }
 
     /**
+     * Busca uma turma por ID com informações completas.
+     * @param int $id O ID da turma.
+     * @return array|null Array com dados da turma ou null se não encontrada.
+     */
+    public function buscarPorId(int $id): ?array
+    {
+        $sql = "SELECT
+                t.*,
+                i.url AS imagem,
+                p.nome AS polo,
+                c.nome AS cidade
+                FROM turma t
+                LEFT JOIN imagem i ON t.imagem_id = i.imagem_id
+                LEFT JOIN polo p ON t.polo_id = p.polo_id
+                LEFT JOIN cidade c ON p.cidade_id = c.cidade_id
+                WHERE t.turma_id = :id LIMIT 1";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
+
+    /**
      * Busca todos os projetos com descrições completas, incluindo turma, polo e imagem.
      * @return array Array com todos os projetos e suas informações relacionadas.
      */

@@ -1,76 +1,13 @@
 <?php
-require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../../Model/TurmaModel.php";
 
+// Define o título da página 
 headerComponent('Galeria da Turma');
-
-$idTurma = (int) ($_GET['id'] ?? 0);
-
-// valida se é número positivo
-if ($idTurma <= 0) {
-    header('Location: /galeria-voucher/App/View/pages/users/turma.php');
-    exit;
-}
-
-$model = new TurmaModel();
-$dadosTurma = $model->buscarTurmaProjetoID($idTurma);
-
-if (empty($dadosTurma)) {
-    // Nenhuma turma encontrada para esse ID
-    header('Location: /galeria-voucher/App/View/pages/users/turma.php?erro=turma_nao_encontrada');
-    exit;
-}
-
-// Construção dinâmica dos projetos a partir do SQL
-$projetosTurmas = [];
-foreach ($dadosTurma as $index => $item) {
-    $projetosTurmas[] = [
-        'id' => 'projeto-' . ($index + 1),
-        'titulo' => $item['nomeProjeto'],
-        'descricao' => $item['descricaoProjeto'],
-        'cor_tema' => '#AEFF40',
-        'subtopicos' => [
-            [
-                'id' => 'projeto' . ($index + 1) . '-dia-i',
-                'titulo' => 'DIA I',
-                'descricao' => 'Início do ' . $item['nomeProjeto'] . ': Planejamento e definição de requisitos. Nesta fase, os alunos aprenderam sobre análise de requisitos, criação de wireframes e definição da arquitetura do projeto.',
-                'imagem' => 'turmas/turma-galeria.png',
-                'ordem' => 'imagem-direita',
-                'divClass' => 'galeria-turma-margin-top-left-projeto' . ($index + 1) . '-dia-i'
-            ],
-            [
-                'id' => 'projeto' . ($index + 1) . '-dia-p',
-                'titulo' => 'DIA P',
-                'descricao' => 'Desenvolvimento do ' . $item['nomeProjeto'] . ': Implementação das funcionalidades principais. Os estudantes trabalharam na codificação das features core, integração de APIs e desenvolvimento do frontend.',
-                'imagem' => 'turmas/turma-galeria.png',
-                'ordem' => 'imagem-esquerda',
-                'divClass' => 'galeria-turma-margin-top-right-projeto' . ($index + 1) . '-dia-p'
-            ],
-            [
-                'id' => 'projeto' . ($index + 1) . '-dia-e',
-                'titulo' => 'DIA E',
-                'descricao' => 'Finalização do ' . $item['nomeProjeto'] . ': Testes, otimização e deploy. Fase dedicada aos testes unitários, correção de bugs, otimização de performance e preparação para produção.',
-                'imagem' => 'turmas/turma-galeria.png',
-                'ordem' => 'imagem-direita',
-                'divClass' => 'galeria-turma-margin-top-left-projeto' . ($index + 1) . '-dia-e'
-            ],
-            [
-                'id' => 'projeto' . ($index + 1) . '-projeto-xx',
-                'titulo' => 'PROJETO FINAL',
-                'descricao' => 'Apresentação final do ' . $item['nomeProjeto'] . ': ' . $item['descricaoProjeto'],
-                'imagem' => 'turmas/turma-galeria.png',
-                'ordem' => 'imagem-esquerda',
-                'divClass' => 'galeria-turma-margin-top-right-projeto' . ($index + 1) . '-final',
-                'botaoProjeto' => true,
-                'linkProjeto' => $item['linkProjeto']
-            ]
-        ]
-    ];
-}
 ?>
 
 <body class="galeria-turma-body">
+
+    <!-- ------------------- CABEÇALHO COM MENU ------------------- -->
     <header class="galeria-turma-header">
         <?php
         $isAdmin = false;
@@ -79,94 +16,87 @@ foreach ($dadosTurma as $index => $item) {
         ?>
     </header>
 
+    <!-- ------------------- DETALHES DA TURMA ------------------- -->
     <section class="galeria-turma-section galeria-turma-projeto">
         <h1 class="galeria-turma-h1 projetos-turma">Projetos da turma</h1>
 
         <section class="galeria-turma-senac">
-            <h3 class="galeria-turma-h3">Senac Hub Academy</h3>
-            <h3 class="galeria-turma-h3">Campo Grande - MS</h3>
+            <h3 class="galeria-turma-h3"><?= $polo?></h3>
+            <h3 class="galeria-turma-h3"><?= $cidade?></h3>
         </section>
 
         <section class="galeria-turma-tab-inner">
-            <img class="galeria-turma-imagem-direita"
-                src="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>turmas/turma-galeria.png">
+            <img class="galeria-turma-imagem-direita" src="<?php echo VARIAVEIS['APP_URL'] . $imagemTurmaUrl ?>" alt="Imagem da Turma">
             <div class="galeria-turma-margin-top-left-projeto1-dia-i">
-                <h2><?= $dadosTurma[0]["nomeTurma"] ?></h2>
-                <p><?= $dadosTurma[0]["descricaoTurma"] ?></p>
+                <h2><?= $nomeTurma ?></h2>
+                <p><?= $descricaoTurma ?></p>
             </div>
         </section>
 
-        <!-- Sistema de Abas Aninhadas para Projetos -->
-        <section class="galeria-turma-section galeria-turma-galeria projetos-turma">
+        <!-- ------------------- SEÇÃO DE PROJETOS ------------------- -->
+        <section class="galeria-turma-section galeria-turma-galeria projetos-turma galeria-turma-no-side-padding">
             <h1 class="galeria-turma-h1">Galeria de Projetos</h1>
 
-            <!-- Navegação das Abas Principais (Projetos) -->
+            <!-- Navegação principal dos projetos -->
             <div class="galeria-turma-main-tabs-nav">
-                <?php foreach ($projetosTurmas as $indexProjeto => $projeto): ?>
-                    <a class="galeria-turma-main-tab-btn <?= $indexProjeto === 0 ? 'active' : '' ?>"
-                        data-projeto="<?= $projeto['id'] ?>" style="--cor-tema: <?= $projeto['cor_tema'] ?>">
-                        <?= $projeto['titulo'] ?>
+                <?php foreach ($tabsProjetos as $tab): ?>
+                    <a class="galeria-turma-main-tab-btn <?= $tab['classe_css'] ?>" data-projeto="<?= $tab['projeto_id'] ?>">
+                        <?= $tab['nome'] ?>
                     </a>
                 <?php endforeach; ?>
             </div>
 
-            <!-- Conteúdo dos Projetos -->
+            <!-- Conteúdo dos projetos -->
             <div class="galeria-turma-main-tabs-content">
-                <?php foreach ($projetosTurmas as $indexProjeto => $projeto): ?>
-                    <div class="galeria-turma-main-tab-content <?= $indexProjeto === 0 ? 'active' : '' ?>"
-                        id="main-tab-<?= $projeto['id'] ?>">
+                <?php foreach ($projetosFormatados as $projeto): ?>
+                    <div class="galeria-turma-main-tab-content <?= $projeto['ativo'] ? 'active' : '' ?>" id="main-tab-<?= $projeto['projeto_id'] ?>">
 
-                        <!-- Descrição do Projeto -->
                         <div class="galeria-turma-projeto-intro">
-                            <h3><?= $projeto['titulo'] ?></h3>
                             <p><?= $projeto['descricao'] ?></p>
                         </div>
 
-                        <!-- Navegação das Sub-abas (Dia I, Dia P, etc.) -->
                         <div class="galeria-turma-sub-tabs-nav">
-                            <?php foreach ($projeto['subtopicos'] as $indexSub => $subtopico): ?>
-                                <button class="galeria-turma-sub-tab-btn <?= $indexSub === 0 ? 'active' : '' ?>"
-                                    data-subtab="<?= $subtopico['id'] ?>" data-projeto="<?= $projeto['id'] ?>">
-                                    <?= $subtopico['titulo'] ?>
-                                </button>
-                            <?php endforeach; ?>
+                            <?php
+                            foreach ($projeto['dias'] as $i => $dia) {
+                                renderSubTabBtn($dia, $i, $projeto['projeto_id'], $dia['linkProjeto']);
+                            }
+                            renderRepoBtn($projeto, $projeto['dias']);
+                            ?>
                         </div>
 
-                        <!-- Conteúdo das Sub-abas -->
                         <div class="galeria-turma-sub-tabs-content">
-                            <?php foreach ($projeto['subtopicos'] as $indexSub => $subtopico): ?>
-                                <div class="galeria-turma-sub-tab-content <?= $indexSub === 0 ? 'active' : '' ?>"
-                                    id="sub-tab-<?= $subtopico['id'] ?>">
+                            <?php foreach ($projeto['dias'] as $dia): ?>
+                                <div class="galeria-turma-sub-tab-content <?= $dia['ativo'] ? 'active' : '' ?>" id="sub-tab-<?= $dia['id'] ?>">
                                     <div class="galeria-turma-tab-inner">
-                                        <?php if ($subtopico['ordem'] === 'imagem-direita'): ?>
-                                            <div class="galeria-turma-tab-text <?= $subtopico['divClass'] ?>">
-                                                <h4><?= $subtopico['titulo'] ?></h4>
-                                                <p><?= $subtopico['descricao'] ?></p>
-                                                <?php if (!empty($subtopico['botaoProjeto'])): ?>
+                                        <?php if ($dia['ordem'] === 'imagem-direita'): ?>
+                                            <div class="galeria-turma-tab-text <?= $dia['divClass'] ?>">
+                                                <h4><?= $dia['titulo'] ?></h4>
+                                                <p><?= $dia['descricao'] ?></p>
+                                                <?php if (!empty($dia['botaoProjeto'])): ?>
                                                     <div class="galeria-turma-botaoprojeto">
                                                         <button class="galeria-turma-btn" type="button"
-                                                            onclick="window.location.href='<?= $subtopico['linkProjeto'] ?>'">
+                                                            onclick="window.location.href='<?= $dia['linkProjeto'] ?>'">
                                                             Ver Projeto
                                                         </button>
                                                     </div>
                                                 <?php endif; ?>
                                             </div>
                                             <div class="galeria-turma-tab-image">
-                                                <img src="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . $subtopico['imagem'] ?>"
-                                                    alt="<?= $subtopico['titulo'] ?>">
+                                                <img src="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . $dia['imagem'] ?>"
+                                                    alt="<?= $dia['titulo'] ?>">
                                             </div>
                                         <?php else: ?>
                                             <div class="galeria-turma-tab-image">
-                                                <img src="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . $subtopico['imagem'] ?>"
-                                                    alt="<?= $subtopico['titulo'] ?>">
+                                                <img src="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . $dia['imagem'] ?>"
+                                                    alt="<?= $dia['titulo'] ?>">
                                             </div>
-                                            <div class="galeria-turma-tab-text <?= $subtopico['divClass'] ?>">
-                                                <h4><?= $subtopico['titulo'] ?></h4>
-                                                <p><?= $subtopico['descricao'] ?></p>
-                                                <?php if (!empty($subtopico['botaoProjeto'])): ?>
+                                            <div class="galeria-turma-tab-text <?= $dia['divClass'] ?>">
+                                                <h4><?= $dia['titulo'] ?></h4>
+                                                <p><?= $dia['descricao'] ?></p>
+                                                <?php if (!empty($dia['botaoProjeto'])): ?>
                                                     <div class="galeria-turma-botaoprojeto">
                                                         <button class="galeria-turma-btn" type="button"
-                                                            onclick="window.location.href='<?= $subtopico['linkProjeto'] ?>'">
+                                                            onclick="window.location.href='<?= $dia['linkProjeto'] ?>'">
                                                             Ver Projeto
                                                         </button>
                                                     </div>
@@ -177,33 +107,42 @@ foreach ($dadosTurma as $index => $item) {
                                 </div>
                             <?php endforeach; ?>
                         </div>
+
+                        <!-- Repositório do projeto -->
+                        <div class="galeria-turma-repo-section">
+                            <h4>Repositório do Projeto</h4>
+                            <?php if (!empty($projeto['linkRepositorio'])): ?>
+                                <a href="<?= $projeto['linkRepositorio'] ?>" target="_blank" class="galeria-turma-repo-link">
+                                    Ver no GitHub
+                                </a>
+                            <?php else: ?>
+                                <p>Link do repositório não disponível.</p>
+                            <?php endif; ?>
+                        </div>
+
                     </div>
                 <?php endforeach; ?>
             </div>
         </section>
     </section>
 
-    <div class="galeria-turma-binarynumber"></div>
-
+    <!-- ------------------- LISTAGEM DE ALUNOS ------------------- -->
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Alunos</h1>
-        <li>
-            <div class="galeria-turma-container">
-                <?php
-                require __DIR__ . "/../../componentes/users/desenvolvedores.php";
-                foreach ($desenvolvedores as $aluno) {
-                    require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
-                }
-                ?>
-            </div>
-        </li>
+        <div class="galeria-turma-container">
+            <?php
+            foreach ($alunos as $aluno) {
+                require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
+            }
+            ?>
+        </div>
     </section>
 
+    <!-- ------------------- LISTAGEM DE PROFESSORES ------------------- -->
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Professores</h1>
         <div class="galeria-turma-container">
             <?php
-            require __DIR__ . "/../../componentes/users/desenvolvedores.php";
             foreach ($orientadores as $orientador) {
                 require __DIR__ . "/../../componentes/users/card_orientadores.php";
             }
@@ -215,75 +154,8 @@ foreach ($dadosTurma as $index => $item) {
         <?php require_once __DIR__ . "/../../componentes/users/footer.php"; ?>
     </footer>
 
-    <!-- JavaScript para funcionalidade das abas aninhadas -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const mainTabButtons = document.querySelectorAll('.galeria-turma-main-tab-btn');
-            const mainTabContents = document.querySelectorAll('.galeria-turma-main-tab-content');
-            const subTabAtivaPorProjeto = {};
-
-            mainTabButtons.forEach((button, index) => {
-                const targetProject = button.getAttribute('data-projeto');
-                if (index === 0) subTabAtivaPorProjeto[targetProject] = document.querySelector(`#main-tab-${targetProject} .galeria-turma-sub-tab-btn.active`)?.getAttribute('data-subtab');
-            });
-
-            mainTabButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const targetProject = this.getAttribute('data-projeto');
-
-                    mainTabButtons.forEach(btn => btn.classList.remove('active'));
-                    mainTabContents.forEach(content => content.classList.remove('active'));
-
-                    this.classList.add('active');
-                    const activeMainContent = document.getElementById('main-tab-' + targetProject);
-                    activeMainContent.classList.add('active');
-
-                    const projectSubTabs = activeMainContent.querySelectorAll('.galeria-turma-sub-tab-btn');
-                    const projectSubContents = activeMainContent.querySelectorAll('.galeria-turma-sub-tab-content');
-
-                    projectSubTabs.forEach((btn, index) => {
-                        const isFirst = index === 0;
-                        btn.classList.toggle('active', isFirst);
-                        projectSubContents[index].classList.toggle('active', isFirst);
-                        if (isFirst) {
-                            subTabAtivaPorProjeto[targetProject] = btn.getAttribute('data-subtab');
-                        }
-                    });
-                });
-            });
-
-            const allSubTabs = document.querySelectorAll('.galeria-turma-sub-tab-btn');
-            allSubTabs.forEach(button => {
-                const subtabId = button.getAttribute('data-subtab');
-                const projectId = button.getAttribute('data-projeto');
-                const parentContent = document.getElementById('main-tab-' + projectId);
-
-                const buttons = parentContent.querySelectorAll('.galeria-turma-sub-tab-btn');
-                const contents = parentContent.querySelectorAll('.galeria-turma-sub-tab-content');
-
-                button.addEventListener('mouseenter', () => {
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    contents.forEach(content => content.classList.remove('active'));
-                    button.classList.add('active');
-                    document.getElementById('sub-tab-' + subtabId).classList.add('active');
-                });
-
-                button.addEventListener('mouseleave', () => {
-                    const ativaId = subTabAtivaPorProjeto[projectId];
-                    buttons.forEach(btn => {
-                        btn.classList.toggle('active', btn.getAttribute('data-subtab') === ativaId);
-                    });
-                    contents.forEach(content => {
-                        content.classList.toggle('active', content.id === 'sub-tab-' + ativaId);
-                    });
-                });
-
-                button.addEventListener('click', () => {
-                    subTabAtivaPorProjeto[projectId] = subtabId;
-                });
-            });
-        });
-    </script>
+    <!-- ------------------- SCRIPTS DE ABA / INTERAÇÃO ------------------- -->
+    <script src="<?= '/../../../' . VARIAVEIS['DIR_JS'] ?>galeria-turma.js"></script>
 
 </body>
 
