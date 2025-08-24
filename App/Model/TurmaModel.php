@@ -304,6 +304,32 @@ class TurmaModel extends BaseModel
     }
 
     /**
+     * Lista todas as turmas com seus polos (para selects), ordenadas por nome.
+     */
+    public function listarTodasTurmasComPolo(): array
+    {
+        $sql = "SELECT t.turma_id, t.nome AS nome_turma, t.polo_id, p.nome AS nome_polo
+                FROM turma t
+                INNER JOIN polo p ON t.polo_id = p.polo_id
+                ORDER BY t.nome ASC";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Lista turmas por polo.
+     */
+    public function listarTurmasPorPolo(int $poloId): array
+    {
+        $sql = "SELECT turma_id, nome FROM turma WHERE polo_id = :polo ORDER BY nome ASC";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':polo', $poloId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
      * Busca uma turma específica com seus projetos associados.
      * @param int $idTurma O ID da turma.
      * @return array Array com dados da turma e projetos.
