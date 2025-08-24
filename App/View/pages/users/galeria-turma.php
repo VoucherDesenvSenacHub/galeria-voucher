@@ -1,7 +1,45 @@
 <?php
-require_once __DIR__ . "/../../componentes/head.php";
+// require_once __DIR__ . "/../../componentes/head.php";
+
+// Carrega variáveis de ambiente antes de qualquer uso de VARIAVEIS
+require_once __DIR__ . "/../../../Config/env.php";
+
+// Carrega dependências necessárias para buscar dados
+require_once __DIR__ . "/../../../Model/TurmaModel.php";
+require_once __DIR__ . "/../../../Model/ProjetoModel.php";
+require_once __DIR__ . "/../../../Model/AlunoModel.php";
+require_once __DIR__ . "/../../../Model/DocenteModel.php";
+require_once __DIR__ . "/../../../Helpers/ProjetoHelper.php";
+require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
+require_once __DIR__ . "/../../../Controls/GaleriaTurmaController.php";
+
+// Obtém ID da turma via URL e carrega dados
+$controller = new GaleriaTurmaController();
+$turmaId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int)$_GET['id'] : 0;
+if ($turmaId <= 0) {
+    header("Location: ./turma.php");
+    exit;
+}
+$dados = $controller->carregarDadosTurma($turmaId);
+
+// Extrai variáveis usadas pela view
+$imagemTurmaUrl   = $dados['imagemTurmaUrl'] ?? VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
+$nomeTurma        = $dados['nomeTurma'] ?? '';
+$descricaoTurma   = $dados['descricaoTurma'] ?? '';
+$alunos           = $dados['alunos'] ?? [];
+$orientadores     = $dados['orientadores'] ?? [];
+$tabsProjetos     = $dados['tabsProjetos'] ?? [];
+$projetosFormatados = $dados['projetosFormatados'] ?? [];
+$polo             = $dados['polo'] ?? '';
+$cidade           = $dados['cidade'] ?? '';
+
+// Log leve para depuração
+if (function_exists('error_log')) {
+    error_log("galeria-turma id={$turmaId} alunos=" . (is_array($alunos) ? count($alunos) : 0) . " orientadores=" . (is_array($orientadores) ? count($orientadores) : 0));
+}
 
 // Define o título da página 
+require_once __DIR__ . "/../../componentes/head.php";
 headerComponent('Galeria da Turma');
 ?>
 
@@ -68,41 +106,23 @@ headerComponent('Galeria da Turma');
                             <?php foreach ($projeto['dias'] as $dia): ?>
                                 <div class="galeria-turma-sub-tab-content <?= $dia['ativo'] ? 'active' : '' ?>" id="sub-tab-<?= $dia['id'] ?>">
                                     <div class="galeria-turma-tab-inner">
-                                        <?php if ($dia['ordem'] === 'imagem-direita'): ?>
-                                            <div class="galeria-turma-tab-text <?= $dia['divClass'] ?>">
-                                                <h4><?= $dia['titulo'] ?></h4>
-                                                <p><?= $dia['descricao'] ?></p>
-                                                <?php if (!empty($dia['botaoProjeto'])): ?>
-                                                    <div class="galeria-turma-botaoprojeto">
-                                                        <button class="galeria-turma-btn" type="button"
-                                                            onclick="window.location.href='<?= $dia['linkProjeto'] ?>'">
-                                                            Ver Projeto
-                                                        </button>
-                                                    </div>
-                                                <?php endif; ?>
-                                            </div>
-                                            <div class="galeria-turma-tab-image">
-                                                <img src="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . $dia['imagem'] ?>"
-                                                    alt="<?= $dia['titulo'] ?>">
-                                            </div>
-                                        <?php else: ?>
-                                            <div class="galeria-turma-tab-image">
-                                                <img src="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . $dia['imagem'] ?>"
-                                                    alt="<?= $dia['titulo'] ?>">
-                                            </div>
-                                            <div class="galeria-turma-tab-text <?= $dia['divClass'] ?>">
-                                                <h4><?= $dia['titulo'] ?></h4>
-                                                <p><?= $dia['descricao'] ?></p>
-                                                <?php if (!empty($dia['botaoProjeto'])): ?>
-                                                    <div class="galeria-turma-botaoprojeto">
-                                                        <button class="galeria-turma-btn" type="button"
-                                                            onclick="window.location.href='<?= $dia['linkProjeto'] ?>'">
-                                                            Ver Projeto
-                                                        </button>
-                                                    </div>
-                                                <?php endif; ?>
-                                            </div>
-                                        <?php endif; ?>
+                                        <div class="galeria-turma-tab-text">
+                                            <h4><?= $dia['titulo'] ?></h4>
+                                            <p><?= $dia['descricao'] ?></p>
+                                            <?php if (!empty($dia['linkProjeto'])): ?>
+                                                <div class="galeria-turma-botaoprojeto">
+                                                    <button class="galeria-turma-btn" type="button"
+                                                        onclick="window.location.href='<?= $dia['linkProjeto'] ?>'">
+                                                        Ver Projeto
+                                                    </button>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="galeria-turma-tab-image">
+                                            <?php foreach (($dia['imagens'] ?? []) as $img): ?>
+                                                <img src="<?= htmlspecialchars($img['url']) ?>" alt="<?= htmlspecialchars($img['alt']) ?>">
+                                            <?php endforeach; ?>
+                                        </div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -111,8 +131,8 @@ headerComponent('Galeria da Turma');
                         <!-- Repositório do projeto -->
                         <div class="galeria-turma-repo-section">
                             <h4>Repositório do Projeto</h4>
-                            <?php if (!empty($projeto['linkRepositorio'])): ?>
-                                <a href="<?= $projeto['linkRepositorio'] ?>" target="_blank" class="galeria-turma-repo-link">
+                            <?php if (!empty($projeto['linkProjeto'])): ?>
+                                <a href="<?= $projeto['linkProjeto'] ?>" target="_blank" class="galeria-turma-repo-link">
                                     Ver no GitHub
                                 </a>
                             <?php else: ?>
@@ -130,11 +150,13 @@ headerComponent('Galeria da Turma');
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Alunos</h1>
         <div class="galeria-turma-container">
-            <?php
-            foreach ($alunos as $aluno) {
-                require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
-            }
-            ?>
+            <?php if (!empty($alunos)): ?>
+                <?php foreach ($alunos as $aluno): ?>
+                    <?php require __DIR__ . "/../../componentes/users/card_desenvolvedores.php"; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Nenhum aluno encontrado para esta turma.</p>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -142,11 +164,13 @@ headerComponent('Galeria da Turma');
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Professores</h1>
         <div class="galeria-turma-container">
-            <?php
-            foreach ($orientadores as $orientador) {
-                require __DIR__ . "/../../componentes/users/card_orientadores.php";
-            }
-            ?>
+            <?php if (!empty($orientadores)): ?>
+                <?php foreach ($orientadores as $orientador): ?>
+                    <?php require __DIR__ . "/../../componentes/users/card_orientadores.php"; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Nenhum professor encontrado para esta turma.</p>
+            <?php endif; ?>
         </div>
     </section>
 
