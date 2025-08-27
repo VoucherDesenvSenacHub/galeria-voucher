@@ -75,4 +75,54 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+    // --- BUSCA DINÂMICA NA NAVBAR (VISITANTES E LOGADOS) ---
+    const inputBusca = document.getElementById('pesquisar-pessoa');
+    const sugestoes = document.getElementById('sugestoes');
+
+    if (inputBusca && sugestoes) {
+        let controller;
+        inputBusca.addEventListener('input', async () => {
+            const termo = inputBusca.value.trim();
+            sugestoes.innerHTML = '';
+            if (termo.length < 2) return;
+
+            try {
+                if (controller) controller.abort();
+                controller = new AbortController();
+                const res = await fetch(`${window.location.origin}/galeria-voucher/App/Controls/SearchController.php?q=${encodeURIComponent(termo)}`, {
+                    signal: controller.signal
+                });
+                const json = await res.json();
+                const results = Array.isArray(json.results) ? json.results : [];
+
+                // Renderiza itens
+                results.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'nav-suggest-item';
+                    const label = item.tipo === 'turma' ? 'Turma' : 'Pessoa';
+                    div.innerHTML = `
+                        <strong>[${label}]</strong> ${item.titulo}
+                        ${item.descricao ? `<small style="display:block;color:#666;">${item.descricao.substring(0, 80)}...</small>` : ''}
+                    `;
+                    div.style.cursor = 'pointer';
+                    div.addEventListener('click', () => {
+                        const url = `${window.location.origin}/galeria-voucher/App/View/pages/users/galeria-turma.php?id=${encodeURIComponent(item.turma_id)}`;
+                        window.location.href = url;
+                    });
+                    sugestoes.appendChild(div);
+                });
+            } catch (e) {
+                // Silencia abortos; loga outros erros
+                if (e.name !== 'AbortError') console.error(e);
+            }
+        });
+
+        // Fecha sugestões ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!sugestoes.contains(e.target) && e.target !== inputBusca) {
+                sugestoes.innerHTML = '';
+            }
+        });
+    }
 });

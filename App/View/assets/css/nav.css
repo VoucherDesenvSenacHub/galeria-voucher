@@ -5,6 +5,7 @@
     width: 100%;
     z-index: 5;
     top: 0;
+    color: black;
 
     img {
         padding: 2px;
@@ -15,6 +16,7 @@
         display: flex;
         align-items: center;
         transition: all 0.3s ease;
+
     }
 
     .pesquisa {

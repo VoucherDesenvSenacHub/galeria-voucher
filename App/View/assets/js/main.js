@@ -38,7 +38,7 @@ function abrirModalCadastro(classificacao) {
 
             // Chama a função para ativar autocomplete no conteúdo do modal
             if (typeof ativarAutocomplete === 'function') {
-                ativarAutocomplete();
+                setTimeout(ativarAutocompleteSemTurma, 1);
             } else {
                 console.warn('Função ativarAutocomplete não está definida.');
             }
