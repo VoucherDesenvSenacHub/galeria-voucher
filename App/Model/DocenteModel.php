@@ -5,6 +5,7 @@ require_once __DIR__ . "/BaseModel.php";
 class DocenteModel extends BaseModel {
 
     public function __construct() {
+        $this->tabela = "docente";
         parent::__construct();
     }
 
@@ -37,6 +38,19 @@ class DocenteModel extends BaseModel {
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function buscarPorTurma(int $turmaId): array
+    {
+        $sql = "SELECT p.*, i.url AS foto 
+                FROM docente_turma dt
+                INNER JOIN pessoa p ON dt.pessoa_id = p.pessoa_id
+                LEFT JOIN imagem i ON p.imagem_id = i.imagem_id
+                WHERE dt.turma_id = :turma_id
+                ORDER BY p.nome ASC";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

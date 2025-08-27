@@ -31,6 +31,11 @@ require_once __DIR__ . '/../../../Model/PessoaModel.php';
       </div>
 
       <div class="tabela-principal-lista-alunos">
+        <?php if (!empty($_GET['erro'])): ?>
+          <div style="margin: 12px 0; color: #b00020; font-weight: 600;">
+            <?= htmlspecialchars($_GET['erro']) ?>
+          </div>
+        <?php endif; ?>
         <div class="tabela-container-lista-alunos">
           <table id="tabela-alunos">
             <thead>
@@ -57,7 +62,7 @@ require_once __DIR__ . '/../../../Model/PessoaModel.php';
                 <tr>
                   <td><?= htmlspecialchars($usuario['nome']) ?></td>
                   <td><?= htmlspecialchars($usuario['perfil']) ?></td>
-                  <td><?= htmlspecialchars($usuario['nome_polo']) ?></td>
+                  <td><?= htmlspecialchars($usuario['nome_polo'] ?? 'Sem polo') ?></td>
                   <td class="acoes">
                     <a href="cadastrar-usuarios.php?acao=editar&id=<?= $usuario['pessoa_id'] ?>">
                       <span class="material-symbols-outlined acao-edit" title="Editar">edit</span>
