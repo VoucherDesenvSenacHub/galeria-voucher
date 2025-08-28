@@ -4,6 +4,8 @@ require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../componentes/head.php";
 
 headerComponent('Turmas Voucher')
+
+
 ?>
 
 <body class="body-turma">

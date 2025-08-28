@@ -74,7 +74,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         <td><?= htmlspecialchars($aluno['polo']) ?></td>
                                         <td class="acoes">
                                             <?php if ($is_admin) : ?>
-                                                <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
+                                                <span class="material-symbols-outlined acao-delete" title="Excluir">delete</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
