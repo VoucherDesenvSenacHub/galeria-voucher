@@ -1,14 +1,12 @@
 <?php 
-   require_once(__DIR__ . '/../../componentes/head.php');
-headerComponent("Voucher Desenvolvedor - Login");
+require_once(__DIR__ . '/../../componentes/head.php');
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../../../config/Database.php';
-require_once __DIR__ . '/../../../model/UsuarioModel.php';
-require_once __DIR__ . '/../../componentes/head.php';
+require_once __DIR__ . '/../../../Config/Database.php';
+require_once __DIR__ . '/../../../Model/UsuarioModel.php';
 
 $erro = '';
 $pdo = null;
@@ -48,6 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuarioModel !== null) {
         }
     }
 }
+
+headerComponent("Voucher Desenvolvedor - Login");
 ?>
 
 <body class="body-login">

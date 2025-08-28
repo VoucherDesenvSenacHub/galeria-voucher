@@ -60,6 +60,68 @@ class TurmaModel extends BaseModel {
                 turma t
             JOIN 
                 polo p ON t.polo_id = p.polo_id
+        ";
+        
+        if (!empty($termo)) {
+            $query .= " WHERE t.nome LIKE :termo OR p.nome LIKE :termo";
+        }
+
+        $query .= " ORDER BY t.nome ASC LIMIT :limite OFFSET :offset";
+
+        $stmt = $this->pdo->prepare($query);
+
+        if (!empty($termo)) {
+            $stmt->bindValue(':termo', '%' . $termo . '%', PDO::PARAM_STR);
+        }
+        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function buscarPorId(int $id): ?array
+    {
+        $sql = "SELECT
+                t.*,
+                i.url AS imagem,
+                p.nome AS polo,
+                c.nome AS cidade
+                FROM turma t
+                LEFT JOIN imagem i ON t.imagem_id = i.imagem_id
+                LEFT JOIN polo p ON t.polo_id = p.polo_id
+                LEFT JOIN cidade c ON p.cidade_id = c.cidade_id
+                WHERE t.turma_id = :id LIMIT 1";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
+
+    public function BuscarProjetosComDescricao()
+    {
+        $query = "
+            SELECT 
+                pr.projeto_id,
+                pr.nome AS NOME_PROJETO,
+                pr.descricao AS DESCRICAO_PROJETO,
+                pr.link AS LINK_PROJETO,
+                t.nome AS NOME_TURMA,
+                p.nome AS NOME_POLO,
+                i.url AS URL_IMAGEM,
+                i.descricao AS DESCRICAO_IMAGEM
+            FROM 
+                projeto pr
+            JOIN 
+                turma t ON pr.turma_id = t.turma_id
+            JOIN 
+                polo p ON t.polo_id = p.polo_id
+            LEFT JOIN 
+                imagem_projeto ip ON pr.projeto_id = ip.projeto_id
+            LEFT JOIN 
+                imagem i ON ip.imagem_id = i.imagem_id
             ORDER BY 
                 t.nome ASC
         ";
@@ -69,4 +131,40 @@ class TurmaModel extends BaseModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+
+    public function BuscarProjetosPorTurma($turmaId)
+{
+    $query = "
+        SELECT 
+            pr.projeto_id,
+            pr.nome AS NOME_PROJETO,
+            pr.descricao AS DESCRICAO_PROJETO,
+            pr.link AS LINK_PROJETO,
+            t.nome AS NOME_TURMA,
+            p.nome AS NOME_POLO,
+            i.url AS URL_IMAGEM,
+            i.descricao AS DESCRICAO_IMAGEM
+        FROM 
+            projeto pr
+        JOIN 
+            turma t ON pr.turma_id = t.turma_id
+        JOIN 
+            polo p ON t.polo_id = p.polo_id
+        LEFT JOIN 
+            imagem_projeto ip ON pr.projeto_id = ip.projeto_id
+        LEFT JOIN 
+            imagem i ON ip.imagem_id = i.imagem_id
+        WHERE 
+            t.turma_id = :turmaId
+        ORDER BY 
+            pr.nome ASC
+    ";
+
+    $stmt = $this->pdo->prepare($query);
+    $stmt->bindValue(':turmaId', $turmaId, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 }

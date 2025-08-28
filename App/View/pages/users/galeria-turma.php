@@ -1,7 +1,43 @@
 <?php
+// Carrega variáveis de ambiente antes de qualquer uso de VARIAVEIS
 require_once __DIR__ . "/../../../Config/env.php";
-require_once __DIR__ . "/../../componentes/head.php";
 
+// Carrega dependências necessárias para buscar dados
+require_once __DIR__ . "/../../../Model/TurmaModel.php";
+require_once __DIR__ . "/../../../Model/ProjetoModel.php";
+require_once __DIR__ . "/../../../Model/AlunoModel.php";
+require_once __DIR__ . "/../../../Model/DocenteModel.php";
+require_once __DIR__ . "/../../../Helpers/ProjetoHelper.php";
+require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
+require_once __DIR__ . "/../../../Controls/GaleriaTurmaController.php";
+
+// Obtém ID da turma via URL e carrega dados
+$controller = new GaleriaTurmaController();
+$turmaId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int)$_GET['id'] : 0;
+if ($turmaId <= 0) {
+    header("Location: ./turma.php");
+    exit;
+}
+$dados = $controller->carregarDadosTurma($turmaId);
+
+// Extrai variáveis usadas pela view
+$imagemTurmaUrl   = $dados['imagemTurmaUrl'] ?? VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
+$nomeTurma        = $dados['nomeTurma'] ?? '';
+$descricaoTurma   = $dados['descricaoTurma'] ?? '';
+$alunos           = $dados['alunos'] ?? [];
+$orientadores     = $dados['orientadores'] ?? [];
+$tabsProjetos     = $dados['tabsProjetos'] ?? [];
+$projetosFormatados = $dados['projetosFormatados'] ?? [];
+$polo             = $dados['polo'] ?? '';
+$cidade           = $dados['cidade'] ?? '';
+
+// Log leve para depuração
+if (function_exists('error_log')) {
+    error_log("galeria-turma id={$turmaId} alunos=" . (is_array($alunos) ? count($alunos) : 0) . " orientadores=" . (is_array($orientadores) ? count($orientadores) : 0));
+}
+
+// Define o título da página 
+require_once __DIR__ . "/../../componentes/head.php";
 headerComponent('Galeria da Turma');
 
 // Lista de projetos principais (escalável para futuros projetos)
@@ -206,6 +242,18 @@ $projetosTurmas = [
                                 </div>
                             <?php endforeach; ?>
                         </div>
+
+                        <!-- Repositório do projeto -->
+                        <div class="galeria-turma-repo-section">
+                            <h4>Repositório do Projeto</h4>
+                            <?php if (!empty($projeto['linkProjeto'])): ?>
+                                <a href="<?= $projeto['linkProjeto'] ?>" target="_blank" class="galeria-turma-repo-link">
+                                    Ver no GitHub
+                                </a>
+                            <?php else: ?>
+                                <p>Link do repositório não disponível.</p>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -215,27 +263,27 @@ $projetosTurmas = [
 
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Alunos</h1>
-        <li>
-            <div class="galeria-turma-container">
-                <?php
-                require __DIR__ . "/../../componentes/users/desenvolvedores.php";
-                foreach ($desenvolvedores as $dev) {
-                    require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
-                }
-                ?>
-            </div>
-        </li>
+        <div class="galeria-turma-container">
+            <?php if (!empty($alunos)): ?>
+                <?php foreach ($alunos as $aluno): ?>
+                    <?php require __DIR__ . "/../../componentes/users/card_desenvolvedores.php"; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Nenhum aluno encontrado para esta turma.</p>
+            <?php endif; ?>
+        </div>
     </section>
 
     <section class="galeria-turma-cardss">
         <h1 class="galeria-turma-h1">Professores</h1>
         <div class="galeria-turma-container">
-            <?php
-            require __DIR__ . "/../../componentes/users/desenvolvedores.php";
-            foreach ($orientadores as $orientador) {
-                require __DIR__ . "/../../componentes/users/card_orientadores.php";
-            }
-            ?>
+            <?php if (!empty($orientadores)): ?>
+                <?php foreach ($orientadores as $orientador): ?>
+                    <?php require __DIR__ . "/../../componentes/users/card_orientadores.php"; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Nenhum professor encontrado para esta turma.</p>
+            <?php endif; ?>
         </div>
     </section>
 
