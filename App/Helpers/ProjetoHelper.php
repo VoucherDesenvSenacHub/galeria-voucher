@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/ImageHelper.php';
+
 /**
  * Formata os dados dos projetos para uso na view, preparando tabs, dias e imagens.
  * 
@@ -31,13 +33,14 @@ function formatarProjetos(array $projetos, $projetoModel): array {
             $imagensFormatadas = array_map(function ($img) {
                 return [
                     'url' => urlImagem($img['url']),
-                    'alt' => "Imagem do Dia " . htmlspecialchars($img['tipo_dia'] ?? '')
+                    'alt' => 'Imagem do projeto'
                 ];
             }, $dia['imagens']);
 
             $diasFormatados[] = [
                 'id' => $dia['id'],
                 'tipo_dia' => htmlspecialchars($dia['tipo_dia']),
+                'titulo' => 'Dia ' . htmlspecialchars($dia['tipo_dia']),
                 'descricao' => nl2br(htmlspecialchars($dia['descricao'])),
                 'linkProjeto' => $dia['linkProjeto'] ?? null,
                 'imagens' => $imagensFormatadas,
@@ -50,6 +53,8 @@ function formatarProjetos(array $projetos, $projetoModel): array {
             'nome' => htmlspecialchars($projeto['nome']),
             'descricao' => nl2br(htmlspecialchars($projeto['descricao'])),
             'link' => htmlspecialchars($projeto['link']),
+            // Compatibilidade com helpers de renderização que esperam 'linkProjeto'
+            'linkProjeto' => htmlspecialchars($projeto['link']),
             'dias' => $diasFormatados,
             'ativo' => $index === 0
         ];
