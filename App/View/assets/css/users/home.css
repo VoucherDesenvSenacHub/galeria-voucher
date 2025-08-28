@@ -12,28 +12,6 @@
             rgba(0, 0, 0, 0.9));
 }
 
-/* mapa svg */
-.mapa-svg-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 830px;
-    z-index: 1;
-    opacity: 0.20;
-}
-
-.mapa-svg {
-    width: 100%;
-    height: auto;
-}
-
-.mapa-svg path {
-    stroke: var(--accent-color);
-    stroke-width: 15px;
-    fill: transparent;
-}
 
 /*animação matrix*/
 #matrix-canvas {
@@ -93,18 +71,6 @@
         top: calc(25vh + 6.3vw);
         text-align: center;
         z-index: 1;
-    }
-
-    /* imagem do mapa do estado */
-
-    .mapa {
-        position: absolute;
-        width: 100%;
-        height: 110vh;
-        display: flex;
-        justify-content: right;
-        padding-top: 2rem;
-        opacity: 50%;
     }
 }
 
@@ -341,12 +307,6 @@
         margin-left: -50%;
     }
 
-    #secao1 .mapa img {
-        position: absolute;
-        left: 20%;
-        max-width: 90%;
-    }
-
 
     #secao3 .container2 {
         padding: 10px;
@@ -445,58 +405,66 @@
 }
 
 @media (max-width: 391px) {
+    .NavInicial .nav-inner{
+        width: 100%;
+    }
     #matrix-canvas {
-        width: 110%;
+        width: 101%;
         height: 110%;
         -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
         mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     }
-
-    #secao1 .mapa {
-        width: 100%;
-        height: 45vh;
+    .componente_mira .mira{
+        width: 5vh;
+        height: 5vh;
+        left: 25.3vw;
     }
+
 
     #secao1 .nome-voucher {
         width: 75%;
-        margin-left: 90px;
+        margin-left: 45px;
         margin-bottom: 91px;
     }
 
     #secao2 {
         display: flex;
     }
+    .nome-voucher img {
+        margin-bottom: 200px;
+    }
 
     #secao2 .container {
-        margin-right: -20px;
+        margin-right: -2px;
     }
 
     #secao3 .container2 .stats {
         flex-direction: column;
-        gap: 90px;
+        gap: 90px;  
     }
 
     #secao3 .container2 {
-        margin-left: 40px;
+        margin-left: 7px;
     }
 
     #secao4 .call-to-action p {
-        margin-left: 45px;
+        margin-left: 10px;
         font-size: 40px;
         text-align: center;
     }
     #secao4 .poligono .image-row{
         flex-wrap: nowrap;
-        padding: 10px;
-        margin-left: 30px;
+        padding: 7px;
+        margin-left: -5px;
     }
     #secao4 .poligono .image-turma img{
-        width: 90px;
-        height: 90px;
+        width: 100px;
+        height: 100px;
     }
 
+
     /* Linha 1 (só 4 imagens) */
-    #secao4 .poligono .image-row:nth-of-type(1) .image-turma:nth-of-type(n+5) {
+    #secao4 .poligono .image-row:nth-of-type(1) .image-turma:nth-of-type(n+3) {
         display: none;
     }
 
@@ -508,6 +476,12 @@
     /* Linha 3 (só 4 imagens) */
     #secao4 .poligono .image-row:nth-of-type(3) .image-turma:nth-of-type(n+3) {
         display: none;
+    }
+    .NavInicial .nav-inner .imgvoucher img{
+        width: 100px;
+    }
+    .componente_mira .mira2{
+        width: 101%;
     }
 }
 
