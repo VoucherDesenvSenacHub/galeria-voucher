@@ -71,7 +71,7 @@ require_once __DIR__ . '/../../../Model/PessoaModel.php';
                       onclick="return confirm('Tem certeza que deseja excluir este registro?');">
                       <span class="material-symbols-outlined acao-delete"
                         style="cursor: pointer;"
-                        title="Excluir">
+                        title="Desvincular">
                         delete
                       </span>
                     </a>

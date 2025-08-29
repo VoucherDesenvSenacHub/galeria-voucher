@@ -213,12 +213,12 @@ class PessoaModel extends BaseModel
             $stmt = $this->pdo->prepare("DELETE FROM docente_turma WHERE pessoa_id = :id");
             $stmt->execute([':id' => $id]);
 
-            $stmt = $this->pdo->prepare("DELETE FROM usuario WHERE pessoa_id = :id");
-            $stmt->execute([':id' => $id]);
+            // $stmt = $this->pdo->prepare("DELETE FROM usuario WHERE pessoa_id = :id");
+            // $stmt->execute([':id' => $id]);
 
-            // Excluir a pessoa
-            $stmt2 = $this->pdo->prepare("DELETE FROM pessoa WHERE pessoa_id = :id");
-            $ok = $stmt2->execute([':id' => $id]);
+            // // Excluir a pessoa
+            // $stmt2 = $this->pdo->prepare("DELETE FROM pessoa WHERE pessoa_id = :id");
+            $ok = $stmt->execute([':id' => $id]);
 
             $this->pdo->commit();
             return $ok;
