@@ -11,24 +11,48 @@ class PesquisaModel extends BaseModel
         parent::__construct();
     }
 
+    public function buscarAlunosSemVinculo(int $limite, int $offset, string $termo = ''): array
+    {
+        try {
+            $query = "  
+                SELECT 
+                    pessoa.pessoa_id,
+                    pessoa.nome,
+                    pessoa.email
+                FROM 
+                    pessoa
+                WHERE 
+                    pessoa.perfil = 'aluno'
+                    AND NOT EXISTS (
+                        SELECT 1 
+                        FROM aluno_turma 
+                        WHERE aluno_turma.pessoa_id = pessoa.pessoa_id
+                    )
+            ";
 
-    public function buscarAlunosSemVinculo(){
-        try{
-            //busca e retorna os alunos que não tem vinculo com nenhuma turma.
-            $query = "SELECT pessoa.nome,pessoa.email, pessoa.linkedin,pessoa.github 
-            FROM pessoa WHERE perfil = 'aluno' AND NOT EXISTS (SELECT 1 FROM aluno_turma WHERE aluno_turma.pessoa_id = pessoa.pessoa_id);";
+            if (!empty($termo)) {
+                $query .= " AND pessoa.nome LIKE :termo";
+            }
+
+            $query .= " ORDER BY pessoa.nome ASC LIMIT :limite OFFSET :offset";
 
             $stmt = $this->pdo->prepare($query);
+
+            if (!empty($termo)) {
+                $stmt->bindValue(':termo', '%' . $termo . '%', PDO::PARAM_STR);
+            }
+            $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
             $stmt->execute();
-            var_dump ($stmt->fetchAll(PDO::FETCH_ASSOC));
-        }
-        catch(PDOException $e){
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // var_dump($resultado);
+            return $resultado;
+        } catch (PDOException $e) {
             error_log("Erro ao buscar alunos sem vínculo: " . $e->getMessage());
-            var_dump( ["DEU ERRADO"]);
+            var_dump("deu errado");
         }
-
-
     }
+
 }
-$turmaModel = new PesquisaModel();
-$funcao = $turmaModel->buscarAlunosSemVinculo();
