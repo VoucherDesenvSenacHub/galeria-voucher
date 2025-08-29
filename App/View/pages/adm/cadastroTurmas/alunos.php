@@ -4,18 +4,39 @@ require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../../Model/AlunoModel.php"; // Inclui o AlunoModel
+require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 
 headerComponent("Voucher Desenvolvedor - Alunos");
-$currentTab = 'alunos';
+$currentTab = 'Alunos';
 
 // 2. LÓGICA DE BUSCA DE DADOS
+$alunos = [];
+$isEditMode = false;
+$turmaId = null;
+
 try {
     $alunoModel = new AlunoModel();
-    $alunos = $alunoModel->buscarTodosAlunosComPolo();
+
+    // Verifica se o ID da turma foi passado (modo edição)
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
+        $turmaId = (int) $_GET['id'];
+
+        if ($turmaId > 0) {
+            $isEditMode = true;
+            $alunos = $alunoModel->buscarTodosAlunosComPolo();
+        }
+    }
+    // Se não houver ID, está no modo cadastro (não é erro)
+
 } catch (Exception $e) {
     // Em caso de erro, define $alunos como um array vazio e loga o erro
     $alunos = [];
     error_log("Erro ao buscar alunos: " . $e->getMessage());
+
+    // Exibe mensagem de erro para o usuário apenas se estiver no modo edição
+    if ($isEditMode) {
+        $error_message = "Erro ao carregar alunos: " . $e->getMessage();
+    }
 }
 
 // Verifica se o usuário logado é um administrador para exibir o botão de excluir
@@ -36,23 +57,29 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         ?>
 
         <main class="main-turmas-turmas">
-
             <section class="section_modal">
 
             </section>
-            <div class="tabs-adm-turmas">
-                <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : '' ?>" href="cadastroTurmas.php">DADOS GERAIS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>" href="CadastroProjetos.php">PROJETOS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>" href="docentes.php">DOCENTES</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>
+            <?php
+            // Usa o componente de abas das turmas
+            $turmaId = isset($_GET['id']) ? (int) $_GET['id'] : null;
+            tabsTurmaComponent($currentTab, $turmaId);
+            ?>
+
+            <div class="page-title-container">
+                <h1 class="page-title">
+                    <?='Turmas > ' . $currentTab ?>
+                </h1>
             </div>
 
+
             <div class="topo-lista-alunos">
-                <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\""); ?>
+                <?php buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\""); ?>
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
+                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
+                        class="icone-lupa-img">
                 </div>
             </div>
 
@@ -67,21 +94,21 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($alunos)) : ?>
-                                <?php foreach ($alunos as $aluno) : ?>
+                            <?php if (!empty($alunos)): ?>
+                                <?php foreach ($alunos as $aluno): ?>
                                     <tr>
                                         <td><?= htmlspecialchars($aluno['nome']) ?></td>
                                         <td><?= htmlspecialchars($aluno['polo']) ?></td>
                                         <td class="acoes">
-                                            <?php if ($is_admin) : ?>
+                                            <?php if ($is_admin): ?>
                                                 <span class="material-symbols-outlined acao-delete" title="Excluir">delete</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else : ?>
+                            <?php else: ?>
                                 <tr>
-                                    <td colspan="3" style="text-align: center;">Nenhum aluno encontrado.</td>
+                                    <td colspan="3" class="empty-table-cell">Nenhum aluno encontrado.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
