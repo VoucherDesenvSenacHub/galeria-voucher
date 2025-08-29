@@ -10,13 +10,15 @@ class DocenteModel extends BaseModel {
     }
 
     /**
-     * Busca todos os docentes com seus respectivos polos.
+     * Busca todos os docentes com seus respectivos polos, opcionalmente filtrando por polo.
+     * @param int|null $polo_id O ID do polo pra filtrar os docentes. Se null, busca todos.
      * @return array
      */
-    public function buscarTodosDocentesComPolo(): array
+    public function buscarTodosDocentesComPolo(?int $polo_id = null): array
     {
         $query = "
-            SELECT 
+            SELECT
+                p.pessoa_id, 
                 p.nome,
                 polo.nome AS polo
             FROM 
@@ -29,6 +31,9 @@ class DocenteModel extends BaseModel {
                 polo ON t.polo_id = polo.polo_id
             WHERE
                 p.perfil = 'professor'
+        ";
+        
+        $query .= "
             GROUP BY
                 p.pessoa_id
             ORDER BY 
@@ -36,6 +41,11 @@ class DocenteModel extends BaseModel {
         ";
 
         $stmt = $this->pdo->prepare($query);
+
+        if ($polo_id !== null) {
+            $stmt->bindParam(':polo_id', $polo_id, PDO::PARAM_INT);
+        }
+
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

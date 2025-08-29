@@ -30,10 +30,11 @@ class AlunoModel extends BaseModel{
     }
 
     /**
-     * Busca todos os alunos com seus respectivos polos.
+     * Busca todos os alunos com seus respectivos polos, podendo filtrar por polo.
+     * @param int|null $polo_id O ID do polo para filtrar os alunos. Se nulo, busca todos.
      * @return array
      */
-    public function buscarTodosAlunosComPolo(): array
+    public function buscarTodosAlunosComPolo(?int $polo_id = null): array
     {
         $query = "
             SELECT
@@ -49,7 +50,13 @@ class AlunoModel extends BaseModel{
             JOIN
                 polo ON t.polo_id = polo.polo_id
             WHERE
-                p.perfil = 'aluno'
+                p.perfil = 'aluno'";
+
+        if ($polo_id !== null) {
+            $query .= " AND t.polo_id = :polo_id";
+        }
+
+        $query .= "
             GROUP BY
                 p.pessoa_id
             ORDER BY
@@ -57,6 +64,11 @@ class AlunoModel extends BaseModel{
         ";
 
         $stmt = $this->pdo->prepare($query);
+
+        if ($polo_id !== null) {
+            $stmt->bindParam(':polo_id', $polo_id, PDO::PARAM_INT);
+        }
+
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
