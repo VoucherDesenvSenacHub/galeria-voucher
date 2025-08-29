@@ -9,7 +9,8 @@
 /* Conteúdo principal (scroll está aqui agora) */
 .main-lista-alunos {
   width: 100%;
-  height: calc(100vh - 60px); /* ajuste conforme altura da navbar, se houver */
+  height: calc(100vh - 60px);
+  /* ajuste conforme altura da navbar, se houver */
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -115,14 +116,32 @@
 
 .tabela-container-lista-alunos {
   height: auto;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* Estilo da tabela */
 #tabela-alunos {
   width: 100%;
-  min-width: 1000px; /* força scroll horizontal se necessário */
+  min-width: 1000px;
+  /* força scroll horizontal se necessário */
   border-collapse: collapse;
+
+  a{
+  text-decoration: none;
+  color: #000;
+  transition: 0.2s linear;
+  cursor: pointer;
+
+  &:hover{
+    transition: 0.2s linear;
+    color:#9fe83a;
+  }
+  }
+
 }
+
 
 /* Cabeçalho da tabela */
 thead {
@@ -183,12 +202,17 @@ tbody tr:nth-child(odd) {
   color: #000;
 }
 
+.paginacao {
+  margin: auto;
+}
+
+
 /* Fix para o menu hamburger nas páginas de lista */
 @media (max-width: 768px) {
   .body-lista-alunos .menu-links {
     transform: translateX(100%) !important;
   }
-  
+
   .body-lista-alunos .menu-links.open {
     transform: translateX(0) !important;
   }
