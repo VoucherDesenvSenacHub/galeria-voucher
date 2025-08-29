@@ -74,3 +74,37 @@
   line-height: 1.5;
   font-size: 1rem;
 }
+
+/* Estilos para ações dos cards */
+.card-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.action-icon {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.action-icon:last-child {
+  margin-right: 0;
+  font-family: var(--font-primary);
+}
+
+.projeto-polo{
+  font-family: var(--font-primary); 
+}
+
+.projeto-titulo{
+  font-family: var(--font-primary); 
+}
+
+.projeto-descricao{
+  font-family: var(--font-primary); 
+}
+
+.p{
+  font-family: var(--font-primary); 
+
+}
