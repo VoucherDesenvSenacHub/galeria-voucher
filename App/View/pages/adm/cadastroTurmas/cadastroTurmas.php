@@ -19,7 +19,7 @@ require_once __DIR__ . "/../../../../Model/PoloModel.php";
 // --- LÓGICA DE PREPARAÇÃO DA PÁGINA ---
 
 // Inicializa variáveis com valores padrão para o modo "Cadastro".
-$modoEdicao = false; // Flag para controlar se a página está em modo de edição.
+$isEditMode = false; // Flag para controlar se a página está em modo de edição.
 $turma = null; // Variável para armazenar os dados da turma no modo de edição.
 $tituloPagina = "Cadastro de Turma"; // Título que aparecerá na aba do navegador.
 // URL para onde o formulário será enviado. Padrão é a ação 'salvar' do Controller.
@@ -27,10 +27,18 @@ $actionUrl = VARIAVEIS['APP_URL'] . "App/Controls/TurmaController.php?action=sal
 // URL da imagem de placeholder padrão.
 $imagemUrl = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png';
 
+// 2. LÓGICA DE BUSCA DE DADOS
+$projetos = [];
+$isEditMode = false;
+$turmaId = null;
+
+// Verifica se o usuário logado é um administrador para exibir o botão de excluir
+$is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
+
 // Verifica se um 'id' foi passado na URL e se é um inteiro válido.
 // Se sim, a página entra no "Modo Edição".
 if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-  $modoEdicao = true;
+  $isEditMode = true;
   $turmaModel = new TurmaModel();
   // Busca no banco os dados da turma com o ID fornecido.
   $turma = $turmaModel->buscarTurmaPorId($_GET['id']);
@@ -63,6 +71,9 @@ $polos = $poloModel->buscarTodos();
 
 // Renderiza o componente do cabeçalho HTML, passando o título dinâmico da página.
 headerComponent($tituloPagina);
+
+// Define a aba atual
+$currentTab = 'Dados-gerais';
 ?>
 
 <body class="body-adm">
@@ -71,28 +82,35 @@ headerComponent($tituloPagina);
     <?php
     $isAdmin = true; // Variável para o componente nav.php saber que é uma página de admin.
     require_once __DIR__ . "/../../../componentes/nav.php"; // Inclui a barra de navegação superior.
+    require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php"; // Inclui o componente de abas das turmas
     ?>
 
     <main class="main-turmas-turmas">
-      <div class="tabs-adm-turmas">
-        <a class="tab-adm-turmas active" href="cadastroTurmas.php">DADOS GERAIS</a>
-        <a class="tab-adm-turmas" href="CadastroProjetos.php">PROJETOS</a>
-        <a class="tab-adm-turmas" href="docentes.php">DOCENTES</a>
-        <a class="tab-adm-turmas" href="alunos.php">ALUNOS</a>
+      <?php
+      // Usa o componente de abas das turmas
+      $turmaId = isset($_GET['id']) ? (int) $_GET['id'] : null;
+      tabsTurmaComponent($currentTab, $turmaId);
+      ?>
+
+      <div class="page-title-container">
+        <h1 class="page-title">
+          <?= 'Turmas > ' . $currentTab ?>
+        </h1>
       </div>
+
 
       <div class="container-main-adm">
         <form id="form-turma" method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data"
           style="width: 100%;">
 
-          <?php if ($modoEdicao): // Se estiver em modo de edição, insere campos ocultos no formulário. ?>
+          <?php if ($isEditMode): // Se estiver em modo de edição, insere campos ocultos no formulário. ?>
             <input type="hidden" name="turma_id" value="<?= htmlspecialchars($turma['turma_id']) ?>">
             <input type="hidden" name="imagem_id_atual" value="<?= htmlspecialchars($turma['imagem_id'] ?? '') ?>">
           <?php endif; ?>
 
           <div class="form-top">
             <div class="form-section">
-              <h1 class='h1-turma'><?= $modoEdicao ? 'EDITAR TURMA' : 'CADASTRO DE TURMA' ?></h1>
+              <h1 class='h1-turma'><?= $isEditMode ? 'EDITAR TURMA' : 'CADASTRO DE TURMA' ?></h1>
 
               <label class="form-label" id="text_input">Nome</label>
               <input type="text" name="nome" class="input-adm-turmas"
@@ -117,7 +135,7 @@ headerComponent($tituloPagina);
                   <select name="polo_id" class="input-adm-turmas">
                     <option value="">Selecione um Pólo</option>
                     <?php foreach ($polos as $polo): // Loop para criar as opções do select a partir dos dados do banco. ?>
-                      <option value="<?= $polo['polo_id'] ?>" <?= ($modoEdicao && isset($turma) && $polo['polo_id'] == $turma['polo_id']) ? 'selected' : '' ?>>
+                      <option value="<?= $polo['polo_id'] ?>" <?= ($isEditMode && isset($turma) && $polo['polo_id'] == $turma['polo_id']) ? 'selected' : '' ?>>
                         <?= htmlspecialchars($polo['nome']) ?>
                       </option>
                     <?php endforeach; ?>
@@ -141,7 +159,7 @@ headerComponent($tituloPagina);
               // O botão "Voltar" redireciona para a lista de turmas.
               buttonComponent('secondary', 'Voltar', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
               // O texto do botão primário muda de 'Atualizar' para 'Cadastrar' dependendo do modo.
-              buttonComponent('primary', $modoEdicao ? 'Atualizar' : 'Cadastrar', true);
+              buttonComponent('primary', $isEditMode ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>
           </div>
