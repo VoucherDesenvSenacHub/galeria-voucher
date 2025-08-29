@@ -2,8 +2,10 @@
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../Controls/BreadCrumbController.php";
 
 headerComponent('Página inicial - ADM');
+
 ?>
 <link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/home-adm.css">
 <link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/nav.css">
@@ -15,6 +17,8 @@ headerComponent('Página inicial - ADM');
         <?php 
             $isAdmin = true; // Para páginas de admin
             require_once __DIR__ . "/../../componentes/nav.php"; 
+            
+BreadCrumbController::pegarBreadCrumbs();
         ?>
 
       <main class="content-adm">
