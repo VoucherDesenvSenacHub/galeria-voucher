@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/../../Controls/BreadCrumbController.php";
 /**
  * Componente de Navegação Unificado
  * 
@@ -30,6 +30,8 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
                     <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/logo-navbar.png" alt="Logo Voucher">
                 </a>
             </div>
+
+            <?php echo BreadCrumbController::gerarBreadCrumbs()?>
 
             <?php if (!$isAdmin): ?>
                 <div class="search" id="searchBar">
