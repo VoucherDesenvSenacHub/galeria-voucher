@@ -98,6 +98,7 @@ $currentTab = 'Dados-gerais';
         </h1>
       </div>
 
+                <?php buttonComponent('primary', $isEditMode ? 'EDITAR TURMA' : 'CADASTRO DE TURMA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/turmas.php'); ?>
 
       <div class="container-main-adm">
         <form id="form-turma" method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data"
@@ -110,7 +111,6 @@ $currentTab = 'Dados-gerais';
 
           <div class="form-top">
             <div class="form-section">
-              <h1 class='h1-turma'><?= $isEditMode ? 'EDITAR TURMA' : 'CADASTRO DE TURMA' ?></h1>
 
               <label class="form-label" id="text_input">Nome</label>
               <input type="text" name="nome" class="input-adm-turmas"
