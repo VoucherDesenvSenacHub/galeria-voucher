@@ -8,7 +8,7 @@ require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 // require_once __DIR__ . "/../../../../Model/ProjetoModel.php";
 
-$currentTab = 'Criar Projeto';
+$currentTab = 'Projetos';
 
 $projetos = [];
 $isEditMode = false;
