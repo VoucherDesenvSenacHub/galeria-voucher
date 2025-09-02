@@ -118,8 +118,9 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </main>
     </div>
 
+    <script src="../../../assets/js/adm/lista-alunos.js"></script>
     <script src="../../../assets/js/main.js"></script>
-    <script src="../../../assets/js/adm/autocomplete.js"></script>
+    <script src="../../../assets/js/adm/autocomplete-pessoas.js"></script>
 </body>
 
 </html>
