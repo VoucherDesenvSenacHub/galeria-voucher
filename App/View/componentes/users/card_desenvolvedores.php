@@ -19,7 +19,7 @@ $perfil = $aluno['perfil'] ?? ($aluno['funcao'] ?? '');
 ?>
 <div class="card-container">
     <div class="image-dev">
-        <img src="<?php echo htmlspecialchars($aluno['foto']); ?>" alt="Foto de <?php echo htmlspecialchars($aluno['nome']); ?>">
+        <img src="<?php echo htmlspecialchars($aluno['foto'] ?? VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png'); ?>" alt="Foto de <?php echo htmlspecialchars($aluno['nome']); ?>">
     </div>
     <div class="text-card">
         <h2><?php echo htmlspecialchars($aluno['nome']); ?></h2>

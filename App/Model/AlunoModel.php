@@ -2,10 +2,31 @@
 
 require_once __DIR__ . "/BaseModel.php";
 
-class AlunoModel extends BaseModel {
-
+class AlunoModel extends BaseModel{
+    public $listaAlunos; 
     public function __construct() {
+        $this->tabela = "aluno";
         parent::__construct();
+    }
+
+    public function buscarAlunos(){
+
+        $sql = "SELECT 
+        p.nome AS nome_pessoa, 
+        t.nome AS nome_turma, 
+        t.turma_id AS id_turma
+        FROM aluno_turma at
+        INNER JOIN pessoa p
+            ON at.pessoa_id = p.pessoa_id
+        INNER JOIN turma t
+            ON at.turma_id = t.turma_id;";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dados;
     }
 
     /**
@@ -72,6 +93,19 @@ class AlunoModel extends BaseModel {
         $stmt->bindParam(':turma_id', $turma_id, PDO::PARAM_INT);
         $stmt->execute();
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function buscarPorTurma(int $turmaId): array
+    {
+        $sql = "SELECT p.*, i.url AS foto 
+                FROM aluno_turma at
+                INNER JOIN pessoa p ON at.pessoa_id = p.pessoa_id
+                LEFT JOIN imagem i ON p.imagem_id = i.imagem_id
+                WHERE at.turma_id = :turma_id
+                ORDER BY p.nome ASC";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
