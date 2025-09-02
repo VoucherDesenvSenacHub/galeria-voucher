@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../../Controls/BreadCrumbController.php";
+require_once __DIR__ . "/breadCrumbs.php";
 /**
  * Componente de Navegação Unificado
  * 
@@ -31,7 +31,7 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
                 </a>
             </div>
 
-            <?php echo BreadCrumbController::gerarBreadCrumbs()?>
+            <?php BreadCrumbs::gerarBreadCrumbs()?>
 
             <?php if (!$isAdmin): ?>
                 <div class="search" id="searchBar">
