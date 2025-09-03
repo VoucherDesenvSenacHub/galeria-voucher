@@ -30,6 +30,11 @@
   border-bottom: 1px solid var(--border-gray);
 }
 
+.menu-adm a.active {
+  background-color: #555555; /* Um cinza escuro para destaque */
+  font-weight: bold;
+}
+
 @media (max-width: 1333px) and (max-height: 720px) {
 
   .sidebar {
