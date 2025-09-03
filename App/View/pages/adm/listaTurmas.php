@@ -7,7 +7,6 @@ require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
-require_once __DIR__ . "/../../componentes/breadCrumbs.php";
 
 // Define o título da página.
 headerComponent("Voucher Desenvolvedor - Turmas");
@@ -47,7 +46,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     ?>
 
     <main class="main-lista-alunos">
-        <?php BreadCrumbs::gerarBreadCrumbs()?>
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
                 <?php

@@ -7,7 +7,6 @@ require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . '/../../../Model/PessoaModel.php';
 require_once __DIR__ . '/../../../Model/PoloModel.php';
-require_once __DIR__ . "/../../componentes/breadCrumbs.php";
 
 headerComponent('Cadastro de Pessoa');
 
@@ -34,7 +33,6 @@ if ($acao === 'editar' && $id) {
   ?>
 
   <main class="conteudo-cadastro">
-    <?php BreadCrumbs::gerarBreadCrumbs()?>
     <h1 class='h1-usuario'><?= $acao === 'editar' ? 'EDITAR PESSOA' : 'CADASTRO' ?></h1>
     <?php if (!empty($_GET['erro'])): ?>
       <div style="margin: 12px 0; color: #b00020; font-weight: 600;"><?= htmlspecialchars($_GET['erro']) ?></div>

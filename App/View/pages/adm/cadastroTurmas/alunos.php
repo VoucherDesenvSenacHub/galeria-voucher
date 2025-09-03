@@ -5,7 +5,6 @@ require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../../Model/AlunoModel.php"; // Inclui o AlunoModel
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
-require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
 
 headerComponent("Voucher Desenvolvedor - Alunos");
 $currentTab = 'Alunos';
@@ -58,7 +57,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         ?>
 
         <main class="main-turmas-turmas">
-            <?php BreadCrumbs::gerarBreadCrumbs()?>
             <section class="section_modal">
 
             </section>
@@ -67,6 +65,13 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             $turmaId = isset($_GET['id']) ? (int) $_GET['id'] : null;
             tabsTurmaComponent($currentTab, $turmaId);
             ?>
+
+            <div class="page-title-container">
+                <h1 class="page-title">
+                    <?='Turmas > ' . $currentTab ?>
+                </h1>
+            </div>
+
 
             <div class="topo-lista-alunos">
                 <?php buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\""); ?>

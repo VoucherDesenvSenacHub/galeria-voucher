@@ -1,11 +1,9 @@
 <?php
-require_once __DIR__ . '/../../../Controls/UsuarioController.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-$usuarioController = new UsuarioController();
-
-// Verifica se está logado
-$usuarioController->verificarLogin();
-
-// Dados do usuário
-$usuarioNome   = $usuarioController->getUsuarioNome();
-$usuarioImagem = $usuarioController->getUsuarioImagem();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php');
+    exit;
+}

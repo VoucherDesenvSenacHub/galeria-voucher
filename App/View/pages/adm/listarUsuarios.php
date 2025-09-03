@@ -39,7 +39,6 @@ try {
   ?>
 
   <main class="main-lista-alunos">
-    <?php BreadCrumbs::gerarBreadCrumbs()?>
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">
         <?php buttonComponent('primary', 'CADASTRAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
@@ -65,7 +64,6 @@ try {
           <table id="tabela-alunos">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>NOME</th>
                 <th>TIPO</th>
                 <th>POLO</th>
@@ -73,6 +71,42 @@ try {
               </tr>
             </thead>
             <tbody>
+<<<<<<< HEAD
+
+              <?php
+              $model = new PessoaModel();
+
+              $pagina = isset($_GET['pagina']) && is_numeric($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+              $itensPorPagina = 10;
+              $offset = ($pagina - 1) * $itensPorPagina;
+
+              $usuarios = $model->listarPessoasTable($itensPorPagina, $offset);
+              ?>
+
+              <?php foreach ($usuarios as $usuario): ?>
+                <tr>
+                  <td><?= htmlspecialchars($usuario['nome']) ?></td>
+                  <td><?= htmlspecialchars($usuario['perfil']) ?></td>
+                  <td><?= htmlspecialchars($usuario['nome_polo'] ?? 'Sem polo') ?></td>
+                  <td class="acoes">
+                    <a href="cadastrar-usuarios.php?acao=editar&id=<?= $usuario['pessoa_id'] ?>">
+                      <span class="material-symbols-outlined acao-edit" title="Editar">edit</span>
+                    </a>
+                    <a href="../../../Controls/ControllerPessoa.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['perfil']?>"
+                      onclick="return confirm('Tem certeza que deseja excluir este registro?');">
+                      <span class="material-symbols-outlined acao-delete"
+                        style="cursor: pointer;"
+                        title="Excluir">
+                        delete
+                      </span>
+                    </a>
+
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+
+
+=======
               <?php if (!empty($usuarios)): ?>
                   <?php foreach ($usuarios as $usuario): ?>
                       <tr>
@@ -96,6 +130,7 @@ try {
                       <td colspan="5" style="text-align: center;">Nenhum usuário encontrado.</td>
                   </tr>
               <?php endif; ?>
+>>>>>>> fc9234a0b6ec21aabd4a806e1945bb93d77fe393
             </tbody>
           </table>
 

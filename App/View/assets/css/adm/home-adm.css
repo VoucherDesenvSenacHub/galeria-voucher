@@ -27,13 +27,6 @@
     
 }
 
-.img-Adm{
-    width:300px;
-    height:300px; 
-    border-radius:100%; 
-    object-fit:cover;
-}
-
 /* Reponsividade da pagina */
 
 @media (max-width: 768px) {
