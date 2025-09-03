@@ -15,6 +15,7 @@ require_once __DIR__ . "/../../../componentes/adm/auth.php";
 // Inclui os Models necessários para buscar dados do banco (turmas e polos).
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../../Model/PoloModel.php";
+require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
 
 // --- LÓGICA DE PREPARAÇÃO DA PÁGINA ---
 
@@ -86,18 +87,12 @@ $currentTab = 'Dados-gerais';
     ?>
 
     <main class="main-turmas-turmas">
+      <?php BreadCrumbs::gerarBreadCrumbs()?>
       <?php
       // Usa o componente de abas das turmas
       $turmaId = isset($_GET['id']) ? (int) $_GET['id'] : null;
       tabsTurmaComponent($currentTab, $turmaId);
       ?>
-
-      <div class="page-title-container">
-        <h1 class="page-title">
-          <?= 'Turmas > ' . $currentTab ?>
-        </h1>
-      </div>
-
 
       <div class="container-main-adm">
         <form id="form-turma" method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data"
