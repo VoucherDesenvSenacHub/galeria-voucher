@@ -12,8 +12,8 @@
 
 /* Estilo principal da área de cadastro */
 main.conteudo-cadastro {
-  margin: 50px 0 20px 20px;
-  padding-right: 20px;
+  margin: 50px 0 0 0;
+  padding: 20px;
   width: 100%;
   height: calc(100vh - 30px);
   display: flex;

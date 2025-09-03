@@ -3,6 +3,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Pessoas");
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . '/../../../Model/PessoaModel.php';
+require_once __DIR__ . "/../../componentes/breadCrumbs.php";
 
 ?>
 
@@ -19,6 +20,7 @@ require_once __DIR__ . '/../../../Model/PessoaModel.php';
   ?>
 
   <main class="main-lista-alunos">
+    <?php BreadCrumbs::gerarBreadCrumbs()?>
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">
         <?php buttonComponent('primary', 'CADASTRAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>

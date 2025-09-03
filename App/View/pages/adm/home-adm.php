@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../componentes/breadCrumbs.php";
 
 headerComponent('Página inicial - ADM');
 
@@ -18,6 +19,7 @@ headerComponent('Página inicial - ADM');
         ?>
 
       <main class="content-adm">
+        <?php BreadCrumbs::gerarBreadCrumbs()?>
           <div class="user-profile-adm">
               <div class="user-icon-adm"></div>
 

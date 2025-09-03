@@ -90,12 +90,11 @@
 }
 
 .nav-breadcrumbs{
-    flex: 1 0 0;
-    padding: 0 80px;
-    color: var(--text-white);
+    padding: 0 0 16px 0;
+    color: var(--darker-green);
 
     & a{
-        color: var(--text-white)
+        color: var(--darker-green)
     }
 
     & a:hover{
