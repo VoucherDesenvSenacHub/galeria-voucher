@@ -4,14 +4,26 @@ require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../../Model/AlunoModel.php"; // Inclui o AlunoModel
+require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 
 headerComponent("Voucher Desenvolvedor - Alunos");
 $currentTab = 'alunos';
 
 // 2. LÓGICA DE BUSCA DE DADOS
+$turma_id = $_GET['id'] ?? null;
+$polo_id = null;
+
+if ($turma_id) {
+    $turmaModel = new TurmaModel();
+    $turma = $turmaModel->buscarTurmaPorId((int)$turma_id);
+    if ($turma) {
+        $polo_id = $turma['polo_id'];
+    }
+}
+
 try {
     $alunoModel = new AlunoModel();
-    $alunos = $alunoModel->buscarTodosAlunosComPolo();
+    $alunos = $alunoModel->buscarAlunosPorTurma((int)$turma_id);
 } catch (Exception $e) {
     // Em caso de erro, define $alunos como um array vazio e loga o erro
     $alunos = [];
@@ -37,18 +49,17 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
         <main class="main-turmas-turmas">
 
-            <section class="section_modal">
+            <section class="section_modal"></section>
 
-            </section>
             <div class="tabs-adm-turmas">
-                <a class="tab-adm-turmas <?= ($currentTab == 'dados-gerais') ? 'active' : '' ?>" href="cadastroTurmas.php">DADOS GERAIS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'projetos') ? 'active' : '' ?>" href="CadastroProjetos.php">PROJETOS</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'docentes') ? 'active' : '' ?>" href="docentes.php">DOCENTES</a>
-                <a class="tab-adm-turmas <?= ($currentTab == 'alunos') ? 'active' : '' ?>" href="alunos.php">ALUNOS</a>
+                <a class="tab-adm-turmas" href="cadastroTurmas.php?id=<?= htmlspecialchars($turma_id ?? '') ?>">DADOS GERAIS</a>
+                <a class="tab-adm-turmas" href="CadastroProjetos.php?id=<?= htmlspecialchars($turma_id ?? '') ?>">PROJETOS</a>
+                <a class="tab-adm-turmas" href="docentes.php?id=<?= htmlspecialchars($turma_id ?? '') ?>">DOCENTES</a>
+                <a class="tab-adm-turmas active" href="alunos.php?id=<?= htmlspecialchars($turma_id ?? '') ?>">ALUNOS</a>
             </div>
 
             <div class="topo-lista-alunos">
-                <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\""); ?>
+                <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno', ".($polo_id ?? 'null').")\""); ?>
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
@@ -71,17 +82,17 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                 <?php foreach ($alunos as $aluno) : ?>
                                     <tr>
                                         <td><?= htmlspecialchars($aluno['nome']) ?></td>
-                                        <td><?= htmlspecialchars($aluno['polo']) ?></td>
+                                        <td><?= htmlspecialchars($aluno['polo'] ?? 'N/A') ?></td>
                                         <td class="acoes">
                                             <?php if ($is_admin) : ?>
-                                                <span class="material-symbols-outlined acao-delete" title="Excluir">delete</span>
+                                                <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else : ?>
                                 <tr>
-                                    <td colspan="3" style="text-align: center;">Nenhum aluno encontrado.</td>
+                                    <td colspan="3" style="text-align: center;">Nenhum aluno vinculado a esta turma.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>

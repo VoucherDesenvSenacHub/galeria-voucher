@@ -32,6 +32,10 @@ class DocenteModel extends BaseModel {
             WHERE
                 p.perfil = 'professor'
         ";
+
+        if ($polo_id !== null) {
+            $query .= " AND polo.polo_id = :polo_id ";
+        }
         
         $query .= "
             GROUP BY
