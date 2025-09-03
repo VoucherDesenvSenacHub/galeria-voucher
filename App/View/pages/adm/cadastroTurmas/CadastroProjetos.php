@@ -8,7 +8,8 @@ require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
 
 // Define a aba atual
-$currentTab = 'Projetos';
+$currentTab = 'projetos';
+
 
 // 2. LÓGICA DE BUSCA DE DADOS
 $projetos = [];
