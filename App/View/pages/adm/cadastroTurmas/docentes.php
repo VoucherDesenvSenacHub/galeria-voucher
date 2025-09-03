@@ -5,6 +5,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../../Model/DocenteModel.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
+require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
 
 headerComponent("Voucher Desenvolvedor - Docentes");
 $currentTab = 'Docentes';
@@ -58,6 +59,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         ?>
 
         <main class="main-turmas-turmas">
+            <?php BreadCrumbs::gerarBreadCrumbs()?>
             <?php
             // Usa o componente de abas das turmas
             tabsTurmaComponent($currentTab, $turmaId);
@@ -82,12 +84,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 </div>
                 <?php unset($_SESSION['sucesso']); ?>
             <?php endif; ?>
-
-            <div class="page-title-container">
-                <h1 class="page-title">
-                    <?='Turmas > ' . $currentTab ?>
-                </h1>
-            </div>
 
             <div class="topo-lista-alunos">
                 <?php

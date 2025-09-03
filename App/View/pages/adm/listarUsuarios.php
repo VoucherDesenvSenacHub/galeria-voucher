@@ -6,6 +6,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Pessoas");
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . '/../../../Model/PessoaModel.php';
+require_once __DIR__ . "/../../componentes/breadCrumbs.php";
 
 ?>
 
@@ -22,6 +23,7 @@ require_once __DIR__ . '/../../../Model/PessoaModel.php';
   ?>
 
   <main class="main-lista-alunos">
+    <?php BreadCrumbs::gerarBreadCrumbs()?>
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">
         <?php buttonComponent('primary', 'CADASTRAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
@@ -43,6 +45,7 @@ require_once __DIR__ . '/../../../Model/PessoaModel.php';
           <table id="tabela-alunos">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>NOME</th>
                 <th>TIPO</th>
                 <th>POLO</th>
@@ -63,6 +66,7 @@ require_once __DIR__ . '/../../../Model/PessoaModel.php';
 
               <?php foreach ($usuarios as $usuario): ?>
                 <tr>
+                  <td><?= htmlspecialchars($usuario['pessoa_id']) ?></td>
                   <td><?= htmlspecialchars($usuario['nome']) ?></td>
                   <td><?= htmlspecialchars($usuario['perfil']) ?></td>
                   <td><?= htmlspecialchars($usuario['nome_polo'] ?? 'Sem polo') ?></td>
