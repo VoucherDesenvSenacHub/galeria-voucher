@@ -7,7 +7,8 @@
 .content-adm {
   background-color: var(--white-background);
   flex-grow: 1;
-  margin-top: 120px;
+  margin-top: 50px;
+  padding: 20px;
 }
 
 .user-profile-adm {

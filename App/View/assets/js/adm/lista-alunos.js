@@ -10,3 +10,4 @@ function removerAcentos(texto) {
     }
     return texto;
 }
+

@@ -2,14 +2,22 @@
 // 1. INCLUDES E AUTENTICAÇÃO
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
+require_once __DIR__ . "/../../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../../Model/DocenteModel.php";
+require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
+require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
 require_once __DIR__ . "/../../../componentes/adm/auth.php"; 
 require_once __DIR__ . "/../../../../Model/DocenteModel.php";
 require_once __DIR__ . "/../../../../Model/TurmaModel.php"; 
 
 headerComponent("Voucher Desenvolvedor - Docentes");
-$currentTab = 'docentes';
+$currentTab = 'Docentes';
 
 // 2. LÓGICA DE BUSCA DE DADOS
+$docentes = [];
+$isEditMode = false;
+$turmaId = null;
+
 $turma_id = $_GET['id'] ?? null;
 $polo_id = null;
 
@@ -23,12 +31,29 @@ if ($turma_id) {
 
 try {
     $docenteModel = new DocenteModel();
+
+    // Verifica se o ID da turma foi passado (modo edição)
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
+        $turmaId = (int) $_GET['id'];
+
+        if ($turmaId > 0) {
+            $isEditMode = true;
+            $docentes = $docenteModel->buscarDocentesPorTurmaId($turmaId);
+        }
+    }
+    // Se não houver ID, está no modo cadastro (não é erro)
+
     $docentes = $docenteModel->buscarPorTurma((int)$turma_id);
     
 } catch (Exception $e) {
     // Em caso de erro, define $docentes como um array vazio e loga o erro
     $docentes = [];
     error_log("Erro ao buscar docentes: " . $e->getMessage());
+
+    // Exibe mensagem de erro para o usuário apenas se estiver no modo edição
+    if ($isEditMode) {
+        $error_message = "Erro ao carregar docentes: " . $e->getMessage();
+    }
 }
 
 // Verifica se o usuário logado é um administrador para exibir o botão de excluir
@@ -45,11 +70,36 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
 
         <?php
-        $isAdmin = true; 
+        $isAdmin = true;
         require_once __DIR__ . "/../../../componentes/nav.php";
         ?>
 
         <main class="main-turmas-turmas">
+            <?php BreadCrumbs::gerarBreadCrumbs()?>
+            <?php
+            // Usa o componente de abas das turmas
+            tabsTurmaComponent($currentTab, $turmaId);
+            ?>
+
+            <?php if (isset($error_message)): ?>
+                <div class="error-message">
+                    <?= htmlspecialchars($error_message) ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['erro'])): ?>
+                <div class="error-message">
+                    <?= htmlspecialchars($_SESSION['erro']) ?>
+                </div>
+                <?php unset($_SESSION['erro']); ?>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['sucesso'])): ?>
+                <div class="success-message">
+                    <?= htmlspecialchars($_SESSION['sucesso']) ?>
+                </div>
+                <?php unset($_SESSION['sucesso']); ?>
+            <?php endif; ?>
             <div class="tabs-adm-turmas">
                 <a class="tab-adm-turmas" href="cadastroTurmas.php?id=<?= htmlspecialchars($turma_id ?? '') ?>">DADOS GERAIS</a>
                 <a class="tab-adm-turmas" href="CadastroProjetos.php?id=<?= htmlspecialchars($turma_id ?? '') ?>">PROJETOS</a>
@@ -58,11 +108,15 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             </div>
 
             <div class="topo-lista-alunos">
+                <?php
+                buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor')\"");
+                ?>
                 <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor', ".($polo_id ?? 'null').")\""); ?>
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
+                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
+                        class="icone-lupa-img">
                 </div>
             </div>
 
@@ -77,20 +131,32 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($docentes)) : ?>
-                                <?php foreach ($docentes as $docente) : ?>
+                            <?php if (!empty($docentes)): ?>
+                                <?php foreach ($docentes as $docente): ?>
                                     <tr>
                                         <td><?= htmlspecialchars($docente['nome']) ?></td>
                                         <td><?= htmlspecialchars($docente['polo']) ?></td>
                                         <td class="acoes">
-                                            <?php if ($is_admin) : ?>
-                                                <span class="material-symbols-outlined acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
+                                            <?php if ($is_admin): ?>
+                                                <span class="material-symbols-outlined acao-delete" title="Desvincular docente"
+                                                    onclick="confirmarDesvinculacao(<?= $docente['pessoa_id'] ?>, <?= $turmaId ?>, '<?= htmlspecialchars($docente['nome']) ?>')">delete</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else : ?>
+                            <?php else: ?>
                                 <tr>
+                                    <td colspan="3" class="empty-table-cell">
+                                        <?php if ($isEditMode): ?>
+                                            <?= isset($error_message) ? 'Erro ao carregar dados' : 'Nenhum docente vinculado a esta turma.' ?>
+                                        <?php else: ?>
+                                            <div class="empty-state-container">
+                                                <p class="empty-state-title">Nenhum docente cadastrado ainda.</p>
+                                                <p class="empty-state-description">Clique em "VINCULAR DOCENTE" para adicionar
+                                                    docentes à turma.</p>
+                                            </div>
+                                        <?php endif; ?>
+                                    </td>
                                     <td colspan="3" style="text-align: center;">Nenhum docente vinculado a esta turma.</td>
                                 </tr>
                             <?php endif; ?>
@@ -106,6 +172,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     <script src="../../../assets/js/adm/lista-alunos.js"></script>
     <script src="../../../assets/js/main.js"></script>
     <script src="../../../assets/js/adm/autocomplete-pessoas.js"></script>
+    <script src="../../../assets/js/adm/desvincula-docente.js"></script>
 
 </body>
 
