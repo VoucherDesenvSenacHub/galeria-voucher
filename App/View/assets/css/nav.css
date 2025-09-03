@@ -89,6 +89,19 @@
     left: 0;
 }
 
+.nav-breadcrumbs{
+    padding: 0 0 16px 0;
+    color: var(--darker-green);
+
+    & a{
+        color: var(--darker-green)
+    }
+
+    & a:hover{
+        color: var(--accent-color);
+    }
+}
+
 .nav-inner {
     display: flex;
     align-items: center;
@@ -126,8 +139,11 @@
 .menu-links .desktop-only { display: inline-flex; }
 
 @media(max-width:768px) {
-  .menu-links .mobile-only { display: inline-flex; }
-  .menu-links .desktop-only { display: none; }
+    .nav-breadcrumbs{
+        padding: 0 20px;
+    }
+    .menu-links .mobile-only { display: inline-flex; }
+    .menu-links .desktop-only { display: none; }
 }
 
 /* Esconde o botão SAIR no layout desktop/admin */
