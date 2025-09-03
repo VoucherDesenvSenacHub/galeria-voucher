@@ -87,20 +87,13 @@ $currentTab = 'Dados-gerais';
     ?>
 
     <main class="main-turmas-turmas">
-      <?php BreadCrumbs::gerarBreadCrumbs()?>
+      <?php BreadCrumbs::gerarBreadCrumbs() ?>
       <?php
       // Usa o componente de abas das turmas
       $turmaId = isset($_GET['id']) ? (int) $_GET['id'] : null;
       tabsTurmaComponent($currentTab, $turmaId);
       ?>
-
-      <div class="page-title-container">
-        <h1 class="page-title">
-          <?= 'Turmas > ' . $currentTab ?>
-        </h1>
-      </div>
-
-                <?php buttonComponent('primary', $isEditMode ? 'EDITAR TURMA' : 'CADASTRO DE TURMA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/turmas.php'); ?>
+      <?php buttonComponent('primary', $isEditMode ? 'EDITAR TURMA' : 'CADASTRO DE TURMA', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/turmas.php'); ?>
 
       <div class="container-main-adm">
         <form id="form-turma" method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data"
