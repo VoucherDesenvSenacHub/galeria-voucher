@@ -1,11 +1,26 @@
 <?php
 require_once __DIR__ . "/../../../Controls/cadastrar_pessoa.php";
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../componentes/input.php";
-require_once __DIR__ . "/../../componentes/button.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . '/../../../Model/PessoaModel.php';
+require_once __DIR__ . '/../../../Model/PoloModel.php';
+require_once __DIR__ . "/../../componentes/breadCrumbs.php";
 
-headerComponent('Cadastro de Pessoa')
+headerComponent('Cadastro de Pessoa');
+
+$acao = $_GET['acao'] ?? 'cadastrar';
+$id = $_GET['id'] ?? null;
+
+$model = new PessoaModel();
+$pessoa = null;
+$perfis = $model->listarPerfisPermitidos();
+$poloModel = new PoloModel();
+$polos = $poloModel->buscarTodos();
+
+if ($acao === 'editar' && $id) {
+  $pessoa = $model->buscarPessoaComPoloPorId((int)$id);
+}
+
 ?>
 
 <body class="body-cadastrar-users">
@@ -16,18 +31,26 @@ headerComponent('Cadastro de Pessoa')
   ?>
 
   <main class="conteudo-cadastro">
-    <h1 class='h1-usuario'>CADASTRO</h1>
+    <?php BreadCrumbs::gerarBreadCrumbs()?>
+    <h1 class='h1-usuario'><?= $acao === 'editar' ? 'EDITAR PESSOA' : 'CADASTRO' ?></h1>
+    <?php if (!empty($_GET['erro'])): ?>
+      <div style="margin: 12px 0; color: #b00020; font-weight: 600;"><?= htmlspecialchars($_GET['erro']) ?></div>
+    <?php endif; ?>
     <div class="container-users">
       <div class="form-container-users">
 
-        <form class="form-dados" method="POST" enctype="multipart/form-data">
+        <form class="form-dados" method="POST" enctype="multipart/form-data" action="/galeria-voucher/App/Controls/ControllerPessoa.php">
+          <input type="hidden" name="acao" value="<?= $acao ?>">
+          <?php if ($acao === 'editar' && $id): ?>
+            <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
+          <?php endif; ?>
           <div class="form-top">
             <div class="form-group">
               <?php
-              inputComponent('text', 'nome', 'Nome Completo *');
-              inputComponent('text', 'email', 'Email *');
-              inputComponent('text', 'linkedin', 'Link do linkedin');
-              inputComponent('text', 'github', 'Link para o GitHub');
+              inputComponent('text', 'nome', 'Nome Completo *', $pessoa['nome'] ?? ($_POST['nome'] ?? ''));
+              inputComponent('text', 'email', 'Email *', $pessoa['email'] ?? ($_POST['email'] ?? ''));
+              inputComponent('text', 'linkedin', 'Link do linkedin', $pessoa['linkedin'] ?? ($_POST['linkedin'] ?? ''));
+              inputComponent('text', 'github', 'Link para o GitHub', $pessoa['github'] ?? ($_POST['github'] ?? ''));
               ?>
             </div>
             <div class="form-group-polo div-center">
@@ -36,21 +59,25 @@ headerComponent('Cadastro de Pessoa')
                 <option value="">-- Selecione --</option>
                 <?php foreach ($perfis as $perfil): ?>
                   <option value="<?= htmlspecialchars($perfil) ?>"
-                    <?= ($_POST['perfil'] ?? '') === $perfil ? 'selected' : '' ?>>
+                    <?= (($pessoa['perfil'] ?? ($_POST['perfil'] ?? '')) === $perfil) ? 'selected' : '' ?>>
                     <?= ucfirst(htmlspecialchars($perfil)) ?>
                   </option>
                 <?php endforeach; ?>
               </select>
 
-              <label for="polo" style="font-weight: bold;">Polo *</label>
-              <select id="polo" name="polo" class="input-text" style="cursor: pointer;">
+              <label for="polo" style="font-weight: bold;">Polo</label>
+              <select id="polo" name="polo_id" class="input-text" style="cursor: pointer;">
                 <option value="">-- Selecione --</option>
-                <option value="polo1">Campo Grande</option>
-                <option value="polo2">Tres Lagoas</option>
-                <option value="polo3">Dourados</option>
-                <option value="polo4">Corumba</option>
-                <option value="polo5">Ponta Pora</option>
+                <?php foreach ($polos as $p): ?>
+                  <option value="<?= (int)$p['polo_id'] ?>"
+                    <?= ((($_POST['polo_id'] ?? '') == $p['polo_id']) ? 'selected' : '') ?>>
+                    <?= htmlspecialchars($p['nome']) ?>
+                  </option>
+                <?php endforeach; ?>
               </select>
+              <?php if ($acao === 'editar'): ?>
+                <div style="margin-top:6px; font-size:12px; color:#444;">Polo atual: <?= htmlspecialchars($pessoa['nome_polo'] ?? 'Sem polo') ?></div>
+              <?php endif; ?>
             </div>
 
             <div class="form-group-imagem">
@@ -67,11 +94,10 @@ headerComponent('Cadastro de Pessoa')
             <div class="form-group-buton">
               <?php
               buttonComponent('secondary', 'Cancelar', 'reset', false);
-              buttonComponent('primary', 'Cadastrar', true);
+              buttonComponent('primary', $acao === 'editar' ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>
-          </div>
-        </form>
+          </form>
       </div>
     </div>
   </main>
@@ -92,23 +118,7 @@ headerComponent('Cadastro de Pessoa')
     });
 
     const tipoUsuario = document.getElementById('tipo-usuario');
-    const textareaSobre = document.getElementById('informacoes-adicionais');
-
-    function atualizarPlaceholder(tipo) {
-      if (tipo === 'professor') {
-        textareaSobre.placeholder = 'Digite algo sobre o professor...';
-      } else {
-        textareaSobre.placeholder = 'Digite algo sobre o aluno...';
-      }
-    }
-
-    window.addEventListener('load', () => {
-      atualizarPlaceholder(tipoUsuario.value);
-    });
-
-    tipoUsuario.addEventListener('change', () => {
-      atualizarPlaceholder(tipoUsuario.value);
-    });
+    // Aqui você pode adicionar lógica para mudar placeholder etc, se quiser
   </script>
   <?php if (!empty($mensagem)): ?>
     <script>
@@ -118,5 +128,5 @@ headerComponent('Cadastro de Pessoa')
   <?php endif; ?>
 
 </body>
-
 </html>
+
