@@ -42,6 +42,7 @@ require_once __DIR__ . "/../../componentes/breadCrumbs.php";
           <table id="tabela-alunos">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>NOME</th>
                 <th>TIPO</th>
                 <th>POLO</th>
@@ -62,6 +63,7 @@ require_once __DIR__ . "/../../componentes/breadCrumbs.php";
 
               <?php foreach ($usuarios as $usuario): ?>
                 <tr>
+                  <td><?= htmlspecialchars($usuario['pessoa_id']) ?></td>
                   <td><?= htmlspecialchars($usuario['nome']) ?></td>
                   <td><?= htmlspecialchars($usuario['perfil']) ?></td>
                   <td><?= htmlspecialchars($usuario['nome_polo'] ?? 'Sem polo') ?></td>
