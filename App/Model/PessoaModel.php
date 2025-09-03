@@ -1,10 +1,8 @@
 <?php
 require_once __DIR__ . '/BaseModel.php';
-require_once __DIR__ . '/ImagemModel.php';
 
 class PessoaModel extends BaseModel
 {
-    private ?string $ultimoErro = null;
     // crud  criado conferir e testar!
     // Criar pessoa (Create)
 
@@ -292,4 +290,157 @@ class PessoaModel extends BaseModel
 
         return $valores;
     }
+
+    /**
+     * Lista todas as pessoas com seus respectivos polos.
+     * @return array
+     */
+    public function listarPessoasComPolo(): array
+    {
+        $query = "
+            SELECT
+                p.pessoa_id,
+                p.nome,
+                p.perfil AS tipo,
+                polo.nome AS polo
+            FROM
+                pessoa p
+            LEFT JOIN
+                aluno_turma at ON p.pessoa_id = at.pessoa_id
+            LEFT JOIN
+                docente_turma dt ON p.pessoa_id = dt.pessoa_id
+            LEFT JOIN
+                turma t ON at.turma_id = t.turma_id OR dt.turma_id = t.turma_id
+            LEFT JOIN
+                polo ON t.polo_id = polo.polo_id
+            GROUP BY
+                p.pessoa_id
+            ORDER BY
+                p.nome ASC
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Busca pessoas por nome ou polo.
+     * @param string $termo O termo para buscar.
+     * @return array
+     */
+    public function buscarPessoasPorNomeOuPolo(string $termo): array
+    {
+        $query = "
+            SELECT
+                p.pessoa_id,
+                p.nome,
+                p.perfil AS tipo,
+                polo.nome AS polo
+            FROM
+                pessoa p
+            LEFT JOIN
+                aluno_turma at ON p.pessoa_id = at.pessoa_id
+            LEFT JOIN
+                docente_turma dt ON p.pessoa_id = dt.pessoa_id
+            LEFT JOIN
+                turma t ON at.turma_id = t.turma_id OR dt.turma_id = t.turma_id
+            LEFT JOIN
+                polo ON t.polo_id = polo.polo_id
+            WHERE
+                p.nome LIKE :termo OR polo.nome LIKE :termo
+            GROUP BY
+                p.pessoa_id
+            ORDER BY
+                p.nome ASC
+        ";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':termo' => '%' . $termo . '%']);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Conta o total de pessoas, opcionalmente filtrando por um termo de busca.
+     * @param string $termo O termo para filtrar a contagem.
+     * @return int O número total de pessoas.
+     */
+    public function contarTotalPessoas(string $termo = ''): int
+    {
+        $query = "SELECT COUNT(DISTINCT p.pessoa_id) 
+                  FROM pessoa p
+                  LEFT JOIN aluno_turma at ON p.pessoa_id = at.pessoa_id
+                  LEFT JOIN docente_turma dt ON p.pessoa_id = dt.pessoa_id
+                  LEFT JOIN turma t ON at.turma_id = t.turma_id OR dt.turma_id = t.turma_id
+                  LEFT JOIN polo ON t.polo_id = polo.polo_id";
+        
+        $params = [];
+        if (!empty($termo)) {
+            $query .= " WHERE p.nome LIKE :termo OR polo.nome LIKE :termo";
+            $params[':termo'] = '%' . $termo . '%';
+        }
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($params);
+
+        return (int)$stmt->fetchColumn();
+    }
+
+    /**
+     * Busca pessoas com paginação e filtro.
+     * @param int $limite O número de registros por página.
+     * @param int $offset O deslocamento (a partir de qual registro buscar).
+     * @param string $termo O termo de busca.
+     * @return array A lista de pessoas da página.
+     */
+    public function buscarPessoasPaginado(int $limite, int $offset, string $termo = ''): array
+    {
+        $query = "
+            SELECT 
+                p.pessoa_id,
+                p.nome,
+                p.perfil AS tipo,
+                polo.nome AS polo
+            FROM 
+                pessoa p
+            LEFT JOIN
+                aluno_turma at ON p.pessoa_id = at.pessoa_id
+            LEFT JOIN
+                docente_turma dt ON p.pessoa_id = dt.pessoa_id
+            LEFT JOIN
+                turma t ON at.turma_id = t.turma_id OR dt.turma_id = t.turma_id
+            LEFT JOIN
+                polo ON t.polo_id = polo.polo_id
+        ";
+        
+        $params = [];
+        if (!empty($termo)) {
+            $query .= " WHERE p.nome LIKE :termo OR polo.nome LIKE :termo";
+            $params[':termo'] = '%' . $termo . '%';
+        }
+
+        $query .= " GROUP BY p.pessoa_id ORDER BY p.nome ASC LIMIT :limite OFFSET :offset";
+
+        $stmt = $this->pdo->prepare($query);
+
+        if (!empty($termo)) {
+            $stmt->bindValue(':termo', '%' . $termo . '%', PDO::PARAM_STR);
+        }
+        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
+
+
+
+
+
+
+
+

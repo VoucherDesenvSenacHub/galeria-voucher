@@ -302,4 +302,19 @@ a{
   padding-top: 40px;
   font-family: var(--font-secondary);
   font-size: 1.8rem;
-} 
+}
+
+/* Estilização do campo de busca e botão para listar os usuarios */
+.search-button {    
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	top: -15%;
+	right: 14px;
+	padding: 0;
+
+}
+
+
+
