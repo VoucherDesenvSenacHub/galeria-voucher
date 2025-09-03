@@ -4,6 +4,9 @@ require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 
 headerComponent('Página inicial - ADM');
+
+$paginaAtiva = 'home'; // Variável para identificar a página ativa
+
 ?>
 <link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/home-adm.css">
 <link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/nav.css">
