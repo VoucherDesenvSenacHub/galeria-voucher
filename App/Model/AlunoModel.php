@@ -117,7 +117,7 @@ class AlunoModel extends BaseModel{
      */
     
     public function desvincularAlunoDaTurma(int $pessoa_id, int $turma_id): bool
-
+    {
         $query = "DELETE FROM aluno_turma WHERE pessoa_id = :pessoa_id AND turma_id = :turma_id";
         
         $stmt = $this->pdo->prepare($query);
