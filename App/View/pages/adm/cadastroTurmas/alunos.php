@@ -19,6 +19,7 @@ $alunos = [];
 $isEditMode = false;
 $turmaId = null;
 
+// 3. LÓGICA DE BUSCA DE DADOS
 try {
     $alunoModel = new AlunoModel();
 
