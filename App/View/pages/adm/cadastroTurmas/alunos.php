@@ -25,7 +25,7 @@ try {
 
         if ($turmaId > 0) {
             $isEditMode = true;
-            $alunos = $alunoModel->buscarPorTurma($turmaId);
+            $alunos = $alunoModel->buscarAlunosPorTurma($turmaId);
         }
     }
     // Se não houver ID, está no modo cadastro (não é erro)

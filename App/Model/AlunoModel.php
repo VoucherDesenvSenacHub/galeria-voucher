@@ -75,14 +75,18 @@ class AlunoModel extends BaseModel{
                 p.nome,
                 p.linkedin,
                 p.github,
-                i.url as imagem_url]
+                i.url as imagem_url,
                 polo.nome AS polo
             FROM
                 pessoa p
             JOIN
                 aluno_turma at ON p.pessoa_id = at.pessoa_id
+            JOIN
+                turma t ON at.turma_id = t.turma_id
             LEFT JOIN
                 imagem i ON p.imagem_id = i.imagem_id
+            JOIN
+                polo ON t.polo_id = polo.polo_id
             WHERE
                 at.turma_id = :turma_id
                 AND p.perfil = 'aluno'
