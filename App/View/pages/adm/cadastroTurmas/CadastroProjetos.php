@@ -1,13 +1,18 @@
 <?php
+
+$paginaAtiva = 'turmas'; 
+
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Projetos");
 require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
+require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
 
 // Define a aba atual
-$currentTab = 'Projetos';
+$currentTab = 'projetos';
+
 
 // 2. LÓGICA DE BUSCA DE DADOS
 $projetos = [];
@@ -55,17 +60,12 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     ?>
 
     <main class="main-turmas-turmas">
+      <?php BreadCrumbs::gerarBreadCrumbs()?>
       <?php
       // Usa o componente de abas das turmas
       $turmaId = isset($_GET['id']) ? (int) $_GET['id'] : null;
       tabsTurmaComponent($currentTab, $turmaId);
       ?>
-      <div class="page-title-container">
-        <h1 class="page-title">
-          <?= 'Turmas > ' . $currentTab ?>
-        </h1>
-      </div>
-
 
       <div class="primaty-button">
         <a href="imagens.php">

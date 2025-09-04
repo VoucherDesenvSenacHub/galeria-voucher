@@ -8,6 +8,27 @@
 function tabsTurmaComponent($currentTab = 'dados-gerais', $turmaId = null) {
     // Constrói o parâmetro de ID para as URLs
     $idParam = $turmaId ? "?id=" . $turmaId : '';
+
+    $arquivoAtual = basename($_SERVER['PHP_SELF'], '.php');
+
+switch ($arquivoAtual) {
+    case 'cadastroTurmas':
+        $currentTab = 'dados-gerais';
+        break;
+    case 'CadastroProjetos':
+        $currentTab = 'projetos';
+        break;
+    case 'docentes':
+        $currentTab = 'docentes';
+        break;
+    case 'alunos':
+        $currentTab = 'alunos';
+        break;
+    default:
+        $currentTab = 'dados-gerais';
+        break;
+}
+
     
     // Array com as abas disponíveis
     $tabs = [
