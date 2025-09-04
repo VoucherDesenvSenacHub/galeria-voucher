@@ -108,4 +108,24 @@ class AlunoModel extends BaseModel{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+      /**
+     * Desvincula um aluno de uma turma específica
+     * @param int $pessoa_id ID da pessoa (aluno)
+     * @param int $turma_id ID da turma
+     * @return bool
+     */
+    
+    public function desvincularAlunoDaTurma(int $pessoa_id, int $turma_id): bool
+
+        $query = "DELETE FROM aluno_turma WHERE pessoa_id = :pessoa_id AND turma_id = :turma_id";
+        
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([
+            ':pessoa_id' => $pessoa_id,
+            ':turma_id' => $turma_id
+        ]);
+        
+        return $stmt->rowCount() > 0;
+    }
 }
