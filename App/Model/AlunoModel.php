@@ -75,7 +75,8 @@ class AlunoModel extends BaseModel{
                 p.nome,
                 p.linkedin,
                 p.github,
-                i.url as imagem_url
+                i.url as imagem_url]
+                polo.nome AS polo
             FROM
                 pessoa p
             JOIN
