@@ -1,4 +1,7 @@
 <?php
+
+$paginaAtiva = 'turmas';
+
 // 1. INCLUDES E AUTENTICAÇÃO
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
