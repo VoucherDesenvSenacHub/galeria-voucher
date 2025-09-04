@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Componente de Navegação Unificado
  * 

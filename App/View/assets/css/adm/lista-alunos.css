@@ -9,7 +9,6 @@
 /* Conteúdo principal (scroll está aqui agora) */
 .main-lista-alunos {
   width: 100%;
-  flex-direction: column;
   height: calc(100vh - 60px);
   /* ajuste conforme altura da navbar, se houver */
   display: flex;
@@ -18,7 +17,7 @@
   overflow-x: auto;
   overflow-y: auto;
   padding: 20px;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 /* Container geral da seção aluno */
