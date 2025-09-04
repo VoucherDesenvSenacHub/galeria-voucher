@@ -1,4 +1,7 @@
 <?php
+
+$paginaAtiva = 'turmas';
+
 // Garante que uma sessão PHP esteja ativa. Se não estiver, inicia uma.
 // Isso é necessário para usar as variáveis de sessão ($_SESSION) para exibir mensagens de erro/sucesso.
 if (session_status() === PHP_SESSION_NONE) {
