@@ -12,8 +12,8 @@
 
 /* Estilo principal da área de cadastro */
 main.conteudo-cadastro {
-  margin: 50px 0 20px 20px;
-  padding-right: 20px;
+  margin: 50px 0 0 0;
+  padding: 20px;
   width: 100%;
   height: calc(100vh - 30px);
   display: flex;
@@ -237,6 +237,11 @@ select {
   margin-top: 20px;
 }
 
+a{
+  text-decoration: none;
+  color: #000;
+}
+
 @media (max-width: 900px) {
   main.conteudo-cadastro {
     margin: 50px 10px 0 10px;
@@ -297,4 +302,19 @@ select {
   padding-top: 40px;
   font-family: var(--font-secondary);
   font-size: 1.8rem;
-} 
+}
+
+/* Estilização do campo de busca e botão para listar os usuarios */
+.search-button {    
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	top: -15%;
+	right: 14px;
+	padding: 0;
+
+}
+
+
+

@@ -9,14 +9,16 @@
 /* Conteúdo principal (scroll está aqui agora) */
 .main-lista-alunos {
   width: 100%;
-  height: calc(100vh - 60px); /* ajuste conforme altura da navbar, se houver */
+  flex-direction: column;
+  height: calc(100vh - 60px);
+  /* ajuste conforme altura da navbar, se houver */
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   overflow-x: auto;
   overflow-y: auto;
   padding: 20px;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 /* Container geral da seção aluno */
@@ -115,14 +117,32 @@
 
 .tabela-container-lista-alunos {
   height: auto;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* Estilo da tabela */
 #tabela-alunos {
   width: 100%;
-  min-width: 1000px; /* força scroll horizontal se necessário */
+  min-width: 1000px;
+  /* força scroll horizontal se necessário */
   border-collapse: collapse;
+
+  a{
+  text-decoration: none;
+  color: #000;
+  transition: 0.2s linear;
+  cursor: pointer;
+
+  &:hover{
+    transition: 0.2s linear;
+    color:#9fe83a;
+  }
+  }
+
 }
+
 
 /* Cabeçalho da tabela */
 thead {
@@ -183,13 +203,72 @@ tbody tr:nth-child(odd) {
   color: #000;
 }
 
+.paginacao {
+  margin: auto;
+}
+
+
 /* Fix para o menu hamburger nas páginas de lista */
 @media (max-width: 768px) {
   .body-lista-alunos .menu-links {
     transform: translateX(100%) !important;
   }
-  
+
   .body-lista-alunos .menu-links.open {
     transform: translateX(0) !important;
   }
+}
+
+/* Estilos para mensagens de erro e sucesso */
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  border: 1px solid #ffcdd2;
+}
+
+.success-message {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  border: 1px solid #c8e6c9;
+}
+
+/* Estilos para o título da página */
+.page-title-container {
+  margin: 1.5rem 0.5rem;
+}
+
+.page-title {
+  color: #2c3e50;
+}
+
+/* Estilos para células vazias da tabela */
+.empty-table-cell {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
+.empty-state-container {
+  text-align: center;
+}
+
+.empty-state-title {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.empty-state-description {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Estilos para ícones de ação */
+.acao-delete {
+  cursor: pointer;
 }
