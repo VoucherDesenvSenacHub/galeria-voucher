@@ -1,4 +1,7 @@
 <?php
+
+$paginaAtiva = 'pessoas';
+
 require_once __DIR__ . "/../../../Controls/cadastrar_pessoa.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
