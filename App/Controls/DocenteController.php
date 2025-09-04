@@ -5,8 +5,7 @@ require_once __DIR__ . '/../Config/env.php';
 require_once __DIR__ . '/../Model/DocenteModel.php';
 require_once __DIR__ . '/../Model/BaseModel.php';
 
-class  {
-    DocenteController
+class DocenteController {
     public function desvincularDocente() {
         // Verifica se o usuário está logado e é administrador
         if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['perfil'] !== 'adm') {
