@@ -75,13 +75,18 @@ class AlunoModel extends BaseModel{
                 p.nome,
                 p.linkedin,
                 p.github,
-                i.url as imagem_url
+                i.url as imagem_url,
+                polo.nome AS polo
             FROM
                 pessoa p
             JOIN
                 aluno_turma at ON p.pessoa_id = at.pessoa_id
+            JOIN
+                turma t ON at.turma_id = t.turma_id
             LEFT JOIN
                 imagem i ON p.imagem_id = i.imagem_id
+            JOIN
+                polo ON t.polo_id = polo.polo_id
             WHERE
                 at.turma_id = :turma_id
                 AND p.perfil = 'aluno'
@@ -117,7 +122,7 @@ class AlunoModel extends BaseModel{
      */
     
     public function desvincularAlunoDaTurma(int $pessoa_id, int $turma_id): bool
-
+    {
         $query = "DELETE FROM aluno_turma WHERE pessoa_id = :pessoa_id AND turma_id = :turma_id";
         
         $stmt = $this->pdo->prepare($query);

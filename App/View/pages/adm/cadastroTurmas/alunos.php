@@ -9,6 +9,7 @@ require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../../Model/AlunoModel.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../../../Model/DocenteModel.php";
 
 headerComponent("Voucher Desenvolvedor - Alunos");
 $currentTab = 'Alunos';
@@ -19,7 +20,7 @@ $isEditMode = false;
 $turmaId = null;
 
 try {
-    $docenteModel = new DocenteModel();
+    $alunoModel = new AlunoModel();
 
     // Verifica se o ID da turma foi passado (modo edição)
     if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -27,7 +28,7 @@ try {
 
         if ($turmaId > 0) {
             $isEditMode = true;
-            $alunos = $alunoModel->buscarAlunosPorTurmaId($turmaId);
+            $alunos = $alunoModel->buscarAlunosPorTurma($turmaId);
         }
     }
     // Se não houver ID, está no modo cadastro (não é erro)
@@ -112,14 +113,14 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                         </thead>
                         <tbody>
                             <?php if (!empty($alunos)): ?>
-                                <?php foreach ($alunos as $docente): ?>
+                                <?php foreach ($alunos as $aluno): ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($docente['nome']) ?></td>
-                                        <td><?= htmlspecialchars($docente['polo']) ?></td>
+                                        <td><?= htmlspecialchars($aluno['nome']) ?></td>
+                                        <td><?= htmlspecialchars($aluno['polo']) ?></td>
                                         <td class="acoes">
                                             <?php if ($is_admin): ?>
-                                                <span class="material-symbols-outlined acao-delete" title="Desvincular docente"
-                                                    onclick="confirmarDesvinculacao(<?= $docente['pessoa_id'] ?>, <?= $turmaId ?>, '<?= htmlspecialchars($docente['nome']) ?>')">delete</span>
+                                                <span class="material-symbols-outlined acao-delete" title="Desvincular aluno"
+                                                    onclick="confirmarDesvinculacao(<?= $aluno['pessoa_id'] ?>, <?= $turmaId ?>, '<?= htmlspecialchars($aluno['nome']) ?>')">delete</span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
@@ -128,12 +129,12 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                 <tr>
                                     <td colspan="3" class="empty-table-cell">
                                         <?php if ($isEditMode): ?>
-                                            <?= isset($error_message) ? 'Erro ao carregar dados' : 'Nenhum docente vinculado a esta turma.' ?>
+                                            <?= isset($error_message) ? 'Erro ao carregar dados' : 'Nenhum aluno vinculado a esta turma.' ?>
                                         <?php else: ?>
                                             <div class="empty-state-container">
-                                                <p class="empty-state-title">Nenhum docente cadastrado ainda.</p>
-                                                <p class="empty-state-description">Clique em "VINCULAR DOCENTE" para adicionar
-                                                    docentes à turma.</p>
+                                                <p class="empty-state-title">Nenhum aluno cadastrado ainda.</p>
+                                                <p class="empty-state-description">Clique em "VINCULAR ALUNO" para adicionar
+                                                    alunos à turma.</p>
                                             </div>
                                         <?php endif; ?>
                                     </td>
@@ -151,7 +152,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     <script src="../../../assets/js/adm/lista-alunos.js"></script>
     <script src="../../../assets/js/main.js"></script>
     <script src="../../../assets/js/adm/autocomplete-pessoas.js"></script>
-    <script src="../../../assets/js/adm/desvincula-docente.js"></script>
+    <script src="../../../assets/js/adm/desvincula-aluno.js"></script>
 
 </body>
 
