@@ -1,4 +1,7 @@
 <?php
+
+$paginaAtiva = 'turmas';
+
 // Inclui arquivos essenciais de configuração, componentes e o Model.
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
