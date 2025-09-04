@@ -6,6 +6,7 @@ require_once __DIR__ . "/../../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../../Model/AlunoModel.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../../../Model/DocenteModel.php";
 
 headerComponent("Voucher Desenvolvedor - Alunos");
 $currentTab = 'Alunos';
