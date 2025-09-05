@@ -11,3 +11,4 @@ if ($acao == 'alunos') {
     echo json_encode($alunos, JSON_UNESCAPED_UNICODE);
     exit; // Garante que nada mais é enviado
 }
+
