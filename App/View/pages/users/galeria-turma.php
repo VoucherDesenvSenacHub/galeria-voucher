@@ -130,7 +130,6 @@ headerComponent('Galeria da Turma');
 
                         <!-- Repositório do projeto -->
                         <div class="galeria-turma-repo-section">
-                            <h4>Repositório do Projeto</h4>
                             <?php if (!empty($projeto['linkProjeto'])): ?>
                                 <a href="<?= $projeto['linkProjeto'] ?>" target="_blank" class="galeria-turma-repo-link">
                                     Ver no GitHub
