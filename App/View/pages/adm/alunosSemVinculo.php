@@ -104,7 +104,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                 <?php endforeach; ?>
                             <?php else:  // Se o array $turmas estiver vazio... ?>
                                 <tr>
-                                    <td colspan="3" style="text-align: center;">Nenhuma turma encontrada.</td>
+                                    <td colspan="3" style="text-align: center;">Nenhum aluno encontrada.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
