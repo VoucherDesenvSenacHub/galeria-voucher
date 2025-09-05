@@ -74,9 +74,9 @@ dialog#modal-cadastro form button.primary-button {
 /* Área de sugestões */
 #sugestoes {
   position: absolute;
-  top: calc(100% - 1px); /* encosta no input */
-  left: 30%;
-  right: 0;
+  top: calc(100% - 13px); /* encosta no input */
+  left: 0;
+  width: 100%;
   z-index: 1000; /* acima dos demais elementos */
   max-height: 150px;
   overflow-y: auto;
@@ -93,8 +93,7 @@ dialog#modal-cadastro form button.primary-button {
   cursor: pointer;
   transition: background 0.2s ease;
   background-color: #f5f5f5;
-
-  width: 50%;
+  width: 100%;
 }
 
 #sugestoes div:hover {
