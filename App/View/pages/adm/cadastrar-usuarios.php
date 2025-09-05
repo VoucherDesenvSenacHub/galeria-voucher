@@ -17,8 +17,6 @@ $id = $_GET['id'] ?? null;
 $model = new PessoaModel();
 $pessoa = null;
 $perfis = $model->listarPerfisPermitidos();
-$poloModel = new PoloModel();
-$polos = $poloModel->buscarTodos();
 
 if ($acao === 'editar' && $id) {
   $pessoa = $model->buscarPessoaComPoloPorId((int)$id);
@@ -67,20 +65,6 @@ if ($acao === 'editar' && $id) {
                   </option>
                 <?php endforeach; ?>
               </select>
-
-              <label for="polo" style="font-weight: bold;">Polo</label>
-              <select id="polo" name="polo_id" class="input-text" style="cursor: pointer;">
-                <option value="">-- Selecione --</option>
-                <?php foreach ($polos as $p): ?>
-                  <option value="<?= (int)$p['polo_id'] ?>"
-                    <?= ((($_POST['polo_id'] ?? '') == $p['polo_id']) ? 'selected' : '') ?>>
-                    <?= htmlspecialchars($p['nome']) ?>
-                  </option>
-                <?php endforeach; ?>
-              </select>
-              <?php if ($acao === 'editar'): ?>
-                <div style="margin-top:6px; font-size:12px; color:#444;">Polo atual: <?= htmlspecialchars($pessoa['nome_polo'] ?? 'Sem polo') ?></div>
-              <?php endif; ?>
             </div>
 
             <div class="form-group-imagem">
@@ -96,7 +80,7 @@ if ($acao === 'editar' && $id) {
           <div class="form-bottom">
             <div class="form-group-buton">
               <?php
-              buttonComponent('secondary', 'Cancelar', 'reset', false);
+              buttonComponent('secondary', 'Cancelar', 'reset', false, null, null, 'back-button');
               buttonComponent('primary', $acao === 'editar' ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>

@@ -114,7 +114,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
           </div>
         </div>
         <div class="button-projeto">
-          <?php buttonComponent('secondary', 'Cancelar', false); ?>
+          <?php buttonComponent('secondary', 'Cancelar', false, null, null, '', 'back-button'); ?>
           <?php buttonComponent('primary', 'Salvar', true); ?>
         </div>
 
