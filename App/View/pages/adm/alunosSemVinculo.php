@@ -14,23 +14,19 @@ headerComponent("Voucher Desenvolvedor - Turmas");
 $turmaModel = new TurmaModel();
 $termoPesquisa = $_GET['pesquisa'] ?? '';
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$turmasPorPagina = 10;
-$offset = ($paginaAtual - 1) * $turmasPorPagina;
+$alunosPorPagina = 10;
+$offset = ($paginaAtual - 1) * $alunosPorPagina;
 
 
-//NOVA LOGICA
 
-$pesquisaModel = new PesquisaModel();
-$resultado = $pesquisaModel->buscarAlunosSemVinculo($turmasPorPagina,$offset,$termoPesquisa);
-
-$totalAlunosSemVinculo = $pesquisaModel->contarTotalAlunosSemVinculo($termoPesquisa);
-$totalPaginas = ceil($totalAlunosSemVinculo / $turmasPorPagina);
-
-//--------------------
 try {
-    $totalTurmas = $turmaModel->contarTotalTurmas($termoPesquisa);
-    $totalPaginas = ceil($totalAlunosSemVinculo / $turmasPorPagina);
-    $turmas = $turmaModel->buscarTurmasPaginado($turmasPorPagina, $offset, $termoPesquisa);
+    $pesquisaModel = new PesquisaModel();
+    $resultado = $pesquisaModel->buscarAlunosSemVinculo($alunosPorPagina,$offset,$termoPesquisa);
+    
+    $totalAlunosSemVinculo = $pesquisaModel->contarTotalAlunosSemVinculo($termoPesquisa);
+    $totalPaginas = ceil($totalAlunosSemVinculo / $alunosPorPagina);
+
+
 } catch (Exception $e) {
     $turmas = [];
     $totalPaginas = 0;
@@ -42,7 +38,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
 <head>
 
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />                                                                                                                     
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />  
+    <link rel="stylesheet" href="../../assets/css/adm/alunosSemVinculo.css">                                                                                                                   
 
 </head>
 

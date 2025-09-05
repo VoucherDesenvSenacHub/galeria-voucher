@@ -1,0 +1,6 @@
+.topo-lista-alunos {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-bottom: 20px;
+}
