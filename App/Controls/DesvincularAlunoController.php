@@ -4,6 +4,7 @@ session_start();
 require_once __DIR__ . '/../Config/env.php';
 require_once __DIR__ . '/../Model/AlunoModel.php';
 require_once __DIR__ . '/../Model/BaseModel.php';
+require_once __DIR__ . '/../Model/UsuarioModel.php';
 
 class DesvincularAlunoController {
     public function desvincularAluno() {
@@ -17,6 +18,7 @@ class DesvincularAlunoController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);
             $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
+            $senha = $_POST['senha'] ?? '';
             
             if (!$pessoa_id || !$turma_id) {
                 $_SESSION['erro'] = "Dados inválidos para desvinculação.";
@@ -24,8 +26,25 @@ class DesvincularAlunoController {
                 exit;
             }
 
+            if (empty($senha)) {
+                $_SESSION['erro'] = "Senha é obrigatória para confirmar a desvinculação.";
+                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php?id=' . $turma_id);
+                exit;
+            }
+
             try {
-                $alunoModel = new alunoModel();
+                // Valida a senha do usuário logado
+                $usuarioModel = new UsuarioModel();
+                $usuarioLogado = $_SESSION['usuario'];
+                $senhaValida = $usuarioModel->validarLogin($usuarioLogado['email'], $senha);
+                
+                if (!$senhaValida) {
+                    $_SESSION['erro'] = "Senha incorreta. Desvinculação cancelada.";
+                    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php?id=' . $turma_id);
+                    exit;
+                }
+
+                $alunoModel = new AlunoModel();
                 $resultado = $alunoModel->desvincularAlunoDaTurma($pessoa_id, $turma_id);
                 
                 if ($resultado) {
