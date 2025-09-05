@@ -2,16 +2,16 @@
 session_start();
 
 require_once __DIR__ . '/../Config/env.php';
-require_once __DIR__ . '/../Model/DocenteModel.php';
+require_once __DIR__ . '/../Model/AlunoModel.php';
 require_once __DIR__ . '/../Model/BaseModel.php';
 require_once __DIR__ . '/../Model/UsuarioModel.php';
 
-class DocenteController {
-    public function desvincularDocente() {
+class DesvincularAlunoController {
+    public function desvincularAluno() {
         // Verifica se o usuário está logado e é administrador
         if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['perfil'] !== 'adm') {
             $_SESSION['erro'] = "Acesso negado. Apenas administradores podem realizar esta operação.";
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php');
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php');
             exit;
         }
 
@@ -22,13 +22,13 @@ class DocenteController {
             
             if (!$pessoa_id || !$turma_id) {
                 $_SESSION['erro'] = "Dados inválidos para desvinculação.";
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php?id=' . $turma_id);
                 exit;
             }
 
             if (empty($senha)) {
                 $_SESSION['erro'] = "Senha é obrigatória para confirmar a desvinculação.";
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php?id=' . $turma_id);
                 exit;
             }
 
@@ -40,43 +40,43 @@ class DocenteController {
                 
                 if (!$senhaValida) {
                     $_SESSION['erro'] = "Senha incorreta. Desvinculação cancelada.";
-                    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+                    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php?id=' . $turma_id);
                     exit;
                 }
 
-                $docenteModel = new DocenteModel();
-                $resultado = $docenteModel->desvincularDocenteDaTurma($pessoa_id, $turma_id);
+                $alunoModel = new AlunoModel();
+                $resultado = $alunoModel->desvincularAlunoDaTurma($pessoa_id, $turma_id);
                 
                 if ($resultado) {
-                    $_SESSION['sucesso'] = "Docente desvinculado da turma com sucesso!";
+                    $_SESSION['sucesso'] = "Aluno desvinculado da turma com sucesso!";
                 } else {
-                    $_SESSION['erro'] = "Erro ao desvincular docente da turma.";
+                    $_SESSION['erro'] = "Erro ao desvincular aluno da turma.";
                 }
                 
             } catch (Exception $e) {
                 $_SESSION['erro'] = "Erro interno: " . $e->getMessage();
             }
             
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php?id=' . $turma_id);
             exit;
         }
         
         // Se não for POST, redireciona
-        header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php');
+        header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php');
         exit;
     }
 }
 
 // Processa a requisição
 if (isset($_GET['action'])) {
-    $controller = new DocenteController();
+    $controller = new DesvincularAlunoController();
     
     switch ($_GET['action']) {
         case 'desvincular':
-            $controller->desvincularDocente();
+            $controller->desvincularAluno();
             break;
         default:
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php');
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php');
             exit;
     }
 }

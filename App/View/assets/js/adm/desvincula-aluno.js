@@ -1,4 +1,4 @@
-function confirmarDesvinculacao(pessoaId, turmaId, nomeDocente) {
+function confirmarDesvinculacao(pessoaId, turmaId, nomeAluno) {
     // Cria o modal de confirmação
     const modal = document.createElement('div');
     modal.className = 'modal-confirmacao';
@@ -9,7 +9,7 @@ function confirmarDesvinculacao(pessoaId, turmaId, nomeDocente) {
                 <span class="close-modal" onclick="fecharModal()">&times;</span>
             </div>
             <div class="modal-body">
-                <p>Tem certeza que deseja desvincular o docente <strong>"${nomeDocente}"</strong> desta turma?</p>
+                <p>Tem certeza que deseja desvincular o aluno <strong>"${nomeAluno}"</strong> desta turma?</p>
                 <p class="warning-text">Esta ação requer confirmação da sua senha.</p>
                 <div class="form-group">
                     <label for="senha-confirmacao">Digite sua senha:</label>
@@ -50,7 +50,7 @@ function confirmarDesvinculacaoComSenha(pessoaId, turmaId) {
     // Cria um formulário temporário para enviar os dados
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = '/galeria-voucher/App/Controls/DocenteController.php?action=desvincular';
+    form.action = '/galeria-voucher/App/Controls/DesvincularAlunoController.php?action=desvincular';
     
     // Adiciona os campos necessários
     const pessoaIdInput = document.createElement('input');
