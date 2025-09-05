@@ -80,7 +80,7 @@ if ($acao === 'editar' && $id) {
           <div class="form-bottom">
             <div class="form-group-buton">
               <?php
-              buttonComponent('secondary', 'Cancelar', 'reset', false);
+              buttonComponent('secondary', 'Cancelar', 'reset', false, null, null, 'back-button');
               buttonComponent('primary', $acao === 'editar' ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>
