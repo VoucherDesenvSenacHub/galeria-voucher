@@ -17,8 +17,8 @@ function confirmarDesvinculacao(pessoaId, turmaId, nomeAluno) {
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
-                <button type="button" class="btn btn-danger" onclick="confirmarDesvinculacaoComSenha(${pessoaId}, ${turmaId})">Desvincular</button>
+                <button type="button" class="primary-button" onclick="fecharModal()">Cancelar</button>
+                <button type="button" class="secondary-button" onclick="confirmarDesvinculacaoComSenha(${pessoaId}, ${turmaId})">Desvincular</button>
             </div>
         </div>
     `;
