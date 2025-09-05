@@ -5,6 +5,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../Model/PesquisaModel.php";
+require_once __DIR__ . "/../../componentes/breadCrumbs.php";
 
 // Define o título da página.
 headerComponent("Voucher Desenvolvedor - Turmas");
@@ -22,12 +23,13 @@ $offset = ($paginaAtual - 1) * $turmasPorPagina;
 $pesquisaModel = new PesquisaModel();
 $resultado = $pesquisaModel->buscarAlunosSemVinculo($turmasPorPagina,$offset,$termoPesquisa);
 
-
+$totalAlunosSemVinculo = $pesquisaModel->contarTotalAlunosSemVinculo($termoPesquisa);
+$totalPaginas = ceil($totalAlunosSemVinculo / $turmasPorPagina);
 
 //--------------------
 try {
     $totalTurmas = $turmaModel->contarTotalTurmas($termoPesquisa);
-    $totalPaginas = ceil($totalTurmas / $turmasPorPagina);
+    $totalPaginas = ceil($totalAlunosSemVinculo / $turmasPorPagina);
     $turmas = $turmaModel->buscarTurmasPaginado($turmasPorPagina, $offset, $termoPesquisa);
 } catch (Exception $e) {
     $turmas = [];
@@ -53,12 +55,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     ?>
 
     <main class="main-lista-alunos">
+         <?php BreadCrumbs::gerarBreadCrumbs()?>
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
-                <?php
-                buttonComponent(
-                    'primary','NOVA TURMA',false,VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
-                ?>
+                
                 
                 <form method="GET" action="">
                     <div class="input-pesquisa-container">
@@ -82,14 +82,26 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     <table id="tabela-alunos">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>NOME</th>
+                                <th>AÇÔES</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if (!empty($resultado)):  // Verifica se existem turmas para exibir. ?>
                                 <?php foreach ($resultado as $aluno): // Loop para criar uma linha <tr> para cada turma. ?>
                                     <tr>
+                                        <td><?= htmlspecialchars($aluno['pessoa_id']) ?></td>
                                         <td><?= htmlspecialchars($aluno['nome']) ?></td>
+                                        <td class="acoes">
+                              <a href="cadastrar-usuarios.php?acao=editar&id=<?= $aluno['pessoa_id'] ?>">
+                                  <span class="material-symbols-outlined acao-edit" title="Editar">edit</span>
+                              </a>
+                              <a href="../../../Controls/ControllerPessoa.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
+                                onclick="return confirm('Tem certeza que deseja excluir este registro?');">
+                                  <span class="material-symbols-outlined acao-delete" title="Excluir">delete</span>
+                              </a>
+                          </td>
                                         
                                     </tr>
                                 <?php endforeach; ?>

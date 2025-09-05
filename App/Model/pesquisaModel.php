@@ -55,4 +55,41 @@ class PesquisaModel extends BaseModel
         }
     }
 
+    public function contarTotalAlunosSemVinculo(string $termo = ''): int
+    {
+        try {
+            $query = "  
+                SELECT 
+                    COUNT(*) as total
+                FROM 
+                    pessoa
+                WHERE 
+                    pessoa.perfil = 'aluno'
+                    AND NOT EXISTS (
+                        SELECT 1 
+                        FROM aluno_turma 
+                        WHERE aluno_turma.pessoa_id = pessoa.pessoa_id
+                    )
+            ";
+
+            if (!empty($termo)) {
+                $query .= " AND pessoa.nome LIKE :termo";
+            }
+
+            $stmt = $this->pdo->prepare($query);
+
+            if (!empty($termo)) {
+                $stmt->bindValue(':termo', '%' . $termo . '%', PDO::PARAM_STR);
+            }
+
+            $stmt->execute();
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$resultado['total'];
+        } catch (PDOException $e) {
+            error_log("Erro ao contar alunos sem vínculo: " . $e->getMessage());
+            return 0;
+        }
+    }
+
 }
