@@ -43,7 +43,7 @@ class DocenteModel extends BaseModel {
 
     public function PesquisarDocente($nome)
     {
-        $query = "SELECT p.nome 
+        $query = "SELECT p.pessoa_id, p.nome 
                   FROM pessoa p 
                   where nome LIKE :nome and p.perfil = 'professor'";
         

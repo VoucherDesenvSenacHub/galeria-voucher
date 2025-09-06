@@ -19,7 +19,7 @@ function ativarAutocomplete() {
     
             try {
                 // manda o termo para o backend
-                const resposta = await fetch(`/galeria-voucher/App/Controls/VincularDocenteController.php?busca=${encodeURIComponent(termo)}`);
+                const resposta = await fetch(`/galeria-voucher/App/Controls/BuscaDocenteController.php?busca=${encodeURIComponent(termo)}`);
                 const dados = await resposta.json();
     
                 // limpa resultados anteriores
@@ -28,13 +28,23 @@ function ativarAutocomplete() {
                 // percorre e mostra cada resultado
                 dados.forEach(item => {
                     const div = document.createElement("div");
+                    div.className = 'sugestao-item';
                     div.textContent = item.nome;
+
+                    div.dataset.id = item.pessoa_id;
+
+                    div.onclick = function() {
+                        const id = this.dataset.id;
+                        const nome = this.textContent;
+                        adicionarPessoa(id, nome);
+                    };
                     sugestoes.appendChild(div);
                 });
     
                 // se não encontrou nada
                 if (dados.length === 0) {
                     const div = document.createElement("div");
+                    div.className = 'sugestao-empty';
                     div.textContent = "Nenhum resultado encontrado";
                     sugestoes.appendChild(div);
                 }
@@ -47,24 +57,31 @@ function ativarAutocomplete() {
     
     
 // alterar para o banco de dados, mudar a pesquisa fixa para busca nas tabelas
-    function adicionarPessoa(nome) {
-        adicionados.add(termo);
+    function adicionarPessoa(id, nome) {
+
+        if (adicionados.has(id)){
+            alert("Esta pessoa já foi adicionada.");
+            return;
+        }
+
+        adicionados.add(id);
+
         input.value = "";
         sugestoes.innerHTML = "";
 
         const chip = document.createElement("div");
         chip.className = "chip";
-        chip.innerHTML = nome + "<span class='remove'>&times;</span>";
+        chip.innerHTML = `${nome} <span class='remove'>&times;</span>`;
 
-        const hidden = document.createElement("input");
-        hidden.type = "hidden";
-        hidden.name = "pessoas[]";
-        hidden.value = nome;
+        const hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.name = "pessoas_ids[]";
+        hiddenInput.value = id;
 
-        chip.appendChild(hidden);
+        chip.appendChild(hiddenInput);
         chip.querySelector(".remove").onclick = () => {
             selecionados.removeChild(chip);
-            adicionados.delete(nome);
+            adicionados.delete(id);
         };
 
         selecionados.appendChild(chip);

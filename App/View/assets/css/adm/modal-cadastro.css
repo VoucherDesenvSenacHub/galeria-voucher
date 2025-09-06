@@ -92,7 +92,7 @@ dialog#modal-cadastro form button.primary-button {
 }
 
 /* Cada sugestão */
-#sugestoes div {
+#sugestoes .sugestao-item {
   padding: 12px 16px;
   cursor: pointer;
   transition: background 0.2s;
@@ -100,21 +100,39 @@ dialog#modal-cadastro form button.primary-button {
 }
 
 /* Último item sem borda */
-#sugestoes div:last-child {
+#sugestoes .sugestao-item:last-child {
   border-bottom: none;
 }
 
 /* Hover */
-#sugestoes div:hover {
+#sugestoes .sugestao-item:hover {
   background-color: #f5f5f5;
 }
 
 /* Item ativo/selecionado */
-#sugestoes div.active {
+#sugestoes .sugestao-item.active {
   background-color: #e8eaf6;
   color: #3f51b5;
   font-weight: 500;
 }
+#sugestoes .sugestao-empty {
+  padding: 12px 16px;
+  transition: background 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Último empty sem borda */
+#sugestoes .sugestao-empty:last-child {
+  border-bottom: none;
+}
+
+/* empty ativo/selecionado */
+#sugestoes .sugestao-empty.active {
+  background-color: #e8eaf6;
+  color: #3f51b5;
+  font-weight: 500;
+}
+
 
 /* Chips das pessoas selecionadas */
 .chip {
