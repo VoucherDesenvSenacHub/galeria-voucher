@@ -12,7 +12,6 @@ $email = $_POST['email'] ?? '';
 $linkedin = $_POST['linkedin'] ?? '';
 $github = $_POST['github'] ?? '';
 $perfil = $_GET['perfil'] ?? $_POST['perfil'] ?? null;
-$poloId = isset($_POST['polo_id']) && is_numeric($_POST['polo_id']) ? (int)$_POST['polo_id'] : null;
 $turmaId = isset($_POST['turma_id']) && is_numeric($_POST['turma_id']) ? (int)$_POST['turma_id'] : null;
 
 switch ($acao) {
@@ -72,10 +71,8 @@ switch ($acao) {
             header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?erro=" . urlencode($msg));
             exit;
         }
-
-        break;
     case 'editar':
-        if ($id) {
+        if (!$id) break;
             $dados = [
                 'nome' => $nome,
                 'email' => $email,
@@ -111,8 +108,6 @@ switch ($acao) {
                 header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($msg));
                 exit;
             }
-        }
-        break;
 
     case 'excluir':
         if ($id && $perfil) {
@@ -130,7 +125,6 @@ switch ($acao) {
             header("Location: /galeria-voucher/App/View/pages/adm/listarUsuarios.php?erro=" . urlencode($msg));
             exit;
         }
-        break;
 
         // ... (resto do código)
 }

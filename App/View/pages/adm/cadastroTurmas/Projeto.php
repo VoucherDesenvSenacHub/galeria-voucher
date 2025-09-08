@@ -1,4 +1,7 @@
 <?php
+
+$paginaAtiva = 'turmas';
+
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/input.php";
@@ -111,7 +114,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
           </div>
         </div>
         <div class="button-projeto">
-          <?php buttonComponent('secondary', 'Cancelar', false); ?>
+          <?php buttonComponent('secondary', 'Cancelar', false, null, null, '', 'back-button'); ?>
           <?php buttonComponent('primary', 'Salvar', true); ?>
         </div>
 
