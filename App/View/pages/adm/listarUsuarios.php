@@ -84,7 +84,7 @@ try {
                               <a href="cadastrar-usuarios.php?acao=editar&id=<?= $usuario['pessoa_id'] ?>">
                                   <span class="material-symbols-outlined acao-edit" title="Editar">edit</span>
                               </a>
-                              <a href="../../../Controls/ControllerPessoa.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
+                              <a href="../../../Controller/ControllerPessoa.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
                                 onclick="return confirm('Tem certeza que deseja excluir este registro?');">
                                   <span class="material-symbols-outlined acao-delete" title="Excluir">delete</span>
                               </a>

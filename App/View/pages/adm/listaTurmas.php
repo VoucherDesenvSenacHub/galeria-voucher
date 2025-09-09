@@ -96,7 +96,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                                 </a>
 
                                                 <form method="POST"
-                                                    action="<?= VARIAVEIS['APP_URL'] ?>App/Controls/TurmaController.php?action=excluir"
+                                                    action="<?= VARIAVEIS['APP_URL'] ?>App/Controller/TurmaController.php?action=excluir"
                                                     onsubmit="return confirm('ATENÇÃO!!! Excluir esta turma também removerá todos os seus projetos, alunos e professores vinculados. Esta ação é irreversível. Deseja continuar?');">
                                                     <input type="hidden" name="turma_id" value="<?= $turma['turma_id'] ?>">
                                                     <button type="submit" class="no-style" title="Excluir">
