@@ -2,8 +2,6 @@
 require_once __DIR__ . "/../../componentes/head.php";
 require __DIR__ . "/../../../Model/AlunoTurmaModel.php";
 
-$back = $_SESSION['last_page'] ?? './home.php';
-
 $alunoTurma = new AlunoTurmaModel();
 $alunos = $alunoTurma->Turma146();
 
@@ -34,6 +32,9 @@ headerComponent('Desenvolvedores');
 
         <?php require_once __DIR__ . "/./../../componentes/users/footer.php" ?>
     </main>
-</body>
 
+<script>
+    window.history.back()
+</script>
+</body>
 </html>

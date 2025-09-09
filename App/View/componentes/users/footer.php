@@ -1,14 +1,3 @@
-<?php
-// salva a página atual
-if (!isset($_SESSION['current_page'])) {
-    $_SESSION['current_page'] = '';
-}
-
-$_SESSION['last_page'] = $_SESSION['current_page'];
-$_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
-
-?>
-
 <footer class="footer container">
     <div class="row">
         <div class="col-100">
