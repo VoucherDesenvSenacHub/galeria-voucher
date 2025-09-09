@@ -14,7 +14,7 @@ require_once __DIR__ . "/../../../../Config/env.php";
 // Inclui o cabeçalho HTML (<head>, CSS, etc.).
 require_once __DIR__ . "/../../../componentes/head.php";
 // Inclui um script que verifica se o usuário administrativo está logado (autenticação).
-require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../../../Service/AuthService.php";
 // Inclui os Models necessários para buscar dados do banco (turmas e polos).
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../../Model/PoloModel.php";

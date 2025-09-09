@@ -4,7 +4,7 @@ $paginaAtiva = 'pessoas';
 
 require_once __DIR__ . "/../../../Controller/cadastrar_pessoa.php";
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . '/../../../Model/PessoaModel.php';
 require_once __DIR__ . '/../../../Model/PoloModel.php';
 require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
