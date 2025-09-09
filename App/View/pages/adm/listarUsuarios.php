@@ -6,7 +6,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Pessoas");
 require_once __DIR__ . "/../../componentes/adm/auth.php";
 require_once __DIR__ . "/../../../Model/PessoaModel.php";
-require_once __DIR__ . "/../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 // --- LÓGICA DE PAGINAÇÃO E BUSCA ---
 $pessoaModel = new PessoaModel();
