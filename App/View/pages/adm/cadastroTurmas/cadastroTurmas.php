@@ -18,7 +18,7 @@ require_once __DIR__ . "/../../../componentes/adm/auth.php";
 // Inclui os Models necessários para buscar dados do banco (turmas e polos).
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../../Model/PoloModel.php";
-require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
 // --- LÓGICA DE PREPARAÇÃO DA PÁGINA ---
 
