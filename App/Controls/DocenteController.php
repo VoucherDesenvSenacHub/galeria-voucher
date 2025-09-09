@@ -4,9 +4,9 @@ session_start();
 require_once __DIR__ . '/../Config/env.php';
 require_once __DIR__ . '/../Model/DocenteModel.php';
 require_once __DIR__ . '/../Model/BaseModel.php';
+require_once __DIR__ . '/../Model/UsuarioModel.php';
 
 class DocenteController {
-    
     public function desvincularDocente() {
         // Verifica se o usuário está logado e é administrador
         if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['perfil'] !== 'adm') {
@@ -18,6 +18,7 @@ class DocenteController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);
             $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
+            $senha = $_POST['senha'] ?? '';
             
             if (!$pessoa_id || !$turma_id) {
                 $_SESSION['erro'] = "Dados inválidos para desvinculação.";
@@ -25,7 +26,24 @@ class DocenteController {
                 exit;
             }
 
+            if (empty($senha)) {
+                $_SESSION['erro'] = "Senha é obrigatória para confirmar a desvinculação.";
+                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+                exit;
+            }
+
             try {
+                // Valida a senha do usuário logado
+                $usuarioModel = new UsuarioModel();
+                $usuarioLogado = $_SESSION['usuario'];
+                $senhaValida = $usuarioModel->validarLogin($usuarioLogado['email'], $senha);
+                
+                if (!$senhaValida) {
+                    $_SESSION['erro'] = "Senha incorreta. Desvinculação cancelada.";
+                    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+                    exit;
+                }
+
                 $docenteModel = new DocenteModel();
                 $resultado = $docenteModel->desvincularDocenteDaTurma($pessoa_id, $turma_id);
                 
