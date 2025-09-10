@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . "/../../componentes/head.php";
-require __DIR__ . "/../../../Model/AlunoTurmaModel.php";
+require __DIR__ . "/../../../Model/AlunoModel.php";
 
-$alunoTurma = new AlunoTurmaModel();
-$alunos = $alunoTurma->Turma146();
+$alunoModel = new AlunoModel();
+$alunos = $alunoModel->buscarPorTurma(25);
 
 headerComponent('Desenvolvedores');
 ?>

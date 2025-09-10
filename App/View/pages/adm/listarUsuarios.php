@@ -4,9 +4,9 @@ $paginaAtiva = 'pessoas';
 
 require_once __DIR__ . "/../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Pessoas");
-require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/PessoaModel.php";
-require_once __DIR__ . "/../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 // --- LÓGICA DE PAGINAÇÃO E BUSCA ---
 $pessoaModel = new PessoaModel();
@@ -84,7 +84,7 @@ try {
                               <a href="cadastrar-usuarios.php?acao=editar&id=<?= $usuario['pessoa_id'] ?>">
                                   <span class="material-symbols-outlined acao-edit" title="Editar">edit</span>
                               </a>
-                              <a href="../../../Controls/ControllerPessoa.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
+                              <a href="../../../Controller/PessoaController.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
                                 onclick="return confirm('Tem certeza que deseja excluir este registro?');">
                                   <span class="material-symbols-outlined acao-delete" title="Excluir">delete</span>
                               </a>
