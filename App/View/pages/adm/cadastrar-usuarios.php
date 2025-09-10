@@ -2,9 +2,8 @@
 
 $paginaAtiva = 'pessoas';
 
-require_once __DIR__ . "/../../../Controller/cadastrar_pessoa.php";
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . '/../../../Model/PessoaModel.php';
 require_once __DIR__ . '/../../../Model/PoloModel.php';
 require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
@@ -40,7 +39,7 @@ if ($acao === 'editar' && $id) {
     <div class="container-users">
       <div class="form-container-users">
 
-        <form class="form-dados" method="POST" enctype="multipart/form-data" action="/galeria-voucher/App/Controller/ControllerPessoa.php">
+        <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= VARIAVEIS['APP_URL']?>App/Controller/PessoaController.php">
           <input type="hidden" name="acao" value="<?= $acao ?>">
           <?php if ($acao === 'editar' && $id): ?>
             <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
