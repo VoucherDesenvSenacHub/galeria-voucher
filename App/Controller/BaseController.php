@@ -5,7 +5,7 @@ abstract class BaseController {
    * Array com os métodos permitidos. Ex: array("GET", "POST")
    * @var array
    */
-  abstract protected array $metodosPermitidos = [];
+  protected array $metodosPermitidos = [];
 
   /**
    * Método pricipal para gerenciar as requisições da Controller. Ver uso no código do script
@@ -31,7 +31,7 @@ abstract class BaseController {
    * Função de ajuda com retorno para métodos não permitidos. Usar no valor default do switch em gerenciarRequisicao
    * @return void
    */
-  protected function gerenciarMetodosNaoPermitidos():void{
+  protected function gerenciarMetodosNaoPermitidos(){
     if(count($this->metodosPermitidos) == 0)return
 
     header('allow: ' . implode(', ', $this->metodosPermitidos));
@@ -41,7 +41,7 @@ abstract class BaseController {
 }
 
 class TesteController extends BaseController{
-  protected  $metodosPermitidos = array('GET', 'POST');
+  protected array $metodosPermitidos = ['GET', 'POST'];
   public function gerenciarRequisicao():void
   {
     switch($_SERVER['REQUEST_METHOD']){
