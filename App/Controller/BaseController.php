@@ -16,12 +16,13 @@ abstract class BaseController {
   /**
    * Método para retornar JSON. Possui parâmetro "pretty" para formatar a saída, utilizado para facilitar o debug 
    * @param array $data Array com chaves contendo os dados
+   * @param int $code Código de resposta, padrão 200.
    * @param bool $pretty Formata a saída para melhor visualização
    * @return void
    */
-  protected function toJson(array $data, bool $pretty = false): void{
+  protected function toJson(array $data, int $code = 200, bool $pretty = false): void{
     header("Content-Type: application/json; charset=utf-8");
-    http_response_code(200);
+    http_response_code($code);
     echo json_encode($data, $pretty ? JSON_PRETTY_PRINT : 0);
     exit();
   }
