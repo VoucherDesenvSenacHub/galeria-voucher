@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../componentes/adm/auth.php";
-require_once __DIR__ . "/../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 headerComponent('Página inicial - ADM');
 
