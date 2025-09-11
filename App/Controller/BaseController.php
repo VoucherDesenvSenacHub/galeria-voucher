@@ -5,7 +5,7 @@ abstract class BaseController {
    * Array com os métodos permitidos. Ex: array("GET", "POST")
    * @var array
    */
-  protected array $metodosPermitidos = [];
+  abstract protected array $metodosPermitidos = [];
 
   /**
    * Método pricipal para gerenciar as requisições da Controller. Ver uso no código do script
@@ -23,7 +23,7 @@ abstract class BaseController {
     header("Content-Type: application/json; charset=utf-8");
     http_response_code(200);
     echo json_encode($data, $pretty ? JSON_PRETTY_PRINT : 0);
-    exit;
+    exit();
   }
 
   /**
@@ -35,11 +35,12 @@ abstract class BaseController {
 
     header('allow: ' . implode(', ', $this->metodosPermitidos));
     http_response_code(405);
+    exit();
   } 
 }
 
 class TesteController extends BaseController{
-  protected $metodosPermitidos = array('GET', 'POST');
+  protected  $metodosPermitidos = array('GET', 'POST');
   public function gerenciarRequisicao():void
   {
     switch($_SERVER['REQUEST_METHOD']){
