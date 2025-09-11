@@ -5,10 +5,10 @@ $paginaAtiva = 'turmas';
 require_once __DIR__ . "/../../../../Config/env.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 headerComponent("Voucher Desenvolvedor - Projetos");
-require_once __DIR__ . "/../../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
-require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
 // Define a aba atual
 $currentTab = 'projetos';
