@@ -5,9 +5,9 @@ $paginaAtiva = 'turmas';
 // Inclui arquivos essenciais de configuração, componentes e o Model.
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
-require_once __DIR__ . "/../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 // Define o título da página.
 headerComponent("Voucher Desenvolvedor - Turmas");
@@ -96,7 +96,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                                 </a>
 
                                                 <form method="POST"
-                                                    action="<?= VARIAVEIS['APP_URL'] ?>App/Controls/TurmaController.php?action=excluir"
+                                                    action="<?= VARIAVEIS['APP_URL'] ?>App/Controller/TurmaController.php?action=excluir"
                                                     onsubmit="return confirm('ATENÇÃO!!! Excluir esta turma também removerá todos os seus projetos, alunos e professores vinculados. Esta ação é irreversível. Deseja continuar?');">
                                                     <input type="hidden" name="turma_id" value="<?= $turma['turma_id'] ?>">
                                                     <button type="submit" class="no-style" title="Excluir">

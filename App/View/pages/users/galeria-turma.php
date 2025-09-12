@@ -11,7 +11,7 @@ require_once __DIR__ . "/../../../Model/AlunoModel.php";
 require_once __DIR__ . "/../../../Model/DocenteModel.php";
 require_once __DIR__ . "/../../../Helpers/ProjetoHelper.php";
 require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
-require_once __DIR__ . "/../../../Controls/GaleriaTurmaController.php";
+require_once __DIR__ . "/../../../Controller/GaleriaTurmaController.php";
 
 // Obtém ID da turma via URL e carrega dados
 $controller = new GaleriaTurmaController();
