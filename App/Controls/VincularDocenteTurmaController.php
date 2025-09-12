@@ -13,12 +13,13 @@ class VincularDocenteTurmaController {
             header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
             exit();
         }
-
-        $turmaId = filter_input(INPUT_POST, 'turma_id');
+        
+        $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
         $pessoaIds = $_POST['pessoas_ids'] ?? [];
-
+        
         if (!$turmaId || !is_array($pessoaIds) || empty($pessoaIds)) {
             $_SESSION['erro'] = "Dados inválidos. Selecione ao menos um docente e tente novamente.";
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turmaId);
             exit();
         }
 

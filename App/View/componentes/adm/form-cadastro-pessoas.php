@@ -1,10 +1,9 @@
 <?php
-$pessoas = ['Manoel Victor', 'Amanda Lima', 'José Pereira', 'Lucas Silva', 'Thauanny Souza'];
 
 header('Content-Type: text/html; charset=UTF-8');
 
 $classificacao = $_GET['classificacao'] ?? '';
-$turmaId = isset($_GET['turma_id']) ? (int)$_GET['turma_id'] : null;
+$turmaId = $_GET['turma_id'] ?? ''; // captura turma_id
 
 require_once __DIR__ . '/../input.php';
 
@@ -32,7 +31,7 @@ if ($classificacao === 'aluno') {
 
         <input type="hidden" name="turma_id" value="<?php echo htmlspecialchars($turmaId); ?>">
 
-        <button class="primary-button" type="submit">Vincular Docentes</button>
+        <button class="primary-button" type="submit">Vincular</button>
     </form>
 <?php
 } else {

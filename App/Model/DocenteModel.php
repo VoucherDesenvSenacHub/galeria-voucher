@@ -41,7 +41,7 @@ class DocenteModel extends BaseModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function PesquisarDocente($nome)
+    public function buscarDocentesParaVincular($nome)
     {
         $query = "SELECT p.pessoa_id, p.nome 
                   FROM pessoa p 
