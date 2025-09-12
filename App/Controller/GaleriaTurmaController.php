@@ -1,7 +1,13 @@
 <?php
+require_once __DIR__ ."/BaseController.php";
+require_once __DIR__ ."/../Model/AlunoModel.php";
+require_once __DIR__ ."/../Model/TurmaModel.php";
+require_once __DIR__ ."/../Model/ProjetoModel.php";
+require_once __DIR__ ."/../Model/DocenteModel.php";
 
-class GaleriaTurmaController
+class GaleriaTurmaController extends BaseController
 {
+    protected array $metodosPermitidos = ["GET"];
     private TurmaModel $turmaModel;
     private ProjetoModel $projetoModel;
     private AlunoModel $alunoModel;
@@ -15,10 +21,21 @@ class GaleriaTurmaController
         $this->docenteModel = new DocenteModel();
     }
 
-    public function verificarIdNaUrl(): int {
+    public function gerenciarRequisicao(): void
+    {
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case 'GET':
+                $this->carregarDadosTurma();
+                break;
+            default:
+                $this->gerenciarMetodosNaoPermitidos();
+                break;
+        }
+    }
+
+    private function verificarIdNaUrl(): int {
         if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-            header("Location: ./turma.php");
-            exit();
+            $this->toJson(["erro" => "Parâmtro inválido para turma id"], 400);
         }
 
         return intval($_GET['id']);
@@ -28,16 +45,15 @@ class GaleriaTurmaController
      * Carrega dados completos da turma com seus projetos, alunos e orientadores,
      * formatando-os para uso na view.
      *
-     * @param int $turmaId
      * @return array
      */
-    public function carregarDadosTurma(int $turmaId): array
+    private function carregarDadosTurma()
     {
+        $turmaId = $this->verificarIdNaUrl();
         $turma = $this->turmaModel->buscarPorId($turmaId);
         
         if (!$turma || empty($turma)) {
-            header("Location: ./turma.php");
-            exit();
+            $this->toJson(["erro" => "Turma não encontrada"], 422);
         }
 
         $projetos = $this->projetoModel->buscarProjetosPorTurma($turmaId);
@@ -45,22 +61,20 @@ class GaleriaTurmaController
         $orientadores = $this->docenteModel->buscarPorTurma($turmaId);
 
         // Funções auxiliares como urlImagem e formatarProjetos devem continuar em helpers
-        $imagemTurmaUrl = $turma['imagem'] ?? VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
-        $nomeTurma = htmlspecialchars($turma['nome']);
-        $descricaoTurma = nl2br(htmlspecialchars($turma['descricao']));
+        // VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
 
-        $dadosProjetos = formatarProjetos($projetos, $this->projetoModel);
-
-        return [
-            'imagemTurmaUrl' => $imagemTurmaUrl,
-            'nomeTurma' => $nomeTurma,
-            'descricaoTurma' => $descricaoTurma,
+        $this->toJson([
+            'imagemTurmaUrl' => $turma['imagem'],
+            'nomeTurma' => $turma['nome'],
+            'descricaoTurma' => $turma['descricao'],
             'alunos' => $alunos,
             'orientadores' => $orientadores,
-            'tabsProjetos' => $dadosProjetos['tabsProjetos'],
-            'projetosFormatados' => $dadosProjetos['projetosFormatados'],
+            'projetos' => $projetos,
             "polo" => $turma["polo"],
             "cidade"=> $turma["cidade"],
-        ];
+        ]);
     }
 }
+
+$controller = new GaleriaTurmaController();
+$controller->gerenciarRequisicao();
