@@ -1,26 +1,42 @@
 <?php
 
+require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../Model/SearchModel.php';
 
-class SearchController
+class SearchController extends BaseController
 {
-    public function search()
+    protected array $metodosPermitidos = ['GET'];
+    private SearchModel $searchModel;
+
+    public function __construct()
     {
-        header('Content-Type: application/json; charset=utf-8');
+        $this->searchModel = new SearchModel();
+    }
 
-        $q = isset($_GET['q']) ? trim($_GET['q']) : '';
-
-        if ($q === '' || mb_strlen($q) < 2) {
-            echo json_encode(['results' => []]);
-            exit;
+    public function gerenciarRequisicao(): void
+    {
+        switch($_SERVER['REQUEST_METHOD']){
+            case 'GET':
+                $this->gerenciarGet();
+                break;
+            default:
+                $this->gerenciarMetodosNaoPermitidos();
+                break;
         }
+    }
 
+    private function gerenciarGet(): void
+    {
         try {
-            $searchModel = new SearchModel();
+            $q = $this->getParam('q', '');
+            
+            if (empty($q) || mb_strlen($q) < 2) {
+                $this->toJson(['results' => []]);
+            }
             
             // Busca turmas e pessoas
-            $turmas = $searchModel->searchTurmas($q);
-            $pessoas = $searchModel->searchPessoas($q);
+            $turmas = $this->searchModel->searchTurmas($q);
+            $pessoas = $this->searchModel->searchPessoas($q);
 
             // Normaliza saída
             $results = [];
@@ -41,10 +57,17 @@ class SearchController
                 ];
             }
 
-            echo json_encode(['results' => $results]);
+            $this->toJson(['results' => $results]);
         } catch (Throwable $e) {
-            http_response_code(500);
-            echo json_encode(['error' => 'Erro ao buscar', 'details' => $e->getMessage()]);
+            $this->toJson([
+                'error' => 'Erro ao buscar',
+                'details' => $e->getMessage()
+            ], 500);
         }
+    }
+
+    private function getParam(string $key, $default = null)
+    {
+        return $_GET[$key] ?? $default;
     }
 }
