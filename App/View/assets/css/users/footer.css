@@ -7,27 +7,15 @@
     padding: 25px 0;
     font-size: 1rem;
     font-family: var(--font-secondary);
+    text-align: center;
+    /* reforça o alinhamento */
 }
+
 
 .footer a {
     text-decoration: none;
     color: var(--text-white);
 }
 
-@media (min-width: 992px) {
-    .footer {
-        justify-content: flex-start;
-        padding-left: var(--default-padding);
-    }
-}
 
-/* Telas menores (tablets e celulares) */
-@media (max-width: 768px) {
-    .footer {
-      justify-content: center; /* centraliza o texto no mobile */
-      text-align: center;
-      padding: 10px 20px;
-      height: auto;
-      font-size: 0.85rem;
-    }
-  }
+/* Telas menores (tablets e celulares) *
