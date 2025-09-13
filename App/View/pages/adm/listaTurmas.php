@@ -56,20 +56,14 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 ?>
                 
                 <form method="GET" action="">
-                    <div class="input-pesquisa-container">
-                        <input 
-                            type="text" 
-                            id="pesquisa" 
-                            name="pesquisa"  
-                            placeholder="Pesquisar por nome ou polo" 
-                            value="<?= htmlspecialchars($termoPesquisa) ?>">
-                        
-                        <button type="submit" class="search-button">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
-                                class="icone-lupa-img">
-                        </button>
-                    </div>
-                </form>
+          <div class="input-pesquisa-container"> 
+          <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar por nome ou polo" value="<?= htmlspecialchars($termoPesquisa) ?>">
+            <button type="submit" class="search-button">
+              <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
+              class="icone-lupa-img">
+            </button>
+          </div>
+        </form>
                  </div>
 
             <div class="tabela-principal-lista-alunos">
