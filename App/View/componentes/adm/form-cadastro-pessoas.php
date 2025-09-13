@@ -21,7 +21,7 @@ if ($classificacao === 'aluno') {
 <?php
 } elseif ($classificacao === 'professor') {
 ?> 
-    <form id="form-cadastro-pessoa" method="POST" action="/galeria-voucher/App/Controls/VincularDocenteTurmaController.php">
+    <form id="form-cadastro-pessoa" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
         <span>
             <label for="pesquisar-pessoa">Pesquisar professor:</label>
             <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome'); ?>

@@ -14,12 +14,12 @@ function ativarAutocomplete() {
     
             if (termo.length === 0) {
                 sugestoes.innerHTML = "";
-                return;
+                return; 
             }
     
             try {
                 // manda o termo para o backend
-                const resposta = await fetch(`/galeria-voucher/App/Controls/BuscaDocenteController.php?busca=${encodeURIComponent(termo)}`);
+                const resposta = await fetch(`/galeria-voucher/App/Controller/BuscaDocenteController.php?busca=${encodeURIComponent(termo)}`);
                 const dados = await resposta.json();
     
                 // limpa resultados anteriores
