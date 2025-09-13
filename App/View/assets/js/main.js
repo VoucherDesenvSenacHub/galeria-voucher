@@ -1,7 +1,7 @@
 
 const section_modal = document.querySelector('.section_modal');
 
-function abrirModalCadastro(classificacao) {
+function abrirModalCadastro(classificacao, turmaId = '') {
     if (document.querySelector('dialog#modal-cadastro')) return;
 
     const modal = document.createElement('dialog');
@@ -18,7 +18,11 @@ function abrirModalCadastro(classificacao) {
         modal.remove();
     });
 
-    const url = `/galeria-voucher/app/View/componentes/adm/form-cadastro-pessoas.php?classificacao=${encodeURIComponent(classificacao)}&t=${new Date().getTime()}`;
+    let url = `/galeria-voucher/app/View/componentes/adm/form-cadastro-pessoas.php?classificacao=${encodeURIComponent(classificacao)}&t=${new Date().getTime()}`;
+
+    if (turmaId) {
+        url += `&turma_id=${encodeURIComponent(turmaId)}`;
+    }
 
     fetch(url)
         .then(res => res.text())
@@ -38,7 +42,7 @@ function abrirModalCadastro(classificacao) {
 
             // Chama a função para ativar autocomplete no conteúdo do modal
             if (typeof ativarAutocomplete === 'function') {
-                ativarAutocomplete();
+                ativarAutocomplete(classificacao);
             } else {
                 console.warn('Função ativarAutocomplete não está definida.');
             }

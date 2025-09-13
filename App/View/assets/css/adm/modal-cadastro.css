@@ -11,6 +11,7 @@ dialog#modal-cadastro {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   color: #333;
   font-family: var(--font-primary, sans-serif);
+  height: 60vh;
 }
 
 dialog#modal-cadastro::backdrop {
@@ -71,35 +72,67 @@ dialog#modal-cadastro form button.primary-button {
   align-self: flex-end;
 }
 
-/* Área de sugestões */
+/* Container das sugestões */
 #sugestoes {
   position: absolute;
   top: calc(100% - 1px); /* encosta no input */
-  left: 30%;
-  right: 0;
-  z-index: 1000; /* acima dos demais elementos */
-  max-height: 150px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  max-height: 200px;
   overflow-y: auto;
-  border: none;
-  border-top: none;
-  background: none;
-  border-radius: 0 0 4px 4px;
-
-  text-align: start;
+  
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 0;
 }
 
-#sugestoes div {
-  padding: 0.4rem 0.75rem;
+/* Cada sugestão */
+#sugestoes .sugestao-item {
+  padding: 12px 16px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Último item sem borda */
+#sugestoes .sugestao-item:last-child {
+  border-bottom: none;
+}
+
+/* Hover */
+#sugestoes .sugestao-item:hover {
   background-color: #f5f5f5;
-
-  width: 50%;
 }
 
-#sugestoes div:hover {
-  background-color:#e0f2ff;
+/* Item ativo/selecionado */
+#sugestoes .sugestao-item.active {
+  background-color: #e8eaf6;
+  color: #3f51b5;
+  font-weight: 500;
 }
+#sugestoes .sugestao-empty {
+  padding: 12px 16px;
+  transition: background 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Último empty sem borda */
+#sugestoes .sugestao-empty:last-child {
+  border-bottom: none;
+}
+
+/* empty ativo/selecionado */
+#sugestoes .sugestao-empty.active {
+  background-color: #e8eaf6;
+  color: #3f51b5;
+  font-weight: 500;
+}
+
 
 /* Chips das pessoas selecionadas */
 .chip {
