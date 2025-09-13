@@ -75,9 +75,13 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
       ?>
 
       <div class="primaty-button">
-        <a href="imagens.php">
-          <?php buttonComponent('primary', 'ADICIONAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/Projeto.php'); ?>
-        </a>
+          <?php 
+            $linkAdicionarProjeto = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/Projeto.php';
+            if ($turmaId) {
+                $linkAdicionarProjeto .= '?id=' . $turmaId;
+            }
+            buttonComponent('primary', 'ADICIONAR', false, $linkAdicionarProjeto); 
+          ?>
       </div>
 
       <?php if (empty($projetos)): ?>
