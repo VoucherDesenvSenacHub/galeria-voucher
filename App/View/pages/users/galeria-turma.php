@@ -38,8 +38,6 @@ $pessoasTurma = [];
 $pessoasTurma = array_merge($pessoasTurma, $alunos);
 $pessoasTurma = array_merge($pessoasTurma, $orientadores);
 
-var_dump($pessoasTurma);
-
 // Log leve para depuração
 if (function_exists('error_log')) {
     error_log("galeria-turma id={$turmaId} alunos=" . (is_array($alunos) ? count($alunos) : 0) . " orientadores=" . (is_array($orientadores) ? count($orientadores) : 0));
@@ -159,7 +157,7 @@ headerComponent('Galeria da Turma');
             <?php if (!empty($pessoasTurma)): ?>
                 <?php foreach ($pessoasTurma as $pessoa): ?>
                     <?php if ($pessoa['perfil'] === 'aluno'): ?>
-                        <?php include __DIR__ . "/../../componentes/users/card_desenvolvedores.php"; ?>
+                        <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -174,7 +172,7 @@ headerComponent('Galeria da Turma');
             <?php if (!empty($pessoasTurma)): ?>
                 <?php foreach ($pessoasTurma as $pessoa): ?>
                     <?php if ($pessoa['perfil'] === 'professor'): ?>
-                        <?php include __DIR__ . "/../../componentes/users/card_desenvolvedores.php"; ?>
+                        <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>

@@ -22,7 +22,7 @@ headerComponent('Desenvolvedores');
             <div class="galeria-turma-container">
                 <?php
                 foreach ($alunos as $aluno) {
-                    require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
+                    require __DIR__ . "/../../componentes/users/card_pessoas.php";
                 }
                 ?>
             </div>
