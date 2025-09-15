@@ -109,12 +109,14 @@ class TurmaController {
 
             if ($resultado) {
                 $_SESSION['sucesso_cadastro'] = "".htmlspecialchars($nome)." CADASTRADA COM SUCESSO !!!";
+                // Redireciona para a página de edição da nova turma
+                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php?id=' . $resultado);
+                exit;
             } else {
                 $_SESSION['erros_turma'] = ["Ocorreu um erro ao salvar a turma."];
+                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
+                exit;
             }
-            
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
-            exit;
         }
     }
 
@@ -250,3 +252,5 @@ if (isset($_GET['action'])) {
             break;
     }
 }
+
+?>
