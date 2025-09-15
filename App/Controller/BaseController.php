@@ -40,6 +40,8 @@ abstract class BaseController {
   } 
 }
 
+
+//Exemplo de implementação da BaseController
 // class TesteController extends BaseController{
 //   protected array $metodosPermitidos = ['GET', 'POST'];
 //   public function gerenciarRequisicao():void
