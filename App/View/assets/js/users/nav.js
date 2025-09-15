@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 if (controller) controller.abort();
                 controller = new AbortController();
-                const res = await fetch(`${window.location.origin}/galeria-voucher/App/Controls/SearchController.php?q=${encodeURIComponent(termo)}`, {
+                const res = await fetch(`${window.location.origin}/galeria-voucher/App/Controller/SearchController.php?q=${encodeURIComponent(termo)}`, {
                     signal: controller.signal
                 });
                 const json = await res.json();

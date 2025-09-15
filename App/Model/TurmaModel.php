@@ -451,4 +451,13 @@ class TurmaModel extends BaseModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function VincularDocenteComTurma(int $id_pessoa, int $id_turma){
+        $sql = 'INSERT INTO docente_turma (pessoa_id, turma_id, data_associacao) 
+                VALUES (:id_pessoa, :id_turma, NOW())';
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':id_pessoa' => $id_pessoa,
+            ':id_turma' => $id_turma
+        ]);
+    }
 }

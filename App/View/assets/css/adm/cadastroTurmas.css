@@ -151,6 +151,13 @@
         border-bottom-right-radius: 10px;
     }
 
+    .tab-adm-turmas.disabled {
+        background-color: #a9a9a9; /* Cinza mais escuro */
+        color: #696969; /* Cor de texto mais escura */
+        cursor: not-allowed; /* Cursor de "não permitido" */
+        pointer-events: none; /* Impede eventos de clique */
+    }
+
     .h1-turma {
         font-size: 1.8rem;
         margin-bottom: 30px;

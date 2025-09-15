@@ -1,12 +1,21 @@
 <?php
+
+$paginaAtiva = 'turmas';
+
 require_once __DIR__ . "/../../../../Config/env.php";
+
+// VERIFICAÇÃO DE ACESSO PARA O USUARiO NÃO ACESSAR A PAGINA DIRETO DA URL
+if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
+    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
+    exit;
+}
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/input.php";
 require_once __DIR__ . "/../../../componentes/button.php";
 headerComponent("Voucher Desenvolvedor - Criar Projeto");
-require_once __DIR__ . "/../../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
-require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 // require_once __DIR__ . "/../../../../Model/ProjetoModel.php";
 
 $currentTab = 'Criar Projeto';
@@ -111,7 +120,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
           </div>
         </div>
         <div class="button-projeto">
-          <?php buttonComponent('secondary', 'Cancelar', false); ?>
+          <?php buttonComponent('secondary', 'Cancelar', false, null, null, '', 'back-button'); ?>
           <?php buttonComponent('primary', 'Salvar', true); ?>
         </div>
 

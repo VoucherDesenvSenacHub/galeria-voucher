@@ -1,4 +1,7 @@
 <?php
+
+$paginaAtiva = 'turmas';
+
 // Garante que uma sessão PHP esteja ativa. Se não estiver, inicia uma.
 // Isso é necessário para usar as variáveis de sessão ($_SESSION) para exibir mensagens de erro/sucesso.
 if (session_status() === PHP_SESSION_NONE) {
@@ -11,11 +14,11 @@ require_once __DIR__ . "/../../../../Config/env.php";
 // Inclui o cabeçalho HTML (<head>, CSS, etc.).
 require_once __DIR__ . "/../../../componentes/head.php";
 // Inclui um script que verifica se o usuário administrativo está logado (autenticação).
-require_once __DIR__ . "/../../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../../Service/AuthService.php";
 // Inclui os Models necessários para buscar dados do banco (turmas e polos).
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../../Model/PoloModel.php";
-require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
 // --- LÓGICA DE PREPARAÇÃO DA PÁGINA ---
 
@@ -24,7 +27,7 @@ $isEditMode = false; // Flag para controlar se a página está em modo de ediç�
 $turma = null; // Variável para armazenar os dados da turma no modo de edição.
 $tituloPagina = "Cadastro de Turma"; // Título que aparecerá na aba do navegador.
 // URL para onde o formulário será enviado. Padrão é a ação 'salvar' do Controller.
-$actionUrl = VARIAVEIS['APP_URL'] . "App/Controls/TurmaController.php?action=salvar";
+$actionUrl = VARIAVEIS['APP_URL'] . "App/Controller/TurmaController.php?action=salvar";
 // URL da imagem de placeholder padrão.
 $imagemUrl = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png';
 
@@ -52,7 +55,7 @@ if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
 
   // Altera as variáveis para refletir o modo de edição.
   $tituloPagina = "Editar Turma";
-  $actionUrl = VARIAVEIS['APP_URL'] . "App/Controls/TurmaController.php?action=atualizar";
+  $actionUrl = VARIAVEIS['APP_URL'] . "App/Controller/TurmaController.php?action=atualizar";
 
   // Se a turma tiver uma imagem associada, busca a URL dela.
   if (!empty($turma['imagem_id'])) {

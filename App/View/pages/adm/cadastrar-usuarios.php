@@ -1,10 +1,12 @@
 <?php
-require_once __DIR__ . "/../../../Controls/cadastrar_pessoa.php";
+
+$paginaAtiva = 'pessoas';
+
 require_once __DIR__ . "/../../componentes/head.php";
-require_once __DIR__ . "/../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . '/../../../Model/PessoaModel.php';
 require_once __DIR__ . '/../../../Model/PoloModel.php';
-require_once __DIR__ . "/../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 headerComponent('Cadastro de Pessoa');
 
@@ -14,8 +16,6 @@ $id = $_GET['id'] ?? null;
 $model = new PessoaModel();
 $pessoa = null;
 $perfis = $model->listarPerfisPermitidos();
-$poloModel = new PoloModel();
-$polos = $poloModel->buscarTodos();
 
 if ($acao === 'editar' && $id) {
   $pessoa = $model->buscarPessoaComPoloPorId((int)$id);
@@ -39,7 +39,7 @@ if ($acao === 'editar' && $id) {
     <div class="container-users">
       <div class="form-container-users">
 
-        <form class="form-dados" method="POST" enctype="multipart/form-data" action="/galeria-voucher/App/Controls/ControllerPessoa.php">
+        <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= VARIAVEIS['APP_URL']?>App/Controller/PessoaController.php">
           <input type="hidden" name="acao" value="<?= $acao ?>">
           <?php if ($acao === 'editar' && $id): ?>
             <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
@@ -64,20 +64,6 @@ if ($acao === 'editar' && $id) {
                   </option>
                 <?php endforeach; ?>
               </select>
-
-              <label for="polo" style="font-weight: bold;">Polo</label>
-              <select id="polo" name="polo_id" class="input-text" style="cursor: pointer;">
-                <option value="">-- Selecione --</option>
-                <?php foreach ($polos as $p): ?>
-                  <option value="<?= (int)$p['polo_id'] ?>"
-                    <?= ((($_POST['polo_id'] ?? '') == $p['polo_id']) ? 'selected' : '') ?>>
-                    <?= htmlspecialchars($p['nome']) ?>
-                  </option>
-                <?php endforeach; ?>
-              </select>
-              <?php if ($acao === 'editar'): ?>
-                <div style="margin-top:6px; font-size:12px; color:#444;">Polo atual: <?= htmlspecialchars($pessoa['nome_polo'] ?? 'Sem polo') ?></div>
-              <?php endif; ?>
             </div>
 
             <div class="form-group-imagem">
@@ -93,7 +79,7 @@ if ($acao === 'editar' && $id) {
           <div class="form-bottom">
             <div class="form-group-buton">
               <?php
-              buttonComponent('secondary', 'Cancelar', 'reset', false);
+              buttonComponent('secondary', 'Cancelar', 'reset', false, null, null, 'back-button');
               buttonComponent('primary', $acao === 'editar' ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>

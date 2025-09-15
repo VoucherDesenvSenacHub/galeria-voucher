@@ -34,6 +34,23 @@
          */
         private const SEPARATOR = " ⇒ ";
 
+        /**
+         * Gera o BreadCrumbs completo, caso a página não seja do admin, não gera o componente
+         *
+         * @param array{pai: int|null, url: string, valor: string} $breadcrumbItem A single breadcrumb item from BREAD_MAP.
+         * @return string The HTML representation of the breadcrumb link.
+         */
+        public static function gerarBreadCrumbs(): void
+        {
+            $atual =  self::pegarBreadCrumbAtual();
+
+            if(!isset($atual))return;
+
+            $html = '<div class="nav-breadcrumbs">';
+            $html .= self::gerarLink($atual);
+            $html .= '</div>';
+            echo $html;
+        }
 
         /**
          * Busca o valor na URL que corresponde a um possivel valor de BREAD_MAP["url"]
@@ -80,7 +97,7 @@
          * @param array{pai: int|null, url: string, valor: string} $breadcrumbItem Um elemento de BREAD_MAP.
          * @return string HTML contendo os links
          */
-        protected static function gerarLink($breadcrumbItem) : string | null 
+        private static function gerarLink($breadcrumbItem) : string | null 
         {
             $breadcrumbCompleto = '';
             ["pai" => $pai,"url" => $url,"valor" => $valor] = $breadcrumbItem;
@@ -94,24 +111,5 @@
             $breadcrumbCompleto .= "<a href=\"{$url_base}/{$url}.php\">{$valor}</a>";
             return $breadcrumbCompleto;
         }
-
-        /**
-         * Gera o BreadCrumbs completo, caso a página não seja do admin, não gera o componente
-         *
-         * @param array{pai: int|null, url: string, valor: string} $breadcrumbItem A single breadcrumb item from BREAD_MAP.
-         * @return string The HTML representation of the breadcrumb link.
-         */
-        public static function gerarBreadCrumbs(): void
-        {
-            $atual =  self::pegarBreadCrumbAtual();
-
-            if(!isset($atual))return;
-
-            $html = '<div class="nav-breadcrumbs">';
-            $html .= self::gerarLink($atual);
-            $html .= '</div>';
-            echo $html;
-        }
     }
-
 ?>

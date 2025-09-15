@@ -11,7 +11,7 @@ require_once __DIR__ . "/../../../Model/AlunoModel.php";
 require_once __DIR__ . "/../../../Model/DocenteModel.php";
 require_once __DIR__ . "/../../../Helpers/ProjetoHelper.php";
 require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
-require_once __DIR__ . "/../../../Controls/GaleriaTurmaController.php";
+require_once __DIR__ . "/../../../Controller/GaleriaTurmaController.php";
 
 // Obtém ID da turma via URL e carrega dados
 $controller = new GaleriaTurmaController();
@@ -130,7 +130,6 @@ headerComponent('Galeria da Turma');
 
                         <!-- Repositório do projeto -->
                         <div class="galeria-turma-repo-section">
-                            <h4>Repositório do Projeto</h4>
                             <?php if (!empty($projeto['linkProjeto'])): ?>
                                 <a href="<?= $projeto['linkProjeto'] ?>" target="_blank" class="galeria-turma-repo-link">
                                     Ver no GitHub

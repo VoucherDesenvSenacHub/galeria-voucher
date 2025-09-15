@@ -8,9 +8,7 @@
  * - $useHeader (boolean): Se true, envolve o nav em uma tag header (padrão: true para users)
  */
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Sessão já iniciada no head.php
 
 $isAdmin = isset($isAdmin) ? $isAdmin : false;
 $useHeader = isset($useHeader) ? $useHeader : !$isAdmin;
