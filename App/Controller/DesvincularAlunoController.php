@@ -5,15 +5,13 @@ require_once __DIR__ . '/../Config/env.php';
 require_once __DIR__ . '/../Model/AlunoModel.php';
 require_once __DIR__ . '/../Model/BaseModel.php';
 require_once __DIR__ . '/../Model/UsuarioModel.php';
+require_once __DIR__ . '/ValidarLoginController.php';
 
 class DesvincularAlunoController {
     public function desvincularAluno() {
         // Verifica se o usuário está logado e é administrador
-        if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['perfil'] !== 'adm') {
-            $_SESSION['erro'] = "Acesso negado. Apenas administradores podem realizar esta operação.";
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php');
-            exit;
-        }
+        $urlRedirecionamento = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/alunos.php';
+        ValidarLoginController::validarAdminRedirect($urlRedirecionamento);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);

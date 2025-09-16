@@ -6,6 +6,7 @@ require_once __DIR__ . '/../Model/DocenteModel.php';
 require_once __DIR__ . '/../Model/BaseModel.php';
 require_once __DIR__ . '/../Model/UsuarioModel.php';
 require_once __DIR__ . '/BaseController.php';
+require_once __DIR__ . '/ValidarLoginController.php';
 
 class DocenteController extends BaseController {
     protected array $metodosPermitidos = ['POST'];
@@ -43,12 +44,7 @@ class DocenteController extends BaseController {
 
     private function desvincularDocente(): void {
         // Verifica se o usuário está logado e é administrador
-        if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['perfil'] !== 'adm') {
-            $this->toJson([
-                'status' => 'error',
-                'mensagem' => 'Acesso negado. Apenas administradores podem realizar esta operação.'
-            ], 403);
-        }
+        ValidarLoginController::validarAdmin();
 
         $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);
         $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
