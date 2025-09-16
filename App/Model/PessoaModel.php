@@ -6,6 +6,8 @@ class PessoaModel extends BaseModel
     // crud  criado conferir e testar!
     // Criar pessoa (Create)
 
+    private ?string $ultimoErro = null;
+
     public function criarPessoa(array $dados, ?int $imagemId = null): bool
     {
         // Se não foi passada uma imagem, usa a padrão
