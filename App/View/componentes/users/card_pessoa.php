@@ -1,10 +1,7 @@
 <?php
-// Normaliza a variável esperada pelo card: aceita $aluno ou $dev
-if (!isset($aluno) && isset($dev)) {
-    $aluno = $dev;
-}
 
-// Evita notice caso nada tenha sido passado
+
+// Evita caso nada tenha sido passado
 if (!isset($aluno) || !is_array($aluno)) {
     $aluno = [
         'nome' => 'Sem nome',
@@ -13,9 +10,6 @@ if (!isset($aluno) || !is_array($aluno)) {
         'github' => '#',
     ];
 }
-
-// Fallback: alguns chamam de 'funcao' ao invés de 'perfil'
-// $perfil = $pessoa['perfil'] ?? 'professor';
 
 ?>
 
