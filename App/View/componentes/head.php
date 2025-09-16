@@ -22,9 +22,6 @@ require_once __DIR__ . '/button.php';
 <link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>globals.css">
 <link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/modal-cadastro.css">
 
-<!-- Script para controle da barra de pesquisa -->
-<script src="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_JS"] ?>searchControl.js"></script>
-
 <!-- Script para controle do menu hambúrguer -->
 <script src="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_JS"] ?>users/nav.js"></script>
 <script src="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_JS"] ?>global.js"></script>
