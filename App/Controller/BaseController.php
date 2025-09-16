@@ -40,32 +40,35 @@ abstract class BaseController {
   } 
 }
 
-class TesteController extends BaseController{
-  protected array $metodosPermitidos = ['GET', 'POST'];
-  public function gerenciarRequisicao():void
-  {
-    switch($_SERVER['REQUEST_METHOD']){
-      case 'GET':
-        $this->gerenciarGet();
-        break;
-      case 'POST':
-        $this->gerenciarPost();
-        break;
-      default:
-        $this->gerenciarMetodosNaoPermitidos();
-        break;
-    };
-  }
 
-  private function gerenciarGet():void{
-    $this->toJson(["message" => 'GETO']) ;
-  }
+//Exemplo de implementação da BaseController
+// class TesteController extends BaseController{
+//   protected array $metodosPermitidos = ['GET', 'POST'];
+//   public function gerenciarRequisicao():void
+//   {
+//     switch($_SERVER['REQUEST_METHOD']){
+//       case 'GET':
+//         $this->gerenciarGet();
+//         break;
+//       case 'POST':
+//         $this->gerenciarPost();
+//         break;
+//       default:
+//         $this->gerenciarMetodosNaoPermitidos();
+//         break;
+//     };
+//   }
 
-  private function gerenciarPost():void{
-    $this->toJson(["message" => 'POSTO']);
-  }
+//   private function gerenciarGet():void{
+//     $this->toJson(["message" => 'GETO']) ;
+//   }
+
+//   private function gerenciarPost():void{
+//     $this->toJson(["message" => 'POSTO']);
+//   }
       
- }
+//  }
 
- $controller = new TesteController();
- $controller->gerenciarRequisicao();
+//Exemplo de uso no final do arquivo
+//  $controller = new TesteController();
+//  $controller->gerenciarRequisicao();

@@ -98,7 +98,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
             <div class="topo-lista-alunos">
                 <?php
-                buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor')\"");
+                buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor', " . $turmaId . ")\"");
                 ?>
 
                 <div class="input-pesquisa-container">
