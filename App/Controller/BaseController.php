@@ -32,7 +32,7 @@ abstract class BaseController {
    * @return void
    */
   protected function gerenciarMetodosNaoPermitidos(){
-    if(count($this->metodosPermitidos) == 0)return
+    if(count($this->metodosPermitidos) == 0) return;
 
     header('allow: ' . implode(', ', $this->metodosPermitidos));
     http_response_code(405);
@@ -40,35 +40,32 @@ abstract class BaseController {
   } 
 }
 
+class TesteController extends BaseController{
+  protected array $metodosPermitidos = ['GET', 'POST'];
+  public function gerenciarRequisicao():void
+  {
+    switch($_SERVER['REQUEST_METHOD']){
+      case 'GET':
+        $this->gerenciarGet();
+        break;
+      case 'POST':
+        $this->gerenciarPost();
+        break;
+      default:
+        $this->gerenciarMetodosNaoPermitidos();
+        break;
+    };
+  }
 
-//Exemplo de implementação da BaseController
-// class TesteController extends BaseController{
-//   protected array $metodosPermitidos = ['GET', 'POST'];
-//   public function gerenciarRequisicao():void
-//   {
-//     switch($_SERVER['REQUEST_METHOD']){
-//       case 'GET':
-//         $this->gerenciarGet();
-//         break;
-//       case 'POST':
-//         $this->gerenciarPost();
-//         break;
-//       default:
-//         $this->gerenciarMetodosNaoPermitidos();
-//         break;
-//     };
-//   }
+  private function gerenciarGet():void{
+    $this->toJson(["message" => 'GETO']) ;
+  }
 
-//   private function gerenciarGet():void{
-//     $this->toJson(["message" => 'GETO']) ;
-//   }
-
-//   private function gerenciarPost():void{
-//     $this->toJson(["message" => 'POSTO']);
-//   }
+  private function gerenciarPost():void{
+    $this->toJson(["message" => 'POSTO']);
+  }
       
-//  }
+ }
 
-//Exemplo de uso no final do arquivo
-//  $controller = new TesteController();
-//  $controller->gerenciarRequisicao();
+ $controller = new TesteController();
+ $controller->gerenciarRequisicao();
