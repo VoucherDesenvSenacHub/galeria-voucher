@@ -1,26 +1,19 @@
 <?php
-// require_once __DIR__ . "/../../componentes/head.php";
-
-// Carrega variáveis de ambiente antes de qualquer uso de VARIAVEIS
-require_once __DIR__ . "/../../../Config/env.php";
-
 // Carrega dependências necessárias para buscar dados
-require_once __DIR__ . "/../../../Model/TurmaModel.php";
-require_once __DIR__ . "/../../../Model/ProjetoModel.php";
-require_once __DIR__ . "/../../../Model/AlunoModel.php";
-require_once __DIR__ . "/../../../Model/DocenteModel.php";
+require_once __DIR__ . "/../../../Model/GaleriaTurmaModel.php";
 require_once __DIR__ . "/../../../Helpers/ProjetoHelper.php";
 require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
-require_once __DIR__ . "/../../../Controller/GaleriaTurmaController.php";
 
 // Obtém ID da turma via URL e carrega dados
-$controller = new GaleriaTurmaController();
+
 $turmaId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int)$_GET['id'] : 0;
 if ($turmaId <= 0) {
     header("Location: ./turma.php");
     exit;
 }
-$dados = $controller->carregarDadosTurma($turmaId);
+
+$galeriaModel = new GaleriaTurmaModel();
+$dados = $galeriaModel->carregarDadosTurma($turmaId);
 
 // Extrai variáveis usadas pela view
 $imagemTurmaUrl   = $dados['imagemTurmaUrl'] ?? VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';

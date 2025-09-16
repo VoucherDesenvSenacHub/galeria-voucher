@@ -34,7 +34,7 @@ class GaleriaTurmaController extends BaseController
     }
 
     private function verificarIdNaUrl(): int {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+        if (!isset($_GET['id']) || !is_numeric($_GET['id']) || intval(trim($_GET['id'])) <= 0) {
             $this->toJson(["erro" => "Parâmtro inválido para turma id"], 400);
         }
 
