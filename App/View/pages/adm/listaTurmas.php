@@ -77,7 +77,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     <table id="tabela-alunos">
                         <thead>
                             <tr>
-                                <th>ID</th><!-- notebook sem bateria finalizar aqui... @TODO  -->
+                                <th>ID</th><!-- notebook sem bateria finalizar aqui... @TODO w.x -->
                                 <th>NOME</th>
                                 <th>POLO</th>
                                 <th>AÇÕES</th>
@@ -87,6 +87,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             <?php if (!empty($turmas)):  // Verifica se existem turmas para exibir. ?>
                                 <?php foreach ($turmas as $turma): // Loop para criar uma linha <tr> para cada turma. ?>
                                     <tr>
+                                        <td>ID TESTE</td><!-- notebook sem bateria finalizar aqui... @TODO w.x -->
                                         <td><?= htmlspecialchars($turma['NOME_TURMA']) ?></td>
                                         <td><?= htmlspecialchars($turma['NOME_POLO']) ?></td>
                                         <td class="acoes">
