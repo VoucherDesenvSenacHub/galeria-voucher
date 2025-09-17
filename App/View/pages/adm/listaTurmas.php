@@ -34,43 +34,48 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
 <head>
 
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />                                                                                                                     
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 </head>
 
 <body class="body-lista-alunos">
 
-    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; // Inclui a barra lateral ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; // Inclui a barra lateral 
+    ?>
     <?php
     $isAdmin = true; // Informa ao componente de navegação que esta é uma página de admin.
     require_once __DIR__ . "/../../componentes/nav.php"; // Inclui a barra de navegação superior.
     ?>
 
     <main class="main-lista-alunos">
-        <?php BreadCrumbs::gerarBreadCrumbs()?>
+        <?php BreadCrumbs::gerarBreadCrumbs() ?>
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
                 <?php
                 buttonComponent(
-                    'primary','NOVA TURMA',false,VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
+                    'primary',
+                    'NOVA TURMA',
+                    false,
+                    VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'
+                );
                 ?>
-                
+
                 <form method="GET" action="">
                     <div class="input-pesquisa-container">
-                        <input 
-                            type="text" 
-                            id="pesquisa" 
-                            name="pesquisa"  
-                            placeholder="Pesquisar por nome ou polo" 
+                        <input
+                            type="text"
+                            id="pesquisa"
+                            name="pesquisa"
+                            placeholder="Pesquisar por nome ou polo"
                             value="<?= htmlspecialchars($termoPesquisa) ?>">
-                        
+
                         <button type="submit" class="search-button">
                             <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
                                 class="icone-lupa-img">
                         </button>
                     </div>
                 </form>
-                 </div>
+            </div>
 
             <div class="tabela-principal-lista-alunos">
                 <div class="tabela-container-lista-alunos">
@@ -84,10 +89,12 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($turmas)):  // Verifica se existem turmas para exibir. ?>
-                                <?php foreach ($turmas as $turma): // Loop para criar uma linha <tr> para cada turma. ?>
+                            <?php if (!empty($turmas)):  // Verifica se existem turmas para exibir. 
+                            ?>
+                                <?php foreach ($turmas as $turma): // Loop para criar uma linha <tr> para cada turma. 
+                                ?>
                                     <tr>
-                                        <td>ID TESTE</td><!-- notebook sem bateria finalizar aqui... @TODO w.x -->
+                                        <td><?= htmlspecialchars($turma['turma_id']) ?></td><!-- notebook sem bateria finalizar aqui... @TODO w.x -->
                                         <td><?= htmlspecialchars($turma['NOME_TURMA']) ?></td>
                                         <td><?= htmlspecialchars($turma['NOME_POLO']) ?></td>
                                         <td class="acoes">
@@ -109,7 +116,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else:  // Se o array $turmas estiver vazio... ?>
+                            <?php else:  // Se o array $turmas estiver vazio... 
+                            ?>
                                 <tr>
                                     <td colspan="3" style="text-align: center;">Nenhuma turma encontrada.</td>
                                 </tr>
@@ -123,14 +131,14 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 <?php if ($totalPaginas > 1): ?>
                     <div class="paginacao">
                         <a href="?pagina=1<?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&laquo;</a>
-                        
+
                         <?php if ($paginaAtual > 1): ?>
                             <a href="?pagina=<?= $paginaAtual - 1 ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&lsaquo;</a>
                         <?php endif; ?>
 
                         <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
-                            <a href="?pagina=<?= $i ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" 
-                               class="paginacao-item <?= ($i == $paginaAtual) ? 'paginacao-ativa' : '' ?>">
+                            <a href="?pagina=<?= $i ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>"
+                                class="paginacao-item <?= ($i == $paginaAtual) ? 'paginacao-ativa' : '' ?>">
                                 <?= $i ?>
                             </a>
                         <?php endfor; ?>
@@ -146,14 +154,16 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </div>
     </main>
 
-    <?php // Script para exibir a mensagem de sucesso após a exclusão de uma turma. ?>
+    <?php // Script para exibir a mensagem de sucesso após a exclusão de uma turma. 
+    ?>
     <?php if (isset($_SESSION['sucesso_exclusao'])): ?>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 alert("<?= htmlspecialchars($_SESSION['sucesso_exclusao']) ?>");
             });
         </script>
-        <?php unset($_SESSION['sucesso_exclusao']); // Limpa a sessão para não mostrar o alerta novamente. ?>
+        <?php unset($_SESSION['sucesso_exclusao']); // Limpa a sessão para não mostrar o alerta novamente. 
+        ?>
     <?php endif; ?>
 
     <script src="../../assets/js/adm/lista-alunos.js"></script>
