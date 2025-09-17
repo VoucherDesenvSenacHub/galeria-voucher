@@ -67,7 +67,6 @@ class PessoaModel extends BaseModel
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
         return $resultado ? $resultado : null;
-
     }
 
     /**
@@ -116,7 +115,9 @@ class PessoaModel extends BaseModel
         $stmt = $this->pdo->prepare($sqlAluno);
         $stmt->execute([':id' => $pessoaId]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($row) { return $row; }
+        if ($row) {
+            return $row;
+        }
 
         // Tenta como docente
         $sqlDoc = "SELECT t.turma_id, t.polo_id
@@ -375,7 +376,7 @@ class PessoaModel extends BaseModel
                   LEFT JOIN docente_turma dt ON p.pessoa_id = dt.pessoa_id
                   LEFT JOIN turma t ON at.turma_id = t.turma_id OR dt.turma_id = t.turma_id
                   LEFT JOIN polo ON t.polo_id = polo.polo_id";
-        
+
         $params = [];
         if (!empty($termo)) {
             $query .= " WHERE p.nome LIKE :termo OR polo.nome LIKE :termo";
@@ -414,7 +415,7 @@ class PessoaModel extends BaseModel
             LEFT JOIN
                 polo ON t.polo_id = polo.polo_id
         ";
-        
+
         $params = [];
         if (!empty($termo)) {
             $query .= " WHERE p.nome LIKE :termo OR polo.nome LIKE :termo";
@@ -430,17 +431,9 @@ class PessoaModel extends BaseModel
         }
         $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-        
+
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-
-
-
-
-
-
-
-

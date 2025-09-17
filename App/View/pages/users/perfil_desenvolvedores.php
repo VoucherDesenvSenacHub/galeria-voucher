@@ -5,6 +5,9 @@ require __DIR__ . "/../../../Model/AlunoModel.php";
 $alunoModel = new AlunoModel();
 $alunos = $alunoModel->buscarPorTurma(25);
 
+$pessoasTurma = [];
+$pessoasTurma = array_merge($pessoasTurma, $alunos);
+
 headerComponent('Desenvolvedores');
 ?>
 
@@ -24,11 +27,9 @@ headerComponent('Desenvolvedores');
         <section class="galeria-turma-cardss">
             <h1 class="galeria-turma-h1">Alunos</h1>
             <div class="galeria-turma-container">
-                <?php
-                foreach ($alunos as $aluno) {
-                    require __DIR__ . "/../../componentes/users/card_desenvolvedores.php";
-                }
-                ?>
+                <?php foreach ($pessoasTurma as $pessoa): ?>
+                    <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
+                <?php endforeach; ?>
             </div>
         </section>
 
