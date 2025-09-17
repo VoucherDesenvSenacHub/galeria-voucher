@@ -1,5 +1,6 @@
 <?php
 // Carrega dependências necessárias para buscar dados
+require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../../Model/GaleriaTurmaModel.php";
 require_once __DIR__ . "/../../../Helpers/ProjetoHelper.php";
 require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
@@ -14,9 +15,13 @@ if ($turmaId <= 0) {
 
 $galeriaModel = new GaleriaTurmaModel();
 $dados = $galeriaModel->carregarDadosTurma($turmaId);
+// echo "<pre>";
+// print_r($dados);
+// echo "</pre>";
+// die();
 
 // Extrai variáveis usadas pela view
-$imagemTurmaUrl   = $dados['imagemTurmaUrl'] ?? VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
+$imagemTurmaUrl   = $dados['imagemTurmaUrl'] ;
 $nomeTurma        = $dados['nomeTurma'] ?? '';
 $descricaoTurma   = $dados['descricaoTurma'] ?? '';
 $alunos           = $dados['alunos'] ?? [];
@@ -57,7 +62,7 @@ headerComponent('Galeria da Turma');
         </section>
 
         <section class="galeria-turma-tab-inner">
-            <img class="galeria-turma-imagem-direita" src="<?php echo VARIAVEIS['APP_URL'] . $imagemTurmaUrl ?>" alt="Imagem da Turma">
+            <img class="galeria-turma-imagem-direita" src="<?php echo $imagemTurmaUrl ?>" alt="Imagem da Turma">
             <div class="galeria-turma-margin-top-left-projeto1-dia-i">
                 <h2><?= $nomeTurma ?></h2>
                 <p><?= $descricaoTurma ?></p>

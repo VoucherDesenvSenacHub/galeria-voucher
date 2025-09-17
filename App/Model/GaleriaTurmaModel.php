@@ -44,7 +44,7 @@ class GaleriaTurmaModel
         // VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
 
         return [
-            'imagemTurmaUrl' => $turma['imagem'],
+            'imagemTurmaUrl' => urlImagem($turma['imagem'],  'App/View/assets/img/utilitarios/foto.png'),
             'nomeTurma' => $turma['nome'],
             'descricaoTurma' => $turma['descricao'],
             'alunos' => $alunos,
