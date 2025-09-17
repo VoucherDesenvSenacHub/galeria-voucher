@@ -77,7 +77,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     <table id="tabela-alunos">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>ID</th><!-- notebook sem bateria finalizar aqui... @TODO  -->
                                 <th>NOME</th>
                                 <th>POLO</th>
                                 <th>AÇÕES</th>
