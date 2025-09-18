@@ -71,7 +71,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         ?>
 
         <main class="main-turmas-turmas">
-            <?php BreadCrumbs::gerarBreadCrumbs()?>
+            <?php BreadCrumbs::gerarBreadCrumbs() ?>
             <?php
             // Usa o componente de abas das turmas
             tabsTurmaComponent($currentTab, $turmaId);
@@ -153,7 +153,30 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 </div>
             </div>
 
-            <section class="section_modal"></section>
+            <section class="section_modal">
+                <div class="modal-confirmacao" id="modal-desvincular-aluno">
+                    <form class="modal-content" method="POST" action="/galeria-voucher/App/Controller/DesvincularAlunoController.php?action=desvincular">
+                        <div class="modal-header">
+                            <h3>Confirmar Desvinculação</h3>
+                            <span class="close-modal" onclick="fecharModal()">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <p>Tem certeza que deseja desvincular o aluno "<span id="aluno-confirmacao"></span>" desta turma?</p>
+                            <p class="warning-text">Esta ação requer confirmação da sua senha.</p>
+                            <div class="form-group">
+                                <label for="senha-confirmacao">Digite sua senha:</label>
+                                <input type="password" id="senha-confirmacao" name="senha" required>
+                                <input type="hidden" name="pessoa_id">
+                                <input type="hidden" name="turma_id">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="secondary-button" onclick="fecharModal()">Cancelar</button>
+                            <button type="submit" class="primary-button" >Desvincular</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </main>
     </div>
 

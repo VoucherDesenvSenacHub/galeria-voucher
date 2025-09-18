@@ -273,15 +273,16 @@ tbody tr:nth-child(odd) {
   cursor: pointer;
 }
 
+
 /* Estilos para o modal de confirmação */
 .modal-confirmacao {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -301,7 +302,7 @@ tbody tr:nth-child(odd) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 1.5rem 0 1.5rem;
+  padding: 1.5rem 1.5rem .25rem 1.5rem;
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -366,7 +367,7 @@ tbody tr:nth-child(odd) {
 
 .modal-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 1rem;
   padding: 0 1.5rem 1.5rem 1.5rem;
 }
