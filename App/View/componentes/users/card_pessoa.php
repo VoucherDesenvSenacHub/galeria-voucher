@@ -17,7 +17,11 @@ if (!isset($pessoa) || !is_array($pessoa)) {
 
 // Configura o caminho da foto
 if (!empty($pessoa['foto'])) {
-    $caminhoFoto = VARIAVEIS['APP_URL'] . 'App/' . $pessoa['foto'];
+    if (filter_var($pessoa['foto'], FILTER_VALIDATE_URL)) {
+        $caminhoFoto = $pessoa['foto'];
+    } else {
+        $caminhoFoto = VARIAVEIS['APP_URL'] . 'App/' . $pessoa['foto'];
+    }
 } else {
     $caminhoFoto = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png';
 }
