@@ -12,28 +12,6 @@
             rgba(0, 0, 0, 0.9));
 }
 
-/* mapa svg */
-.mapa-svg-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 830px;
-    z-index: 1;
-    opacity: 0.20;
-}
-
-.mapa-svg {
-    width: 100%;
-    height: auto;
-}
-
-.mapa-svg path {
-    stroke: var(--accent-color);
-    stroke-width: 15px;
-    fill: transparent;
-}
 
 /*animação matrix*/
 #matrix-canvas {
@@ -43,7 +21,7 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    
+
 }
 
 .body-turma {
@@ -86,19 +64,6 @@
     }
 
     /* imagem dos números */
-    .numero {
-        position: absolute;
-        width: 100%;
-        height: 50rem;
-        text-align: right;
-        opacity: 20%;
-        overflow: hidden;
-        padding-left: 5rem;
-
-        img {
-            padding-left: 45rem;
-        }
-    }
 
     /* imagem do logo */
     .nome-voucher {
@@ -106,18 +71,6 @@
         top: calc(25vh + 6.3vw);
         text-align: center;
         z-index: 1;
-    }
-
-    /* imagem do mapa do estado */
-
-    .mapa {
-        position: absolute;
-        width: 100%;
-        height: 110vh;
-        display: flex;
-        justify-content: right;
-        padding-top: 2rem;
-        opacity: 50%;
     }
 }
 
@@ -339,125 +292,249 @@
     }
 }
 
-/* responsividade dos elementos e da página */
-@media (max-width: 376px) {
-    body {
-        overflow-x: hidden;
-    }
-
-    #secao1 .nome img {
-        max-width: 150%;
-        /* Reduz o tamanho das imagens */
-        margin: -50% auto;
-        /* Centraliza e adiciona espaçamento */
-        padding: 50%;
-        margin-left: -50%;
-    }
-
-    #secao1 .mapa img {
-        position: absolute;
-        left: 20%;
-        max-width: 90%;
-    }
-
-    #secao1 .numero img {
-        position: absolute;
-        left: 30%;
-        max-width: 50%;
-    }
-
-    #secao3 .container2 {
-        padding: 10px;
-        text-align: center;
-    }
-
-    #secao3 .stats {
-        flex-direction: column;
-        /* Alinha estatísticas em coluna */
-        gap: 15px;
-    }
-
-    #secao2 .container {
-        gap: 20px;
-        margin-top: 10%;
-        margin-left: 8%;
-        position: absolute;
-    }
-
-    #secao3 .container2 {
-        margin-top: 1250px;
-        z-index: 1;
-        gap: 1%;
-    }
-
+@media (max-width: 1025px) {
     #secao3 .container2 .stats {
-        gap: 0;
+        gap: 90px;
     }
 
-    #secao3 .container2 h1 {
-        position: relative;
-        /* Adicionado para ativar o z-index */
-        z-index: 1;
-        /* Controla a ordem de empilhamento */
+    #matrix-canvas {
+        -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     }
-
-    #secao3 .container2 .call-to-action {
-        position: relative;
-        /* Adicionado para ativar o z-index */
-        z-index: 1;
-        /* Controla a ordem de empilhamento */
-    }
-
-    .poligono {
-        flex-wrap: wrap;
-    }
-
-    #secao3 .poligono .image-row {
-        margin-left: -67%;
-        flex-wrap: nowrap;
-        flex-direction: column;
-        gap: 0px;
-    }
-
-    #secao3 .image-row .image-row {
-        max-width: 100%;
-        flex-direction: row;
-        /* Organiza as imagens em linha */
-
-        gap: 0px;
-        /* Ajuste o espaçamento entre as imagens */
-    }
-
-    #secao3 .image-row .image-turma {
-        max-width: 100%;
-        /* Reduz o tamanho das imagens para se ajustar à tela */
-        margin-top: 0;
-        /* Remove o deslocamento das imagens */
-    }
-
-    #secao3 .image-row .image-turma img {
-        width: 3rem;
-        /* Ajusta a largura para a tela pequena */
-        height: 3rem;
-        /* Ajusta a altura para a tela pequena */
-    }
-
-    nav {
-        justify-content: start;
-    }
-
-    .poligono .image-turma:nth-of-type(n + 3) {
+    #secao4 .poligono .image-row:nth-of-type(1) .image-turma:nth-of-type(n+5) {
         display: none;
     }
 
-    /* Ajusta a largura das imagens para melhorar a visualização no celular */
-    .poligono .image-turma img {
+    /* Linha 2 (só 3 imagens) */
+    #secao4 .poligono .image-row:nth-of-type(2) .image-turma:nth-of-type(n+4) {
+        display: none;
+    }
+
+    /* Linha 3 (só 2 imagens) */
+    #secao4 .poligono .image-row:nth-of-type(3) .image-turma:nth-of-type(n+5) {
+        display: none;
+    }
+    .NavInicial .nav-inner .search .pesquisa {
+        width: 15rem;
+    }
+
+}
+
+@media (max-width: 769px) {
+    .NavInicial .nav-inner {
+        width: 100%;
+    }
+
+    #matrix-canvas {
+        width: 101%;
+        height: 110%;
+        -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    }
+
+    .componente_mira .mira {
+        width: 5vh;
+        height: 5vh;
+        left: 25.3vw;
+    }
+
+
+    #secao1 .nome-voucher {
+        width: 75%;
+        margin-bottom: 91px;
+    }
+
+    #secao2 {
+        display: flex;
+    }
+
+    .nome-voucher img {
+        margin-bottom: 150px;
+        margin-left: 50px;
+    }
+
+    #secao2 .container {
+        margin-right: -2px;
+    }
+
+    #secao3 .container2 .stats {
+        flex-direction: column;
+        gap: 90px;
+    }
+
+    #secao3 .container2 {
+        margin-left: 7px;
+    }
+
+    #secao4 .call-to-action p {
+        margin-left: 10px;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    #secao4 .poligono .image-row {
+        flex-wrap: nowrap;
+        padding: 7px;
+        margin-left: -5px;
+    }
+
+    #secao4 .poligono .image-turma img {
         width: 100px;
-        /* Ajuste conforme necessário */
         height: 100px;
     }
 
-    #secao {
-        margin-top: 10rem;
+
+    /* Linha 1 (só 2 imagens) */
+    #secao4 .poligono .image-row:nth-of-type(1) .image-turma:nth-of-type(n+5) {
+        display: none;
     }
+
+    /* Linha 2 (só 3 imagens) */
+    #secao4 .poligono .image-row:nth-of-type(2) .image-turma:nth-of-type(n+4) {
+        display: none;
+    }
+
+    /* Linha 3 (só 2 imagens) */
+    #secao4 .poligono .image-row:nth-of-type(3) .image-turma:nth-of-type(n+5) {
+        display: none;
+    }
+
+    .NavInicial .nav-inner .imgvoucher img {
+        width: 100px;
+    }
+
+    .componente_mira .mira2 {
+        width: 101%;
+    }
+
+    #secao1 .content {
+        margin-right: -80px;
+        width: 80%;
+
+    }
+
+
+}
+
+@media (max-width: 426px) {
+    #secao1 .content {
+        margin-right: -100px;
+    }
+
+    #secao4 .poligono .image-row {
+        margin-left: 10px;
+    }
+
+    #secao4 .poligono .image-row:nth-of-type(1) .image-turma:nth-of-type(n+3) {
+        display: none;
+    }
+
+    #secao4 .poligono .image-row:nth-of-type(3) .image-turma:nth-of-type(n+3) {
+        display: none;
+    }
+
+    .row .col-100 a {
+        margin-left: 35px;
+    }
+        .nome-voucher img {
+        margin-bottom: 150px;
+        margin-left: 0px;
+    }
+
+
+
+
+}
+
+@media (max-width: 376px) {
+    #secao4 .poligono .image-row:nth-of-type(1) .image-turma:nth-of-type(n+3) {
+        display: none;
+    }
+
+    #secao4 .poligono .image-row:nth-of-type(3) .image-turma:nth-of-type(n+3) {
+        display: none;
+    }
+
+    .NavInicial .nav-inner .imgvoucher img {
+        width: 70px;
+    }
+
+    .row .col-100 a {
+        margin-left: 40px;
+    }
+
+    #secao4 .poligono .image-row {
+        margin-right: 35px;
+    }
+        .nome-voucher img {
+        margin-bottom: 150px;
+        margin-left: 0px;
+    }
+
+}
+
+@media (max-width: 321px) {
+    #secao1 #matrix-canvas {
+        width: 117%;
+    }
+
+    .componente_mira .mira2 {
+        width: 117%;
+    }
+
+    #secao2 .container {
+        margin-right: -40px;
+    }
+
+    #secao2 .container {
+        width: 270px;
+    }
+
+    #secao1 .nome-voucher {
+        width: 100%;
+        margin-bottom: 91px;
+    }
+
+    #secao1 .content {
+        margin-right: -80px;
+        width: 80%;
+
+    }
+
+    .NavInicial .nav-inner .imgvoucher img {
+        width: 70px;
+    }
+
+    #secao3 .container2 {
+        margin-left: 45px;
+    }
+
+    #secao4 .call-to-action p {
+        margin-left: 65px;
+    }
+
+    #secao4 .poligono .image-row {
+        margin-left: -15px;
+    }
+
+    #secao4 .poligono .image-row:nth-of-type(1) .image-turma:nth-of-type(n+3) {
+        display: none;
+    }
+
+    #secao4 .poligono .image-row:nth-of-type(3) .image-turma:nth-of-type(n+3) {
+        display: none;
+    }
+
+    #secao4 .poligono .image-row {
+        margin-right: 10px;
+    }
+
+    .row .col-100 a {
+        margin-left: 55px;
+    }
+        .nome-voucher img {
+        margin-bottom: 150px;
+        margin-left: 0px;
+    }
+
 }

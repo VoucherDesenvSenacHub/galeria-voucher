@@ -4,11 +4,19 @@ $paginaAtiva = 'turmas';
 
 // 1. INCLUDES E AUTENTICAÇÃO
 require_once __DIR__ . "/../../../../Config/env.php";
+
+// VERIFICAÇÃO DE ACESSO PARA O USUARiO NÃO ACESSAR A PAGINA DIRETO DA URL
+if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
+    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
+    exit;
+}
+
+
 require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../componentes/adm/auth.php";
+require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../../Model/DocenteModel.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
-require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
 headerComponent("Voucher Desenvolvedor - Docentes");
 $currentTab = 'Docentes';
@@ -90,7 +98,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
             <div class="topo-lista-alunos">
                 <?php
-                buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor')\"");
+                buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor', " . $turmaId . ")\"");
                 ?>
 
                 <div class="input-pesquisa-container">

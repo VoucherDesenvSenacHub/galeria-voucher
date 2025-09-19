@@ -8,9 +8,7 @@
  * - $useHeader (boolean): Se true, envolve o nav em uma tag header (padrão: true para users)
  */
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Sessão já iniciada no head.php
 
 $isAdmin = isset($isAdmin) ? $isAdmin : false;
 $useHeader = isset($useHeader) ? $useHeader : !$isAdmin;
@@ -33,7 +31,7 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
             <?php if (!$isAdmin): ?>
                 <div class="search" id="searchBar">
                     <?php if (!isset($esconderPesquisa) || !$esconderPesquisa) { ?>
-                        <input class="pesquisa" type="text" placeholder="Pesquisar" id="pesquisar-pessoa">
+                        <input class="pesquisa" type="text" placeholder="Pesquisar" id="pesquisar-pessoa" autocomplete="off">
                         <div id="sugestoes"></div>
                         <div id="pessoas-selecionadas"></div>
                     <?php } ?>
