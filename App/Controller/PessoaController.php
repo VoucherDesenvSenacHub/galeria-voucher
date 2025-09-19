@@ -60,37 +60,73 @@ switch ($acao) {
 
     case 'editar':
         if (!$id) break;
-            $dados = [
-                'nome' => $nome, 'email' => $email, 'perfil' => $perfil,
-                'linkedin' => $linkedin, 'github' => $github
-            ];
 
-            $erros = [];
-            if (empty($dados['nome'])) { $erros[] = 'nome'; }
-            if (empty($dados['email']) || !filter_var($dados['email'], FILTER_VALIDATE_EMAIL)) { $erros[] = 'e-mail'; }
-            if (empty($dados['perfil'])) { $erros[] = 'perfil'; }
+        $dados = [
+            'nome' => $nome,
+            'email' => $email,
+            'perfil' => $perfil,
+            'linkedin' => $linkedin,
+            'github' => $github
+        ];
 
-            if (!empty($erros)) {
-                $msg = 'Erro na atualização (' . implode(', ', $erros) . ')';
+        // Validação
+        $erros = [];
+        if (empty($dados['nome'])) { $erros[] = 'nome'; }
+        if (empty($dados['email']) || !filter_var($dados['email'], FILTER_VALIDATE_EMAIL)) { $erros[] = 'e-mail'; }
+        if (empty($dados['perfil'])) { $erros[] = 'perfil'; }
+
+        if (!empty($erros)) {
+            $msg = 'Erro na edição (' . implode(', ', $erros) . ')';
+            header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($msg));
+            exit;
+        }
+
+        // Upload de nova imagem
+        $imagemId = null;
+        if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+            $diretorio = __DIR__ . '/../uploads/';
+            if (!is_dir($diretorio)) { mkdir($diretorio, 0777, true); }
+            $nomeArquivo = uniqid() . '_' . basename($_FILES['imagem']['name']);
+            $caminhoCompleto = $diretorio . $nomeArquivo;
+            $urlPublica = 'uploads/' . $nomeArquivo;
+
+            $tipoImagem = strtolower(pathinfo($caminhoCompleto, PATHINFO_EXTENSION));
+            $permitidos = ['jpg', 'jpeg', 'png', 'gif'];
+            $verificaImagem = getimagesize($_FILES['imagem']['tmp_name']);
+            if ($verificaImagem === false || !in_array($tipoImagem, $permitidos)) {
+                $msg = 'Erro na edição (foto inválida)';
                 header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($msg));
                 exit;
             }
 
-            $ok = $model->atualizarPessoa((int)$id, $dados, null);
-            if ($ok) {
-                if ($perfil === 'aluno' && $turmaId !== null) {
-                    $model->atualizarVinculoAluno((int)$id, $turmaId);
-                } elseif ($perfil === 'professor' && $turmaId !== null) {
-                    $model->atualizarVinculoDocente((int)$id, $turmaId);
-                }
-                header("Location: /galeria-voucher/App/View/pages/adm/listarUsuarios.php");
-                exit;
-            } else {
-                $msg = 'Erro ao atualizar pessoa.';
+            if (!move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoCompleto)) {
+                $msg = 'Erro na edição (falha no upload da foto)';
                 header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($msg));
                 exit;
             }
-        break;
+
+            $imagemModel = new ImagemModel();
+            $imagemId = $imagemModel->criarImagem($urlPublica, null, 'Imagem de perfil');
+        }
+
+        // Atualiza a pessoa (passa $imagemId apenas se houver upload)
+        $ok = $model->atualizarPessoa((int)$id, $dados, $imagemId);
+
+        if ($ok) {
+            // Atualiza vínculo conforme perfil
+            if ($perfil === 'aluno' && $turmaId !== null) {
+                $model->atualizarVinculoAluno((int)$id, $turmaId);
+            } elseif ($perfil === 'professor' && $turmaId !== null) {
+                $model->atualizarVinculoDocente((int)$id, $turmaId);
+            }
+            header("Location: /galeria-voucher/App/View/pages/adm/listarUsuarios.php");
+            exit;
+        } else {
+            $msg = 'Erro ao atualizar pessoa.';
+            header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($msg));
+            exit;
+        }
+
 
     case 'excluir':
         if ($id && $perfil) {
