@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../Model/PessoaModel.php';
 require_once __DIR__ . '/../Model/ImagemModel.php';
+require_once __DIR__ . '/../Service/ImagensUploadService.php';
 
 $model = new PessoaModel();
 
@@ -27,40 +28,24 @@ switch ($acao) {
             exit;
         }
 
-        // Upload da imagem (opcional). Se não enviar, o model usará imagem padrão
         $imagemId = null;
         if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $diretorio = __DIR__ . '/../uploads/';
-            if (!is_dir($diretorio)) { mkdir($diretorio, 0777, true); }
-            $nomeArquivo = uniqid() . '_' . basename($_FILES['imagem']['name']);
-            $caminhoCompleto = $diretorio . $nomeArquivo;
-            $urlPublica = 'uploads/' . $nomeArquivo;
+            $uploadService = new ImagensUploadService();
+            $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
 
-            $tipoImagem = strtolower(pathinfo($caminhoCompleto, PATHINFO_EXTENSION));
-            $permitidos = ['jpg', 'jpeg', 'png', 'gif'];
-            $verificaImagem = getimagesize($_FILES['imagem']['tmp_name']);
-            if ($verificaImagem === false || !in_array($tipoImagem, $permitidos)) {
-                $msg = 'Erro no cadastro (foto)';
+            if ($resultadoUpload['sucesso']) {
+                $imagemModel = new ImagemModel();
+                $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
+            } else {
+                $msg = 'Erro no upload: ' . $resultadoUpload['mensagem'];
                 header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?erro=" . urlencode($msg));
                 exit;
             }
-
-            if (!move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoCompleto)) {
-                $msg = 'Erro no cadastro (falha no upload da foto)';
-                header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?erro=" . urlencode($msg));
-                exit;
-            }
-
-            $imagemModel = new ImagemModel();
-            $imagemId = $imagemModel->criarImagem($urlPublica, null, 'Imagem de perfil');
         }
 
         $dados = [
-            'nome' => $nome,
-            'email' => $email,
-            'perfil' => $perfil,
-            'linkedin' => $linkedin,
-            'github' => $github
+            'nome' => $nome, 'email' => $email, 'perfil' => $perfil,
+            'linkedin' => $linkedin, 'github' => $github
         ];
 
         if ($model->criarPessoa($dados, $imagemId)) {
@@ -71,14 +56,13 @@ switch ($acao) {
             header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?erro=" . urlencode($msg));
             exit;
         }
+        break;
+
     case 'editar':
         if (!$id) break;
             $dados = [
-                'nome' => $nome,
-                'email' => $email,
-                'perfil' => $perfil,
-                'linkedin' => $linkedin,
-                'github' => $github
+                'nome' => $nome, 'email' => $email, 'perfil' => $perfil,
+                'linkedin' => $linkedin, 'github' => $github
             ];
 
             $erros = [];
@@ -87,19 +71,17 @@ switch ($acao) {
             if (empty($dados['perfil'])) { $erros[] = 'perfil'; }
 
             if (!empty($erros)) {
-                $msg = 'Erro no cadastro (' . implode(', ', $erros) . ')';
+                $msg = 'Erro na atualização (' . implode(', ', $erros) . ')';
                 header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($msg));
                 exit;
             }
 
             $ok = $model->atualizarPessoa((int)$id, $dados, null);
             if ($ok) {
-                // Atualiza vinculo conforme perfil (opcional se turma_id for enviado)
-                if ($perfil === 'aluno') {
-                    // Atualiza vínculo do aluno se turma_id vier
-                    if ($turmaId !== null) { $model->atualizarVinculoAluno((int)$id, $turmaId); }
-                } elseif ($perfil === 'professor') {
-                    if ($turmaId !== null) { $model->atualizarVinculoDocente((int)$id, $turmaId); }
+                if ($perfil === 'aluno' && $turmaId !== null) {
+                    $model->atualizarVinculoAluno((int)$id, $turmaId);
+                } elseif ($perfil === 'professor' && $turmaId !== null) {
+                    $model->atualizarVinculoDocente((int)$id, $turmaId);
                 }
                 header("Location: /galeria-voucher/App/View/pages/adm/listarUsuarios.php");
                 exit;
@@ -108,6 +90,7 @@ switch ($acao) {
                 header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($msg));
                 exit;
             }
+        break;
 
     case 'excluir':
         if ($id && $perfil) {
@@ -121,10 +104,9 @@ switch ($acao) {
                 exit;
             }
         } else {
-            $msg = 'Erro: ID do usuário não especificado.';
+            $msg = 'Erro: ID ou perfil do usuário não especificado.';
             header("Location: /galeria-voucher/App/View/pages/adm/listarUsuarios.php?erro=" . urlencode($msg));
             exit;
         }
-
-        // ... (resto do código)
+        break;
 }
