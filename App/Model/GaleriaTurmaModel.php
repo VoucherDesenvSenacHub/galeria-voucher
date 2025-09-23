@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ ."/../Helpers/ImageHelper.php";
 require_once __DIR__ ."/AlunoModel.php";
 require_once __DIR__ ."/TurmaModel.php";
 require_once __DIR__ ."/ProjetoModel.php";
@@ -83,7 +84,6 @@ class GaleriaTurmaModel
                     'tipo_dia' => htmlspecialchars($dia['tipo_dia']),
                     'titulo' => 'Dia ' . htmlspecialchars($dia['tipo_dia']),
                     'descricao' => nl2br(htmlspecialchars($dia['descricao'])),
-                    'linkProjeto' => $dia['linkProjeto'] ?? null,
                     'imagens' => $imagensFormatadas,
                     'ativo' => $i === 0
                 ];
@@ -94,8 +94,6 @@ class GaleriaTurmaModel
                 'nome' => htmlspecialchars($projeto['nome']),
                 'descricao' => nl2br(htmlspecialchars($projeto['descricao'])),
                 'link' => htmlspecialchars($projeto['link']),
-                // Compatibilidade com helpers de renderização que esperam 'linkProjeto'
-                'linkProjeto' => htmlspecialchars($projeto['link']),
                 'dias' => $diasFormatados,
                 'ativo' => $index === 0
             ];

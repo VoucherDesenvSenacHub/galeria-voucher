@@ -15,7 +15,7 @@ if (!isset($aluno) || !is_array($aluno)) {
 
 <div class="card-container">
     <div class="image-dev">
-        <img src="<?php echo htmlspecialchars($pessoa['foto'] ?? VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png'); ?>" alt="Foto de <?php echo htmlspecialchars($pessoa['nome']); ?>">
+        <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($pessoa['foto'] ?? VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png'); ?>" alt="Foto de <?php echo htmlspecialchars($pessoa['nome']); ?>">
     </div>
     <div class="text-card">
         <h2><?php echo htmlspecialchars($pessoa['nome']); ?></h2>

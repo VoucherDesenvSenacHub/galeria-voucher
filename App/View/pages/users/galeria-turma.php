@@ -2,8 +2,6 @@
 // Carrega dependências necessárias para buscar dados
 require_once __DIR__ . "/../../../Config/env.php";
 require_once __DIR__ . "/../../../Model/GaleriaTurmaModel.php";
-require_once __DIR__ . "/../../../Helpers/ProjetoHelper.php";
-require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
 
 // Obtém ID da turma via URL e carrega dados
 
@@ -45,7 +43,7 @@ if (function_exists('error_log')) {
 require_once __DIR__ . "/../../componentes/head.php";
 headerComponent('Galeria da Turma');
 ?>
-
+    <!-- <?php print_r($dia)?> -->
 <body class="galeria-turma-body">
 
     <!-- ------------------- CABEÇALHO COM MENU ------------------- -->
@@ -94,16 +92,25 @@ headerComponent('Galeria da Turma');
 
                         <div class="galeria-turma-projeto-intro">
                             <p><?= $projeto['descricao'] ?></p>
+                            <!-- <?php print_r($projeto)?> -->
                         </div>
 
                         <div class="galeria-turma-sub-tabs-nav">
-                            <?php
-                            foreach ($projeto['dias'] as $i => $dia) {
-                                renderSubTabBtn($dia, $i, $projeto['projeto_id'], $dia['linkProjeto']);
-                            }
-                            renderRepoBtn($projeto, $projeto['dias']);
-                            ?>
-                        </div>
+                            <div class="galeria-turma-sub-wrapper">
+                                <?php foreach ($projeto['dias'] as $i => $dia) {?>
+                                
+                                    <button class="galeria-turma-sub-tab-btn <?php echo $i === 0 ? 'active' : '' ?>"
+                                        data-subtab="<?= $dia['id'] ?>"
+                                        data-projeto="<?= $projeto['projeto_id'] ?>"><?= $dia['titulo']?>
+                                    </button>
+                                <?php }?>
+    
+                                <button class="galeria-turma-sub-tab-btn"
+                                    data-subtab="projeto"
+                                    data-projeto="<?= $projeto['projeto_id'] ?>">
+                                    PROJETO
+                                </button>
+                            </div>
 
                         <div class="galeria-turma-sub-tabs-content">
                             <?php foreach ($projeto['dias'] as $dia): ?>
@@ -129,19 +136,23 @@ headerComponent('Galeria da Turma');
                                     </div>
                                 </div>
                             <?php endforeach; ?>
+                                <div class="galeria-turma-sub-tab-content" id="sub-tab-projeto">
+                                    <div class="galeria-turma-tab-inner galeria-tab-projeto">
+                                        <div class="galeria-turma-tab-text">
+                                            <?php if (!empty($projeto['link'])): ?>
+                                                <button onclick="window.open('<?= $projeto['link'] ?>'" class="galeria-turma-repo-link">
+                                                    Ver no GitHub
+                                                </button>
+                                            <?php else: ?>
+                                                <p>Link do repositório não disponível.</p>
+                                            <?php endif; ?>
+                                
+                                        </div>
+                                    
+                                    </div>
+                                </div>
                         </div>
-
-                        <!-- Repositório do projeto -->
-                        <div class="galeria-turma-repo-section">
-                            <?php if (!empty($projeto['linkProjeto'])): ?>
-                                <a href="<?= $projeto['linkProjeto'] ?>" target="_blank" class="galeria-turma-repo-link">
-                                    Ver no GitHub
-                                </a>
-                            <?php else: ?>
-                                <p>Link do repositório não disponível.</p>
-                            <?php endif; ?>
-                        </div>
-
+                    
                     </div>
                 <?php endforeach; ?>
             </div>
