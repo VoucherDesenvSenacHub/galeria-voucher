@@ -31,7 +31,7 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
             <?php if (!$isAdmin): ?>
                 <div class="search" id="searchBar">
                     <?php if (!isset($esconderPesquisa) || !$esconderPesquisa) { ?>
-                        <input class="pesquisa" type="text" placeholder="Pesquisar" id="pesquisar-pessoa">
+                        <input class="pesquisa" type="text" placeholder="Pesquisar" id="pesquisar-pessoa" autocomplete="off">
                         <div id="sugestoes"></div>
                         <div id="pessoas-selecionadas"></div>
                     <?php } ?>
