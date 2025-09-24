@@ -44,24 +44,26 @@ class DocenteController extends BaseController {
 
     private function desvincularDocente(): void {
         // Verifica se o usuário está logado e é administrador
-        ValidarLoginController::validarAdmin();
+        if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['perfil'] !== 'adm') {
+            $_SESSION['erro'] = "Acesso negado. Apenas administradores podem realizar esta operação.";
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php');
+            exit;
+        }
 
         $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);
         $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
         $senha = $_POST['senha'] ?? '';
         
         if (!$pessoa_id || !$turma_id) {
-            $this->toJson([
-                'status' => 'error',
-                'mensagem' => 'Dados inválidos para desvinculação.'
-            ], 400);
+            $_SESSION['erro'] = "Dados inválidos para desvinculação.";
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+            exit;
         }
 
         if (empty($senha)) {
-            $this->toJson([
-                'status' => 'error',
-                'mensagem' => 'Senha é obrigatória para confirmar a desvinculação.'
-            ], 400);
+            $_SESSION['erro'] = "Senha é obrigatória para confirmar a desvinculação.";
+            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+            exit;
         }
 
         try {
@@ -71,35 +73,26 @@ class DocenteController extends BaseController {
             $senhaValida = $usuarioModel->validarLogin($usuarioLogado['email'], $senha);
             
             if (!$senhaValida) {
-                $this->toJson([
-                    'status' => 'error',
-                    'mensagem' => 'Senha incorreta. Desvinculação cancelada.'
-                ], 401);
+                $_SESSION['erro'] = "Senha incorreta. Desvinculação cancelada.";
+                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+                exit;
             }
 
             $docenteModel = new DocenteModel();
             $resultado = $docenteModel->desvincularDocenteDaTurma($pessoa_id, $turma_id);
             
             if ($resultado) {
-                $this->toJson([
-                    'status' => 'success',
-                    'mensagem' => 'Docente desvinculado da turma com sucesso!',
-                    'pessoa_id' => $pessoa_id,
-                    'turma_id' => $turma_id
-                ]);
+                $_SESSION['sucesso'] = "Docente desvinculado da turma com sucesso!";
             } else {
-                $this->toJson([
-                    'status' => 'error',
-                    'mensagem' => 'Erro ao desvincular docente da turma.'
-                ], 500);
+                $_SESSION['erro'] = "Erro ao desvincular docente da turma.";
             }
             
         } catch (Exception $e) {
-            $this->toJson([
-                'status' => 'error',
-                'mensagem' => 'Erro interno: ' . $e->getMessage()
-            ], 500);
+            $_SESSION['erro'] = "Erro interno: " . $e->getMessage();
         }
+        
+        header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
+        exit;
     }
 }
 

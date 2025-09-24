@@ -82,6 +82,20 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 </div>
             <?php endif; ?>
 
+            <?php if (isset($_SESSION['erro'])): ?>
+                <div class="error-message">
+                    <?= htmlspecialchars($_SESSION['erro']) ?>
+                </div>
+                <?php unset($_SESSION['erro']); ?>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['sucesso'])): ?>
+                <div class="success-message">
+                    <?= htmlspecialchars($_SESSION['sucesso']) ?>
+                </div>
+                <?php unset($_SESSION['sucesso']); ?>
+            <?php endif; ?>
+
             <div class="topo-lista-alunos">
                 <?php
                 buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor', " . $turmaId . ")\"");
