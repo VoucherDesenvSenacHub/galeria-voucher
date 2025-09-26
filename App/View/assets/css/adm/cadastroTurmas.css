@@ -7,7 +7,7 @@
     /* garante que não haverá scroll horizontal */
     font-family: Arial, sans-serif;
     background-color: #E2E2E2;
-    padding: 70px 20px 20px 20px;
+    padding: 20px;
 
     .tabs-adm-turmas {
         display: flex;
@@ -55,10 +55,8 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-        width: 150vh;
         margin: 0 auto;
         max-height: calc(90vh - 100px);
-        overflow-y: auto;
         scroll-behavior: smooth;
         background-color: transparent;
         scroll-snap-type: y mandatory;

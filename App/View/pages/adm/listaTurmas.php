@@ -38,7 +38,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
 </head>
 
-<body class="body-lista-alunos">
+<body class="layout body-lista-alunos">
 
     <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; // Inclui a barra lateral 
     ?>

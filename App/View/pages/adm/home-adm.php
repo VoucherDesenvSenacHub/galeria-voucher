@@ -12,16 +12,16 @@ $paginaAtiva = 'home'; // Variável para identificar a página ativa
 <link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/home-adm.css">
 <link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/nav.css">
 
-<body class="body-adm">
-  <div class="container-adm">
+<body class="layout body-adm">
 
     <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true; // Para páginas de admin
+    $useHeader = true;
     require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
-    <main class="content-adm">
+    <main class="content-adm layout-main">
       <div class="user-profile-adm">
         <div>
           <img class="img-Adm" src="<?= $usuarioImagem ?>"
@@ -39,7 +39,6 @@ $paginaAtiva = 'home'; // Variável para identificar a página ativa
       </div>
 
     </main>
-  </div>
 </body>
 
 </html>

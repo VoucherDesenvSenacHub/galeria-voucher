@@ -11,7 +11,7 @@ $pessoasTurma = array_merge($pessoasTurma, $alunos);
 headerComponent('Desenvolvedores');
 ?>
 
-<body class="body_dev">
+<body class="layout body_dev">
     <header class="header_dev">
         <?php
         // Aqui você passa a função JS no parâmetro do botão

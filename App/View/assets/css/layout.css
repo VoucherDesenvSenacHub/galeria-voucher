@@ -30,6 +30,31 @@
 .col-50 { flex: 0 0 50%; }
 .col-100 { flex: 0 0 100%; }
 
+.layout{
+    font-family: var(--font-secondary);
+    display: grid;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    grid-template-areas: 
+        "head"
+        "main"
+    ;
+     grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+}
+
+
+.layout:has(>aside) {
+    grid-template-areas: 
+        "head head"
+        "side main"
+    ;
+    grid-template-columns: var(--sidebar-width) 1fr;
+}
+
 /* -------------------------------------------------- */
 /* Breakpoints globais                               */
 /* -------------------------------------------------- */

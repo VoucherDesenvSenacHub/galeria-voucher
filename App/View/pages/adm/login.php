@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuarioModel !== null) {
 headerComponent("Voucher Desenvolvedor - Login");
 ?>
 
-<body class="body-login">
+<body class="layout body-login">
     <?php
     $esconderPesquisa = true;
     $isAdmin = false;

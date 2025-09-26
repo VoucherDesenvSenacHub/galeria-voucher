@@ -80,8 +80,7 @@ headerComponent($tituloPagina);
 $currentTab = 'Dados-gerais';
 ?>
 
-<body class="body-adm">
-  <div class="container-adm">
+<body class="layout body-adm">
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; // Inclui a barra lateral de navegação ?>
     <?php
     $isAdmin = true; // Variável para o componente nav.php saber que é uma página de admin.
@@ -164,7 +163,6 @@ $currentTab = 'Dados-gerais';
         </form>
       </div>
     </main>
-  </div>
 
   <?php // --- SCRIPTS PARA FEEDBACK DO USUÁRIO (MENSAGENS FLASH) --- ?>
 

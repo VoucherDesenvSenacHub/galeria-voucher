@@ -32,7 +32,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
 }
 ?>
 
-<body class="body-cadastrar-users">
+<body class="layout body-cadastrar-users">
 <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
 <?php
 $isAdmin = true;
