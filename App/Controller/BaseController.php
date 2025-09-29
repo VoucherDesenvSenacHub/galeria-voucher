@@ -32,7 +32,7 @@ abstract class BaseController {
    * @return void
    */
   protected function gerenciarMetodosNaoPermitidos(){
-    if(count($this->metodosPermitidos) == 0)return
+    if(count($this->metodosPermitidos) == 0) return;
 
     header('allow: ' . implode(', ', $this->metodosPermitidos));
     http_response_code(405);
