@@ -172,8 +172,23 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="secondary-button" onclick="fecharModal()">Cancelar</button>
-                            <button type="submit" class="primary-button" >Desvincular</button>
+                            <button type="submit" class="primary-button">Desvincular</button>
                         </div>
+                    </form>
+                </div>
+
+                <div id="modal-cadastro">
+                    <form id="form-cadastro-pessoa" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
+                        <div>
+                            <label for="pesquisar-pessoa">Pesquisar <?= ($classificacao === 'aluno' ? 'aluno' : 'professor')?></label>
+                            <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome' ); ?>
+                            <div id="sugestoes"></div>
+                        </div>
+                        <div id="pessoas-selecionadas"></div>
+
+                        <input type="hidden" name="turma_id" value="">
+
+                        <button class="primary-button" type="submit">Vincular</button>
                     </form>
                 </div>
             </section>
