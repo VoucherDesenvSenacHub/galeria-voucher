@@ -14,11 +14,11 @@ $paginaAtiva = 'home'; // Variável para identificar a página ativa
 
 <body class="layout body-adm">
 
-    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true; // Para páginas de admin
     $useHeader = true;
     require_once __DIR__ . "/../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/adm/sidebar.php"; 
     ?>
 
     <main class="content-adm layout-main">

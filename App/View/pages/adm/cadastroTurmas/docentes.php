@@ -61,7 +61,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 </head>
 
 <body class="layout body-adm">
-    <div class="container-adm">
         <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
 
         <?php
@@ -69,7 +68,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         require_once __DIR__ . "/../../../componentes/nav.php";
         ?>
 
-        <main class="main-turmas-turmas">
+        <main class="layout-main main-turmas-turmas">
             <?php BreadCrumbs::gerarBreadCrumbs()?>
             <?php
             // Usa o componente de abas das turmas
@@ -121,7 +120,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                         <tbody>
                             <?php if (!empty($docentes)): ?>
                                 <?php foreach ($docentes as $docente): ?>
-                                    <tr>
+                                    <tr data-pessoa-id="<?= $docente['pessoa_id'] ?>" data-turma-id="<?= $turmaId ?>">
                                         <td><?= htmlspecialchars($docente['nome']) ?></td>
                                         <td><?= htmlspecialchars($docente['polo']) ?></td>
                                         <td class="acoes">
@@ -132,21 +131,17 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="3" class="empty-table-cell">
-                                        <?php if ($isEditMode): ?>
-                                            <?= isset($error_message) ? 'Erro ao carregar dados' : 'Nenhum docente vinculado a esta turma.' ?>
-                                        <?php else: ?>
-                                            <div class="empty-state-container">
-                                                <p class="empty-state-title">Nenhum docente cadastrado ainda.</p>
-                                                <p class="empty-state-description">Clique em "VINCULAR DOCENTE" para adicionar
-                                                    docentes à turma.</p>
-                                            </div>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
                             <?php endif; ?>
+                            
+                            <!-- Linha de estado vazio (sempre presente, mas oculta quando há docentes) -->
+                            <tr id="empty-state-row" style="<?= !empty($docentes) ? 'display: none;' : '' ?>">
+                                <td colspan="3" class="empty-table-cell">
+                                    <div class="empty-state-container">
+                                        <p class="empty-state-title">Nenhum docente vinculado a esta turma.</p>
+                                        <p class="empty-state-description">Clique em "VINCULAR DOCENTE" para adicionar docentes à turma.</p>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -154,7 +149,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
             <section class="section_modal"></section>
         </main>
-    </div>
 
     <script src="../../../assets/js/adm/lista-alunos.js"></script>
     <script src="../../../assets/js/main.js"></script>

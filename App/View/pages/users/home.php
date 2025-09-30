@@ -23,17 +23,17 @@ try {
 ?>
 
 <body class="layout body-user">
+
+
+    <section class="main-section layout-main">
     <?php
     $isAdmin = false;
     require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
-
-    <section class="main-section layout-main">
-
         <main class="main-user">
-            <?php require_once __DIR__ . "/../../componentes/users/mira.php"; ?>
             <section id="secao1">
+                <?php require_once __DIR__ . "/../../componentes/users/mira.php"; ?>
     
                 <canvas id="matrix-canvas"></canvas>
     
@@ -47,8 +47,8 @@ try {
                 </div>
             </section>
     
-            <section id="secao2">
-                <div class="container">
+            <section id="secao2" class="bg-gradient">
+                <div class="container_card">
                     <div class="card">
                         <h2>O QUE É ?</h2>
                         <p>
@@ -99,7 +99,7 @@ try {
                     </div>
                 </div>
             </section>
-            <section id="secao3">
+            <section id="secao3" class="bg-gradient">
                 <div class="container2">
                     <h1>SUA EVOLUÇÃO COMEÇA AQUI</h1>
                     <div class="stats">
@@ -126,7 +126,7 @@ try {
                 </div>
             </section>
     
-            <section id="secao4">
+            <section id="secao4" class="bg-gradient">
                 <div class="call-to-action">
                     <p>SELECIONE UMA TURMA E <span>INSPIRE-SE</span></p>
                 </div>

@@ -38,7 +38,7 @@ try {
   require_once __DIR__ . "/../../componentes/nav.php";
   ?>
 
-  <main class="main-lista-alunos">
+  <main class="layout-main main-lista-alunos">
     <?php BreadCrumbs::gerarBreadCrumbs()?>
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">

@@ -101,4 +101,4 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
         </nav>
     </header>
 
-<script src="/galeria-voucher/app/View/assets/js/adm/autocomplete-nav.js" defer></script>
+<script src="/galeria-voucher/app/View/assets/js/adm/autocomplete-pessoas.js" defer></script>

@@ -42,11 +42,6 @@ function fecharModal() {
 function confirmarDesvinculacaoComSenha(pessoaId, turmaId) {
     const senha = document.getElementById('senha-confirmacao').value;
     
-    if (!senha) {
-        alert('Por favor, digite sua senha para confirmar a desvinculação.');
-        return;
-    }
-    
     // Cria um formulário temporário para enviar os dados
     const form = document.createElement('form');
     form.method = 'POST';
@@ -76,4 +71,3 @@ function confirmarDesvinculacaoComSenha(pessoaId, turmaId) {
     document.body.appendChild(form);
     form.submit();
 }
-

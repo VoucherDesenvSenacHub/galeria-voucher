@@ -50,19 +50,13 @@ headerComponent('Galeria da Turma');
 
 <body class="layout galeria-turma-body">
 
-    <!-- ------------------- CABEÇALHO COM MENU ------------------- -->
-    <header class="galeria-turma-header">
+    <section class="main-section layout-main">
         <?php
         $isAdmin = false;
         require_once __DIR__ . "/../../componentes/nav.php";
-        require_once __DIR__ . "/../../componentes/users/mira.php";
         ?>
-    </header>
-
-    <section class="main-section layout-main">
-        
         <main>
-    
+            <?php require_once __DIR__ . "/../../componentes/users/mira.php"; ?>
             <!-- ------------------- DETALHES DA TURMA ------------------- -->
             <section class="galeria-turma-section galeria-turma-projeto">
                 <h1 class="galeria-turma-h1 projetos-turma">Projetos da turma</h1>

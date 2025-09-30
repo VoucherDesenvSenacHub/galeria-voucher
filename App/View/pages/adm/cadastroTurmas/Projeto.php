@@ -55,7 +55,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 ?>
 
 <body class="layout body-cadastro-turmas">
-  <div class="container-adm">
 
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php
@@ -72,7 +71,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     ];
     ?>
 
-    <main class="main-turmas-turmas">
+    <main class="layout-main main-turmas-turmas">
       <?php BreadCrumbs::gerarBreadCrumbs()?>
 
       <?php
@@ -129,7 +128,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
 
     </main>
-  </div>
 </body>
 
 </html>
