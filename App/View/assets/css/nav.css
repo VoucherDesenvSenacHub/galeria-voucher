@@ -1,8 +1,8 @@
 .NavInicial {
     height: var(--nav-height);
-    position: sticky;
+    /* position: sticky; */
     background-color: var(--background-nav);
-    z-index: 5;
+    /* z-index: 5; */
     color: black;
 
     img {
@@ -83,9 +83,11 @@
 }
 
 .nav-head{
-    grid-area: head;
+    
     height: fit-content;
+   
 }
+
 
 .nav-adm {
     background-color: rgba(50, 50, 50, 0.8);

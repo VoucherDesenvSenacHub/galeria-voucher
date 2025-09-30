@@ -88,7 +88,7 @@ $currentTab = 'Dados-gerais';
     require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php"; // Inclui o componente de abas das turmas
     ?>
 
-    <main class="main-turmas-turmas">
+    <main class="layout-main main-turmas-turmas">
       <?php BreadCrumbs::gerarBreadCrumbs()?>
       <?php
       // Usa o componente de abas das turmas

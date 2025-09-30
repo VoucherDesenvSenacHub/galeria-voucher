@@ -159,18 +159,6 @@
   right: 0 !important;
 }
 
-.galeria-turma-header .nav-inner {
-  margin: 0 !important;
-  padding: 0 45px !important;
-  width: 100% !important;
-}
-
-/* Para mobile */
-@media (max-width: 768px) {
-  .galeria-turma-header .nav-inner {
-    padding: 0 20px !important;
-  }
-}
 
 /* Forçar remoção de margens em todos os elementos da navegação */
 .galeria-turma-header * {

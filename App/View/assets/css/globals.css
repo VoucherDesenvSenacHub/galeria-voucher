@@ -64,8 +64,3 @@
 body{
     font-family: var(--font-primary);
 }
-
-.layout-main{
-    grid-area: main;
-    overflow-y: auto;
-}
