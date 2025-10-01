@@ -16,7 +16,7 @@
     width: 2px;
     min-height: calc(100vh - 48.8px);
     background-color: var(--accent-color);
-    top: 48.8px;
+    /*top: 48.8px; */
     left: 25vw;
     border: 2px solid var(--accent-color);
     z-index: 1;
