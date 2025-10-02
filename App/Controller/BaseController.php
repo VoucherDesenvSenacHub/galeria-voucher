@@ -68,7 +68,6 @@ abstract class BaseController {
 //   }
       
 //  }
-
 //Exemplo de uso no final do arquivo
 //  $controller = new TesteController();
 //  $controller->gerenciarRequisicao();
