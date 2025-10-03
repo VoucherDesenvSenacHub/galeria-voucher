@@ -16,7 +16,7 @@ if ($classificacao === 'aluno') {
             <div id="sugestoes"></div>
         </span>
         <div id="pessoas-selecionadas"></div>
-        <button class="primary-button" type="submit">Cadastrar</button>
+        <button class="primary-button" type="submit">Vincular</button>
     </form>
 <?php
 } elseif ($classificacao === 'professor') {
