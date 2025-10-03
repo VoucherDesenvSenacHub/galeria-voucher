@@ -460,6 +460,7 @@ class PessoaModel extends BaseModel
 
     /**
      * evitar conflito merge
+     * COALESCE() retorna o primeiro valor que não é nulo
      */
     /**
      * Busca informações de vínculo de polo e turma para uma pessoa específica,
