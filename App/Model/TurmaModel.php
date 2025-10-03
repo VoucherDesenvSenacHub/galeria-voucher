@@ -460,4 +460,44 @@ class TurmaModel extends BaseModel
             ':id_turma' => $id_turma
         ]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**mexendo aqui para evitar conflito no merge */
+    /**
+     * Busca o ID do Polo de uma turma específica.
+     * @param int $id O ID da turma.
+     * @return int|null O ID do polo ou null.
+     */
+    public function buscarPoloIdPorTurmaId(int $id): ?int
+    {
+        $query = "SELECT polo_id FROM turma WHERE turma_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':id' => $id]);
+        $resultado = $stmt->fetchColumn();
+        return $resultado !== false ? (int)$resultado : null;
+    }
 }
