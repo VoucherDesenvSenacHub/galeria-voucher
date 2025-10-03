@@ -437,4 +437,58 @@ class PessoaModel extends BaseModel
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * evitar conflito merge
+     */
+    /**
+     * Busca informações de vínculo de polo e turma para uma pessoa específica,
+     * usadas para validação.
+     * * @param int $id ID da pessoa
+     * @return array|null Retorna a pessoa com polo_id e o ID da turma atual, se houver.
+     */
+    public function buscarPessoaParaVinculo(int $id): ?array
+    {
+        $sql = "
+            SELECT 
+                p.pessoa_id,
+                p.nome,
+                p.perfil,
+                COALESCE(tA.polo_id, tD.polo_id) AS polo_atual_id,
+                COALESCE(at.turma_id, dt.turma_id) AS turma_atual_id
+            FROM pessoa p
+            LEFT JOIN aluno_turma at ON p.pessoa_id = at.pessoa_id
+            LEFT JOIN docente_turma dt ON p.pessoa_id = dt.pessoa_id
+            LEFT JOIN turma tA ON at.turma_id = tA.turma_id -- Busca polo da turma se for aluno
+            LEFT JOIN turma tD ON dt.turma_id = tD.turma_id -- Busca polo da turma se for docente
+            WHERE p.pessoa_id = :id
+            GROUP BY p.pessoa_id
+            LIMIT 1
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
