@@ -101,10 +101,10 @@ headerComponent("Voucher Desenvolvedor - Login");
                 </script>
             <?php endif; ?>
         </main>
+        <?php require_once __DIR__ . '/../../componentes/users/footer.php'; ?>
     </section>
 
 
-    <?php require_once __DIR__ . '/../../componentes/users/footer.php'; ?>
 </body>
 
 </html>
