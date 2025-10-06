@@ -1,29 +1,21 @@
 <?php
-// require_once __DIR__ . "/../../componentes/head.php";
-
-// Carrega variáveis de ambiente antes de qualquer uso de VARIAVEIS
-require_once __DIR__ . "/../../../Config/env.php";
-
 // Carrega dependências necessárias para buscar dados
-require_once __DIR__ . "/../../../Model/TurmaModel.php";
-require_once __DIR__ . "/../../../Model/ProjetoModel.php";
-require_once __DIR__ . "/../../../Model/AlunoModel.php";
-require_once __DIR__ . "/../../../Model/DocenteModel.php";
-require_once __DIR__ . "/../../../Helpers/ProjetoHelper.php";
-require_once __DIR__ . "/../../../Helpers/HtmlHelper.php";
-require_once __DIR__ . "/../../../Controller/GaleriaTurmaController.php";
+require_once __DIR__ . "/../../../Config/env.php";
+require_once __DIR__ . "/../../../Model/GaleriaTurmaModel.php";
 
 // Obtém ID da turma via URL e carrega dados
-$controller = new GaleriaTurmaController();
+
 $turmaId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int)$_GET['id'] : 0;
 if ($turmaId <= 0) {
     header("Location: ./turma.php");
     exit;
 }
-$dados = $controller->carregarDadosTurma($turmaId);
+
+$galeriaModel = new GaleriaTurmaModel();
+$dados = $galeriaModel->carregarDadosTurma($turmaId);
 
 // Extrai variáveis usadas pela view
-$imagemTurmaUrl   = $dados['imagemTurmaUrl'] ?? VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
+$imagemTurmaUrl   = $dados['imagemTurmaUrl'] ;
 $nomeTurma        = $dados['nomeTurma'] ?? '';
 $descricaoTurma   = $dados['descricaoTurma'] ?? '';
 $alunos           = $dados['alunos'] ?? [];
@@ -67,17 +59,17 @@ headerComponent('Galeria da Turma');
                 </section>
         
                 <section class="galeria-turma-tab-inner">
-                    <img class="galeria-turma-imagem-direita" src="<?php echo VARIAVEIS['APP_URL'] . $imagemTurmaUrl ?>" alt="Imagem da Turma">
+                    <img class="galeria-turma-imagem-direita" src="<?php echo $imagemTurmaUrl ?>" alt="Imagem da Turma">
                     <div class="galeria-turma-margin-top-left-projeto1-dia-i">
                         <h2><?= $nomeTurma ?></h2>
                         <p><?= $descricaoTurma ?></p>
                     </div>
                 </section>
-        
+
                 <!-- ------------------- SEÇÃO DE PROJETOS ------------------- -->
                 <section class="galeria-turma-section galeria-turma-galeria projetos-turma galeria-turma-no-side-padding">
                     <h1 class="galeria-turma-h1">Galeria de Projetos</h1>
-        
+
                     <!-- Navegação principal dos projetos -->
                     <div class="galeria-turma-main-tabs-nav">
                         <?php foreach ($tabsProjetos as $tab): ?>
@@ -86,25 +78,33 @@ headerComponent('Galeria da Turma');
                             </a>
                         <?php endforeach; ?>
                     </div>
-        
-                    <!-- Conteúdo dos projetos -->
+
+                <!-- Conteúdo dos projetos -->
                     <div class="galeria-turma-main-tabs-content">
                         <?php foreach ($projetosFormatados as $projeto): ?>
                             <div class="galeria-turma-main-tab-content <?= $projeto['ativo'] ? 'active' : '' ?>" id="main-tab-<?= $projeto['projeto_id'] ?>">
-        
+
                                 <div class="galeria-turma-projeto-intro">
                                     <p><?= $projeto['descricao'] ?></p>
                                 </div>
-        
+
                                 <div class="galeria-turma-sub-tabs-nav">
-                                    <?php
-                                    foreach ($projeto['dias'] as $i => $dia) {
-                                        renderSubTabBtn($dia, $i, $projeto['projeto_id'], $dia['linkProjeto']);
-                                    }
-                                    renderRepoBtn($projeto, $projeto['dias']);
-                                    ?>
-                                </div>
-        
+                                    <div class="galeria-turma-sub-wrapper">
+                                        <?php foreach ($projeto['dias'] as $i => $dia) {?>
+                                        
+                                            <button class="galeria-turma-sub-tab-btn <?php echo $i === 0 ? 'active' : '' ?>"
+                                                data-subtab="<?= $dia['id'] ?>"
+                                                data-projeto="<?= $projeto['projeto_id'] ?>"><?= $dia['titulo']?>
+                                            </button>
+                                        <?php }?>
+            
+                                        <button class="galeria-turma-sub-tab-btn"
+                                            data-subtab="projeto"
+                                            data-projeto="<?= $projeto['projeto_id'] ?>">
+                                            PROJETO
+                                        </button>
+                                    </div>
+
                                 <div class="galeria-turma-sub-tabs-content">
                                     <?php foreach ($projeto['dias'] as $dia): ?>
                                         <div class="galeria-turma-sub-tab-content <?= $dia['ativo'] ? 'active' : '' ?>" id="sub-tab-<?= $dia['id'] ?>">
@@ -129,56 +129,57 @@ headerComponent('Galeria da Turma');
                                             </div>
                                         </div>
                                     <?php endforeach; ?>
+                                        <div class="galeria-turma-sub-tab-content" id="sub-tab-projeto">
+                                            <div class="galeria-turma-tab-inner galeria-tab-projeto">
+                                                <div class="galeria-turma-tab-text">
+                                                    <?php if (!empty($projeto['link'])): ?>
+                                                        <button onclick="window.open('<?= $projeto['link'] ?>'" class="galeria-turma-repo-link">
+                                                            Ver no GitHub
+                                                        </button>
+                                                    <?php else: ?>
+                                                        <p>Link do repositório não disponível.</p>
+                                                    <?php endif; ?>
+                                        
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
                                 </div>
-        
-                                <!-- Repositório do projeto -->
-                                <div class="galeria-turma-repo-section">
-                                    <?php if (!empty($projeto['linkProjeto'])): ?>
-                                        <a href="<?= $projeto['linkProjeto'] ?>" target="_blank" class="galeria-turma-repo-link">
-                                            Ver no GitHub
-                                        </a>
-                                    <?php else: ?>
-                                        <p>Link do repositório não disponível.</p>
-                                    <?php endif; ?>
-                                </div>
-        
-                            </div>
                         <?php endforeach; ?>
                     </div>
                 </section>
-            </section>
-        
-            <!-- ------------------- LISTAGEM DE ALUNOS ------------------- -->
-            <section class="galeria-turma-cardss">
-                <h1 class="galeria-turma-h1">Alunos</h1>
-                <div class="galeria-turma-container">
-                    <?php if (!empty($pessoasTurma)): ?>
-                        <?php foreach ($pessoasTurma as $pessoa): ?>
-                            <?php if ($pessoa['perfil'] === 'aluno'): ?>
-                                <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>Nenhum aluno encontrado para esta turma.</p>
-                    <?php endif; ?>
-                </div>
-            </section>
-        
-            <section class="galeria-turma-cardss">
-                <h1 class="galeria-turma-h1">Professores</h1>
-                <div class="galeria-turma-container">
-                    <?php if (!empty($pessoasTurma)): ?>
-                        <?php foreach ($pessoasTurma as $pessoa): ?>
-                            <?php if ($pessoa['perfil'] === 'professor'): ?>
-                                <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>Nenhum professor encontrado para esta turma.</p>
-                    <?php endif; ?>
-                </div>
-            </section>
-        </main>
+            
+                <!-- ------------------- LISTAGEM DE ALUNOS ------------------- -->
+                <section class="galeria-turma-cardss">
+                    <h1 class="galeria-turma-h1">Alunos</h1>
+                    <div class="galeria-turma-container">
+                        <?php if (!empty($pessoasTurma)): ?>
+                            <?php foreach ($pessoasTurma as $pessoa): ?>
+                                <?php if ($pessoa['perfil'] === 'aluno'): ?>
+                                    <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p>Nenhum aluno encontrado para esta turma.</p>
+                        <?php endif; ?>
+                    </div>
+                </section>
+            
+                <section class="galeria-turma-cardss">
+                    <h1 class="galeria-turma-h1">Professores</h1>
+                    <div class="galeria-turma-container">
+                        <?php if (!empty($pessoasTurma)): ?>
+                            <?php foreach ($pessoasTurma as $pessoa): ?>
+                                <?php if ($pessoa['perfil'] === 'professor'): ?>
+                                    <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p>Nenhum professor encontrado para esta turma.</p>
+                        <?php endif; ?>
+                    </div>
+                </section>
+            </main>
     
         <!-- ------------------- LISTAGEM DE PROFESSORES ------------------- -->
     
