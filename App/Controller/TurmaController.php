@@ -1,24 +1,19 @@
 <?php
-
-$acao = $_GET['acao'] ?? $_POST['acao'] ?? '';
-
-$nomeAluno =  $_Get['nome'] ?? $_POST['nome'] ?? '';
-$nomeTurma =  $_Get['turma'] ?? $_POST['turma'] ?? '';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    switch ($acao) {
-        case 'carregarTurma': {
-                
-            }
-    }
-}
 session_start();
 
 require_once __DIR__ . '/../Config/env.php';
 require_once __DIR__ . '/../Model/TurmaModel.php';
 require_once __DIR__ . '/../Model/ImagemModel.php';
+require_once __DIR__ . '/../Service/ImagensUploadService.php'; // Incluído o novo serviço
 
 class TurmaController {
+    
+    private $uploadService;
+
+    public function __construct()
+    {
+        $this->uploadService = new ImagensUploadService();
+    }
     
     private function slugify(string $text): string 
     {
@@ -66,13 +61,13 @@ class TurmaController {
             }
 
             if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
-                $caminhoTemporario = $_FILES['imagem_turma']['tmp_name'];
-                $infoImagem = @getimagesize($caminhoTemporario);
-                
-                $tiposPermitidos = ['image/jpeg', 'image/png'];
+                $resultadoUpload = $this->uploadService->salvar($_FILES['imagem_turma'], 'turma');
 
-                if ($infoImagem === false || !in_array($infoImagem['mime'], $tiposPermitidos)) {
-                    $erros[] = "Formato de imagem inválido. Apenas arquivos JPEG e PNG são permitidos.";
+                if ($resultadoUpload['success']) {
+                    $imagemModel = new ImagemModel();
+                    $imagem_id = $imagemModel->salvarImagem($resultadoUpload['caminho'], "Imagem da turma " . $nome);
+                } else {
+                    $erros[] = $resultadoUpload['erro'];
                 }
             }
             
@@ -81,27 +76,6 @@ class TurmaController {
                 $_SESSION['erros_turma'] = $erros;
                 header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
                 exit;
-            }
-
-            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
-                $imagemModel = new ImagemModel();
-                
-                $extensao = strtolower(pathinfo($_FILES['imagem_turma']['name'], PATHINFO_EXTENSION));
-                $nomeBase = $this->slugify($nome);
-                $nomeArquivo = $nomeBase . '-' . time() . '.' . $extensao;
-                
-                $diretorioDestino = __DIR__ . '/../View/assets/img/turmas/';
-                // Verifica se o diretório existe, se não, tenta criar
-                if (!is_dir($diretorioDestino)) {
-                    mkdir($diretorioDestino, 0777, true);
-                }
-
-                $caminhoDestino = $diretorioDestino . $nomeArquivo;
-                $urlRelativa = 'App/View/assets/img/turmas/' . $nomeArquivo;
-                
-                if (move_uploaded_file($_FILES['imagem_turma']['tmp_name'], $caminhoDestino)) {
-                    $imagem_id = $imagemModel->salvarImagem($urlRelativa, "Imagem da turma " . $nome);
-                }
             }
 
             $turmaModel = new TurmaModel();
@@ -154,13 +128,16 @@ class TurmaController {
             }
 
             if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
-                $caminhoTemporario = $_FILES['imagem_turma']['tmp_name'];
-                $infoImagem = @getimagesize($caminhoTemporario);
-                
-                $tiposPermitidos = ['image/jpeg', 'image/png'];
+                $resultadoUpload = $this->uploadService->salvar($_FILES['imagem_turma'], 'turma');
 
-                if ($infoImagem === false || !in_array($infoImagem['mime'], $tiposPermitidos)) {
-                    $erros[] = "Formato de imagem inválido. Apenas arquivos JPEG e PNG são permitidos.";
+                if ($resultadoUpload['success']) {
+                    $imagemModel = new ImagemModel();
+                    $novo_imagem_id = $imagemModel->salvarImagem($resultadoUpload['caminho'], "Imagem atualizada da turma " . $nome);
+                    if ($novo_imagem_id) {
+                        $imagem_id = $novo_imagem_id; 
+                    }
+                } else {
+                    $erros[] = $resultadoUpload['erro'];
                 }
             }
         
@@ -168,23 +145,6 @@ class TurmaController {
                 $_SESSION['erros_turma'] = $erros;
                 header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . "cadastroTurmas/cadastroTurmas.php?id=$turma_id");
                 exit;
-            }
-
-            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
-                $imagemModel = new ImagemModel();
-
-                $extensao = strtolower(pathinfo($_FILES['imagem_turma']['name'], PATHINFO_EXTENSION));
-                $nomeBase = $this->slugify($nome);
-                $nomeArquivo = $nomeBase . '-' . time() . '.' . $extensao;
-                
-                $caminhoDestino = __DIR__ . '/../View/assets/img/turmas/' . $nomeArquivo;
-                $urlRelativa = 'App/View/assets/img/turmas/' . $nomeArquivo;
-                if (move_uploaded_file($_FILES['imagem_turma']['tmp_name'], $caminhoDestino)) {
-                    $novo_imagem_id = $imagemModel->salvarImagem($urlRelativa, "Imagem atualizada da turma " . $nome);
-                    if ($novo_imagem_id) {
-                        $imagem_id = $novo_imagem_id; 
-                    }
-                }
             }
 
             $camposAlterados = [];
