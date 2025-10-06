@@ -45,7 +45,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
 }
 ?>
 
-<body class="body-cadastrar-users">
+<body class="layout body-cadastrar-users">
 <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
 <?php
 $isAdmin = true;
@@ -58,9 +58,7 @@ require_once __DIR__ . "/../../componentes/nav.php";
     <?php if (!empty($_GET['erro'])): ?>
         <div style="margin: 12px 0; color: #b00020; font-weight: 600;"><?= htmlspecialchars($_GET['erro']) ?></div>
     <?php endif; ?>
-
-    <div class="container-users">
-        <div class="form-container-users">
+       
             <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= VARIAVEIS['APP_URL']?>App/Controller/PessoaController.php">
                 <input type="hidden" name="acao" value="<?= $acao ?>">
                 <?php if ($acao === 'editar' && $id): ?>
@@ -110,8 +108,7 @@ require_once __DIR__ . "/../../componentes/nav.php";
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
+
 </main>
 
 <script>

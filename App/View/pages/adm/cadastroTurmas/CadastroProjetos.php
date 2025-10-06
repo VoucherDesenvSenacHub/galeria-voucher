@@ -58,15 +58,14 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 <link rel="stylesheet" href="<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_CSS'] ?>adm/CadastroProjetos.css">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-<body class="body-adm">
-  <div class="container-adm">
+<body class="layout body-adm">
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
     require_once __DIR__ . "/../../../componentes/nav.php";
     ?>
 
-    <main class="main-turmas-turmas">
+    <main class="layout-main main-turmas-turmas">
       <?php BreadCrumbs::gerarBreadCrumbs()?>
       <?php
       // Usa o componente de abas das turmas
@@ -109,7 +108,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
       <?php endif; ?>
 
     </main>
-  </div>
 </body>
 
 </html>
