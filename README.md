@@ -24,7 +24,7 @@ O objetivo da Galeria Voucher é centralizar e divulgar os trabalhos desenvolvid
 
 O projeto está inserido dentro do **programa governamental de capacitação técnica** que visa preparar estudantes para o mercado de trabalho na área de Desenvolvimento de Sistemas. Cada turma participante desenvolve, ao longo do curso, um **Projeto Integrador**, aplicando os conhecimentos adquiridos de forma prática.
 
-## 🛠️ Tecnologias Utilizadas
+## ⚡: Tecnologias Utilizadas
 
 As tecnologias utilizadas podem variar conforme a turma, mas o sistema da Galeria em si utiliza:
 
