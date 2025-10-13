@@ -61,8 +61,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
-<body class="body-adm">
-    <div class="container-adm">
+<body class="layout body-adm">
         <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
 
         <?php
@@ -70,7 +69,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         require_once __DIR__ . "/../../../componentes/nav.php";
         ?>
 
-        <main class="main-turmas-turmas">
+        <main class="layout-main main-turmas-turmas">
             <?php BreadCrumbs::gerarBreadCrumbs()?>
             <?php
             // Usa o componente de abas das turmas
@@ -155,7 +154,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
             <section class="section_modal"></section>
         </main>
-    </div>
 
     <script src="../../../assets/js/adm/lista-alunos.js"></script>
     <script src="../../../assets/js/main.js"></script>

@@ -30,7 +30,7 @@ try {
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
-<body class="body-lista-alunos">
+<body class="layout body-lista-alunos">
 
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php
@@ -38,7 +38,7 @@ try {
   require_once __DIR__ . "/../../componentes/nav.php";
   ?>
 
-  <main class="main-lista-alunos">
+  <main class="layout-main main-lista-alunos">
     <?php BreadCrumbs::gerarBreadCrumbs()?>
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">

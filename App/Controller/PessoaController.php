@@ -1,8 +1,10 @@
 <?php
 require_once __DIR__ . '/../Model/PessoaModel.php';
 require_once __DIR__ . '/../Model/ImagemModel.php';
+require_once __DIR__ . '/../Service/ImagensUploadService.php'; // Incluído o novo serviço
 
 $model = new PessoaModel();
+$uploadService = new ImagensUploadService();
 
 $acao = $_GET['acao'] ?? $_POST['acao'] ?? '';
 $id = $_GET['id'] ?? $_POST['id'] ?? null;
@@ -30,29 +32,15 @@ switch ($acao) {
         // Upload da imagem (opcional). Se não enviar, o model usará imagem padrão
         $imagemId = null;
         if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $diretorio = __DIR__ . '/../uploads/';
-            if (!is_dir($diretorio)) { mkdir($diretorio, 0777, true); }
-            $nomeArquivo = uniqid() . '_' . basename($_FILES['imagem']['name']);
-            $caminhoCompleto = $diretorio . $nomeArquivo;
-            $urlPublica = 'uploads/' . $nomeArquivo;
+            $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
 
-            $tipoImagem = strtolower(pathinfo($caminhoCompleto, PATHINFO_EXTENSION));
-            $permitidos = ['jpg', 'jpeg', 'png', 'gif'];
-            $verificaImagem = getimagesize($_FILES['imagem']['tmp_name']);
-            if ($verificaImagem === false || !in_array($tipoImagem, $permitidos)) {
-                $msg = 'Erro no cadastro (foto)';
-                header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?erro=" . urlencode($msg));
+            if ($resultadoUpload['success']) {
+                $imagemModel = new ImagemModel();
+                $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
+            } else {
+                header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?erro=" . urlencode($resultadoUpload['erro']));
                 exit;
             }
-
-            if (!move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoCompleto)) {
-                $msg = 'Erro no cadastro (falha no upload da foto)';
-                header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?erro=" . urlencode($msg));
-                exit;
-            }
-
-            $imagemModel = new ImagemModel();
-            $imagemId = $imagemModel->criarImagem($urlPublica, null, 'Imagem de perfil');
         }
 
         $dados = [
@@ -97,29 +85,15 @@ switch ($acao) {
         // Upload de nova imagem
         $imagemId = null;
         if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $diretorio = __DIR__ . '/../uploads/';
-            if (!is_dir($diretorio)) { mkdir($diretorio, 0777, true); }
-            $nomeArquivo = uniqid() . '_' . basename($_FILES['imagem']['name']);
-            $caminhoCompleto = $diretorio . $nomeArquivo;
-            $urlPublica = 'uploads/' . $nomeArquivo;
+            $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
 
-            $tipoImagem = strtolower(pathinfo($caminhoCompleto, PATHINFO_EXTENSION));
-            $permitidos = ['jpg', 'jpeg', 'png', 'gif'];
-            $verificaImagem = getimagesize($_FILES['imagem']['tmp_name']);
-            if ($verificaImagem === false || !in_array($tipoImagem, $permitidos)) {
-                $msg = 'Erro na edição (foto inválida)';
-                header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($msg));
+            if ($resultadoUpload['success']) {
+                $imagemModel = new ImagemModel();
+                $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
+            } else {
+                header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($resultadoUpload['erro']));
                 exit;
             }
-
-            if (!move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoCompleto)) {
-                $msg = 'Erro na edição (falha no upload da foto)';
-                header("Location: /galeria-voucher/App/View/pages/adm/cadastrar-usuarios.php?acao=editar&id={$id}&erro=" . urlencode($msg));
-                exit;
-            }
-
-            $imagemModel = new ImagemModel();
-            $imagemId = $imagemModel->criarImagem($urlPublica, null, 'Imagem de perfil');
         }
 
         // Atualiza a pessoa (passa $imagemId apenas se houver upload)
@@ -157,6 +131,4 @@ switch ($acao) {
             header("Location: /galeria-voucher/App/View/pages/adm/listarUsuarios.php?erro=" . urlencode($msg));
             exit;
         }
-
-        // ... (resto do código)
 }
