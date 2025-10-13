@@ -65,7 +65,7 @@ headerComponent('Desenvolvedores');
         <div class="easter-egg-container">
             <h2>Ao Professor Thiago,</h2>
             <p>Nós, alunos da Turma 146 do programa Voucher Desenvolvedor do Senac, escrevemos esta carta como um sincero e profundo agradecimento. Desde o início de nossa jornada em março de 2024, até a reta final em janeiro de 2026, sua presença constante e seu empenho incansável foram o nosso alicerce.</p>
-            <p>Em um curso onde foi natural é a rotação de docentes, você foi a nossa âncora. Enquanto outros professores entraram e saíram, você permaneceu, tornando-se uma referência de estabilidade e dedicação que jamais esqueceremos.</p>
+            <p>Em um curso onde foi natural a rotação de docentes, você foi a nossa âncora. Enquanto outros professores entraram e saíram, você permaneceu, tornando-se uma referência de estabilidade e dedicação que jamais esqueceremos.</p>
             <p>Lembramos com clareza dos primeiros dias, quando a turma estava cheia de expectativas e você nos guiou pelos conceitos fundamentais de desenvolvimento de software: desde a importância do briefing até a lógica dos fluxogramas e a estrutura do pseudocódigo com Python.</p>
             <p>Avançamos juntos, dominando as bases do HTML e CSS para dar vida às nossas interfaces, e mergulhamos no universo do Banco de Dados. Foi com você que aprendemos, na prática, a realidade do desenvolvimento ágil, trabalhando em equipe e nos comunicando na Daily como verdadeiros profissionais, com as valiosas lições sobre os papéis de Product Owner (PO) e Scrum Master.</p>
             <p>Passamos pela complexidade do PHP e Banco de Dados, e encerramos este ciclo aprendendo sobre testes e deploy, prontos para colocar nossos projetos no ar.</p>
