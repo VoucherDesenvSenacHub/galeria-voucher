@@ -26,7 +26,7 @@ if ($acao === 'editar' && $id) {
 }
 
 // --- LÓGICA CORRIGIDA PARA EXIBIR A IMAGEM ---
-$caminhoImagem = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . "utilitarios/avatar.png"; // Imagem padrão
+$caminhoImagem = Config::get('APP_URL') . Config::get('DIR_IMG') . "utilitarios/avatar.png";
 
 if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
     $imagemModel = new ImagemModel();
@@ -39,7 +39,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
         // Se o arquivo existir fisicamente, monta a URL correta para o navegador
         if (file_exists($caminhoFisico)) {
             // A URL para o navegador é a URL base + o caminho relativo salvo no banco
-            $caminhoImagem = VARIAVEIS['APP_URL'] . $imagem['url'];
+            $caminhoImagem = Config::get('APP_URL') . $imagem['url'];
         }
     }
 }
@@ -59,7 +59,7 @@ require_once __DIR__ . "/../../componentes/nav.php";
         <div style="margin: 12px 0; color: #b00020; font-weight: 600;"><?= htmlspecialchars($_GET['erro']) ?></div>
     <?php endif; ?>
        
-            <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= VARIAVEIS['APP_URL']?>App/Controller/PessoaController.php">
+            <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= Config::get('APP_URL')?>App/Controller/PessoaController.php">
                 <input type="hidden" name="acao" value="<?= $acao ?>">
                 <?php if ($acao === 'editar' && $id): ?>
                     <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
