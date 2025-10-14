@@ -4,6 +4,7 @@ require_once __DIR__ ."/../Model/AlunoModel.php";
 require_once __DIR__ ."/../Model/TurmaModel.php";
 require_once __DIR__ ."/../Model/ProjetoModel.php";
 require_once __DIR__ ."/../Model/DocenteModel.php";
+require_once __DIR__ . '/../Helpers/Request.php';
 
 class GaleriaTurmaController extends BaseController
 {
@@ -23,7 +24,7 @@ class GaleriaTurmaController extends BaseController
 
     public function gerenciarRequisicao(): void
     {
-        switch ($_SERVER['REQUEST_METHOD']) {
+        switch (Request::getMethod()) {
             case 'GET':
                 $this->carregarDadosTurma();
                 break;
@@ -33,20 +34,15 @@ class GaleriaTurmaController extends BaseController
         }
     }
 
-    private function verificarIdNaUrl(): int {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id']) || intval(trim($_GET['id'])) <= 0) {
-            $this->toJson(["erro" => "Parâmtro inválido para turma id"], 400);
+    private function verificarIdNaUrl(): int
+    {
+        $id = Request::getUriId();
+        if ($id === null) {
+            $this->toJson(["erro" => "Parâmetro inválido para turma id"], 400);
         }
-
-        return intval($_GET['id']);
+        return $id;
     }
 
-    /**
-     * Carrega dados completos da turma com seus projetos, alunos e orientadores,
-     * formatando-os para uso na view.
-     *
-     * @return array
-     */
     private function carregarDadosTurma()
     {
         $turmaId = $this->verificarIdNaUrl();
@@ -59,9 +55,6 @@ class GaleriaTurmaController extends BaseController
         $projetos = $this->projetoModel->buscarProjetosPorTurma($turmaId);
         $alunos = $this->alunoModel->buscarPorTurma($turmaId);
         $orientadores = $this->docenteModel->buscarPorTurma($turmaId);
-
-        // Funções auxiliares como urlImagem e formatarProjetos devem continuar em helpers
-        // VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
 
         $this->toJson([
             'imagemTurmaUrl' => $turma['imagem'],
