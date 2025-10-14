@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+require_once __DIR__ . '/../../Config/App.php'; // Usa App.php
 require_once __DIR__ . '/../../Config/Database.php';
 require_once __DIR__ . '/../../Model/UsuarioModel.php';
 
@@ -13,18 +14,18 @@ $pdo = Database::conectar();
 $usuarioModel = new UsuarioModel($pdo);
 $usuario = $usuarioModel->validarLogin($email, $senha);
 
+// Redirecionamentos no final:
 if ($usuario) {
     $_SESSION['usuario'] = $usuario;
-
     if (in_array($usuario['perfil'], ['adm', 'professor'])) {
-        header('Location: home.php');
+        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'home-adm.php');
     } else {
-        header('Location: pages/home.php');
+        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_USER') . 'home.php');
     }
     exit;
 } else {
     $_SESSION['erro_login'] = 'Email ou senha inválidos';
-    header('Location: ../adm/login.php');
+    header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'login.php');
     exit;
 }
 
