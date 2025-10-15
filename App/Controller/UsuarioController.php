@@ -17,8 +17,8 @@ class UsuarioController
 
     public function verificarLogin(): void
     {
-        $urlRedirecionamento = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php';
-        ValidarLoginController::validarAdminRedirect($urlRedirecionamento);
+        $pathRedirecionamento = Config::get('DIR_ADM') . 'login.php';
+        ValidarLoginController::validarAdminRedirect($pathRedirecionamento);
     }
 
     public function getUsuarioNome(): string
