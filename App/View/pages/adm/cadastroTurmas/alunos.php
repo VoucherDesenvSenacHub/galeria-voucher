@@ -4,10 +4,11 @@ $paginaAtiva = 'turmas';
 
 // 1. INCLUDES E AUTENTICAÇÃO
 require_once __DIR__ . "/../../../../Config/env.php";
+require_once __DIR__ . "/../../../../Config/App.php";
 
 // VERIFICAÇÃO DE ACESSO PARA O USUARiO NÃO ACESSAR A PAGINA DIRETO DA URL
 if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
+    Redirect::toAdm('listaTurmas.php');
     exit;
 }
 
@@ -101,10 +102,9 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\"");
                 ?>
 
-                <div class="input-pesquisa-container">
+                <<div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
-                        class="icone-lupa-img">
+                    <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
                 </div>
             </div>
 
