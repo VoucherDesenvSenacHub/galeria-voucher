@@ -19,6 +19,7 @@ require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../../Model/PoloModel.php";
 require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../../Config/App.php";
 
 // --- LÓGICA DE PREPARAÇÃO DA PÁGINA ---
 
@@ -27,9 +28,9 @@ $isEditMode = false; // Flag para controlar se a página está em modo de ediç�
 $turma = null; // Variável para armazenar os dados da turma no modo de edição.
 $tituloPagina = "Cadastro de Turma"; // Título que aparecerá na aba do navegador.
 // URL para onde o formulário será enviado. Padrão é a ação 'salvar' do Controller.
-$actionUrl = VARIAVEIS['APP_URL'] . "App/Controller/TurmaController.php?action=salvar";
-// URL da imagem de placeholder padrão.
-$imagemUrl = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png';
+
+$actionUrl = Config::get('APP_URL') . "App/Controller/TurmaController.php?action=salvar";
+$imagemUrl = Config::get('APP_URL') . Config::get('DIR_IMG') . 'utilitarios/avatar.png';
 
 // 2. LÓGICA DE BUSCA DE DADOS
 $projetos = [];
@@ -55,14 +56,14 @@ if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
 
   // Altera as variáveis para refletir o modo de edição.
   $tituloPagina = "Editar Turma";
-  $actionUrl = VARIAVEIS['APP_URL'] . "App/Controller/TurmaController.php?action=atualizar";
+  $actionUrl = Config::get('APP_URL') . "App/Controller/TurmaController.php?action=atualizar";
 
   // Se a turma tiver uma imagem associada, busca a URL dela.
   if (!empty($turma['imagem_id'])) {
     $url = $turmaModel->buscarUrlDaImagem($turma['imagem_id']);
     if ($url) {
       // Se a URL for encontrada, atualiza a variável $imagemUrl para exibir a imagem correta.
-      $imagemUrl = VARIAVEIS['APP_URL'] . $url;
+      $imagemUrl = Config::get('APP_URL') . $url;
     }
   }
 }
