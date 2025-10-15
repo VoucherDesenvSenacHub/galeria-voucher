@@ -52,12 +52,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
                 <?php
-                buttonComponent(
-                    'primary',
-                    'NOVA TURMA',
-                    false,
-                    VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php'
-                );
+                buttonComponent('primary', 'NOVA TURMA', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/cadastroTurmas.php');
                 ?>
 
                 <form method="GET" action="">
@@ -70,8 +65,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             value="<?= htmlspecialchars($termoPesquisa) ?>">
 
                         <button type="submit" class="search-button">
-                            <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
-                                class="icone-lupa-img">
+                            <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
                         </button>
                     </div>
                 </form>
