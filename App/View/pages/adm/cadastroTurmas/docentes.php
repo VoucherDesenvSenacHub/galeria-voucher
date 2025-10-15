@@ -4,6 +4,7 @@ $paginaAtiva = 'turmas';
 
 // 1. INCLUDES E AUTENTICAÇÃO
 require_once __DIR__ . "/../../../../Config/env.php";
+require_once __DIR__ . "/../../../../Config/App.php";
 
 // VERIFICAÇÃO DE ACESSO PARA O USUARiO NÃO ACESSAR A PAGINA DIRETO DA URL
 if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
@@ -31,7 +32,7 @@ try {
 
     // Verifica se o ID da turma foi passado (modo edição)
     if (isset($_GET['id']) && !empty($_GET['id'])) {
-        $turmaId = (int) $_GET['id'];
+        Redirect::toAdm('listaTurmas.php');
 
         if ($turmaId > 0) {
             $isEditMode = true;
@@ -102,8 +103,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
-                    <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
-                        class="icone-lupa-img">
+                    <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
                 </div>
             </div>
 
