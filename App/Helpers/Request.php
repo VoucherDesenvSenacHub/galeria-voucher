@@ -9,7 +9,7 @@ class Request
      * @param mixed $default O valor padrão a ser retornado se a chave não existir.
      * @return mixed
      */
-    public static functionget(string $key, $default = null)
+    public static function get(string $key, $default = null)
     {
         return $_GET[$key] ?? $default;
     }
@@ -21,7 +21,7 @@ class Request
      * @param mixed $default O valor padrão a ser retornado se a chave não existir.
      * @return mixed
      */
-    public static functionpost(string $key, $default = null)
+    public static function post(string $key, $default = null)
     {
         return $_POST[$key] ?? $default;
     }
@@ -32,7 +32,7 @@ class Request
      * @param string $key A chave do arquivo.
      * @return array|null
      */
-    public static functionfile(string $key): ?array
+    public static function file(string $key): ?array
     {
         return $_FILES[$key] ?? null;
     }
@@ -43,7 +43,7 @@ class Request
      * @param string $key A chave a ser buscada.
      * @return string|null
      */
-    public static functionserver(string $key): ?string
+    public static function server(string $key): ?string
     {
         return $_SERVER[$key] ?? null;
     }
@@ -53,7 +53,7 @@ class Request
      *
      * @return string
      */
-    public static functiongetMethod(): string
+    public static function getMethod(): string
     {
         return self::server('REQUEST_METHOD') ?? 'GET';
     }
@@ -63,7 +63,7 @@ class Request
      *
      * @return int|null
      */
-    public static functiongetUriId(): ?int
+    public static function getUriId(): ?int
     {
         $id = self::get('id');
         if ($id && filter_var($id, FILTER_VALIDATE_INT)) {
