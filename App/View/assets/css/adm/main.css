@@ -50,12 +50,6 @@
 }
 
 @media (max-width: 768px) {
-
-  
-    .sidebar-adm {
-      width: 100%;
-      height: auto;
-    }
   
     .content-adm {
       padding: 20px;
