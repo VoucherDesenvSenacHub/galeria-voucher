@@ -10,7 +10,7 @@ class Redirect
      * @param string $path O caminho para o qual redirecionar.
      * @param array $params Parâmetros GET a serem adicionados à URL.
      */
-    public static functionto(string $path, array $params = []): void
+    public static function to(string $path, array $params = []): void
     {
         $url = Config::get('APP_URL') . $path;
 
@@ -28,7 +28,7 @@ class Redirect
      * @param string $page O nome do arquivo da página de admin.
      * @param array $params Parâmetros GET.
      */
-    public static functiontoAdm(string $page, array $params = []): void
+    public static function toAdm(string $page, array $params = []): void
     {
         $path = Config::get('DIR_ADM') . $page;
         self::to($path, $params);
