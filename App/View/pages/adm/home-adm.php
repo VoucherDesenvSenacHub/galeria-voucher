@@ -9,8 +9,8 @@ headerComponent('Página inicial - ADM');
 $paginaAtiva = 'home'; // Variável para identificar a página ativa
 
 ?>
-<link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/home-adm.css">
-<link rel="stylesheet" href="<?= VARIAVEIS["APP_URL"] . VARIAVEIS["DIR_CSS"] ?>adm/nav.css">
+<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>adm/home-adm.css">
+<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>adm/nav.css">
 
 <body class="layout body-adm">
 
