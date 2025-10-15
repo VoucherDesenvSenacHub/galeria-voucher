@@ -49,13 +49,11 @@ headerComponent('Turmas Voucher')
     
                 <div class="cards" id="cards-container">
                     <?php foreach ($turmasPagina as $turma) { ?>
-                        <a href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER']; ?>galeria-turma.php?id=<?=$turma['turma_id']?>"
+                        <a href="<?= Config::get('APP_URL') . Config::get('DIR_USER'); ?>galeria-turma.php?id=<?=$turma['turma_id']?>" class="card-turma">
                             class="card-turma">
                             <div class="card-content">
                                 <h3 class="card-title"><?php echo htmlspecialchars($turma['nome_turma']); ?></h3>
-                                <img class="card-image"
-                                    src="<?php echo VARIAVEIS['APP_URL'] . $turma['imagem_url']; ?>"
-                                    alt="Imagem turma <?php echo htmlspecialchars($turma['nome_turma']); ?>">
+                                <img class="card-image" src="<?= Config::get('APP_URL') . $turma['imagem_url']; ?>" alt="Imagem turma <?= htmlspecialchars($turma['nome_turma']); ?>">
                             </div>
                         </a>
                     <?php } ?>
