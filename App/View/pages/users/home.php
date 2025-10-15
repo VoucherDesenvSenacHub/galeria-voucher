@@ -40,8 +40,7 @@ try {
                 <div class="content">
     
                     <div class="nome-voucher">
-                        <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>utilitarios/nome.png"
-                            alt="Voucher Desenvolvedor">
+                        <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>utilitarios/nome.png" alt="Voucher Desenvolvedor">
                     </div>
     
                 </div>
@@ -199,5 +198,5 @@ try {
         </main>
         <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; ?>
     </section>
-    <script src="<?php echo VARIAVEIS['APP_URL'] . '/App/View/assets/js/users/matrix.js' ?>"></script>
+     <script src="<?= Config::get('APP_URL') . '/App/View/assets/js/users/matrix.js' ?>"></script>
 </body>
