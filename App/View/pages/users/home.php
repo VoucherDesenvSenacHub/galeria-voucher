@@ -1,12 +1,10 @@
 <?php
 require_once __DIR__ . "/../../componentes/head.php";
-// 1. INCLUSÃO DOS ARQUIVOS NECESSÁRIOS
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../Model/EstatisticasModel.php";
 
 headerComponent('Página Inicial');
 
-// 2. BUSCA DAS TURMAS E ESTATÍSTICAS
 try {
     $turmaModel = new TurmaModel();
     $turmas = $turmaModel->buscarTurmasParaGaleria();
@@ -15,7 +13,6 @@ try {
     $resultado = $estatisticasModel->getEstatisticas();
 
 } catch (Exception $e) {
-    // Se houver erro, a página não quebra
     $turmas = [];
     $resultado = ['alunos' => 0, 'projetos' => 0, 'polos' => 0];
     error_log("Erro na home.php: " . $e->getMessage());
@@ -23,7 +20,6 @@ try {
 ?>
 
 <body class="layout body-user">
-
 
     <section class="main-section layout-main">
     <?php
@@ -103,14 +99,10 @@ try {
                     <h1>SUA EVOLUÇÃO COMEÇA AQUI</h1>
                     <div class="stats">
                         <?php
-                        //dados dinâmicos de exemplo apenas
-                        $estatisticasModel = new EstatisticasModel();
-                        $dados = $estatisticasModel->getEstatisticas();
-    
                         $estatisticas = [
-                            ['valor' => $dados['alunos'] > 100 ? '+' . floor($dados['alunos'] / 100) * 100 : $dados['alunos'], 'label' => 'DE ALUNOS'],
-                            ['valor' => $dados['projetos'] > 10 ? '+' . floor($dados['projetos'] / 10) * 10 : $dados['projetos'], 'label' => 'PROJETOS'],
-                            ['valor' => $dados['polos'], 'label' => 'POLOS'],
+                            ['valor' => $resultado['alunos'] > 100 ? '+' . floor($resultado['alunos'] / 100) * 100 : $resultado['alunos'], 'label' => 'DE ALUNOS'],
+                            ['valor' => $resultado['projetos'] > 10 ? '+' . floor($resultado['projetos'] / 10) * 10 : $resultado['projetos'], 'label' => 'PROJETOS'],
+                            ['valor' => $resultado['polos'], 'label' => 'POLOS'],
                             ['valor' => '1200', 'label' => 'CURSO COM HORAS']
                         ];
     
@@ -133,62 +125,38 @@ try {
                     <?php if (!empty($turmas)): ?>
                         <div class="image-row">
                             <?php
-                            $count = 0;
-                            foreach ($turmas as $turma) {
-                                if ($count > 5)
-                                    break;
-                                ?>
+                            $turmas_slice1 = array_slice($turmas, 0, 6);
+                            foreach ($turmas_slice1 as $turma): ?>
                                 <div class='image-turma'>
-                                    <a
-                                        href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
-                                        <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>"
-                                            alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
+                                    <a href="<?= Config::get('APP_URL') . Config::get('DIR_USER') ?>galeria-turma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
+                                        <img src="<?= Config::get('APP_URL') . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
                                     </a>
                                 </div>
-                                <?php
-                                $count++;
-                            }
-                            ?>
+                            <?php endforeach; ?>
+                        </div>
+    
+                        <div class="image-row">
+                             <?php
+                            $turmas_slice2 = array_slice($turmas, 6, 5);
+                            foreach ($turmas_slice2 as $turma): ?>
+                                <div class='image-turma'>
+                                    <a href="<?= Config::get('APP_URL') . Config::get('DIR_USER') ?>galeria-turma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
+                                        <img src="<?= Config::get('APP_URL') . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
     
                         <div class="image-row">
                             <?php
-                            $count = 0;
-                            foreach (array_slice($turmas, 6) as $turma) {
-                                if ($count > 4)
-                                    break;
-                                ?>
+                            $turmas_slice3 = array_slice($turmas, 11, 6);
+                            foreach ($turmas_slice3 as $turma): ?>
                                 <div class='image-turma'>
-                                    <a
-                                        href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
-                                        <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>"
-                                            alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
+                                    <a href="<?= Config::get('APP_URL') . Config::get('DIR_USER') ?>galeria-turma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
+                                        <img src="<?= Config::get('APP_URL') . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
                                     </a>
                                 </div>
-                                <?php
-                                $count++;
-                            }
-                            ?>
-                        </div>
-    
-                        <div class="image-row">
-                            <?php
-                            $count = 0;
-                            foreach (array_slice($turmas, 11) as $turma) {
-                                if ($count > 5)
-                                    break;
-                                ?>
-                                <div class='image-turma'>
-                                    <a
-                                        href="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_USER'] ?>galeria-turma.php?id=<?php echo htmlspecialchars($turma['turma_id']); ?>">
-                                        <img src="<?php echo VARIAVEIS['APP_URL'] . htmlspecialchars($turma['imagem_url']); ?>"
-                                            alt="Imagem da <?php echo htmlspecialchars($turma['nome_turma']); ?>">
-                                    </a>
-                                </div>
-                                <?php
-                                $count++;
-                            }
-                            ?>
+                            <?php endforeach; ?>
                         </div>
                     <?php else: ?>
                         <p style="text-align: center; font-size: 1.2rem; color: #fff;">Nenhuma turma encontrada.</p>
@@ -198,5 +166,5 @@ try {
         </main>
         <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; ?>
     </section>
-     <script src="<?= Config::get('APP_URL') . '/App/View/assets/js/users/matrix.js' ?>"></script>
+    <script src="<?= Config::get('APP_URL') . Config::get('DIR_JS') . 'users/matrix.js' ?>"></script>
 </body>
