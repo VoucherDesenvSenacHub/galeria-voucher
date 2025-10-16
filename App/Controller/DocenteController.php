@@ -1,12 +1,11 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../Config/env.php';
+require_once __DIR__ . '/../Config/App.php';
+require_once __DIR__ . '/../Helpers/Redirect.php';
 require_once __DIR__ . '/../Model/DocenteModel.php';
-require_once __DIR__ . '/../Model/BaseModel.php';
 require_once __DIR__ . '/../Model/UsuarioModel.php';
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/ValidarLoginController.php';
 
 class DocenteController extends BaseController {
     protected array $metodosPermitidos = ['POST'];
@@ -23,59 +22,50 @@ class DocenteController extends BaseController {
     }
 
     private function gerenciarPost(): void {
-        if (!isset($_GET['action'])) {
-            $this->toJson([
-                'status' => 'error',
-                'mensagem' => 'Ação não especificada.'
-            ], 400);
+        $action = $_GET['action'] ?? null;
+        if (!$action) {
+            $this->toJson(['status' => 'error', 'mensagem' => 'Ação não especificada.'], 400);
         }
 
-        switch ($_GET['action']) {
+        switch ($action) {
             case 'desvincular':
                 $this->desvincularDocente();
                 break;
             default:
-                $this->toJson([
-                    'status' => 'error',
-                    'mensagem' => 'Ação não reconhecida.'
-                ], 400);
+                $this->toJson(['status' => 'error', 'mensagem' => 'Ação não reconhecida.'], 400);
         }
     }
 
     private function desvincularDocente(): void {
-        // Verifica se o usuário está logado e é administrador
         if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['perfil'] !== 'adm') {
             $_SESSION['erro'] = "Acesso negado. Apenas administradores podem realizar esta operação.";
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php');
-            exit;
+            Redirect::toAdm('listaTurmas.php');
         }
 
         $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);
         $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
         $senha = $_POST['senha'] ?? '';
         
+        $redirectParams = $turma_id ? ['id' => $turma_id] : [];
+
         if (!$pessoa_id || !$turma_id) {
             $_SESSION['erro'] = "Dados inválidos para desvinculação.";
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
-            exit;
+            Redirect::toAdm('cadastroTurmas/docentes.php', $redirectParams);
         }
 
         if (empty($senha)) {
             $_SESSION['erro'] = "Senha é obrigatória para confirmar a desvinculação.";
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
-            exit;
+            Redirect::toAdm('cadastroTurmas/docentes.php', $redirectParams);
         }
 
         try {
-            // Valida a senha do usuário logado
             $usuarioModel = new UsuarioModel();
             $usuarioLogado = $_SESSION['usuario'];
             $senhaValida = $usuarioModel->validarLogin($usuarioLogado['email'], $senha);
             
             if (!$senhaValida) {
                 $_SESSION['erro'] = "Senha incorreta. Desvinculação cancelada.";
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
-                exit;
+                Redirect::toAdm('cadastroTurmas/docentes.php', $redirectParams);
             }
 
             $docenteModel = new DocenteModel();
@@ -91,12 +81,10 @@ class DocenteController extends BaseController {
             $_SESSION['erro'] = "Erro interno: " . $e->getMessage();
         }
         
-        header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turma_id);
-        exit;
+        Redirect::toAdm('cadastroTurmas/docentes.php', $redirectParams);
     }
 }
 
-// Processa a requisição
 $controller = new DocenteController();
 $controller->gerenciarRequisicao();
 ?>
