@@ -2,17 +2,14 @@
 
 $paginaAtiva = 'turmas';
 
-// Inclui arquivos essenciais de configuração, componentes e o Model.
-require_once __DIR__ . "/../../../Config/env.php";
+require_once __DIR__ . "/../../../Config/App.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
-// Define o título da página.
 headerComponent("Voucher Desenvolvedor - Turmas");
 
-// --- LÓGICA DE PAGINAÇÃO E BUSCA ---
 $turmaModel = new TurmaModel();
 $termoPesquisa = $_GET['pesquisa'] ?? '';
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
@@ -33,18 +30,15 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 ?>
 
 <head>
-
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
 </head>
 
 <body class="layout body-lista-alunos">
 
-    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; // Inclui a barra lateral 
-    ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
-    $isAdmin = true; // Informa ao componente de navegação que esta é uma página de admin.
-    require_once __DIR__ . "/../../componentes/nav.php"; // Inclui a barra de navegação superior.
+    $isAdmin = true;
+    require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
     <main class="layout-main main-lista-alunos">
@@ -52,7 +46,12 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         <div class="container-lista-alunos">
             <div class="topo-lista-alunos">
                 <?php
-                buttonComponent('primary', 'NOVA TURMA', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/cadastroTurmas.php');
+                buttonComponent(
+                    'primary',
+                    'NOVA TURMA',
+                    false,
+                    Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/cadastroTurmas.php'
+                );
                 ?>
 
                 <form method="GET" action="">
@@ -65,7 +64,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             value="<?= htmlspecialchars($termoPesquisa) ?>">
 
                         <button type="submit" class="search-button">
-                            <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
+                            <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa"
+                                class="icone-lupa-img">
                         </button>
                     </div>
                 </form>
@@ -83,10 +83,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($turmas)):  // Verifica se existem turmas para exibir. 
-                            ?>
-                                <?php foreach ($turmas as $turma): // Loop para criar uma linha <tr> para cada turma. 
-                                ?>
+                            <?php if (!empty($turmas)): ?>
+                                <?php foreach ($turmas as $turma): ?>
                                     <tr>
                                         <td><?= htmlspecialchars($turma['turma_id']) ?></td>
                                         <td><?= htmlspecialchars($turma['NOME_TURMA']) ?></td>
@@ -99,7 +97,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                                 </a>
 
                                                 <form method="POST"
-                                                    action="<?= VARIAVEIS['APP_URL'] ?>App/Controller/TurmaController.php?action=excluir"
+                                                    action="<?= Config::get('APP_URL') ?>App/Controller/TurmaController.php?action=excluir"
                                                     onsubmit="return confirm('ATENÇÃO!!! Excluir esta turma também removerá todos os seus projetos, alunos e professores vinculados. Esta ação é irreversível. Deseja continuar?');">
                                                     <input type="hidden" name="turma_id" value="<?= $turma['turma_id'] ?>">
                                                     <button type="submit" class="no-style" title="Excluir">
@@ -110,10 +108,9 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else:  // Se o array $turmas estiver vazio... 
-                            ?>
+                            <?php else: ?>
                                 <tr>
-                                    <td colspan="3" style="text-align: center;">Nenhuma turma encontrada.</td>
+                                    <td colspan="4" style="text-align: center;">Nenhuma turma encontrada.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
@@ -148,19 +145,15 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </div>
     </main>
 
-    <?php // Script para exibir a mensagem de sucesso após a exclusão de uma turma. 
-    ?>
     <?php if (isset($_SESSION['sucesso_exclusao'])): ?>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 alert("<?= htmlspecialchars($_SESSION['sucesso_exclusao']) ?>");
             });
         </script>
-        <?php unset($_SESSION['sucesso_exclusao']); // Limpa a sessão para não mostrar o alerta novamente. 
-        ?>
+        <?php unset($_SESSION['sucesso_exclusao']); ?>
     <?php endif; ?>
 
     <script src="../../assets/js/adm/lista-alunos.js"></script>
 </body>
-
 </html>
