@@ -327,9 +327,6 @@ background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 0%, rgba(13, 156, 13
 }
 
 @media (max-width: 769px) {
-    .NavInicial .nav-inner {
-        width: 100%;
-    }
 
     #matrix-canvas {
         width: 101%;

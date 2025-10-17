@@ -4,6 +4,7 @@
   color: var(--text-white);
   letter-spacing: var(--espaco-letras);
   transition: all 500ms ease-in-out;
+  overflow: hidden;
 }
 
 .menu-adm a {

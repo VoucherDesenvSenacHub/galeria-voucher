@@ -104,6 +104,7 @@
 
 .tabela-container-lista-alunos {
   height: auto;
+  overflow-x: auto;
 
   display: flex;
   flex-direction: column;

@@ -121,10 +121,6 @@
     font-size: 32px;
     cursor: pointer;
     z-index: 10;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .menu-links {
@@ -170,7 +166,7 @@
 /* mobile */
 @media(max-width:768px) {
     .NavInicial .nav-inner {
-        padding: 0 20px;
+        padding: 0 8px;
     }
 
     .NavInicial .search {

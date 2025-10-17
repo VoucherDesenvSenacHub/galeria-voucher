@@ -59,6 +59,17 @@
     --card-border-radius: 10px;
     --default-transition: all 0.3s ease;
     --space-letters: 1.5px;
+
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+        --sidebar-width:140px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        --sidebar-width:0px;
+    }
 }
 
 body{

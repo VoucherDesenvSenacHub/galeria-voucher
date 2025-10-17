@@ -28,11 +28,5 @@
 /* Reponsividade da pagina */
 
 @media (max-width: 768px) {
-    .sidebar-adm {
-        display: none;
-
-    
-
-    }
 
 }
