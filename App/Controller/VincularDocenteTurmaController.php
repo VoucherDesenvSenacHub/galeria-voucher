@@ -1,17 +1,19 @@
 <?php 
 session_start();
 
-require_once __DIR__ . '/../Config/env.php';
+require_once __DIR__ . '/../Config/App.php';
+require_once __DIR__ . '/../Helpers/Redirect.php';
 require_once __DIR__ . '/../Model/TurmaModel.php';
 
-class VincularDocenteTurmaController {
+class VincularDocenteTurmaController
+{
     
-    public function vincular() {
+    public function vincular()
+    {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             http_response_code(405);
             $_SESSION['erro'] = "Método não permitido.";
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
-            exit();
+            Redirect::toAdm('listaTurmas.php');
         }
         
         $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
@@ -19,8 +21,7 @@ class VincularDocenteTurmaController {
         
         if (!$turmaId || !is_array($pessoaIds) || empty($pessoaIds)) {
             $_SESSION['erro'] = "Dados inválidos. Selecione ao menos um docente e tente novamente.";
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turmaId);
-            exit();
+            Redirect::toAdm('cadastroTurmas/docentes.php', ['id' => $turmaId]);
         }
 
         $turmaModel = new TurmaModel();
@@ -38,8 +39,7 @@ class VincularDocenteTurmaController {
             $_SESSION['erro'] = "Ocorreu um erro ao vincular os docentes. Tente novamente.";
         }
 
-        header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/docentes.php?id=' . $turmaId);
-        exit();
+        Redirect::toAdm('cadastroTurmas/docentes.php', ['id' => $turmaId]);
     }
 }
 

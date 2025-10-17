@@ -83,7 +83,7 @@ headerComponent('Desenvolvedores');
 
     </section>
 
-    <script src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_JS'] . 'easter_egg.js'; ?>"></script>
+    <script src="<?php echo Config::get('APP_URL') . Config::get('DIR_JS') . 'easter_egg.js'; ?>"></script>
 
 </body>
 </html>
