@@ -1,18 +1,8 @@
 <?php
 
-$caminhoAquivo = __DIR__ . '/../../.env';
-$conteudoArquivo = file($caminhoAquivo);
+require_once __DIR__ . '/App.php';
 
-$variaveis = [];
+// A constante VARIAVEIS foi removida.
+// O código agora deve usar Config::get('CHAVE') para acessar as configurações.
 
-array_map(
-    function($linha) use (&$variaveis){
-        if (strpos($linha, '=') !== false) {
-            list($key, $val) = explode('=', $linha, 2);
-            $variaveis[trim($key)] = trim($val);
-        }
-    },
-    $conteudoArquivo
-);
-
-define('VARIAVEIS', $variaveis);
+?>

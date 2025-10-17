@@ -2,97 +2,64 @@
 
 $paginaAtiva = 'turmas';
 
-// Garante que uma sessão PHP esteja ativa. Se não estiver, inicia uma.
-// Isso é necessário para usar as variáveis de sessão ($_SESSION) para exibir mensagens de erro/sucesso.
 if (session_status() === PHP_SESSION_NONE) {
-  session_start();
+    session_start();
 }
 
-// --- INCLUSÃO DE DEPENDÊNCIAS ---
-// Carrega variáveis de configuração globais (como URLs base).
-require_once __DIR__ . "/../../../../Config/env.php";
-// Inclui o cabeçalho HTML (<head>, CSS, etc.).
+require_once __DIR__ . "/../../../../Config/App.php";
 require_once __DIR__ . "/../../../componentes/head.php";
-// Inclui um script que verifica se o usuário administrativo está logado (autenticação).
 require_once __DIR__ . "/../../../../Service/AuthService.php";
-// Inclui os Models necessários para buscar dados do banco (turmas e polos).
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../../Model/PoloModel.php";
 require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
-// --- LÓGICA DE PREPARAÇÃO DA PÁGINA ---
-
-// Inicializa variáveis com valores padrão para o modo "Cadastro".
-$isEditMode = false; // Flag para controlar se a página está em modo de edição.
-$turma = null; // Variável para armazenar os dados da turma no modo de edição.
-$tituloPagina = "Cadastro de Turma"; // Título que aparecerá na aba do navegador.
-// URL para onde o formulário será enviado. Padrão é a ação 'salvar' do Controller.
-$actionUrl = VARIAVEIS['APP_URL'] . "App/Controller/TurmaController.php?action=salvar";
-// URL da imagem de placeholder padrão.
-$imagemUrl = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png';
-
-// 2. LÓGICA DE BUSCA DE DADOS
-$projetos = [];
 $isEditMode = false;
+$turma = null;
+$tituloPagina = "Cadastro de Turma";
+$actionUrl = Config::get('APP_URL') . "App/Controller/TurmaController.php?action=salvar";
+$imagemUrl = Config::get('APP_URL') . Config::get('DIR_IMG') . 'utilitarios/avatar.png';
 $turmaId = null;
 
-// Verifica se o usuário logado é um administrador para exibir o botão de excluir
-$is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
-
-// Verifica se um 'id' foi passado na URL e se é um inteiro válido.
-// Se sim, a página entra no "Modo Edição".
 if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-  $isEditMode = true;
-  $turmaModel = new TurmaModel();
-  // Busca no banco os dados da turma com o ID fornecido.
-  $turma = $turmaModel->buscarTurmaPorId($_GET['id']);
+    $isEditMode = true;
+    $turmaId = (int)$_GET['id'];
+    $turmaModel = new TurmaModel();
+    $turma = $turmaModel->buscarTurmaPorId($turmaId);
 
-  // Se a turma com o ID especificado não for encontrada, redireciona para a lista.
-  if (!$turma) {
-    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
-    exit; // Encerra o script para garantir que o redirecionamento ocorra.
-  }
-
-  // Altera as variáveis para refletir o modo de edição.
-  $tituloPagina = "Editar Turma";
-  $actionUrl = VARIAVEIS['APP_URL'] . "App/Controller/TurmaController.php?action=atualizar";
-
-  // Se a turma tiver uma imagem associada, busca a URL dela.
-  if (!empty($turma['imagem_id'])) {
-    $url = $turmaModel->buscarUrlDaImagem($turma['imagem_id']);
-    if ($url) {
-      // Se a URL for encontrada, atualiza a variável $imagemUrl para exibir a imagem correta.
-      $imagemUrl = VARIAVEIS['APP_URL'] . $url;
+    if (!$turma) {
+        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php');
+        exit;
     }
-  }
+
+    $tituloPagina = "Editar Turma";
+    $actionUrl = Config::get('APP_URL') . "App/Controller/TurmaController.php?action=atualizar";
+
+    if (!empty($turma['imagem_id'])) {
+        $url = $turmaModel->buscarUrlDaImagem($turma['imagem_id']);
+        if ($url) {
+            $imagemUrl = Config::get('APP_URL') . $url;
+        }
+    }
 }
 
-// --- BUSCA DE DADOS PARA O FORMULÁRIO ---
-// Cria uma instância do PoloModel para buscar todos os polos.
 $poloModel = new PoloModel();
-// A variável $polos será usada para preencher o campo <select> de Polos no formulário.
 $polos = $poloModel->buscarTodos();
 
-// Renderiza o componente do cabeçalho HTML, passando o título dinâmico da página.
 headerComponent($tituloPagina);
-
-// Define a aba atual
 $currentTab = 'Dados-gerais';
 ?>
 
 <body class="layout body-adm">
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; // Inclui a barra lateral de navegação ?>
+    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php
-    $isAdmin = true; // Variável para o componente nav.php saber que é uma página de admin.
-    require_once __DIR__ . "/../../../componentes/nav.php"; // Inclui a barra de navegação superior.
-    require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php"; // Inclui o componente de abas das turmas
+    $isAdmin = true;
+    require_once __DIR__ . "/../../../componentes/nav.php";
+    require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
-      <?php BreadCrumbs::gerarBreadCrumbs()?>
+      <?php BreadCrumbs::gerarBreadCrumbs() ?>
       <?php
-      // Usa o componente de abas das turmas
-      $turmaId = isset($_GET['id']) ? (int) $_GET['id'] : null;
       tabsTurmaComponent($currentTab, $turmaId);
       ?>
 
@@ -100,7 +67,7 @@ $currentTab = 'Dados-gerais';
         <form id="form-turma" method="POST" action="<?= $actionUrl ?>" enctype="multipart/form-data"
           style="width: 100%;">
 
-          <?php if ($isEditMode): // Se estiver em modo de edição, insere campos ocultos no formulário. ?>
+          <?php if ($isEditMode): ?>
             <input type="hidden" name="turma_id" value="<?= htmlspecialchars($turma['turma_id']) ?>">
             <input type="hidden" name="imagem_id_atual" value="<?= htmlspecialchars($turma['imagem_id'] ?? '') ?>">
           <?php endif; ?>
@@ -131,7 +98,7 @@ $currentTab = 'Dados-gerais';
                   <label class="form-label" id="text_input">Polo</label>
                   <select name="polo_id" class="input-adm-turmas">
                     <option value="">Selecione um Pólo</option>
-                    <?php foreach ($polos as $polo): // Loop para criar as opções do select a partir dos dados do banco. ?>
+                    <?php foreach ($polos as $polo): ?>
                       <option value="<?= $polo['polo_id'] ?>" <?= ($isEditMode && isset($turma) && $polo['polo_id'] == $turma['polo_id']) ? 'selected' : '' ?>>
                         <?= htmlspecialchars($polo['nome']) ?>
                       </option>
@@ -152,10 +119,7 @@ $currentTab = 'Dados-gerais';
           <div class="form-bottom">
             <div class="form-group-buton">
               <?php
-              // Componentes de botão reutilizáveis.
-              // O botão "Voltar" redireciona para a lista de turmas.
-              buttonComponent('secondary', 'Voltar', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
-              // O texto do botão primário muda de 'Atualizar' para 'Cadastrar' dependendo do modo.
+              buttonComponent('secondary', 'Voltar', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php');
               buttonComponent('primary', $isEditMode ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>
@@ -164,70 +128,52 @@ $currentTab = 'Dados-gerais';
       </div>
     </main>
 
-  <?php // --- SCRIPTS PARA FEEDBACK DO USUÁRIO (MENSAGENS FLASH) --- ?>
-
-  <?php if (isset($_SESSION['erros_turma'])): // Se houver erros de validação na sessão... ?>
+  <?php if (isset($_SESSION['erros_turma'])): ?>
     <script>
-      // Este script será executado assim que a página carregar.
       document.addEventListener('DOMContentLoaded', function () {
-        // Decodifica os erros (que foram passados como JSON pelo Controller) para um array JavaScript.
         const erros = <?= json_encode($_SESSION['erros_turma']) ?>;
         let mensagemErro = "Ocorreram os seguintes erros:\n\n";
-        // Monta uma string com todos os erros.
         erros.forEach(erro => {
           mensagemErro += "- " + erro + "\n";
         });
-        // Exibe um alerta para o usuário.
         alert(mensagemErro);
       });
     </script>
-    <?php unset($_SESSION['erros_turma']); // Limpa a variável de sessão para que o erro não seja exibido novamente. ?>
+    <?php unset($_SESSION['erros_turma']); ?>
   <?php endif; ?>
 
-  <?php if (isset($_SESSION['sucesso_cadastro'])): // Se houver uma mensagem de sucesso de CADASTRO... ?>
+  <?php if (isset($_SESSION['sucesso_cadastro'])): ?>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        // Exibe o alerta com a mensagem de sucesso.
         alert("<?= htmlspecialchars($_SESSION['sucesso_cadastro']) ?>");
-        // Limpa todos os campos do formulário para permitir um novo cadastro facilmente.
         document.getElementById('form-turma').reset();
-        // Restaura a imagem de preview para a imagem padrão.
-        document.getElementById('preview').src = "<?= VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png' ?>";
+        document.getElementById('preview').src = "<?= Config::get('APP_URL') . Config::get('DIR_IMG') . 'utilitarios/avatar.png' ?>";
       });
     </script>
-    <?php unset($_SESSION['sucesso_cadastro']); // Limpa a sessão. ?>
+    <?php unset($_SESSION['sucesso_cadastro']); ?>
   <?php endif; ?>
 
-  <?php if (isset($_SESSION['sucesso_edicao_alert'])): // Se houver uma mensagem de sucesso de EDIÇÃO... ?>
+  <?php if (isset($_SESSION['sucesso_edicao_alert'])): ?>
     <script>
       alert("<?= htmlspecialchars($_SESSION['sucesso_edicao_alert']) ?>");
     </script>
-    <?php unset($_SESSION['sucesso_edicao_alert']); // Limpa a sessão. ?>
+    <?php unset($_SESSION['sucesso_edicao_alert']); ?>
   <?php endif; ?>
 
-
   <script>
-    // --- SCRIPT PARA PREVIEW DA IMAGEM ---
     const inputFile = document.getElementById('imagem_turma');
     const previewImage = document.getElementById('preview');
 
-    // Adiciona um 'escutador' de eventos ao input de arquivo.
     inputFile.addEventListener('change', function () {
-      // Pega o primeiro arquivo selecionado pelo usuário.
       const file = this.files[0];
       if (file) {
-        // Usa a API FileReader para ler o arquivo de imagem localmente.
         const reader = new FileReader();
-        // Quando a leitura estiver completa...
         reader.onload = function (e) {
-          // ...define o atributo 'src' da tag <img> para o resultado da leitura, exibindo o preview.
           previewImage.src = e.target.result;
         }
-        // Inicia a leitura do arquivo como uma Data URL.
         reader.readAsDataURL(file);
       }
     });
   </script>
 </body>
-
 </html>

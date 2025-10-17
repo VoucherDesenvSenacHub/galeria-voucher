@@ -20,14 +20,7 @@ class GaleriaTurmaModel
         $this->docenteModel = new DocenteModel();
     }
 
-
-    /**
-     * Carrega dados completos da turma com seus projetos, alunos e orientadores,
-     * formatando-os para uso na view.
-     *
-     * @return array
-     */
-    public function carregarDadosTurma(int $turmaId): array | null
+    public function carregarDadosTurma(int $turmaId): ?array
     {
         $turma = $this->turmaModel->buscarPorId($turmaId);
         
@@ -39,69 +32,15 @@ class GaleriaTurmaModel
         $alunos = $this->alunoModel->buscarPorTurma($turmaId);
         $orientadores = $this->docenteModel->buscarPorTurma($turmaId);
 
-        $dadosProjetos = $this->formatarProjetos($projetos, $this->projetoModel);
-
-        // Funções auxiliares como urlImagem e formatarProjetos devem continuar em helpers
-        // VARIAVEIS["DIR_IMG"] . 'utilitarios/foto.png';
-
         return [
-            'imagemTurmaUrl' => urlImagem($turma['imagem'],  'App/View/assets/img/utilitarios/foto.png'),
+            'imagemTurmaUrl' => urlImagem($turma['imagem'], 'App/View/assets/img/utilitarios/foto.png'),
             'nomeTurma' => $turma['nome'],
             'descricaoTurma' => $turma['descricao'],
             'alunos' => $alunos,
             'orientadores' => $orientadores,
-            'tabsProjetos' => $dadosProjetos['tabsProjetos'],
-            'projetosFormatados' => $dadosProjetos['projetosFormatados'],
+            'projetos' => $projetos, // Agora envia os dados brutos
             "polo" => $turma["polo"],
             "cidade"=> $turma["cidade"],
-        ];
-    }
-
-    private function formatarProjetos(array $projetos, $projetoModel): array {
-        $tabsProjetos = [];
-        $projetosFormatados = [];
-
-        foreach ($projetos as $index => $projeto) {
-            $tabsProjetos[] = [
-                'projeto_id' => $projeto['projeto_id'],
-                'nome' => htmlspecialchars($projeto['nome']),
-                'classe_css' => $index === 0 ? 'active' : ''
-            ];
-
-            $dias = $projetoModel->buscarDiasProjeto($projeto['projeto_id']);
-            $diasFormatados = [];
-
-            foreach ($dias as $i => $dia) {
-                $imagensFormatadas = array_map(function ($img) {
-                    return [
-                        'url' => urlImagem($img['url']),
-                        'alt' => 'Imagem do projeto'
-                    ];
-                }, $dia['imagens']);
-
-                $diasFormatados[] = [
-                    'id' => $dia['id'],
-                    'tipo_dia' => htmlspecialchars($dia['tipo_dia']),
-                    'titulo' => 'Dia ' . htmlspecialchars($dia['tipo_dia']),
-                    'descricao' => nl2br(htmlspecialchars($dia['descricao'])),
-                    'imagens' => $imagensFormatadas,
-                    'ativo' => $i === 0
-                ];
-            }
-
-            $projetosFormatados[] = [
-                'projeto_id' => $projeto['projeto_id'],
-                'nome' => htmlspecialchars($projeto['nome']),
-                'descricao' => nl2br(htmlspecialchars($projeto['descricao'])),
-                'link' => htmlspecialchars($projeto['link']),
-                'dias' => $diasFormatados,
-                'ativo' => $index === 0
-            ];
-        }
-
-        return [
-            'tabsProjetos' => $tabsProjetos,
-            'projetosFormatados' => $projetosFormatados
         ];
     }
 }
