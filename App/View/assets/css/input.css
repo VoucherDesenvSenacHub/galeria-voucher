@@ -5,13 +5,13 @@
     gap: 20px;
     align-items: center;
     width: 100%;
-    max-width: 450px;
+    /* max-width: 450px; */
     padding: 14px;
     margin-top: 5px;
     font-size: 16px;
     border: 1 solid #ccc;
     background-color: #d8dbd6;
-    border-radius: 50px;
+    border-radius: 10px;
     outline: none;
     box-sizing: border-box;
 }
