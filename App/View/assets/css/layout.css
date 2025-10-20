@@ -30,6 +30,31 @@
 .col-50 { flex: 0 0 50%; }
 .col-100 { flex: 0 0 100%; }
 
+/* ----- Layout global (grid principal) ----- */
+.layout{
+    font-family: var(--font-secondary);
+    display: grid;
+    width: 100vw;
+    max-width: 100vw;
+    /* usar min-height permite que a página cresça além da altura da viewport */
+    min-height: 100vh;
+    /* permitir rolagem quando o conteúdo for maior que a viewport */
+    overflow: visible;
+    grid-template-areas: 
+        "main"
+    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.layout-main{
+    grid-area: main;
+    /* rolagem interna suave quando necessário */
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+}
+
 /* -------------------------------------------------- */
 /* Breakpoints globais                               */
 /* -------------------------------------------------- */
