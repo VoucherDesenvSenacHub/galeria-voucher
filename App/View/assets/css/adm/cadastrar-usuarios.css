@@ -15,9 +15,6 @@ main.conteudo-cadastro {
 }
 
 /* Estilização da scrollbar */
-main.conteudo-cadastro::-webkit-scrollbar {
-  width: 10px;
-}
 
 main.conteudo-cadastro::-webkit-scrollbar-track {
   background: #E2E2E2;

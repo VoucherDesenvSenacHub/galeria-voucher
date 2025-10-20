@@ -33,12 +33,8 @@
 .layout{
     font-family: var(--font-secondary);
     display: grid;
-    width: 100vw;
-    max-width: 100vw;
-    /* use min-height so page can grow when content overflows */
-    min-height: 100vh;
-    /* allow scrolling when the content is taller than the viewport */
-    overflow: visible;
+    height: 100vh;
+    overflow: hidden;
     grid-template-areas: 
         "main"
     ;
