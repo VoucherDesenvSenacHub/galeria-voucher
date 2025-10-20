@@ -34,7 +34,6 @@
     font-family: var(--font-secondary);
     display: grid;
     height: 100vh;
-    max-height: 100vh;
     overflow: hidden;
     grid-template-areas: 
         "main"
