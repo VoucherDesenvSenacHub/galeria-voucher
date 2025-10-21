@@ -3,21 +3,23 @@ $paginaAtiva = 'turmas';
 
 require_once __DIR__ . "/../../../../Config/App.php";
 require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-
-if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-    Redirect::toAdm('listaTurmas.php');
-}
-
+require_once __DIR__ . "/../../../../Helpers/Request.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/input.php";
 require_once __DIR__ . "/../../../componentes/button.php";
-headerComponent("Voucher Desenvolvedor - Criar Projeto");
 require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
+headerComponent("Voucher Desenvolvedor - Criar Projeto");
+
+$turmaId = Request::getUriId("turma_id");
+$projetoId = Request::getUriId("projeto_id");
+if (!$turmaId) {
+    Redirect::toAdm('listaTurmas.php');
+}
+
 $currentTab = 'Criar Projeto';
-$turmaId = (int)$_GET['id'];
 ?>
 
 <body class="layout body-cadastro-turmas">
@@ -30,7 +32,7 @@ $turmaId = (int)$_GET['id'];
 
     <main class="layout-main main-turmas-turmas">
       <?php BreadCrumbs::gerarBreadCrumbs(); ?>
-      <?php tabsTurmaComponent($currentTab, $turmaId); ?>
+      <?php tabsTurmaComponent($currentTab, ["turma_id" => $turmaId]); ?>
 
       <div class="form-container-projeto">
 

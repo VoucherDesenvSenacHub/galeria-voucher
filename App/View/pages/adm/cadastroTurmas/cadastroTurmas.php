@@ -20,9 +20,9 @@ $actionUrl = Config::get('APP_URL') . "App/Controller/TurmaController.php?action
 $imagemUrl = Config::get('APP_URL') . Config::get('DIR_IMG') . 'utilitarios/avatar.png';
 $turmaId = null;
 
-if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
+if (isset($_GET['turma_id']) && filter_var($_GET['turma_id'], FILTER_VALIDATE_INT)) {
     $isEditMode = true;
-    $turmaId = (int)$_GET['id'];
+    $turmaId = (int)$_GET['turma_id'];
     $turmaModel = new TurmaModel();
     $turma = $turmaModel->buscarTurmaPorId($turmaId);
 
@@ -58,9 +58,9 @@ $currentTab = 'Dados-gerais';
     ?>
 
     <main class="layout-main main-turmas-turmas">
-      <?php BreadCrumbs::gerarBreadCrumbs() ?>
-      <?php
-      tabsTurmaComponent($currentTab, $turmaId);
+      <?php 
+        BreadCrumbs::gerarBreadCrumbs();
+        tabsTurmaComponent($currentTab, ['turma_id' => $turmaId]);
       ?>
 
       <div class="container-main-adm">

@@ -4,7 +4,7 @@ $paginaAtiva = 'turmas';
 require_once __DIR__ . "/../../../../Config/App.php";
 require_once __DIR__ . "/../../../../Helpers/Redirect.php";
 
-if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
+if (!isset($_GET['turma_id']) || empty($_GET['turma_id']) || !filter_var($_GET['turma_id'], FILTER_VALIDATE_INT)) {
     Redirect::toAdm('listaTurmas.php');
 }
 
@@ -16,7 +16,7 @@ require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
 headerComponent("Voucher Desenvolvedor - Alunos");
 $currentTab = 'Alunos';
-$turmaId = (int)$_GET['id'];
+$turmaId = (int)$_GET['turma_id'];
 $alunos = [];
 $isEditMode = true;
 
@@ -41,7 +41,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     ?>
     <main class="layout-main main-turmas-turmas">
         <?php BreadCrumbs::gerarBreadCrumbs(); ?>
-        <?php tabsTurmaComponent($currentTab, $turmaId); ?>
+        <?php tabsTurmaComponent($currentTab, ["turma_id" => $turmaId]); ?>
 
         <?php if (isset($error_message)): ?>
             <div class="error-message"><?= htmlspecialchars($error_message) ?></div>

@@ -6,7 +6,7 @@ require_once __DIR__ . "/../../../../Config/App.php";
 require_once __DIR__ . "/../../../../Helpers/Redirect.php"; // <--- ADICIONADO AQUI
 
 // VERIFICAÇÃO DE ACESSO
-if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
+if (!isset($_GET['turma_id']) || empty($_GET['turma_id']) || !filter_var($_GET['turma_id'], FILTER_VALIDATE_INT)) {
     Redirect::toAdm('listaTurmas.php'); // Usando a classe Redirect
 }
 
@@ -21,7 +21,7 @@ $currentTab = 'Docentes';
 
 // 2. LÓGICA DE BUSCA DE DADOS
 $docentes = [];
-$turmaId = (int)$_GET['id'];
+$turmaId = (int)$_GET['turma_id'];
 
 try {
     $docenteModel = new DocenteModel();
@@ -47,7 +47,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
     <main class="layout-main main-turmas-turmas">
         <?php BreadCrumbs::gerarBreadCrumbs() ?>
-        <?php tabsTurmaComponent($currentTab, $turmaId); ?>
+        <?php tabsTurmaComponent($currentTab, ["turma_id" => $turmaId]); ?>
 
         <?php if (isset($error_message)): ?>
             <div class="error-message"><?= htmlspecialchars($error_message) ?></div>

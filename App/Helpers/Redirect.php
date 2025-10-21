@@ -12,11 +12,7 @@ class Redirect
      */
     public static function to(string $path, array $params = []): void
     {
-        $url = Config::get('APP_URL') . $path;
-
-        if (!empty($params)) {
-            $url .= '?' . http_build_query($params);
-        }
+        $url = self::getAppUrl($path, $params);
 
         header("Location: " . $url);
         exit;
@@ -33,4 +29,27 @@ class Redirect
         $path = Config::get('DIR_ADM') . $page;
         self::to($path, $params);
     }
+
+    /**
+     * Redireciona o usuário para uma URL.
+     *
+     * @param string $path O caminho para o qual redirecionar.
+     * @param array $params Parâmetros GET a serem adicionados à URL.
+     * @return string Retorna o caminho para site com params
+     */
+    public static function getAppUrl(string $path, array $params = []):string
+    {
+        $url = Config::get('APP_URL') . $path;
+
+        if (!empty($params)) {
+            $url .= '?' . http_build_query($params);
+        }
+        return $url;
+    }
+
+     public static function getAdmUrl(string $page, array $params = []):string
+     {
+        $path = Config::get('DIR_ADM') . $page;
+        return self::getAppUrl($path, $params);
+     }
 }
