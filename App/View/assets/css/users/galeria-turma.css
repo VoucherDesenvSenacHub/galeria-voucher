@@ -194,7 +194,6 @@
 .galeria-turma-section h2 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.75rem; /* 28px */
-  width: 10rem;
   margin-bottom: 0.625rem; /* 10px */
   text-transform: uppercase;
   font-weight: normal;
@@ -202,16 +201,12 @@
 }
 
 .galeria-turma-section p {
-  margin: 0.625rem 0; /* 10px */
   font-size: 1rem; /* 16px */
   font-family: "Poppins", sans-serif;
-  text-align: justify;
-  padding: 1.25rem; /* 20px */
 }
 
 .galeria-turma-cardss h1 {
   text-align: center;
-  font-size: 40px;
 }
 
 .galeria-turma-margin-top-right-dia-e {
@@ -221,7 +216,6 @@
 
 /* ===== IMAGENS ===== */
 .galeria-turma-section img {
-  width: 90%;
   max-width: 31.25rem; /* 500px */
   display: block;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -290,7 +284,6 @@
 
 .galeria-turma-main-tab-btn:hover {
   border: 2px solid var(--cor-tema, #aeff40);
-  transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(174, 255, 64, 0.3);
 }
 
@@ -303,7 +296,6 @@
   color: var(--cor-tema, #aeff40);
   border-color: var(--cor-tema, #aeff40);
   box-shadow: 0 0 30px rgba(174, 255, 64, 0.6);
-  transform: translateY(-2px);
 }
 
 /* Conteúdo das abas principais */
@@ -1064,4 +1056,83 @@ h1,h2,h3{
 .galeria-turma-margin-top-right-projeto2-final {
   margin-right: 25px;
   margin-top: 20px;
+}
+
+/* Estilos para a seção do projeto com botão GitHub */
+.galeria-turma-projeto-section {
+    gap: 40px;
+    padding: 20px;
+    background: linear-gradient(135deg, #0a0a0a90, #1a1a1a);
+    border-radius: 15px;
+    border: 1px solid #333;
+    z-index: 2;
+}
+
+.galeria-turma-projeto-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.galeria-turma-projeto-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.galeria-turma-projeto-header h3 {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background:#ffffff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.galeria-turma-projeto-header p {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.galeria-turma-projeto-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.galeria-turma-no-repo {
+  text-align: center;
+  padding: 20px;
+  background: #f8d7da;
+  color: #721c24;
+  border-radius: 8px;
+  border-left: 4px solid #dc3545;
+}
+
+.galeria-turma-no-repo p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .galeria-turma-projeto-section {
+    margin: 20px 10px;
+    padding: 20px 15px;
+  }
+  
+  .galeria-turma-projeto-header h3 {
+    font-size: 24px;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .galeria-turma-projeto-header h3 {
+    font-size: 20px;
+  }
+  
 }

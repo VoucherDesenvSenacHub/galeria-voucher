@@ -98,11 +98,9 @@ headerComponent('Galeria da Turma');
                                             </button>
                                         <?php endforeach; ?>
             
-                                        <button class="galeria-turma-sub-tab-btn"
-                                            data-subtab="projeto"
-                                            data-projeto="<?= htmlspecialchars($projeto['projeto_id']) ?>">
+                                        <h1 class="galeria-turma-h1">
                                             PROJETO
-                                        </button>
+                                        </h1>
                                     </div>
                                 </div>
 
@@ -122,19 +120,24 @@ headerComponent('Galeria da Turma');
                                             </div>
                                         </div>
                                     <?php endforeach; ?>
-                                    
-                                    <div class="galeria-turma-sub-tab-content" id="sub-tab-projeto-<?= htmlspecialchars($projeto['projeto_id']) ?>">
-                                        <div class="galeria-turma-tab-inner galeria-tab-projeto">
-                                            <div class="galeria-turma-tab-text">
-                                                <?php if (!empty($projeto['link'])): ?>
-                                                    <button onclick="window.open('<?= htmlspecialchars($projeto['link']) ?>')" class="galeria-turma-repo-link">
-                                                        Ver no GitHub
-                                                    </button>
-                                                <?php else: ?>
-                                                    <p>Link do repositório não disponível.</p>
-                                                <?php endif; ?>
+                                </div>
+
+                                <!-- Seção do Projeto com botão dedicado -->
+                                <div class="galeria-turma-projeto-section">
+                                    <div class="galeria-turma-projeto-header">
+                                        <h3>Repositório do Projeto</h3>
+                                        <p>Acesse o código-fonte completo deste projeto</p>
+                                    </div>
+                                    <div class="galeria-turma-projeto-actions">
+                                        <?php if (!empty($projeto['link'])): ?>
+                                            <button onclick="window.open('<?= htmlspecialchars($projeto['link']) ?>')" class="galeria-turma-sub-tab-btn">
+                                                Ver no GitHub
+                                            </button>
+                                        <?php else: ?>
+                                            <div class="galeria-turma-no-repo">
+                                                <p>Link do repositório não disponível</p>
                                             </div>
-                                        </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
