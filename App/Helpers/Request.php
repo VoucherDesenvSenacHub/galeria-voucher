@@ -63,7 +63,7 @@ class Request
      *
      * @return int|null
      */
-    public static function getUriId($key = "id"): ?int
+    public static function getId($key = "id"): ?int
     {
         $id = self::get($key);
         if ($id && filter_var($id, FILTER_VALIDATE_INT)) {

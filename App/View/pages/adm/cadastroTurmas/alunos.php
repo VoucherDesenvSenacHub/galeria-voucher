@@ -1,22 +1,21 @@
 <?php
-$paginaAtiva = 'turmas';
 
 require_once __DIR__ . "/../../../../Config/App.php";
 require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-
-if (!isset($_GET['turma_id']) || empty($_GET['turma_id']) || !filter_var($_GET['turma_id'], FILTER_VALIDATE_INT)) {
-    Redirect::toAdm('listaTurmas.php');
-}
-
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../../Model/AlunoModel.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
+$turmaId = Request::getId("turma_id");
+if (!$turmaId) {
+    Redirect::toAdm('listaTurmas.php');
+}
+
+$paginaAtiva = 'turmas';
 headerComponent("Voucher Desenvolvedor - Alunos");
 $currentTab = 'Alunos';
-$turmaId = (int)$_GET['turma_id'];
 $alunos = [];
 $isEditMode = true;
 

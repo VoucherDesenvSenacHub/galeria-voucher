@@ -1,27 +1,26 @@
 <?php
-$paginaAtiva = 'turmas';
 
-// 1. INCLUDES E AUTENTICAÇÃO
 require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../../Helpers/Redirect.php"; // <--- ADICIONADO AQUI
-
-// VERIFICAÇÃO DE ACESSO
-if (!isset($_GET['turma_id']) || empty($_GET['turma_id']) || !filter_var($_GET['turma_id'], FILTER_VALIDATE_INT)) {
-    Redirect::toAdm('listaTurmas.php'); // Usando a classe Redirect
-}
-
+require_once __DIR__ . "/../../../../Helpers/Redirect.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../../Model/DocenteModel.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+// VERIFICAÇÃO DE ACESSO
+
+$turmaId = Request::getId("turma_id");
+if (!$turmaId) {
+    Redirect::toAdm('listaTurmas.php'); // Usando a classe Redirect
+}
+
+$paginaAtiva = 'turmas';
 
 headerComponent("Voucher Desenvolvedor - Docentes");
 $currentTab = 'Docentes';
 
 // 2. LÓGICA DE BUSCA DE DADOS
 $docentes = [];
-$turmaId = (int)$_GET['turma_id'];
 
 try {
     $docenteModel = new DocenteModel();

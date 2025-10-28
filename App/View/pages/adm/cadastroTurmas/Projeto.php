@@ -13,8 +13,8 @@ require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
 headerComponent("Voucher Desenvolvedor - Criar Projeto");
 
-$turmaId = Request::getUriId("turma_id");
-$projetoId = Request::getUriId("projeto_id");
+$turmaId = Request::getId("turma_id");
+$projetoId = Request::getId("projeto_id");
 if (!$turmaId) {
     Redirect::toAdm('listaTurmas.php');
 }
