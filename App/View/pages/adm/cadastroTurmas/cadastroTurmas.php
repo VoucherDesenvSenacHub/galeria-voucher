@@ -96,8 +96,8 @@ $currentTab = 'Dados-gerais';
                 </div>
                 <div class="container_text_polo">
                   <label class="form-label" id="text_input">Polo</label>
-                  <select name="polo_id" class="input-adm-turmas">
-                    <option value="">Selecione um Pólo</option>
+                  <select name="polo_id" class="select-polo">
+                    <option value="">--selecione--</option>
                     <?php foreach ($polos as $polo): ?>
                       <option value="<?= $polo['polo_id'] ?>" <?= ($isEditMode && isset($turma) && $polo['polo_id'] == $turma['polo_id']) ? 'selected' : '' ?>>
                         <?= htmlspecialchars($polo['nome']) ?>

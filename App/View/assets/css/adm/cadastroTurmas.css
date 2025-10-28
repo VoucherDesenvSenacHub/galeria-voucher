@@ -165,7 +165,8 @@
     .inicio,
     .termino {
         display: flex;
-        width: 100%;
+        width: 120px;
+        height: 20px;
         padding: 15px;
         margin-bottom: 30px;
         border: 1px solid #333;
@@ -174,6 +175,20 @@
         font-size: 16px;
         margin-left: 5px;
 
+    }
+    .select-polo {
+        display: block;
+        width: 180px;
+        height: 50px;
+        padding: 8px;
+        margin: 0 auto 30px auto; /* 0 (topo), auto (direita), 30px (inferior), auto (esquerda) */
+        border: 1px solid #333;
+        border-radius: 30px;
+        background-color: #e5e9e4;
+        font-size: 16px;
+        resize: vertical;
+        text-align: center;
+}
     }
 
     .dia {
