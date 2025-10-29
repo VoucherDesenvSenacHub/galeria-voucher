@@ -7,7 +7,6 @@ button, a.primary-button, a.secondary-button {
     overflow: hidden;
     white-space: nowrap;
     text-align: center;
-    padding: 0 1.5rem;
     cursor: pointer;
     font-size: var(--l-font);
     text-decoration: none;
