@@ -4,152 +4,150 @@ $paginaAtiva = 'turmas';
 require_once __DIR__ . "/../../../../Config/App.php";
 require_once __DIR__ . "/../../../../Helpers/Redirect.php";
 
-// Valida se o ID da turma foi passado e é um inteiro válido
+// Mantém a validação do ID da turma
 if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-    // Redireciona para a lista de turmas se o ID for inválido
     Redirect::toAdm('listaTurmas.php');
 }
+$turmaId = (int)$_GET['id'];
 
-// Includes para componentes visuais e de autenticação
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/input.php";
 require_once __DIR__ . "/../../../componentes/button.php";
-headerComponent("Voucher Desenvolvedor - Criar Projeto"); // Define o título da página
-require_once __DIR__ . "/../../../../Service/AuthService.php"; // Garante que o usuário está logado
-require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php"; // Componente de abas
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php"; // Componente de navegação
+headerComponent("Voucher Desenvolvedor - Novo Projeto"); // Título ajustado
+require_once __DIR__ . "/../../../../Service/AuthService.php"; // Necessário para validação
+require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
+require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
-$currentTab = 'projetos'; // Define a aba ativa correta
-$turmaId = (int)$_GET['id']; // Pega o ID da turma da URL
+$currentTab = 'projetos'; // Ajusta a aba ativa para 'projetos'
 ?>
 
 <body class="layout body-cadastro-turmas">
 
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; // Inclui a barra lateral ?>
+    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php
-    $isAdmin = true; // Define que é uma página de admin para o nav
-    require_once __DIR__ . "/../../../componentes/nav.php"; // Inclui a barra de navegação
+    $isAdmin = true;
+    require_once __DIR__ . "/../../../componentes/nav.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
-        <?php BreadCrumbs::gerarBreadCrumbs(); // Gera a navegação breadcrumb ?>
-        <?php tabsTurmaComponent($currentTab, $turmaId); // Exibe as abas da turma ?>
+      <?php BreadCrumbs::gerarBreadCrumbs(); ?>
+      <?php tabsTurmaComponent($currentTab, $turmaId); ?>
 
-        <?php if (isset($_SESSION['erro_projeto'])): ?>
-            <div class="error-message" style="margin: 10px 0; padding: 10px; background-color: #ffdddd; border: 1px solid #ffaaaa; color: #D8000C;">
-                <?= $_SESSION['erro_projeto']; ?>
+      <?php if (isset($_SESSION['erro_projeto'])): ?>
+            <div style="color: red; margin-top: 10px;">
+                <strong>Erro ao salvar projeto:</strong><br>
+                <?php
+                    if (is_array($_SESSION['erro_projeto'])) {
+                        foreach ($_SESSION['erro_projeto'] as $erro) {
+                            echo htmlspecialchars($erro) . "<br>";
+                        }
+                    } else {
+                         echo htmlspecialchars($_SESSION['erro_projeto']);
+                    }
+                ?>
             </div>
             <?php unset($_SESSION['erro_projeto']); ?>
         <?php endif; ?>
         <?php if (isset($_SESSION['sucesso_projeto'])): ?>
-            <div class="success-message" style="margin: 10px 0; padding: 10px; background-color: #ddffdd; border: 1px solid #aaffaa; color: #4F8A10;">
-                <?= $_SESSION['sucesso_projeto']; ?>
+            <div style="color: green; margin-top: 10px;">
+                <?= htmlspecialchars($_SESSION['sucesso_projeto']) ?>
             </div>
             <?php unset($_SESSION['sucesso_projeto']); ?>
         <?php endif; ?>
 
 
-        <form class="form-container-projeto" method="POST" action="<?= Config::get('APP_URL') ?>App/Controller/ProjetoController.php?action=salvar" enctype="multipart/form-data">
+      <form class="form-container-projeto"
+            method="POST"
+            action="<?= Config::get('APP_URL') ?>App/Controller/ProjetoController.php?action=salvar"
+            enctype="multipart/form-data">
+
             <input type="hidden" name="turma_id" value="<?= htmlspecialchars($turmaId) ?>">
 
             <h1 class="h1-sobre">DESCRIÇÃO DO PROJETO</h1>
             <div class="Container_Dia">
                 <div class="nome-e-descricao">
-                    <input type="text" name="nome_projeto" class="input-field" placeholder="Nome do Projeto:" required>
-                    <textarea name="descricao_projeto" class="textarea-field" placeholder="Descrição:" required></textarea>
+                    <input type="text" name="nome_projeto" class="input-field" placeholder="Nome do Projeto *" required>
+                    <textarea name="descricao_projeto" class="textarea-field" placeholder="Descrição Geral do Projeto:"></textarea>
                 </div>
-                 <div style="position: relative; width: 150px; text-align: center;">
-                    <img id="preview_projeto" src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Foto Projeto"
-                        class="foto-projetoturma-novo" style="position: static; cursor: pointer; width: 120px; height: 150px; object-fit: contain; border: 1px solid #333; border-radius: 20px; background-color: #e5e9e4; padding: 10px;"/>
-                    <input type="file" name="imagem_projeto" id="imagem_projeto_input" accept="image/*" style="display: none;" onchange="previewImage(this, 'preview_projeto');">
-                    <small style="display: block; margin-top: 5px;">Clique para adicionar capa</small>
-                </div>
-            </div>
+                 </div>
 
-            <h1 class="h1-sobre"> DIA I (Início)</h1>
+            <h1 class="h1-sobre"> DIA I</h1>
             <div class="Container_Dia">
-                <textarea name="descricao_dia_i" class="textarea-field" placeholder="Descrição das atividades do Dia I:" required></textarea>
-                <div style="position: relative; width: 150px; text-align: center;">
-                    <img id="preview_dia_i" src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Foto Dia I"
-                         class="foto-projetoturma-novo" style="position: static; cursor: pointer; width: 120px; height: 150px; object-fit: contain; border: 1px solid #333; border-radius: 20px; background-color: #e5e9e4; padding: 10px;"/>
-                    <input type="file" name="imagem_dia_i" id="imagem_dia_i_input" accept="image/*" style="display: none;" onchange="previewImage(this, 'preview_dia_i');">
-                     <small style="display: block; margin-top: 5px;">Clique para adicionar imagem</small>
-                </div>
-            </div>
-
-            <h1 class="h1-sobre"> DIA P (Processo)</h1>
-            <div class="Container_Dia">
-                <textarea name="descricao_dia_p" class="textarea-field" placeholder="Descrição das atividades do Dia P:" required></textarea>
-                 <div style="position: relative; width: 150px; text-align: center;">
-                     <img id="preview_dia_p" src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Foto Dia P"
-                          class="foto-projetoturma-novo" style="position: static; cursor: pointer; width: 120px; height: 150px; object-fit: contain; border: 1px solid #333; border-radius: 20px; background-color: #e5e9e4; padding: 10px;"/>
-                     <input type="file" name="imagem_dia_p" id="imagem_dia_p_input" accept="image/*" style="display: none;" onchange="previewImage(this, 'preview_dia_p');">
-                      <small style="display: block; margin-top: 5px;">Clique para adicionar imagem</small>
+                <textarea name="descricao_dia_i" class="textarea-field" placeholder="Descrição do Dia I:"></textarea>
+                <div class="input-imagem-container" style="position: relative; width: 120px; height: 150px;">
+                     <img src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia I" class="foto-projetoturma-novo preview-imagem" id="preview-dia-i" style="cursor: pointer;" />
+                     <input type="file" name="imagem_dia_i" accept="image/*" style="display: none;" onchange="previewFile(this, 'preview-dia-i')">
                  </div>
             </div>
 
-            <h1 class="h1-sobre"> DIA E (Entrega)</h1> <div class="Container_Dia">
-                 <textarea name="descricao_dia_e" class="textarea-field" placeholder="Descrição das atividades do Dia E:" required></textarea>
-                 <div style="position: relative; width: 150px; text-align: center;">
-                     <img id="preview_dia_e" src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Foto Dia E"
-                          class="foto-projetoturma-novo" style="position: static; cursor: pointer; width: 120px; height: 150px; object-fit: contain; border: 1px solid #333; border-radius: 20px; background-color: #e5e9e4; padding: 10px;"/>
-                     <input type="file" name="imagem_dia_e" id="imagem_dia_e_input" accept="image/*" style="display: none;" onchange="previewImage(this, 'preview_dia_e');">
-                      <small style="display: block; margin-top: 5px;">Clique para adicionar imagem</small>
+            <h1 class="h1-sobre"> DIA P</h1>
+            <div class="Container_Dia">
+                <textarea name="descricao_dia_p" class="textarea-field" placeholder="Descrição do Dia P:"></textarea>
+                 <div class="input-imagem-container" style="position: relative; width: 120px; height: 150px;">
+                     <img src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia P" class="foto-projetoturma-novo preview-imagem" id="preview-dia-p" style="cursor: pointer;" />
+                     <input type="file" name="imagem_dia_p" accept="image/*" style="display: none;" onchange="previewFile(this, 'preview-dia-p')">
+                 </div>
+            </div>
+
+             <h1 class="h1-sobre"> DIA E</h1>
+            <div class="Container_Dia">
+                <textarea name="descricao_dia_e" class="textarea-field" placeholder="Descrição do Dia E:"></textarea>
+                 <div class="input-imagem-container" style="position: relative; width: 120px; height: 150px;">
+                     <img src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia E" class="foto-projetoturma-novo preview-imagem" id="preview-dia-e" style="cursor: pointer;" />
+                     <input type="file" name="imagem_dia_e" accept="image/*" style="display: none;" onchange="previewFile(this, 'preview-dia-e')">
                  </div>
             </div>
 
             <div class="link-projeto">
-                 <input type="url" name="link_projeto" class="input-projeto" placeholder="Link do Repositório (Ex: GitHub):">
-                <div class="btn-novos-projeto">
-                    </div>
+                <input type="url" name="link_projeto" class="input-projeto" placeholder="Link do Repositório (Ex: https://github.com/...)">
             </div>
 
             <div class="button-projeto">
-                <?php // Botão secundário para voltar (usa JS global 'back-button') ?>
-                <?php buttonComponent('secondary', 'Cancelar', false, null, null, '', 'back-button'); ?>
-                <?php // Botão primário do tipo submit para salvar ?>
-                <?php buttonComponent('primary', 'Salvar Projeto', true); ?>
+                <?php buttonComponent('secondary', 'Cancelar', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/CadastroProjetos.php?id=' . $turmaId, null, '', 'back-button-js'); // Link direto para voltar ?>
+                <?php buttonComponent('primary', 'Salvar Projeto', true); // Botão de submit ?>
             </div>
-        </form> </main>
+      </form>
+    </main>
 
     <script>
-        // Função para exibir a imagem selecionada no input file
-        function previewImage(input, previewId) {
-            const file = input.files[0]; // Pega o arquivo selecionado
-            const previewElement = document.getElementById(previewId); // Pega o elemento <img> do preview
+        // Função para preview da imagem
+        function previewFile(input, previewId) {
+            const file = input.files[0];
+            const preview = document.getElementById(previewId);
+            const defaultImage = "<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg"; // Imagem padrão
 
             if (file) {
-                // Se um arquivo foi selecionado
-                const reader = new FileReader(); // Cria um leitor de arquivo
+                const reader = new FileReader();
+
                 reader.onload = function(e) {
-                    // Quando o arquivo for lido, define o src da imagem de preview
-                    previewElement.src = e.target.result;
+                    preview.src = e.target.result;
                 }
-                reader.readAsDataURL(file); // Lê o arquivo como Data URL
+                reader.readAsDataURL(file);
             } else {
-                 // Se nenhum arquivo for selecionado (ou a seleção for cancelada), volta para a imagem padrão
-                 previewElement.src = "<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg";
+                 // Se nenhum arquivo for selecionado (ou seleção cancelada), volta para a imagem padrão
+                 preview.src = defaultImage;
             }
         }
 
-        // Adiciona um listener de clique a cada imagem de preview.
-        // Clicar na imagem vai acionar o clique no input file correspondente (que está escondido).
-        document.getElementById('preview_projeto').addEventListener('click', () => document.getElementById('imagem_projeto_input').click());
-        document.getElementById('preview_dia_i').addEventListener('click', () => document.getElementById('imagem_dia_i_input').click());
-        document.getElementById('preview_dia_p').addEventListener('click', () => document.getElementById('imagem_dia_p_input').click());
-        document.getElementById('preview_dia_e').addEventListener('click', () => document.getElementById('imagem_dia_e_input').click());
+         // Adiciona clique nas imagens para ativar o input file correspondente
+         document.querySelectorAll('.preview-imagem').forEach(img => {
+            img.addEventListener('click', () => {
+                // Encontra o input file irmão ou dentro do mesmo container
+                const inputFile = img.closest('.input-imagem-container').querySelector('input[type="file"]');
+                if (inputFile) {
+                    inputFile.click();
+                }
+            });
+         });
 
-         // Adiciona funcionalidade ao botão 'Cancelar' (se não estiver usando o global.js)
-         const backButton = document.querySelector('.back-button');
-         if (backButton) {
-             backButton.addEventListener('click', (event) => {
-                 event.preventDefault(); // Impede o envio do formulário
-                 // Volta para a página anterior no histórico do navegador
-                 // ou redireciona para a lista de projetos se preferir
-                 // window.location.href = '<?= Config::get('APP_URL') . Config::get('DIR_ADM') ?>cadastroTurmas/CadastroProjetos.php?id=<?= $turmaId ?>';
-                 history.back();
-             });
-         }
+         // Corrige botão cancelar para não usar history.back() que pode dar problema com POST
+          const cancelButton = document.querySelector('.back-button-js');
+          if (cancelButton) {
+              cancelButton.addEventListener('click', (e) => {
+                  e.preventDefault(); // Impede comportamento padrão se for <a>
+                  window.location.href = cancelButton.href; // Navega para o link definido no href
+              });
+          }
     </script>
 
 </body>
