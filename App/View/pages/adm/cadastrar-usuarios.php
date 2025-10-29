@@ -66,18 +66,17 @@ require_once __DIR__ . "/../../componentes/nav.php";
                 <?php endif; ?>
 
                 <div class="form-top">
-                    <div class="form-group">
+              
                         <?php
-                        inputComponent('text', 'nome', 'Nome Completo *', $pessoa['nome'] ?? ($_POST['nome'] ?? ''));
-                        inputComponent('text', 'email', 'Email *', $pessoa['email'] ?? ($_POST['email'] ?? ''));
-                        inputComponent('text', 'linkedin', 'Link do linkedin', $pessoa['linkedin'] ?? ($_POST['linkedin'] ?? ''));
-                        inputComponent('text', 'github', 'Link para o GitHub', $pessoa['github'] ?? ($_POST['github'] ?? ''));
+                        inputComponent('text', 'nome', 'Nome Completo', $pessoa['nome'] ?? ($_POST['nome'] ?? ''), "nome", true );
+                        inputComponent('text', 'email', 'Email', $pessoa['email'] ?? ($_POST['email'] ?? ''), "email", true);
+                        inputComponent('text', 'linkedin', 'Link do linkedin', $pessoa['linkedin'] ?? ($_POST['linkedin'] ?? ''), "linkedin" );
+                        inputComponent('text', 'github', 'Link para o GitHub', $pessoa['github'] ?? ($_POST['github'] ?? ''), "github" );
                         ?>
-                    </div>
-
-                    <div class="form-group-polo div-center">
-                        <label for="tipo-usuario" style="font-weight: bold;">Perfil *</label>
-                        <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;">
+                   
+                    <div class="input-container">
+                        <label for="tipo-usuario">Perfil</label>
+                        <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;" required>
                             <option value="">-- Selecione --</option>
                             <?php foreach ($perfis as $perfil): ?>
                                 <option value="<?= htmlspecialchars($perfil) ?>"
@@ -87,16 +86,15 @@ require_once __DIR__ . "/../../componentes/nav.php";
                             <?php endforeach; ?>
                         </select>
                     </div>
+                </div>
 
-                    <div class="form-group-imagem">
-                        <label style="font-weight: bold;">Imagem *</label>
+                <div class="form-group-imagem input-container">
+                        <label>Imagem</label>
                         <div class="input-file-cadastro">
-                            <label class="input-file-wrapper">
                                 <img id="preview" src="<?= htmlspecialchars($caminhoImagem) ?>" alt="Upload" />
-                                <input type="file" name="imagem" id="fileInput" accept="image/*" style="display:none;" />
-                            </label>
+                                <input type="file" name="imagem" id="fileInput" accept="image/*" style="width:0; overflow: hidden; " required>
+                      
                         </div>
-                    </div>
                 </div>
 
                 <div class="form-bottom">

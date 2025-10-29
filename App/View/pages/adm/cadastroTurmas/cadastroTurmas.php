@@ -109,9 +109,7 @@ $currentTab = 'Dados-gerais';
             <div class="form-section">
               <h1 class='h1-turma'><?= $isEditMode ? 'EDITAR TURMA' : 'CADASTRO DE TURMA' ?></h1>
 
-              <label class="form-label" id="text_input">Nome</label>
-              <input type="text" name="nome" class="input-adm-turmas"
-                value="<?= htmlspecialchars($turma['nome'] ?? '') ?>">
+                      <?php  inputComponent('text', 'nome', 'Nome da turma' ,  ($turma['nome'] ?? ''), label:"nome", required: true)?>
 
               <label class="form-label" id="text_input">Descrição</label>
               <textarea name="descricao"
@@ -130,7 +128,7 @@ $currentTab = 'Dados-gerais';
                 <div class="container_text_polo">
                   <label class="form-label" id="text_input">Polo</label>
                   <select name="polo_id" class="input-adm-turmas">
-                    <option value="">Selecione um Pólo</option>
+                    <option value="">Selecione um Polo</option>
                     <?php foreach ($polos as $polo): // Loop para criar as opções do select a partir dos dados do banco. ?>
                       <option value="<?= $polo['polo_id'] ?>" <?= ($isEditMode && isset($turma) && $polo['polo_id'] == $turma['polo_id']) ? 'selected' : '' ?>>
                         <?= htmlspecialchars($polo['nome']) ?>
@@ -148,8 +146,7 @@ $currentTab = 'Dados-gerais';
               </label>
               <input type="file" id="imagem_turma" name="imagem_turma" accept="image/*" style="display: none;">
             </div>
-          </div>
-          <div class="form-bottom">
+               <div class="form-bottom">
             <div class="form-group-buton">
               <?php
               // Componentes de botão reutilizáveis.
@@ -159,6 +156,7 @@ $currentTab = 'Dados-gerais';
               buttonComponent('primary', $isEditMode ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>
+          </div>
           </div>
         </form>
       </div>
