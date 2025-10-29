@@ -74,7 +74,7 @@
 .galeria-turma-body {
   margin: 0;
   padding: 0;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-primary);
   background: linear-gradient(to bottom,
       black,
       black,
@@ -93,33 +93,31 @@
 .galeria-turma-h3,
 .galeria-turma-h5,
 .galeria-turma-h4 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var (--font-secondary);
   font-style: normal;
   font-weight: normal;
 }
 
 .galeria-turma-h1 {
   padding-top: 20px;
-  font-size: 30px;
+  font-size: var(--xl-font);
   text-align: center;
 }
 
 /*cabeçalho*/
 .galeria-turma-projeto {
   text-align: center;
-  font-size: 1.5625rem;
-  /* 25px */
+  font-size: var(--l-font);
   margin-top: 5rem;
-  /* 80px */
 }
 
 .galeria-turma-galeria {
   text-align: center;
-  font-size: 12px;
+  font-size: var(--m-font);
 }
 
 .galeria-turma-galeria h2 {
-  font-size: 28px;
+  font-size: var(--xl-font);
   margin-bottom: 30px;
 }
 
@@ -130,7 +128,7 @@
   padding: 5px;
   border: 0px solid;
   border-radius: 0px;
-  font-size: 12px;
+  font-size: var(--m-font);
 }
 
 .galeria-turma-header {
@@ -190,10 +188,8 @@
 }
 
 .galeria-turma-dia h2 {
-  font-size: 3rem;
-  /* 48px */
+  font-size: var(--xl-font);
   padding: 1.25rem;
-  /* 20px */
 }
 
 .galeria-turma-section h2 {
@@ -212,21 +208,18 @@
 
 .galeria-turma-cardss h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: var(--xl-font);
 }
 
 .galeria-turma-margin-top-right-dia-e {
   margin-right: 1.5625rem;
-  /* 25px */
   margin-top: 4.0625rem;
-  /* 65px */
 }
 
 /* ===== IMAGENS ===== */
 .galeria-turma-section img {
   width: 100%;
   max-width: 31.25rem;
-  /* 500px */
   display: block;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -265,8 +258,8 @@
   background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
   color: white;
   padding: 5px 20px;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 24px;
+  font-family: var(--font-secondary);
+  font-size: var(--l-font);
   letter-spacing: 2px;
   cursor: pointer;
   border-radius: 12px;
@@ -344,15 +337,15 @@
 }
 
 .galeria-turma-projeto-intro h3 {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 36px;
+  font-family: var(--font-secondary);
+  font-size: var(--xl-font);
   color: #aeff40;
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .galeria-turma-projeto-intro p {
-  font-size: 18px;
+  font-size: var(--m-font);
   color: #ccc;
   max-width: 800px;
   margin: 0 auto;
@@ -387,8 +380,8 @@
 .galeria-turma-sub-tab-btn {
   background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
   color: white;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 22px;
+  font-family: var(--font-secondary);
+  font-size: var(--l-font);
   letter-spacing: 1px;
   cursor: pointer;
   border-radius: 8px;
@@ -483,8 +476,8 @@
 }
 
 .galeria-turma-tab-text h4 {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 2rem;
+  font-family: var(--font-secondary);
+  font-size: var(--xl-font);
   font-weight: normal;
   margin-bottom: 20px;
   color: #aeff40;
@@ -541,7 +534,7 @@
   .galeria-turma-main-tab-btn {
     width: 100%;
     max-width: 300px;
-    font-size: 20px;
+    font-size: var(--l-font);
     padding: 15px 30px;
   }
 
@@ -555,7 +548,7 @@
   .galeria-turma-sub-tab-btn {
     width: 100%;
     max-width: 250px;
-    font-size: 14px;
+    font-size: var(--s-font);
     padding: 10px 20px;
   }
 
@@ -567,11 +560,11 @@
   }
 
   .galeria-turma-projeto-intro h3 {
-    font-size: 28px;
+    font-size: var(--l-font);
   }
 
   .galeria-turma-projeto-intro p {
-    font-size: 16px;
+    font-size: var(--m-font);
   }
 }
 
@@ -622,9 +615,9 @@
 .galeria-turma-btn {
   background-color: #aeff40;
   border: none;
-  font-size: 32px;
+  font-size: var(--xl-font);
   padding: 12px 35px;
-  font-family: "Bebas Neue";
+  font-family: var(--font-secondary);
   color: #004302;
   font-weight: normal;
   cursor: pointer;
@@ -642,7 +635,7 @@
 
 .galeria-turma-titulo {
   margin-bottom: 30px;
-  font-size: 2rem;
+  font-size: var(--xl-font);
   text-transform: uppercase;
 }
 
@@ -693,7 +686,7 @@ h3 {
 }
 
 .galeria-turma-card-container:hover {
-  font-size: 18px;
+  font-size: var(--m-font);
 }
 
 .galeria-turma-image-container {
@@ -712,7 +705,7 @@ h3 {
 }
 
 .text-card-turmagaleria {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-secondary);
   letter-spacing: 0.5px;
   position: absolute;
   bottom: -40px;
@@ -726,7 +719,7 @@ h3 {
 
 .text-card-turmagaleria h2 {
   margin: 0;
-  font-size: 1.3em;
+  font-size: var(--l-font);
   letter-spacing: 1px;
   word-spacing: 10px;
 }
@@ -738,13 +731,13 @@ h3 {
   justify-content: center;
   gap: 20px;
   min-height: 200px;
-  font-size: 1.5rem;
+  font-size: var(--l-font);
   background: linear-gradient(135deg, #0b0b0b53, #1a1a1a);
 }
 
 .text-card-turmagaleria p {
   margin: 5px 0;
-  font-size: 1.1em;
+  font-size: var(--m-font);
 }
 
 /* ===== BOTÃO ===== */
@@ -755,9 +748,9 @@ h3 {
 .galeria-turma-btn {
   background-color: #AEFF40;
   border: none;
-  font-size: 24px;
+  font-size: var(--l-font);
   padding: 8px 20px;
-  font-family: "Bebas Neue";
+  font-family: var(--font-secondary);
   color: #004302;
   font-weight: normal;
   cursor: pointer;
@@ -771,7 +764,7 @@ h3 {
 
 .galeria-turma-social-icons a {
   color: #aeff40;
-  font-size: 35px;
+  font-size: var(--xl-font);
   margin: 0 8px;
   text-decoration: none;
 }
@@ -779,7 +772,7 @@ h3 {
 /* ===== FOOTER ===== */
 .galeria-turma-textofinal {
   padding: 70px;
-  font-size: 14px;
+  font-size: var(--s-font);
 }
 
 /* ===== RESPONSIVIDADE ===== */
@@ -837,12 +830,12 @@ h3 {
   }
 
   .galeria-turma-dia h2 {
-    font-size: 24px;
+    font-size: var(--l-font);
     padding: 8px;
   }
 
   .galeria-turma-dia p {
-    font-size: 13px;
+    font-size: var(--s-font);
     padding: 8px;
   }
 
@@ -851,22 +844,22 @@ h3 {
   }
 
   .galeria-turma-btn {
-    font-size: 20px;
+    font-size: var(--l-font);
     padding: 5px 15px;
   }
 
   .galeria-turma-cardss h1 {
-    font-size: 24px;
+    font-size: var(--l-font);
   }
 
   .galeria-turma-projeto {
-    font-size: 16px;
+    font-size: var(--m-font);
     margin-top: 50px;
   }
 
   .galeria-turma-galeria {
     word-spacing: 50px;
-    font-size: 8px;
+    font-size: var(--s-font);
   }
 
   .text-card-turmagaleria {
@@ -875,15 +868,15 @@ h3 {
   }
 
   .text-card-turmagaleria h2 {
-    font-size: 1em;
+    font-size: var(--m-font);
   }
 
   .text-card-turmagaleria p {
-    font-size: 0.9em;
+    font-size: var(--m-font);
   }
 
   .galeria-turma-social-icons a {
-    font-size: 24px;
+    font-size: var(--l-font);
     margin: 0 3px;
   }
 
@@ -893,7 +886,7 @@ h3 {
 
   .galeria-turma-textofinal {
     padding: 30px 15px;
-    font-size: 11px;
+    font-size: var(--s-font);
   }
 
   .galeria-turma-header {
@@ -929,22 +922,22 @@ h3 {
   }
 
   .galeria-turma-projeto {
-    font-size: 10px;
+    font-size: var(--s-font);
     margin-top: 25px;
   }
 
   .galeria-turma-galeria {
     word-spacing: 20px;
-    font-size: 6px;
+    font-size: var(--s-font);
   }
 
   .galeria-turma-dia h2 {
-    font-size: 14px;
+    font-size: var(--m-font);
     padding: 3px;
   }
 
   .galeria-turma-dia p {
-    font-size: 9px;
+    font-size: var(--s-font);
     padding: 3px;
   }
 
@@ -954,11 +947,11 @@ h3 {
   }
 
   .galeria-turma-btn {
-    font-size: 10px;
+    font-size: var(--s-font);
   }
 
   .galeria-turma-cardss h1 {
-    font-size: 14px;
+    font-size: var(--m-font);
   }
 
   .text-card-turmagaleria {
@@ -967,15 +960,15 @@ h3 {
   }
 
   .text-card-turmagaleria h2 {
-    font-size: 0.8em;
+    font-size: var(--m-font);
   }
 
   .text-card-turmagaleria p {
-    font-size: 0.7em;
+    font-size: var(--m-font);
   }
 
   .galeria-turma-social-icons a {
-    font-size: 16px;
+    font-size: var(--m-font);
     margin: 0 1px;
   }
 
@@ -994,7 +987,7 @@ h3 {
 
   .galeria-turma-textofinal {
     padding: 15px 8px;
-    font-size: 9px;
+    font-size: var(--s-font);
   }
 
   .galeria-turma-image-container {
