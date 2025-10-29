@@ -198,23 +198,16 @@
 
 .galeria-turma-section h2 {
   font-family: var(--font-secondary);
-  font-size: var(--xl-font);
-  /* 28px */
-  margin-bottom: 0.625rem;
-  /* 10px */
+  font-size: var(--l-font);
   text-transform: uppercase;
   font-weight: normal;
 
 }
 
 .galeria-turma-section p {
-  /* margin: 0.625rem 0; */
-  /* 10px */
   font-size: var(--m-font);
-  /* 16px */
   font-family: var(--font-primary);
-  padding: 1.25rem;
-  /* 20px */
+  padding: 0.5rem;
 }
 
 .galeria-turma-cardss h1 {
