@@ -99,8 +99,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
             <div class="topo-lista-alunos">
                 <?php
-                buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\"");
-                ?>
+                buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro()\"");
+ ?>
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
@@ -177,10 +177,11 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     </form>
                 </div>
 
-                <div id="modal-cadastro">
-                    <form id="form-cadastro-pessoa" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
+                <div class="modal-cadastro" id="modal-cadastro-aluno" onclick="">
+                    <form class="form-cadastro-pessoa" method="POST" action="">
                         <div>
-                            <label for="pesquisar-pessoa">Pesquisar <?= ($classificacao === 'aluno' ? 'aluno' : 'professor')?></label>
+                            <span class="material-symbols-outlined" name="btn-close">close</span>
+                            <label for="pesquisar-pessoa">Pesquisar Alunos </label>
                             <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome' ); ?>
                             <div id="sugestoes"></div>
                         </div>
