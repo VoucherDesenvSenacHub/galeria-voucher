@@ -6,7 +6,7 @@ require_once __DIR__ . '/../Helpers/Redirect.php';
 require_once __DIR__ . '/../Helpers/Request.php';
 require_once __DIR__ . '/../Model/ProjetoModel.php';
 require_once __DIR__ . '/../Model/ImagemModel.php';
-// require_once __DIR__ . '/../Model/ImagemProjetoDiaModel.php';
+require_once __DIR__ . '/../Model/ImagemProjetoDiaModel.php';
 require_once __DIR__ . '/../Service/ImagensUploadService.php';
 require_once __DIR__ . '/ValidarLoginController.php';
 
@@ -23,6 +23,16 @@ class ProjetoController {
     }
 
     public function salvar() {
+
+        // Habilita a exibição de erros na tela
+        ini_set('display_errors', '1');
+
+        // Habilita a exibição de erros de inicialização (startup errors)
+        ini_set('display_startup_errors', '1');
+
+        // Define o nível de erros que serão reportados (E_ALL reporta todos os erros e avisos)
+        error_reporting(E_ALL);
+
         ValidarLoginController::validarAdminRedirect(Config::get('DIR_ADM') . 'login.php');
 
         if (Request::getMethod() !== 'POST') {
@@ -99,6 +109,15 @@ class ProjetoController {
             } else {
                 // Se for uma string, é a mensagem de erro detalhada do Model
                 $erros[] = "Erro ao salvar o projeto no banco de dados: " . $resultado;
+
+                // Habilita a exibição de erros na tela
+                ini_set('display_errors', '1');
+
+                // Habilita a exibição de erros de inicialização (startup errors)
+                ini_set('display_startup_errors', '1');
+
+                // Define o nível de erros que serão reportados (E_ALL reporta todos os erros e avisos)
+                error_reporting(E_ALL);
             }
         }
 
