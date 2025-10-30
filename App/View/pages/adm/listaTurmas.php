@@ -12,7 +12,7 @@ headerComponent("Voucher Desenvolvedor - Turmas");
 
 $turmaModel = new TurmaModel();
 $termoPesquisa = $_GET['pesquisa'] ?? '';
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$paginaAtual = Request::getId('pagina') ?? 1;
 $turmasPorPagina = 10;
 $offset = ($paginaAtual - 1) * $turmasPorPagina;
 
@@ -91,7 +91,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         <td><?= htmlspecialchars($turma['NOME_POLO']) ?></td>
                                         <td class="acoes">
                                             <div class="acoes-container">
-                                                <a href="cadastroTurmas/cadastroTurmas.php?id=<?= $turma['turma_id'] ?>"
+                                                <a href="cadastroTurmas/cadastroTurmas.php?turma_id=<?= $turma['turma_id'] ?>"
                                                     title="Editar">
                                                     <span class="material-symbols-outlined" id="edite">edit</span>
                                                 </a>
