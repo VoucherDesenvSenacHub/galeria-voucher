@@ -1,24 +1,23 @@
 <?php
-
-$acao = $_GET['acao'] ?? $_POST['acao'] ?? '';
-
-$nomeAluno =  $_Get['nome'] ?? $_POST['nome'] ?? '';
-$nomeTurma =  $_Get['turma'] ?? $_POST['turma'] ?? '';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    switch ($acao) {
-        case 'carregarTurma': {
-                
-            }
-    }
-}
 session_start();
 
-require_once __DIR__ . '/../Config/env.php';
+// Inclui os novos helpers e a configuração
+require_once __DIR__ . '/../Config/App.php';
+require_once __DIR__ . '/../Helpers/Request.php';
+require_once __DIR__ . '/../Helpers/Redirect.php';
+
 require_once __DIR__ . '/../Model/TurmaModel.php';
 require_once __DIR__ . '/../Model/ImagemModel.php';
+require_once __DIR__ . '/../Service/ImagensUploadService.php';
 
 class TurmaController {
+    
+    private $uploadService;
+
+    public function __construct()
+    {
+        $this->uploadService = new ImagensUploadService();
+    }
     
     private function slugify(string $text): string 
     {
@@ -31,12 +30,12 @@ class TurmaController {
     }
 
     public function salvar() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (Request::getMethod() === 'POST') {
             
-            $nome = trim($_POST['nome'] ?? '');
-            $descricao = trim($_POST['descricao'] ?? '');
-            $data_inicio = $_POST['data_inicio'] ?? '';
-            $data_fim = !empty($_POST['data_fim']) ? $_POST['data_fim'] : null;
+            $nome = trim(Request::post('nome', ''));
+            $descricao = trim(Request::post('descricao', ''));
+            $data_inicio = Request::post('data_inicio', '');
+            $data_fim = !empty(Request::post('data_fim')) ? Request::post('data_fim') : null;
             $polo_id = filter_input(INPUT_POST, 'polo_id', FILTER_VALIDATE_INT);
             $imagem_id = null;
 
@@ -65,67 +64,44 @@ class TurmaController {
                 }
             }
 
-            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
-                $caminhoTemporario = $_FILES['imagem_turma']['tmp_name'];
-                $infoImagem = @getimagesize($caminhoTemporario);
-                
-                $tiposPermitidos = ['image/jpeg', 'image/png'];
+            $imagemFile = Request::file('imagem_turma');
+            if ($imagemFile && $imagemFile['error'] === UPLOAD_ERR_OK) {
+                $resultadoUpload = $this->uploadService->salvar($imagemFile, 'turma');
 
-                if ($infoImagem === false || !in_array($infoImagem['mime'], $tiposPermitidos)) {
-                    $erros[] = "Formato de imagem inválido. Apenas arquivos JPEG e PNG são permitidos.";
+                if ($resultadoUpload['success']) {
+                    $imagemModel = new ImagemModel();
+                    $imagem_id = $imagemModel->salvarImagem($resultadoUpload['caminho'], "Imagem da turma " . $nome);
+                } else {
+                    $erros[] = $resultadoUpload['erro'];
                 }
             }
             
             
             if (!empty($erros)) {
                 $_SESSION['erros_turma'] = $erros;
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
-                exit;
-            }
-
-            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
-                $imagemModel = new ImagemModel();
-                
-                $extensao = strtolower(pathinfo($_FILES['imagem_turma']['name'], PATHINFO_EXTENSION));
-                $nomeBase = $this->slugify($nome);
-                $nomeArquivo = $nomeBase . '-' . time() . '.' . $extensao;
-                
-                $diretorioDestino = __DIR__ . '/../View/assets/img/turmas/';
-                // Verifica se o diretório existe, se não, tenta criar
-                if (!is_dir($diretorioDestino)) {
-                    mkdir($diretorioDestino, 0777, true);
-                }
-
-                $caminhoDestino = $diretorioDestino . $nomeArquivo;
-                $urlRelativa = 'App/View/assets/img/turmas/' . $nomeArquivo;
-                
-                if (move_uploaded_file($_FILES['imagem_turma']['tmp_name'], $caminhoDestino)) {
-                    $imagem_id = $imagemModel->salvarImagem($urlRelativa, "Imagem da turma " . $nome);
-                }
+                Redirect::toAdm('cadastroTurmas/cadastroTurmas.php');
+                return;
             }
 
             $turmaModel = new TurmaModel();
             $resultado = $turmaModel->criarTurma($nome, $descricao, $data_inicio, $data_fim, $polo_id, $imagem_id);
 
             if ($resultado) {
-                $_SESSION['sucesso_cadastro'] = "".htmlspecialchars($nome)." CADASTRADA COM SUCESSO !!!";
-                // Redireciona para a página de edição da nova turma
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php?id=' . $resultado);
-                exit;
+                $_SESSION['sucesso_cadastro'] = "" . $nome . " CADASTRADA COM SUCESSO !!!";
+                Redirect::toAdm('cadastroTurmas/cadastroTurmas.php', ['id' => $resultado]);
             } else {
                 $_SESSION['erros_turma'] = ["Ocorreu um erro ao salvar a turma."];
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastroTurmas/cadastroTurmas.php');
-                exit;
+                Redirect::toAdm('cadastroTurmas/cadastroTurmas.php');
             }
         }
     }
 
     public function atualizar() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (Request::getMethod() === 'POST') {
             $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
             if (!$turma_id) {
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
-                exit;
+                Redirect::toAdm('listaTurmas.php');
+                return;
             }
 
             $turmaModel = new TurmaModel();
@@ -133,14 +109,14 @@ class TurmaController {
             $dadosAntigos = $turmaModel->buscarTurmaPorId($turma_id);
             if (!$dadosAntigos) {
                 $_SESSION['erros_turma'] = ["Turma não encontrada para atualização."];
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
-                exit;
+                Redirect::toAdm('listaTurmas.php');
+                return;
             }
 
-            $nome = trim($_POST['nome'] ?? '');
-            $descricao = trim($_POST['descricao'] ?? '');
-            $data_inicio = $_POST['data_inicio'] ?? '';
-            $data_fim = !empty($_POST['data_fim']) ? $_POST['data_fim'] : null;
+            $nome = trim(Request::post('nome', ''));
+            $descricao = trim(Request::post('descricao', ''));
+            $data_inicio = Request::post('data_inicio', '');
+            $data_fim = !empty(Request::post('data_fim')) ? Request::post('data_fim') : null;
             $polo_id = filter_input(INPUT_POST, 'polo_id', FILTER_VALIDATE_INT);
             $imagem_id = filter_input(INPUT_POST, 'imagem_id_atual', FILTER_VALIDATE_INT) ?: null;
 
@@ -150,41 +126,36 @@ class TurmaController {
             if ($polo_id === false || $polo_id <= 0) { $erros[] = "É obrigatório selecionar um 'Polo'."; }
                 
             if (!empty($data_inicio) && !empty($data_fim)) {
-                // ... (lógica de validação de data idêntica à de salvar) ...
+                try {
+                    $inicioObj = new DateTime($data_inicio);
+                    $fimObj = new DateTime($data_fim);
+                    if ($fimObj < $inicioObj) {
+                        $erros[] = "A data de término não pode ser anterior à data de início.";
+                    }
+                } catch (Exception $e) {
+                    $erros[] = "Formato de data inválido.";
+                }
             }
 
-            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
-                $caminhoTemporario = $_FILES['imagem_turma']['tmp_name'];
-                $infoImagem = @getimagesize($caminhoTemporario);
-                
-                $tiposPermitidos = ['image/jpeg', 'image/png'];
+            $imagemFile = Request::file('imagem_turma');
+            if ($imagemFile && $imagemFile['error'] === UPLOAD_ERR_OK) {
+                $resultadoUpload = $this->uploadService->salvar($imagemFile, 'turma');
 
-                if ($infoImagem === false || !in_array($infoImagem['mime'], $tiposPermitidos)) {
-                    $erros[] = "Formato de imagem inválido. Apenas arquivos JPEG e PNG são permitidos.";
+                if ($resultadoUpload['success']) {
+                    $imagemModel = new ImagemModel();
+                    $novo_imagem_id = $imagemModel->salvarImagem($resultadoUpload['caminho'], "Imagem atualizada da turma " . $nome);
+                    if ($novo_imagem_id) {
+                        $imagem_id = $novo_imagem_id; 
+                    }
+                } else {
+                    $erros[] = $resultadoUpload['erro'];
                 }
             }
         
             if (!empty($erros)) {
                 $_SESSION['erros_turma'] = $erros;
-                header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . "cadastroTurmas/cadastroTurmas.php?id=$turma_id");
-                exit;
-            }
-
-            if (isset($_FILES['imagem_turma']) && $_FILES['imagem_turma']['error'] === UPLOAD_ERR_OK) {
-                $imagemModel = new ImagemModel();
-
-                $extensao = strtolower(pathinfo($_FILES['imagem_turma']['name'], PATHINFO_EXTENSION));
-                $nomeBase = $this->slugify($nome);
-                $nomeArquivo = $nomeBase . '-' . time() . '.' . $extensao;
-                
-                $caminhoDestino = __DIR__ . '/../View/assets/img/turmas/' . $nomeArquivo;
-                $urlRelativa = 'App/View/assets/img/turmas/' . $nomeArquivo;
-                if (move_uploaded_file($_FILES['imagem_turma']['tmp_name'], $caminhoDestino)) {
-                    $novo_imagem_id = $imagemModel->salvarImagem($urlRelativa, "Imagem atualizada da turma " . $nome);
-                    if ($novo_imagem_id) {
-                        $imagem_id = $novo_imagem_id; 
-                    }
-                }
+                Redirect::toAdm("cadastroTurmas/cadastroTurmas.php", ['id' => $turma_id]);
+                return;
             }
 
             $camposAlterados = [];
@@ -195,11 +166,10 @@ class TurmaController {
             if ($dadosAntigos['polo_id'] != $polo_id) { $camposAlterados[] = 'Polo'; }
             if ($dadosAntigos['imagem_id'] != $imagem_id) { $camposAlterados[] = 'Imagem'; }
 
-
             $sucesso = $turmaModel->atualizarTurma($turma_id, $nome, $descricao, $data_inicio, $data_fim, $polo_id, $imagem_id);
 
             if ($sucesso) {
-                $mensagem = "".htmlspecialchars($nome)." ATUALIZADA COM SUCESSO!!!";
+                $mensagem = "" . $nome . " ATUALIZADA COM SUCESSO!!!";
                 
                 if (!empty($camposAlterados)) {
                     $mensagem .= " Campos alterados: " . implode(', ', $camposAlterados) . ".";
@@ -211,14 +181,12 @@ class TurmaController {
             } else {
                 $_SESSION['erros_turma'] = ["Erro ao atualizar a turma."];
             }
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . "cadastroTurmas/cadastroTurmas.php?id=$turma_id");
-            exit;
+            Redirect::toAdm("cadastroTurmas/cadastroTurmas.php", ['id' => $turma_id]);
         }
     }
 
-
-   public function excluir() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    public function excluir() {
+        if (Request::getMethod() === 'POST') {
             $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
             if ($turma_id) {
                 $turmaModel = new TurmaModel();
@@ -227,20 +195,21 @@ class TurmaController {
                 $nomeDaTurma = $turma ? $turma['nome'] : '';
 
                 if ($turmaModel->excluirTurma($turma_id)) {
-                    $_SESSION['sucesso_exclusao'] = "" . htmlspecialchars($nomeDaTurma) . " EXCLUÍDA COM SUCESSO!!!";
+                    $_SESSION['sucesso_exclusao'] = "" . $nomeDaTurma . " EXCLUÍDA COM SUCESSO!!!";
                 } else {
                     $_SESSION['erros_turma'] = ["Erro ao excluir a turma."];
                 }
             }
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
-            exit;
+            Redirect::toAdm('listaTurmas.php');
         }
     }
 }
 
-if (isset($_GET['action'])) {
+
+$action = Request::get('action');
+if ($action) {
     $controller = new TurmaController();
-    switch ($_GET['action']) {
+    switch ($action) {
         case 'salvar':
             $controller->salvar();
             break;
@@ -252,5 +221,3 @@ if (isset($_GET['action'])) {
             break;
     }
 }
-
-?>

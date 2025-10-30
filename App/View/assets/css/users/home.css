@@ -2,14 +2,15 @@
     margin: 0px;
     padding: 0px;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom,
+    background: black;
+    /* linear-gradient(to bottom,
             rgba(0, 0, 0, 0.97),
             rgba(0, 0, 0, 0.9),
             #0d9c0d,
             #0d9c0d,
             rgba(0, 0, 0, 0.96),
             rgba(0, 0, 0, 0.95),
-            rgba(0, 0, 0, 0.9));
+            rgba(0, 0, 0, 0.9)); */
 }
 
 
@@ -20,8 +21,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: -2;
 
+}
+
+.bg-gradient{
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 1) 10%, rgba(13, 156, 13, 1) 40%, rgba(13, 156, 13, 1) 60%, rgba(0, 0, 0, 1) 90%);
 }
 
 .body-turma {
@@ -39,20 +44,23 @@
     /* Ajuste conforme necessário */
     padding: 0px;
     margin: 0px;
+    --secao-height: calc(100vh - var(--nav-height));
 }
 
 .main-user section {
     /* Cada seção ocupa o espaço disponível */
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     justify-content: center;
 }
 
 /* Estilos específicos para cada seção */
 
 /* Estilo para a seção 1 (informações visuais da página)*/
+
 #secao1 {
-    min-height: 100vh;
+    min-height: var(--secao-height);
+    position: relative;
 
     .content {
         display: flex;
@@ -76,11 +84,16 @@
 
 /* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
-    .container {
+    min-height: var(--secao-height);
+    /* background: #0D9C0D;
+background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 0%, rgba(13, 156, 13, 1) 5%, rgba(0, 0, 0, 1) 80%); */
+
+    .container_card {
         height: 100%;
         display: flex;
         gap: 5rem;
         justify-content: center;
+        min-height: 500px;
 
         .card {
             background-color: #0d0d0d;
@@ -101,13 +114,6 @@
             max-height: 85px;
             overflow: hidden;
             transition: max-height 0.6s ease, box-shadow 0.3s ease;
-
-            /* p:after,
-                h1:after {
-                    content: "";
-                    display: inline-block;
-                    width: 100%;
-                } */
         }
 
 
@@ -156,10 +162,10 @@
 
 /* estatísticas e call to action (inspire-se) */
 #secao3 {
+    min-height: var(--secao-height);
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-top: 10rem;
 
     .container2 {
         background: transparent;
@@ -215,8 +221,8 @@
 }
 
 #secao4 {
+    min-height: var(--secao-height);
     flex-direction: column;
-    padding-top: 10rem;
 
     .call-to-action {
         font-family: var(--font-secondary);
@@ -321,9 +327,6 @@
 }
 
 @media (max-width: 769px) {
-    .NavInicial .nav-inner {
-        width: 100%;
-    }
 
     #matrix-canvas {
         width: 101%;

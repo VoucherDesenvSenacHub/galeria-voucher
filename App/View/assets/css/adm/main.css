@@ -1,13 +1,6 @@
-.container-adm {
-  display: flex;
-  font-family: var(--font-primary);
-  height: 100vh;;
-}
- 
+
 .content-adm {
   background-color: var(--white-background);
-  flex-grow: 1;
-  margin-top: 50px;
   padding: 20px;
 }
 
@@ -36,12 +29,6 @@
 }
 
 @media (max-width: 1333px) and (max-height: 720px) {
- 
- 
-
-  .container-adm {
-    flex-direction: column;
-  }
 
  
   .content-adm {
@@ -63,14 +50,6 @@
 }
 
 @media (max-width: 768px) {
-    .container-adm{
-      flex-direction: column;
-    }
-  
-    .sidebar-adm {
-      width: 100%;
-      height: auto;
-    }
   
     .content-adm {
       padding: 20px;

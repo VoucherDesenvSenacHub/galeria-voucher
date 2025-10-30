@@ -30,6 +30,65 @@
 .col-50 { flex: 0 0 50%; }
 .col-100 { flex: 0 0 100%; }
 
+.layout{
+    font-family: var(--font-secondary);
+    display: grid;
+    height: 100vh;
+    overflow: hidden;
+    grid-template-areas: 
+        "main"
+    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    .nav-head {
+        position: sticky;
+        z-index: 5;
+        top: 0;
+    }
+
+    .layout-main {
+        min-height: 100vh;
+    }
+}
+
+
+.layout:has(>aside) {
+    grid-template-areas: 
+        "head head"
+        "side main"
+    ;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows:  var(--nav-height) 1fr;
+
+    .nav-head{
+        grid-area: head;
+         position: static
+    }
+
+    .layout-main {
+        min-height: auto;
+    }
+}
+
+.layout-main{
+    grid-area: main;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+.main-section{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.main-section::-webkit-scrollbar {
+    display: none;
+}
+
+
+
 /* -------------------------------------------------- */
 /* Breakpoints globais                               */
 /* -------------------------------------------------- */

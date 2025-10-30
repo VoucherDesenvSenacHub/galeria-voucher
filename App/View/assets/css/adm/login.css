@@ -2,17 +2,13 @@
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    height: 100vh;
     background-image: linear-gradient(#000000, #003100);
-    overflow: hidden;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .main-login {
-    width: 100vw;
-    height: 100%;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,30 +148,5 @@
     }
 }
 
-@media (min-width: 992px) {
-    .body-login .footer {
-        justify-content: center !important;
-        padding-left: 0 !important;
-    }
-}
 
-/* Footer fixo e centralizado */
-.body-login footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 0;
-    z-index: 999;
-}
-
-.body-login .footer .row {
-    justify-content: center !important;
-}
-
-.body-login .footer .col-100 {
-    text-align: center;
-}
   

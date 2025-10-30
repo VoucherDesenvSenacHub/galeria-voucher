@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/BaseModel.php';
+require_once __DIR__ . '/../Config/App.php'; // Inclui a configuração
 
 class UsuarioModel extends BaseModel
 {
@@ -75,8 +76,11 @@ class UsuarioModel extends BaseModel
 
     public function buscarImagemPorPessoaId(int $pessoaId): string
     {
+        // Define o caminho de fallback usando a classe Config
+        $fallbackImage = Config::get('APP_URL') . 'App/View/assets/img/adm/fallbackAdm.png';
+
         $query = "
-            SELECT COALESCE(i.url, '" . VARIAVEIS['APP_URL'] . "App/View/assets/img/adm/fallbackAdm.png') AS imagem
+            SELECT COALESCE(i.url, :fallback) AS imagem
             FROM pessoa p
             LEFT JOIN imagem i ON i.imagem_id = p.imagem_id
             WHERE p.pessoa_id = :pessoaId
@@ -84,7 +88,7 @@ class UsuarioModel extends BaseModel
         ";
 
         $stmt = $this->pdo->prepare($query);
-        $stmt->execute([':pessoaId' => $pessoaId]);
+        $stmt->execute([':fallback' => $fallbackImage, ':pessoaId' => $pessoaId]);
 
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 

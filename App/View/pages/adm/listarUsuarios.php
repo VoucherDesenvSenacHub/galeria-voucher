@@ -8,7 +8,6 @@ require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/PessoaModel.php";
 require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
-// --- LÓGICA DE PAGINAÇÃO E BUSCA ---
 $pessoaModel = new PessoaModel();
 $termoPesquisa = $_GET['pesquisa'] ?? '';
 $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
@@ -30,25 +29,25 @@ try {
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
-<body class="body-lista-alunos">
+<body class="layout body-lista-alunos">
 
   <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
   <?php
-  $isAdmin = true; // Para páginas de admin
+  $isAdmin = true;
   require_once __DIR__ . "/../../componentes/nav.php";
   ?>
 
-  <main class="main-lista-alunos">
+  <main class="layout-main main-lista-alunos">
     <?php BreadCrumbs::gerarBreadCrumbs()?>
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">
-        <?php buttonComponent('primary', 'CADASTRAR', false, VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'cadastrar-usuarios.php'); ?>
+        <?php buttonComponent('primary', 'CADASTRAR', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastrar-usuarios.php'); ?>
 
         <form method="GET" action="">
-          <div class="input-pesquisa-container"> 
+          <div class="input-pesquisa-container">
           <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar por nome ou polo" value="<?= htmlspecialchars($termoPesquisa) ?>">
             <button type="submit" class="search-button">
-              <img src="<?php echo VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] ?>adm/lupa.png" alt="Ícone de lupa"
+              <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa"
               class="icone-lupa-img">
             </button>
           </div>
@@ -84,7 +83,7 @@ try {
                               <a href="cadastrar-usuarios.php?acao=editar&id=<?= $usuario['pessoa_id'] ?>">
                                   <span class="material-symbols-outlined acao-edit" title="Editar">edit</span>
                               </a>
-                              <a href="../../../Controller/PessoaController.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
+                              <a href="<?= Config::get('APP_URL') ?>App/Controller/PessoaController.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
                                 onclick="return confirm('Tem certeza que deseja excluir este registro?');">
                                   <span class="material-symbols-outlined acao-delete" title="Excluir">delete</span>
                               </a>
@@ -98,8 +97,6 @@ try {
               <?php endif; ?>
             </tbody>
           </table>
-
-
         </div>
       </div>
 
@@ -132,5 +129,4 @@ try {
   <script src="../../assets/js/adm/lista-alunos.js"></script>
 
 </body>
-
 </html>

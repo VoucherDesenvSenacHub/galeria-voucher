@@ -2,7 +2,8 @@
 .config
 
 
-Upload/
+Uploads/*
+uploads/*
 
 # Misc
 .vscode
