@@ -56,7 +56,7 @@ class ProjetoModel extends BaseModel
 
             foreach ($dias as &$dia) {
                 $dia['id'] = $dia['projeto_dia_id'];
-                $dia['imagens'] = $this->imagemProjetoDiaModel->buscarPorProjetoDia((int)$dia['projeto_dia_id']);
+                $dia['imagens'] = $this->imagemProjetoDiaModel->buscarPorProjetoDia((int) $dia['projeto_dia_id']);
             }
             unset($dia);
 
@@ -82,7 +82,7 @@ class ProjetoModel extends BaseModel
         error_log("[_inserirProjetoPrincipal] Inserindo projeto '{$nome}' para turma ID {$turmaId}.");
 
         if (!$this->verificarExistencia('turma', 'turma_id', $turmaId)) {
-             throw new Exception("Chave estrangeira inválida: Turma ID {$turmaId} não existe.");
+            throw new Exception("Chave estrangeira inválida: Turma ID {$turmaId} não existe.");
         }
 
         $sqlProjeto = "INSERT INTO {$this->tabela} (nome, descricao, link, turma_id) VALUES (:nome, :descricao, :link, :turma_id)";
@@ -95,13 +95,13 @@ class ProjetoModel extends BaseModel
         ]);
 
         if (!$executou) {
-             $errorInfo = $stmtProjeto->errorInfo();
-             throw new Exception("Falha SQL ao inserir projeto: " . ($errorInfo[2] ?? 'Erro desconhecido.'));
+            $errorInfo = $stmtProjeto->errorInfo();
+            throw new Exception("Falha SQL ao inserir projeto: " . ($errorInfo[2] ?? 'Erro desconhecido.'));
         }
 
-        $projetoId = (int)$this->pdo->lastInsertId();
+        $projetoId = (int) $this->pdo->lastInsertId();
         if ($projetoId === 0) {
-             throw new Exception("Falha ao obter ID do projeto inserido.");
+            throw new Exception("Falha ao obter ID do projeto inserido.");
         }
         error_log("[_inserirProjetoPrincipal] OK: Projeto principal ID {$projetoId} inserido.");
         return $projetoId;
@@ -118,30 +118,30 @@ class ProjetoModel extends BaseModel
      */
     private function _inserirProjetoDia(string $tipoDia, ?string $descricao, int $projetoId): int
     {
-         if (!in_array($tipoDia, ['I', 'P', 'E'])) {
+        if (!in_array($tipoDia, ['I', 'P', 'E'])) {
             throw new InvalidArgumentException("Tipo de dia inválido '{$tipoDia}' fornecido.");
-         }
+        }
 
-         error_log("[_inserirProjetoDia] Inserindo Dia '{$tipoDia}' para Projeto ID {$projetoId}.");
-         $sqlDia = "INSERT INTO projeto_dia (tipo_dia, descricao, projeto_id) VALUES (:tipo_dia, :descricao, :projeto_id)";
-         $stmtDia = $this->pdo->prepare($sqlDia);
-         $executou = $stmtDia->execute([
-             ':tipo_dia' => $tipoDia,
-             ':descricao' => $descricao,
-             ':projeto_id' => $projetoId
-         ]);
+        error_log("[_inserirProjetoDia] Inserindo Dia '{$tipoDia}' para Projeto ID {$projetoId}.");
+        $sqlDia = "INSERT INTO projeto_dia (tipo_dia, descricao, projeto_id) VALUES (:tipo_dia, :descricao, :projeto_id)";
+        $stmtDia = $this->pdo->prepare($sqlDia);
+        $executou = $stmtDia->execute([
+            ':tipo_dia' => $tipoDia,
+            ':descricao' => $descricao,
+            ':projeto_id' => $projetoId
+        ]);
 
-         if (!$executou) {
-             $errorInfo = $stmtDia->errorInfo();
-             throw new Exception("Falha SQL ao inserir dia {$tipoDia}: " . ($errorInfo[2] ?? 'Erro desconhecido.'));
-         }
+        if (!$executou) {
+            $errorInfo = $stmtDia->errorInfo();
+            throw new Exception("Falha SQL ao inserir dia {$tipoDia}: " . ($errorInfo[2] ?? 'Erro desconhecido.'));
+        }
 
-         $projetoDiaId = (int)$this->pdo->lastInsertId();
-         if ($projetoDiaId === 0) {
-             throw new Exception("Falha ao obter ID do dia {$tipoDia} inserido.");
-         }
-         error_log("[_inserirProjetoDia] OK: Dia '{$tipoDia}' (ID: {$projetoDiaId}) inserido.");
-         return $projetoDiaId;
+        $projetoDiaId = (int) $this->pdo->lastInsertId();
+        if ($projetoDiaId === 0) {
+            throw new Exception("Falha ao obter ID do dia {$tipoDia} inserido.");
+        }
+        error_log("[_inserirProjetoDia] OK: Dia '{$tipoDia}' (ID: {$projetoDiaId}) inserido.");
+        return $projetoDiaId;
     }
 
     /**
@@ -152,6 +152,7 @@ class ProjetoModel extends BaseModel
      */
     public function criarProjetoCompleto(array $dadosProjeto): int|false
     {
+
         if (empty($dadosProjeto['nome']) || empty($dadosProjeto['turma_id'])) {
             error_log("[{$this->tabela}Model::criarProjetoCompleto] ERRO: Nome do projeto ou ID da turma não fornecidos.");
             return false;
@@ -163,30 +164,31 @@ class ProjetoModel extends BaseModel
                 $dadosProjeto['nome'],
                 !empty($dadosProjeto['descricao']) ? $dadosProjeto['descricao'] : null,
                 !empty($dadosProjeto['link']) ? $dadosProjeto['link'] : null,
-                (int)$dadosProjeto['turma_id']
+                (int) $dadosProjeto['turma_id']
             );
 
             foreach ($dadosProjeto['dias'] as $tipoDia => $diaData) {
-                 $projetoDiaId = $this->_inserirProjetoDia(
-                     $tipoDia,
-                     !empty($diaData['descricao']) ? $diaData['descricao'] : null,
-                     $projetoId
-                 );
+                $projetoDiaId = $this->_inserirProjetoDia(
+                    $tipoDia,
+                    !empty($diaData['descricao']) ? $diaData['descricao'] : null,
+                    $projetoId
+                );
 
-                 if (!empty($diaData['imagem_id'])) {
-                    $imagemId = (int)$diaData['imagem_id'];
-                     error_log("[{$this->tabela}Model::criarProjetoCompleto] Passo 2 (Img Assoc): Associando imagem ID {$imagemId} ao dia ID {$projetoDiaId}.");
 
-                     if (!$this->verificarExistencia('imagem', 'imagem_id', $imagemId)) {
-                         throw new Exception("Chave estrangeira inválida: Imagem ID {$imagemId} não existe.");
-                     }
+                if (!empty($diaData['imagem_id'])) {
+                    $imagemId = (int) $diaData['imagem_id'];
+                    error_log("[{$this->tabela}Model::criarProjetoCompleto] Passo 2 (Img Assoc): Associando imagem ID {$imagemId} ao dia ID {$projetoDiaId}.");
 
-                     $associacaoSucesso = $this->imagemProjetoDiaModel->associarImagemDia($imagemId, $projetoDiaId);
-                     if (!$associacaoSucesso) {
-                         throw new Exception("Falha ao associar imagem ID {$imagemId} ao dia {$tipoDia} (ID: {$projetoDiaId}). Verifique os logs.");
-                     }
-                      error_log("[{$this->tabela}Model::criarProjetoCompleto] Passo 2 OK (Img Assoc): Associação bem-sucedida.");
-                 }
+                    if (!$this->verificarExistencia('imagem', 'imagem_id', $imagemId)) {
+                        throw new Exception("Chave estrangeira inválida: Imagem ID {$imagemId} não existe.");
+                    }
+
+                    $associacaoSucesso = $this->imagemProjetoDiaModel->associarImagemDia($imagemId, $projetoDiaId);
+                    if (!$associacaoSucesso) {
+                        throw new Exception("Falha ao associar imagem ID {$imagemId} ao dia {$tipoDia} (ID: {$projetoDiaId}). Verifique os logs.");
+                    }
+                    error_log("[{$this->tabela}Model::criarProjetoCompleto] Passo 2 OK (Img Assoc): Associação bem-sucedida.");
+                }
             }
 
             $this->pdo->commit();
@@ -220,8 +222,8 @@ class ProjetoModel extends BaseModel
             $stmt->execute();
             return $stmt->fetchColumn() !== false;
         } catch (PDOException | InvalidArgumentException $e) {
-             error_log("[{$this->tabela}Model::verificarExistencia] Erro ao verificar {$coluna} = {$id} em {$tabela}: " . $e->getMessage());
-             return false;
+            error_log("[{$this->tabela}Model::verificarExistencia] Erro ao verificar {$coluna} = {$id} em {$tabela}: " . $e->getMessage());
+            return false;
         }
     }
 }

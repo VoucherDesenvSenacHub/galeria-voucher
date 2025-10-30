@@ -99,6 +99,7 @@ class ProjetoController {
         }
 
         if (empty($erros)) {
+
             $resultado = $this->projetoModel->criarProjetoCompleto($dadosProjeto);
 
             // AQUI ESTÁ A MUDANÇA PRINCIPAL:

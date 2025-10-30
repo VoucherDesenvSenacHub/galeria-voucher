@@ -56,8 +56,9 @@ class ImagemProjetoDiaModel extends BaseModel
      * @param int $projetoDiaId O ID do dia do projeto.
      * @return bool True em caso de sucesso, false em caso de falha.
      */
-    public function associarImagemDia(int $imagemId, int $projetoDiaId): bool
-    {
+    public function associarImagemDia(int $imagemId, int $projetoDiaId)
+    {   
+   
         error_log("[associarImagemDia] Tentando associar imagem ID: {$imagemId} com projeto_dia ID: {$projetoDiaId}");
 
         $sql = "INSERT INTO {$this->tabela} (imagem_id, projeto_dia_id) VALUES (:imagem_id, :projeto_dia_id)"; // Use $this->tabela
