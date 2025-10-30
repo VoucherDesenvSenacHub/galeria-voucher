@@ -42,28 +42,28 @@ $currentTab = 'Criar Projeto';
             <input type="text" class="input-field" placeholder="Nome do Projeto:">
             <textarea class="textarea-field" placeholder="Descrição:"></textarea>
           </div>
-          <img src="<?= Config::get('APP_URL') ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
+          <img src="<?= Config::getAppUrl() ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
             class="foto-projetoturma-novo" />
         </div>
 
         <h1 class="h1-sobre"> DIA I</h1>
         <div class="Container_Dia">
           <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-          <img src="<?= Config::get('APP_URL') ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
+          <img src="<?= Config::getAppUrl() ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
             class="foto-projetoturma-novo" />
         </div>
 
         <h1 class="h1-sobre"> DIA P</h1>
         <div class="Container_Dia">
           <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-          <img src="<?= Config::get('APP_URL') ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
+          <img src="<?= Config::getAppUrl() ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
             class="foto-projetoturma-novo" />
         </div>
 
         <h1 class="h1-sobre"> DIA D</h1>
         <div class="Container_Dia">
           <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-          <img src="<?= Config::get('APP_URL') ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
+          <img src="<?= Config::getAppUrl() ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
             class="foto-projetoturma-novo" />
         </div>
 

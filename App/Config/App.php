@@ -18,7 +18,7 @@ class Config
      * @param string $key A chave da configuração.
      * @return string|null
      */
-    public static function get(string $key): ?string
+    private static function get(string $key): ?string
     {
         return self::$settings[$key] ?? null;
     }
@@ -28,7 +28,6 @@ class Config
         return self::get('APP_URL');
     }
 
-    
     public static function getDirImg()
     {
         return self::getAppUrl() . self::get('DIR_IMG');
@@ -58,23 +57,5 @@ class Config
     {
         return self::getAppUrl() . self::get('DIR_LOGOUT');
     }
-
-    //     /**
-    //  * Redireciona o usuário para uma URL.
-    //  *
-    //  * @param string $path O caminho para o qual redirecionar.
-    //  * @param array $params Parâmetros GET a serem adicionados à URL.
-    //  */
-    // public static function to(string $path, array $params = []): void
-    // {
-    //     $url = self::getAppUrl() . $path;
-
-    //     if (!empty($params)) {
-    //         $url .= '?' . http_build_query($params);
-    //     }
-
-    //     header("Location: " . $url);
-    //     exit;
-    // }
 
 }

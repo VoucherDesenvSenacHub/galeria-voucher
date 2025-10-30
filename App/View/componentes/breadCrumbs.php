@@ -99,7 +99,7 @@
                 $breadcrumbCompleto .= self::gerarLink(self::BREAD_MAP[$breadcrumbItem['pai']]) . self::SEPARATOR;
             }
 
-            $url_base = Config::get('APP_URL') . "App/View/pages/adm"; // Usa Config::get()
+            $url_base = Config::getDirAdm(); // Usa Config::get()
 
             $breadcrumbCompleto .= "<a href=\"{$url_base}/{$url}.php\">{$valor}</a>";
             return $breadcrumbCompleto;
