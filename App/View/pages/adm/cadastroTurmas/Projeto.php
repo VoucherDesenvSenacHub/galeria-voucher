@@ -1,83 +1,38 @@
 <?php
-
 $paginaAtiva = 'turmas';
 
-require_once __DIR__ . "/../../../../Config/env.php";
-
-// VERIFICAÇÃO DE ACESSO PARA O USUARiO NÃO ACESSAR A PAGINA DIRETO DA URL
-if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-    header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'listaTurmas.php');
-    exit;
-}
+require_once __DIR__ . "/../../../../Config/App.php";
+require_once __DIR__ . "/../../../../Helpers/Redirect.php";
+require_once __DIR__ . "/../../../../Helpers/Request.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/input.php";
 require_once __DIR__ . "/../../../componentes/button.php";
-headerComponent("Voucher Desenvolvedor - Criar Projeto");
 require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
-// require_once __DIR__ . "/../../../../Model/ProjetoModel.php";
 
-$currentTab = 'Criar Projeto';
+headerComponent("Voucher Desenvolvedor - Criar Projeto");
 
-$projetos = [];
-$isEditMode = false;
-$turmaId = null;
-
-try {
-    // $projetoModel = new projetoModel();
-
-    // Verifica se o ID da turma foi passado (modo edição)
-    if (isset($_GET['id']) && !empty($_GET['id'])) {
-        $turmaId = (int) $_GET['id'];
-
-        if ($turmaId > 0) {
-            $isEditMode = true;
-            // $projetos = $projetoModel->buscarProjetosPorTurmaId($turmaId);
-        }
-    }
-    // Se não houver ID, está no modo cadastro (não é erro)
-
-} catch (Exception $e) {
-    // Em caso de erro, define $projetos como um array vazio e loga o erro
-    $projetos = [];
-    error_log("Erro ao buscar projetos: " . $e->getMessage());
-
-    // Exibe mensagem de erro para o usuário apenas se estiver no modo edição
-    if ($isEditMode) {
-        $error_message = "Erro ao carregar projetos: " . $e->getMessage();
-    }
+$turmaId = Request::getId("turma_id");
+$projetoId = Request::getId("projeto_id");
+if (!$turmaId) {
+    Redirect::toAdm('listaTurmas.php');
 }
 
-// Verifica se o usuário logado é um administrador para exibir o botão de excluir
-$is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
-
+$currentTab = 'Criar Projeto';
 ?>
 
 <body class="layout body-cadastro-turmas">
 
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php
-    $isAdmin = true; // Para páginas de admin
+    $isAdmin = true;
     require_once __DIR__ . "/../../../componentes/nav.php";
     ?>
 
-    <?php
-    $imagens = [
-      ["titulo" => "IMAGEM DA TURMA", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA I", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA P", "quantidade" => 6],
-      ["titulo" => "IMAGEM DO DIA E", "quantidade" => 6],
-    ];
-    ?>
-
     <main class="layout-main main-turmas-turmas">
-      <?php BreadCrumbs::gerarBreadCrumbs()?>
-
-      <?php
-      // Usa o componente de abas das turmas
-      tabsTurmaComponent($currentTab, $turmaId);
-      ?>
+      <?php BreadCrumbs::gerarBreadCrumbs(); ?>
+      <?php tabsTurmaComponent($currentTab, ["turma_id" => $turmaId]); ?>
 
       <div class="form-container-projeto">
 
@@ -87,29 +42,28 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             <input type="text" class="input-field" placeholder="Nome do Projeto:">
             <textarea class="textarea-field" placeholder="Descrição:"></textarea>
           </div>
-          <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
+          <img src="<?= Config::get('APP_URL') ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
             class="foto-projetoturma-novo" />
         </div>
-
 
         <h1 class="h1-sobre"> DIA I</h1>
         <div class="Container_Dia">
           <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-          <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
+          <img src="<?= Config::get('APP_URL') ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
             class="foto-projetoturma-novo" />
         </div>
 
         <h1 class="h1-sobre"> DIA P</h1>
         <div class="Container_Dia">
           <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-          <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
+          <img src="<?= Config::get('APP_URL') ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
             class="foto-projetoturma-novo" />
         </div>
 
         <h1 class="h1-sobre"> DIA D</h1>
         <div class="Container_Dia">
           <textarea class="textarea-field" placeholder="Descrição:"></textarea>
-          <img src="../../../../../referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
+          <img src="<?= Config::get('APP_URL') ?>referencia/area-adm/tela-inicial-adm/assets/projetoimg.png" alt="Foto Turma"
             class="foto-projetoturma-novo" />
         </div>
 
@@ -122,12 +76,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
           <?php buttonComponent('secondary', 'Cancelar', false, null, null, '', 'back-button'); ?>
           <?php buttonComponent('primary', 'Salvar', true); ?>
         </div>
-
-
       </div>
-
-
     </main>
 </body>
-
 </html>
