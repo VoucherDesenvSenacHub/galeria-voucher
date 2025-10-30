@@ -1,5 +1,12 @@
-.form-cadastro-pessoa {
-  display: none;
+/* 
+arquivo para componente de modal
+.modal
+  .modal-header
+  .modal-body
+  .modal-action
+*/
+
+.modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -8,84 +15,57 @@
   background-color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 3rem 2rem 2rem 2rem; /* espaço extra no topo para o botão */
+  padding: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   color: #333;
   font-family: var(--font-primary, sans-serif);
   height: 60vh;
-}
-
-.form-cadastro-pessoa::backdrop {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.form-cadastro-pessoa span[name="btn-close"] {
-  position: absolute;
-  top: .5rem;
-  right: 0.5rem;
-  background: transparent;
-  border: none;
-  font-size: 1.25rem;
-  color: #666;
-  cursor: pointer;
-  padding: 0.25rem;
-  transition: color 0.2s ease;
-  width: 1.75rem;
-  height: 1.75rem;
-  line-height: 1.75rem;
-  text-align: center;
-  font-size: 1.15rem;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 1px solid transparent;
-  transition: background 0.2s ease, color 0.2s ease;
-  z-index: 1001;
-}
-
-.form-cadastro-pessoa span[name="btn-close"]:hover {
-  color: #000;
-  background-color: #f5f5f5;
-}
-
-.form-cadastro-pessoa form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  width: 100%;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .modal-header-action:hover {
+      cursor: pointer;
+    }
+  }
+
+  .modal-body {
+    height: 100%;
+  }
+
+  .modal-action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 8px;
+  }
 }
 
-.form-cadastro-pessoa form span {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  position: relative; /* base para sugestoes absolutas */
+.modal .form-cadastro-pessoa {
+  height: 78%;
 }
-
-.form-cadastro-pessoa form input[type="text"] {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
 
 /* Container das sugestões */
 #sugestoes {
-  position: absolute;
-  top: calc(100% - 1px); /* encosta no input */
+  position: relative;
+  top: calc(100% - 1px);
+  /* encosta no input */
   left: 0;
   width: 100%;
   z-index: 1000;
   max-height: 200px;
   overflow-y: auto;
-  
   background: #fff;
   border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  
-  font-family: Arial, sans-serif;
-  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   padding: 0;
 }
 
@@ -113,6 +93,7 @@
   color: #3f51b5;
   font-weight: 500;
 }
+
 #sugestoes .sugestao-empty {
   padding: 12px 16px;
   transition: background 0.2s;
@@ -142,7 +123,7 @@
   margin: 0.2rem;
   border-radius: 18px;
   font-size: 0.9rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chip .remove {
@@ -159,12 +140,12 @@
 
 /* Responsividade */
 @media (max-width: 600px) {
-  .form-cadastro-pessoa {
+  .modal {
     width: 90%;
     padding: 1.5rem 1rem;
   }
 
-  .form-cadastro-pessoa span[name="btn-close"] {
+  .modal span[name="btn-close"] {
     font-size: 1rem;
   }
 }
@@ -178,13 +159,16 @@
 }
 
 /* Ajusta inputs para ocupar toda a largura interna do modal */
-.form-cadastro-pessoa .input-text {
+.modal .input-text {
   max-width: 100%;
   width: 100%;
   padding: 0.75rem 1rem;
-  border: none;             /* remove borda */
-  border-radius: 50px;      /* deixa o input redondo */
-  background-color: #f5f7fa; /* leve cinza para contraste */
+  border: none;
+  /* remove borda */
+  border-radius: 50px;
+  /* deixa o input redondo */
+  background-color: #f5f7fa;
+  /* leve cinza para contraste */
 }
 
 /* Chips aprimorados */
@@ -194,7 +178,7 @@
   padding: 0.4rem 0.8rem;
   border-radius: 18px;
   font-size: 0.9rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chip .remove {
@@ -203,7 +187,6 @@
 }
 
 /* Botões dentro do modal */
-.form-cadastro-pessoa .primary-button {
+.modal .primary-button {
   width: 180px;
 }
-

@@ -100,7 +100,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             <div class="topo-lista-alunos">
                 <?php
                 buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro()\"");
- ?>
+                ?>
 
                 <div class="input-pesquisa-container">
                     <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
@@ -177,23 +177,36 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     </form>
                 </div>
 
-                <div class="modal-cadastro" id="modal-cadastro-aluno" onclick="">
+                <dialog class="modal modal-cadastro" id="modal-cadastro-aluno">
+                    <div class="modal-header">
+                        <span class="material-symbols-outlined modal-header-action" name="btn-close" id="btn-close">close</span>
+                    </div>
+
                     <form class="form-cadastro-pessoa" method="POST" action="">
-                        <div>
-                            <span class="material-symbols-outlined" name="btn-close">close</span>
-                            <label for="pesquisar-pessoa">Pesquisar Alunos </label>
-                            <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome' ); ?>
-                            <div id="sugestoes"></div>
+                        <div class="modal-body">
+                            <div>
+                                <label for="pesquisar-pessoa">
+                                    Pesquisar Alunos
+                                </label>
+                                <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome'); ?>
+                                <div id="sugestoes">
+
+                                </div>
+                            </div>
+
+                            <div id="pessoas-selecionadas"></div>
+
+                            <input type="hidden" name="turma_id" value="">
+
                         </div>
-                        <div id="pessoas-selecionadas"></div>
 
-                        <input type="hidden" name="turma_id" value="">
-
-                        <button class="primary-button" type="submit">Vincular</button>
+                        <div class="modal-action">
+                            <?php buttonComponent("primary", "Vincular", true)?>
+                        </div>
                     </form>
-                </div>
-            </section>
-        </main>
+    </div>
+    </section>
+    </main>
     </div>
 
     <script src="../../../assets/js/adm/lista-alunos.js"></script>
