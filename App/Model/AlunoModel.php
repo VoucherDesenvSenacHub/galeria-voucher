@@ -133,4 +133,20 @@ class AlunoModel extends BaseModel{
         
         return $stmt->rowCount() > 0;
     }
+
+    public function buscarAlunosParaVincular($nome)
+    {
+        $query = "SELECT p.pessoa_id, p.nome 
+                  FROM pessoa p 
+                  WHERE nome LIKE :nome 
+                  AND p.perfil = 'aluno'
+                  AND p.pessoa_id NOT IN (SELECT pessoa_id FROM aluno_turma)
+                  ";
+        
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':nome', "%$nome%" );
+
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
