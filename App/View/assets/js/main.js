@@ -1,18 +1,20 @@
 
 const section_modal = document.querySelector('.section_modal');
-const modal = document.querySelector("#modal-cadastro-aluno");
-const closeButton = document.querySelector('#btn-close');
+const modalVincularProfessor = document.querySelector("#modal-cadastro-professor");
+const modalVincularAluno = document.querySelector("#modal-cadastro-aluno");
+const closeButton = document.querySelector('.btn-close');
 const inputPesquisa = document.querySelector('input[name="pesquisar-pessoa"]');
 const sugestoes = document.querySelector("#sugestoes");
 const selecionados = document.querySelector("#pessoas-selecionadas");
 const adicionados = new Set();
 
 function abrirModalCadastro() {
-    modal.style.display = "block";
+    modalVincularProfessor.style.display = "block";
+    modalVincularAluno.style.display = "block";
 }
 
 closeButton.addEventListener('click', () => {
-    modal.style.display = "none";
+    modalVincularAluno.style.display = "none";
     sugestoes.innerHTML = "";
     selecionados.innerHTML = "";
     inputPesquisa.value = "";

@@ -59,35 +59,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         require_once __DIR__ . "/../../../componentes/nav.php";
         ?>
 
-        <main class="main-turmas-turmas">
-            <?php BreadCrumbs::gerarBreadCrumbs() ?>
-            <?php
-            // Usa o componente de abas das turmas
-            tabsTurmaComponent($currentTab, $turmaId);
-            ?>
-
-            <?php if (isset($error_message)): ?>
-                <div class="error-message">
-                    <?= htmlspecialchars($error_message) ?>
-                </div>
-            <?php endif; ?>
-
-            <?php if (isset($_SESSION['erro'])): ?>
-                <div class="error-message">
-                    <?= htmlspecialchars($_SESSION['erro']) ?>
-                </div>
-                <?php unset($_SESSION['erro']); ?>
-            <?php endif; ?>
-
-            <?php if (isset($_SESSION['sucesso'])): ?>
-                <div class="success-message">
-                    <?= htmlspecialchars($_SESSION['sucesso']) ?>
-                </div>
-                <?php unset($_SESSION['sucesso']); ?>
-            <?php endif; ?>
+        
 
         <div class="topo-lista-alunos">
-            <?php buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('aluno')\""); ?>
+            <?php buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro()\""); ?>
             <div class="input-pesquisa-container">
                 <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                 <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
@@ -149,11 +124,11 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     </form>
                 </div>
 
-                <dialog class="modal modal-cadastro" id="modal-cadastro-aluno">
+                <div class="modal modal-cadastro" id="modal-cadastro-aluno">
                     <div class="modal-header">
-                        <span class="material-symbols-outlined modal-header-action" name="btn-close" id="btn-close">close</span>
+                        <span class="material-symbols-outlined modal-header-action btn-close" name="btn-close">close</span>
                     </div>
-
+                    
                     <form class="form-cadastro-pessoa" method="POST" action="">
                         <div class="modal-body">
                             <div>
@@ -162,8 +137,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                 </label>
                                 <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome'); ?>
                                 <div id="sugestoes">
-
-                                </div>
+                                    
+                                    </div>
                             </div>
 
                             <div id="pessoas-selecionadas"></div>
@@ -176,8 +151,9 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             <?php buttonComponent("primary", "Vincular", true)?>
                         </div>
                     </form>
+                </div>
+            </section>
     </div>
-    </section>
     </main>
     </div>
     
