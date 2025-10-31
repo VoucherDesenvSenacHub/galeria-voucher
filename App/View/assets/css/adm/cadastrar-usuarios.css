@@ -133,13 +133,13 @@ select {
   margin-top: 8rem;
 }
 
-.form-group-buton button {
+/* .form-group-buton button {
   width: 200px !important;
   font-size: 25px !important;
   font-family: 'Bebas Neue', sans-serif !important;
   letter-spacing: 2px !important;
   border: 1px solid var(--text-black);
-}
+} */
 
 /* Botões de seleção */
 #btn-docente,

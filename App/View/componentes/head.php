@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once __DIR__ . '/../../Config/App.php'; // Usa App.php
+require_once __DIR__ . '/../../Helpers/Request.php';
 require_once __DIR__ . '/input.php';
 require_once __DIR__ . '/button.php';
 

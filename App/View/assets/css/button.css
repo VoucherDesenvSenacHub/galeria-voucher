@@ -41,7 +41,7 @@ button:active, a.primary-button:active, a.secondary-button:active {
 }
 
 .secondary-button, a.secondary-button {
-    border: 1px solid var(--text-black);
+    border: 0;
     background-color: var(--white-background);
     color: var(--color-text-button);
     font-size: var(--l-font);

@@ -1,51 +1,77 @@
 
 const section_modal = document.querySelector('.section_modal');
+const modalVincularAluno = document.querySelector("#modal-cadastro-aluno");
+const closeButton = document.querySelector('.btn-close');
+const inputPesquisa = document.querySelector('input[name="pesquisar-pessoa"]');
+const sugestoes = document.querySelector("#sugestoes");
+const selecionados = document.querySelector("#pessoas-selecionadas");
+const adicionados = new Set();
 
-function abrirModalCadastro(classificacao, turmaId = '') {
-    if (document.querySelector('dialog#modal-cadastro')) return;
+function abrirModalCadastro() {
+    modalVincularAluno.style.display = "block";
+}
 
-    const modal = document.createElement('dialog');
-    modal.id = 'modal-cadastro';
+closeButton.addEventListener('click', () => {
+    modalVincularAluno.style.display = "none";
+    sugestoes.innerHTML = "";
+    selecionados.innerHTML = "";
+    inputPesquisa.value = "";
+    adicionados.clear();
 
-    const closeButton = document.createElement('button');
-    closeButton.innerHTML = '<span class="material-symbols-outlined">close</span>';
-    closeButton.classList.add('btn-close');
-    closeButton.type = 'button';
-    closeButton.setAttribute('aria-label', 'Fechar');
+});
 
-    closeButton.addEventListener('click', () => {
-        modal.close();
-        modal.remove();
-    });
+inputPesquisa.addEventListener('input', (event) => {
+    const busca = event.target.value;
+    const url = `/galeria-voucher/app/Controller/BuscaAlunoController.php`;
 
-    let url = `/galeria-voucher/app/View/componentes/adm/form-cadastro-pessoas.php?classificacao=${encodeURIComponent(classificacao)}&t=${new Date().getTime()}`;
+    fetch(`${url}?busca=${encodeURIComponent(busca)}`)
+        .then(res => res.json())
+        .then(dados => {
+            sugestoes.innerHTML = "";
+            dados.forEach(item => {
+                const div = document.createElement("div");
+                div.className = 'sugestao-item';
+                div.textContent = item.nome;
 
-    if (turmaId) {
-        url += `&turma_id=${encodeURIComponent(turmaId)}`;
+                div.dataset.id = item.pessoa_id;
+
+                div.onclick = function () {
+                    const id = this.dataset.id;
+                    const nome = this.textContent;
+                    adicionarPessoa(id, nome);
+                };
+                sugestoes.appendChild(div);
+            }
+            );
+        })
+
+})
+
+function adicionarPessoa(id, nome) {
+    if (adicionados.has(id)) {
+        alert("Esta pessoa já foi adicionada.");
+        return;
     }
 
-    fetch(url)
-        .then(res => res.text())
-        .then(html => {
-            // Só insere o HTML puro, sem scripts
-            modal.innerHTML = html;
-            modal.prepend(closeButton);
+    adicionados.add(id);
 
-            // Se o input não vier com id, atribui aqui para compatibilidade
-            const inputPesq = modal.querySelector('input[name="pesquisar-pessoa"]');
-            if (inputPesq && !inputPesq.id) {
-                inputPesq.id = 'pesquisar-pessoa';
-            }
+    inputPesquisa.value = "";
+    sugestoes.innerHTML = "";
 
-            section_modal.appendChild(modal);
-            modal.showModal();
+    const chip = document.createElement("div");
+    chip.className = "chip";
+    chip.innerHTML = `${nome} <span class='remove'>&times;</span>`;
 
-            // Chama a função para ativar autocomplete no conteúdo do modal
-            if (typeof ativarAutocomplete === 'function') {
-                ativarAutocomplete(classificacao);
-            } else {
-                console.warn('Função ativarAutocomplete não está definida.');
-            }
-        })
-        .catch(console.error);
+    const hiddenInput = document.createElement("input");
+    hiddenInput.type = "hidden";
+    hiddenInput.name = "pessoas_ids[]";
+    hiddenInput.value = id;
+
+    chip.appendChild(hiddenInput);
+    chip.querySelector(".remove").onclick = () => {
+        selecionados.removeChild(chip);
+        adicionados.delete(id);
+    };
+
+    selecionados.appendChild(chip);
 }
