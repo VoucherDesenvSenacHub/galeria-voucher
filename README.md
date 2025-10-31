@@ -1,36 +1,54 @@
+````markdown
 # 🎓 Galeria Voucher
 
 A **Galeria Voucher** é um projeto desenvolvido para exibir as turmas participantes do programa governamental de formação técnica em **Desenvolvimento de Sistemas**, com destaque para os **Projetos Integradores (PI)** criados durante o curso.
 
+## 🖼️ Visão Geral do Sistema
+
+| Tela | Miniatura | Descrição |
+|------|------------|-----------|
+| 🏠 **Home** | ![Tela Home](Docs/tela_home_deploy.PNG) | Página inicial da Galeria, com destaque para turmas e projetos. |
+| 🔐 **Login** | ![Tela Login](Docs/tela_login.PNG.png) | Acesso administrativo para manutenção de dados e cadastro de novas turmas. |
+| 👩‍🏫 **Turmas** | ![Tela Turma](Docs/tela_turmas.PNG.png) | Listagem e detalhes das turmas participantes do programa. |
+| 👨‍💻 **Desenvolvedores** | ![Tela Desenvolvedores](Docs/tela_desenvolvedores.PNG) | Página que apresenta os criadores e mantenedores do projeto. |
+
+
 ## 📌 Objetivo
 
-O objetivo da Galeria Voucher é centralizar e divulgar os trabalhos desenvolvidos pelas turmas, promovendo visibilidade às soluções criativas e técnicas que os alunos criaram ao longo do curso.
+O objetivo da **Galeria Voucher** é **centralizar e divulgar** os trabalhos desenvolvidos pelas turmas, promovendo visibilidade às soluções criativas e técnicas que os alunos criaram ao longo do curso.
 
----
 
 📄 **Para informações técnicas e orientações para desenvolvedores**, acesse o documento de apoio:  
 🔗 [Orientações para Devs](./Docs/orientacoes-dev.md)
 
----
 
 ## 🧩 Funcionalidades
 
-- 📚 Exibição de turmas participantes  
-- 🧑‍💻 Listagem dos Projetos Integradores de cada turma  
-- 🔍 Visualização de detalhes sobre cada projeto (descrição, tecnologias usadas, responsáveis, etc.)  
-- 🌐 Interface amigável e responsiva para navegação pública
+- 📚 Exibição das turmas participantes  
+- 🧑‍💻 Listagem dos **Projetos Integradores** de cada turma  
+- 🔍 Visualização detalhada de cada projeto (descrição, tecnologias usadas, equipe, etc.)  
+- 🌐 Interface **amigável e responsiva** para o público  
+- ⚙️ Painel administrativo para controle interno (em desenvolvimento)
+
 
 ## 🏛️ Sobre o Programa
 
-O projeto está inserido dentro do **programa governamental de capacitação técnica** que visa preparar estudantes para o mercado de trabalho na área de Desenvolvimento de Sistemas. Cada turma participante desenvolve, ao longo do curso, um **Projeto Integrador**, aplicando os conhecimentos adquiridos de forma prática.
+O projeto está inserido no **programa governamental de capacitação técnica** que visa preparar estudantes para o mercado de trabalho na área de **Desenvolvimento de Sistemas**.  
+
+Cada turma participante desenvolve, ao longo do curso, um **Projeto Integrador (PI)**, aplicando de forma prática os conhecimentos adquiridos.
+
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
-As tecnologias utilizadas podem variar conforme a turma, mas o sistema da Galeria em si utiliza:
+| Camada | Tecnologias |
+|--------|--------------|
+| 🎨 **Frontend** | HTML, CSS, JavaScript |
+| ⚙️ **Backend** | PHP |
+| 🗄️ **Banco de Dados** | MySQL |
 
-- **Frontend**: _HTML/CSS, JavaScript_  
-- **Backend**: _PHP_  
-- **Banco de Dados**: _MySQL_  
+
+---
 
 ## 🚀 Como executar o projeto
 
@@ -40,3 +58,12 @@ git clone https://github.com/VoucherDesenvSenacHub/galeria-voucher.git
 
 # Acesse o diretório do projeto
 cd galeria-voucher
+
+# Inicie seu servidor local (ex: XAMPP ou Laragon)
+# e acesse no navegador:
+http://localhost/galeria-voucher
+````
+
+
+
+
