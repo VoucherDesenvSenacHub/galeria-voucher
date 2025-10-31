@@ -22,40 +22,110 @@ class Config
     {
         return self::$settings[$key] ?? null;
     }
-
-    public static function getAppUrl()
+    
+    /**
+     * Retorna a URL da aplicação.
+     *
+     * @param array $params Parâmetros GET opcionais.
+     * @return string
+     */
+    public static function getAppUrl(array $params = []): string
     {
-        return self::get('APP_URL');
+        if(empty($params)) {
+            return self::get('APP_URL');
+        }
+
+        return self::get('APP_URL') . '?' . http_build_query($params);
     }
 
-    public static function getDirImg()
+    /**
+     * Retorna a URL da aplicação.
+     *
+     * @param array $params Parâmetros GET opcionais.
+     * @return string
+     */
+    public static function getDirImg( array $params = []): string
     {
-        return self::getAppUrl() . self::get('DIR_IMG');
+        if(empty($params)) {
+            return self::getAppUrl($params) . self::get('DIR_IMG');
+        }
+
+        return self::getAppUrl() .'?' . http_build_query($params);
     }
 
-    public static function getDirCss()
+    /**
+     * Retorna a URL da aplicação.
+     *
+     * @param array $params Parâmetros GET opcionais.
+     * @return string
+     */
+    public static function getDirCss(array $params = []): string
     {
-        return self::getAppUrl() . self::get('DIR_CSS');
+        if(empty($params)) {
+            return self::getAppUrl($params) . self::get('DIR_CSS');
+        }
+
+        return self::getAppUrl() .'?' . http_build_query($params);
     }
 
-    public static function getDirJs()
+    /**
+     * Retorna a URL da aplicação.
+     *
+     * @param array $params Parâmetros GET opcionais.
+     * @return string
+     */
+    public static function getDirJs(array $params = []): string
     {
-        return self::getAppUrl() . self::get('DIR_JS');
+        if(empty($params)) {
+            return self::getAppUrl($params) . self::get('DIR_JS');
+        }
+    
+        return self::getAppUrl() .'?'. http_build_query($params);
     }
 
-    public static function getDirAdm()
+    /**
+     * Retorna a URL da aplicação.
+     *
+     * @param array $params Parâmetros GET opcionais.
+     * @return string
+     */
+    public static function getDirAdm(array $params = []): string
     {
-        return self::getAppUrl() . self::get('DIR_ADM');
+        if(empty($params)) {
+            return self::getAppUrl($params) . self::get('DIR_ADM');
+        }
+
+        return self::getAppUrl() .'?' . http_build_query($params);
     }
 
-    public static function getDirUser()
+    /**
+     * Retorna a URL da aplicação.
+     *
+     * @param array $params Parâmetros GET opcionais.
+     * @return string
+     */
+    public static function getDirUser(array $params = []): string
     {
-        return self::getAppUrl() . self::get('DIR_USER');
+        if(empty($params)) {
+            return self::getAppUrl($params) . self::get('DIR_USER');
+        }   
+    
+        return self::getAppUrl() .'?' . http_build_query($params);
     }
 
-    public static function getDirLogout()
+    /**
+     * Retorna a URL da aplicação.
+     *
+     * @param array $params Parâmetros GET opcionais.
+     * @return string
+     */
+    public static function getDirLogout(array $params = []): string
     {
-        return self::getAppUrl() . self::get('DIR_LOGOUT');
+        if(empty($params)) {
+            return self::getAppUrl($params) . self::get('DIR_LOGOUT');
+        }
+    
+        return self::getAppUrl() .'?' . http_build_query($params);
     }
 
 }
