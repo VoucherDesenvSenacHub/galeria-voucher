@@ -1,6 +1,5 @@
 
 const section_modal = document.querySelector('.section_modal');
-const modalVincularProfessor = document.querySelector("#modal-cadastro-professor");
 const modalVincularAluno = document.querySelector("#modal-cadastro-aluno");
 const closeButton = document.querySelector('.btn-close');
 const inputPesquisa = document.querySelector('input[name="pesquisar-pessoa"]');
@@ -9,7 +8,6 @@ const selecionados = document.querySelector("#pessoas-selecionadas");
 const adicionados = new Set();
 
 function abrirModalCadastro() {
-    modalVincularProfessor.style.display = "block";
     modalVincularAluno.style.display = "block";
 }
 
