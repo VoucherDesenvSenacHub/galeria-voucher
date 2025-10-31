@@ -1,29 +1,34 @@
 
-const section_modal = document.querySelector('.section_modal');
 const modalVincularAluno = document.querySelector("#modal-cadastro-aluno");
+const modalVincularProfessor = document.querySelector("#modal-cadastro-professor");
 const closeButton = document.querySelector('.btn-close');
 const inputPesquisa = document.querySelector('input[name="pesquisar-pessoa"]');
 const sugestoes = document.querySelector("#sugestoes");
 const selecionados = document.querySelector("#pessoas-selecionadas");
 const adicionados = new Set();
 
-function abrirModalCadastro() {
+function abrirModalCadastroProfessor() {
+    modalVincularProfessor.style.display = "block";
+}
+
+function abrirModalCadastroAluno() {
     modalVincularAluno.style.display = "block";
 }
 
 closeButton.addEventListener('click', () => {
-    modalVincularAluno.style.display = "none";
+    if (modalVincularAluno) modalVincularAluno.style.display = "none";
+    if (modalVincularProfessor) modalVincularProfessor.style.display = "none";
     sugestoes.innerHTML = "";
     selecionados.innerHTML = "";
     inputPesquisa.value = "";
     adicionados.clear();
-
 });
 
 inputPesquisa.addEventListener('input', (event) => {
     const busca = event.target.value;
-    const url = `/galeria-voucher/app/Controller/BuscaAlunoController.php`;
-
+    const endpoint = modalVincularAluno ? 'BuscaAlunoController.php' : 'BuscaDocenteController.php';
+    const url = `/galeria-voucher/app/Controller/${endpoint}`;
+    
     fetch(`${url}?busca=${encodeURIComponent(busca)}`)
         .then(res => res.json())
         .then(dados => {
