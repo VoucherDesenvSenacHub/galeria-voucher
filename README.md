@@ -74,3 +74,28 @@ http://localhost/galeria-voucher
 
 [![Anuar El](https://github.com/AnuarRezz.png?size=50)](https://github.com/AnuarRezz)
 [![Bruno Ribeiro](https://github.com/brunoDevfull.png?size=50)](https://github.com/brunoDevfull)
+[![Carlos Eduardo](https://github.com/yonnnxr.png?size=50)](https://github.com/yonnnxr)
+[![Frederico Soares](https://github.com/Fred-Curso-Do-Senac-2024-Tc-ADS.png?size=50)](https://github.com/Fred-Curso-Do-Senac-2024-Tc-ADS)
+[![Henrique Guisa](https://github.com/henriguisatec.png?size=50)](https://github.com/henriguisatec)
+[![joao heitor](https://github.com/joaoheitoror.png?size=50)](https://github.com/joaoheitoror)
+[![João Pedro](https://github.com/jeipe.png?size=50)](https://github.com/jeipe)
+[![Jonatan Samuel](https://github.com/samuelserri.png?size=50)](https://github.com/samuelserri)
+[![José Otávio](https://github.com/OtavioDayrots.png?size=50)](https://github.com/OtavioDayrots)
+[![Lourran](https://github.com/ribinha-code.png?size=50)](https://github.com/ribinha-code)
+[![Lucas Ajpert](https://github.com/LucasAjpert.png?size=50)](https://github.com/LucasAjpert)
+[![Luis Cunha](https://github.com/LuisCunha05.png?size=50)](https://github.com/LuisCunha05)
+[![Luiz Oliveira](https://github.com/LuizzOliveira.png?size=50)](https://github.com/LuizzOliveira)
+[![Manoel Oliveira](https://github.com/Tewdric.png?size=50)](https://github.com/Tewdric)
+[![Matheus Corsine](https://github.com/matheuscorsine.png?size=50)](https://github.com/matheuscorsine)
+[![Riquelme Gomes](https://github.com/RiquelmeG22.png?size=50)](https://github.com/RiquelmeG22)
+[![Rodrigo Santos](https://github.com/rodrigo570282.png?size=50)](https://github.com/rodrigo570282)
+[![Sambegara Cristaldo](https://github.com/Saambrc.png?size=50)](https://github.com/Saambrc)
+[![Wellington Xavier](https://github.com/Xavier-sa.png?size=50)](https://github.com/Xavier-sa)
+[![Wendril Ferreira](https://github.com/WendrilSFS.png?size=50)](https://github.com/WendrilSFS)
+<!-- [![Gustavo Santos] gustavo por foto ai colocar link aqui, por estar sem foto estava quebrando... ](https://github.com/sntosz)  -->
+
+
+### Orientadores (Professores)
+
+[![Mauricio de Souza](https://github.com/Mauriiicio.png?size=50)](https://github.com/Mauriiicio)
+[![Thiago Suzuqui](https://github.com/thszk.png?size=50)](https://github.com/thszk)
