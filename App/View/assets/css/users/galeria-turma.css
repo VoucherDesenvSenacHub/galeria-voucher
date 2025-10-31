@@ -663,7 +663,7 @@ h3 {
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   /* 240px */
-  gap: 4.375rem;
+  gap: 3rem;
   /* 70px */
   max-width: 75rem;
   /* 1200px */

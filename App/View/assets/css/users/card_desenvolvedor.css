@@ -1,7 +1,7 @@
 .card-container {
   position: relative;
   width: 100%;
-  max-width: 240px;
+  max-width: 270px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -65,6 +65,7 @@
   
   .image-dev {
     height: 110px;
+
   }
   
   .text-card {
@@ -129,12 +130,15 @@
   height: 300px;
   overflow: hidden;
   z-index: 1;
+  padding: 15px 15px 0 15px;
 }
 
 .image-dev img {
-  width: 100% !important;  
+  box-sizing: border-box; /* explicita para evitar surpresas */
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   border-radius: 15px 15px 0 0;
 }
 
@@ -148,7 +152,7 @@
   height: 50% !important;
   padding: 10px;
   text-align: center;
-  border-radius: 15px;
+  border-radius:15px;
 }
 
 .text-card h2 {
