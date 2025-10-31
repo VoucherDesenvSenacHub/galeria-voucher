@@ -10,36 +10,24 @@ require_once __DIR__ . '/../Model/ImagemProjetoDiaModel.php';
 require_once __DIR__ . '/../Service/ImagensUploadService.php';
 require_once __DIR__ . '/ValidarLoginController.php';
 
-class ProjetoController {
+class ProjetoController
+{
 
     private ImagensUploadService $uploadService;
     private ProjetoModel $projetoModel;
     private ImagemModel $imagemModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->uploadService = new ImagensUploadService();
         $this->projetoModel = new ProjetoModel();
         $this->imagemModel = new ImagemModel();
     }
 
-    public function salvar() {
-
-        // Habilita a exibição de erros na tela
-        ini_set('display_errors', '1');
-
-        // Habilita a exibição de erros de inicialização (startup errors)
-        ini_set('display_startup_errors', '1');
-
-        // Define o nível de erros que serão reportados (E_ALL reporta todos os erros e avisos)
-        error_reporting(E_ALL);
-
+    public function salvar()
+    {
+        // Inicio Validações
         ValidarLoginController::validarAdminRedirect(Config::get('DIR_ADM') . 'login.php');
-
-        if (Request::getMethod() !== 'POST') {
-            $_SESSION['erro_projeto'] = "Método não permitido.";
-            Redirect::toAdm('listaTurmas.php');
-            return;
-        }
 
         $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
         $nomeProjeto = trim(Request::post('nome_projeto', ''));
@@ -53,10 +41,13 @@ class ProjetoController {
         ];
 
         $erros = [];
-        if (!$turmaId) $erros[] = "ID da turma inválido.";
-        if (empty($nomeProjeto)) $erros[] = "O nome do projeto é obrigatório.";
-        if (!empty($linkProjeto) && !filter_var($linkProjeto, FILTER_VALIDATE_URL)) $erros[] = "O link do projeto parece ser inválido.";
-        
+        if (!$turmaId)
+            $erros[] = "ID da turma inválido.";
+        if (empty($nomeProjeto))
+            $erros[] = "O nome do projeto é obrigatório.";
+        if (!empty($linkProjeto) && !filter_var($linkProjeto, FILTER_VALIDATE_URL))
+            $erros[] = "O link do projeto parece ser inválido.";
+
         $peloMenosUmDiaPreenchido = false;
         foreach ($dias as $dia) {
             if (!empty($dia['descricao']) || ($dia['imagem'] && $dia['imagem']['error'] === UPLOAD_ERR_OK)) {
@@ -64,7 +55,8 @@ class ProjetoController {
                 break;
             }
         }
-        if (!$peloMenosUmDiaPreenchido) $erros[] = "É necessário preencher a descrição ou enviar uma imagem para pelo menos uma das fases (Dia I, P ou E).";
+        if (!$peloMenosUmDiaPreenchido)
+            $erros[] = "É necessário preencher a descrição ou enviar uma imagem para pelo menos uma das fases (Dia I, P ou E).";
 
         $dadosProjeto = [
             'nome' => $nomeProjeto,
@@ -73,7 +65,9 @@ class ProjetoController {
             'turma_id' => $turmaId,
             'dias' => []
         ];
+        // Fim validações
 
+        // Inicio Salvamentos
         foreach ($dias as $tipoDia => $diaData) {
             $imagemId = null;
             if ($diaData['imagem'] && $diaData['imagem']['error'] === UPLOAD_ERR_OK) {
@@ -129,28 +123,28 @@ class ProjetoController {
                 if (isset($dia['imagem_id']) && $dia['imagem_id']) {
                     $imgInfo = $this->imagemModel->buscarImagemPorId($dia['imagem_id']);
                     if ($imgInfo && file_exists(__DIR__ . '/../../' . $imgInfo['url'])) {
-                         unlink(__DIR__ . '/../../' . $imgInfo['url']);
+                        unlink(__DIR__ . '/../../' . $imgInfo['url']);
                     }
                     $this->imagemModel->deletarImagem($dia['imagem_id']);
                 }
             }
             Redirect::toAdm('cadastroTurmas/Projeto.php', ['id' => $turmaId]);
         }
+        // Fim salvamentos
     }
 }
 
-$action = Request::get('action', 'salvar');
-$controller = new ProjetoController();
+$action = Request::post('action');
 
-if ($action === 'salvar') {
+if (isset($action) && $action === 'salvar') {
+    $controller = new ProjetoController();
     $controller->salvar();
 } else {
-     $_SESSION['erro_projeto'] = "Ação desconhecida.";
-     $turmaIdFallback = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-     if ($turmaIdFallback) {
-         Redirect::toAdm('cadastroTurmas/CadastroProjetos.php', ['id' => $turmaIdFallback]);
-     } else {
-         Redirect::toAdm('listaTurmas.php');
-     }
+    $_SESSION['erro_projeto'] = "Ação desconhecida.";
+    $turmaIdFallback = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+    if ($turmaIdFallback) {
+        Redirect::toAdm('cadastroTurmas/CadastroProjetos.php', ['id' => $turmaIdFallback]);
+    } else {
+        Redirect::toAdm('listaTurmas.php');
+    }
 }
-?>

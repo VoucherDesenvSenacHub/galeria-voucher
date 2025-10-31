@@ -58,9 +58,10 @@ $currentTab = 'projetos'; // Ajusta a aba ativa para 'projetos'
 
       <form class="form-container-projeto"
             method="POST"
-            action="<?= Config::get('APP_URL') ?>App/Controller/ProjetoController.php?action=salvar"
+            action="<?= Config::get('APP_URL') ?>App/Controller/ProjetoController.php"
             enctype="multipart/form-data">
 
+            <input type="hidden" name="action" value="salvar">
             <input type="hidden" name="turma_id" value="<?= htmlspecialchars($turmaId) ?>">
 
             <h1 class="h1-sobre">DESCRIÇÃO DO PROJETO</h1>
