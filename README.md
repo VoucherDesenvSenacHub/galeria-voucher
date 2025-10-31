@@ -7,7 +7,7 @@ A **Galeria Voucher** é um projeto desenvolvido para exibir as turmas participa
 
 | Tela | Miniatura | Descrição |
 |------|------------|-----------|
-| 🏠 **Home** | ![Tela Home](Docs/tela_home_deploy.PNG) | Página inicial da Galeria, com destaque para turmas e projetos. |
+| 🏠 **Home** | ![Tela Home](.Docs/tela_home_deploy.PNG) | Página inicial da Galeria, com destaque para turmas e projetos. |
 | 🔐 **Login** | ![Tela Login](Docs/tela_login.PNG.png) | Acesso administrativo para manutenção de dados e cadastro de novas turmas. |
 | 👩‍🏫 **Turmas** | ![Tela Turma](Docs/tela_turmas.PNG.png) | Listagem e detalhes das turmas participantes do programa. |
 | 👨‍💻 **Desenvolvedores** | ![Tela Desenvolvedores](Docs/tela_desenvolvedores.PNG) | Página que apresenta os criadores e mantenedores do projeto. |
