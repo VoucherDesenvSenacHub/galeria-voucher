@@ -12,7 +12,7 @@ class Redirect
      */
     public static function to(string $path, array $params = []): void
     {
-        $url = Config::get('APP_URL') . $path;
+        $url = Config::getAppUrl() . $path;
 
         if (!empty($params)) {
             $url .= '?' . http_build_query($params);
@@ -30,7 +30,7 @@ class Redirect
      */
     public static function toAdm(string $page, array $params = []): void
     {
-        $path = Config::get('DIR_ADM') . $page;
+        $path = Config::getDirAdm() . $page;
         self::to($path, $params);
     }
 }

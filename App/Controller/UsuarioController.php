@@ -17,7 +17,7 @@ class UsuarioController
 
     public function verificarLogin(): void
     {
-        $pathRedirecionamento = Config::get('DIR_ADM') . 'login.php';
+        $pathRedirecionamento = Config::getDirAdm() . 'login.php';
         ValidarLoginController::validarAdminRedirect($pathRedirecionamento);
     }
 

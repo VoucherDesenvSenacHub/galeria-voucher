@@ -178,9 +178,9 @@ headerComponent('Galeria da Turma');
 
     <script>
         // Adiciona a variável APP_URL ao JavaScript para ser usada no nav.js
-        const APP_URL = '<?= Config::get("APP_URL") ?>';
+        const APP_URL = '<?= Config::getAppUrl() ?>';
     </script>
-    <script src="<?= Config::get('APP_URL') . Config::get('DIR_JS') ?>users/nav.js"></script>
+    <script src="<?= Config::getDirJs() ?>users/nav.js"></script>
 </body>
 
 </html>

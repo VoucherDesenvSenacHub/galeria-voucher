@@ -23,7 +23,7 @@ if ($acao === 'editar' && $id) {
     $pessoa = $model->buscarPessoaComPoloPorId((int)$id);
 }
 
-$caminhoImagem = Config::get('APP_URL') . Config::get('DIR_IMG') . "utilitarios/avatar.png";
+$caminhoImagem = Config::getDirImg() . "utilitarios/avatar.png";
 
 if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
     $imagemModel = new ImagemModel();
@@ -32,7 +32,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
     if ($imagem && !empty($imagem['url'])) {
         $caminhoFisico = ROOT_PATH . '/' . $imagem['url'];
         if (file_exists($caminhoFisico)) {
-            $caminhoImagem = Config::get('APP_URL') . $imagem['url'];
+            $caminhoImagem = Config::getAppUrl() . $imagem['url'];
         }
     }
 }
@@ -50,8 +50,8 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
         <?php if (!empty($_GET['erro'])): ?>
             <div style="margin: 12px 0; color: #b00020; font-weight: 600;"><?= htmlspecialchars($_GET['erro']) ?></div>
         <?php endif; ?>
-       
-        <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= Config::get('APP_URL')?>App/Controller/PessoaController.php">
+
+        <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= Config::getAppUrl() ?>App/Controller/PessoaController.php">
             <input type="hidden" name="acao" value="<?= $acao ?>">
             <?php if ($acao === 'editar' && $id): ?>
                 <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
