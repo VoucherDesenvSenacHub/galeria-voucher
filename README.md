@@ -93,6 +93,13 @@ http://localhost/galeria-voucher
 [![Wellington Xavier](https://github.com/Xavier-sa.png?size=50)](https://github.com/Xavier-sa)
 [![Wendril Ferreira](https://github.com/WendrilSFS.png?size=50)](https://github.com/WendrilSFS)
 <!-- [![Gustavo Santos] gustavo por foto ai colocar link aqui, por estar sem foto estava quebrando... ](https://github.com/sntosz)  -->
+[![Desenvolvedor(a) Devs146](https://github.com/Devs146.png?size=50)](https://github.com/Devs146)
+[![S4GAZI](https://github.com/S4GAZI.png?size=50)](https://github.com/S4GAZI)
+[![Andromeda067](https://github.com/Andromeda067.png?size=50)](https://github.com/Andromeda067)
+[![Jéssica Santos](https://github.com/jessica249.png?size=50)](https://github.com/jessica249)
+[![Erika Santos](https://github.com/Erikasantos31.png?size=50)](https://github.com/Erikasantos31)
+[![Celestino](https://github.com/Celestiinoo.png?size=50)](https://github.com/Celestiinoo)
+
 
 
 ### Orientadores (Professores)
