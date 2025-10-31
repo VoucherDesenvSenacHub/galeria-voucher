@@ -73,3 +73,4 @@ http://localhost/galeria-voucher
 ## 👥 Colaboradores
 
 [![Anuar El](https://github.com/AnuarRezz.png?size=50)](https://github.com/AnuarRezz)
+[![Bruno Ribeiro](https://github.com/brunoDevfull.png?size=50)](https://github.com/brunoDevfull)
