@@ -60,8 +60,8 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
             <div class="form-top">
                 <div class="form-group">
                     <?php
-                    inputComponent('text', 'nome', 'Nome Completo *', $pessoa['nome'] ?? '');
-                    inputComponent('text', 'email', 'Email *', $pessoa['email'] ?? '');
+                    inputComponent('text', 'nome', 'Nome Completo *', $pessoa['nome'] ?? '', true);
+                    inputComponent('text', 'email', 'Email *', $pessoa['email'] ?? '', true);
                     inputComponent('text', 'linkedin', 'Link do linkedin', $pessoa['linkedin'] ?? '');
                     inputComponent('text', 'github', 'Link para o GitHub', $pessoa['github'] ?? '');
                     ?>
@@ -69,7 +69,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
 
                 <div class="form-group-polo div-center">
                     <label for="tipo-usuario" style="font-weight: bold;">Perfil *</label>
-                    <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;">
+                    <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;" required>
                         <option value="">-- Selecione --</option>
                         <?php foreach ($perfis as $perfil): ?>
                             <option value="<?= htmlspecialchars($perfil) ?>" <?= (($pessoa['perfil'] ?? '') === $perfil) ? 'selected' : '' ?>>
@@ -84,7 +84,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
                     <div class="input-file-cadastro">
                         <label class="input-file-wrapper">
                             <img id="preview" src="<?= htmlspecialchars($caminhoImagem) ?>" alt="Upload" />
-                            <input type="file" name="imagem" id="fileInput" accept="image/*" style="display:none;" />
+                            <input type="file" name="imagem" id="fileInput" accept="image/*" style="display:none;"  required />
                         </label>
                     </div>
                 </div>
