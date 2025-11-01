@@ -101,11 +101,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             </div>
 
             <section class="section_modal">
-                <div class="modal-confirmacao" id="modal-desvincular-aluno">
-                    <form class="modal-content" method="POST" action="/galeria-voucher/App/Controller/DesvincularAlunoController.php?action=desvincular">
-                        <div class="modal-header">
+                    <form class="modal-confirmacao" method="POST" id="modal-desvincular-aluno" action="/galeria-voucher/App/Controller/DesvincularAlunoController.php?action=desvincular">
+                        <div class="modal-header modal-desvincular">
                             <h3>Confirmar Desvinculação</h3>
-                            <span class="close-modal" onclick="fecharModal()">&times;</span>
+                            <span class="material-symbols-outlined modal-header-action btn-close-desvincular" name="btn-close" onclick="fecharModal()">close</span>
                         </div>
                         <div class="modal-body">
                             <p>Tem certeza que deseja desvincular o aluno "<span id="aluno-confirmacao"></span>" desta turma?</p>
@@ -122,7 +121,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             <button type="submit" class="primary-button">Desvincular</button>
                         </div>
                     </form>
-                </div>
 
                 <div class="modal modal-cadastro" id="modal-cadastro-aluno">
                     <div class="modal-header">

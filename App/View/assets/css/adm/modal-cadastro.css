@@ -6,7 +6,7 @@ arquivo para componente de modal
   .modal-action
 */
 
-.modal {
+.modal, .modal-confirmacao {
   display: none;
   position: fixed;
   top: 50%;
@@ -39,6 +39,7 @@ arquivo para componente de modal
 
   .modal-body {
     height: 100%;
+    text-align: justify;
   }
 
   .modal-action {
@@ -47,6 +48,16 @@ arquivo para componente de modal
     align-items: flex-end;
     gap: 8px;
   }
+}
+
+.btn-close-desvincular{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+}
+.modal-desvincular{
+  margin-bottom: 30px;
 }
 
 .modal .form-cadastro-pessoa {
