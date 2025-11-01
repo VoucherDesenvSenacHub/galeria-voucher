@@ -17,8 +17,6 @@ class ProjetoModel extends BaseModel
         $this->imagemProjetoDiaModel = new ImagemProjetoDiaModel();
     }
 
-    // ... (rest of the class methods remain the same) ...
-
     /**
      * Busca todos os projetos associados a uma turma específica.
      *
@@ -152,13 +150,11 @@ class ProjetoModel extends BaseModel
      */
     public function criarProjetoCompleto(array $dadosProjeto): int|false
     {
-
         if (empty($dadosProjeto['nome']) || empty($dadosProjeto['turma_id'])) {
             error_log("[{$this->tabela}Model::criarProjetoCompleto] ERRO: Nome do projeto ou ID da turma não fornecidos.");
             return false;
         }
 
-        $this->pdo->beginTransaction();
         try {
             $projetoId = $this->_inserirProjetoPrincipal(
                 $dadosProjeto['nome'],
@@ -173,7 +169,6 @@ class ProjetoModel extends BaseModel
                     !empty($diaData['descricao']) ? $diaData['descricao'] : null,
                     $projetoId
                 );
-
 
                 if (!empty($diaData['imagem_id'])) {
                     $imagemId = (int) $diaData['imagem_id'];
@@ -191,14 +186,12 @@ class ProjetoModel extends BaseModel
                 }
             }
 
-            $this->pdo->commit();
             error_log("[{$this->tabela}Model::criarProjetoCompleto] SUCESSO: Transação commitada. Projeto ID {$projetoId} criado.");
             return $projetoId;
 
         } catch (PDOException | InvalidArgumentException | Exception $e) {
-            $this->pdo->rollBack();
             error_log("[{$this->tabela}Model::criarProjetoCompleto] ERRO: Rollback executado. Mensagem: " . $e->getMessage());
-            return false;
+            throw $e;
         }
     }
 

@@ -40,36 +40,27 @@ class ImagemModel extends BaseModel
      */
     public function criarImagem(?string $url, ?string $text, ?string $descricao): int|false
     {
-        // Se não passou URL ou está vazio, busca a imagem padrão avatar.png
-        if (empty($url)) {
-             $imagemPadrao = $this->buscarImagemPorUrl(Config::get('DIR_IMG') . 'utilitarios/avatar.png');
-             if ($imagemPadrao) {
-                 // Se já existe, retorna o ID dela para evitar duplicação
-                 return (int)$imagemPadrao['imagem_id'];
-             }
-             // Se não existe, define a URL padrão para ser criada
-             $url = Config::get('DIR_IMG') . 'utilitarios/avatar.png';
-        }
+        try {
 
-        $sql = "INSERT INTO imagem (url, text, descricao, data_upload)
+            $sql = "INSERT INTO imagem (url, text, descricao, data_upload)
                 VALUES (:url, :text, :descricao, NOW())";
 
-        try {
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':url' => $url,
                 ':text' => $text, // Permite nulo
                 ':descricao' => $descricao // Permite nulo
             ]);
-            return (int)$this->pdo->lastInsertId(); // Retorna o ID da imagem criada
+            return (int) $this->pdo->lastInsertId(); // Retorna o ID da imagem criada
         } catch (PDOException $e) {
             error_log("Erro ao criar imagem: " . $e->getMessage());
-            return false;
+            throw $e;
         }
     }
 
     // Buscar imagem por ID
-    public function buscarImagemPorId(int $id): ?array {
+    public function buscarImagemPorId(int $id): ?array
+    {
         $sql = "SELECT * FROM imagem WHERE imagem_id = :id LIMIT 1"; // Adicionado LIMIT 1
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id' => $id]);
@@ -79,7 +70,8 @@ class ImagemModel extends BaseModel
     }
 
     // Buscar imagem por URL
-    public function buscarImagemPorUrl(string $url): ?array {
+    public function buscarImagemPorUrl(string $url): ?array
+    {
         $sql = "SELECT * FROM imagem WHERE url = :url LIMIT 1"; // Adicionado LIMIT 1
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':url' => $url]);
@@ -89,7 +81,8 @@ class ImagemModel extends BaseModel
     }
 
     // Listar todas as imagens
-    public function listarImagens(): array {
+    public function listarImagens(): array
+    {
         $sql = "SELECT * FROM imagem ORDER BY data_upload DESC";
         $stmt = $this->pdo->query($sql); // Pode usar query() para selects simples sem parâmetros
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -102,19 +95,20 @@ class ImagemModel extends BaseModel
      * @param int $id O ID da imagem a ser deletada.
      * @return bool True se a exclusão foi bem-sucedida, false caso contrário.
      */
-    public function deletarImagem(int $id): bool {
+    public function deletarImagem(int $id): bool
+    {
         // Antes de deletar, seria ideal verificar se a imagem não está sendo usada
         // (ex: em tabelas pessoa, turma, imagem_projeto_dia).
         // Esta verificação não está implementada aqui por simplicidade.
 
         $sql = "DELETE FROM imagem WHERE imagem_id = :id";
         try {
-             $stmt = $this->pdo->prepare($sql);
-             return $stmt->execute([':id' => $id]);
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute([':id' => $id]);
         } catch (PDOException $e) {
-             // Captura erro de chave estrangeira se a imagem estiver em uso
+            // Captura erro de chave estrangeira se a imagem estiver em uso
             error_log("Erro ao deletar imagem ID {$id}: " . $e->getMessage());
-             return false;
+            return false;
         }
 
     }
