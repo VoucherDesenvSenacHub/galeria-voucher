@@ -6,7 +6,8 @@ arquivo para componente de modal
   .modal-action
 */
 
-.modal, .modal-confirmacao {
+.modal,
+.modal-confirmacao {
   display: none;
   position: fixed;
   top: 50%;
@@ -20,7 +21,8 @@ arquivo para componente de modal
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   color: #333;
   font-family: var(--font-primary, sans-serif);
-  height: 60vh;
+  max-height: 60vh;
+  overflow: auto;
   flex-direction: column;
 
   &::backdrop {
@@ -29,8 +31,13 @@ arquivo para componente de modal
 
   .modal-header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
+
+    .modal-header-title {
+      font-weight: bold;
+    }
 
     .modal-header-action:hover {
       cursor: pointer;
@@ -50,13 +57,14 @@ arquivo para componente de modal
   }
 }
 
-.btn-close-desvincular{
+.btn-close-desvincular {
   position: absolute;
   top: 0;
   right: 0;
   padding: 8px;
 }
-.modal-desvincular{
+
+.modal-desvincular {
   margin-bottom: 30px;
 }
 
