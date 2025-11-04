@@ -3,22 +3,23 @@ $paginaAtiva = 'turmas';
 
 require_once __DIR__ . "/../../../../Config/App.php";
 require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-
-// Mantém a validação do ID da turma
-if (!isset($_GET['id']) || empty($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
-    Redirect::toAdm('listaTurmas.php');
-}
-$turmaId = (int)$_GET['id'];
-
+require_once __DIR__ . "/../../../../Helpers/Request.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../componentes/input.php";
 require_once __DIR__ . "/../../../componentes/button.php";
-headerComponent("Voucher Desenvolvedor - Novo Projeto"); // Título ajustado
-require_once __DIR__ . "/../../../../Service/AuthService.php"; // Necessário para validação
+require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
 require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 
-$currentTab = 'projetos'; // Ajusta a aba ativa para 'projetos'
+headerComponent("Voucher Desenvolvedor - Criar Projeto");
+
+$turmaId = Request::getId("turma_id");
+$projetoId = Request::getId("projeto_id");
+if (!$turmaId) {
+    Redirect::toAdm('listaTurmas.php');
+}
+
+$currentTab = 'Criar Projeto';
 ?>
 
 <body class="layout body-cadastro-turmas">
@@ -31,7 +32,7 @@ $currentTab = 'projetos'; // Ajusta a aba ativa para 'projetos'
 
     <main class="layout-main main-turmas-turmas">
       <?php BreadCrumbs::gerarBreadCrumbs(); ?>
-      <?php tabsTurmaComponent($currentTab, $turmaId); ?>
+      <?php tabsTurmaComponent($currentTab, ["turma_id" => $turmaId]); ?>
 
       <?php if (isset($_SESSION['erro_projeto'])): ?>
             <div style="color: red; margin-top: 10px;">
