@@ -39,7 +39,7 @@ class ImagemModel extends BaseModel
      * @return int|false Retorna o ID da imagem criada ou false em caso de falha.
      */
     public function criarImagem(?string $url, ?string $text, ?string $descricao): int|false
-    {
+    {   
         try {
 
             $sql = "INSERT INTO imagem (url, text, descricao, data_upload)

@@ -177,7 +177,7 @@ class ProjetoModel extends BaseModel
                     if (!$this->verificarExistencia('imagem', 'imagem_id', $imagemId)) {
                         throw new Exception("Chave estrangeira inválida: Imagem ID {$imagemId} não existe.");
                     }
-
+                    
                     $associacaoSucesso = $this->imagemProjetoDiaModel->associarImagemDia($imagemId, $projetoDiaId);
                     if (!$associacaoSucesso) {
                         throw new Exception("Falha ao associar imagem ID {$imagemId} ao dia {$tipoDia} (ID: {$projetoDiaId}). Verifique os logs.");

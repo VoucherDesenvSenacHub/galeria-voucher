@@ -82,10 +82,10 @@ class ProjetoController
                     }
                 }
 
-                if (!empty($diaData['descricao']) || $imagemId !== null) {
+                if (!empty($diaData['descricao']) || $novoImagemId !== null) {
                     $dadosProjeto['dias'][$tipoDia] = [
                         'descricao' => $diaData['descricao'],
-                        'imagem_id' => $imagemId
+                        'imagem_id' => $novoImagemId
                     ];
                 }
             }
