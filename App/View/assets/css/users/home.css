@@ -162,7 +162,6 @@ background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 0%, rgba(13, 156, 13
 
 /* estatísticas e call to action (inspire-se) */
 #secao3 {
-    min-height: var(--secao-height);
     display: flex;
     flex-direction: column;
     text-align: center;
