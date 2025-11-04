@@ -5,7 +5,7 @@ require_once __DIR__ . "/../../../../Helpers/Redirect.php";
 require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../../Model/DocenteModel.php";
-require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
+require_once __DIR__ . "/../../../componentes/adm/tabsTurma.php";
 require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 // VERIFICAÇÃO DE ACESSO
 

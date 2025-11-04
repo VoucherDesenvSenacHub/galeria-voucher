@@ -55,7 +55,7 @@ $currentTab = 'Dados-gerais';
     <?php
     $isAdmin = true;
     require_once __DIR__ . "/../../../componentes/nav.php";
-    require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
+    require_once __DIR__ . "/../../../componentes/adm/tabsTurma.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
