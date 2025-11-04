@@ -18,7 +18,7 @@ $usuario = $usuarioModel->validarLogin($email, $senha);
 if ($usuario) {
     $_SESSION['usuario'] = $usuario;
     if (in_array($usuario['perfil'], ['adm', 'professor'])) {
-        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'home-adm.php');
+        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'homeAdm.php');
     } else {
         header('Location: ' . Config::get('APP_URL') . Config::get('DIR_USER') . 'home.php');
     }

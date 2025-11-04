@@ -50,12 +50,12 @@ class DocenteController extends BaseController {
 
         if (!$pessoa_id || !$turma_id) {
             $_SESSION['erro'] = "Dados inválidos para desvinculação.";
-            Redirect::toAdm('cadastroTurmas/docentes.php', $redirectParams);
+            Redirect::toAdm('cadastro-turmas/docentes.php', $redirectParams);
         }
 
         if (empty($senha)) {
             $_SESSION['erro'] = "Senha é obrigatória para confirmar a desvinculação.";
-            Redirect::toAdm('cadastroTurmas/docentes.php', $redirectParams);
+            Redirect::toAdm('cadastro-turmas/docentes.php', $redirectParams);
         }
 
         try {
@@ -65,7 +65,7 @@ class DocenteController extends BaseController {
             
             if (!$senhaValida) {
                 $_SESSION['erro'] = "Senha incorreta. Desvinculação cancelada.";
-                Redirect::toAdm('cadastroTurmas/docentes.php', $redirectParams);
+                Redirect::toAdm('cadastro-turmas/docentes.php', $redirectParams);
             }
 
             $docenteModel = new DocenteModel();
@@ -81,7 +81,7 @@ class DocenteController extends BaseController {
             $_SESSION['erro'] = "Erro interno: " . $e->getMessage();
         }
         
-        Redirect::toAdm('cadastroTurmas/docentes.php', $redirectParams);
+        Redirect::toAdm('cadastro-turmas/docentes.php', $redirectParams);
     }
 }
 

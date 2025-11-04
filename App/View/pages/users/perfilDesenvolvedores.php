@@ -29,7 +29,7 @@ headerComponent('Desenvolvedores');
                 <h1 class="galeria-turma-h1">Alunos</h1>
                 <div class="galeria-turma-container">
                     <?php foreach ($pessoasTurma as $pessoa): ?>
-                        <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
+                        <?php include __DIR__ . "/../../componentes/users/cardPessoa.php"; ?>
                     <?php endforeach; ?>
                 </div>
             </section>
@@ -83,7 +83,7 @@ headerComponent('Desenvolvedores');
 
     </section>
 
-    <script src="<?php echo Config::get('APP_URL') . Config::get('DIR_JS') . 'easter_egg.js'; ?>"></script>
+    <script src="<?php echo Config::get('APP_URL') . Config::get('DIR_JS') . 'easter-egg.js'; ?>"></script>
 
 </body>
 </html>

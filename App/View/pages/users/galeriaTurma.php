@@ -148,7 +148,7 @@ headerComponent('Galeria da Turma');
                         <?php if (!empty($alunos)): ?>
                             <?php foreach ($alunos as $aluno): ?>
                                 <?php $pessoa = $aluno; // Adaptação para o card genérico ?>
-                                <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
+                                <?php include __DIR__ . "/../../componentes/users/cardPessoa.php"; ?>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <p>Nenhum aluno encontrado para esta turma.</p>
@@ -162,7 +162,7 @@ headerComponent('Galeria da Turma');
                         <?php if (!empty($orientadores)): ?>
                             <?php foreach ($orientadores as $orientador): ?>
                                 <?php $pessoa = $orientador; // Adaptação para o card genérico ?>
-                                <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
+                                <?php include __DIR__ . "/../../componentes/users/cardPessoa.php"; ?>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <p>Nenhum professor encontrado para esta turma.</p>

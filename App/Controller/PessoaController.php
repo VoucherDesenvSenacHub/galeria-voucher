@@ -28,7 +28,7 @@ switch ($acao) {
                 $imagemModel = new ImagemModel();
                 $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
             } else {
-                Redirect::toAdm('cadastrar-usuarios.php', ['erro' => $resultadoUpload['erro']]);
+                Redirect::toAdm('cadastrarUsuarios.php', ['erro' => $resultadoUpload['erro']]);
             }
         }
         $dados = ['nome' => $nome, 'email' => $email, 'perfil' => $perfil, 'linkedin' => $linkedin, 'github' => $github];
@@ -36,7 +36,7 @@ switch ($acao) {
             Redirect::toAdm('listarUsuarios.php');
         } else {
             $msg = $model->getUltimoErro() ?: 'Erro ao cadastrar pessoa.';
-            Redirect::toAdm('cadastrar-usuarios.php', ['erro' => $msg]);
+            Redirect::toAdm('cadastrarUsuarios.php', ['erro' => $msg]);
         }
         break;
 
@@ -49,7 +49,7 @@ switch ($acao) {
                 $imagemModel = new ImagemModel();
                 $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
             } else {
-                Redirect::toAdm('cadastrar-usuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $resultadoUpload['erro']]);
+                Redirect::toAdm('cadastrarUsuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $resultadoUpload['erro']]);
             }
         }
         $dados = ['nome' => $nome, 'email' => $email, 'perfil' => $perfil, 'linkedin' => $linkedin, 'github' => $github];
@@ -57,7 +57,7 @@ switch ($acao) {
             Redirect::toAdm('listarUsuarios.php');
         } else {
             $msg = 'Erro ao atualizar pessoa.';
-            Redirect::toAdm('cadastrar-usuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $msg]);
+            Redirect::toAdm('cadastrarUsuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $msg]);
         }
         break;
 

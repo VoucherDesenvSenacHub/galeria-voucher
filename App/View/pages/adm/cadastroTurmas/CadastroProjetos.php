@@ -32,7 +32,7 @@ try {
 $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
 ?>
 
-<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>adm/CadastroProjetos.css">
+<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>adm/cadastro-projetos.css">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 <body class="layout body-adm">
@@ -48,7 +48,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
       <div class="primaty-button" style="margin-top: 20px;">
           <?php 
-            buttonComponent('primary', 'ADICIONAR', false,  Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/Projeto.php' . ($turmaId ? "?turma_id=$turmaId" : ''), ); 
+            buttonComponent('primary', 'ADICIONAR', false,  Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastro-turmas/Projeto.php' . ($turmaId ? "?turma_id=$turmaId" : ''), ); 
           ?>
       </div>
 

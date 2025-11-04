@@ -45,7 +45,7 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
                 </li>
 
                 <?php if ($isAdmin): ?>
-                    <li class="mobile-only"><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'home-adm.php'; ?>">INÍCIO</a></li>
+                    <li class="mobile-only"><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'homeAdm.php'; ?>">INÍCIO</a></li>
                     <li class="mobile-only"><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'listarUsuarios.php'; ?>">PESSOAS</a></li>
                     <li class="mobile-only"><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php'; ?>">TURMAS</a></li>
                     <?php if ($logado): ?>
@@ -58,7 +58,7 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
                     <?php endif; ?>
                 <?php else: ?>
                     <?php if ($logado && in_array($perfil, ['adm', 'professor'])): ?>
-                        <li><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'home-adm.php'; ?>">ADMINISTRATIVO</a></li>
+                        <li><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'homeAdm.php'; ?>">ADMINISTRATIVO</a></li>
                         <li>
                             <a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_LOGOUT') . 'logout.php'; ?>" title="Sair">
                                 <span class="material-symbols-outlined">logout</span>

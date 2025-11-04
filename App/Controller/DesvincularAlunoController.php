@@ -11,7 +11,7 @@ class DesvincularAlunoController
 {
     public function desvincularAluno()
     {
-        ValidarLoginController::validarAdminRedirect(Config::get('DIR_ADM') . 'cadastroTurmas/alunos.php');
+        ValidarLoginController::validarAdminRedirect(Config::get('DIR_ADM') . 'cadastro-turmas/alunos.php');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);
@@ -22,12 +22,12 @@ class DesvincularAlunoController
 
             if (!$pessoa_id || !$turma_id) {
                 $_SESSION['erro'] = "Dados inválidos para desvinculação.";
-                Redirect::toAdm('cadastroTurmas/alunos.php', $redirectParams);
+                Redirect::toAdm('cadastro-turmas/alunos.php', $redirectParams);
             }
 
             if (empty($senha)) {
                 $_SESSION['erro'] = "Senha é obrigatória para confirmar a desvinculação.";
-                Redirect::toAdm('cadastroTurmas/alunos.php', $redirectParams);
+                Redirect::toAdm('cadastro-turmas/alunos.php', $redirectParams);
             }
 
             try {
@@ -37,7 +37,7 @@ class DesvincularAlunoController
                 
                 if (!$senhaValida) {
                     $_SESSION['erro'] = "Senha incorreta. Desvinculação cancelada.";
-                    Redirect::toAdm('cadastroTurmas/alunos.php', $redirectParams);
+                    Redirect::toAdm('cadastro-turmas/alunos.php', $redirectParams);
                 }
 
                 $alunoModel = new AlunoModel();
@@ -53,10 +53,10 @@ class DesvincularAlunoController
                 $_SESSION['erro'] = "Erro interno: " . $e->getMessage();
             }
             
-            Redirect::toAdm('cadastroTurmas/alunos.php', $redirectParams);
+            Redirect::toAdm('cadastro-turmas/alunos.php', $redirectParams);
         }
         
-        Redirect::toAdm('cadastroTurmas/alunos.php');
+        Redirect::toAdm('cadastro-turmas/alunos.php');
     }
 }
 
@@ -68,7 +68,7 @@ if (isset($_GET['action'])) {
             $controller->desvincularAluno();
             break;
         default:
-            Redirect::toAdm('cadastroTurmas/alunos.php');
+            Redirect::toAdm('cadastro-turmas/alunos.php');
     }
 }
 ?>

@@ -20,7 +20,7 @@ require_once __DIR__ . '/button.php';
 <script src="<?= Config::get('APP_URL') . Config::get('DIR_JS') ?>users/nav.js"></script>
 <script src="<?= Config::get('APP_URL') . Config::get('DIR_JS') ?>global.js"></script>
 
-<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>easter_egg.css">
+<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>easter-egg.css">
 
 <?php
 function headerComponent($titulo){
