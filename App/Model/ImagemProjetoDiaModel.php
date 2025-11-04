@@ -1,21 +1,15 @@
 <?php
 
-// Retire o declare(strict_types=1); daqui se ele estiver causando o erro
-// declare(strict_types=1);
-
 require_once __DIR__ . '/BaseModel.php';
 
 class ImagemProjetoDiaModel extends BaseModel
 {
-    // REMOVE 'string' type hint here
-    protected $tabela = "imagem_projeto_dia"; // <--- ESTA ERA A LINHA 8 COM ERRO
+    protected $tabela = "imagem_projeto_dia";
 
     public function __construct()
     {
         parent::__construct();
     }
-
-    // ... (rest of the class methods remain the same) ...
 
     /**
      * Busca todas as imagens associadas a um dia específico de um projeto.
