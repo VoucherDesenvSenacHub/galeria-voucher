@@ -115,10 +115,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     <p>Tem certeza que deseja desvincular o docente "<span id="docente-confirmacao"></span>" desta turma?</p>
                     <p class="warning-text">Esta ação requer confirmação da sua senha.</p>
                     <div class="form-group">
-                        <label for="senha-confirmacao">Digite sua senha:</label>
-                        <input type="password" id="senha-confirmacao" name="senha" required>
-                        <input type="hidden" name="pessoa_id">
-                        <input type="hidden" name="turma_id">
+                        <?php inputComponent('hidden', 'pessoa_id'); ?>
+                        <?php inputComponent('hidden', 'turma_id'); ?>
                     </div>
                 </div>
                 <div class="modal-action">
@@ -129,6 +127,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
             <div class="modal modal-cadastro" id="modal-cadastro-professor">
                 <div class="modal-header">
+                    <span class="modal-header-title">Vincular Docentes</span>
                     <span class="material-symbols-outlined modal-header-action btn-close" name="btn-close">close</span>
                 </div>
 
@@ -136,9 +135,9 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     <div class="modal-body">
                         <div>
                             <label for="pesquisar-pessoa">
-                                Pesquisar professores
+                                Docente
                             </label>
-                            <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome'); ?>
+                            <?php inputComponent('text', 'pesquisar-pessoa', 'Digite o nome'); ?>
                             <div id="sugestoes"></div>
                         </div>
 

@@ -6,8 +6,7 @@ arquivo para componente de modal
   .modal-action
 */
 
-.modal,
-.modal-confirmacao {
+.modal {
   display: none;
   position: fixed;
   top: 50%;
