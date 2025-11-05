@@ -12,10 +12,10 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = [], ) {
     $arquivoAtual = basename($_SERVER['PHP_SELF'], '.php');
 
     switch ($arquivoAtual) {
-        case 'cadastro-turmas':
+        case 'cadastroTurmas':
             $currentTab = 'dados-gerais';
             break;
-        case 'cadastro-projetos':
+        case 'cadastroProjetos':
             $currentTab = 'projetos';
             break;
         case 'docentes':
@@ -37,22 +37,22 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = [], ) {
 
     $tabs = [
         'dados-gerais' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastro-turmas/cadastro-turmas.php' . $queryParams,
+            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/cadastroTurmas.php' . $queryParams,
             'label' => 'DADOS GERAIS',
             'disabled' => false
         ],
         'projetos' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastro-turmas/cadastro-projetos.php' . $queryParams,
+            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastroTurmas/cadastroProjetos.php' . $queryParams,
             'label' => 'PROJETOS',
             'disabled' => $isDisabled
         ],
         'docentes' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastro-turmas/docentes.php' . $queryParams,
+            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastroTurmas/docentes.php' . $queryParams,
             'label' => 'DOCENTES',
             'disabled' => $isDisabled
         ],
         'alunos' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastro-turmas/alunos.php' . $queryParams,
+            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastroTurmas/alunos.php' . $queryParams,
             'label' => 'ALUNOS',
             'disabled' => $isDisabled
         ]

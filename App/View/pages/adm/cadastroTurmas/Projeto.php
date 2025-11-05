@@ -22,7 +22,7 @@ if (!$turmaId) {
 $currentTab = 'Criar Projeto';
 ?>
 
-<body class="layout body-cadastro-turmas">
+<body class="layout body-cadastroTurmas">
 
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php
