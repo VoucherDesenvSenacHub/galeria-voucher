@@ -56,17 +56,6 @@ arquivo para componente de modal
   }
 }
 
-.btn-close-desvincular {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 8px;
-}
-
-.modal-desvincular {
-  margin-bottom: 30px;
-}
-
 .modal .form-cadastro-pessoa {
   height: 78%;
 }

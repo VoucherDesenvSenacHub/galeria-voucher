@@ -106,24 +106,27 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             </div>
         </div>
         <section class="section_modal">
-            <form id="modal-desvincular-docente" class="modal-confirmacao" method="POST" action="/galeria-voucher/App/Controller/DocenteController.php?action=desvincular">
-                <div class="modal-header modal-desvincular">
-                    <h3>Confirmar Desvinculação</h3>
-                    <span class="material-symbols-outlined modal-header-action btn-close-desvincular" name="btn-close" onclick="fecharModal()">close</span>
-                </div>
-                <div class="modal-body">
-                    <p>Tem certeza que deseja desvincular o docente "<span id="docente-confirmacao"></span>" desta turma?</p>
-                    <p class="warning-text">Esta ação requer confirmação da sua senha.</p>
-                    <div class="form-group">
-                        <?php inputComponent('hidden', 'pessoa_id'); ?>
-                        <?php inputComponent('hidden', 'turma_id'); ?>
+            <div class="modal modal-cadastro" id="modal-desvincular-docente">
+                    <div class="modal-header modal-desvincular">
+                        <span class="modal-header-title">Desvincular Docente</span>
+                        <span class="material-symbols-outlined modal-header-action btn-close-desvincular" name="btn-close" onclick="fecharModal()">close</span>
                     </div>
+
+                    <form class="" method="POST" action="/galeria-voucher/App/Controller/DocenteController.php?action=desvincular">
+                        <div class="modal-body">
+                            <p>Tem certeza que deseja desvincular o Docente "<span id="docente-confirmacao"></span>" desta turma?</p>
+                            <div class="form-group">
+                                <?php inputComponent('hidden', 'pessoa_id'); ?>
+                                <?php inputComponent('hidden', 'turma_id'); ?>
+                            </div>
+                        </div>
+
+                        <div class="modal-action">
+                            <?php buttonComponent("secondary", "Cancelar", false, extraAttributes: 'onclick="fecharModal()"') ?>
+                            <?php buttonComponent("primary", "Desvincular", true) ?>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-action">
-                    <button type="button" class="secondary-button" onclick="fecharModal()">Cancelar</button>
-                    <button type="submit" class="primary-button">Desvincular</button>
-                </div>
-            </form>
 
             <div class="modal modal-cadastro" id="modal-cadastro-professor">
                 <div class="modal-header">
