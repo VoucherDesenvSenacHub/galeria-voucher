@@ -6,7 +6,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../../Model/DocenteModel.php";
 require_once __DIR__ . "/../../../componentes/adm/tabsTurma.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
 // VERIFICAÇÃO DE ACESSO
 
 $turmaId = Request::getId("turma_id");
