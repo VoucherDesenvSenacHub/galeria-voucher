@@ -20,7 +20,25 @@ $turmaId = isset($_POST['turma_id']) && is_numeric($_POST['turma_id']) ? (int)$_
 
 switch ($acao) {
     case 'cadastrar':
-        // ... (lógica de cadastro) ...
+        if (empty($nome) || empty($email) || empty($perfil)) {
+            Redirect::toAdm('cadastrar-usuarios.php', ['erro' => 'Preencha todos os campos obrigatórios (nome, e-mail e perfil).']);
+            exit;
+        }
+
+        if (empty($_FILES['imagem']) || $_FILES['imagem']['error'] !== UPLOAD_ERR_OK) {
+            $params = [
+                'erro' => 'É obrigatório enviar uma imagem de perfil.',
+                'nome' => $nome,
+                'email' => $email,
+                'linkedin' => $linkedin,
+                'github' => $github,
+                'perfil' => $perfil,
+                'acao' => 'cadastrar'
+            ];
+            Redirect::toAdm('cadastrar-usuarios.php', $params);
+            exit;
+        }
+
         $imagemId = null;
         if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
             $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
@@ -41,7 +59,15 @@ switch ($acao) {
         break;
 
     case 'editar':
-        // ... (lógica de edição) ...
+        if (empty($nome) || empty($email) || empty($perfil)) {
+            Redirect::toAdm('cadastrar-usuarios.php', ['erro' => 'Preencha todos os campos obrigatórios (nome, e-mail e perfil).']);
+            exit;
+        }
+
+        if (empty($_FILES['imagem']) || $_FILES['imagem']['error'] !== UPLOAD_ERR_OK) {
+            Redirect::toAdm('cadastrar-usuarios.php', ['erro' => 'É obrigatório enviar uma imagem de perfil.']);
+        }
+
         $imagemId = null;
         if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
             $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
