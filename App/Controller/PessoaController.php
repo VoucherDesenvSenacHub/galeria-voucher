@@ -27,7 +27,7 @@ switch ($acao) {
 
         if (empty($_FILES['imagem']) || $_FILES['imagem']['error'] !== UPLOAD_ERR_OK) {
             $params = [
-                'erro' => 'É obrigatório enviar uma imagem de perfil.*',
+                'erro' => 'É obrigatório enviar uma imagem de perfil.',
                 'nome' => $nome,
                 'email' => $email,
                 'linkedin' => $linkedin,
@@ -39,6 +39,7 @@ switch ($acao) {
             exit;
         }
 
+        // Se chegou aqui, é porque o upload foi feito corretamente
         $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
 
         if ($resultadoUpload['success']) {
@@ -72,43 +73,30 @@ switch ($acao) {
             exit;
         }
 
-        if (empty($_FILES['imagem']) || $_FILES['imagem']['error'] !== UPLOAD_ERR_OK) {
-            $params = [
-                'erro' => 'É obrigatório enviar uma imagem de perfil.*',
-                'nome' => $nome,
-                'email' => $email,
-                'linkedin' => $linkedin,
-                'github' => $github,
-                'perfil' => $perfil,
-                'acao' => 'cadastrar'
-            ];
-            Redirect::toAdm('cadastrar-usuarios.php', $params);
-            exit;
+        $imagemId = null;
+        if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+            $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
+            if ($resultadoUpload['success']) {
+                $imagemModel = new ImagemModel();
+                $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
+            } else {
+                Redirect::toAdm('cadastrar-usuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $resultadoUpload['erro']]);
+            }
         }
 
-        $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
+        $dados = [
+            'nome' => $nome,
+            'email' => $email,
+            'perfil' => $perfil,
+            'linkedin' => $linkedin,
+            'github' => $github
+        ];
 
-        if ($resultadoUpload['success']) {
-            $imagemModel = new ImagemModel();
-            $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
-        } else {
-            Redirect::toAdm('cadastrar-usuarios.php', [
-                'erro' => $resultadoUpload['erro'],
-                'nome' => $nome,
-                'email' => $email,
-                'linkedin' => $linkedin,
-                'github' => $github,
-                'perfil' => $perfil,
-                'acao' => 'cadastrar'
-            ]);
-            exit;
-        }
-        $dados = ['nome' => $nome, 'email' => $email, 'perfil' => $perfil, 'linkedin' => $linkedin, 'github' => $github];
         if ($model->atualizarPessoa((int)$id, $dados, $imagemId)) {
             Redirect::toAdm('listarUsuarios.php');
         } else {
-            $msg = 'Erro ao atualizar pessoa.';
-            Redirect::toAdm('cadastrar-usuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $msg]);
+            $msg = 'Erro ao cadastrar pessoa.';
+            Redirect::toAdm('cadastrar-usuarios.php', ['erro' => $msg]);
         }
         break;
 
@@ -126,3 +114,20 @@ switch ($acao) {
         }
         break;
 }
+
+
+
+
+    // case 'excluir':
+    //     if ($id && isset($_GET['perfil'])) {
+    //         if ($model->deletarPessoa($id, $_GET['perfil'])) {
+    //             Redirect::toAdm('listarUsuarios.php');
+    //         } else {
+    //             $msg = 'Erro: Não foi possível excluir o registro.';
+    //             Redirect::toAdm('listarUsuarios.php', ['erro' => $msg]);
+    //         }
+    //     } else {
+    //         $msg = 'Erro: ID ou perfil não especificado.';
+    //         Redirect::toAdm('listarUsuarios.php', ['erro' => $msg]);
+    //     }
+    //     break;
