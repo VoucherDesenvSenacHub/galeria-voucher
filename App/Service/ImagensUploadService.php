@@ -30,7 +30,7 @@ class ImagensUploadService
 
         // Validação de tipo e extensão
         $extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
-        $tiposPermitidos = ['jpg', 'jpeg', 'png', 'gif'];
+        $tiposPermitidos = ['jpg', 'jpeg', 'png'];
         if (!in_array($extensao, $tiposPermitidos)) {
             return ['success' => false, 'erro' => 'Extensão de arquivo inválida. Apenas JPG, JPEG, PNG e GIF são permitidos.'];
         }
