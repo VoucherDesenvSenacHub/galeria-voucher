@@ -27,8 +27,9 @@ function inputComponent($type, $name, $placeholder = null, $value = null, $requi
     // Exibe o input HTML com a classe e o conteúdo definidos
     $valueAttr = $value !== null ? " value='" . htmlspecialchars($value, ENT_QUOTES) . "'" : "";
 
-    $useRequired = $required ? ' required' : '';
-    
+    $useRequired = $required ? ' required oninvalid="this.setCustomValidity(\'Por favor, preencha o campo ' . htmlspecialchars($name, ENT_QUOTES) . '.\')"
+       oninput="this.setCustomValidity(\'\')"' : '';
+
     echo
     "<div class = 'input-container'>
         <input type='$type' class='$class' name='$name' placeholder = '$placeholder'$valueAttr $useRequired><br>
