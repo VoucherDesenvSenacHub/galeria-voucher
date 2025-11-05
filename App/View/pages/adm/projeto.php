@@ -1,15 +1,15 @@
 <?php
 $paginaAtiva = 'turmas';
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-require_once __DIR__ . "/../../../../Helpers/Request.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../componentes/input.php";
-require_once __DIR__ . "/../../../componentes/button.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../componentes/adm/tabsTurma.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/App.php";
+require_once __DIR__ . "/../../../Helpers/Redirect.php";
+require_once __DIR__ . "/../../../Helpers/Request.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../componentes/input.php";
+require_once __DIR__ . "/../../componentes/button.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 headerComponent("Voucher Desenvolvedor - Criar Projeto");
 
@@ -24,10 +24,10 @@ $currentTab = 'Criar Projeto';
 
 <body class="layout body-cadastroTurmas">
 
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">

@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../../Model/AlunoModel.php";
-require_once __DIR__ . "/../../../componentes/adm/tabsTurma.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/App.php";
+require_once __DIR__ . "/../../../Helpers/Redirect.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../../Model/AlunoModel.php";
+require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 $turmaId = Request::getId("turma_id");
 if (!$turmaId) {
@@ -33,10 +33,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body class="layout body-adm">
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
     ?>
     <main class="layout-main main-turmas-turmas">
         <?php BreadCrumbs::gerarBreadCrumbs(); ?>
@@ -56,7 +56,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
         <?php
         $isAdmin = true;
-        require_once __DIR__ . "/../../../componentes/nav.php";
+        require_once __DIR__ . "/../../componentes/nav.php";
         ?>
 
         
