@@ -45,7 +45,7 @@ try {
             <section id="secao2" class="bg-gradient">
                 <div class="container_card">
                     <div class="card">
-                        <h2>O QUE É ?</h2>
+                        <h2>O QUE É?</h2>
                         <p>
                             Qualifique-se para uma das áreas mais promissoras da atualidade com o Programa Voucher
                             Desenvolvedor.
@@ -61,7 +61,7 @@ try {
                     </div>
     
                     <div class="card">
-                        <h2>PARA QUEM É ?</h2>
+                        <h2>PARA QUEM É?</h2>
                         <p>
                             Podem participar do processo seletivo pessoas com renda per capita familiar de até 2 salários
                             mínimos.
@@ -77,7 +77,7 @@ try {
                     </div>
     
                     <div class="card">
-                        <h2>POR QUE FAZER ?</h2>
+                        <h2>POR QUE FAZER?</h2>
                         <p>
                             A área de Tecnologia da Informação está em expansão, com uma alta demanda por profissionais de
                             Desenvolvimento de Sistemas.
