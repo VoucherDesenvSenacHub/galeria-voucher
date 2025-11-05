@@ -48,8 +48,8 @@ class ImagemModel extends BaseModel
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':url' => $url,
-                ':text' => $text, // Permite nulo
-                ':descricao' => $descricao // Permite nulo
+                ':text' => $text,
+                ':descricao' => $descricao
             ]);
             return (int) $this->pdo->lastInsertId(); // Retorna o ID da imagem criada
         } catch (PDOException $e) {
