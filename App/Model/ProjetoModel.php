@@ -1,13 +1,11 @@
 <?php
 
-declare(strict_types=1); // Habilita checagem de tipos estrita
-
 require_once __DIR__ . "/BaseModel.php";
 require_once __DIR__ . "/ImagemProjetoDiaModel.php"; // Necessário para buscar e associar imagens
 
 class ProjetoModel extends BaseModel
 {
-    // REMOVE 'string' type hint here
+
     protected $tabela = "projeto"; // Define a tabela no atributo da classe
     private ImagemProjetoDiaModel $imagemProjetoDiaModel; // Injeção de dependência
 
@@ -75,7 +73,7 @@ class ProjetoModel extends BaseModel
      * @return int O ID do projeto inserido.
      * @throws Exception Se a inserção falhar ou a turma_id for inválida.
      */
-    private function _inserirProjetoPrincipal(string $nome, ?string $descricao, ?string $link, int $turmaId): int
+    private function inserirProjetoPrincipal(string $nome, ?string $descricao, ?string $link, int $turmaId): int
     {
         error_log("[_inserirProjetoPrincipal] Inserindo projeto '{$nome}' para turma ID {$turmaId}.");
 
@@ -114,7 +112,7 @@ class ProjetoModel extends BaseModel
      * @return int O ID do dia do projeto inserido.
      * @throws Exception Se a inserção falhar.
      */
-    private function _inserirProjetoDia(string $tipoDia, ?string $descricao, int $projetoId): int
+    private function inserirProjetoDia(string $tipoDia, ?string $descricao, int $projetoId): int
     {
         if (!in_array($tipoDia, ['I', 'P', 'E'])) {
             throw new InvalidArgumentException("Tipo de dia inválido '{$tipoDia}' fornecido.");
@@ -156,7 +154,7 @@ class ProjetoModel extends BaseModel
         }
 
         try {
-            $projetoId = $this->_inserirProjetoPrincipal(
+            $projetoId = $this->inserirProjetoPrincipal(
                 $dadosProjeto['nome'],
                 !empty($dadosProjeto['descricao']) ? $dadosProjeto['descricao'] : null,
                 !empty($dadosProjeto['link']) ? $dadosProjeto['link'] : null,
@@ -164,7 +162,7 @@ class ProjetoModel extends BaseModel
             );
 
             foreach ($dadosProjeto['dias'] as $tipoDia => $diaData) {
-                $projetoDiaId = $this->_inserirProjetoDia(
+                $projetoDiaId = $this->inserirProjetoDia(
                     $tipoDia,
                     !empty($diaData['descricao']) ? $diaData['descricao'] : null,
                     $projetoId
