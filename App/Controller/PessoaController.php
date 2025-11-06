@@ -113,20 +113,3 @@ switch ($acao) {
         }
         break;
 }
-
-
-
-
-    // case 'excluir':
-    //     if ($id && isset($_GET['perfil'])) {
-    //         if ($model->deletarPessoa($id, $_GET['perfil'])) {
-    //             Redirect::toAdm('listarUsuarios.php');
-    //         } else {
-    //             $msg = 'Erro: Não foi possível excluir o registro.';
-    //             Redirect::toAdm('listarUsuarios.php', ['erro' => $msg]);
-    //         }
-    //     } else {
-    //         $msg = 'Erro: ID ou perfil não especificado.';
-    //         Redirect::toAdm('listarUsuarios.php', ['erro' => $msg]);
-    //     }
-    //     break;
