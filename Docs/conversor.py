@@ -72,21 +72,10 @@ def converter_pasta_completa(pasta):
         print(f"❌ Erro ao processar pasta: {e}")
 
 
-# ============================================================
-# EXEMPLOS DE USO
-# ============================================================
 
-if __name__ == "__main__":
+
+if __name__ == "__main__":  
     
-    # OPÇÃO 1: Converter um arquivo específico
-    # Descomente a linha abaixo e coloque o caminho do seu arquivo
-    # converter_docx_para_pdf("meu_documento.docx")
-    
-    # OPÇÃO 2: Converter todos os arquivos de uma pasta
-    # Descomente a linha abaixo e coloque o caminho da sua pasta
-    # converter_pasta_completa("./documentos")
-    
-    # OPÇÃO 3: Menu interativo (descomente o bloco abaixo)
     print("=" * 50)
     print("🔄 CONVERSOR DOCX PARA PDF")
     print("=" * 50)
