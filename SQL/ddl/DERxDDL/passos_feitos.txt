@@ -1,0 +1,1 @@
+passos , removido : projeto,  a coluna img :imagem_id
