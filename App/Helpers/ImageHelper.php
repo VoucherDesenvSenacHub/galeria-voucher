@@ -15,5 +15,5 @@ function urlImagem(?string $nomeImagem, ?string $fallback = 'App/View/assets/img
     }
 
     // Retorna a URL completa (base + nome da imagem)
-    return Config::get('APP_URL') . $nomeImagem;
+    return Config::getAppUrl() . $nomeImagem;
 }

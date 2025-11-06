@@ -20,10 +20,10 @@ if (!empty($pessoa['foto'])) {
     if (filter_var($pessoa['foto'], FILTER_VALIDATE_URL)) {
         $caminhoFoto = $pessoa['foto'];
     } else {
-        $caminhoFoto = Config::get('APP_URL') . $pessoa['foto'];
+        $caminhoFoto = Config::getAppUrl() . $pessoa['foto'];
     }
 } else {
-    $caminhoFoto = Config::get('APP_URL') . Config::get('DIR_IMG') . 'utilitarios/avatar.png';
+    $caminhoFoto = Config::getDirImg() . 'utilitarios/avatar.png';
 }
 ?>
 
@@ -40,10 +40,10 @@ if (!empty($pessoa['foto'])) {
         <?php endif; ?>
         <div class="social-icons">
             <a href="<?= htmlspecialchars($pessoa['linkedin'] ?? '#'); ?>" target="_blank">
-                <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>utilitarios/icons8-linkedin-50.png" alt="LinkedIn">
+                <img src="<?= Config::getDirImg() ?>utilitarios/icons8-linkedin-50.png" alt="LinkedIn">
             </a>
             <a href="<?= htmlspecialchars($pessoa['github'] ?? '#'); ?>" target="_blank">
-                <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>utilitarios/icons8-github-50.png" alt="GitHub">
+                <img src="<?= Config::getDirImg() ?>utilitarios/icons8-github-50.png" alt="GitHub">
             </a>
         </div>
     </div>
