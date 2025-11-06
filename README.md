@@ -96,6 +96,9 @@ http://localhost/galeria-voucher
 [![Andromeda067](https://github.com/Andromeda067.png?size=50)](https://github.com/Andromeda067)
 [![Erika Santos](https://github.com/Erikasantos31.png?size=50)](https://github.com/Erikasantos31)
 [![Celestino](https://github.com/Celestiinoo.png?size=50)](https://github.com/Celestiinoo)
+
+
+<!-- atencao confirma quem deve permanecer no documento e no github com os professores obs os tres abaixo a foto padrao do github quebra la no readem atualizar para images -->
 <!-- [![Gustavo Santos] gustavo por foto ai colocar link aqui, por estar sem foto estava quebrando... ](https://github.com/sntosz)  -->
 <!-- [![Desenvolvedor(a) Devs146](https://github.com/Devs146.png?size=50)](https://github.com/Devs146) -->
 <!-- [![Jéssica Santos](https://github.com/jessica249.png?size=50)](https://github.com/jessica249) -->
