@@ -3,7 +3,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . '/../../../Model/PessoaModel.php';
 require_once __DIR__ . '/../../../Model/ImagemModel.php';
-require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../componentesbreadCrumbs.php";
 
 if (!defined('ROOT_PATH')) {
     define('ROOT_PATH', dirname(__DIR__, 4));

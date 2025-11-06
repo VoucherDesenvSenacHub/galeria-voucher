@@ -12,7 +12,7 @@ require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../Model/PoloModel.php";
 require_once __DIR__ . "/../../../Helpers/Request.php";
-require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../componentesbreadCrumbs.php";
 
 $isEditMode = false;
 $turma = null;
