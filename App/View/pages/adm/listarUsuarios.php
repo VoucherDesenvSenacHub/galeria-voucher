@@ -41,14 +41,14 @@ try {
     <?php BreadCrumbs::gerarBreadCrumbs()?>
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">
-        <?php buttonComponent('primary', 'CADASTRAR', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastrarUsuarios.php'); ?>
+        <?php buttonComponent('primary', 'CADASTRAR', false, Config::getDirAdm() . 'cadastrarUsuarios.php'); ?>
 
         <form method="GET" action="">
           <div class="input-pesquisa-container">
           <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar por nome ou polo" value="<?= htmlspecialchars($termoPesquisa) ?>">
             <button type="submit" class="search-button">
-              <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa"
-              class="icone-lupa-img">
+                <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa"
+                class="icone-lupa-img">
             </button>
           </div>
         </form>
@@ -83,7 +83,7 @@ try {
                               <a href="cadastrarUsuarios.php?acao=editar&id=<?= $usuario['pessoa_id'] ?>">
                                   <span class="material-symbols-outlined acao-edit" title="Editar">edit</span>
                               </a>
-                              <a href="<?= Config::get('APP_URL') ?>App/Controller/PessoaController.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
+                              <a href="<?= Config::getAppUrl() ?>App/Controller/PessoaController.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
                                 onclick="return confirm('Tem certeza que deseja excluir este registro?');">
                                   <span class="material-symbols-outlined acao-delete" title="Excluir">delete</span>
                               </a>

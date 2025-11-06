@@ -11,7 +11,7 @@ class DesvincularAlunoController
 {
     public function desvincularAluno()
     {
-        ValidarLoginController::validarAdminRedirect(Config::get('DIR_ADM') . 'alunos.php');
+        ValidarLoginController::validarAdminRedirect(Config::getDirAdm() . 'alunos.php');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);

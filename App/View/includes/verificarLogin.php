@@ -18,14 +18,14 @@ $usuario = $usuarioModel->validarLogin($email, $senha);
 if ($usuario) {
     $_SESSION['usuario'] = $usuario;
     if (in_array($usuario['perfil'], ['adm', 'professor'])) {
-        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'homeAdm.php');
+        header('Location: ' . Config::getDirAdm() . 'homeAdm.php');
     } else {
-        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_USER') . 'home.php');
+        header('Location: ' . Config::getDirUser() . 'home.php');
     }
     exit;
 } else {
     $_SESSION['erro_login'] = 'Email ou senha inválidos';
-    header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'login.php');
+    header('Location: ' . Config::getDirAdm() . 'login.php');
     exit;
 }
 

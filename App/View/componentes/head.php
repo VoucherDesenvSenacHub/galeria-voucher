@@ -14,13 +14,13 @@ require_once __DIR__ . '/button.php';
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>globals.css">
-<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>adm/modal-cadastro.css">
+<link rel="stylesheet" href="<?= Config::getDirCss() ?>globals.css">
+<link rel="stylesheet" href="<?= Config::getDirCss() ?>adm/modal-cadastro.css">
 
-<script src="<?= Config::get('APP_URL') . Config::get('DIR_JS') ?>users/nav.js"></script>
-<script src="<?= Config::get('APP_URL') . Config::get('DIR_JS') ?>global.js"></script>
+<script src="<?= Config::getDirJs() ?>users/nav.js"></script>
+<script src="<?= Config::getDirJs() ?>global.js"></script>
 
-<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>easter-egg.css">
+<link rel="stylesheet" href="<?= Config::getDirCss() ?>easter-egg.css">
 
 <?php
 function headerComponent($titulo){

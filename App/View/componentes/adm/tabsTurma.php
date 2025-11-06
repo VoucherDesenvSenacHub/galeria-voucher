@@ -39,23 +39,23 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = []) {
     }
 
     $tabs = [
-        'Dados-gerais' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas.php' . $queryParams,
+        'dados-gerais' => [
+            'url' => Config::getDirAdm() . 'cadastroTurmas.php' . $queryParams,
             'label' => 'DADOS GERAIS',
             'disabled' => false
         ],
-        'Projetos' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastroProjetos.php' . $queryParams,
+        'projetos' => [
+            'url' => Config::getDirAdm() . 'CadastroProjetos.php' . $queryParams,
             'label' => 'PROJETOS',
             'disabled' => $isDisabled
         ],
-        'Docentes' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'docentes.php' . $queryParams,
+        'docentes' => [
+            'url' => Config::getDirAdm() . 'docentes.php' . $queryParams,
             'label' => 'DOCENTES',
             'disabled' => $isDisabled
         ],
-        'Alunos' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'alunos.php' . $queryParams,
+        'alunos' => [
+            'url' => Config::getDirAdm() . 'alunos.php' . $queryParams,
             'label' => 'ALUNOS',
             'disabled' => $isDisabled
         ]

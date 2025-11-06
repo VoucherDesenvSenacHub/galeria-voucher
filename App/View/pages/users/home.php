@@ -36,7 +36,7 @@ try {
                 <div class="content">
     
                     <div class="nome-voucher">
-                        <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>utilitarios/nome.png" alt="Voucher Desenvolvedor">
+                        <img src="<?= Config::getDirImg() ?>utilitarios/nome.png" alt="Voucher Desenvolvedor">
                     </div>
     
                 </div>
@@ -128,8 +128,8 @@ try {
                             $turmas_slice1 = array_slice($turmas, 0, 6);
                             foreach ($turmas_slice1 as $turma): ?>
                                 <div class='image-turma'>
-                                    <a href="<?= Config::get('APP_URL') . Config::get('DIR_USER') ?>galeriaTurma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
-                                        <img src="<?= Config::get('APP_URL') . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
+                                    <a href="<?= Config::getDirUser() ?>galeriaTurma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
+                                        <img src="<?= Config::getAppUrl() . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
                                     </a>
                                 </div>
                             <?php endforeach; ?>
@@ -140,8 +140,8 @@ try {
                             $turmas_slice2 = array_slice($turmas, 6, 5);
                             foreach ($turmas_slice2 as $turma): ?>
                                 <div class='image-turma'>
-                                    <a href="<?= Config::get('APP_URL') . Config::get('DIR_USER') ?>galeriaTurma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
-                                        <img src="<?= Config::get('APP_URL') . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
+                                    <a href="<?= Config::getDirUser() ?>galeriaTurma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
+                                        <img src="<?= Config::getAppUrl() . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
                                     </a>
                                 </div>
                             <?php endforeach; ?>
@@ -152,8 +152,8 @@ try {
                             $turmas_slice3 = array_slice($turmas, 11, 6);
                             foreach ($turmas_slice3 as $turma): ?>
                                 <div class='image-turma'>
-                                    <a href="<?= Config::get('APP_URL') . Config::get('DIR_USER') ?>galeriaTurma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
-                                        <img src="<?= Config::get('APP_URL') . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
+                                    <a href="<?= Config::getDirUser() ?>galeriaTurma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
+                                        <img src="<?= Config::getAppUrl() . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
                                     </a>
                                 </div>
                             <?php endforeach; ?>
@@ -166,5 +166,5 @@ try {
         </main>
         <?php require_once __DIR__ . "/./../../componentes/users/footer.php"; ?>
     </section>
-    <script src="<?= Config::get('APP_URL') . Config::get('DIR_JS') . 'users/matrix.js' ?>"></script>
+    <script src="<?= Config::getDirJs() . 'users/matrix.js' ?>"></script>
 </body>

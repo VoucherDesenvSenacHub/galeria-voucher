@@ -8,8 +8,8 @@ headerComponent('Página inicial - ADM');
 
 $paginaAtiva = 'home';
 ?>
-<link rel="stylesheet" href="<?= Config::get("APP_URL") . Config::get("DIR_CSS") ?>adm/home-adm.css">
-<link rel="stylesheet" href="<?= Config::get("APP_URL") . Config::get("DIR_CSS") ?>adm/nav.css">
+<link rel="stylesheet" href="<?= Config::getDirCss() ?>adm/home-adm.css">
+<link rel="stylesheet" href="<?= Config::getDirCss() ?>adm/nav.css">
 
 <body class="layout body-adm">
     <?php
