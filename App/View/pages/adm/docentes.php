@@ -61,7 +61,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         <?php endif; ?>
 
         <div class="topo-lista-alunos">
-            <?php buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor', " . $turmaId . ")\""); ?>
+            <?php buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroProfessor()\""); ?>
             <div class="input-pesquisa-container">
                 <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                 <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
@@ -128,6 +128,33 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                         <div class="modal-footer">
                             <button type="button" class="secondary-button" onclick="fecharModal()">Cancelar</button>
                             <button type="submit" class="primary-button" >Desvincular</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal modal-cadastro" id="modal-cadastro-professor">
+                    <div class="modal-header">
+                        <span class="material-symbols-outlined modal-header-action btn-close" name="btn-close">close</span>
+                    </div>
+                    
+                    <form class="form-cadastro-pessoa" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
+                        <div class="modal-body">
+                            <div>
+                                <label for="pesquisar-pessoa">
+                                    Pesquisar professores
+                                </label>
+                                <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome'); ?>
+                                <div id="sugestoes"></div>
+                            </div>
+
+                            <div id="pessoas-selecionadas"></div>
+
+                            <input type="hidden" name="turma_id" value="<?= $turmaId ?>">
+
+                        </div>
+
+                        <div class="modal-action">
+                            <?php buttonComponent("primary", "Vincular", true)?>
                         </div>
                     </form>
                 </div>
