@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../../Helpers/Redirect.php';
  * @param string $currentTab - A aba atual ('dados-gerais', 'projetos', 'docentes', 'alunos')
  * @param array $params - Params da url, turma_id é opcional, usado para manter o contexto nas navegações
  */
-function tabsTurmaComponent($currentTab = 'dados-gerais', $params = [], ) {
+function tabsTurmaComponent($currentTab = 'dados-gerais', $params = []) {
 
     $isDisabled = is_null($params['turma_id']); // Desabilita as abas se não houver ID de turma
 
