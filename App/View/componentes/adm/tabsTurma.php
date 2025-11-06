@@ -45,7 +45,7 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = []) {
             'disabled' => false
         ],
         'projetos' => [
-            'url' => Config::getDirAdm() . 'CadastroProjetos.php' . $queryParams,
+            'url' => Config::getDirAdm() . 'projetos.php' . $queryParams,
             'label' => 'PROJETOS',
             'disabled' => $isDisabled
         ],

@@ -28,15 +28,15 @@ switch ($acao) {
                 $imagemModel = new ImagemModel();
                 $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
             } else {
-                Redirect::toAdm('cadastrarUsuarios.php', ['erro' => $resultadoUpload['erro']]);
+                Redirect::toAdm('cadastroUsuarios.php', ['erro' => $resultadoUpload['erro']]);
             }
         }
         $dados = ['nome' => $nome, 'email' => $email, 'perfil' => $perfil, 'linkedin' => $linkedin, 'github' => $github];
         if ($model->criarPessoa($dados, $imagemId)) {
-            Redirect::toAdm('listarUsuarios.php');
+            Redirect::toAdm('listaUsuarios.php');
         } else {
             $msg = $model->getUltimoErro() ?: 'Erro ao cadastrar pessoa.';
-            Redirect::toAdm('cadastrarUsuarios.php', ['erro' => $msg]);
+            Redirect::toAdm('cadastroUsuarios.php', ['erro' => $msg]);
         }
         break;
 
@@ -49,29 +49,29 @@ switch ($acao) {
                 $imagemModel = new ImagemModel();
                 $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
             } else {
-                Redirect::toAdm('cadastrarUsuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $resultadoUpload['erro']]);
+                Redirect::toAdm('cadastroUsuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $resultadoUpload['erro']]);
             }
         }
         $dados = ['nome' => $nome, 'email' => $email, 'perfil' => $perfil, 'linkedin' => $linkedin, 'github' => $github];
         if ($model->atualizarPessoa((int)$id, $dados, $imagemId)) {
-            Redirect::toAdm('listarUsuarios.php');
+            Redirect::toAdm('listaUsuarios.php');
         } else {
             $msg = 'Erro ao atualizar pessoa.';
-            Redirect::toAdm('cadastrarUsuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $msg]);
+            Redirect::toAdm('cadastroUsuarios.php', ['acao' => 'editar', 'id' => $id, 'erro' => $msg]);
         }
         break;
 
     case 'excluir':
         if ($id && $perfil) {
             if ($model->deletarPessoa((int)$id, $perfil)) {
-                Redirect::toAdm('listarUsuarios.php');
+                Redirect::toAdm('listaUsuarios.php');
             } else {
                 $msg = 'Erro: Não foi possível excluir o registro.';
-                Redirect::toAdm('listarUsuarios.php', ['erro' => $msg]);
+                Redirect::toAdm('listaUsuarios.php', ['erro' => $msg]);
             }
         } else {
             $msg = 'Erro: ID ou perfil não especificado.';
-            Redirect::toAdm('listarUsuarios.php', ['erro' => $msg]);
+            Redirect::toAdm('listaUsuarios.php', ['erro' => $msg]);
         }
         break;
 }
