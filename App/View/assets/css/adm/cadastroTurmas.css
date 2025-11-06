@@ -88,21 +88,19 @@
 
 
     .profile-pic {
-        height: 20rem;
+        height: 30rem;
         display: flex;
-        flex-direction: column;
-        /* Adicionado para empilhar os itens verticalmente */
         align-items: center;
         justify-content: center;
-        margin: 5rem 2rem;
         margin-left: 10%;
-        font-size: 1.0rem;
+        text-align: center;
+        font-size: var( --s-font);
     }
 
     .profile-pic img {
         z-index: 1;
-        width: 95%;
-        height: 300px;
+        width: 70%;
+        height: 400px;
         object-fit: cover;
         border-radius: 5%;
         border: 2px solid #000000;
@@ -153,19 +151,11 @@
         height: 48px;
         width: 100%;
         justify-content: center;
-        border: 1px solid #333;
+        border: 2px solid #333;
         border-radius: 10px;
         background-color: #e5e9e4;
         font-size: 16px;
     }
-
-    /* .dia {
-        display: flex;       
-        gap: 50px;          
-        align-items: center; 
-        margin-left: 14px;
-        justify-content: space-between;
-    } */
 
     #text_termino {
 

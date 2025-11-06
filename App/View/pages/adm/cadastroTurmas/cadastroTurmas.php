@@ -102,7 +102,7 @@ $currentTab = 'Dados-gerais';
                
                 <div class="input-container">
                   <label class="form-label" id="text_input">Polo</label>
-                  <select name="polo_id" >
+                  <select name="polo_id" required>
                     <option value="">Selecione um Polo</option>
                     <?php foreach ($polos as $polo): // Loop para criar as opções do select a partir dos dados do banco. ?>
                       <option value="<?= $polo['polo_id'] ?>" <?= ($isEditMode && isset($turma) && $polo['polo_id'] == $turma['polo_id']) ? 'selected' : '' ?>>
