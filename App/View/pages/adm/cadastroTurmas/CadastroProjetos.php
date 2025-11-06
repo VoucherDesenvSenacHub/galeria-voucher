@@ -7,7 +7,7 @@ require_once __DIR__ . "/../../../componentes/head.php";
 require_once __DIR__ . "/../../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../componentes/adm/tabsTurma.php";
 require_once __DIR__ . "/../../../../Model/TurmaModel.php";
-require_once __DIR__ . "/../../../componentesbreadCrumbs.php";
+require_once __DIR__ . "/../../../componentes/breadCrumbs.php";
 
 $turmaId = Request::getId("turma_id");
 
