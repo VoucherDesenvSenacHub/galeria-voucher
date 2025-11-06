@@ -9,11 +9,11 @@
             1 => ["pai" => 0, "url" => "listarUsuarios", "valor" => "Pessoas" ],
             2 => ["pai" => 1, "url" => "cadastrar-usuarios", "valor" => "Cadastrar Usuário" ],
             3 => ["pai" => 0, "url" => "listaTurmas", "valor" => "Turmas" ],
-            4 => ["pai" => 3, "url" => "cadastroTurmas/cadastroTurmas", "valor" => "Cadastrar Turma" ],
-            5 => ["pai" => 3, "url" => "cadastroTurmas/cadastro-projetos", "valor" => "Listar Projetos" ],
-            6 => ["pai" => 5, "url" => "cadastroTurmas/Projeto", "valor" => "Cadastrar Projetos" ],
-            7 => ["pai" => 3, "url" => "cadastroTurmas/docentes", "valor" => "Listar Docentes" ],
-            8 => ["pai" => 3, "url" => "cadastroTurmas/alunos", "valor" => "Listar Alunos" ],
+            4 => ["pai" => 3, "url" => "cadastroTurmas", "valor" => "Cadastrar Turma" ],
+            5 => ["pai" => 3, "url" => "cadastro-projetos", "valor" => "Listar Projetos" ],
+            6 => ["pai" => 5, "url" => "Projeto", "valor" => "Cadastrar Projetos" ],
+            7 => ["pai" => 3, "url" => "docentes", "valor" => "Listar Docentes" ],
+            8 => ["pai" => 3, "url" => "alunos", "valor" => "Listar Alunos" ],
         ];
 
         /**

@@ -1,7 +1,10 @@
 <?php
 class Database
 {
-    public static function conectar(): PDO
+    private static $instance = null;
+    private PDO $pdo;
+
+    public function __construct()
     {
         $host = 'localhost';
         $port = '3306';
@@ -10,12 +13,20 @@ class Database
         $pass = '';
 
         try {
-            $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4", $user, $pass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            return $pdo;
+            $this->pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4", $user, $pass);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Erro ao conectar ao banco de dados: " . $e->getMessage());
         }
+
+    }
+    public static function conectar(): PDO
+    {
+        if (self::$instance === null) {
+            self::$instance = new Database();
+        }
+
+        return self::$instance->pdo;
     }
 }

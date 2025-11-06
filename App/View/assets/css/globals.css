@@ -40,10 +40,10 @@
     --height-button-tablet: 2.7rem;
     --font-primary: "Poppins", sans-serif;
     --font-secondary: "Bebas Neue", sans-serif;
-    --s-font: 15px;
-    --m-font: 20px;
-    --l-font: 30px;
-    --xl-font: 40px;
+    --s-font: 0.75rem;
+    --m-font: 1rem;
+    --l-font: 1.5rem;
+    --xl-font: 2rem;
     --background-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0.970), rgba(0, 0, 0, 0.900), #0D9C0D, rgba(0, 0, 0, 0.930), #0D9C0D,rgba(0, 0, 0, 0.960),rgba(0, 0, 0, 0.950),rgba(0, 0, 0, 0.900));
     --card-gradient: linear-gradient(to right, #D8DBD6, #AEFF40);
     --dark-green: #0D9C0D;
@@ -60,6 +60,7 @@
     --default-transition: all 0.3s ease;
     --space-letters: 1.5px;
 
+    font-size: var(--m-font);
 
     /* Tablet */
     @media (max-width: 1024px) {
@@ -74,4 +75,15 @@
 
 body{
     font-family: var(--font-primary);
+}
+
+.titulo{
+    font-family: var(--font-secondary);
+    font-size: var(--xl-font);
+
+}
+
+.texto{
+    font-family: var(--font-primary);
+    font-size: var(--m-font);
 }
