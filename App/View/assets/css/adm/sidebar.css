@@ -1,21 +1,10 @@
-* {
-  padding: 0;
-  margin: 0;
-  vertical-align: baseline;
-  list-style: none;
-  list-style: none;
-  border: 0;
-  box-sizing: border-box;
-}
-
 .sidebar-adm {
-  padding-top: 50px;
+  grid-area: side;
   background-color: var(--sidebar-gray);
   color: var(--text-white);
-  width: var(--sidebar-width);
-  min-width: var(--sidebar-width);
   letter-spacing: var(--espaco-letras);
-  height: 100vh;
+  transition: all 500ms ease-in-out;
+  overflow: hidden;
 }
 
 .menu-adm a {
@@ -32,23 +21,4 @@
 
 .menu-adm a.active {
   background-color: #555; /* Um cinza escuro para destaque */
-}
-
-
-
-@media (max-width: 1333px) and (max-height: 720px) {
-
-  .sidebar {
-    width: 100%; 
-    height: auto; 
-  }
-}
-
-@media (max-width: 768px) {
-
-    .sidebar {
-      width: 100%;
-      height: auto;
-    }
-
 }

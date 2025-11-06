@@ -91,25 +91,18 @@
             return reset($bread);
         }
 
-        /**
-         * Gera a sequência de links do BreadCrumbs. Função recursiva que navega o array BREAD_MAP concatenando primeiro o link do elemento pai,
-         * caso ele exista, com link do elemento atual.
-         *
-         * @param array{pai: int|null, url: string, valor: string} $breadcrumbItem Um elemento de BREAD_MAP.
-         * @return string HTML contendo os links
-         */
         private static function gerarLink($breadcrumbItem) : string | null 
         {
             $breadcrumbCompleto = '';
             ["pai" => $pai,"url" => $url,"valor" => $valor] = $breadcrumbItem;
             
             if (isset($pai)) {
-                $breadcrumbCompleto .= self::gerarLink(self::BREAD_MAP[$breadcrumbItem['pai']]) . BreadCrumbs::SEPARATOR;
+                $breadcrumbCompleto .= self::gerarLink(self::BREAD_MAP[$breadcrumbItem['pai']]) . self::SEPARATOR;
             }
 
-            $url_base = VARIAVEIS['APP_URL'] . "App/View/pages/adm";
+            $url_base = Config::getDirAdm();
 
-            $breadcrumbCompleto .= "<a href=\"{$url_base}/{$url}.php\">{$valor}</a>";
+            $breadcrumbCompleto .= "<a href=\"{$url_base}{$url}.php\">{$valor}</a>";
             return $breadcrumbCompleto;
         }
     }

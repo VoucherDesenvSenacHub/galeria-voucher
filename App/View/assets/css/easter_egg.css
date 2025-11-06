@@ -1,0 +1,68 @@
+/* --- Estilos Gerais para Overlays --- */
+.easter-egg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: none; /* Inicia escondido */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-family: 'Courier New', Courier, monospace;
+}
+.easter-egg-container {
+    border: 2px solid #aeff40;
+    border-radius: 8px;
+    background-color: #000;
+    box-shadow: 0 0 20px rgba(174, 255, 64, 0.5);
+    padding: 15px;
+    position: relative;
+    color: #aeff40;
+    max-width: 90vw;
+}
+
+/* --- Estilos Específicos do Jogo da Cobrinha --- */
+#gameCanvas { display: block; background-color: #111; max-width: 100%; height: auto; }
+#score-board { font-size: 20px; padding-bottom: 10px; }
+#game-instructions { color: #aeff40; text-align: center; padding: 10px; font-size: 14px; }
+#game-over-screen, #start-screen {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); display: none; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+}
+#start-screen { cursor: pointer; }
+#game-over-screen h2, #start-screen h2 { font-size: 24px; margin-bottom: 20px; }
+#player-name {
+    padding: 8px; margin: 15px 0; text-align: center; text-transform: uppercase;
+    background-color: #333; color: #aeff40; border: 1px solid #aeff40; width: 200px;
+}
+#save-score-btn {
+    padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; 
+    font-family: 'Courier New', Courier, monospace; margin-top: 5px;
+    background-color: #aeff40; color: #000;
+}
+#leaderboard { text-align: left; margin-top: 15px; padding: 10px; border-top: 1px solid #aeff40; }
+#leaderboard h3 { text-align: center; margin-top: 0; margin-bottom: 10px; }
+#high-scores-list { list-style-type: none; padding: 0; font-size: 14px; }
+#high-scores-list li { margin-bottom: 8px; display: flex; justify-content: space-between; }
+#touch-controls { display: none; margin-top: 15px; width: 150px; height: 150px; position: relative; }
+.touch-btn {
+    position: absolute; width: 50px; height: 50px; background: rgba(174, 255, 64, 0.3);
+    border: 1px solid #aeff40; color: #aeff40; font-size: 24px;
+    display: flex; justify-content: center; align-items: center;
+}
+#btn-up { top: 0; left: 50px; } #btn-down { bottom: 0; left: 50px; }
+#btn-left { top: 50px; left: 0; } #btn-right { top: 50px; right: 0; }
+
+/* --- Estilos Específicos da Carta para o Thiago --- */
+#thiago-letter-modal .easter-egg-container { max-width: 600px; max-height: 80vh; overflow-y: auto; }
+#thiago-letter-modal h2 { font-size: 24px; margin-bottom: 20px; }
+#thiago-letter-modal p { text-align: justify; line-height: 1.6; margin-bottom: 15px; font-size: 16px; }
+#thiago-letter-modal .signature { text-align: right; margin-top: 30px; }
+#close-letter-btn {
+    padding: 10px 20px; margin-top: 20px; background-color: #aeff40; color: #000;
+    border: none; cursor: pointer; font-weight: bold; font-family: 'Courier New', Courier, monospace;
+}

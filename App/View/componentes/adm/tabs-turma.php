@@ -1,13 +1,13 @@
 <?php
+require_once __DIR__ . '/../../../Helpers/Redirect.php';
 /**
  * Componente de navegação por abas para páginas de turmas
- * * @param string $currentTab - A aba atual ('dados-gerais', 'projetos', 'docentes', 'alunos')
- * @param int|null $turmaId - ID da turma (opcional, usado para manter o contexto nas navegações)
+ * @param string $currentTab - A aba atual ('dados-gerais', 'projetos', 'docentes', 'alunos')
+ * @param array $params - Params da url, turma_id é opcional, usado para manter o contexto nas navegações
  */
-function tabsTurmaComponent($currentTab = 'dados-gerais', $turmaId = null) {
-    // Constrói o parâmetro de ID para as URLs
-    $idParam = $turmaId ? "?id=" . $turmaId : '';
-    $isDisabled = is_null($turmaId); // Desabilita as abas se não houver ID de turma
+function tabsTurmaComponent($currentTab = 'dados-gerais', $params = [], ) {
+
+    $isDisabled = is_null($params['turma_id']); // Desabilita as abas se não houver ID de turma
 
     $arquivoAtual = basename($_SERVER['PHP_SELF'], '.php');
 
@@ -30,24 +30,29 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $turmaId = null) {
     }
 
     // Array com as abas disponíveis
+    $queryParams = '';
+    if (!empty($params)) {
+        $queryParams .= '?' . http_build_query($params);
+    }
+
     $tabs = [
         'dados-gerais' => [
-            'url' => 'cadastroTurmas.php' . $idParam,
+            'url' => Config::getDirAdm() . 'cadastroTurmas/cadastroTurmas.php' . $queryParams,
             'label' => 'DADOS GERAIS',
             'disabled' => false
         ],
         'projetos' => [
-            'url' => $isDisabled ? '#' : 'CadastroProjetos.php' . $idParam,
+            'url' => Config::getDirAdm() . 'cadastroTurmas/CadastroProjetos.php' . $queryParams,
             'label' => 'PROJETOS',
             'disabled' => $isDisabled
         ],
         'docentes' => [
-            'url' => $isDisabled ? '#' : 'docentes.php' . $idParam,
+            'url' => Config::getDirAdm() . 'cadastroTurmas/docentes.php' . $queryParams,
             'label' => 'DOCENTES',
             'disabled' => $isDisabled
         ],
         'alunos' => [
-            'url' => $isDisabled ? '#' : 'alunos.php' . $idParam,
+            'url' => Config::getDirAdm() . 'cadastroTurmas/alunos.php' . $queryParams,
             'label' => 'ALUNOS',
             'disabled' => $isDisabled
         ]

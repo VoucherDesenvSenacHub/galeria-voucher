@@ -32,18 +32,10 @@ body {
 }
 
 .form-container-projeto {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  max-height: calc(90vh - 100px);
-  overflow-y: auto;
-  scroll-behavior: smooth;
   background-color: transparent;
-  scroll-snap-type: y mandatory;
   font-family: "Bebas Neue", sans-serif;
 }
 

@@ -50,58 +50,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuarioModel !== null) {
 headerComponent("Voucher Desenvolvedor - Login");
 ?>
 
-<body class="body-login">
-    <?php
-    $esconderPesquisa = true;
-    $isAdmin = false;
-    require_once __DIR__ . '/../../componentes/nav.php';
-    require_once __DIR__ . '/../../componentes/users/mira.php';
-    ?>
+<body class="layout body-login">
+    <section class="layout-main">
+        <?php
+        $esconderPesquisa = true;
+        $isAdmin = false;
+        require_once __DIR__ . '/../../componentes/nav.php';
+        ?>
 
-    <main class="main-login">
-        <form class="form" method="POST" action="">
-            <div class="form-header">
-                <h1>Login</h1>
-            </div>
-
-            <div class="form-content">
-                <div class="form-input required">
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        required
-                        autocomplete="username"
-                        value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
-                    <input
-                        type="password"
-                        name="senha"
-                        placeholder="Senha"
-                        required
-                        autocomplete="current-password">
+        <main class="main-login">
+            <?php require_once __DIR__ . '/../../componentes/users/mira.php';?>
+            <form class="form" method="POST" action="">
+                <div class="form-header">
+                    <h1>Login</h1>
                 </div>
-
-                <div class="form-action">
-                    <button type="submit" class="btn btn-primary">Login</button>
+    
+                <div class="form-content">
+                    <div class="form-input required">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            required
+                            autocomplete="username"
+                            value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                        <input
+                            type="password"
+                            name="senha"
+                            placeholder="Senha"
+                            required
+                            autocomplete="current-password">
+                    </div>
+    
+                    <div class="form-action">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+    
                 </div>
+    
+            </form>
+            <?php if ($erro !== ''): ?>
+                <div id="erro-msg" class="erro-geral">
+                    <?= htmlspecialchars($erro) ?>
+                </div>
+                <script>
+                    setTimeout(() => {
+                        const msg = document.getElementById('erro-msg');
+                        if (msg) msg.style.display = 'none';
+                    }, 5000);
+                </script>
+            <?php endif; ?>
+        </main>
+        <?php require_once __DIR__ . '/../../componentes/users/footer.php'; ?>
+    </section>
 
-            </div>
 
-        </form>
-        <?php if ($erro !== ''): ?>
-            <div id="erro-msg" class="erro-geral">
-                <?= htmlspecialchars($erro) ?>
-            </div>
-            <script>
-                setTimeout(() => {
-                    const msg = document.getElementById('erro-msg');
-                    if (msg) msg.style.display = 'none';
-                }, 5000);
-            </script>
-        <?php endif; ?>
-    </main>
-
-    <?php require_once __DIR__ . '/../../componentes/users/footer.php'; ?>
 </body>
 
 </html>
