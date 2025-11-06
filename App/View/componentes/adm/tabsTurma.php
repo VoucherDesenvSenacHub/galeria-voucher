@@ -13,19 +13,22 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = [], ) {
 
     switch ($arquivoAtual) {
         case 'cadastroTurmas':
-            $currentTab = 'dados-gerais';
+            $currentTab = 'Dados-gerais';
             break;
         case 'cadastroProjetos':
-            $currentTab = 'projetos';
+            $currentTab = 'Projetos';
+            break;
+        case 'projeto':
+            $currentTab = 'Projetos';
             break;
         case 'docentes':
-            $currentTab = 'docentes';
+            $currentTab = 'Docentes';
             break;
         case 'alunos':
-            $currentTab = 'alunos';
+            $currentTab = 'Alunos';
             break;
         default:
-            $currentTab = 'dados-gerais';
+            $currentTab = 'Dados-gerais';
             break;
     }
 
@@ -36,22 +39,22 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = [], ) {
     }
 
     $tabs = [
-        'dados-gerais' => [
+        'Dados-gerais' => [
             'url' => Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas.php' . $queryParams,
             'label' => 'DADOS GERAIS',
             'disabled' => false
         ],
-        'projetos' => [
+        'Projetos' => [
             'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastroProjetos.php' . $queryParams,
             'label' => 'PROJETOS',
             'disabled' => $isDisabled
         ],
-        'docentes' => [
+        'Docentes' => [
             'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'docentes.php' . $queryParams,
             'label' => 'DOCENTES',
             'disabled' => $isDisabled
         ],
-        'alunos' => [
+        'Alunos' => [
             'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'alunos.php' . $queryParams,
             'label' => 'ALUNOS',
             'disabled' => $isDisabled

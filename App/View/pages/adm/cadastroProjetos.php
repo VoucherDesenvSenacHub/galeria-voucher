@@ -17,7 +17,7 @@ if (!$turmaId) {
 
 $paginaAtiva = 'turmas'; 
 headerComponent("Voucher Desenvolvedor - Projetos");
-$currentTab = 'projetos';
+$currentTab = 'Projetos';
 $projetos = [];
 
 try {

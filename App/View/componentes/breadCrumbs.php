@@ -5,13 +5,13 @@
          * @var array
          */
         private const BREAD_MAP = [
-            0 => ["pai" => null, "url" => "home-adm", "valor" => "Início" ],
+            0 => ["pai" => null, "url" => "homeAdm", "valor" => "Início" ],
             1 => ["pai" => 0, "url" => "listarUsuarios", "valor" => "Pessoas" ],
-            2 => ["pai" => 1, "url" => "cadastrar-usuarios", "valor" => "Cadastrar Usuário" ],
+            2 => ["pai" => 1, "url" => "cadastrarUsuarios", "valor" => "Cadastrar Usuário" ],
             3 => ["pai" => 0, "url" => "listaTurmas", "valor" => "Turmas" ],
             4 => ["pai" => 3, "url" => "cadastroTurmas", "valor" => "Cadastrar Turma" ],
-            5 => ["pai" => 3, "url" => "cadastro-projetos", "valor" => "Listar Projetos" ],
-            6 => ["pai" => 5, "url" => "Projeto", "valor" => "Cadastrar Projetos" ],
+            5 => ["pai" => 3, "url" => "cadastroProjetos", "valor" => "Listar Projetos" ],
+            6 => ["pai" => 5, "url" => "projeto", "valor" => "Cadastrar Projetos" ],
             7 => ["pai" => 3, "url" => "docentes", "valor" => "Listar Docentes" ],
             8 => ["pai" => 3, "url" => "alunos", "valor" => "Listar Alunos" ],
         ];
