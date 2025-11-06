@@ -39,7 +39,6 @@ switch ($acao) {
             exit;
         }
 
-        // Se chegou aqui, é porque o upload foi feito corretamente
         $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
 
         if ($resultadoUpload['success']) {
