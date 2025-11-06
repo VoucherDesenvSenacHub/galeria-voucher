@@ -1,6 +1,6 @@
 #pessoal primeiro instala a biblioteca
 #pip install docx2pdf
-
+#pra usar caso nao tenha internet nem word instalado
 import os
 from docx2pdf import convert
 
