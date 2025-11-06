@@ -1,6 +1,4 @@
 <?php
-
-
 require_once __DIR__ . "/../../../../Config/App.php";
 require_once __DIR__ . "/../../../../Helpers/Redirect.php";
 require_once __DIR__ . "/../../../componentes/head.php";
@@ -15,25 +13,26 @@ if (!$turmaId) {
     Redirect::toAdm('listaTurmas.php');
 }
 
-$paginaAtiva = 'turmas'; 
+$paginaAtiva = 'turmas';
 headerComponent("Voucher Desenvolvedor - Projetos");
 $currentTab = 'projetos';
 $projetos = [];
 
 try {
-  $turmaModel = new TurmaModel();
-  $projetos = $turmaModel->buscarProjetosPorTurma($turmaId);
+    $turmaModel = new TurmaModel();
+    // Esta função foi corrigida anteriormente para buscar os projetos
+    $projetos = $turmaModel->buscarProjetosPorTurma($turmaId);
 } catch (Exception $e) {
-  $projetos = [];
-  error_log("Erro ao buscar projetos: " . $e->getMessage());
-  $error_message = "Erro ao carregar projetos.";
+    $projetos = [];
+    error_log("Erro ao buscar projetos: " . $e->getMessage());
+    $error_message = "Erro ao carregar projetos.";
 }
 
 $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
 ?>
 
-<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>adm/CadastroProjetos.css">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>adm/lista-alunos.css">
 
 <body class="layout body-adm">
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
@@ -43,39 +42,65 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
     ?>
 
     <main class="layout-main main-turmas-turmas">
-      <?php BreadCrumbs::gerarBreadCrumbs(); ?>
-      <?php tabsTurmaComponent($currentTab, ["turma_id" => $turmaId]); ?>
+        <?php BreadCrumbs::gerarBreadCrumbs(); ?>
+        <?php tabsTurmaComponent($currentTab, ["turma_id" => $turmaId]); ?>
 
-      <div class="primaty-button" style="margin-top: 20px;">
-          <?php 
-            buttonComponent('primary', 'ADICIONAR', false,  Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/Projeto.php' . ($turmaId ? "?turma_id=$turmaId" : ''), ); 
-          ?>
-      </div>
+        <div class="topo-lista-alunos">
+            <?php
+            buttonComponent(
+                'primary',
+                'ADICIONAR',
+                false,
+                Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/Projeto.php' . ($turmaId ? "?turma_id=$turmaId" : '')
+            );
+            ?>
 
-      <?php if (isset($error_message)): ?>
-          <p><?= htmlspecialchars($error_message) ?></p>
-      <?php elseif (empty($projetos)): ?>
-        <p>Nenhum projeto encontrado para esta turma.</p>
-      <?php else: ?>
-        <?php foreach ($projetos as $projeto): ?>
-          <div class="card-projeto">
-            <div class="card-content">
-              <div class="card-imagem">
-                <img src="<?= Config::get('APP_URL') . ($projeto['URL_IMAGEM'] ?? Config::get('DIR_IMG') . 'utilitarios/sem-foto.svg') ?>" alt="Imagem do <?= htmlspecialchars($projeto['NOME_PROJETO']) ?>"
-                  class="img-projeto">
-              </div>
-              <div class="card-info">
-                <h3 class="projeto-titulo"><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></h3>
-                <p class="projeto-descricao"><?= htmlspecialchars($projeto['DESCRICAO_PROJETO']) ?></p>
-              </div>
-              <div class="card-actions" style="display: flex; gap: 10px;">
-                <span class="material-symbols-outlined action-icon" style="cursor: pointer;" title="Editar">edit</span>
-                <span class="material-symbols-outlined action-icon" style="cursor: pointer;" title="Excluir">delete</span>
-              </div>
+            <div class="input-pesquisa-container">
+                <input type="text" id="pesquisa" placeholder="Pesquisar por nome...">
+                <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
             </div>
-          </div>
-        <?php endforeach; ?>
-      <?php endif; ?>
+        </div>
+
+        <?php if (isset($error_message)): ?>
+            <div class="error-message"><?= htmlspecialchars($error_message) ?></div>
+        <?php endif; ?>
+
+        <div class="tabela-principal-lista-alunos">
+            <div class="tabela-container-lista-alunos">
+                <table id="tabela-alunos">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOME DO PROJETO</th>
+                            <th>DESCRIÇÃO</th>
+                            <th>AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($projetos)): ?>
+                            <?php foreach ($projetos as $projeto): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($projeto['projeto_id']) ?></td>
+                                    <td><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></td>
+                                    <td><?= htmlspecialchars(mb_strimwidth($projeto['DESCRICAO_PROJETO'], 0, 100, "...")) ?></td>
+                                    <td class="acoes">
+                                        <div class="acoes-container">
+                                            <span class="material-symbols-outlined action-icon" style="cursor: pointer;" title="Editar">edit</span>
+                                            <span class="material-symbols-outlined action-icon acao-delete" style="cursor: pointer;" title="Excluir">delete</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="4" style="text-align: center;">Nenhum projeto encontrado para esta turma.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
     </main>
 </body>
 </html>
