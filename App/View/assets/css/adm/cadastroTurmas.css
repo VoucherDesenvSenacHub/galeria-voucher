@@ -74,11 +74,14 @@
     }
 
     .form-label {
-        font-size: 1.2rem;
+        font-size: var(--m-font);
         margin-left: 1px;
     }
 
     .form-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
         font-family: var(--font-secondary);
         font-size: 1.5rem;
     }
@@ -147,25 +150,22 @@
     .inicio,
     .termino {
         display: flex;
-        height: 30px;
+        height: 48px;
         width: 100%;
-        padding: 15px;
-        margin-bottom: 30px;
+        justify-content: center;
         border: 1px solid #333;
         border-radius: 10px;
         background-color: #e5e9e4;
         font-size: 16px;
-        margin-left: 5px;
-        
     }
 
-    .dia {
+    /* .dia {
         display: flex;       
         gap: 50px;          
         align-items: center; 
         margin-left: 14px;
         justify-content: space-between;
-    }
+    } */
 
     #text_termino {
 
@@ -176,6 +176,13 @@
         margin-top: 10px;
     }
 
+
+    .container_dia_data {
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px
+    }
+
     .container_input_text {
         display: flex;
         flex-direction: column;
@@ -183,12 +190,12 @@
     }
 
     .container_text_polo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-        width: 220px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        font-size: 1.2rem;
     }
+
     #text_input, #text_inicio, #text_termino{
         font-family: var(--font-secondary);
     }

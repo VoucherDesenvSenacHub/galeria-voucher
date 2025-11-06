@@ -17,8 +17,29 @@
 }
 
 
+
+
 .input-container:has([required]) label::after {
   content: " *";
   color: red;
+}
+
+.input-container select,
+.input-container textarea  {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  background-color: #e5e9e4;
+  font-size: (--m-font);
+  resize: vertical;
+}
+
+
+
+.input-container input, 
+.input-container texterea {
+  margin-top: 8px;
 }
 

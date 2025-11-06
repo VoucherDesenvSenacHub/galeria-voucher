@@ -76,26 +76,33 @@ $currentTab = 'Dados-gerais';
           <div class="form-top">
             <div class="form-section">
               <h1 class='h1-turma'><?= $isEditMode ? 'EDITAR TURMA' : 'CADASTRO DE TURMA' ?></h1>
-
-                      <?php  inputComponent('text', 'nome', 'Nome da turma' ,  ($turma['nome'] ?? ''), label:"nome", required: true)?>
-
-              <label class="form-label" id="text_input">Descrição</label>
+           
+                    
+                  <?php  inputComponent('text', 'nome', 'Nome da turma' ,  ($turma['nome'] ?? ''), label:"nome", required: true)?>
+              
+              <div class="input-container">
+                     <label class="form-label" id="text_input">Descrição</label>
               <textarea name="descricao"
-                class="input-adm-turmas"><?= htmlspecialchars($turma['descricao'] ?? '') ?></textarea>
-              <div class="dia">
-                <div class="container_input_text">
-                  <label class="form-label" id="text_inicio">Início</label>
-                  <input type="date" name="data_inicio" class="inicio"
-                    value="<?= htmlspecialchars($turma['data_inicio'] ?? '') ?>">
+                ><?= htmlspecialchars($turma['descricao'] ?? '') ?></textarea>
+              </div>
+           
+
+                <div class="container_dia_data">
+                  <div class="container_input_text">
+                      <label class="form-label" id="text_inicio">Início</label>
+                      <input type="date" name="data_inicio" class="inicio"
+                        value="<?= htmlspecialchars($turma['data_inicio'] ?? '') ?>">
+                  </div>
+                  <div class="container_input_text">
+                      <label class="form-label" id="text_termino">Término</label>
+                      <input type="date" name="data_fim" class="termino"
+                      value="<?= htmlspecialchars($turma['data_fim'] ?? '') ?>">
+                  </div>
                 </div>
-                <div class="container_input_text">
-                  <label class="form-label" id="text_termino">Término</label>
-                  <input type="date" name="data_fim" class="termino"
-                    value="<?= htmlspecialchars($turma['data_fim'] ?? '') ?>">
-                </div>
-                <div class="container_text_polo">
+               
+                <div class="input-container">
                   <label class="form-label" id="text_input">Polo</label>
-                  <select name="polo_id" class="input-adm-turmas">
+                  <select name="polo_id" >
                     <option value="">Selecione um Polo</option>
                     <?php foreach ($polos as $polo): // Loop para criar as opções do select a partir dos dados do banco. ?>
                       <option value="<?= $polo['polo_id'] ?>" <?= ($isEditMode && isset($turma) && $polo['polo_id'] == $turma['polo_id']) ? 'selected' : '' ?>>
@@ -104,12 +111,12 @@ $currentTab = 'Dados-gerais';
                     <?php endforeach; ?>
                   </select>
                 </div>
-              </div>
             </div>
 
             <div class="profile-pic">
-              <small>Clique na imagem para alterar</small>
+              <!-- <small>Clique na imagem para alterar</small> -->
               <label for="imagem_turma" style="cursor: pointer;">
+                Clique na imagem para alterar
                 <img id="preview" src="<?= htmlspecialchars($imagemUrl) ?>" alt="Upload de Imagem">
               </label>
               <input type="file" id="imagem_turma" name="imagem_turma" accept="image/*" style="display: none;">

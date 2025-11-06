@@ -81,10 +81,10 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
                 </div>
 
                 <div class="form-group-imagem input-container">
-                        <label>Imagem</label>
+                        <label>Clique na imagem para alterar</label>
                         <div class="input-file-cadastro">
                                 <img id="preview" src="<?= htmlspecialchars($caminhoImagem) ?>" alt="Upload" />
-                                <input type="file" name="imagem" id="fileInput" accept="image/*" style="width:0; overflow: hidden; " required>
+                                <input type="file" name="imagem" id="fileInput" accept="image/*" style="width:0; overflow: hidden;">
                       
                         </div>
                 </div>
