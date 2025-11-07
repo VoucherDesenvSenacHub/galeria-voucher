@@ -23,7 +23,7 @@ if ($acao === 'editar' && $id) {
     $pessoa = $model->buscarPessoaComPoloPorId((int)$id);
 }
 
-$caminhoImagem = Config::get('APP_URL') . Config::get('DIR_IMG') . "utilitarios/avatar.png";
+$caminhoImagem = Config::getDirImg() . "utilitarios/avatar.png";
 
 if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
     $imagemModel = new ImagemModel();
@@ -32,7 +32,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
     if ($imagem && !empty($imagem['url'])) {
         $caminhoFisico = ROOT_PATH . '/' . $imagem['url'];
         if (file_exists($caminhoFisico)) {
-            $caminhoImagem = Config::get('APP_URL') . $imagem['url'];
+            $caminhoImagem = Config::getAppUrl() . $imagem['url'];
         }
     }
 }
@@ -51,48 +51,46 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
             <div style="margin-top: 6px; color: #b00020; font-weight: 500;"><?= htmlspecialchars($_GET['erro']) ?></div>
         <?php endif; ?>
 
-        <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= Config::get('APP_URL') ?>App/Controller/PessoaController.php">
+        <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= Config::getAppUrl() ?>App/Controller/PessoaController.php">
             <input type="hidden" name="acao" value="<?= $acao ?>">
             <?php if ($acao === 'editar' && $id): ?>
                 <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
             <?php endif; ?>
 
-            <div class="form-top">
-                <div class="form-group">
-                    <?php
-                    inputComponent('text', 'nome', 'Nome Completo *', htmlspecialchars($_GET['nome'] ?? ($pessoa['nome'] ?? ''), ENT_QUOTES, 'UTF-8'), true);
-                    inputComponent('text', 'email', 'Email *', htmlspecialchars($_GET['email'] ?? ($pessoa['email'] ?? ''), ENT_QUOTES, 'UTF-8'), true);
-                    inputComponent('text', 'linkedin', 'Link do LinkedIn', htmlspecialchars($_GET['linkedin'] ?? ($pessoa['linkedin'] ?? ''), ENT_QUOTES, 'UTF-8'));
-                    inputComponent('text', 'github', 'Link do GitHub', htmlspecialchars($_GET['github'] ?? ($pessoa['github'] ?? ''), ENT_QUOTES, 'UTF-8'));
-                    ?>
-                </div>
-
-
-                <div class="form-group-polo div-center">
-                    <label for="tipo-usuario" style="font-weight: bold;">Perfil *</label>
-                    <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;" required>
-                        <option value="">-- Selecione --</option>
+                <div class="form-top">
+              
                         <?php
-                        $perfilSelecionado = $_GET['perfil'] ?? ($pessoa['perfil'] ?? '');
-                        foreach ($perfis as $perfil) : ?>
-                            <option value="<?= htmlspecialchars($perfil, ENT_QUOTES, 'UTF-8') ?>"
-                                <?= ($perfilSelecionado === $perfil) ? 'selected' : '' ?>>
-                                <?= ucfirst(htmlspecialchars($perfil, ENT_QUOTES, 'UTF-8')) ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-
-                <div class="form-group-imagem">
-                    <label style="font-weight: bold;">Imagem *</label>
-                    <div class="input-file-cadastro">
-                        <label class="input-file-wrapper">
-                            <img id="preview" src="<?= htmlspecialchars($caminhoImagem) ?>" alt="Upload" />
-                            <input type="file" name="imagem" id="fileInput" accept="image/*" style="display:none;" />
-                        </label>
+                        inputComponent('text', 'nome', 'Nome Completo', $pessoa['nome'] ?? ($_POST['nome'] ?? ''), "nome", true );
+                        inputComponent('text', 'email', 'Email', $pessoa['email'] ?? ($_POST['email'] ?? ''), "email", true);
+                        inputComponent('text', 'linkedin', 'Link do linkedin', $pessoa['linkedin'] ?? ($_POST['linkedin'] ?? ''), "linkedin" );
+                        inputComponent('text', 'github', 'Link para o GitHub', $pessoa['github'] ?? ($_POST['github'] ?? ''), "github" );
+                        ?>
+                   
+                    <div class="input-container">
+                        <label for="tipo-usuario">Perfil</label>
+                        <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;" required>
+                            <option value="">-- Selecione --</option>
+                            <?php foreach ($perfis as $perfil): ?>
+                                <option value="<?= htmlspecialchars($perfil) ?>"
+                                    <?= (($pessoa['perfil'] ?? ($_POST['perfil'] ?? '')) === $perfil) ? 'selected' : '' ?>>
+                                    <?= ucfirst(htmlspecialchars($perfil)) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
-            </div>
+
+                <div class="form-group-imagem input-container">
+                    Clique na imagem para alterar
+                    
+                    <div class="input-file-cadastro">
+                            <label for="fileInput">
+                            <img id="preview" src="<?= htmlspecialchars($caminhoImagem) ?>" alt="Upload" />
+                            <input type="file"  name="imagem" id="fileInput" accept="image/*" style="width:0; overflow: hidden;">
+                            
+                        </label>
+                        </div>
+                </div>
 
             <div class="form-bottom">
                 <div class="form-group-buton">

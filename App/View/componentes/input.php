@@ -6,14 +6,15 @@
  * @param string $type    Define o tipo do input ('text', 'password'). adicionaremos mais depois.
  * @param string $name (texto) Define o name do input.
  * @param string $placeholder (Opcional) define um texto dentro do input.
- * @param string $required (Opcional) define se o campo é obrigatório ou não.
+ * @param string $required (Opcional) define se o campo é obrigatório.
+ * 
+ * 
  * Exemplo de uso:
  * inputComponent('text', 'usuario', 'login_user', 'escreva seu usuario aqui'(opcional));                    
  * inputComponent('password', 'senha', 'login_senha','escreva sua senha aqui'(opcional) );           
- 
+
  */
-function inputComponent($type, $name, $placeholder = null, $value = null, $required = false)
-{
+function inputComponent($type, $name, $placeholder = null, $value = null, $label = null, $required = false) {
     // Define a classe CSS com base no estilo informado
     if ($type === 'text') {
         $class = 'input-text';
@@ -25,13 +26,16 @@ function inputComponent($type, $name, $placeholder = null, $value = null, $requi
     }
 
     // Exibe o input HTML com a classe e o conteúdo definidos
-    $valueAttr = $value !== null ? " value='" . htmlspecialchars($value, ENT_QUOTES) . "'" : "";
+    $valueAttr = $value !== null ? "value='$value'" : "";
+    $valueRequired = $required  ? "required=" : "";
+    $html = '<div class ="input-container">';
 
-    $useRequired = $required ? ' required oninvalid="this.setCustomValidity(\'Por favor, preencha o campo ' . htmlspecialchars($name, ENT_QUOTES) . '.\')"
-       oninput="this.setCustomValidity(\'\')"' : '';
+    if($label !== null){
+        $html .= "<label for='input_$name' id='text_input' class='form-label'>$label</label>";
+    }
 
-    echo
-    "<div class = 'input-container'>
-        <input type='$type' class='$class' name='$name' placeholder = '$placeholder'$valueAttr $useRequired><br>
-    </div>";
-}
+    $html .= "<input id='input_$name' type='$type' class='$class' name='$name' placeholder='$placeholder' $valueAttr $valueRequired>";
+    $html .= "</div>";
+    echo $html;
+    }
+?>
