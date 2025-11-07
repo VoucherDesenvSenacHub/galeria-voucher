@@ -101,31 +101,31 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             </div>
 
             <section class="section_modal">
-                <div class="modal-confirmacao" id="modal-desvincular-aluno">
-                    <form class="modal-content" method="POST" action="/galeria-voucher/App/Controller/DesvincularAlunoController.php?action=desvincular">
-                        <div class="modal-header">
-                            <h3>Confirmar Desvinculação</h3>
-                            <span class="close-modal" onclick="fecharModal()">&times;</span>
-                        </div>
+                <div class="modal modal-cadastro" id="modal-desvincular-aluno">
+                    <div class="modal-header modal-desvincular">
+                        <span class="modal-header-title">Desvincular Aluno</span>
+                        <span class="material-symbols-outlined modal-header-action btn-close-desvincular" name="btn-close" onclick="fecharModal()">close</span>
+                    </div>
+
+                    <form class="" method="POST" action="/galeria-voucher/App/Controller/DesvincularAlunoController.php?action=desvincular">
                         <div class="modal-body">
                             <p>Tem certeza que deseja desvincular o aluno "<span id="aluno-confirmacao"></span>" desta turma?</p>
-                            <p class="warning-text">Esta ação requer confirmação da sua senha.</p>
                             <div class="form-group">
-                                <label for="senha-confirmacao">Digite sua senha:</label>
-                                <input type="password" id="senha-confirmacao" name="senha" required>
-                                <input type="hidden" name="pessoa_id">
-                                <input type="hidden" name="turma_id">
+                                <?php inputComponent('hidden', 'pessoa_id'); ?>
+                                <?php inputComponent('hidden', 'turma_id'); ?>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="secondary-button" onclick="fecharModal()">Cancelar</button>
-                            <button type="submit" class="primary-button">Desvincular</button>
+
+                        <div class="modal-action">
+                            <?php buttonComponent("secondary", "Cancelar", false, extraAttributes: 'onclick="fecharModal()"') ?>
+                            <?php buttonComponent("primary", "Desvincular", true) ?>
                         </div>
                     </form>
                 </div>
 
                 <div class="modal modal-cadastro" id="modal-cadastro-aluno">
                     <div class="modal-header">
+                        <span class="modal-header-title">Vincular Alunos</span>
                         <span class="material-symbols-outlined modal-header-action btn-close" name="btn-close">close</span>
                     </div>
                     
@@ -133,9 +133,9 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                         <div class="modal-body">
                             <div>
                                 <label for="pesquisar-pessoa">
-                                    Pesquisar Alunos
+                                    Aluno
                                 </label>
-                                <?php inputComponent('text', 'pesquisar-pessoa', 'Digite um nome'); ?>
+                                <?php inputComponent('text', 'pesquisar-pessoa', 'Digite o nome'); ?>
                                 <div id="sugestoes">
                                     
                                     </div>

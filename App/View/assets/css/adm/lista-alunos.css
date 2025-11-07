@@ -248,8 +248,11 @@ tbody tr:nth-child(odd) {
 }
 
 
-/* Estilos para o modal de confirmação */
-.modal-confirmacao {
+/* Comentando só caso quebre algo, caso quebrar, descomentar */
+
+
+
+/* .modal-confirmacao {
   display: none;
   position: fixed;
   top: 0;
@@ -260,9 +263,9 @@ tbody tr:nth-child(odd) {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-}
+} */
 
-.modal-content {
+/* .modal-content {
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -287,7 +290,7 @@ tbody tr:nth-child(odd) {
   margin-bottom: 1rem;
   color: #555;
   line-height: 1.5;
-}
+} */
 
 .warning-text {
   color: #e74c3c;
