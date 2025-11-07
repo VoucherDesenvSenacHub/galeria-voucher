@@ -77,7 +77,7 @@ class UsuarioModel extends BaseModel
     public function buscarImagemPorPessoaId(int $pessoaId): string
     {
         // Define o caminho de fallback usando a classe Config
-        $fallbackImage = Config::get('APP_URL') . 'App/View/assets/img/adm/fallbackAdm.png';
+        $fallbackImage = Config::getAppUrl() . 'App/View/assets/img/adm/fallbackAdm.png';
 
         $query = "
             SELECT COALESCE(i.url, :fallback) AS imagem

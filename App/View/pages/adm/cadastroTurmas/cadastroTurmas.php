@@ -17,8 +17,8 @@ require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
 $isEditMode = false;
 $turma = null;
 $tituloPagina = "Cadastro de Turma";
-$actionUrl = Config::get('APP_URL') . "App/Controller/TurmaController.php?action=salvar";
-$imagemUrl = Config::get('APP_URL') . Config::get('DIR_IMG') . 'utilitarios/avatar.png';
+$actionUrl = Config::getAppUrl() . "App/Controller/TurmaController.php?action=salvar";
+$imagemUrl = Config::getDirImg() . 'utilitarios/avatar.png';
 $turmaId = Request::getId("turma_id");
 
 
@@ -28,17 +28,17 @@ if ($turmaId) {
     $turma = $turmaModel->buscarTurmaPorId($turmaId);
 
     if (!$turma) {
-        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php');
+        header('Location: ' . Config::getDirAdm() . 'listaTurmas.php');
         exit;
     }
 
     $tituloPagina = "Editar Turma";
-    $actionUrl = Config::get('APP_URL') . "App/Controller/TurmaController.php?action=atualizar";
+    $actionUrl = Config::getAppUrl() . "App/Controller/TurmaController.php?action=atualizar";
 
     if (!empty($turma['imagem_id'])) {
         $url = $turmaModel->buscarUrlDaImagem($turma['imagem_id']);
         if ($url) {
-            $imagemUrl = Config::get('APP_URL') . $url;
+            $imagemUrl = Config::getAppUrl() . $url;
         }
     }
 }
@@ -124,7 +124,7 @@ $currentTab = 'Dados-gerais';
                <div class="form-bottom">
             <div class="form-group-buton">
               <?php
-              buttonComponent('secondary', 'Voltar', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php');
+              buttonComponent('secondary', 'Voltar', false, Config::getDirAdm() . 'listaTurmas.php');
               buttonComponent('primary', $isEditMode ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>
@@ -153,7 +153,7 @@ $currentTab = 'Dados-gerais';
       document.addEventListener('DOMContentLoaded', function () {
         alert("<?= htmlspecialchars($_SESSION['sucesso_cadastro']) ?>");
         document.getElementById('form-turma').reset();
-        document.getElementById('preview').src = "<?= Config::get('APP_URL') . Config::get('DIR_IMG') . 'utilitarios/avatar.png' ?>";
+        document.getElementById('preview').src = "<?= Config::getDirImg() . 'utilitarios/avatar.png' ?>";
       });
     </script>
     <?php unset($_SESSION['sucesso_cadastro']); ?>

@@ -201,7 +201,7 @@ class PessoaModel extends BaseModel
     }
 
     // Deletar pessoa (Delete)
-    public function deletarPessoa(int $id, string $perfil): bool
+    public function deletarPessoa(int $id): bool
     {
         try {
             $this->pdo->beginTransaction();

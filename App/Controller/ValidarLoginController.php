@@ -9,7 +9,7 @@ class ValidarLoginController
             exit;
         }
     }
-    
+
     /**
      * Valida se o usuário é 'adm' ou 'professor'.
      * Se não for, redireciona para a página especificada.
@@ -19,7 +19,7 @@ class ValidarLoginController
     {
         if (!isset($_SESSION['usuario']) || !in_array($_SESSION['usuario']['perfil'], ['adm', 'professor'])) {
             $_SESSION['erro'] = 'Acesso negado';
-            Redirect::to($path); // Corrigido para usar a nova classe Redirect
+            Redirect::to($path);
         }
     }
 }
