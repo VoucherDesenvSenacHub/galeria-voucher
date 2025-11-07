@@ -64,7 +64,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             <?php buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroProfessor()\""); ?>
             <div class="input-pesquisa-container">
                 <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
-                <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
+                <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
             </div>
         </div>
 
@@ -158,10 +158,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </section>
     </main>
 
-    <script src="<?= Config::get('APP_URL') ?>App/View/assets/js/adm/lista-alunos.js"></script>
-    <script src="<?= Config::get('APP_URL') ?>App/View/assets/js/main.js"></script>
-    <script src="<?= Config::get('APP_URL') ?>App/View/assets/js/adm/autocomplete-pessoas.js"></script>
-    <script src="<?= Config::get('APP_URL') ?>App/View/assets/js/adm/desvincula-docente.js"></script>
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/lista-alunos.js"></script>
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/main.js"></script>
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/autocomplete-pessoas.js"></script>
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/desvincula-docente.js"></script>
 </body>
 
 </html>
