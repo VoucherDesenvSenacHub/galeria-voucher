@@ -132,6 +132,6 @@ if (isset($action) && $action === 'salvar') {
     if ($turmaIdFallback) {
         Redirect::toAdm('projetos.php', ['id' => $turmaIdFallback]);
     } else {
-        Redirect::toAdm('listaTurmas.php');
+        Redirect::toAdm('turmas.php');
     }
 }

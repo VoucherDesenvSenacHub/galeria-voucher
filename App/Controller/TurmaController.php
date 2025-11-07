@@ -100,7 +100,7 @@ class TurmaController {
         if (Request::getMethod() === 'POST') {
             $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
             if (!$turma_id) {
-                Redirect::toAdm('listaTurmas.php');
+                Redirect::toAdm('turmas.php');
                 return;
             }
 
@@ -109,7 +109,7 @@ class TurmaController {
             $dadosAntigos = $turmaModel->buscarTurmaPorId($turma_id);
             if (!$dadosAntigos) {
                 $_SESSION['erros_turma'] = ["Turma não encontrada para atualização."];
-                Redirect::toAdm('listaTurmas.php');
+                Redirect::toAdm('turmas.php');
                 return;
             }
 
@@ -200,7 +200,7 @@ class TurmaController {
                     $_SESSION['erros_turma'] = ["Erro ao excluir a turma."];
                 }
             }
-            Redirect::toAdm('listaTurmas.php');
+            Redirect::toAdm('turmas.php');
         }
     }
 }

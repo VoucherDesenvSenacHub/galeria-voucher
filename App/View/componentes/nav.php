@@ -46,8 +46,8 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
 
                 <?php if ($isAdmin): ?>
                     <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'homeAdm.php'; ?>">INÍCIO</a></li>
-                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'listaUsuarios.php'; ?>">PESSOAS</a></li>
-                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'listaTurmas.php'; ?>">TURMAS</a></li>
+                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'usuarios.php'; ?>">PESSOAS</a></li>
+                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'turmas.php'; ?>">TURMAS</a></li>
                     <?php if ($logado): ?>
                         <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirLogout() . 'logout.php'; ?>">SAIR</a></li>
                         <li class="desktop-only">

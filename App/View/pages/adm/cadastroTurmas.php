@@ -12,7 +12,7 @@ require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../Model/PoloModel.php";
 require_once __DIR__ . "/../../../Helpers/Request.php";
-require_once __DIR__ . "/../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 $isEditMode = false;
 $turma = null;
@@ -28,7 +28,7 @@ if ($turmaId) {
     $turma = $turmaModel->buscarTurmaPorId($turmaId);
 
     if (!$turma) {
-        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php');
+        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'turmas.php');
         exit;
     }
 
@@ -120,7 +120,7 @@ $currentTab = 'Dados-gerais';
           <div class="form-bottom">
             <div class="form-group-buton">
               <?php
-              buttonComponent('secondary', 'Voltar', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php');
+              buttonComponent('secondary', 'Voltar', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'turmas.php');
               buttonComponent('primary', $isEditMode ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>

@@ -39,7 +39,7 @@ class DocenteController extends BaseController {
     private function desvincularDocente(): void {
         if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['perfil'] !== 'adm') {
             $_SESSION['erro'] = "Acesso negado. Apenas administradores podem realizar esta operação.";
-            Redirect::toAdm('listaTurmas.php');
+            Redirect::toAdm('turmas.php');
         }
 
         $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);

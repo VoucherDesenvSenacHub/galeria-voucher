@@ -6,12 +6,12 @@ require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/DocenteModel.php";
 require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
-require_once __DIR__ . "/../../componentes/breadCrumbs.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 // VERIFICAÇÃO DE ACESSO
 
 $turmaId = Request::getId("turma_id");
 if (!$turmaId) {
-    Redirect::toAdm('listaTurmas.php'); // Usando a classe Redirect
+    Redirect::toAdm('turmas.php'); // Usando a classe Redirect
 }
 
 $paginaAtiva = 'turmas';

@@ -13,7 +13,7 @@ class VincularDocenteTurmaController
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             http_response_code(405);
             $_SESSION['erro'] = "Método não permitido.";
-            Redirect::toAdm('listaTurmas.php');
+            Redirect::toAdm('turmas.php');
         }
         
         $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
