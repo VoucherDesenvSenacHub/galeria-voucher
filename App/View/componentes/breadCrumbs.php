@@ -10,8 +10,8 @@
             2 => ["pai" => 1, "url" => "cadastroUsuarios", "valor" => "Cadastrar Usuário" ],
             3 => ["pai" => 0, "url" => "listaTurmas", "valor" => "Turmas" ],
             4 => ["pai" => 3, "url" => "cadastroTurmas", "valor" => "Cadastrar Turma" ],
-            5 => ["pai" => 5, "url" => "cadastroProjetos", "valor" => "Cadastrar Projetos" ],
-            6 => ["pai" => 3, "url" => "projetos", "valor" => "Listar Projetos" ],
+            5 => ["pai" => 3, "url" => "projetos", "valor" => "Listar Projetos" ],
+            6 => ["pai" => 5, "url" => "cadastroProjetos", "valor" => "Cadastrar Projetos" ],
             7 => ["pai" => 3, "url" => "docentes", "valor" => "Listar Docentes" ],
             8 => ["pai" => 3, "url" => "alunos", "valor" => "Listar Alunos" ],
         ];
