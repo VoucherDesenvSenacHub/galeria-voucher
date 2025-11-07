@@ -20,7 +20,8 @@ arquivo para componente de modal
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   color: #333;
   font-family: var(--font-primary, sans-serif);
-  height: 60vh;
+  max-height: 60vh;
+  overflow: auto;
   flex-direction: column;
 
   &::backdrop {
@@ -29,8 +30,13 @@ arquivo para componente de modal
 
   .modal-header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
+
+    .modal-header-title {
+      font-weight: bold;
+    }
 
     .modal-header-action:hover {
       cursor: pointer;
@@ -39,6 +45,7 @@ arquivo para componente de modal
 
   .modal-body {
     height: 100%;
+    text-align: justify;
   }
 
   .modal-action {
