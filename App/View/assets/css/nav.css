@@ -90,7 +90,7 @@
 
 
 .nav-adm {
-    background-color: rgba(50, 50, 50, 0.8);
+    background-color: var(--sidebar-gray);
 }
 
 .nav-breadcrumbs{
