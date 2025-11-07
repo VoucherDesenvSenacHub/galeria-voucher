@@ -62,8 +62,8 @@ switch ($acao) {
         break;
 
     case 'excluir':
-        if ($id && $perfil) {
-            if ($model->deletarPessoa((int)$id, $perfil)) {
+        if ($id) {
+            if ($model->deletarPessoa((int)$id)) {
                 Redirect::toAdm('listaUsuarios.php');
             } else {
                 $msg = 'Erro: Não foi possível excluir o registro.';
