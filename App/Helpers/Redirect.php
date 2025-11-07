@@ -30,7 +30,13 @@ class Redirect
      */
     public static function toAdm(string $page, array $params = []): void
     {
-        $path = Config::getDirAdm() . $page;
-        self::to($path, $params);
+        $url = Config::getDirAdm() . $page;
+
+        if (!empty($params)) {
+            $url .= '?' . http_build_query($params);
+        }
+
+        header("Location: " . $url);
+        exit;
     }
 }
