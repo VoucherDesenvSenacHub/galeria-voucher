@@ -97,7 +97,6 @@
 
 /* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
-    min-height: var(--secao-height);
     /* background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 40%, rgba(13, 156, 13, 1) 60%); */
     /* background: #0D9C0D;
 background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 0%, rgba(13, 156, 13, 1) 5%, rgba(0, 0, 0, 1) 80%); */
@@ -105,13 +104,12 @@ background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 0%, rgba(13, 156, 13
     
 
 
-
     .container_card {
         height: 100%;
         display: flex;
         gap: 5rem;
         justify-content: center;
-        min-height: 500px;
+        margin-bottom: 160px;
 
         .card {
             background-color: #0d0d0d;
