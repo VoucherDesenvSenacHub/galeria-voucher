@@ -20,30 +20,30 @@ if (!empty($pessoa['foto'])) {
     if (filter_var($pessoa['foto'], FILTER_VALIDATE_URL)) {
         $caminhoFoto = $pessoa['foto'];
     } else {
-        $caminhoFoto = VARIAVEIS['APP_URL'] . 'App/' . $pessoa['foto'];
+        $caminhoFoto = Config::getAppUrl() . $pessoa['foto'];
     }
 } else {
-    $caminhoFoto = VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_IMG'] . 'utilitarios/avatar.png';
+    $caminhoFoto = Config::getDirImg() . 'utilitarios/avatar.png';
 }
 ?>
 
 <div class="card-container">
     <div class="image-dev">
-        <img src="<?php echo htmlspecialchars($caminhoFoto); ?>" alt="Foto de <?php echo htmlspecialchars($pessoa['nome']); ?>">
+        <img src="<?= htmlspecialchars($caminhoFoto); ?>" alt="Foto de <?= htmlspecialchars($pessoa['nome']); ?>">
     </div>
     <div class="text-card">
-        <h2><?php echo htmlspecialchars($pessoa['nome']); ?></h2>
+        <h2><?= htmlspecialchars($pessoa['nome']); ?></h2>
         <?php if($pessoa['perfil'] == 'aluno'): ?>
             <p>Aluno</p>
         <?php elseif($pessoa['perfil'] == 'professor'): ?>
             <p>Professor</p>
         <?php endif; ?>
         <div class="social-icons">
-            <a href="<?php echo htmlspecialchars($pessoa['linkedin'] ?? '#'); ?>" target="_blank">
-                <img src="../../assets/img/utilitarios/icons8-linkedin-50.png" alt="LinkedIn">
+            <a href="<?= htmlspecialchars($pessoa['linkedin'] ?? '#'); ?>" target="_blank">
+                <img src="<?= Config::getDirImg() ?>utilitarios/icons8-linkedin-50.png" alt="LinkedIn">
             </a>
-            <a href="<?php echo htmlspecialchars($pessoa['github'] ?? '#'); ?>" target="_blank">
-                <img src="../../assets/img/utilitarios/icons8-github-50.png" alt="GitHub">
+            <a href="<?= htmlspecialchars($pessoa['github'] ?? '#'); ?>" target="_blank">
+                <img src="<?= Config::getDirImg() ?>utilitarios/icons8-github-50.png" alt="GitHub">
             </a>
         </div>
     </div>

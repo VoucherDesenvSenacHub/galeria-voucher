@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../Model/UsuarioModel.php';
+require_once __DIR__ . '/ValidarLoginController.php';
 
 class UsuarioController
 {
@@ -16,10 +17,8 @@ class UsuarioController
 
     public function verificarLogin(): void
     {
-        if (!isset($_SESSION['usuario'])) {
-            header('Location: ' . VARIAVEIS['APP_URL'] . VARIAVEIS['DIR_ADM'] . 'login.php');
-            exit;
-        }
+        $pathRedirecionamento = Config::getDirAdm() . 'login.php';
+        ValidarLoginController::validarAdminRedirect($pathRedirecionamento);
     }
 
     public function getUsuarioNome(): string

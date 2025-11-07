@@ -1,6 +1,5 @@
 /* Estilo base do corpo da página */
 .body-lista-alunos {
-  display: flex;
   background-color: #e2e2e2;
   overflow: hidden;
   font-family: Arial, sans-serif;
@@ -8,17 +7,11 @@
 
 /* Conteúdo principal (scroll está aqui agora) */
 .main-lista-alunos {
-  width: 100%;
   flex-direction: column;
-  height: calc(100vh - 60px);
-  /* ajuste conforme altura da navbar, se houver */
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow-x: auto;
-  overflow-y: auto;
   padding: 20px;
-  margin-top: 50px;
 }
 
 /* Container geral da seção aluno */
@@ -109,14 +102,9 @@
   background-color: #9fe83a;
 }
 
-/* Container da tabela (sem scroll agora) */
-.tabela-principal-lista-alunos {
-  width: 100%;
-  margin: 0 auto;
-}
-
 .tabela-container-lista-alunos {
   height: auto;
+  overflow-x: auto;
 
   display: flex;
   flex-direction: column;
@@ -180,20 +168,6 @@ tbody tr:nth-child(odd) {
   background-color: #c1c0c0;
 }
 
-/* Scrollbar personalizada (Webkit) */
-.tabela-principal-lista-alunos::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.tabela-principal-lista-alunos::-webkit-scrollbar-thumb {
-  background-color: #c3c3c3;
-  border-radius: 6px;
-}
-
-.tabela-principal-lista-alunos::-webkit-scrollbar-track {
-  background-color: #999;
-}
 .acoes-container {
   display: flex;
   justify-content: center;
@@ -273,15 +247,16 @@ tbody tr:nth-child(odd) {
   cursor: pointer;
 }
 
+
 /* Estilos para o modal de confirmação */
 .modal-confirmacao {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -297,20 +272,6 @@ tbody tr:nth-child(odd) {
   overflow-y: auto;
 }
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 1.5rem 0 1.5rem;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.modal-header h3 {
-  margin: 0;
-  color: #2c3e50;
-  font-size: 1.5rem;
-}
-
 .close-modal {
   font-size: 2rem;
   cursor: pointer;
@@ -320,10 +281,6 @@ tbody tr:nth-child(odd) {
 
 .close-modal:hover {
   color: #333;
-}
-
-.modal-body {
-  padding: 1.5rem;
 }
 
 .modal-body p {
@@ -366,7 +323,7 @@ tbody tr:nth-child(odd) {
 
 .modal-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 1rem;
   padding: 0 1.5rem 1.5rem 1.5rem;
 }

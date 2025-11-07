@@ -1,13 +1,4 @@
-.body-adm {
-    font-family: var(--font-secondary);
-    padding: 0;
-    margin: 0;
-    vertical-align: baseline;
-    list-style: none;
-    list-style: none;
-    border: 0;
-    box-sizing: border-box;
-}
+
 
 .main-adm {
     background-color: var(--white-background);
@@ -37,11 +28,5 @@
 /* Reponsividade da pagina */
 
 @media (max-width: 768px) {
-    .sidebar-adm {
-        display: none;
-
-    
-
-    }
 
 }

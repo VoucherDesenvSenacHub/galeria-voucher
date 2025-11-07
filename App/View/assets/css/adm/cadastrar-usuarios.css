@@ -1,31 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .body-cadastrar-users {
-  display: flex;
   background-color: #E2E2E2;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  padding: 0;
-  margin: 0;
 }
 
 /* Estilo principal da área de cadastro */
 main.conteudo-cadastro {
-  margin: 50px 0 0 0;
   padding: 20px;
-  width: 100%;
-  height: calc(100vh - 30px);
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 /* Estilização da scrollbar */
-main.conteudo-cadastro::-webkit-scrollbar {
-  width: 10px;
-}
 
 main.conteudo-cadastro::-webkit-scrollbar-track {
   background: #E2E2E2;
@@ -41,33 +30,13 @@ main.conteudo-cadastro::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
-.container-users {
-  width: 100%;
-  padding-bottom: 30px;
-}
-
-.container-users h1 {
-  font-size: 39px;
-  margin: 30px 0 15px;
-  font-weight: bold;
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 2px;
-}
-
-.form-container-users {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
 .form-dados {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
   height: auto;
-  padding: 1.8rem 4rem;
 }
 
 .form-dados .form-top {
@@ -81,7 +50,7 @@ select,
 textarea {
   display: block;
   width: 100%;
-  padding: 15px;
+  padding: 8px;
   margin-bottom: 30px;
   border: 1px solid #333;
   border-radius: 30px;
@@ -164,13 +133,13 @@ select {
   margin-top: 8rem;
 }
 
-.form-group-buton button {
+/* .form-group-buton button {
   width: 200px !important;
   font-size: 25px !important;
   font-family: 'Bebas Neue', sans-serif !important;
   letter-spacing: 2px !important;
   border: 1px solid var(--text-black);
-}
+} */
 
 /* Botões de seleção */
 #btn-docente,
@@ -296,9 +265,6 @@ a{
 
 .h1-usuario {
   font-weight: bold;
-  max-width: 1200px;
-  width: 100%;
-  margin-left: 80px;
   padding-top: 40px;
   font-family: var(--font-secondary);
   font-size: 1.8rem;
