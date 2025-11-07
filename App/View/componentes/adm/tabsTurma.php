@@ -15,10 +15,10 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = []) {
         case 'cadastroTurmas':
             $currentTab = 'Dados-gerais';
             break;
-        case 'cadastroProjetos':
+       case 'projetos':
             $currentTab = 'Projetos';
             break;
-        case 'projeto':
+        case 'cadastroProjetos':
             $currentTab = 'Projetos';
             break;
         case 'docentes':
@@ -39,22 +39,22 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = []) {
     }
 
     $tabs = [
-        'dados-gerais' => [
+        'Dados-gerais' => [
             'url' => Config::getDirAdm() . 'cadastroTurmas.php' . $queryParams,
             'label' => 'DADOS GERAIS',
             'disabled' => false
         ],
-        'projetos' => [
+        'Projetos' => [
             'url' => Config::getDirAdm() . 'projetos.php' . $queryParams,
             'label' => 'PROJETOS',
             'disabled' => $isDisabled
         ],
-        'docentes' => [
+        'Docentes' => [
             'url' => Config::getDirAdm() . 'docentes.php' . $queryParams,
             'label' => 'DOCENTES',
             'disabled' => $isDisabled
         ],
-        'alunos' => [
+        'Alunos' => [
             'url' => Config::getDirAdm() . 'alunos.php' . $queryParams,
             'label' => 'ALUNOS',
             'disabled' => $isDisabled

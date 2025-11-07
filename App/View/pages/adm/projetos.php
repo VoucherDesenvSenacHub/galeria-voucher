@@ -48,7 +48,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
       <div class="primaty-button" style="margin-top: 20px;">
           <?php 
-            buttonComponent('primary', 'ADICIONAR', false,  Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroProjetos.php' . ($turmaId ? "?turma_id=$turmaId" : ''), ); 
+            buttonComponent('primary', 'ADICIONAR', false,  Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroProjetos.php' . ($turmaId ? "?turma_id=$turmaId" : '') ); 
           ?>
       </div>
 

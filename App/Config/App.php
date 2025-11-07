@@ -18,7 +18,7 @@ class Config
      * @param string $key A chave da configuração.
      * @return string|null
      */
-    private static function get(string $key): ?string
+    public static function get(string $key): ?string
     {
         return self::$settings[$key] ?? null;
     }

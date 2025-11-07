@@ -19,7 +19,7 @@ if (!$turmaId) {
     Redirect::toAdm('listaTurmas.php');
 }
 
-$currentTab = 'criarprojeto';
+$currentTab = 'cadastroProjetos';
 ?>
 
 <body class="layout body-cadastroTurmas">
