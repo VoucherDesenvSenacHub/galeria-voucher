@@ -32,7 +32,7 @@ try {
 $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
 ?>
 
-<link rel="stylesheet" href="<?= Config::get('APP_URL') . Config::get('DIR_CSS') ?>adm/cadastro-projetos.css">
+<link rel="stylesheet" href="<?= Config::getDirCss() ?>adm/cadastro-projetos.css">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 <body class="layout body-adm">
@@ -48,7 +48,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
       <div class="primaty-button" style="margin-top: 20px;">
           <?php 
-            buttonComponent('primary', 'ADICIONAR', false,  Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroProjetos.php' . ($turmaId ? "?turma_id=$turmaId" : '') ); 
+            buttonComponent('primary', 'ADICIONAR', false,  Config::getDirAdm() . 'cadastroProjetos.php' . ($turmaId ? "?turma_id=$turmaId" : '') ); 
           ?>
       </div>
 
@@ -61,7 +61,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
           <div class="card-projeto">
             <div class="card-content">
               <div class="card-imagem">
-                <img src="<?= Config::get('APP_URL') . ($projeto['URL_IMAGEM'] ?? Config::get('DIR_IMG') . 'utilitarios/sem-foto.svg') ?>" alt="Imagem do <?= htmlspecialchars($projeto['NOME_PROJETO']) ?>"
+                <img src="<?= Config::getAppUrl() . ($projeto['URL_IMAGEM'] ?? Config::getDirImg() . 'utilitarios/sem-foto.svg') ?>" alt="Imagem do <?= htmlspecialchars($projeto['NOME_PROJETO']) ?>"
                   class="img-projeto">
               </div>
               <div class="card-info">

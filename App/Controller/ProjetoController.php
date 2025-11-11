@@ -27,7 +27,7 @@ class ProjetoController
     public function salvar()
     {
         // Inicio Validações
-        ValidarLoginController::validarAdminRedirect(Config::get('DIR_ADM') . 'login.php');
+        ValidarLoginController::validarAdminRedirect(Config::getDirAdm() . 'login.php');
 
         $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
         $nomeProjeto = trim(Request::post('nome_projeto', ''));

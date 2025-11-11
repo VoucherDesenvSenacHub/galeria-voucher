@@ -28,8 +28,6 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
                 <div class="search" id="searchBar">
                     <?php if (!isset($esconderPesquisa) || !$esconderPesquisa) { ?>
                         <input class="pesquisa" type="text" placeholder="Pesquisar" id="pesquisar-pessoa" autocomplete="off">
-                        <div id="sugestoes"></div>
-                        <div id="pessoas-selecionadas"></div>
                     <?php } ?>
                 </div>
             <?php endif; ?>

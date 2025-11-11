@@ -40,3 +40,9 @@ git clone https://github.com/VoucherDesenvSenacHub/galeria-voucher.git
 
 # Acesse o diretório do projeto
 cd galeria-voucher
+
+## :wrench: Config de Editor
+
+- **Extension**: 
+    [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+    [PHP](https://marketplace.visualstudio.com/items?itemName=DEVSENSE.phptools-vscode)
