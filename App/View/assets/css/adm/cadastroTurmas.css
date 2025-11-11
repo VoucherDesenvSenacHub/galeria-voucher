@@ -49,7 +49,6 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-        
         background-color: transparent;
         scroll-snap-type: y mandatory;
         font-family: var(--font-primary);

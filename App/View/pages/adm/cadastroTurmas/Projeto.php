@@ -65,43 +65,69 @@ $currentTab = 'Criar Projeto';
             <input type="hidden" name="action" value="salvar">
             <input type="hidden" name="turma_id" value="<?= htmlspecialchars($turmaId) ?>">
 
-            <h1 class="h1-sobre">DESCRIÇÃO DO PROJETO</h1>
-            <div class="Container_Dia">
-                <div class="nome-e-descricao">
-                    <input type="text" name="nome_projeto" class="input-field" placeholder="Nome do Projeto *" required>
-                    <textarea name="descricao_projeto" class="textarea-field" placeholder="Descrição Geral do Projeto:"></textarea>
+            <div class="span-full">
+                <div>
+                    <h1 class="h1-sobre">DESCRIÇÃO DO PROJETO</h1>
+                    <div class="input-container">
+                        <div class="nome-e-descricao">
+                            <input type="text" name="nome_projeto" class="input-container" placeholder="Nome do Projeto" required>
+                            <textarea name="descricao_projeto" class="textarea-field" placeholder="Descrição Geral do Projeto:"></textarea>
+                        </div>
+                    </div>
                 </div>
-                 </div>
-
-            <h1 class="h1-sobre"> DIA I</h1>
-            <div class="Container_Dia">
-                <textarea name="descricao_dia_i" class="textarea-field" placeholder="Descrição do Dia I:"></textarea>
-                <div class="input-imagem-container" style="position: relative; width: 120px; height: 150px;">
-                     <img src="<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia I" class="foto-projetoturma-novo preview-imagem" id="preview-dia-i" style="cursor: pointer;" />
-                     <input type="file" name="imagem_dia_i" accept="image/*" style="display: none;" onchange="previewFile(this, 'preview-dia-i')">
-                 </div>
+            </div>
+           
+            <div class="span-full">
+                <div>
+                    <h1 class="h1-sobre"> DIA I</h1>
+                    <div class="input-container">
+                        <textarea name="descricao_dia_i" class="textarea-field" placeholder="Descrição do Dia I:"></textarea>
+                    </div>
+                </div>
+                    <div class="input-imagem-container">
+                            <label for="imagem_dia_i" style="cursor: pointer;">
+                                Clique aqui para inserir a imagem
+                                <img src="<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia I" class="foto-projetoturma-novo preview-imagem" id="preview-dia-i" style="cursor: pointer;" />
+                            </label>
+                            <input type="file" name="imagem_dia_i" id="imagem_dia_i" accept="image/*" hidden onchange="previewFile(this, 'preview-dia-i')">
+                    </div>
+            </div>
+            
+            <div class="span-full">
+                <div>
+                    <h1 class="h1-sobre"> DIA P</h1>
+                    <div class="input-container">
+                            <textarea name="descricao_dia_p" class="textarea-field" placeholder="Descrição do Dia P:"></textarea>
+                    </div>
+                </div>
+                    <div class="input-imagem-container">
+                            <label for="imagem_dia_p" style="cursor: pointer;">
+                                Clique aqui para inserir a imagem
+                                <img src="<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia P" class="foto-projetoturma-novo preview-imagem" id="preview-dia-p" style="cursor: pointer;" />
+                            </label>
+                            <input type="file" name="imagem_dia_p" id="imagem_dia_p" accept="image/*" hidden  onchange="previewFile(this, 'preview-dia-p')">
+                    </div>
             </div>
 
-            <h1 class="h1-sobre"> DIA P</h1>
-            <div class="Container_Dia">
-                <textarea name="descricao_dia_p" class="textarea-field" placeholder="Descrição do Dia P:"></textarea>
-                 <div class="input-imagem-container" style="position: relative; width: 120px; height: 150px;">
-                     <img src="<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia P" class="foto-projetoturma-novo preview-imagem" id="preview-dia-p" style="cursor: pointer;" />
-                     <input type="file" name="imagem_dia_p" accept="image/*" style="display: none;" onchange="previewFile(this, 'preview-dia-p')">
-                 </div>
+            <div class="span-full">
+                <div>
+                    <h1 class="h1-sobre"> DIA E</h1>
+                    <div class="input-container">
+                        <textarea name="descricao_dia_e" class="textarea-field" placeholder="Descrição do Dia E:"></textarea>
+                    </div>
+                </div>
+                    <div class="input-imagem-container">
+                            <label for="imagem_dia_e" style="cursor: pointer;">
+                                Clique aqui para inserir a imagem
+                                <img src="<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia E" class="foto-projetoturma-novo preview-imagem" id="preview-dia-e" style="cursor: pointer;" />
+                            </label>
+                            <input type="file" name="imagem_dia_e" id="imagem_dia_e" accept="image/*" hidden onchange="previewFile(this, 'preview-dia-e')">
+                    </div>
             </div>
-
-             <h1 class="h1-sobre"> DIA E</h1>
-            <div class="Container_Dia">
-                <textarea name="descricao_dia_e" class="textarea-field" placeholder="Descrição do Dia E:"></textarea>
-                 <div class="input-imagem-container" style="position: relative; width: 120px; height: 150px;">
-                     <img src="<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia E" class="foto-projetoturma-novo preview-imagem" id="preview-dia-e" style="cursor: pointer;" />
-                     <input type="file" name="imagem_dia_e" accept="image/*" style="display: none;" onchange="previewFile(this, 'preview-dia-e')">
-                 </div>
-            </div>
+         
 
             <div class="link-projeto">
-                <input type="url" name="link_projeto" class="input-projeto" placeholder="Link do Repositório (Ex: https://github.com/...)">
+                <input type="url" name="link_projeto" class="input-container" placeholder="Link do Repositório (Ex: https://github.com/...)">
             </div>
 
             <div class="button-projeto">
