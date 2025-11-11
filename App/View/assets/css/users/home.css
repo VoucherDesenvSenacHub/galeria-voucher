@@ -1,28 +1,13 @@
 .body-user {
     margin: 0px;
     padding: 0px;
-    width: 100%;
-    min-height: 100vh;
     font-family: Arial, sans-serif;
     background: black;
-    /* linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.97),
-            rgba(0, 0, 0, 0.9),
-            #0d9c0d,
-            #0d9c0d,
-            rgba(0, 0, 0, 0.96),
-            rgba(0, 0, 0, 0.95),
-            rgba(0, 0, 0, 0.9)); */
 
 }
 
 .componente_mira {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
+    z-index: 1;
 }
 /*animação matrix*/
 #matrix-canvas {
@@ -35,9 +20,6 @@
 
 }
 
-/* .bg-gradient{
-    background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 40%, rgba(13, 156, 13, 1) 60%, rgba(0, 0, 0, 1) 90%);
-} */
 
 .body-turma {
     margin: 0px;
@@ -72,21 +54,14 @@
 #secao1 {
     min-height: var(--secao-height);
     position: relative;
-    
-    
-    
+
     .content {
         display: flex;
         align-items: center;
         overflow: hidden;
         width: 100%;
-        /* position: relative;  */
-        /* para posicionar elementos absolutos */
     }
 
-    /* imagem dos números */
-
-    /* imagem do logo */
     .nome-voucher {
         width: 100%;
         top: calc(25vh + 6.3vw);
@@ -97,19 +72,14 @@
 
 /* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
-    /* background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 40%, rgba(13, 156, 13, 1) 60%); */
-    /* background: #0D9C0D;
-background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 0%, rgba(13, 156, 13, 1) 5%, rgba(0, 0, 0, 1) 80%); */
-
-    
-
 
     .container_card {
         height: 100%;
         display: flex;
         gap: 5rem;
         justify-content: center;
-        margin-bottom: 160px;
+        min-height: 400px;
+        margin-bottom: 60px;
 
         .card {
             background-color: #0d0d0d;
