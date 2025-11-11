@@ -44,7 +44,6 @@ O projeto está inserido no **programa governamental de capacitação técnica**
 
 Cada turma participante desenvolve, ao longo do curso, um **Projeto Integrador (PI)**, aplicando de forma prática os conhecimentos adquiridos.
 
-
 <div align="center">
 
 ## 🛠️ Tecnologias Utilizadas
@@ -56,7 +55,6 @@ Cada turma participante desenvolve, ao longo do curso, um **Projeto Integrador (
 | 🗄️ **Banco de Dados** | MySQL |
 
 </div>
-
 
 ## 🚀 Como executar o projeto
 ```bash
