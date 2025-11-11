@@ -71,7 +71,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>NOME DO PROJETO</th>
+                            <th>NOME</th>
                             <th>DESCRIÇÃO</th>
                             <th>AÇÕES</th>
                         </tr>
