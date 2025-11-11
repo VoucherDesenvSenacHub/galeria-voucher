@@ -12,13 +12,14 @@
 
     .search {
         display: flex;
+        justify-content: center;
         align-items: center;
         transition: all 0.3s ease;
 
     }
 
     .pesquisa {
-        width: 20rem;
+        width: 300px;
         height: 35px;
         opacity: .9;
         border: none;
