@@ -29,9 +29,11 @@ try {
 
 $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
 ?>
+
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
+
 <body class="layout body-adm">
     <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
     <?php
@@ -59,7 +61,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         require_once __DIR__ . "/../../../componentes/nav.php";
         ?>
 
-        
+
 
         <div class="topo-lista-alunos">
             <?php buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroAluno()\""); ?>
@@ -86,7 +88,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                     <td><?= htmlspecialchars($aluno['polo']) ?></td>
                                     <td class="acoes">
                                         <?php if ($is_admin): ?>
-                                            <span class="material-symbols-outlined acao-delete" title="Desvincular aluno" onclick="confirmarDesvinculacao(<?= $aluno['pessoa_id'] ?>, <?= $turmaId ?>, '<?= htmlspecialchars($aluno['nome']) ?>')">delete</span>
+                                            <span class="material-symbols-outlined acao-delete" title="Desvincular aluno"
+                                                onclick="confirmarDesvinculacao(<?= $aluno['pessoa_id'] ?>, <?= $turmaId ?>, '<?= htmlspecialchars($aluno['nome']) ?>')">delete</span>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -104,12 +107,15 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 <div class="modal modal-cadastro" id="modal-desvincular-aluno">
                     <div class="modal-header modal-desvincular">
                         <span class="modal-header-title">Desvincular Aluno</span>
-                        <span class="material-symbols-outlined modal-header-action btn-close-desvincular" name="btn-close" onclick="fecharModal()">close</span>
+                        <span class="material-symbols-outlined modal-header-action btn-close-desvincular"
+                            name="btn-close" onclick="fecharModal()">close</span>
                     </div>
 
-                    <form class="" method="POST" action="/galeria-voucher/App/Controller/DesvincularAlunoController.php?action=desvincular">
+                    <form class="" method="POST"
+                        action="/galeria-voucher/App/Controller/DesvincularAlunoController.php?action=desvincular">
                         <div class="modal-body">
-                            <p>Tem certeza que deseja desvincular o aluno "<span id="aluno-confirmacao"></span>" desta turma?</p>
+                            <p>Tem certeza que deseja desvincular o aluno "<span id="aluno-confirmacao"></span>" desta
+                                turma?</p>
                             <div class="form-group">
                                 <?php inputComponent('hidden', 'pessoa_id'); ?>
                                 <?php inputComponent('hidden', 'turma_id'); ?>
@@ -126,10 +132,12 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 <div class="modal modal-cadastro" id="modal-cadastro-aluno">
                     <div class="modal-header">
                         <span class="modal-header-title">Vincular Alunos</span>
-                        <span class="material-symbols-outlined modal-header-action btn-close" name="btn-close">close</span>
+                        <span class="material-symbols-outlined modal-header-action btn-close"
+                            name="btn-close">close</span>
                     </div>
-                    
-                    <form class="form-cadastro-pessoa" method="POST" action="">
+
+                    <form class="form-cadastro-pessoa" method="POST"
+                        action="/galeria-voucher/App/Controller/VincularAlunoTurmaController.php">
                         <div class="modal-body">
                             <div>
                                 <label for="pesquisar-pessoa">
@@ -137,8 +145,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                 </label>
                                 <?php inputComponent('text', 'pesquisar-pessoa', 'Digite o nome'); ?>
                                 <div id="sugestoes">
-                                    
-                                    </div>
+
+                                </div>
                             </div>
 
                             <div id="pessoas-selecionadas"></div>
@@ -148,16 +156,17 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                         </div>
 
                         <div class="modal-action">
-                            <?php buttonComponent("primary", "Vincular", true)?>
+                            <?php buttonComponent("primary", "Vincular", true) ?>
                         </div>
                     </form>
                 </div>
             </section>
-    </div>
+        </div>
     </main>
     <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/lista-alunos.js"></script>
     <script src="<?= Config::getAppUrl() ?>App/View/assets/js/main.js"></script>
     <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/autocomplete-pessoas.js"></script>
     <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/desvincula-aluno.js"></script>
 </body>
+
 </html>
