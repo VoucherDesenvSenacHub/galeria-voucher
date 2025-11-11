@@ -8,11 +8,11 @@ function confirmarDesvinculacao(pessoaId, turmaId,  nomeAluno ) {
     nomeAlunoinsert.innerHTML = nomeAluno
     inputTurmaId.value =  turmaId
     inputAlunoId.value = pessoaId
-    modalAlunoRemover.style.display = "flex";
+    modalAlunoRemover.style.display = "block";
 }
 
 function fecharModal() {
-    const modalAlunoRemover = document.querySelector('.modal-confirmacao');
+    const modalAlunoRemover = document.getElementById("modal-desvincular-aluno");
     modalAlunoRemover.style.display="none";
     
 }

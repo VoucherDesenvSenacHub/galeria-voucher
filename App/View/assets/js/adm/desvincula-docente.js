@@ -12,7 +12,7 @@ function confirmarDesvinculacao(pessoaId, turmaId,  nomeDocente ) {
 }
 
 function fecharModal() {
-    const modalProfessorRemover = document.querySelector('.modal-confirmacao');
+    const modalProfessorRemover = document.getElementById("modal-desvincular-docente");
     modalProfessorRemover.style.display="none";
     
 }
