@@ -2,7 +2,7 @@
 session_start();
 
 // Inclui os novos helpers e a configuração
-require_once __DIR__ . '/../Config/App.php';
+require_once __DIR__ . '/../Config/Config.php';
 require_once __DIR__ . '/../Helpers/Request.php';
 require_once __DIR__ . '/../Helpers/Redirect.php';
 

@@ -1,7 +1,7 @@
 <?php
 
 
-require_once __DIR__ . "/../../../Config/App.php";
+require_once __DIR__ . "/../../../Config/Config.php";
 require_once __DIR__ . "/../../../Helpers/Redirect.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";

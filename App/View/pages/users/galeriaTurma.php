@@ -1,7 +1,6 @@
 <?php
-// Carrega dependências necessárias
-require_once __DIR__ . "/../../../Config/env.php"; // Ainda necessário para o head.php
-require_once __DIR__ . "/../../../Config/App.php"; // Carrega a nova classe de config
+
+require_once __DIR__ . "/../../../Config/Config.php"; // Carrega a nova classe de config
 require_once __DIR__ . "/../../../Model/GaleriaTurmaModel.php";
 require_once __DIR__ . "/../../../Model/ProjetoModel.php"; // Necessário para o formatador
 require_once __DIR__ . "/../../../Helpers/ViewHelper.php"; // Helper com a função de formatação
