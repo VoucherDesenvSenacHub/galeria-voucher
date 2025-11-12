@@ -1,23 +1,23 @@
 <?php
 
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
-require_once __DIR__ . "/../../../../Model/TurmaModel.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/Config.php";
+require_once __DIR__ . "/../../../Helpers/Redirect.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
+require_once __DIR__ . "/../../../Model/TurmaModel.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 $turmaId = Request::getId("turma_id");
 
 if (!$turmaId) {
-    Redirect::toAdm('listaTurmas.php');
+    Redirect::toAdm('turmas.php');
 }
 
 $paginaAtiva = 'turmas'; 
 headerComponent("Voucher Desenvolvedor - Projetos");
-$currentTab = 'projetos';
+$currentTab = 'Projetos';
 $projetos = [];
 
 try {
@@ -32,14 +32,14 @@ try {
 $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
 ?>
 
-<link rel="stylesheet" href="<?= Config::getDirCss() ?>adm/CadastroProjetos.css">
+<link rel="stylesheet" href="<?= Config::getDirCss() ?>adm/cadastro-projetos.css">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 <body class="layout body-adm">
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
@@ -48,7 +48,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
       <div class="primaty-button" style="margin-top: 20px;">
           <?php 
-            buttonComponent('primary', 'ADICIONAR', false,  Config::getDirAdm() . 'cadastroTurmas/Projeto.php' . ($turmaId ? "?turma_id=$turmaId" : ''), ); 
+            buttonComponent('primary', 'ADICIONAR', false,  Config::getDirAdm() . 'cadastroProjetos.php' . ($turmaId ? "?turma_id=$turmaId" : '') ); 
           ?>
       </div>
 
@@ -61,7 +61,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
           <div class="card-projeto">
             <div class="card-content">
               <div class="card-imagem">
-                <img src="<?= Config::getDirImg() . 'utilitarios/sem-foto.svg' ?>" alt="Imagem do <?= htmlspecialchars($projeto['NOME_PROJETO']) ?>"
+                <img src="<?= Config::getAppUrl() . ($projeto['URL_IMAGEM'] ?? Config::getDirImg() . 'utilitarios/sem-foto.svg') ?>" alt="Imagem do <?= htmlspecialchars($projeto['NOME_PROJETO']) ?>"
                   class="img-projeto">
               </div>
               <div class="card-info">

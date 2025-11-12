@@ -1,21 +1,20 @@
 <?php
-class BreadCrumbs
-{
-    /**
-     * Árvore de Urls para montar o BreadCrumb. Atualizar urls caso mudem
-     * @var array
-     */
-    private const BREAD_MAP = [
-        0 => ["pai" => null, "url" => "home-adm", "valor" => "Início"],
-        1 => ["pai" => 0, "url" => "listarUsuarios", "valor" => "Pessoas"],
-        2 => ["pai" => 1, "url" => "cadastrar-usuarios", "valor" => "Cadastrar Usuário"],
-        3 => ["pai" => 0, "url" => "listaTurmas", "valor" => "Turmas"],
-        4 => ["pai" => 3, "url" => "cadastroTurmas/cadastroTurmas", "valor" => "Cadastrar Turma"],
-        5 => ["pai" => 3, "url" => "cadastroTurmas/CadastroProjetos", "valor" => "Listar Projetos"],
-        6 => ["pai" => 5, "url" => "cadastroTurmas/Projeto", "valor" => "Cadastrar Projetos"],
-        7 => ["pai" => 3, "url" => "cadastroTurmas/docentes", "valor" => "Listar Docentes"],
-        8 => ["pai" => 3, "url" => "cadastroTurmas/alunos", "valor" => "Listar Alunos"],
-    ];
+    class BreadCrumbs {
+        /**
+         * Árvore de Urls para montar o BreadCrumb. Atualizar urls caso mudem
+         * @var array
+         */
+        private const BREAD_MAP = [
+            0 => ["pai" => null, "url" => "homeAdm", "valor" => "Início" ],
+            1 => ["pai" => 0, "url" => "usuarios", "valor" => "Pessoas" ],
+            2 => ["pai" => 1, "url" => "cadastroUsuarios", "valor" => "Cadastrar Usuário" ],
+            3 => ["pai" => 0, "url" => "turmas", "valor" => "Turmas" ],
+            4 => ["pai" => 3, "url" => "cadastroTurmas", "valor" => "Cadastrar Turma" ],
+            5 => ["pai" => 3, "url" => "projetos", "valor" => "Listar Projetos" ],
+            6 => ["pai" => 5, "url" => "cadastroProjetos", "valor" => "Cadastrar Projetos" ],
+            7 => ["pai" => 3, "url" => "docentes", "valor" => "Listar Docentes" ],
+            8 => ["pai" => 3, "url" => "alunos", "valor" => "Listar Alunos" ],
+        ];
 
     /**
      * Valor utilizado para separar a url, resultando nos valores de BREAD_MAP["url"] após remover URL_SEPARADOR_SUFFIX

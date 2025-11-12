@@ -6,13 +6,13 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../../Model/TurmaModel.php";
-require_once __DIR__ . "/../../../../Model/PoloModel.php";
-require_once __DIR__ . "/../../../../Helpers/Request.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/Config.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../../Model/TurmaModel.php";
+require_once __DIR__ . "/../../../Model/PoloModel.php";
+require_once __DIR__ . "/../../../Helpers/Request.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 $isEditMode = false;
 $turma = null;
@@ -28,7 +28,7 @@ if ($turmaId) {
     $turma = $turmaModel->buscarTurmaPorId($turmaId);
 
     if (!$turma) {
-        header('Location: ' . Config::getDirAdm() . 'listaTurmas.php');
+        header('Location: ' . Config::getDirAdm() . 'turmas.php');
         exit;
     }
 
@@ -51,11 +51,11 @@ $currentTab = 'Dados-gerais';
 ?>
 
 <body class="layout body-adm">
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
-    require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
@@ -124,7 +124,7 @@ $currentTab = 'Dados-gerais';
                <div class="form-bottom">
             <div class="form-group-buton">
               <?php
-              buttonComponent('secondary', 'Voltar', false, Config::getDirAdm() . 'listaTurmas.php');
+              buttonComponent('secondary', 'Voltar', false, Config::getDirAdm() . 'turmas.php');
               buttonComponent('primary', $isEditMode ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>
