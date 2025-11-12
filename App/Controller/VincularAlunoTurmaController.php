@@ -22,7 +22,7 @@ class VincularAlunoTurmaController
 
         if (!$turmaId || !is_array($pessoaIds) || empty($pessoaIds)) {
             $_SESSION['erro'] = "Dados inválidos. Selecione ao menos um docente e tente novamente.";
-            Redirect::toAdm('cadastroTurmas/docentes.php', ['turma_id' => $turmaId]);
+            Redirect::toAdm('docentes.php', ['turma_id' => $turmaId]);
         }
 
         $turmaModel = new TurmaModel();
@@ -41,7 +41,7 @@ class VincularAlunoTurmaController
             $_SESSION['erro'] = "Ocorreu um erro ao vincular os docentes. Tente novamente.";
         }
 
-        Redirect::toAdm('cadastroTurmas/alunos.php', ['turma_id' => $turmaId]);
+        Redirect::toAdm('alunos.php', ['turma_id' => $turmaId]);
     }
 }
 

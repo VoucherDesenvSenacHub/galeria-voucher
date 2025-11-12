@@ -18,7 +18,7 @@ class DesvincularAlunoController
             $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
             $senha = $_POST['senha'] ?? '';
             
-            $redirectParams = ['id' => $turma_id];
+            $redirectParams = ['turma_id' => $turma_id];
 
             if (!$pessoa_id || !$turma_id) {
                 $_SESSION['erro'] = "Dados inválidos para desvinculação.";

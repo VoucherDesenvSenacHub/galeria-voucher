@@ -46,7 +46,7 @@ class DocenteController extends BaseController {
         $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
         $senha = $_POST['senha'] ?? '';
         
-        $redirectParams = $turma_id ? ['id' => $turma_id] : [];
+        $redirectParams = $turma_id ? ['turma_id' => $turma_id] : [];
 
         if (!$pessoa_id || !$turma_id) {
             $_SESSION['erro'] = "Dados inválidos para desvinculação.";

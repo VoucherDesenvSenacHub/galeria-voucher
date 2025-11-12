@@ -102,7 +102,7 @@ class ProjetoController
                         $this->imagemModel->deletarImagem($dia['imagem_id']);
                     }
                 }
-                Redirect::toAdm('cadastroProjetos.php', ['id' => $turmaId]);
+                Redirect::toAdm('cadastroProjetos.php', ['turma_id' => $turmaId]);
                 exit;
             }
 
@@ -111,7 +111,7 @@ class ProjetoController
             $this->projetoModel->getPDO()->commit();
 
             $_SESSION['sucesso_projeto'] = "Projeto '{$nomeProjeto}' cadastrado com sucesso!";
-            Redirect::toAdm('projetos.php', ['id' => $turmaId]);
+            Redirect::toAdm('projetos.php', ['turma_id' => $turmaId]);
 
         } catch (\Exception $e) {
             $this->projetoModel->getPDO()->rollBack();
@@ -130,7 +130,7 @@ if (isset($action) && $action === 'salvar') {
     $_SESSION['erro_projeto'] = "Ação desconhecida.";
     $turmaIdFallback = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     if ($turmaIdFallback) {
-        Redirect::toAdm('projetos.php', ['id' => $turmaIdFallback]);
+        Redirect::toAdm('projetos.php', ['turma_id' => $turmaIdFallback]);
     } else {
         Redirect::toAdm('turmas.php');
     }

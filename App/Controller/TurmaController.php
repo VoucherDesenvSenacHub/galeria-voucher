@@ -88,7 +88,7 @@ class TurmaController {
 
             if ($resultado) {
                 $_SESSION['sucesso_cadastro'] = "" . $nome . " CADASTRADA COM SUCESSO !!!";
-                Redirect::toAdm('cadastroTurmas.php', ['id' => $resultado]);
+                Redirect::toAdm('cadastroTurmas.php', ['turma_id' => $resultado]);
             } else {
                 $_SESSION['erros_turma'] = ["Ocorreu um erro ao salvar a turma."];
                 Redirect::toAdm('cadastroTurmas.php');
@@ -154,7 +154,7 @@ class TurmaController {
         
             if (!empty($erros)) {
                 $_SESSION['erros_turma'] = $erros;
-                Redirect::toAdm("cadastroTurmas.php", ['id' => $turma_id]);
+                Redirect::toAdm("cadastroTurmas.php", ['turma_id' => $turma_id]);
                 return;
             }
 
@@ -181,7 +181,7 @@ class TurmaController {
             } else {
                 $_SESSION['erros_turma'] = ["Erro ao atualizar a turma."];
             }
-            Redirect::toAdm("cadastroTurmas.php", ['id' => $turma_id]);
+            Redirect::toAdm("cadastroTurmas.php", ['turma_id' => $turma_id]);
         }
     }
 
