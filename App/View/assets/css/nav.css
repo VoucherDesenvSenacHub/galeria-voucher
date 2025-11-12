@@ -18,9 +18,9 @@
 
     }
 
-    .pesquisa {
+    #input_pesquisa-turma {
         width: 300px;
-        height: 35px;
+        height: 40px;
         opacity: .9;
         border: none;
         border-radius: 20px;
@@ -28,9 +28,10 @@
         font-size: 14px;
         background-color: rgba(255, 255, 255, 0.9);
         transition: all 0.3s ease;
+        margin: 0;
     }
 
-    .pesquisa:focus {
+    #input_pesquisa-turma:focus {
         outline: none;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         transform: scale(1.02);

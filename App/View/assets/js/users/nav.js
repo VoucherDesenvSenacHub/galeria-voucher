@@ -126,3 +126,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// --- BUSCA DE TURMAS (TALVEZ PROJETOS) NA NAVBAR ---
+
+
+
+const inputPesquisa = document.querySelector('#input_pesquisa-turma');
+//ver se pode ser reutilizado essas sugestões, para aparecer ao pesquisar turmmas na NavBar
+
+// const sugestoes = document.querySelector("#sugestoes");
+
+inputPesquisa.addEventListener('input', (event) => {
+    const busca = event.target.value;
+    const url = `/galeria-voucher/app/Controller/${endpoint}`;
+    
+    fetch(`${url}?busca=${encodeURIComponent(busca)}`)
+        .then(res => res.json())
+        .then(dados => {
+            console.log(dados)
+            // sugestoes.innerHTML = "";
+            // dados.forEach(item => {
+            //     const div = document.createElement("div");
+            //     div.className = 'sugestao-item';
+            //     div.textContent = item.nome;
+
+            //     div.dataset.id = item.pessoa_id;
+
+            //     div.onclick = function () {
+            //         const id = this.dataset.id;
+            //         const nome = this.textContent;
+            //         adicionarPessoa(id, nome);
+            //     };
+            //     sugestoes.appendChild(div);
+            // }
+            // );
+        })
+
+})
+
+
+
