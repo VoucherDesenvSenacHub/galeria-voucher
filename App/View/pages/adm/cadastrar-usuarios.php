@@ -62,6 +62,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
                         <?php
                         inputComponent('text', 'nome', 'Nome Completo', $pessoa['nome'] ?? ($_POST['nome'] ?? ''), "nome", true );
                         inputComponent('text', 'email', 'Email', $pessoa['email'] ?? ($_POST['email'] ?? ''), "email", true);
+                        inputComponent('password', 'senha', 'Senha', $pessoa['senha'] ?? ($_POST['senha'] ?? ''), "senha", true);
                         inputComponent('text', 'linkedin', 'Link do linkedin', $pessoa['linkedin'] ?? ($_POST['linkedin'] ?? ''), "linkedin" );
                         inputComponent('text', 'github', 'Link para o GitHub', $pessoa['github'] ?? ($_POST['github'] ?? ''), "github" );
                         ?>
@@ -102,18 +103,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
             </div>
         </form>
     </main>
-
-    <script>
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                document.getElementById('preview').src = URL.createObjectURL(file);
-            }
-        });
-        document.querySelector('.back-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.history.back();
-        });
-    </script>
+    
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/cadastra-usuario.js"></script>
 </body>
 </html>
