@@ -1,7 +1,6 @@
 <?php
-// Carrega dependências necessárias
-require_once __DIR__ . "/../../../Config/env.php"; // Ainda necessário para o head.php
-require_once __DIR__ . "/../../../Config/App.php"; // Carrega a nova classe de config
+
+require_once __DIR__ . "/../../../Config/Config.php"; // Carrega a nova classe de config
 require_once __DIR__ . "/../../../Model/GaleriaTurmaModel.php";
 require_once __DIR__ . "/../../../Model/ProjetoModel.php"; // Necessário para o formatador
 require_once __DIR__ . "/../../../Helpers/ViewHelper.php"; // Helper com a função de formatação
@@ -148,7 +147,7 @@ headerComponent('Galeria da Turma');
                         <?php if (!empty($alunos)): ?>
                             <?php foreach ($alunos as $aluno): ?>
                                 <?php $pessoa = $aluno; // Adaptação para o card genérico ?>
-                                <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
+                                <?php include __DIR__ . "/../../componentes/users/cardPessoa.php"; ?>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <p>Nenhum aluno encontrado para esta turma.</p>
@@ -162,7 +161,7 @@ headerComponent('Galeria da Turma');
                         <?php if (!empty($orientadores)): ?>
                             <?php foreach ($orientadores as $orientador): ?>
                                 <?php $pessoa = $orientador; // Adaptação para o card genérico ?>
-                                <?php include __DIR__ . "/../../componentes/users/card_pessoa.php"; ?>
+                                <?php include __DIR__ . "/../../componentes/users/cardPessoa.php"; ?>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <p>Nenhum professor encontrado para esta turma.</p>

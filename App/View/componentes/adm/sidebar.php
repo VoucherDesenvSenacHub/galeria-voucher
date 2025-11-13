@@ -9,12 +9,12 @@ if (!isset($paginaAtiva)) {
 <aside class="sidebar-adm">
   <ul class="menu-adm">
     <li>
-      <a href="<?= Config::getDirAdm() . 'listarUsuarios.php'; ?>" class="<?= ($paginaAtiva == 'pessoas') ? 'active' : '' ?>">
+      <a href="<?= Config::getDirAdm() . 'usuarios.php'; ?>" class="<?= ($paginaAtiva == 'pessoas') ? 'active' : '' ?>">
         PESSOAS
       </a>
     </li>
     <li>
-      <a href="<?= Config::getDirAdm() . 'listaTurmas.php'; ?>" class="<?= ($paginaAtiva == 'turmas') ? 'active' : '' ?>">
+      <a href="<?= Config::getDirAdm() . 'turmas.php'; ?>" class="<?= ($paginaAtiva == 'turmas') ? 'active' : '' ?>">
         TURMAS
       </a>
     </li>
