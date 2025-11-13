@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../../Helpers/Redirect.php';
  * @param string $currentTab - A aba atual ('dados-gerais', 'projetos', 'docentes', 'alunos')
  * @param array $params - Params da url, turma_id é opcional, usado para manter o contexto nas navegações
  */
-function tabsTurmaComponent($currentTab = 'dados-gerais', $params = [], ) {
+function tabsTurmaComponent($currentTab = 'dados-gerais', $params = []) {
 
     $isDisabled = is_null($params['turma_id']); // Desabilita as abas se não houver ID de turma
 
@@ -13,19 +13,22 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = [], ) {
 
     switch ($arquivoAtual) {
         case 'cadastroTurmas':
-            $currentTab = 'dados-gerais';
+            $currentTab = 'Dados-gerais';
             break;
-        case 'CadastroProjetos':
-            $currentTab = 'projetos';
+       case 'projetos':
+            $currentTab = 'Projetos';
+            break;
+        case 'cadastroProjetos':
+            $currentTab = 'Projetos';
             break;
         case 'docentes':
-            $currentTab = 'docentes';
+            $currentTab = 'Docentes';
             break;
         case 'alunos':
-            $currentTab = 'alunos';
+            $currentTab = 'Alunos';
             break;
         default:
-            $currentTab = 'dados-gerais';
+            $currentTab = 'Dados-gerais';
             break;
     }
 
@@ -36,23 +39,23 @@ function tabsTurmaComponent($currentTab = 'dados-gerais', $params = [], ) {
     }
 
     $tabs = [
-        'dados-gerais' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/cadastroTurmas.php' . $queryParams,
+        'Dados-gerais' => [
+            'url' => Config::getDirAdm() . 'cadastroTurmas.php' . $queryParams,
             'label' => 'DADOS GERAIS',
             'disabled' => false
         ],
-        'projetos' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastroTurmas/CadastroProjetos.php' . $queryParams,
+        'Projetos' => [
+            'url' => Config::getDirAdm() . 'projetos.php' . $queryParams,
             'label' => 'PROJETOS',
             'disabled' => $isDisabled
         ],
-        'docentes' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastroTurmas/docentes.php' . $queryParams,
+        'Docentes' => [
+            'url' => Config::getDirAdm() . 'docentes.php' . $queryParams,
             'label' => 'DOCENTES',
             'disabled' => $isDisabled
         ],
-        'alunos' => [
-            'url' => Config::get('APP_URL') . Config::get('DIR_ADM') .'cadastroTurmas/alunos.php' . $queryParams,
+        'Alunos' => [
+            'url' => Config::getDirAdm() . 'alunos.php' . $queryParams,
             'label' => 'ALUNOS',
             'disabled' => $isDisabled
         ]

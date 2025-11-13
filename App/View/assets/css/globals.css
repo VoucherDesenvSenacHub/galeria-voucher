@@ -9,15 +9,15 @@
 @import url(users/footer.css);
 @import url(users/mira.css);
 @import url(nav.css);
-@import url(users/card_desenvolvedor.css);
-@import url(users/pagina_dev.css);
+@import url(users/card-desenvolvedor.css);
+@import url(users/pagina-dev.css);
 @import url(users/galeria-turma.css);
 
 @import url(adm/main.css);
 @import url(adm/home-adm.css);
 @import url(adm/login.css);
 @import url(adm/projeto.css);
-@import url(adm/cadastroTurmas.css);
+@import url(adm/cadastro-turmas.css);
 @import url(adm/Turmas-adm/turmas-imagem.css);
 @import url(adm/sidebar.css);
 @import url(adm/cadastrar-usuarios.css);
@@ -34,7 +34,7 @@
     --white-background: #FFFFFF;
     --text-color-button: #000000;
     --background-nav: rgba(0, 0, 0, 0.7) /*preto com 80% de opacidade*/;
-    --height-button: 4rem;
+    --height-button: 3rem;
     --height-button-adm: 1.8rem;
     --height-button-phone: 2rem;
     --height-button-tablet: 2.7rem;

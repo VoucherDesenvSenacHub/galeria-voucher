@@ -38,10 +38,10 @@ $turmasPagina = array_slice($turmas, $inicio, $itensPorPagina);
     
                 <div class="cards" id="cards-container">
                     <?php foreach ($turmasPagina as $turma): ?>
-                        <a href="<?= Config::get('APP_URL') . Config::get('DIR_USER') ?>galeria-turma.php?id=<?= $turma['turma_id'] ?>" class="card-turma">
+                        <a href="<?= Config::getDirUser() ?>galeriaTurma.php?id=<?= $turma['turma_id'] ?>" class="card-turma">
                             <div class="card-content">
                                 <h3 class="card-title"><?= htmlspecialchars($turma['nome_turma']) ?></h3>
-                                <img class="card-image" src="<?= Config::get('APP_URL') . $turma['imagem_url'] ?>" alt="Imagem turma <?= htmlspecialchars($turma['nome_turma']) ?>">
+                                <img class="card-image" src="<?= Config::getAppUrl() . $turma['imagem_url'] ?>" alt="Imagem turma <?= htmlspecialchars($turma['nome_turma']) ?>">
                             </div>
                         </a>
                     <?php endforeach; ?>

@@ -2,7 +2,7 @@
 
 $paginaAtiva = 'turmas';
 
-require_once __DIR__ . "/../../../Config/App.php";
+require_once __DIR__ . "/../../../Config/Config.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
@@ -50,7 +50,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     'primary',
                     'NOVA TURMA',
                     false,
-                    Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/cadastroTurmas.php'
+                    Config::getDirAdm() . 'cadastroTurmas.php'
                 );
                 ?>
 
@@ -64,7 +64,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             value="<?= htmlspecialchars($termoPesquisa) ?>">
 
                         <button type="submit" class="search-button">
-                            <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa"
+                            <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa"
                                 class="icone-lupa-img">
                         </button>
                     </div>
@@ -91,13 +91,13 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         <td><?= htmlspecialchars($turma['NOME_POLO']) ?></td>
                                         <td class="acoes">
                                             <div class="acoes-container">
-                                                <a href="cadastroTurmas/cadastroTurmas.php?turma_id=<?= $turma['turma_id'] ?>"
+                                                <a href="cadastroTurmas.php?turma_id=<?= $turma['turma_id'] ?>"
                                                     title="Editar">
                                                     <span class="material-symbols-outlined" id="edite">edit</span>
                                                 </a>
 
                                                 <form method="POST"
-                                                    action="<?= Config::get('APP_URL') ?>App/Controller/TurmaController.php?action=excluir"
+                                                    action="<?= Config::getAppUrl() ?>App/Controller/TurmaController.php?action=excluir"
                                                     onsubmit="return confirm('ATENÇÃO!!! Excluir esta turma também removerá todos os seus projetos, alunos e professores vinculados. Esta ação é irreversível. Deseja continuar?');">
                                                     <input type="hidden" name="turma_id" value="<?= $turma['turma_id'] ?>">
                                                     <button type="submit" class="no-style" title="Excluir">

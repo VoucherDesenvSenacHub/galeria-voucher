@@ -1,5 +1,3 @@
-TurmaModel.php
-
 <?php
 
 require_once __DIR__ . "/BaseModel.php";
@@ -275,20 +273,20 @@ class TurmaModel extends BaseModel
         $query = "SELECT COUNT(t.turma_id) 
                   FROM turma t
                   JOIN polo p ON t.polo_id = p.polo_id";
-        
+
         if (!empty($termo)) {
             $query .= " WHERE t.nome LIKE :termo OR p.nome LIKE :termo";
         }
 
         $stmt = $this->pdo->prepare($query);
-        
+
         if (!empty($termo)) {
             $stmt->execute([':termo' => '%' . $termo . '%']);
         } else {
             $stmt->execute();
         }
 
-        return (int)$stmt->fetchColumn();
+        return (int) $stmt->fetchColumn();
     }
 
     /**
@@ -310,7 +308,7 @@ class TurmaModel extends BaseModel
             JOIN 
                 polo p ON t.polo_id = p.polo_id
         ";
-        
+
         if (!empty($termo)) {
             $query .= " WHERE t.nome LIKE :termo OR p.nome LIKE :termo";
         }
@@ -324,7 +322,7 @@ class TurmaModel extends BaseModel
         }
         $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-        
+
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -433,7 +431,7 @@ class TurmaModel extends BaseModel
             ORDER BY 
                 pr.nome ASC
         ";
-    
+
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -488,8 +486,20 @@ class TurmaModel extends BaseModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function VincularDocenteComTurma(int $id_pessoa, int $id_turma){
+    public function VincularDocenteComTurma(int $id_pessoa, int $id_turma)
+    {
         $sql = 'INSERT INTO docente_turma (pessoa_id, turma_id, data_associacao) 
+                VALUES (:id_pessoa, :id_turma, NOW())';
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':id_pessoa' => $id_pessoa,
+            ':id_turma' => $id_turma
+        ]);
+    }
+
+    public function VincularAlunoComTurma(int $id_pessoa, int $id_turma)
+    {
+        $sql = 'INSERT INTO aluno_turma (pessoa_id, turma_id, data_matricula) 
                 VALUES (:id_pessoa, :id_turma, NOW())';
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([

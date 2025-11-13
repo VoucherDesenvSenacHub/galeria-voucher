@@ -19,8 +19,8 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
     <nav class="NavInicial<?php echo $isAdmin ? ' nav-adm' : ''; ?>">
         <div class="nav-inner">
             <div class="imgvoucher">
-                <a href="<?= Config::get('APP_URL') . Config::get('DIR_USER') . 'home.php'; ?>">
-                    <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/logo-navbar.png" alt="Logo Voucher">
+                <a href="<?= Config::getDirUser() . 'home.php'; ?>">
+                    <img src="<?= Config::getDirImg() ?>adm/logo-navbar.png" alt="Logo Voucher">
                 </a>
             </div>
 
@@ -28,8 +28,6 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
                 <div class="search" id="searchBar">
                     <?php if (!isset($esconderPesquisa) || !$esconderPesquisa) { ?>
                         <input class="pesquisa" type="text" placeholder="Pesquisar" id="pesquisar-pessoa" autocomplete="off">
-                        <div id="sugestoes"></div>
-                        <div id="pessoas-selecionadas"></div>
                     <?php } ?>
                 </div>
             <?php endif; ?>
@@ -38,35 +36,35 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
 
             <ul class="menu-links" id="nav-links">
                 <li class="<?php echo $isAdmin ? 'desktop-only' : ''; ?>">
-                    <a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_USER') . 'home.php'; ?>">HOME</a>
+                    <a class="link-nav" href="<?= Config::getDirUser() . 'home.php'; ?>">HOME</a>
                 </li>
                 <li class="<?php echo $isAdmin ? 'desktop-only' : ''; ?>">
-                    <a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_USER') . 'turma.php'; ?>">TURMAS</a>
+                    <a class="link-nav" href="<?= Config::getDirUser() . 'turma.php'; ?>">TURMAS</a>
                 </li>
 
                 <?php if ($isAdmin): ?>
-                    <li class="mobile-only"><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'home-adm.php'; ?>">INÍCIO</a></li>
-                    <li class="mobile-only"><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'listarUsuarios.php'; ?>">PESSOAS</a></li>
-                    <li class="mobile-only"><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php'; ?>">TURMAS</a></li>
+                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'homeAdm.php'; ?>">INÍCIO</a></li>
+                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'usuarios.php'; ?>">PESSOAS</a></li>
+                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'turmas.php'; ?>">TURMAS</a></li>
                     <?php if ($logado): ?>
-                        <li class="mobile-only"><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_LOGOUT') . 'logout.php'; ?>">SAIR</a></li>
+                        <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirLogout() . 'logout.php'; ?>">SAIR</a></li>
                         <li class="desktop-only">
-                            <a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_LOGOUT') . 'logout.php'; ?>" title="Sair">
+                            <a class="link-nav" href="<?= Config::getDirLogout() . 'logout.php'; ?>" title="Sair">
                                 <span class="material-symbols-outlined">logout</span>
                             </a>
                         </li>
                     <?php endif; ?>
                 <?php else: ?>
                     <?php if ($logado && in_array($perfil, ['adm', 'professor'])): ?>
-                        <li><a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'home-adm.php'; ?>">ADMINISTRATIVO</a></li>
+                        <li><a class="link-nav" href="<?= Config::getDirAdm() . 'homeAdm.php'; ?>">ADMINISTRATIVO</a></li>
                         <li>
-                            <a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_LOGOUT') . 'logout.php'; ?>" title="Sair">
+                            <a class="link-nav" href="<?= Config::getDirLogout() . 'logout.php'; ?>" title="Sair">
                                 <span class="material-symbols-outlined">logout</span>
                             </a>
                         </li>
                     <?php else: ?>
                         <li>
-                            <a class="link-nav" href="<?= Config::get('APP_URL') . Config::get('DIR_ADM') . 'login.php'; ?>">
+                            <a class="link-nav" href="<?= Config::getDirAdm() . 'login.php'; ?>">
                                 <span class="material-symbols-outlined">person</span>
                             </a>
                         </li>
@@ -76,4 +74,4 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
         </div>
     </nav>
 </header>
-<script src="<?= Config::get('APP_URL') ?>app/View/assets/js/adm/autocomplete-pessoas.js" defer></script>
+<script src="<?= Config::getDirJs() ?>adm/autocomplete-pessoas.js" defer></script>

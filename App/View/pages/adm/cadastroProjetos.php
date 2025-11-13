@@ -1,33 +1,33 @@
 <?php
 $paginaAtiva = 'turmas';
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-require_once __DIR__ . "/../../../../Helpers/Request.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../componentes/input.php";
-require_once __DIR__ . "/../../../componentes/button.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/Config.php";
+require_once __DIR__ . "/../../../Helpers/Redirect.php";
+require_once __DIR__ . "/../../../Helpers/Request.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../componentes/input.php";
+require_once __DIR__ . "/../../componentes/button.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 headerComponent("Voucher Desenvolvedor - Criar Projeto");
 
 $turmaId = Request::getId("turma_id");
 $projetoId = Request::getId("projeto_id");
 if (!$turmaId) {
-    Redirect::toAdm('listaTurmas.php');
+    Redirect::toAdm('turmas.php');
 }
 
-$currentTab = 'Criar Projeto';
+$currentTab = 'cadastroProjetos';
 ?>
 
-<body class="layout body-cadastro-turmas">
+<body class="layout body-cadastroTurmas">
 
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
@@ -59,7 +59,7 @@ $currentTab = 'Criar Projeto';
 
       <form class="form-container-projeto"
             method="POST"
-            action="<?= Config::get('APP_URL') ?>App/Controller/ProjetoController.php"
+            action="<?= Config::getAppUrl() ?>App/Controller/ProjetoController.php"
             enctype="multipart/form-data">
 
             <input type="hidden" name="action" value="salvar">
@@ -77,7 +77,7 @@ $currentTab = 'Criar Projeto';
             <div class="Container_Dia">
                 <textarea name="descricao_dia_i" class="textarea-field" placeholder="Descrição do Dia I:"></textarea>
                 <div class="input-imagem-container" style="position: relative; width: 120px; height: 150px;">
-                     <img src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia I" class="foto-projetoturma-novo preview-imagem" id="preview-dia-i" style="cursor: pointer;" />
+                     <img src="<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia I" class="foto-projetoturma-novo preview-imagem" id="preview-dia-i" style="cursor: pointer;" />
                      <input type="file" name="imagem_dia_i" accept="image/*" style="display: none;" onchange="previewFile(this, 'preview-dia-i')">
                  </div>
             </div>
@@ -86,7 +86,7 @@ $currentTab = 'Criar Projeto';
             <div class="Container_Dia">
                 <textarea name="descricao_dia_p" class="textarea-field" placeholder="Descrição do Dia P:"></textarea>
                  <div class="input-imagem-container" style="position: relative; width: 120px; height: 150px;">
-                     <img src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia P" class="foto-projetoturma-novo preview-imagem" id="preview-dia-p" style="cursor: pointer;" />
+                     <img src="<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia P" class="foto-projetoturma-novo preview-imagem" id="preview-dia-p" style="cursor: pointer;" />
                      <input type="file" name="imagem_dia_p" accept="image/*" style="display: none;" onchange="previewFile(this, 'preview-dia-p')">
                  </div>
             </div>
@@ -95,7 +95,7 @@ $currentTab = 'Criar Projeto';
             <div class="Container_Dia">
                 <textarea name="descricao_dia_e" class="textarea-field" placeholder="Descrição do Dia E:"></textarea>
                  <div class="input-imagem-container" style="position: relative; width: 120px; height: 150px;">
-                     <img src="<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia E" class="foto-projetoturma-novo preview-imagem" id="preview-dia-e" style="cursor: pointer;" />
+                     <img src="<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg" alt="Preview Dia E" class="foto-projetoturma-novo preview-imagem" id="preview-dia-e" style="cursor: pointer;" />
                      <input type="file" name="imagem_dia_e" accept="image/*" style="display: none;" onchange="previewFile(this, 'preview-dia-e')">
                  </div>
             </div>
@@ -105,7 +105,7 @@ $currentTab = 'Criar Projeto';
             </div>
 
             <div class="button-projeto">
-                <?php buttonComponent('secondary', 'Cancelar', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'cadastroTurmas/CadastroProjetos.php?id=' . $turmaId, null, '', 'back-button-js'); // Link direto para voltar ?>
+                <?php buttonComponent('secondary', 'Cancelar', false, Config::getDirAdm() . 'projetos.php?id=' . $turmaId, null, '', 'back-button-js'); // Link direto para voltar ?>
                 <?php buttonComponent('primary', 'Salvar Projeto', true); // Botão de submit ?>
             </div>
       </form>
@@ -116,7 +116,7 @@ $currentTab = 'Criar Projeto';
         function previewFile(input, previewId) {
             const file = input.files[0];
             const preview = document.getElementById(previewId);
-            const defaultImage = "<?= Config::get('APP_URL') ?>App/View/assets/img/utilitarios/sem-foto.svg"; // Imagem padrão
+            const defaultImage = "<?= Config::getAppUrl() ?>App/View/assets/img/utilitarios/sem-foto.svg"; // Imagem padrão
 
             if (file) {
                 const reader = new FileReader();

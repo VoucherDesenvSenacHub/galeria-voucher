@@ -6,19 +6,19 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../../Model/TurmaModel.php";
-require_once __DIR__ . "/../../../../Model/PoloModel.php";
-require_once __DIR__ . "/../../../../Helpers/Request.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/Config.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../../Model/TurmaModel.php";
+require_once __DIR__ . "/../../../Model/PoloModel.php";
+require_once __DIR__ . "/../../../Helpers/Request.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 $isEditMode = false;
 $turma = null;
 $tituloPagina = "Cadastro de Turma";
-$actionUrl = Config::get('APP_URL') . "App/Controller/TurmaController.php?action=salvar";
-$imagemUrl = Config::get('APP_URL') . Config::get('DIR_IMG') . 'utilitarios/avatar.png';
+$actionUrl = Config::getAppUrl() . "App/Controller/TurmaController.php?action=salvar";
+$imagemUrl = Config::getDirImg() . 'utilitarios/avatar.png';
 $turmaId = Request::getId("turma_id");
 
 
@@ -28,17 +28,17 @@ if ($turmaId) {
     $turma = $turmaModel->buscarTurmaPorId($turmaId);
 
     if (!$turma) {
-        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php');
+        header('Location: ' . Config::getDirAdm() . 'turmas.php');
         exit;
     }
 
     $tituloPagina = "Editar Turma";
-    $actionUrl = Config::get('APP_URL') . "App/Controller/TurmaController.php?action=atualizar";
+    $actionUrl = Config::getAppUrl() . "App/Controller/TurmaController.php?action=atualizar";
 
     if (!empty($turma['imagem_id'])) {
         $url = $turmaModel->buscarUrlDaImagem($turma['imagem_id']);
         if ($url) {
-            $imagemUrl = Config::get('APP_URL') . $url;
+            $imagemUrl = Config::getAppUrl() . $url;
         }
     }
 }
@@ -51,11 +51,11 @@ $currentTab = 'Dados-gerais';
 ?>
 
 <body class="layout body-adm">
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
-    require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
@@ -76,54 +76,59 @@ $currentTab = 'Dados-gerais';
           <div class="form-top">
             <div class="form-section">
               <h1 class='h1-turma'><?= $isEditMode ? 'EDITAR TURMA' : 'CADASTRO DE TURMA' ?></h1>
-
-              <label class="form-label" id="text_input">Nome</label>
-              <input type="text" name="nome" class="input-adm-turmas"
-                value="<?= htmlspecialchars($turma['nome'] ?? '') ?>">
-
-              <label class="form-label" id="text_input">Descrição</label>
+           
+                    
+                  <?php  inputComponent('text', 'nome', 'Nome da turma' ,  ($turma['nome'] ?? ''), label:"nome", required: true)?>
+              
+              <div class="input-container">
+                     <label class="form-label" id="text_input">Descrição</label>
               <textarea name="descricao"
-                class="input-adm-turmas"><?= htmlspecialchars($turma['descricao'] ?? '') ?></textarea>
-              <div class="dia">
-                <div class="container_input_text">
-                  <label class="form-label" id="text_inicio">Início</label>
-                  <input type="date" name="data_inicio" class="inicio"
-                    value="<?= htmlspecialchars($turma['data_inicio'] ?? '') ?>">
+                ><?= htmlspecialchars($turma['descricao'] ?? '') ?></textarea>
+              </div>
+           
+
+                <div class="container_dia_data">
+                  <div class="container_input_text">
+                      <label class="form-label" id="text_inicio">Início</label>
+                      <input type="date" name="data_inicio" class="inicio"
+                        value="<?= htmlspecialchars($turma['data_inicio'] ?? '') ?>">
+                  </div>
+                  <div class="container_input_text">
+                      <label class="form-label" id="text_termino">Término</label>
+                      <input type="date" name="data_fim" class="termino"
+                      value="<?= htmlspecialchars($turma['data_fim'] ?? '') ?>">
+                  </div>
                 </div>
-                <div class="container_input_text">
-                  <label class="form-label" id="text_termino">Término</label>
-                  <input type="date" name="data_fim" class="termino"
-                    value="<?= htmlspecialchars($turma['data_fim'] ?? '') ?>">
-                </div>
-                <div class="container_text_polo">
+               
+                <div class="input-container">
                   <label class="form-label" id="text_input">Polo</label>
-                  <select name="polo_id" class="input-adm-turmas">
-                    <option value="">Selecione um Pólo</option>
-                    <?php foreach ($polos as $polo): ?>
+                  <select name="polo_id" required>
+                    <option value="">Selecione um Polo</option>
+                    <?php foreach ($polos as $polo): // Loop para criar as opções do select a partir dos dados do banco. ?>
                       <option value="<?= $polo['polo_id'] ?>" <?= ($isEditMode && isset($turma) && $polo['polo_id'] == $turma['polo_id']) ? 'selected' : '' ?>>
                         <?= htmlspecialchars($polo['nome']) ?>
                       </option>
                     <?php endforeach; ?>
                   </select>
                 </div>
-              </div>
             </div>
 
             <div class="profile-pic">
-              <small>Clique na imagem para alterar</small>
+              <!-- <small>Clique na imagem para alterar</small> -->
               <label for="imagem_turma" style="cursor: pointer;">
+                Clique na imagem para alterar
                 <img id="preview" src="<?= htmlspecialchars($imagemUrl) ?>" alt="Upload de Imagem">
               </label>
               <input type="file" id="imagem_turma" name="imagem_turma" accept="image/*" style="display: none;">
             </div>
-          </div>
-          <div class="form-bottom">
+               <div class="form-bottom">
             <div class="form-group-buton">
               <?php
-              buttonComponent('secondary', 'Voltar', false, Config::get('APP_URL') . Config::get('DIR_ADM') . 'listaTurmas.php');
+              buttonComponent('secondary', 'Voltar', false, Config::getDirAdm() . 'turmas.php');
               buttonComponent('primary', $isEditMode ? 'Atualizar' : 'Cadastrar', true);
               ?>
             </div>
+          </div>
           </div>
         </form>
       </div>
@@ -148,7 +153,7 @@ $currentTab = 'Dados-gerais';
       document.addEventListener('DOMContentLoaded', function () {
         alert("<?= htmlspecialchars($_SESSION['sucesso_cadastro']) ?>");
         document.getElementById('form-turma').reset();
-        document.getElementById('preview').src = "<?= Config::get('APP_URL') . Config::get('DIR_IMG') . 'utilitarios/avatar.png' ?>";
+        document.getElementById('preview').src = "<?= Config::getDirImg() . 'utilitarios/avatar.png' ?>";
       });
     </script>
     <?php unset($_SESSION['sucesso_cadastro']); ?>

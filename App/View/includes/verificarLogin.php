@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../../Config/App.php'; // Usa App.php
+require_once __DIR__ . '/../../Config/Config.php';
 require_once __DIR__ . '/../../Config/Database.php';
 require_once __DIR__ . '/../../Model/UsuarioModel.php';
 
@@ -18,14 +18,14 @@ $usuario = $usuarioModel->validarLogin($email, $senha);
 if ($usuario) {
     $_SESSION['usuario'] = $usuario;
     if (in_array($usuario['perfil'], ['adm', 'professor'])) {
-        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'home-adm.php');
+        header('Location: ' . Config::getDirAdm() . 'homeAdm.php');
     } else {
-        header('Location: ' . Config::get('APP_URL') . Config::get('DIR_USER') . 'home.php');
+        header('Location: ' . Config::getDirUser() . 'home.php');
     }
     exit;
 } else {
     $_SESSION['erro_login'] = 'Email ou senha inválidos';
-    header('Location: ' . Config::get('APP_URL') . Config::get('DIR_ADM') . 'login.php');
+    header('Location: ' . Config::getDirAdm() . 'login.php');
     exit;
 }
 
