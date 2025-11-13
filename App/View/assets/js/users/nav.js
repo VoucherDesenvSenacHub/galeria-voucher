@@ -77,8 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- BUSCA DINÂMICA NA NAVBAR (VISITANTES E LOGADOS) ---
-    const inputBusca = document.getElementById('pesquisar-pessoa');
-    const sugestoes = document.getElementById('sugestoes');
+    const inputBusca = document.getElementById('input_pesquisa-turma');
+    const sugestoes = document.getElementById('searchBarSugestions');
+    const container = document.getElementById('searchBarSugestionsContainer');
 
     if (inputBusca && sugestoes) {
         let controller;
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Renderiza itens
                 results.forEach(item => {
                     const div = document.createElement('div');
-                    div.className = 'nav-suggest-item';
+                    div.className = 'suggested-item';
                     const label = item.tipo === 'turma' ? 'Turma' : 'Pessoa';
                     div.innerHTML = `
                         <strong>[${label}]</strong> ${item.titulo}
@@ -112,6 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     sugestoes.appendChild(div);
                 });
+
+                if (results.length > 1) {
+                    container.classList.remove("d-none")
+                }
             } catch (e) {
                 // Silencia abortos; loga outros erros
                 if (e.name !== 'AbortError') console.error(e);
@@ -121,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fecha sugestões ao clicar fora
         document.addEventListener('click', (e) => {
             if (!sugestoes.contains(e.target) && e.target !== inputBusca) {
+                container.classList.add("d-none")
                 sugestoes.innerHTML = '';
             }
         });

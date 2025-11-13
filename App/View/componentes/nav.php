@@ -30,6 +30,10 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
                         // <input class="pesquisa" type="text" placeholder="Pesquisar" id="pesquisar-pessoa" autocomplete="off"> -->
                         inputComponent("input-text", "pesquisa-turma", "Pesquisar Turmas...");
                     } ?>
+                    <div class="search-sugestions-container d-none" id="searchBarSugestionsContainer">
+                        <div class="search-sugestions" id="searchBarSugestions">
+                        </div>
+                    </div>
                 </div>
             <?php endif; ?>
 
