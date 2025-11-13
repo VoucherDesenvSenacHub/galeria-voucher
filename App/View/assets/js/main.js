@@ -1,4 +1,4 @@
-
+// ...existing code...
 const modalVincularAluno = document.querySelector("#modal-cadastro-aluno");
 const modalVincularProfessor = document.querySelector("#modal-cadastro-professor");
 const closeButton = document.querySelector('.btn-close');
@@ -7,12 +7,18 @@ const sugestoes = document.querySelector("#sugestoes");
 const selecionados = document.querySelector("#pessoas-selecionadas");
 const adicionados = new Set();
 
+let currentEndpoint = null;
+
 function abrirModalCadastroProfessor() {
     modalVincularProfessor.style.display = "block";
+    currentEndpoint = 'BuscaDocenteController.php';
+    buscarPessoas('');
 }
 
 function abrirModalCadastroAluno() {
     modalVincularAluno.style.display = "block";
+    currentEndpoint = 'BuscaAlunoController.php';
+    buscarPessoas(''); 
 }
 
 closeButton.addEventListener('click', () => {
@@ -22,12 +28,12 @@ closeButton.addEventListener('click', () => {
     selecionados.innerHTML = "";
     inputPesquisa.value = "";
     adicionados.clear();
+    currentEndpoint = null;
 });
 
-inputPesquisa.addEventListener('input', (event) => {
-    const busca = event.target.value;
-    const endpoint = modalVincularAluno ? 'BuscaAlunoController.php' : 'BuscaDocenteController.php';
-    const url = `/galeria-voucher/app/Controller/${endpoint}`;
+function buscarPessoas(busca = '') {
+    if (!currentEndpoint) return;
+    const url = `/galeria-voucher/app/Controller/${currentEndpoint}`;
     
     fetch(`${url}?busca=${encodeURIComponent(busca)}`)
         .then(res => res.json())
@@ -46,12 +52,20 @@ inputPesquisa.addEventListener('input', (event) => {
                     adicionarPessoa(id, nome);
                 };
                 sugestoes.appendChild(div);
-            }
-            );
+            });
         })
+        .catch(err => {
+            console.error('Erro ao buscar pessoas:', err);
+            sugestoes.innerHTML = "";
+        });
+}
 
-})
+inputPesquisa.addEventListener('input', (event) => {
+    const busca = event.target.value;
+    buscarPessoas(busca);
+});
 
+// ...existing code...
 function adicionarPessoa(id, nome) {
     if (adicionados.has(id)) {
         alert("Esta pessoa já foi adicionada.");
@@ -80,3 +94,4 @@ function adicionarPessoa(id, nome) {
 
     selecionados.appendChild(chip);
 }
+// ...existing code...
