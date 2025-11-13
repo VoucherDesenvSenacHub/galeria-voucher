@@ -80,8 +80,8 @@ $currentTab = 'Criar Projeto';
             <div class="span-full">
                 <div>
                     <h1 class="h1-sobre"> DIA I</h1>
-                    <div class="input-container">
-                        <textarea name="descricao_dia_i" class="textarea-field" placeholder="Descrição do Dia I:"></textarea>
+                    <div class="input-container ">
+                        <textarea name="descricao_dia_i" class="input-container-textarea" placeholder="Descrição do Dia I:"></textarea>
                     </div>
                 </div>
                     <div class="input-imagem-container">
@@ -97,7 +97,7 @@ $currentTab = 'Criar Projeto';
                 <div>
                     <h1 class="h1-sobre"> DIA P</h1>
                     <div class="input-container">
-                            <textarea name="descricao_dia_p" class="textarea-field" placeholder="Descrição do Dia P:"></textarea>
+                            <textarea name="descricao_dia_p" class="input-container-textarea" placeholder="Descrição do Dia P:"></textarea>
                     </div>
                 </div>
                     <div class="input-imagem-container">
@@ -113,7 +113,7 @@ $currentTab = 'Criar Projeto';
                 <div>
                     <h1 class="h1-sobre"> DIA E</h1>
                     <div class="input-container">
-                        <textarea name="descricao_dia_e" class="textarea-field" placeholder="Descrição do Dia E:"></textarea>
+                        <textarea name="descricao_dia_e" class="input-container-textarea" placeholder="Descrição do Dia E:"></textarea>
                     </div>
                 </div>
                     <div class="input-imagem-container">

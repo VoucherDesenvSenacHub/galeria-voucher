@@ -31,6 +31,16 @@ body {
   /* text-align: center; */
 }
 
+.input-imagem-container {
+  padding-top: 38px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.input-container-textarea {
+  height: 240px;
+}
+
 .form-container-projeto {
   display: grid;
   grid-template-columns: 6fr 4fr;
@@ -145,7 +155,7 @@ body {
 
 .foto-projetoturma-novo {
   width: 400px;
-  height: 150px;
+  height: 240px;
   border-radius: 10px;
   background-color: #e5e9e4;
   padding: 10px;
