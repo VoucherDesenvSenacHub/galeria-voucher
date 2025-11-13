@@ -152,7 +152,7 @@ $currentTab = 'Dados-gerais';
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         alert("<?= htmlspecialchars($_SESSION['sucesso_cadastro']) ?>");
-        document.getElementById('form-turma').reset();
+        document.getElementById('form-turma');
         document.getElementById('preview').src = "<?= Config::getDirImg() . 'utilitarios/avatar.png' ?>";
       });
     </script>
