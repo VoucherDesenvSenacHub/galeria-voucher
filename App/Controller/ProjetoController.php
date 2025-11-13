@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../Config/App.php';
+require_once __DIR__ . '/../Config/Config.php';
 require_once __DIR__ . '/../Helpers/Redirect.php';
 require_once __DIR__ . '/../Helpers/Request.php';
 require_once __DIR__ . '/../Model/ProjetoModel.php';
@@ -27,7 +27,7 @@ class ProjetoController
     public function salvar()
     {
         // Inicio Validações
-        ValidarLoginController::validarAdminRedirect(Config::get('DIR_ADM') . 'login.php');
+        ValidarLoginController::validarAdminRedirect(Config::getDirAdm() . 'login.php');
 
         $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
         $nomeProjeto = trim(Request::post('nome_projeto', ''));
@@ -102,7 +102,7 @@ class ProjetoController
                         $this->imagemModel->deletarImagem($dia['imagem_id']);
                     }
                 }
-                Redirect::toAdm('cadastroTurmas/Projeto.php', ['id' => $turmaId]);
+                Redirect::toAdm('cadastroProjetos.php', ['turma_id' => $turmaId]);
                 exit;
             }
 
@@ -111,7 +111,7 @@ class ProjetoController
             $this->projetoModel->getPDO()->commit();
 
             $_SESSION['sucesso_projeto'] = "Projeto '{$nomeProjeto}' cadastrado com sucesso!";
-            Redirect::toAdm('cadastroTurmas/CadastroProjetos.php', ['id' => $turmaId]);
+            Redirect::toAdm('projetos.php', ['turma_id' => $turmaId]);
 
         } catch (\Exception $e) {
             $this->projetoModel->getPDO()->rollBack();
@@ -130,8 +130,8 @@ if (isset($action) && $action === 'salvar') {
     $_SESSION['erro_projeto'] = "Ação desconhecida.";
     $turmaIdFallback = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     if ($turmaIdFallback) {
-        Redirect::toAdm('cadastroTurmas/CadastroProjetos.php', ['id' => $turmaIdFallback]);
+        Redirect::toAdm('projetos.php', ['turma_id' => $turmaIdFallback]);
     } else {
-        Redirect::toAdm('listaTurmas.php');
+        Redirect::toAdm('turmas.php');
     }
 }

@@ -1,33 +1,33 @@
 <?php
 $paginaAtiva = 'turmas';
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-require_once __DIR__ . "/../../../../Helpers/Request.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../componentes/input.php";
-require_once __DIR__ . "/../../../componentes/button.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/Config.php";
+require_once __DIR__ . "/../../../Helpers/Redirect.php";
+require_once __DIR__ . "/../../../Helpers/Request.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../componentes/input.php";
+require_once __DIR__ . "/../../componentes/button.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 headerComponent("Voucher Desenvolvedor - Criar Projeto");
 
 $turmaId = Request::getId("turma_id");
 $projetoId = Request::getId("projeto_id");
 if (!$turmaId) {
-    Redirect::toAdm('listaTurmas.php');
+    Redirect::toAdm('turmas.php');
 }
 
-$currentTab = 'Criar Projeto';
+$currentTab = 'cadastroProjetos';
 ?>
 
-<body class="layout body-cadastro-turmas">
+<body class="layout body-cadastroTurmas">
 
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
@@ -105,7 +105,7 @@ $currentTab = 'Criar Projeto';
             </div>
 
             <div class="button-projeto">
-                <?php buttonComponent('secondary', 'Cancelar', false, Config::getDirAdm() . 'cadastroTurmas/CadastroProjetos.php?id=' . $turmaId, null, '', 'back-button-js'); // Link direto para voltar ?>
+                <?php buttonComponent('secondary', 'Cancelar', false, Config::getDirAdm() . 'projetos.php?id=' . $turmaId, null, '', 'back-button-js'); // Link direto para voltar ?>
                 <?php buttonComponent('primary', 'Salvar Projeto', true); // Botão de submit ?>
             </div>
       </form>

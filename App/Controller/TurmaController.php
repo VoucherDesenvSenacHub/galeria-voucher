@@ -2,7 +2,7 @@
 session_start();
 
 // Inclui os novos helpers e a configuração
-require_once __DIR__ . '/../Config/App.php';
+require_once __DIR__ . '/../Config/Config.php';
 require_once __DIR__ . '/../Helpers/Request.php';
 require_once __DIR__ . '/../Helpers/Redirect.php';
 
@@ -79,7 +79,7 @@ class TurmaController {
             
             if (!empty($erros)) {
                 $_SESSION['erros_turma'] = $erros;
-                Redirect::toAdm('cadastroTurmas/cadastroTurmas.php');
+                Redirect::toAdm('cadastroTurmas.php');
                 return;
             }
 
@@ -88,10 +88,10 @@ class TurmaController {
 
             if ($resultado) {
                 $_SESSION['sucesso_cadastro'] = "" . $nome . " CADASTRADA COM SUCESSO !!!";
-                Redirect::toAdm('cadastroTurmas/cadastroTurmas.php', ['id' => $resultado]);
+                Redirect::toAdm('cadastroTurmas.php', ['turma_id' => $resultado]);
             } else {
                 $_SESSION['erros_turma'] = ["Ocorreu um erro ao salvar a turma."];
-                Redirect::toAdm('cadastroTurmas/cadastroTurmas.php');
+                Redirect::toAdm('cadastroTurmas.php');
             }
         }
     }
@@ -100,7 +100,7 @@ class TurmaController {
         if (Request::getMethod() === 'POST') {
             $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
             if (!$turma_id) {
-                Redirect::toAdm('listaTurmas.php');
+                Redirect::toAdm('turmas.php');
                 return;
             }
 
@@ -109,7 +109,7 @@ class TurmaController {
             $dadosAntigos = $turmaModel->buscarTurmaPorId($turma_id);
             if (!$dadosAntigos) {
                 $_SESSION['erros_turma'] = ["Turma não encontrada para atualização."];
-                Redirect::toAdm('listaTurmas.php');
+                Redirect::toAdm('turmas.php');
                 return;
             }
 
@@ -154,7 +154,7 @@ class TurmaController {
         
             if (!empty($erros)) {
                 $_SESSION['erros_turma'] = $erros;
-                Redirect::toAdm("cadastroTurmas/cadastroTurmas.php", ['id' => $turma_id]);
+                Redirect::toAdm("cadastroTurmas.php", ['turma_id' => $turma_id]);
                 return;
             }
 
@@ -181,7 +181,7 @@ class TurmaController {
             } else {
                 $_SESSION['erros_turma'] = ["Erro ao atualizar a turma."];
             }
-            Redirect::toAdm("cadastroTurmas/cadastroTurmas.php", ['id' => $turma_id]);
+            Redirect::toAdm("cadastroTurmas.php", ['turma_id' => $turma_id]);
         }
     }
 
@@ -200,7 +200,7 @@ class TurmaController {
                     $_SESSION['erros_turma'] = ["Erro ao excluir a turma."];
                 }
             }
-            Redirect::toAdm('listaTurmas.php');
+            Redirect::toAdm('turmas.php');
         }
     }
 }
