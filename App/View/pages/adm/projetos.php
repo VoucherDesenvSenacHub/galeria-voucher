@@ -90,9 +90,22 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                     <td><?= htmlspecialchars(mb_strimwidth($projeto['DESCRICAO_PROJETO'], 0, 100, "...")) ?></td>
                                     <td class="acoes">
                                         <div class="acoes-container">
-                                            <span class="material-symbols-outlined action-icon" style="cursor: pointer;" title="Editar">edit</span>
-                                            <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
-                                        </div>
+                                            <span class="material-symbols-outlined action-icon" 
+                                             style="cursor: pointer;" title="Editar">edit
+                                             </span>
+                                            
+                                            <form method="POST"
+                                                action="<?= Config::getAppUrl() ?>App/Controller/ProjetoController.php"
+                                                onsubmit="return confirm('Tem certeza que deseja excluir o projeto \'<?= htmlspecialchars($projeto['NOME_PROJETO']) ?>\'? Esta ação é irreversível.');">
+                                                
+                                                <input type="hidden" name="action" value="excluir">
+                                                <input type="hidden" name="projeto_id" value="<?= $projeto['projeto_id'] ?>">
+                                                <input type="hidden" name="turma_id" value="<?= $turmaId ?>"> <button type="submit" class="no-style" title="Excluir">
+                                                    <span class="material-symbols-outlined acao-delete">delete</span>
+                                                </button>
+                                            </form>
+                                          </div>
+                                    </td>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
