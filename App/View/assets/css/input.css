@@ -8,7 +8,7 @@
     /* max-width: 450px; */
     padding: 14px;
     margin-top: 5px;
-    font-size: 16px;
+    font-size: var(--m-font);
     border: 1 solid #ccc;
     background-color: #d8dbd6;
     border-radius: 10px;
@@ -35,8 +35,6 @@
   font-size: (--m-font);
   resize: vertical;
 }
-
-
 
 .input-container input, 
 .input-container texterea {

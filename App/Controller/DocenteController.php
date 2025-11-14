@@ -44,7 +44,6 @@ class DocenteController extends BaseController {
 
         $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);
         $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
-        $senha = $_POST['senha'] ?? '';
         
         $redirectParams = $turma_id ? ['turma_id' => $turma_id] : [];
 
@@ -53,21 +52,7 @@ class DocenteController extends BaseController {
             Redirect::toAdm('docentes.php', $redirectParams);
         }
 
-        if (empty($senha)) {
-            $_SESSION['erro'] = "Senha é obrigatória para confirmar a desvinculação.";
-            Redirect::toAdm('docentes.php', $redirectParams);
-        }
-
         try {
-            $usuarioModel = new UsuarioModel();
-            $usuarioLogado = $_SESSION['usuario'];
-            $senhaValida = $usuarioModel->validarLogin($usuarioLogado['email'], $senha);
-            
-            if (!$senhaValida) {
-                $_SESSION['erro'] = "Senha incorreta. Desvinculação cancelada.";
-                Redirect::toAdm('docentes.php', $redirectParams);
-            }
-
             $docenteModel = new DocenteModel();
             $resultado = $docenteModel->desvincularDocenteDaTurma($pessoa_id, $turma_id);
             

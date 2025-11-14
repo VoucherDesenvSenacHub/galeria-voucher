@@ -16,7 +16,6 @@ class DesvincularAlunoController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pessoa_id = filter_input(INPUT_POST, 'pessoa_id', FILTER_VALIDATE_INT);
             $turma_id = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
-            $senha = $_POST['senha'] ?? '';
             
             $redirectParams = ['turma_id' => $turma_id];
 
@@ -25,21 +24,7 @@ class DesvincularAlunoController
                 Redirect::toAdm('alunos.php', $redirectParams);
             }
 
-            if (empty($senha)) {
-                $_SESSION['erro'] = "Senha é obrigatória para confirmar a desvinculação.";
-                Redirect::toAdm('alunos.php', $redirectParams);
-            }
-
             try {
-                $usuarioModel = new UsuarioModel();
-                $usuarioLogado = $_SESSION['usuario'];
-                $senhaValida = $usuarioModel->validarLogin($usuarioLogado['email'], $senha);
-                
-                if (!$senhaValida) {
-                    $_SESSION['erro'] = "Senha incorreta. Desvinculação cancelada.";
-                    Redirect::toAdm('alunos.php', $redirectParams);
-                }
-
                 $alunoModel = new AlunoModel();
                 $resultado = $alunoModel->desvincularAlunoDaTurma($pessoa_id, $turma_id);
                 

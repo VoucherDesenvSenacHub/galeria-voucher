@@ -24,20 +24,36 @@ body {
   font-weight: bold;
   max-width: 1200px;
   width: 100%;
-  margin: 5px 0 20px;
+  margin: 0px 0 20px;
   padding-left: 0;
   font-family: var(--font-secondary);
-  font-size: 2rem;
+  font-size: var(--l-font);
   /* text-align: center; */
 }
 
-.form-container-projeto {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  background-color: transparent;
-  font-family: "Bebas Neue", sans-serif;
+.input-imagem-container {
+  padding-top: 25px;
+  text-align: center;
+  font-weight: bold;
 }
+
+.input-container-textarea {
+  height: 240px;
+}
+
+.form-container-projeto {
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  gap: 10px;
+  background-color: transparent;
+  /* font-family: "Bebas Neue", sans-serif; */
+}
+
+.span-full {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+} 
 
 .form-container-sobre {
   width: 100%;
@@ -138,23 +154,16 @@ body {
 
 
 .foto-projetoturma-novo {
-  width: 120px;
-  height: 150px;
-  border-radius: 20px;
+  width: 400px;
+  height: 240px;
+  border-radius: 10px;
   background-color: #e5e9e4;
   padding: 10px;
-  object-fit: contain;
   border: 1px solid #333;
-  flex-shrink: 0;
-  position: absolute; /* Tira a imagem do fluxo normal do documento */
-  right: 0;           /* Alinha a imagem à direita do seu contêiner pai posicionado */
-  bottom: 0;             /* Alinha a imagem ao topo do seu contêiner pai posicionado */
-  z-index: 1000;      /* Coloca a imagem em uma camada muito alta, garantindo que fique à frente de outros elementos. Ajuste o valor se necessário. */
-
 }
 
 .link-projeto {
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   display: flex;
   flex-direction: column;
@@ -208,7 +217,7 @@ body {
   display: flex;
   justify-content: center; /* Centraliza os itens horizontalmente */
   gap: 20px; /* Adiciona um espaço de 20px entre os botões */
-  margin-top: 10px; 
+  margin-top: 30px; 
 }
 
 .nome-e-descricao {
