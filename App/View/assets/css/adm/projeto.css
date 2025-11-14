@@ -24,15 +24,15 @@ body {
   font-weight: bold;
   max-width: 1200px;
   width: 100%;
-  margin: 5px 0 20px;
+  margin: 0px 0 20px;
   padding-left: 0;
   font-family: var(--font-secondary);
-  font-size: 2rem;
+  font-size: var(--l-font);
   /* text-align: center; */
 }
 
 .input-imagem-container {
-  padding-top: 38px;
+  padding-top: 25px;
   text-align: center;
   font-weight: bold;
 }
@@ -163,7 +163,7 @@ body {
 }
 
 .link-projeto {
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   display: flex;
   flex-direction: column;
@@ -217,7 +217,7 @@ body {
   display: flex;
   justify-content: center; /* Centraliza os itens horizontalmente */
   gap: 20px; /* Adiciona um espaço de 20px entre os botões */
-  margin-top: 10px; 
+  margin-top: 30px; 
 }
 
 .nome-e-descricao {

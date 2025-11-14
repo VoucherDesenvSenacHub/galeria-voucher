@@ -19,6 +19,9 @@ if (!$turmaId) {
     Redirect::toAdm('turmas.php');
 }
 
+$titulo = $projetoId ? "EDITAR PROJETO" :  "CRIAR PROJETO";
+
+
 $currentTab = 'cadastroProjetos';
 ?>
 
@@ -67,10 +70,12 @@ $currentTab = 'cadastroProjetos';
 
             <div class="span-full">
                 <div>
-                    <h1 class="h1-sobre">DESCRIÇÃO DO PROJETO</h1>
+                    <h1 class="h1-sobre"><?= $titulo?></h1>
                     <div class="input-container">
                         <div class="nome-e-descricao">
-                            <input type="text" name="nome_projeto" class="input-container" placeholder="Nome do Projeto" required>
+                             <?php
+                              inputComponent('text', 'nome_projeto', 'Nome do Projeto', label:"nome", required: true);
+                            ?>
                             <textarea name="descricao_projeto" class="textarea-field" placeholder="Descrição Geral do Projeto:"></textarea>
                         </div>
                     </div>
@@ -127,7 +132,11 @@ $currentTab = 'cadastroProjetos';
          
 
             <div class="link-projeto">
-                <input type="url" name="link_projeto" class="input-container" placeholder="Link do Repositório (Ex: https://github.com/...)">
+
+                <?php
+                    inputComponent('text', 'link_projeto', 'Link do Repositório (Ex: https://github.com/...)" ', label:"Repositório");
+                ?>
+                <!-- <input type="url" name="link_projeto" class="input-container" placeholder="Link do Repositório (Ex: https://github.com/...)"> -->
             </div>
 
             <div class="button-projeto">
