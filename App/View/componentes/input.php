@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * Gera um input HTML com estilo e tipo personalizados.
  *
@@ -23,9 +24,7 @@ function inputComponent($type, $name, $placeholder = null, $value = null, $label
         // Se o estilo for inválido, usa 'text' como padrão
         $class = 'input-text';
     }
-    
 
-    
     // Exibe o input HTML com a classe e o conteúdo definidos
     $valueAttr = $value !== null ? "value='$value'" : "";
     $valueRequired = $required  ? "required=" : "";
