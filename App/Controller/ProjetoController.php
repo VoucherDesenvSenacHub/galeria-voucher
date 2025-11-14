@@ -110,7 +110,7 @@ class ProjetoController
 
             $this->projetoModel->getPDO()->commit();
 
-            $_SESSION['sucesso_projeto'] = "Projeto '{$nomeProjeto}' cadastrado com sucesso!";
+            $_SESSION['sucesso_projeto'] = "Projeto $nomeProjeto cadastrado com sucesso!";
             Redirect::toAdm('projetos.php', ['turma_id' => $turmaId]);
 
         } catch (\Exception $e) {

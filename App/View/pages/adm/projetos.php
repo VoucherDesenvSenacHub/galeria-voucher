@@ -120,5 +120,34 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </div>
         
     </main>
+
+    <?php if (isset($_SESSION['sucesso_projeto'])): ?>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            alert("<?= htmlspecialchars($_SESSION['sucesso_projeto']) ?>");
+        });
+      </script>
+      <?php unset($_SESSION['sucesso_projeto']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['erro_projeto'])): ?>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const erros = <?= json_encode($_SESSION['erro_projeto']) ?>;
+          let mensagemErro = "Ocorreram os seguintes erros:\n\n";
+          
+          if (Array.isArray(erros)) {
+              erros.forEach(erro => {
+                mensagemErro += "- " + erro + "\n";
+              });
+          } else {
+              mensagemErro = erros;
+          }
+          
+          alert(mensagemErro);
+        });
+      </script>
+      <?php unset($_SESSION['erro_projeto']); ?>
+    <?php endif; ?>
 </body>
 </html>
