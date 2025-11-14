@@ -13,6 +13,7 @@ $id = $_POST['id'] ?? $_GET['id'] ?? null;
 
 $nome = $_POST['nome'] ?? '';
 $email = $_POST['email'] ?? '';
+$senha = $_POST['senha'] ?? '';
 $linkedin = $_POST['linkedin'] ?? '';
 $github = $_POST['github'] ?? '';
 $perfil = $_POST['perfil'] ?? null;
@@ -31,7 +32,12 @@ switch ($acao) {
                 Redirect::toAdm('cadastrar-usuarios.php', ['erro' => $resultadoUpload['erro']]);
             }
         }
-        $dados = ['nome' => $nome, 'email' => $email, 'perfil' => $perfil, 'linkedin' => $linkedin, 'github' => $github];
+        $dados = ['nome' => $nome, 
+                  'email' => $email, 
+                  'perfil' => $perfil, 
+                  'linkedin' => $linkedin, 
+                  'github' => $github,
+                  'senha' => $senha];
         if ($model->criarPessoa($dados, $imagemId)) {
             Redirect::toAdm('listarUsuarios.php');
         } else {
