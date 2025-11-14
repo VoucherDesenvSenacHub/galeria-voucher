@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+
         // Fecha sugestões ao clicar fora
         document.addEventListener('click', (e) => {
             if (!sugestoes.contains(e.target) && e.target !== inputBusca) {
@@ -130,6 +131,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 sugestoes.innerHTML = '';
             }
         });
+
+        inputBusca.addEventListener('input', () => {
+            if (inputBusca.value.trim() === '') {
+                container.classList.add("d-none");
+                sugestoes.innerHTML = '';
+            } else {
+                container.classList.remove("d-none");
+            }
+        });
+
+
     }
 });
 
