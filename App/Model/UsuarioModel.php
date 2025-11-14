@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/BaseModel.php';
-require_once __DIR__ . '/../Config/App.php'; // Inclui a configuração
+require_once __DIR__ . '/../Config/Config.php'; // Inclui a configuração
 
 class UsuarioModel extends BaseModel
 {

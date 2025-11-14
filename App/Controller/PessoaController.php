@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../Config/App.php';
+require_once __DIR__ . '/../Config/Config.php';
 require_once __DIR__ . '/../Helpers/Redirect.php';
 require_once __DIR__ . '/../Model/PessoaModel.php';
 require_once __DIR__ . '/../Model/ImagemModel.php';
@@ -20,16 +20,14 @@ $turmaId = isset($_POST['turma_id']) && is_numeric($_POST['turma_id']) ? (int)$_
 
 switch ($acao) {
     case 'cadastrar':
-    case 'editar':
         if (empty($nome) || empty($email) || empty($perfil)) {
-            Redirect::toAdm('cadastrar-usuarios.php', [
+            Redirect::toAdm('cadastroUsuarios.php', [
                 'erro' => 'Preencha todos os campos obrigatórios (nome, e-mail e perfil).',
                 'acao' => $acao,
                 'id' => $id
             ]);
-            exit;
         }
-
+        
         $imagemId = null;
         if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
             $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
@@ -37,12 +35,7 @@ switch ($acao) {
                 $imagemModel = new ImagemModel();
                 $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
             } else {
-                Redirect::toAdm('cadastrar-usuarios.php', [
-                    'acao' => $acao,
-                    'id' => $id,
-                    'erro' => $resultadoUpload['erro']
-                ]);
-                exit;
+                Redirect::toAdm('cadastroUsuarios.php', ['erro' => $resultadoUpload['erro']]);
             }
         }
 
@@ -54,23 +47,58 @@ switch ($acao) {
             'github' => $github
         ];
 
-        if ($acao === 'cadastrar') {
-            $sucesso = $model->criarPessoa($dados, $imagemId);
-            $mensagemErro = $model->getUltimoErro() ?: 'Erro ao cadastrar pessoa.';
+        if ($model->criarPessoa($dados, $imagemId)) {
+            Redirect::toAdm('usuarios.php');
         } else {
-            if (empty($id)) {
-                Redirect::toAdm('listarUsuarios.php', ['erro' => 'ID não informado para edição.']);
-                exit;
-            }
-            $sucesso = $model->atualizarPessoa((int)$id, $dados, $imagemId);
-            $mensagemErro = 'Erro ao atualizar pessoa.';
+            $msg = $model->getUltimoErro() ?: 'Erro ao cadastrar pessoa.';
+            Redirect::toAdm('cadastroUsuarios.php', ['erro' => $msg]);
+        }
+        break;
+
+    case 'editar':
+        if (empty($nome) || empty($email) || empty($perfil)) {
+            Redirect::toAdm('cadastroUsuarios.php', [
+                'erro' => 'Preencha todos os campos obrigatórios (nome, e-mail e perfil).',
+                'acao' => $acao,
+                'id' => $id
+            ]);
         }
 
+        $imagemId = null;
+        if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+            $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
+            if ($resultadoUpload['success']) {
+                $imagemModel = new ImagemModel();
+                $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
+            } else {
+                Redirect::toAdm('cadastroUsuarios.php', [
+                    'acao' => $acao,
+                    'id' => $id,
+                    'erro' => $resultadoUpload['erro']
+                ]);
+            }
+        }
+
+        $dados = [
+            'nome' => $nome,
+            'email' => $email,
+            'perfil' => $perfil,
+            'linkedin' => $linkedin,
+            'github' => $github
+        ];
+
+       
+        if (empty($id)) {
+            Redirect::toAdm('usuarios.php', ['erro' => 'ID não informado para edição.']);
+            exit;
+        }
+        $sucesso = $model->atualizarPessoa((int)$id, $dados, $imagemId);
+
         if ($sucesso) {
-            Redirect::toAdm('listarUsuarios.php');
+            Redirect::toAdm('usuarios.php');
         } else {
-            Redirect::toAdm('cadastrar-usuarios.php', [
-                'erro' => $mensagemErro,
+            Redirect::toAdm('cadastroUsuarios.php', [
+                'erro' => 'Erro ao atualizar pessoa.',
                 'acao' => $acao,
                 'id' => $id
             ]);
@@ -79,18 +107,18 @@ switch ($acao) {
 
     case 'excluir':
         if (empty($id)) {
-            Redirect::toAdm('listarUsuarios.php', ['erro' => 'ID não informado para exclusão.']);
+            Redirect::toAdm('usuarios.php', ['erro' => 'ID não informado para exclusão.']);
             exit;
         }
 
         if ($model->deletarPessoa((int)$id)) {
-            Redirect::toAdm('listarUsuarios.php');
+            Redirect::toAdm('usuarios.php');
         } else {
-            Redirect::toAdm('listarUsuarios.php', ['erro' => 'Erro: Não foi possível excluir o registro.']);
+            Redirect::toAdm('usuarios.php', ['erro' => 'Erro: Não foi possível excluir o registro.']);
         }
         break;
 
     default:
-        Redirect::toAdm('listarUsuarios.php', ['erro' => 'Ação inválida.']);
+        Redirect::toAdm('usuarios.php', ['erro' => 'Ação inválida.']);
         break;
 }
