@@ -21,6 +21,7 @@ A **Galeria Voucher** é um projeto desenvolvido para exibir as turmas participa
 | 🔐 **Login** | ![Tela Login](Docs/tela_login.PNG) | Acesso administrativo para manutenção de dados e cadastro de novas turmas. |
 | 👩‍🏫 **Turmas** | ![Tela Turma](Docs/tela_turmas.PNG) | Listagem e detalhes das turmas participantes do programa. |
 | 👨‍💻 **Desenvolvedores** | ![Tela Desenvolvedores](Docs/tela_desenvolvedores.PNG) | Página que apresenta os criadores e mantenedores do projeto. |
+| 🛠️ **Administrador** | ![Tela Admin](Docs/tela_login_admin.png) | Painel de gerenciamento utilizado manter os dados atualizados. |
 
 ## 📌 Objetivo
 
