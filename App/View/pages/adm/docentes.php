@@ -1,17 +1,17 @@
 <?php
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../../Model/DocenteModel.php";
-require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/Config.php";
+require_once __DIR__ . "/../../../Helpers/Redirect.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../../Model/DocenteModel.php";
+require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 // VERIFICAÇÃO DE ACESSO
 
 $turmaId = Request::getId("turma_id");
 if (!$turmaId) {
-    Redirect::toAdm('listaTurmas.php'); // Usando a classe Redirect
+    Redirect::toAdm('turmas.php'); // Usando a classe Redirect
 }
 
 $paginaAtiva = 'turmas';
@@ -38,10 +38,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 </head>
 
 <body class="layout body-adm">
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
@@ -61,10 +61,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         <?php endif; ?>
 
         <div class="topo-lista-alunos">
-            <?php buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastro('professor', " . $turmaId . ")\""); ?>
+            <?php buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroProfessor()\""); ?>
             <div class="input-pesquisa-container">
                 <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
-                <img src="<?= Config::get('APP_URL') . Config::get('DIR_IMG') ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
+                <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
             </div>
         </div>
 
@@ -105,12 +105,63 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 </table>
             </div>
         </div>
-        <section class="section_modal"></section>
+        <section class="section_modal">
+            <div class="modal modal-cadastro" id="modal-desvincular-docente">
+                    <div class="modal-header modal-desvincular">
+                        <span class="modal-header-title">Desvincular Docente</span>
+                        <span class="material-symbols-outlined modal-header-action btn-close-desvincular" name="btn-close" onclick="fecharModal()">close</span>
+                    </div>
+
+                    <form class="" method="POST" action="/galeria-voucher/App/Controller/DocenteController.php?action=desvincular">
+                        <div class="modal-body">
+                            <p>Tem certeza que deseja desvincular o Docente "<span id="docente-confirmacao"></span>" desta turma?</p>
+                            <div class="form-group">
+                                <?php inputComponent('hidden', 'pessoa_id'); ?>
+                                <?php inputComponent('hidden', 'turma_id'); ?>
+                            </div>
+                        </div>
+
+                        <div class="modal-action">
+                            <?php buttonComponent("secondary", "Cancelar", false, extraAttributes: 'onclick="fecharModal()"') ?>
+                            <?php buttonComponent("primary", "Desvincular", true) ?>
+                        </div>
+                    </form>
+                </div>
+
+            <div class="modal modal-cadastro" id="modal-cadastro-professor">
+                <div class="modal-header">
+                    <span class="modal-header-title">Vincular Docentes</span>
+                    <span class="material-symbols-outlined modal-header-action btn-close" name="btn-close">close</span>
+                </div>
+
+                <form class="form-cadastro-pessoa" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
+                    <div class="modal-body">
+                        <div>
+                            <label for="pesquisar-pessoa">
+                                Docente
+                            </label>
+                            <?php inputComponent('text', 'pesquisar-pessoa', 'Digite o nome'); ?>
+                            <div id="sugestoes"></div>
+                        </div>
+
+                        <div id="pessoas-selecionadas"></div>
+
+                        <input type="hidden" name="turma_id" value="<?= $turmaId ?>">
+
+                    </div>
+
+                    <div class="modal-action">
+                        <?php buttonComponent("primary", "Vincular", true) ?>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <script src="<?= Config::get('APP_URL') ?>App/View/assets/js/adm/lista-alunos.js"></script>
-    <script src="<?= Config::get('APP_URL') ?>App/View/assets/js/main.js"></script>
-    <script src="<?= Config::get('APP_URL') ?>App/View/assets/js/adm/autocomplete-pessoas.js"></script>
-    <script src="<?= Config::get('APP_URL') ?>App/View/assets/js/adm/desvincula-docente.js"></script>
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/lista-alunos.js"></script>
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/main.js"></script>
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/autocomplete-pessoas.js"></script>
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/desvincula-docente.js"></script>
 </body>
+
 </html>

@@ -32,32 +32,34 @@ main.conteudo-cadastro::-webkit-scrollbar-thumb:hover {
 
 
 .form-dados {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  gap: 10px;
 }
 
-.form-dados .form-top {
+.form-top {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
+  flex-direction: column;
+  gap: 15px;
+  font-size: 1.2rem;
 }
 
 /* Estilos base para campos de input, select e textarea */
-.input-adm-turmas,
+/* .input-adm-turmas,
 select,
 textarea {
   display: block;
-  width: 100%;
+  width: 98%;
   padding: 8px;
   margin-bottom: 30px;
-  border: 1px solid #333;
-  border-radius: 30px;
+  border: 2px solid #000000;
+  border-radius: 10px;
   background-color: #e5e9e4;
-  font-size: 16px;
+  font-size: (--m-font);
   resize: vertical;
-}
+} */
 
 #informacoes-adicionais{
   width: 100%;
@@ -95,6 +97,7 @@ select {
   flex-direction: column;
   margin-left: 20px;
   gap: 8px;
+  align-items: center;
 }
 
 .form-group-imagem select {
@@ -103,15 +106,15 @@ select {
 
 .input-file-cadastro {
   position: relative;
-  width: 250px;
-  height: 223px;
+  width: 300px;
+  height: 394px;
   cursor: pointer;
 }
 
 .input-file-cadastro img {
   z-index: 1;
   width: 95%;
-  height: 223px;
+  height: 394px;
   object-fit: cover;
   border-radius: 5%;
   border: 2px solid #000000;
@@ -130,16 +133,8 @@ select {
   flex-direction: row;
   width: 100%;
   gap: 1rem;
-  margin-top: 8rem;
 }
 
-.form-group-buton button {
-  width: 200px !important;
-  font-size: 25px !important;
-  font-family: 'Bebas Neue', sans-serif !important;
-  letter-spacing: 2px !important;
-  border: 1px solid var(--text-black);
-}
 
 /* Botões de seleção */
 #btn-docente,
@@ -217,9 +212,7 @@ a{
     flex-direction: column;
   }
 
-  .form-dados .form-top {
-    flex-direction: column;
-  }
+ 
 
   .form-group,
   .form-group-polo {

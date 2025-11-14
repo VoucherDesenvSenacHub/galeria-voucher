@@ -78,47 +78,45 @@
         display: flex;
         gap: 5rem;
         justify-content: center;
-        min-height: 400px;
-        margin-bottom: 60px;
+        min-height: 500px;
 
         .card {
             background-color: #0d0d0d;
-            border-top: 3px solid #0d9c0d;
-            border-bottom: 3px solid#073e07;
-            border-left: 2px solid#073e07;
-            border-right: 2px solid#073e07;
+            border-top: 3px solid var(--dark-green);
+            border-bottom: 3px solid var(--darker-green);
+            border-left: 2px solid var(--darker-green);
+            border-right: 2px solid var(--darker-green);
             border-radius: 10px;
             max-width: 300px;
             text-align: justify;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
-            /* Sombra sutil */
             overflow: hidden;
-            /* Esconde o texto que sai do cartão */
-            /* Animação para expandir */
             padding: var(--default-padding);
             z-index: 1;
-            max-height: 85px;
-            overflow: hidden;
-            transition: max-height 0.6s ease, box-shadow 0.3s ease;
+            max-height: 75px;
+            transition: all 0.6s ease;
         }
 
+        .card:hover {
+            max-height: 450px;
+        }
 
-
-        h2 {
+        .card h2 {
             color: var(--accent-color);
-            /* Verde do título */
-            margin-bottom: 5px;
-            padding: .5rem;
+            padding: .1rem;
             font-family: var(--font-secondary);
             font-size: 210%;
             text-align: center;
+            width: 100%;
         }
 
         .card p {
-            margin: .5rem 0;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+
             text-align: justify;
-            /* Evita espaçamento exagerado na última linha em navegadores que
-               justificam texto inter-palavra e alinha a última linha à esquerda */
             text-justify: inter-word;
             text-align-last: left;
             hyphens: auto;
@@ -126,22 +124,13 @@
             font-size: 14px;
             line-height: 1.5;
             color: var(--text-white);
-            /* Texto branco */
             opacity: 0;
-            /* Torna o texto invisível inicialmente */
-            transition: opacity 0.3s ease-in-out;
-            /* Animação para visibilidade */
-        }
-
-        /* Ao passar o mouse sobre o cartão */
-        .card:hover {
-            max-height: 500px;
-            /* Expande o cartão para exibir o texto */
         }
 
         .card:hover p {
             opacity: 1;
-            /* Mostra o texto */
+            max-height: 500px;
+            margin-top: 1rem;
         }
     }
 }
@@ -294,6 +283,7 @@
         -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
         mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     }
+
     #secao4 .poligono .image-row:nth-of-type(1) .image-turma:nth-of-type(n+5) {
         display: none;
     }
@@ -307,6 +297,7 @@
     #secao4 .poligono .image-row:nth-of-type(3) .image-turma:nth-of-type(n+5) {
         display: none;
     }
+
     .NavInicial .nav-inner .search .pesquisa {
         width: 15rem;
     }
@@ -426,7 +417,8 @@
     .row .col-100 a {
         margin-left: 35px;
     }
-        .nome-voucher img {
+
+    .nome-voucher img {
         margin-bottom: 150px;
         margin-left: 0px;
     }
@@ -456,7 +448,8 @@
     #secao4 .poligono .image-row {
         margin-right: 35px;
     }
-        .nome-voucher img {
+
+    .nome-voucher img {
         margin-bottom: 150px;
         margin-left: 0px;
     }
@@ -522,7 +515,8 @@
     .row .col-100 a {
         margin-left: 55px;
     }
-        .nome-voucher img {
+
+    .nome-voucher img {
         margin-bottom: 150px;
         margin-left: 0px;
     }

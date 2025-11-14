@@ -1,7 +1,7 @@
 button, a.primary-button, a.secondary-button {
     height: var(--height-button);
     width: 200px;
-    border-radius: 30px;
+    border-radius: 10px;
     font-family: var(--font-secondary);
     transition: var(--default-transition);
     overflow: hidden;
@@ -14,6 +14,7 @@ button, a.primary-button, a.secondary-button {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 button:hover, a.primary-button:hover, a.secondary-button:hover {
@@ -41,7 +42,7 @@ button:active, a.primary-button:active, a.secondary-button:active {
 }
 
 .secondary-button, a.secondary-button {
-    border: 1px solid var(--text-black);
+    border: 0;
     background-color: var(--white-background);
     color: var(--color-text-button);
     font-size: var(--l-font);

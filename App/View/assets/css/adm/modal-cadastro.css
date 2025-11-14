@@ -1,4 +1,13 @@
-dialog#modal-cadastro {
+/* 
+arquivo para componente de modal
+.modal
+  .modal-header
+  .modal-body
+  .modal-action
+*/
+
+.modal {
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -7,87 +16,63 @@ dialog#modal-cadastro {
   background-color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 3rem 2rem 2rem 2rem; /* espaço extra no topo para o botão */
+  padding: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   color: #333;
   font-family: var(--font-primary, sans-serif);
-  height: 60vh;
-}
-
-dialog#modal-cadastro::backdrop {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-dialog#modal-cadastro .btn-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: transparent;
-  border: none;
-  font-size: 1.25rem;
-  color: #666;
-  cursor: pointer;
-  padding: 0.25rem;
-  transition: color 0.2s ease;
-  width: 1.75rem;
-  height: 1.75rem;
-  line-height: 1.75rem;
-  text-align: center;
-  font-size: 1.15rem;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 1px solid transparent;
-  transition: background 0.2s ease, color 0.2s ease;
-  z-index: 1001;
-}
-
-dialog#modal-cadastro .btn-close:hover {
-  color: #000;
-  background-color: #f5f5f5;
-}
-
-dialog#modal-cadastro form {
-  display: flex;
+  max-height: 60vh;
+  overflow: auto;
   flex-direction: column;
-  gap: 1rem;
-  width: 100%;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .modal-header-title {
+      font-weight: bold;
+    }
+
+    .modal-header-action:hover {
+      cursor: pointer;
+    }
+  }
+
+  .modal-body {
+    height: 100%;
+    text-align: justify;
+  }
+
+  .modal-action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 8px;
+  }
 }
 
-dialog#modal-cadastro form span {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  position: relative; /* base para sugestoes absolutas */
-}
-
-dialog#modal-cadastro form input[type="text"] {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-dialog#modal-cadastro form button.primary-button {
-  align-self: flex-end;
+.modal .form-cadastro-pessoa {
+  height: 78%;
 }
 
 /* Container das sugestões */
 #sugestoes {
-  position: absolute;
-  top: calc(100% - 1px); /* encosta no input */
+  position: relative;
+  top: calc(100% - 1px);
+  /* encosta no input */
   left: 0;
   width: 100%;
   z-index: 1000;
   max-height: 200px;
   overflow-y: auto;
-  
   background: #fff;
   border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  
-  font-family: Arial, sans-serif;
-  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   padding: 0;
 }
 
@@ -115,6 +100,7 @@ dialog#modal-cadastro form button.primary-button {
   color: #3f51b5;
   font-weight: 500;
 }
+
 #sugestoes .sugestao-empty {
   padding: 12px 16px;
   transition: background 0.2s;
@@ -144,7 +130,7 @@ dialog#modal-cadastro form button.primary-button {
   margin: 0.2rem;
   border-radius: 18px;
   font-size: 0.9rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chip .remove {
@@ -161,12 +147,12 @@ dialog#modal-cadastro form button.primary-button {
 
 /* Responsividade */
 @media (max-width: 600px) {
-  dialog#modal-cadastro {
+  .modal {
     width: 90%;
     padding: 1.5rem 1rem;
   }
 
-  dialog#modal-cadastro .btn-close {
+  .modal span[name="btn-close"] {
     font-size: 1rem;
   }
 }
@@ -180,13 +166,16 @@ dialog#modal-cadastro form button.primary-button {
 }
 
 /* Ajusta inputs para ocupar toda a largura interna do modal */
-dialog#modal-cadastro .input-text {
+.modal .input-text {
   max-width: 100%;
   width: 100%;
   padding: 0.75rem 1rem;
-  border: none;             /* remove borda */
-  border-radius: 50px;      /* deixa o input redondo */
-  background-color: #f5f7fa; /* leve cinza para contraste */
+  border: none;
+  /* remove borda */
+  border-radius: 50px;
+  /* deixa o input redondo */
+  background-color: #f5f7fa;
+  /* leve cinza para contraste */
 }
 
 /* Chips aprimorados */
@@ -196,7 +185,7 @@ dialog#modal-cadastro .input-text {
   padding: 0.4rem 0.8rem;
   border-radius: 18px;
   font-size: 0.9rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chip .remove {
@@ -205,7 +194,6 @@ dialog#modal-cadastro .input-text {
 }
 
 /* Botões dentro do modal */
-dialog#modal-cadastro .primary-button {
+.modal .primary-button {
   width: 180px;
 }
-

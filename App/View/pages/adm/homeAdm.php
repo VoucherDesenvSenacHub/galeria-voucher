@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../../../Config/App.php";
+require_once __DIR__ . "/../../../Config/Config.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
@@ -8,8 +8,8 @@ headerComponent('Página inicial - ADM');
 
 $paginaAtiva = 'home';
 ?>
-<link rel="stylesheet" href="<?= Config::get("APP_URL") . Config::get("DIR_CSS") ?>adm/home-adm.css">
-<link rel="stylesheet" href="<?= Config::get("APP_URL") . Config::get("DIR_CSS") ?>adm/nav.css">
+<link rel="stylesheet" href="<?= Config::getDirCss() ?>adm/home-adm.css">
+<link rel="stylesheet" href="<?= Config::getDirCss() ?>adm/nav.css">
 
 <body class="layout body-adm">
     <?php

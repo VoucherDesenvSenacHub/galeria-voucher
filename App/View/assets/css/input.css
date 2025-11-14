@@ -5,13 +5,41 @@
     gap: 20px;
     align-items: center;
     width: 100%;
-    max-width: 450px;
+    /* max-width: 450px; */
     padding: 14px;
     margin-top: 5px;
     font-size: 16px;
     border: 1 solid #ccc;
     background-color: #d8dbd6;
-    border-radius: 50px;
+    border-radius: 10px;
     outline: none;
     box-sizing: border-box;
 }
+
+
+
+
+.input-container:has([required]) label::after {
+  content: " *";
+  color: red;
+}
+
+.input-container select,
+.input-container textarea  {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  background-color: #e5e9e4;
+  font-size: (--m-font);
+  resize: vertical;
+}
+
+
+
+.input-container input, 
+.input-container texterea {
+  margin-top: 8px;
+}
+
