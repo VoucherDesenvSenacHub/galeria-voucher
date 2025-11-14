@@ -74,6 +74,7 @@ http://localhost/galeria-voucher
 [![Carlos Eduardo](https://github.com/yonnnxr.png?size=50)](https://github.com/yonnnxr)
 [![Frederico Soares](https://github.com/Fred-Curso-Do-Senac-2024-Tc-ADS.png?size=50)](https://github.com/Fred-Curso-Do-Senac-2024-Tc-ADS)
 [![Henrique Guisa](https://github.com/henriguisatec.png?size=50)](https://github.com/henriguisatec)
+[![Gustavo Santos](https://github.com/sntosz.png?size=50)](https://github.com/sntosz)
 [![joao heitor](https://github.com/joaoheitoror.png?size=50)](https://github.com/joaoheitoror)
 [![João Pedro](https://github.com/jeipe.png?size=50)](https://github.com/jeipe)
 [![Jonatan Samuel](https://github.com/samuelserri.png?size=50)](https://github.com/samuelserri)
@@ -95,7 +96,6 @@ http://localhost/galeria-voucher
 [![Celestino](https://github.com/Celestiinoo.png?size=50)](https://github.com/Celestiinoo)
 
 <!-- atencao confirma quem deve permanecer no documento e no github com os professores obs os tres abaixo a foto padrao do github quebra la no readem atualizar para images -->
-<!-- [![Gustavo Santos] gustavo por foto ai colocar link aqui, por estar sem foto estava quebrando... ](https://github.com/sntosz)  -->
 <!-- [![Desenvolvedor(a) Devs146](https://github.com/Devs146.png?size=50)](https://github.com/Devs146) -->
 <!-- [![Jéssica Santos](https://github.com/jessica249.png?size=50)](https://github.com/jessica249) -->
 ### Orientadores (Professores)
