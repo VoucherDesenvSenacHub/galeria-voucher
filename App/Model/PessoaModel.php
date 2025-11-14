@@ -9,6 +9,10 @@ class PessoaModel extends BaseModel
 
     public function criarPessoa(array $dados, ?int $imagemId = null): bool
     {
+        $senhaHash = password_hash($dados['senha'], PASSWORD_DEFAULT);
+
+
+
         // Se não foi passada uma imagem, usa a padrão
         if ($imagemId === null) {
             $imagemModel = new ImagemModel();
@@ -44,15 +48,12 @@ class PessoaModel extends BaseModel
             $pessoaId = $this->pdo->lastInsertId();
 
             // Se for docente, cria o usuário com senha
-            if ($dados['perfil'] === 'docente') {
+            if ($dados['perfil'] === 'professor') {
 
-                // ❗ Corrigido: parênteses estavam no lugar errado
-                $senhaHash = password_hash($dados['senha'], PASSWORD_DEFAULT);
 
                 $sqlSenha = "INSERT INTO usuario (pessoa_id, senha) 
                             VALUES (:pessoa_id, :senha)";
 
-                // ❗ Corrigido: faltava ponto e vírgula
                 $stmtSenha = $this->pdo->prepare($sqlSenha);
 
                 $stmtSenha->execute([
