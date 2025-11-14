@@ -69,6 +69,7 @@ button.no-style {
         height: var(--height-button-phone);
         font-size: var(--m-font);
         width: 100px;
+        font-size: .5rem;
     }
 
     
@@ -79,6 +80,7 @@ button.no-style {
         height: var(--height-button-tablet);
         font-size: var(--l-font);
         width: 130px;
+        font-size: 1rem;
     }
     
 
