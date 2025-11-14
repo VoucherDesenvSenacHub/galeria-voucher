@@ -132,14 +132,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        inputBusca.addEventListener('input', () => {
-            if (inputBusca.value.trim() === '') {
+        inputBusca.addEventListener('input', (e) => {
+            if (inputBusca.value.trim() === '' || !sugestoes.contains(e.target)) {
                 container.classList.add("d-none");
                 sugestoes.innerHTML = '';
             } else {
                 container.classList.remove("d-none");
             }
         });
+
 
 
     }
