@@ -56,7 +56,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 'primary',
                 'ADICIONAR',
                 false,
-                Config::getDirAdm() . 'CadastroProjetos.php' . ($turmaId ? "?turma_id=$turmaId" : '')
+                Config::getDirAdm() . 'cadastroProjetos.php' . ($turmaId ? "?turma_id=$turmaId" : '')
             );
             ?>
 
