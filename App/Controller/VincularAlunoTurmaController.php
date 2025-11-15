@@ -21,14 +21,19 @@ class VincularAlunoTurmaController
         $pessoaIds = $_POST['pessoas_ids'] ?? [];
 
         if (!$turmaId || !is_array($pessoaIds) || empty($pessoaIds)) {
-            $_SESSION['erro'] = "Dados inválidos. Selecione ao menos um docente e tente novamente.";
-            Redirect::toAdm('docentes.php', ['turma_id' => $turmaId]);
+            $_SESSION['erro'] = "Dados inválidos. Selecione ao menos um aluno e tente novamente.";
+            Redirect::toAdm('alunos.php', ['turma_id' => $turmaId]);
         }
 
         $turmaModel = new TurmaModel();
         $sucesso = true;
 
         foreach ($pessoaIds as $pessoaId) {
+            if ($turmaModel->existeVinculoPessoaTurma((int)$pessoaId, (int)$turmaId)) {
+                $sucesso = false;
+                break;
+            }
+
             if (!$turmaModel->VincularAlunoComTurma((int) $pessoaId, (int) $turmaId)) {
                 $sucesso = false;
                 break;
@@ -37,8 +42,10 @@ class VincularAlunoTurmaController
 
         if ($sucesso) {
             $_SESSION['sucesso'] = "Aluno(s) vinculado(s) com sucesso!";
+        } elseif (!$sucesso) {
+            $_SESSION['erro'] = "Um ou mais docentes já estão vinculados a esta turma.";
         } else {
-            $_SESSION['erro'] = "Ocorreu um erro ao vincular os docentes. Tente novamente.";
+            $_SESSION['erro'] = "Ocorreu um erro ao vincular os alunos. Tente novamente.";
         }
 
         Redirect::toAdm('alunos.php', ['turma_id' => $turmaId]);

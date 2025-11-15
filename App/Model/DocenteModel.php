@@ -45,7 +45,10 @@ class DocenteModel extends BaseModel {
     {
         $query = "SELECT p.pessoa_id, p.nome 
                   FROM pessoa p 
-                  where nome LIKE :nome and p.perfil = 'professor'";
+                  where nome LIKE :nome 
+                  AND p.perfil = 'professor'
+                  AND p.pessoa_id NOT IN (SELECT pessoa_id FROM docente_turma)
+                  ";
         
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':nome', "%$nome%" );
