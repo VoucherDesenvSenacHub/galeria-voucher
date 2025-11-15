@@ -64,7 +64,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
 
         <div class="topo-lista-alunos">
-            <?php buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroAluno()\""); ?>
+            <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroAluno()\""); ?>
             <div class="input-pesquisa-container">
                 <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                 <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
