@@ -44,7 +44,8 @@ class SearchModel extends BaseModel
     SELECT 'pessoa' AS tipo,
            COALESCE(at.turma_id, dt.turma_id) AS turma_id,
            p.nome AS titulo,
-           NULL AS descricao
+           NULL AS descricao,
+           p.perfil AS perfil
     FROM pessoa p
     LEFT JOIN aluno_turma at ON at.pessoa_id = p.pessoa_id
     LEFT JOIN docente_turma dt ON dt.pessoa_id = p.pessoa_id

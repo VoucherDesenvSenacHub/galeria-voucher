@@ -53,7 +53,7 @@ class SearchController extends BaseController
                     'tipo' => 'pessoa',
                     'titulo' => $p['titulo'],
                     'turma_id' => (int)$p['turma_id'],
-                    'descricao' => null
+                    'descricao' => $p['perfil']
                 ];
             }
 

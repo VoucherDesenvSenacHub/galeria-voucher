@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         inputBusca.addEventListener('input', async () => {
             const termo = inputBusca.value.trim();
             sugestoes.innerHTML = '';
-            if (termo.length < 2) return;
 
             try {
                 if (controller) controller.abort();
@@ -101,10 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 results.forEach(item => {
                     const div = document.createElement('div');
                     div.className = 'suggested-item';
-                    const label = item.tipo === 'turma' ? 'Turma' : 'Pessoa';
                     div.innerHTML = `
-                        <strong>[${label}]</strong> ${item.titulo}
-                        ${item.descricao ? `<small style="display:block;color:#666;">${item.descricao.substring(0, 80)}...</small>` : ''}
+                        <span>${item.titulo}</span>
+                        <span>${item.descricao.length > 80 ? item.descricao.substring(0, 80) + '...' : item.descricao}</span>
                     `;
                     div.style.cursor = 'pointer';
                     div.addEventListener('click', () => {
@@ -114,8 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     sugestoes.appendChild(div);
                 });
 
-                if (results.length > 1) {
+                if (results.length > 0) {
                     container.classList.remove("d-none")
+                } else {
+                    container.classList.add("d-none");
                 }
             } catch (e) {
                 // Silencia abortos; loga outros erros
@@ -131,17 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 sugestoes.innerHTML = '';
             }
         });
-
-        inputBusca.addEventListener('input', (e) => {
-            if (inputBusca.value.trim() === '' || !sugestoes.contains(e.target)) {
-                container.classList.add("d-none");
-                sugestoes.innerHTML = '';
-            } else {
-                container.classList.remove("d-none");
-            }
-        });
-
-
 
     }
 });
@@ -159,7 +148,7 @@ const inputPesquisa = document.querySelector('#input_pesquisa-turma');
 inputPesquisa.addEventListener('input', (event) => {
     const busca = event.target.value;
     const url = `/galeria-voucher/app/Controller/${endpoint}`;
-    
+
     fetch(`${url}?busca=${encodeURIComponent(busca)}`)
         .then(res => res.json())
         .then(dados => {
