@@ -13,6 +13,7 @@ require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../../Model/PoloModel.php";
 require_once __DIR__ . "/../../../Helpers/Request.php";
 require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../componentes/adm/feedbackAlert.php";
 
 $isEditMode = false;
 $turma = null;
@@ -134,37 +135,7 @@ $currentTab = 'Dados-gerais';
       </div>
     </main>
 
-  <?php if (isset($_SESSION['erros_turma'])): ?>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const erros = <?= json_encode($_SESSION['erros_turma']) ?>;
-        let mensagemErro = "Ocorreram os seguintes erros:\n\n";
-        erros.forEach(erro => {
-          mensagemErro += "- " + erro + "\n";
-        });
-        alert(mensagemErro);
-      });
-    </script>
-    <?php unset($_SESSION['erros_turma']); ?>
-  <?php endif; ?>
-
-  <?php if (isset($_SESSION['sucesso_cadastro'])): ?>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        alert("<?= htmlspecialchars($_SESSION['sucesso_cadastro']) ?>");
-        document.getElementById('form-turma').reset();
-        document.getElementById('preview').src = "<?= Config::getDirImg() . 'utilitarios/avatar.png' ?>";
-      });
-    </script>
-    <?php unset($_SESSION['sucesso_cadastro']); ?>
-  <?php endif; ?>
-
-  <?php if (isset($_SESSION['sucesso_edicao_alert'])): ?>
-    <script>
-      alert("<?= htmlspecialchars($_SESSION['sucesso_edicao_alert']) ?>");
-    </script>
-    <?php unset($_SESSION['sucesso_edicao_alert']); ?>
-  <?php endif; ?>
+  
 
   <script>
     const inputFile = document.getElementById('imagem_turma');

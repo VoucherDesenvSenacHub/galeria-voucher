@@ -197,3 +197,116 @@ arquivo para componente de modal
 .modal .primary-button {
   width: 180px;
 }
+
+/* ===== ESTILOS DO MODAL DE FEEDBACK (Sucesso/Erro) ===== */
+
+.feedback-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.feedback-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.feedback-modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  font-family: var(--font-primary, sans-serif);
+  color: #333;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.feedback-overlay.show .feedback-modal {
+  transform: scale(1);
+}
+
+.feedback-header {
+  margin-bottom: 16px;
+}
+
+.feedback-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Estilo Sucesso (Verde) */
+.feedback-modal.success .feedback-icon {
+  background: #28a745; /* Verde */
+}
+.feedback-modal.success .feedback-icon::before {
+  content: '✓'; /* Símbolo de check */
+}
+.feedback-modal.success .feedback-button {
+  background-color: #28a745;
+}
+
+/* Estilo Erro (Vermelho) */
+.feedback-modal.error .feedback-icon {
+  background: #dc3545; /* Vermelho */
+}
+.feedback-modal.error .feedback-icon::before {
+  content: 'X'; /* Símbolo de X */
+}
+.feedback-modal.error .feedback-button {
+  background-color: #dc3545;
+}
+
+.feedback-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.feedback-body {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  /* Permite quebras de linha vindas do PHP */
+  white-space: pre-wrap;
+}
+
+.feedback-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.feedback-button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.feedback-button:hover {
+  opacity: 0.85;
+}

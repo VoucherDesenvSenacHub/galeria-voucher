@@ -10,6 +10,7 @@ require_once __DIR__ . "/../../componentes/button.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
 require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../componentes/adm/feedbackAlert.php";
 
 headerComponent("Voucher Desenvolvedor - Criar Projeto");
 
@@ -36,27 +37,6 @@ $currentTab = 'cadastroProjetos';
     <main class="layout-main main-turmas-turmas">
       <?php BreadCrumbs::gerarBreadCrumbs(); ?>
       <?php tabsTurmaComponent($currentTab, ["turma_id" => $turmaId]); ?>
-
-      <?php if (isset($_SESSION['erro_projeto'])): ?>
-        <script>
-          document.addEventListener('DOMContentLoaded', function () {
-            const erros = <?= json_encode($_SESSION['erro_projeto']) ?>;
-            let mensagemErro = "Ocorreram os seguintes erros:\n\n";
-            
-            if (Array.isArray(erros)) {
-                erros.forEach(erro => {
-                  mensagemErro += "- " + erro + "\n";
-                });
-            } else {
-                mensagemErro = erros;
-            }
-            
-            alert(mensagemErro);
-          });
-        </script>
-
-         <?php unset($_SESSION['erro_projeto']); ?>
-         <?php endif; ?>
        
       <form class="form-container-projeto"
             method="POST"

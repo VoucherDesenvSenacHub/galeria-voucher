@@ -62,7 +62,7 @@ class ProjetoController
             'nome' => $nomeProjeto,
             'descricao' => $descricaoProjeto,
             'link' => $linkProjeto,
-            'turma_id' => $turmaId,
+            'turma_id' => $turmaId, 
             'dias' => []
         ];
         // Fim validações
@@ -141,7 +141,7 @@ class ProjetoController
         $resultado = $this->projetoModel->excluirProjeto($projetoId);
 
         if ($resultado) {
-            $_SESSION['sucesso_projeto'] = "Projeto excluído com sucesso!";
+            $_SESSION['sucesso_projeto'] = "Projeto excluído com sucesso!!!";
         } else {
             $_SESSION['erro_projeto'] = "Erro ao excluir o projeto.";
         }

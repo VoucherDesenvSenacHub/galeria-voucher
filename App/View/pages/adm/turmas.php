@@ -7,6 +7,7 @@ require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
 require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../componentes/adm/feedbackAlert.php";
 
 headerComponent("Voucher Desenvolvedor - Turmas");
 
@@ -145,14 +146,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </div>
     </main>
 
-    <?php if (isset($_SESSION['sucesso_exclusao'])): ?>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                alert("<?= htmlspecialchars($_SESSION['sucesso_exclusao']) ?>");
-            });
-        </script>
-        <?php unset($_SESSION['sucesso_exclusao']); ?>
-    <?php endif; ?>
+    
 
     <script src="../../assets/js/adm/lista-alunos.js"></script>
 </body>
