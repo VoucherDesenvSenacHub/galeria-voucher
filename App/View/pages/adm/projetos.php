@@ -12,6 +12,7 @@ headerComponent("Voucher Desenvolvedor - Projetos");
 
 $turmaId = Request::getId("turma_id");
 
+$turma_Id = $_GET['turma_id'] ?? null;
 if (!$turmaId) {
     Redirect::toAdm('turmas.php');
 }
@@ -32,6 +33,7 @@ try {
 
 $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'adm';
 ?>
+
 <head>
     <link rel="stylesheet" href="<?= Config::getDirCss() ?>adm/cadastro-projetos.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -67,7 +69,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </div>
 
         <?php if (isset($error_message)): ?>
-            <div class="error-message"><?= htmlspecialchars($error_message) ?></div>
+        <div class="error-message"><?= htmlspecialchars($error_message) ?></div>
         <?php endif; ?>
 
         <div class="tabela-principal-lista-alunos">
@@ -83,29 +85,35 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     </thead>
                     <tbody>
                         <?php if (!empty($projetos)): ?>
-                            <?php foreach ($projetos as $projeto): ?>
-                                <tr>
-                                    <td><?= htmlspecialchars($projeto['projeto_id']) ?></td>
-                                    <td><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></td>
-                                    <td><?= htmlspecialchars(mb_strimwidth($projeto['DESCRICAO_PROJETO'], 0, 100, "...")) ?></td>
-                                    <td class="acoes">
-                                        <div class="acoes-container">
-                                            <span class="material-symbols-outlined action-icon" style="cursor: pointer;" title="Editar">edit</span>
-                                            <span class="material-symbols-outlined" style="cursor: pointer;" title="Excluir">delete</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <?php foreach ($projetos as $projeto): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($projeto['projeto_id']) ?></td>
+                            <td><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></td>
+                            <td><?= htmlspecialchars(mb_strimwidth($projeto['DESCRICAO_PROJETO'], 0, 100, "...")) ?>
+                            </td>
+                            <td class="acoes">
+                                <div class="acoes-container">
+                                    <a href="cadastroProjetos.php?turma_id=<?= $turma_Id ?>&projeto_id=<?= $projeto['projeto_id']?>"
+                                        title="Editar">
+                                        <span class="material-symbols-outlined" id="edite">edit</span>
+                                    </a>
+                                    <span class="material-symbols-outlined" style="cursor: pointer;"
+                                        title="Excluir">delete</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
                         <?php else: ?>
-                            <tr>
-                                <td colspan="4" style="text-align: center;">Nenhum projeto encontrado para esta turma.</td>
-                            </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: center;">Nenhum projeto encontrado para esta turma.</td>
+                        </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
             </div>
         </div>
-        
+
     </main>
 </body>
+
 </html>
