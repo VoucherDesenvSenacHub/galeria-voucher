@@ -67,9 +67,8 @@ button.no-style {
 @media (max-width : 481px) {
     button, a.primary-button, a.secondary-button{
         height: var(--height-button-phone);
-        font-size: var(--m-font);
         width: 100px;
-        font-size: .5rem;
+        font-size: var(--s-font);
     }
 
     
@@ -78,9 +77,8 @@ button.no-style {
 @media (max-width : 961px){
     button, a.primary-button, a.secondary-button{
         height: var(--height-button-tablet);
-        font-size: var(--l-font);
         width: 130px;
-        font-size: 1rem;
+        font-size: var(--m-font);
     }
     
 
