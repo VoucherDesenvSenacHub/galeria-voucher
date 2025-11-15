@@ -209,7 +209,7 @@ class TurmaModel extends BaseModel
                     $stmtImgDia = $this->pdo->prepare("DELETE FROM imagem_projeto_dia WHERE projeto_dia_id IN ($diaPlaceholders)");
                     $stmtImgDia->execute($diaIds);
                 }
-                
+
                 // 4. Excluir os registros "filhos" (projeto_dia)
                 $stmtDia = $this->pdo->prepare("DELETE FROM projeto_dia WHERE projeto_id IN ($projectPlaceholders)");
                 $stmtDia->execute($projectIds);
@@ -234,7 +234,6 @@ class TurmaModel extends BaseModel
             // Se tudo deu certo, confirma as alterações.
             $this->pdo->commit();
             return true;
-            
         } catch (PDOException $e) {
             // Se algo deu errado, desfaz tudo.
             $this->pdo->rollBack();
@@ -488,8 +487,8 @@ class TurmaModel extends BaseModel
 
     public function VincularDocenteComTurma(int $id_pessoa, int $id_turma)
     {
-        $sql = 'INSERT INTO docente_turma (pessoa_id, turma_id, data_associacao) 
-                VALUES (:id_pessoa, :id_turma, NOW())';
+        $sql = 'INSERT INTO docente_turma (pessoa_id, turma_id, data_associacao)
+            VALUES (:id_pessoa, :id_turma, NOW())';
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([
             ':id_pessoa' => $id_pessoa,
@@ -506,5 +505,23 @@ class TurmaModel extends BaseModel
             ':id_pessoa' => $id_pessoa,
             ':id_turma' => $id_turma
         ]);
+    }
+
+    public function existeVinculoPessoaTurma(int $id_pessoa, int $id_turma): bool
+    {
+        $sql = 'SELECT EXISTS (
+            SELECT 1 
+            FROM docente_turma 
+            WHERE pessoa_id = :id_pessoa 
+              AND turma_id = :id_turma
+        )';
+    
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':id_pessoa' => $id_pessoa,
+            ':id_turma'  => $id_turma
+        ]);
+
+        return (bool) $stmt->fetchColumn();
     }
 }
