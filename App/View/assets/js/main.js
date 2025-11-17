@@ -28,7 +28,7 @@ inputPesquisa.addEventListener('input', (event) => {
     const busca = event.target.value;
     const endpoint = modalVincularAluno ? 'BuscaAlunoController.php' : 'BuscaDocenteController.php';
     const url = `/galeria-voucher/app/Controller/${endpoint}`;
-    
+
     fetch(`${url}?busca=${encodeURIComponent(busca)}`)
         .then(res => res.json())
         .then(dados => {
@@ -80,3 +80,5 @@ function adicionarPessoa(id, nome) {
 
     selecionados.appendChild(chip);
 }
+
+

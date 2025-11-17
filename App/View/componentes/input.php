@@ -15,23 +15,30 @@
 
  */
 function inputComponent($type, $name, $placeholder = null, $value = null, $label = null, $required = false) {
+    // Exibe o input HTML com a classe e o conteúdo definidos
+    $valueAttr = $value !== null ? "value='$value'" : "";
+    $valueRequired = $required  ? "required" : "";
+    $html = '<div class ="input-container">';
+
+    
     // Define a classe CSS com base no estilo informado
     if ($type === 'text') {
         $class = 'input-text';
     } elseif ($type === 'texteare') {
         $class = 'input-textearea';
-    } else {
+    } elseif($type === 'password'){
+        $class = 'input-text';
+        $html = '<div class ="input-container input-senha hide">';
+    }
+    else {
         // Se o estilo for inválido, usa 'text' como padrão
         $class = 'input-text';
     }
 
-    // Exibe o input HTML com a classe e o conteúdo definidos
-    $valueAttr = $value !== null ? "value='$value'" : "";
-    $valueRequired = $required  ? "required=" : "";
-    $html = '<div class ="input-container">';
+    
 
     if($label !== null){
-        $html .= "<label for='input_$name' id='text_input' class='form-label'>$label</label>";
+        $html .= "<label for='input_$name' id='label_input_$name' class='form-label'>$label</label>";
     }
 
     $html .= "<input id='input_$name' type='$type' class='$class' name='$name' placeholder='$placeholder' $valueAttr $valueRequired>";

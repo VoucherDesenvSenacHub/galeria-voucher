@@ -58,14 +58,14 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
             <?php endif; ?>
 
                 <div class="form-top">
-              
-                        <?php
+                    <?php
                         inputComponent('text', 'nome', 'Nome Completo', $pessoa['nome'] ?? ($_POST['nome'] ?? ''), "nome", true );
                         inputComponent('text', 'email', 'Email', $pessoa['email'] ?? ($_POST['email'] ?? ''), "email", true);
+                        inputComponent('password', 'senha', 'Senha', $_POST['senha'] ?? '', "senha", true);
                         inputComponent('text', 'linkedin', 'Link do linkedin', $pessoa['linkedin'] ?? ($_POST['linkedin'] ?? ''), "linkedin" );
                         inputComponent('text', 'github', 'Link para o GitHub', $pessoa['github'] ?? ($_POST['github'] ?? ''), "github" );
-                        ?>
-                   
+                    ?>
+
                     <div class="input-container">
                         <label for="tipo-usuario">Perfil</label>
                         <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;" required>
@@ -95,26 +95,15 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
             <div class="form-bottom">
                 <div class="form-group-buton">
                     <?php
-                    buttonComponent('secondary', 'Cancelar', false, null, null, '', 'back-button');
+                    buttonComponent('secondary', 'Cancelar', false, Config::getDirAdm()."usuarios.php");
                     buttonComponent('primary', $acao === 'editar' ? 'Atualizar' : 'Cadastrar', true);
                     ?>
                 </div>
             </div>
         </form>
     </main>
-
-    <script>
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                document.getElementById('preview').src = URL.createObjectURL(file);
-            }
-        });
-        document.querySelector('.back-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.history.back();
-        });
-    </script>
+    
+    <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/cadastra-usuario.js"></script>
 </body>
 
 </html>
