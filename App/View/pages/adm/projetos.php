@@ -103,6 +103,34 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             </td>
                         </tr>
                         <?php endforeach; ?>
+                        <?php foreach ($projetos as $projeto): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($projeto['projeto_id']) ?></td>
+                            <td><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></td>
+                            <td><?= htmlspecialchars(mb_strimwidth($projeto['DESCRICAO_PROJETO'], 0, 100, "...")) ?>
+                            </td>
+                            <td class="acoes">
+                                <div class="acoes-container">
+                                    <span class="material-symbols-outlined action-icon" style="cursor: pointer;"
+                                        title="Editar">edit
+                                    </span>
+
+                                    <form method="POST"
+                                        action="<?= Config::getAppUrl() ?>App/Controller/ProjetoController.php"
+                                        onsubmit="return confirm('Tem certeza que deseja excluir o projeto \'<?= htmlspecialchars($projeto['NOME_PROJETO']) ?>\'? Esta ação é irreversível.');">
+
+                                        <input type="hidden" name="action" value="excluir">
+                                        <input type="hidden" name="projeto_id" value="<?= $projeto['projeto_id'] ?>">
+                                        <input type="hidden" name="turma_id" value="<?= $turmaId ?>"> <button
+                                            type="submit" class="no-style" title="Excluir">
+                                            <span class="material-symbols-outlined acao-delete">delete</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
                         <?php else: ?>
                         <tr>
                             <td colspan="4" style="text-align: center;">Nenhum projeto encontrado para esta turma.</td>
@@ -114,6 +142,35 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         </div>
 
     </main>
+
+    <?php if (isset($_SESSION['sucesso_projeto'])): ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        alert("<?= htmlspecialchars($_SESSION['sucesso_projeto']) ?>");
+    });
+    </script>
+    <?php unset($_SESSION['sucesso_projeto']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['erro_projeto'])): ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const erros = <?= json_encode($_SESSION['erro_projeto']) ?>;
+        let mensagemErro = "Ocorreram os seguintes erros:\n\n";
+
+        if (Array.isArray(erros)) {
+            erros.forEach(erro => {
+                mensagemErro += "- " + erro + "\n";
+            });
+        } else {
+            mensagemErro = erros;
+        }
+
+        alert(mensagemErro);
+    });
+    </script>
+    <?php unset($_SESSION['erro_projeto']); ?>
+    <?php endif; ?>
 </body>
 
 </html>

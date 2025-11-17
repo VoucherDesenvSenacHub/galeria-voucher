@@ -242,4 +242,51 @@ class ProjetoModel extends BaseModel
             $projetoDias = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
         return $projetoDias;
+
+    /**
+     * Exclui um projeto e todos os seus dados dependentes (dias, associações de imagens).
+     * Usa uma transação para garantir a integridade dos dados.
+     *
+     * @param int $projetoId O ID do projeto a ser excluído.
+     * @return bool Retorna `true` se tudo foi excluído com sucesso, `false` caso contrário.
+     */
+    public function excluirProjeto(int $projetoId): bool
+    {
+        try {
+            // Inicia uma transação
+            $this->pdo->beginTransaction();
+
+            // 1. Buscar todos os dias (projeto_dia_id) associados ao projeto
+            $stmtDiaIds = $this->pdo->prepare("SELECT projeto_dia_id FROM projeto_dia WHERE projeto_id = :id");
+            $stmtDiaIds->execute([':id' => $projetoId]);
+            $diaIds = $stmtDiaIds->fetchAll(PDO::FETCH_COLUMN);
+
+            if (!empty($diaIds)) {
+                // 2. Criar placeholders para a cláusula IN ()
+                $diaPlaceholders = rtrim(str_repeat('?,', count($diaIds)), ',');
+
+                // 3. Excluir os registros "netos" (imagem_projeto_dia)
+                $stmtImgDia = $this->pdo->prepare("DELETE FROM imagem_projeto_dia WHERE projeto_dia_id IN ($diaPlaceholders)");
+                $stmtImgDia->execute($diaIds);
+            }
+            
+            // 4. Excluir os registros "filhos" (projeto_dia)
+            $stmtDia = $this->pdo->prepare("DELETE FROM projeto_dia WHERE projeto_id = :id");
+            $stmtDia->execute([':id' => $projetoId]);
+
+            // 5. Finalmente, excluir o próprio projeto
+            $stmtProjeto = $this->pdo->prepare("DELETE FROM {$this->tabela} WHERE projeto_id = :id");
+            $stmtProjeto->execute([':id' => $projetoId]);
+
+            // Se tudo deu certo, confirma as alterações.
+            $this->pdo->commit();
+            return true;
+            
+        } catch (PDOException $e) {
+            // Se algo deu errado, desfaz tudo.
+            $this->pdo->rollBack();
+            error_log("[{$this->tabela}Model::excluirProjeto] Erro ao excluir projeto ID {$projetoId}: " . $e->getMessage());
+            return false;
+        }
+    }
 }

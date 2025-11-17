@@ -1,11 +1,9 @@
-.input-text {
+.input-text{
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    width: 100%;
-    /* max-width: 450px; */
     padding: 14px;
     margin-top: 5px;
     font-size: var(--m-font);
@@ -16,28 +14,29 @@
     box-sizing: border-box;
 }
 
-
-
+.input-senha.hide{
+    display: none;
+}
 
 .input-container:has([required]) label::after {
-  content: " *";
-  color: red;
+    content: " *";
+    color: red;
 }
 
 .input-container select,
 .input-container textarea  {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  border: 2px solid #000000;
-  border-radius: 10px;
-  background-color: #e5e9e4;
-  font-size: (--m-font);
-  resize: vertical;
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    background-color: #e5e9e4;
+    font-size: (--m-font);
+    resize: vertical;
 }
 
 .input-container input, 
 .input-container texterea {
-  margin-top: 8px;
+    margin-top: 8px;
 }
 

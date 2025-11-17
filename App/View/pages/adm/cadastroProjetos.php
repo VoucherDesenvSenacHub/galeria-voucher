@@ -38,27 +38,25 @@ $currentTab = 'cadastroProjetos';
         <?php tabsTurmaComponent($currentTab, ["turma_id" => $turmaId]); ?>
 
         <?php if (isset($_SESSION['erro_projeto'])): ?>
-        <div style="color: red; margin-top: 10px;">
-            <strong>Erro ao salvar projeto:</strong><br>
-            <?php
-                    if (is_array($_SESSION['erro_projeto'])) {
-                        foreach ($_SESSION['erro_projeto'] as $erro) {
-                            echo htmlspecialchars($erro) . "<br>";
-                        }
-                    } else {
-                         echo htmlspecialchars($_SESSION['erro_projeto']);
-                    }
-                ?>
-        </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const erros = <?= json_encode($_SESSION['erro_projeto']) ?>;
+            let mensagemErro = "Ocorreram os seguintes erros:\n\n";
+
+            if (Array.isArray(erros)) {
+                erros.forEach(erro => {
+                    mensagemErro += "- " + erro + "\n";
+                });
+            } else {
+                mensagemErro = erros;
+            }
+
+            alert(mensagemErro);
+        });
+        </script>
+
         <?php unset($_SESSION['erro_projeto']); ?>
         <?php endif; ?>
-        <?php if (isset($_SESSION['sucesso_projeto'])): ?>
-        <div style="color: green; margin-top: 10px;">
-            <?= htmlspecialchars($_SESSION['sucesso_projeto']) ?>
-        </div>
-        <?php unset($_SESSION['sucesso_projeto']); ?>
-        <?php endif; ?>
-
 
         <form class="form-container-projeto" method="POST"
             action="<?= Config::getAppUrl() ?>App/Controller/ProjetoController.php" enctype="multipart/form-data">
