@@ -13,6 +13,7 @@ $id = $_POST['id'] ?? $_GET['id'] ?? null;
 
 $nome = trim($_POST['nome'] ?? '');
 $email = trim($_POST['email'] ?? '');
+$senha = trim($_POST['senha'] ?? '');
 $linkedin = trim($_POST['linkedin'] ?? '');
 $github = trim($_POST['github'] ?? '');
 $perfil = $_POST['perfil'] ?? null;
@@ -42,6 +43,7 @@ switch ($acao) {
         $dados = [
             'nome' => $nome,
             'email' => $email,
+            'senha' => $senha,
             'perfil' => $perfil,
             'linkedin' => $linkedin,
             'github' => $github
@@ -87,7 +89,6 @@ switch ($acao) {
             'github' => $github
         ];
 
-       
         if (empty($id)) {
             Redirect::toAdm('usuarios.php', ['erro' => 'ID não informado para edição.']);
             exit;
