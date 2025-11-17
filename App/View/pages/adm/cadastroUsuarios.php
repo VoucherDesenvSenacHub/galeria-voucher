@@ -58,15 +58,14 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
             <?php endif; ?>
 
                 <div class="form-top">
-              
-                        <?php
+                    <?php
                         inputComponent('text', 'nome', 'Nome Completo', $pessoa['nome'] ?? ($_POST['nome'] ?? ''), "nome", true );
                         inputComponent('text', 'email', 'Email', $pessoa['email'] ?? ($_POST['email'] ?? ''), "email", true);
-                        inputComponent('password', 'senha', 'Senha', $pessoa['senha'] ?? ($_POST['senha'] ?? ''), "senha", true);
+                        inputComponent('password', 'senha', 'Senha', $_POST['senha'] ?? '', "senha", true);
                         inputComponent('text', 'linkedin', 'Link do linkedin', $pessoa['linkedin'] ?? ($_POST['linkedin'] ?? ''), "linkedin" );
                         inputComponent('text', 'github', 'Link para o GitHub', $pessoa['github'] ?? ($_POST['github'] ?? ''), "github" );
-                        ?>
-                   
+                    ?>
+
                     <div class="input-container">
                         <label for="tipo-usuario">Perfil</label>
                         <select id="tipo-usuario" name="perfil" class="input-text" style="cursor: pointer;" required>
@@ -96,7 +95,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
             <div class="form-bottom">
                 <div class="form-group-buton">
                     <?php
-                    buttonComponent('secondary', 'Cancelar', false, null, null, '', 'back-button');
+                    buttonComponent('secondary', 'Cancelar', false, Config::getDirAdm()."usuarios.php");
                     buttonComponent('primary', $acao === 'editar' ? 'Atualizar' : 'Cadastrar', true);
                     ?>
                 </div>

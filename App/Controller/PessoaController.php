@@ -84,7 +84,6 @@ switch ($acao) {
         $dados = [
             'nome' => $nome,
             'email' => $email,
-            'senha' => $senha,
             'perfil' => $perfil,
             'linkedin' => $linkedin,
             'github' => $github
