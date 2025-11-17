@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                     div.style.cursor = 'pointer';
                     div.addEventListener('click', () => {
-                        const url = `${window.location.origin}/galeria-voucher/App/View/pages/users/galeria-turma.php?id=${encodeURIComponent(item.turma_id)}`;
+                        const url = `${window.location.origin}/galeria-voucher/App/View/pages/users/galeriaTurma.php?id=${encodeURIComponent(item.turma_id)}`;
                         window.location.href = url;
                     });
                     sugestoes.appendChild(div);

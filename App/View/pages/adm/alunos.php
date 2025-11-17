@@ -1,16 +1,16 @@
 <?php
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../../Model/AlunoModel.php";
-require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/Config.php";
+require_once __DIR__ . "/../../../Helpers/Redirect.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../../Model/AlunoModel.php";
+require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 
 $turmaId = Request::getId("turma_id");
 if (!$turmaId) {
-    Redirect::toAdm('listaTurmas.php');
+    Redirect::toAdm('turmas.php');
 }
 
 $paginaAtiva = 'turmas';
@@ -35,10 +35,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 </head>
 
 <body class="layout body-adm">
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
     ?>
     <main class="layout-main main-turmas-turmas">
         <?php BreadCrumbs::gerarBreadCrumbs(); ?>
@@ -58,13 +58,13 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
         <?php
         $isAdmin = true;
-        require_once __DIR__ . "/../../../componentes/nav.php";
+        require_once __DIR__ . "/../../componentes/nav.php";
         ?>
 
 
 
         <div class="topo-lista-alunos">
-            <?php buttonComponent('primary', 'VINCULAR ALUNO', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroAluno()\""); ?>
+            <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroAluno()\""); ?>
             <div class="input-pesquisa-container">
                 <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                 <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
@@ -163,6 +163,8 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
             </section>
         </div>
     </main>
+    </div>
+    
     <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/lista-alunos.js"></script>
     <script src="<?= Config::getAppUrl() ?>App/View/assets/js/main.js"></script>
     <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/autocomplete-pessoas.js"></script>

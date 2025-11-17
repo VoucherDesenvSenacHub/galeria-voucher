@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/BaseModel.php';
-require_once __DIR__ . '/../Config/App.php'; // Incluído para usar Config::get
+require_once __DIR__ . '/../Config/Config.php'; // Incluído para usar Config::get
 
 /**
  * Classe ImagemModel

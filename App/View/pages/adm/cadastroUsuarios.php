@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . '/../../../Model/PessoaModel.php';
@@ -28,7 +28,7 @@ $caminhoImagem = Config::getDirImg() . "utilitarios/avatar.png";
 if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
     $imagemModel = new ImagemModel();
     $imagem = $imagemModel->buscarImagemPorId((int)$pessoa['imagem_id']);
-    
+
     if ($imagem && !empty($imagem['url'])) {
         $caminhoFisico = ROOT_PATH . '/' . $imagem['url'];
         if (file_exists($caminhoFisico)) {
@@ -48,7 +48,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
         <?php BreadCrumbs::gerarBreadCrumbs(); ?>
         <h1 class='h1-usuario'><?= $acao === 'editar' ? 'EDITAR PESSOA' : 'CADASTRO' ?></h1>
         <?php if (!empty($_GET['erro'])): ?>
-            <div style="margin: 12px 0; color: #b00020; font-weight: 600;"><?= htmlspecialchars($_GET['erro']) ?></div>
+            <div style="margin-top: 6px; color: #b00020; font-weight: 500;"><?= htmlspecialchars($_GET['erro']) ?></div>
         <?php endif; ?>
 
         <form class="form-dados" method="POST" enctype="multipart/form-data" action="<?= Config::getAppUrl() ?>App/Controller/PessoaController.php">
@@ -106,4 +106,5 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
     
     <script src="<?= Config::getAppUrl() ?>App/View/assets/js/adm/cadastra-usuario.js"></script>
 </body>
+
 </html>

@@ -43,9 +43,9 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
                 </li>
 
                 <?php if ($isAdmin): ?>
-                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'home-adm.php'; ?>">INÍCIO</a></li>
-                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'listarUsuarios.php'; ?>">PESSOAS</a></li>
-                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'listaTurmas.php'; ?>">TURMAS</a></li>
+                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'homeAdm.php'; ?>">INÍCIO</a></li>
+                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'usuarios.php'; ?>">PESSOAS</a></li>
+                    <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirAdm() . 'turmas.php'; ?>">TURMAS</a></li>
                     <?php if ($logado): ?>
                         <li class="mobile-only"><a class="link-nav" href="<?= Config::getDirLogout() . 'logout.php'; ?>">SAIR</a></li>
                         <li class="desktop-only">
@@ -56,7 +56,7 @@ $perfil = $logado ? $_SESSION['usuario']['perfil'] : null;
                     <?php endif; ?>
                 <?php else: ?>
                     <?php if ($logado && in_array($perfil, ['adm', 'professor'])): ?>
-                        <li><a class="link-nav" href="<?= Config::getDirAdm() . 'home-adm.php'; ?>">ADMINISTRATIVO</a></li>
+                        <li><a class="link-nav" href="<?= Config::getDirAdm() . 'homeAdm.php'; ?>">ADMINISTRATIVO</a></li>
                         <li>
                             <a class="link-nav" href="<?= Config::getDirLogout() . 'logout.php'; ?>" title="Sair">
                                 <span class="material-symbols-outlined">logout</span>

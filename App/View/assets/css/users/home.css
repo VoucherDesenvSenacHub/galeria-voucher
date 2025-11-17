@@ -3,17 +3,12 @@
     padding: 0px;
     font-family: Arial, sans-serif;
     background: black;
-    /* linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.97),
-            rgba(0, 0, 0, 0.9),
-            #0d9c0d,
-            #0d9c0d,
-            rgba(0, 0, 0, 0.96),
-            rgba(0, 0, 0, 0.95),
-            rgba(0, 0, 0, 0.9)); */
+
 }
 
-
+.componente_mira {
+    z-index: 1;
+}
 /*animação matrix*/
 #matrix-canvas {
     position: absolute;
@@ -21,13 +16,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -2;
+    z-index: 0;
 
 }
 
-.bg-gradient {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 10%, rgba(13, 156, 13, 1) 40%, rgba(13, 156, 13, 1) 60%, rgba(0, 0, 0, 1) 90%);
-}
 
 .body-turma {
     margin: 0px;
@@ -45,6 +37,7 @@
     padding: 0px;
     margin: 0px;
     --secao-height: calc(100vh - var(--nav-height));
+    background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 40%, rgba(13, 156, 13, 1) 60%, rgb(0, 0, 0) 72%);
 }
 
 .main-user section {
@@ -67,13 +60,8 @@
         align-items: center;
         overflow: hidden;
         width: 100%;
-        /* position: relative;  */
-        /* para posicionar elementos absolutos */
     }
 
-    /* imagem dos números */
-
-    /* imagem do logo */
     .nome-voucher {
         width: 100%;
         top: calc(25vh + 6.3vw);
@@ -84,17 +72,13 @@
 
 /* cards (O que é?, Para quem é?, Porque fazer?) */
 #secao2 {
-    min-height: var(--secao-height);
-    /* background: #0D9C0D;
-background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 0%, rgba(13, 156, 13, 1) 5%, rgba(0, 0, 0, 1) 80%); */
 
     .container_card {
         height: 100%;
         display: flex;
         gap: 5rem;
         justify-content: center;
-        min-height: 400px;
-
+        min-height: 500px;
 
         .card {
             background-color: #0d0d0d;
@@ -109,18 +93,16 @@ background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 0%, rgba(13, 156, 13
             overflow: hidden;
             padding: var(--default-padding);
             z-index: 1;
-            max-height: 55px;
+            max-height: 75px;
             transition: all 0.6s ease;
         }
 
         .card:hover {
-            max-height: 500px;
+            max-height: 450px;
         }
 
         .card h2 {
             color: var(--accent-color);
-            margin-top: 10px;
-            margin-bottom: 10px;
             padding: .1rem;
             font-family: var(--font-secondary);
             font-size: 210%;
@@ -155,14 +137,15 @@ background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 0%, rgba(13, 156, 13
 
 /* estatísticas e call to action (inspire-se) */
 #secao3 {
-    min-height: var(--secao-height);
     display: flex;
     flex-direction: column;
     text-align: center;
 
+    /* background: linear-gradient(to bottom, rgba(13, 156, 13, 1) 40%, rgba(13, 156, 13, 0.596) 60%, rgba(0, 0, 0, 1) 100%); */
     .container2 {
         background: transparent;
-        padding: 20px;
+        /* padding: 20px; */
+        margin-bottom: 100px;
 
         /* frase "SUA EVOLUÇÃO COMEÇA AQUI" */
         h1 {

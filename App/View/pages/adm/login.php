@@ -22,7 +22,7 @@ try {
 
 // Redireciona se usuário já estiver logado e for adm ou professor
 if (isset($_SESSION['usuario']) && in_array($_SESSION['usuario']['perfil'], ['adm', 'professor'])) {
-    header("Location: home-adm.php");
+    require __DIR__ . "/homeAdm.php";
     exit;
 }
 
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $usuarioModel !== null) {
         $usuario = $usuarioModel->validarLogin($email, $senha);
         if ($usuario) {
             $_SESSION['usuario'] = $usuario;
-            header("Location: home-adm.php");
+            require __DIR__ . "/homeAdm.php";
             exit;
         } else {
             $erro = "E-mail ou senha inválidos!";
