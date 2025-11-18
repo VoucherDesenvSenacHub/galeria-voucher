@@ -146,7 +146,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
                         <div id="pessoas-selecionadas"></div>
 
-                        <input type="hidden" name="turma_id" value="<?= $turmaId ?>">
+                        <input type="hidden" id="desvincular-docente-turma-id" name="turma_id" value="<?= $turmaId ?>">
 
                     </div>
 

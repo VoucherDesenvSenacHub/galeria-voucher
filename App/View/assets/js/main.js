@@ -1,6 +1,7 @@
 
 const modalVincularAluno = document.querySelector("#modal-cadastro-aluno");
 const modalVincularProfessor = document.querySelector("#modal-cadastro-professor");
+const inputDocenteTurmaId = document.querySelector('#desvincular-docente-turma-id');
 const closeButton = document.querySelector('.btn-close');
 const inputPesquisa = document.querySelector('input[name="pesquisar-pessoa"]');
 const sugestoes = document.querySelector("#sugestoes");
@@ -28,8 +29,9 @@ inputPesquisa.addEventListener('input', (event) => {
     const busca = event.target.value;
     const endpoint = modalVincularAluno ? 'BuscaAlunoController.php' : 'BuscaDocenteController.php';
     const url = `/galeria-voucher/app/Controller/${endpoint}`;
+    const turmaId = inputDocenteTurmaId && inputDocenteTurmaId?.value ? `&turma_id=${inputDocenteTurmaId.value}` : ''
     
-    fetch(`${url}?busca=${encodeURIComponent(busca)}`)
+    fetch(`${url}?busca=${encodeURIComponent(busca)}${turmaId}`)
         .then(res => res.json())
         .then(dados => {
             sugestoes.innerHTML = "";
