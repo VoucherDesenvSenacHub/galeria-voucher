@@ -9,6 +9,10 @@ class PessoaModel extends BaseModel
 
     public function criarPessoa(array $dados, ?int $imagemId = null): bool
     {
+        $senhaHash = password_hash($dados['senha'], PASSWORD_DEFAULT);
+
+
+
         // Se não foi passada uma imagem, usa a padrão
         if ($imagemId === null) {
             $imagemModel = new ImagemModel();
@@ -31,20 +35,42 @@ class PessoaModel extends BaseModel
 
         try {
             $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute([
-                ':nome' => $dados['nome'],
-                ':email' => $dados['email'],
-                ':perfil' => $dados['perfil'],
-                ':linkedin' => $dados['linkedin'] ?? null,
-                ':github' => $dados['github'] ?? null,
+            $stmt->execute([
+                ':nome'      => $dados['nome'],
+                ':email'     => $dados['email'],
+                ':perfil'    => $dados['perfil'],
+                ':linkedin'  => $dados['linkedin'] ?? null,
+                ':github'    => $dados['github'] ?? null,
                 ':imagem_id' => $imagemId
             ]);
+
+            // ID da pessoa criada
+            $pessoaId = $this->pdo->lastInsertId();
+
+            // Se for docente, cria o usuário com senha
+            if ($dados['perfil'] === 'professor') {
+
+
+                $sqlSenha = "INSERT INTO usuario (pessoa_id, senha) 
+                            VALUES (:pessoa_id, :senha)";
+
+                $stmtSenha = $this->pdo->prepare($sqlSenha);
+
+                $stmtSenha->execute([
+                    ':pessoa_id' => $pessoaId,
+                    ':senha'     => $senhaHash
+                ]);
+            }
+
+            return true;
+
         } catch (PDOException $e) {
+
             $code = $e->getCode();
-            $msg = $e->getMessage();
-            // Tratamento amigável para erros comuns
-            if ($code === '23000') { // violação de constraint (único/foreign)
-                // Chave duplicada (email único)
+            $msg  = $e->getMessage();
+
+            // Tratamento amigável
+            if ($code === '23000') { // violação de constraint
                 if (stripos($msg, 'Duplicate') !== false || stripos($msg, 'UNIQUE') !== false) {
                     $this->ultimoErro = 'E-mail já cadastrado.';
                 } else {
@@ -53,7 +79,9 @@ class PessoaModel extends BaseModel
             } else {
                 $this->ultimoErro = 'Erro no banco: ' . $msg;
             }
+
             error_log('[PessoaModel::criarPessoa] ' . $this->ultimoErro);
+
             return false;
         }
     }
