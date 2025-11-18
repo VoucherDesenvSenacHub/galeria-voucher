@@ -136,7 +136,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             name="btn-close">close</span>
                     </div>
 
-                    <form class="form-cadastro-pessoa" method="POST"
+                    <form class="form-cadastro-pessoa" method="POST" id="form-vincular-aluno"
                         action="/galeria-voucher/App/Controller/VincularAlunoTurmaController.php">
                         <div class="modal-body">
                             <div>

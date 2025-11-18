@@ -1,11 +1,14 @@
 
 const modalVincularAluno = document.querySelector("#modal-cadastro-aluno");
 const modalVincularProfessor = document.querySelector("#modal-cadastro-professor");
+const inputDocenteTurmaId = document.querySelector('#vincular-docente-turma-id');
 const closeButton = document.querySelector('.btn-close');
 const inputPesquisa = document.querySelector('input[name="pesquisar-pessoa"]');
 const sugestoes = document.querySelector("#sugestoes");
 const selecionados = document.querySelector("#pessoas-selecionadas");
 const adicionados = new Set();
+const formVincularDocente = document.getElementById('form-vincular-docente')
+const formVincularAluno = document.getElementById('form-vincular-aluno')
 
 function abrirModalCadastroProfessor() {
     modalVincularProfessor.style.display = "block";
@@ -28,8 +31,9 @@ inputPesquisa.addEventListener('input', (event) => {
     const busca = event.target.value;
     const endpoint = modalVincularAluno ? 'BuscaAlunoController.php' : 'BuscaDocenteController.php';
     const url = `/galeria-voucher/app/Controller/${endpoint}`;
-
-    fetch(`${url}?busca=${encodeURIComponent(busca)}`)
+    const turmaId = inputDocenteTurmaId && inputDocenteTurmaId?.value ? `&turma_id=${inputDocenteTurmaId.value}` : ''
+    
+    fetch(`${url}?busca=${encodeURIComponent(busca)}${turmaId}`)
         .then(res => res.json())
         .then(dados => {
             sugestoes.innerHTML = "";
@@ -82,3 +86,12 @@ function adicionarPessoa(id, nome) {
 }
 
 
+const ignoraVinculoVazio = (e) => {
+    const chips = document.getElementsByClassName('chip')
+    if(chips.length !== 0)return
+
+    e.preventDefault()
+    e.stopPropagation()
+}
+formVincularDocente?.addEventListener('submit', ignoraVinculoVazio)
+formVincularAluno?.addEventListener('submit', ignoraVinculoVazio)
