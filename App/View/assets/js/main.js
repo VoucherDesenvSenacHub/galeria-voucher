@@ -1,12 +1,14 @@
 
 const modalVincularAluno = document.querySelector("#modal-cadastro-aluno");
 const modalVincularProfessor = document.querySelector("#modal-cadastro-professor");
-const inputDocenteTurmaId = document.querySelector('#desvincular-docente-turma-id');
+const inputDocenteTurmaId = document.querySelector('#vincular-docente-turma-id');
 const closeButton = document.querySelector('.btn-close');
 const inputPesquisa = document.querySelector('input[name="pesquisar-pessoa"]');
 const sugestoes = document.querySelector("#sugestoes");
 const selecionados = document.querySelector("#pessoas-selecionadas");
 const adicionados = new Set();
+const formVincularDocente = document.getElementById('form-vincular-docente')
+const formVincularAluno = document.getElementById('form-vincular-aluno')
 
 function abrirModalCadastroProfessor() {
     modalVincularProfessor.style.display = "block";
@@ -84,3 +86,12 @@ function adicionarPessoa(id, nome) {
 }
 
 
+const ignoraVinculoVazio = (e) => {
+    const chips = document.getElementsByClassName('chip')
+    if(chips.length !== 0)return
+
+    e.preventDefault()
+    e.stopPropagation()
+}
+formVincularDocente?.addEventListener('submit', ignoraVinculoVazio)
+formVincularAluno?.addEventListener('submit', ignoraVinculoVazio)

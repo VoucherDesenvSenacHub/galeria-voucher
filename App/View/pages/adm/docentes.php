@@ -134,7 +134,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     <span class="material-symbols-outlined modal-header-action btn-close" name="btn-close">close</span>
                 </div>
 
-                <form class="form-cadastro-pessoa" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
+                <form class="form-cadastro-pessoa" id="form-vincular-docente" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
                     <div class="modal-body">
                         <div>
                             <label for="pesquisar-pessoa">
@@ -146,7 +146,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
                         <div id="pessoas-selecionadas"></div>
 
-                        <input type="hidden" id="desvincular-docente-turma-id" name="turma_id" value="<?= $turmaId ?>">
+                        <input type="hidden" id="vincular-docente-turma-id" name="turma_id" value="<?= $turmaId ?>">
 
                     </div>
 
