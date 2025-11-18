@@ -235,13 +235,18 @@ class ProjetoModel extends BaseModel
                     ON PD.projeto_dia_id = IPD.projeto_dia_id
                 JOIN imagem I
                     ON IPD.imagem_id = I.imagem_id
-                WHERE T.turma_id = $turmaId
-                    AND P.projeto_id = $projetoId;"}
-        
-            $stmt = $this->pdo->prepare($sql);
-            $projetoDias = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-        return $projetoDias;
+                WHERE T.turma_id = :turmaId
+                AND P.projeto_id = :projetoId";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":turmaId", $turmaId, PDO::PARAM_INT);
+        $stmt->bindValue(":projetoId", $projetoId, PDO::PARAM_INT);
+
+        $stmt->execute(); 
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     /**
      * Exclui um projeto e todos os seus dados dependentes (dias, associações de imagens).
