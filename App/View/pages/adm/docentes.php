@@ -1,17 +1,17 @@
 <?php
 
-require_once __DIR__ . "/../../../../Config/App.php";
-require_once __DIR__ . "/../../../../Helpers/Redirect.php";
-require_once __DIR__ . "/../../../componentes/head.php";
-require_once __DIR__ . "/../../../../Service/AuthService.php";
-require_once __DIR__ . "/../../../../Model/DocenteModel.php";
-require_once __DIR__ . "/../../../componentes/adm/tabs-turma.php";
-require_once __DIR__ . "/../../../componentes/BreadCrumbs.php";
+require_once __DIR__ . "/../../../Config/Config.php";
+require_once __DIR__ . "/../../../Helpers/Redirect.php";
+require_once __DIR__ . "/../../componentes/head.php";
+require_once __DIR__ . "/../../../Service/AuthService.php";
+require_once __DIR__ . "/../../../Model/DocenteModel.php";
+require_once __DIR__ . "/../../componentes/adm/tabsTurma.php";
+require_once __DIR__ . "/../../componentes/BreadCrumbs.php";
 // VERIFICAÇÃO DE ACESSO
 
 $turmaId = Request::getId("turma_id");
 if (!$turmaId) {
-    Redirect::toAdm('listaTurmas.php'); // Usando a classe Redirect
+    Redirect::toAdm('turmas.php'); // Usando a classe Redirect
 }
 
 $paginaAtiva = 'turmas';
@@ -38,10 +38,10 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 </head>
 
 <body class="layout body-adm">
-    <?php require_once __DIR__ . "/../../../componentes/adm/sidebar.php"; ?>
+    <?php require_once __DIR__ . "/../../componentes/adm/sidebar.php"; ?>
     <?php
     $isAdmin = true;
-    require_once __DIR__ . "/../../../componentes/nav.php";
+    require_once __DIR__ . "/../../componentes/nav.php";
     ?>
 
     <main class="layout-main main-turmas-turmas">
@@ -61,7 +61,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         <?php endif; ?>
 
         <div class="topo-lista-alunos">
-            <?php buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroProfessor()\""); ?>
+            <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroProfessor()\""); ?>
             <div class="input-pesquisa-container">
                 <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                 <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
@@ -134,7 +134,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     <span class="material-symbols-outlined modal-header-action btn-close" name="btn-close">close</span>
                 </div>
 
-                <form class="form-cadastro-pessoa" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
+                <form class="form-cadastro-pessoa" id="form-vincular-docente" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
                     <div class="modal-body">
                         <div>
                             <label for="pesquisar-pessoa">
@@ -146,7 +146,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
                         <div id="pessoas-selecionadas"></div>
 
-                        <input type="hidden" name="turma_id" value="<?= $turmaId ?>">
+                        <input type="hidden" id="vincular-docente-turma-id" name="turma_id" value="<?= $turmaId ?>">
 
                     </div>
 

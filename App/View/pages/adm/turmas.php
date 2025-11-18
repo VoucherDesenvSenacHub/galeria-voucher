@@ -2,7 +2,7 @@
 
 $paginaAtiva = 'turmas';
 
-require_once __DIR__ . "/../../../Config/App.php";
+require_once __DIR__ . "/../../../Config/Config.php";
 require_once __DIR__ . "/../../componentes/head.php";
 require_once __DIR__ . "/../../../Service/AuthService.php";
 require_once __DIR__ . "/../../../Model/TurmaModel.php";
@@ -50,7 +50,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     'primary',
                     'NOVA TURMA',
                     false,
-                    Config::getDirAdm() . 'cadastroTurmas/cadastroTurmas.php'
+                    Config::getDirAdm() . 'cadastroTurmas.php'
                 );
                 ?>
 
@@ -91,7 +91,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         <td><?= htmlspecialchars($turma['NOME_POLO']) ?></td>
                                         <td class="acoes">
                                             <div class="acoes-container">
-                                                <a href="cadastroTurmas/cadastroTurmas.php?turma_id=<?= $turma['turma_id'] ?>"
+                                                <a href="cadastroTurmas.php?turma_id=<?= $turma['turma_id'] ?>"
                                                     title="Editar">
                                                     <span class="material-symbols-outlined" id="edite">edit</span>
                                                 </a>
