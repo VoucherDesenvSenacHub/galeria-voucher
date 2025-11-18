@@ -59,6 +59,7 @@
     border-radius: 50px;
     outline: none;
     box-sizing: border-box;
+    z-index: 100;
 }
 
 /* Botão */
