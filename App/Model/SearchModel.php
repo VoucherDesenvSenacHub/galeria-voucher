@@ -39,32 +39,34 @@ class SearchModel extends BaseModel
 
     public function searchPessoas($q)
     {
-        // Busca por pessoas (nome) e resolve turma via aluno_turma ou docente_turma
-        $sqlPessoas = "
-    SELECT 'pessoa' AS tipo,
-           COALESCE(at.turma_id, dt.turma_id) AS turma_id,
-           p.nome AS titulo,
-           NULL AS descricao,
-           p.perfil AS perfil
-    FROM pessoa p
-    LEFT JOIN aluno_turma at ON at.pessoa_id = p.pessoa_id
-    LEFT JOIN docente_turma dt ON dt.pessoa_id = p.pessoa_id
-    WHERE p.nome LIKE :q
-    ORDER BY p.nome ASC
-    LIMIT :lp
-";
-        $stmtP = $this->pdo->prepare($sqlPessoas);
+        $sql = "
+            SELECT 
+                'pessoa' AS tipo,
+                pt.turma_id AS turma_id,
+                p.nome AS titulo,
+                p.perfil AS perfil
+            FROM pessoa p
+            
+            -- pega pessoas que estão em alguma turma (aluno ou docente)
+            INNER JOIN (
+                SELECT pessoa_id, turma_id FROM aluno_turma
+                UNION
+                SELECT pessoa_id, turma_id FROM docente_turma
+            ) AS pt ON pt.pessoa_id = p.pessoa_id
+
+            WHERE p.nome LIKE :q
+            GROUP BY p.pessoa_id
+            ORDER BY p.nome ASC
+            LIMIT :lp
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
         $like = "%" . $q . "%";
-        $stmtP->bindValue(':q', $like, PDO::PARAM_STR);
-        $stmtP->bindValue(':lp', (int) $this->limitPessoas, PDO::PARAM_INT);
-        $stmtP->execute();
-        $pessoasRaw = $stmtP->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->bindValue(':q', $like, PDO::PARAM_STR);
+        $stmt->bindValue(':lp', (int)$this->limitPessoas, PDO::PARAM_INT);
+        $stmt->execute();
 
-        // Filtra pessoas sem turma associada
-        $pessoas = array_values(array_filter($pessoasRaw, function ($r) {
-            return !empty($r['turma_id']);
-        }));
-
-        return $pessoas;
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 }
