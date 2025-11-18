@@ -218,6 +218,36 @@ class ProjetoModel extends BaseModel
         }
     }
 
+    public function getProjetoDiaID(int $turmaId, int $projetoId){
+        $sql = "SELECT P.nome NOME_PROJETO, 
+                    P.descricao DESCRICAO_PROJETO, 
+                    P.link LINK_PROJETO, 
+                    PD.tipo_dia DIA_PROJETO,
+                    PD.descricao DESC_DIA_PROJETO,
+                    PD.projeto_dia_id ID_DIA_PROJETO,
+                    I.url URL_IMG_PROJETO
+                FROM projeto p
+                JOIN projeto_dia PD
+                    ON P.projeto_id = PD.projeto_id
+                JOIN TURMA T 
+                    ON P.turma_id = T.turma_id
+                JOIN imagem_projeto_dia IPD
+                    ON PD.projeto_dia_id = IPD.projeto_dia_id
+                JOIN imagem I
+                    ON IPD.imagem_id = I.imagem_id
+                WHERE T.turma_id = :turmaId
+                AND P.projeto_id = :projetoId";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":turmaId", $turmaId, PDO::PARAM_INT);
+        $stmt->bindValue(":projetoId", $projetoId, PDO::PARAM_INT);
+
+        $stmt->execute(); 
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     /**
      * Exclui um projeto e todos os seus dados dependentes (dias, associações de imagens).
      * Usa uma transação para garantir a integridade dos dados.
