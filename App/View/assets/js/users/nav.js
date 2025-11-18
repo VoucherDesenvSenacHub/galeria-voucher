@@ -77,15 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- BUSCA DINÂMICA NA NAVBAR (VISITANTES E LOGADOS) ---
-    const inputBusca = document.getElementById('pesquisar-pessoa');
-    const sugestoes = document.getElementById('sugestoes');
+    const inputBusca = document.getElementById('input_pesquisa-turma');
+    const sugestoes = document.getElementById('searchBarSugestions');
+    const container = document.getElementById('searchBarSugestionsContainer');
 
     if (inputBusca && sugestoes) {
         let controller;
         inputBusca.addEventListener('input', async () => {
             const termo = inputBusca.value.trim();
             sugestoes.innerHTML = '';
-            if (termo.length < 2) return;
 
             try {
                 if (controller) controller.abort();
@@ -99,11 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Renderiza itens
                 results.forEach(item => {
                     const div = document.createElement('div');
-                    div.className = 'nav-suggest-item';
-                    const label = item.tipo === 'turma' ? 'Turma' : 'Pessoa';
+                    div.className = 'suggested-item';
                     div.innerHTML = `
-                        <strong>[${label}]</strong> ${item.titulo}
-                        ${item.descricao ? `<small style="display:block;color:#666;">${item.descricao.substring(0, 80)}...</small>` : ''}
+                        <span>${item.titulo}</span>
+                        <span>${item.descricao.length > 80 ? item.descricao.substring(0, 80) + '...' : item.descricao}</span>
                     `;
                     div.style.cursor = 'pointer';
                     div.addEventListener('click', () => {
@@ -112,17 +111,67 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     sugestoes.appendChild(div);
                 });
+
+                if (results.length > 0) {
+                    container.classList.remove("d-none")
+                } else {
+                    container.classList.add("d-none");
+                }
             } catch (e) {
                 // Silencia abortos; loga outros erros
                 if (e.name !== 'AbortError') console.error(e);
             }
         });
 
+
         // Fecha sugestões ao clicar fora
         document.addEventListener('click', (e) => {
             if (!sugestoes.contains(e.target) && e.target !== inputBusca) {
+                container.classList.add("d-none")
                 sugestoes.innerHTML = '';
             }
         });
+
     }
 });
+
+
+// --- BUSCA DE TURMAS (TALVEZ PROJETOS) NA NAVBAR ---
+
+
+
+const inputPesquisa = document.querySelector('#input_pesquisa-turma');
+//ver se pode ser reutilizado essas sugestões, para aparecer ao pesquisar turmmas na NavBar
+
+// const sugestoes = document.querySelector("#sugestoes");
+
+inputPesquisa.addEventListener('input', (event) => {
+    const busca = event.target.value;
+    const url = `/galeria-voucher/app/Controller/${endpoint}`;
+
+    fetch(`${url}?busca=${encodeURIComponent(busca)}`)
+        .then(res => res.json())
+        .then(dados => {
+            console.log(dados)
+            // sugestoes.innerHTML = "";
+            // dados.forEach(item => {
+            //     const div = document.createElement("div");
+            //     div.className = 'sugestao-item';
+            //     div.textContent = item.nome;
+
+            //     div.dataset.id = item.pessoa_id;
+
+            //     div.onclick = function () {
+            //         const id = this.dataset.id;
+            //         const nome = this.textContent;
+            //         adicionarPessoa(id, nome);
+            //     };
+            //     sugestoes.appendChild(div);
+            // }
+            // );
+        })
+
+})
+
+
+
