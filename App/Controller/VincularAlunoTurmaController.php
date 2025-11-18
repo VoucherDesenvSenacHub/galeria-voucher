@@ -31,7 +31,7 @@ class VincularAlunoTurmaController
         foreach ($pessoaIds as $pessoaId) {
             if ($turmaModel->existeVinculoPessoaTurma((int)$pessoaId, (int)$turmaId)) {
                 $sucesso = false;
-                break;
+                continue;
             }
 
             if (!$turmaModel->VincularAlunoComTurma((int) $pessoaId, (int) $turmaId)) {

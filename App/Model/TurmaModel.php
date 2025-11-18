@@ -514,12 +514,17 @@ class TurmaModel extends BaseModel
             FROM docente_turma 
             WHERE pessoa_id = :id_pessoa 
               AND turma_id = :id_turma
+            UNION
+            SELECT 1 
+            FROM aluno_turma 
+            WHERE pessoa_id = :id_pessoa 
+              AND turma_id = :id_turma
         )';
-    
+
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             ':id_pessoa' => $id_pessoa,
-            ':id_turma'  => $id_turma
+            ':id_turma' => $id_turma
         ]);
 
         return (bool) $stmt->fetchColumn();
