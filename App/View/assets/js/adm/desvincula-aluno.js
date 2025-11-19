@@ -1,13 +1,14 @@
 function confirmarDesvinculacao(pessoaId, turmaId,  nomeAluno ) {  
     const modalAlunoRemover = document.getElementById("modal-desvincular-aluno")  
-    const inputAlunoId = document.querySelector("input[name='pessoa_id']")
-    const inputTurmaId = document.querySelector("input[name='turma_id']")
+    if (!modalAlunoRemover) return;
+    
+    const inputAlunoId = modalAlunoRemover.querySelector("input[name='pessoa_id']")
+    const inputTurmaId = modalAlunoRemover.querySelector("input[name='turma_id']")
     const nomeAlunoinsert = document.getElementById("aluno-confirmacao")    
 
-
-    nomeAlunoinsert.innerHTML = nomeAluno
-    inputTurmaId.value =  turmaId
-    inputAlunoId.value = pessoaId
+    if (nomeAlunoinsert) nomeAlunoinsert.innerHTML = nomeAluno
+    if (inputTurmaId) inputTurmaId.value = turmaId
+    if (inputAlunoId) inputAlunoId.value = pessoaId
     modalAlunoRemover.style.display = "block";
 }
 
