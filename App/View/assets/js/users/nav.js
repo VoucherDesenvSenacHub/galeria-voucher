@@ -145,7 +145,7 @@ const inputPesquisa = document.querySelector('#input_pesquisa-turma');
 
 // const sugestoes = document.querySelector("#sugestoes");
 
-inputPesquisa.addEventListener('input', (event) => {
+inputPesquisa?.addEventListener('input', (event) => {
     const busca = event.target.value;
     const url = `/galeria-voucher/app/Controller/${endpoint}`;
 
