@@ -41,14 +41,18 @@ class DocenteModel extends BaseModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function buscarDocentesParaVincular($nome)
+    public function buscarDocentesParaVincular(string $nome, int $turmaId)
     {
         $query = "SELECT p.pessoa_id, p.nome 
                   FROM pessoa p 
-                  where nome LIKE :nome and p.perfil = 'professor'";
+                  where nome LIKE :nome 
+                  AND p.perfil = 'professor'
+                  AND p.pessoa_id NOT IN (SELECT pessoa_id FROM docente_turma dt where dt.turma_id = :turma_id)
+                  ";
         
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':nome', "%$nome%" );
+        $stmt->bindValue(':turma_id', $turmaId );
 
         $stmt->execute();
         return $stmt->fetchAll();
