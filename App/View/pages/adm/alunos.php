@@ -19,10 +19,19 @@ $currentTab = 'Alunos';
 $alunos = [];
 $isEditMode = true;
 
+$alunoModel = new AlunoModel();
+$termoPesquisa = $_GET['pesquisa'] ?? '';
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$alunosPorPagina = 10;
+$offset = ($paginaAtual - 1) * $alunosPorPagina;
+
 try {
-    $alunoModel = new AlunoModel();
-    $alunos = $alunoModel->buscarAlunosPorTurma($turmaId);
+    $totalAlunos = $alunoModel->contarAlunosPorTurma($turmaId, $termoPesquisa);
+    $totalPaginas = ceil($totalAlunos / $alunosPorPagina);
+    $alunos = $alunoModel->buscarAlunosPorTurmaPaginado($turmaId, $alunosPorPagina, $offset, $termoPesquisa);
 } catch (Exception $e) {
+    $alunos = [];
+    $totalPaginas = 0;
     error_log("Erro ao buscar alunos: " . $e->getMessage());
     $error_message = "Erro ao carregar alunos.";
 }
@@ -65,10 +74,16 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
         <div class="topo-lista-alunos">
             <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroAluno()\""); ?>
-            <div class="input-pesquisa-container">
-                <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
-                <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
-            </div>
+            <form method="GET" action="">
+                <input type="hidden" name="turma_id" value="<?= $turmaId ?>">
+                <div class="input-pesquisa-container">
+                <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar por nome" value="<?= htmlspecialchars($termoPesquisa) ?>">
+                    <button type="submit" class="search-button">
+                        <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa"
+                        class="icone-lupa-img">
+                    </button>
+                </div>
+            </form>
         </div>
         <div class="tabela-principal-lista-alunos">
             <div class="tabela-container-lista-alunos">
@@ -101,6 +116,31 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                         <?php endif; ?>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="paginacao-container">
+                <?php if ($totalPaginas > 1): ?>
+                    <div class="paginacao">
+                        <a href="?turma_id=<?= $turmaId ?>&pagina=1<?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&laquo;</a>
+                        
+                        <?php if ($paginaAtual > 1): ?>
+                            <a href="?turma_id=<?= $turmaId ?>&pagina=<?= $paginaAtual - 1 ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&lsaquo;</a>
+                        <?php endif; ?>
+
+                        <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                            <a href="?turma_id=<?= $turmaId ?>&pagina=<?= $i ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" 
+                               class="paginacao-item <?= ($i == $paginaAtual) ? 'paginacao-ativa' : '' ?>">
+                                <?= $i ?>
+                            </a>
+                        <?php endfor; ?>
+
+                        <?php if ($paginaAtual < $totalPaginas): ?>
+                            <a href="?turma_id=<?= $turmaId ?>&pagina=<?= $paginaAtual + 1 ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&rsaquo;</a>
+                        <?php endif; ?>
+
+                        <a href="?turma_id=<?= $turmaId ?>&pagina=<?= $totalPaginas ?><?= !empty($termoPesquisa) ? '&pesquisa=' . urlencode($termoPesquisa) : '' ?>" class="paginacao-item">&raquo;</a>
+                    </div>
+                <?php endif; ?>
             </div>
 
             <section class="section_modal">
