@@ -30,7 +30,7 @@ class SearchController extends BaseController
         try {
             $q = $this->getParam('q', '');
             
-            if (empty($q) || mb_strlen($q) < 2) {
+            if (empty($q)) {
                 $this->toJson(['results' => []]);
             }
             
@@ -53,7 +53,7 @@ class SearchController extends BaseController
                     'tipo' => 'pessoa',
                     'titulo' => $p['titulo'],
                     'turma_id' => (int)$p['turma_id'],
-                    'descricao' => null
+                    'descricao' => $p['perfil']
                 ];
             }
 
@@ -71,3 +71,6 @@ class SearchController extends BaseController
         return $_GET[$key] ?? $default;
     }
 }
+
+$searchController = new SearchController();
+$searchController->gerenciarRequisicao();
