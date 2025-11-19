@@ -45,7 +45,7 @@
                 overflow-y: auto;
                 padding: 8px;
                 background-color: #d8dbd6;
-                opacity: .9;
+                /* opacity: .9; */
 
                 .suggested-item {
 
