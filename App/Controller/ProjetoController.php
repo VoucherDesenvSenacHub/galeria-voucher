@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../Config/App.php';
+require_once __DIR__ . '/../Config/Config.php';
 require_once __DIR__ . '/../Helpers/Redirect.php';
 require_once __DIR__ . '/../Helpers/Request.php';
 require_once __DIR__ . '/../Model/ProjetoModel.php';
@@ -27,7 +27,7 @@ class ProjetoController
     public function salvar()
     {
         // Inicio Validações
-        ValidarLoginController::validarAdminRedirect(Config::get('DIR_ADM') . 'login.php');
+        ValidarLoginController::validarAdminRedirect(Config::getDirAdm() . 'login.php');
 
         $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
         $nomeProjeto = trim(Request::post('nome_projeto', ''));
@@ -102,7 +102,7 @@ class ProjetoController
                         $this->imagemModel->deletarImagem($dia['imagem_id']);
                     }
                 }
-                Redirect::toAdm('cadastroTurmas/Projeto.php', ['id' => $turmaId]);
+                Redirect::toAdm('cadastroProjetos.php', ['turma_id' => $turmaId]);
                 exit;
             }
 
@@ -110,8 +110,8 @@ class ProjetoController
 
             $this->projetoModel->getPDO()->commit();
 
-            $_SESSION['sucesso_projeto'] = "Projeto '{$nomeProjeto}' cadastrado com sucesso!";
-            Redirect::toAdm('cadastroTurmas/CadastroProjetos.php', ['id' => $turmaId]);
+            $_SESSION['sucesso_projeto'] = "Projeto $nomeProjeto cadastrado com sucesso!";
+            Redirect::toAdm('projetos.php', ['turma_id' => $turmaId]);
 
         } catch (\Exception $e) {
             $this->projetoModel->getPDO()->rollBack();
@@ -119,19 +119,65 @@ class ProjetoController
         }
         // Fim salvamentos
     }
+
+    public function excluir()
+    {
+        // Validação de login (pode ajustar conforme necessário)
+        ValidarLoginController::validarAdminRedirect(Config::getDirAdm() . 'login.php');
+
+        $projetoId = filter_input(INPUT_POST, 'projeto_id', FILTER_VALIDATE_INT);
+        $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT); // Para redirecionar de volta
+
+        // Define os parâmetros de redirecionamento
+        $redirectParams = $turmaId ? ['turma_id' => $turmaId] : [];
+
+        if (!$projetoId) {
+            $_SESSION['erro_projeto'] = "ID do projeto inválido.";
+            Redirect::toAdm('projetos.php', $redirectParams);
+            return;
+        }
+
+        // Chama o novo método do model
+        $resultado = $this->projetoModel->excluirProjeto($projetoId);
+
+        if ($resultado) {
+            $_SESSION['sucesso_projeto'] = "Projeto excluído com sucesso!";
+        } else {
+            $_SESSION['erro_projeto'] = "Erro ao excluir o projeto.";
+        }
+
+        // Redireciona de volta para a lista de projetos da turma
+        Redirect::toAdm('projetos.php', $redirectParams);
+    }
+
 }
 
-$action = Request::post('action');
+$action = Request::post('action'); // Ações de salvar e excluir vêm via POST
 
-if (isset($action) && $action === 'salvar') {
+if (isset($action)) {
     $controller = new ProjetoController();
-    $controller->salvar();
-} else {
-    $_SESSION['erro_projeto'] = "Ação desconhecida.";
-    $turmaIdFallback = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-    if ($turmaIdFallback) {
-        Redirect::toAdm('cadastroTurmas/CadastroProjetos.php', ['id' => $turmaIdFallback]);
+
+    if ($action === 'salvar') {
+        $controller->salvar();
+    } elseif ($action === 'excluir') {
+        $controller->excluir(); // Adiciona a rota para a exclusão
     } else {
-        Redirect::toAdm('listaTurmas.php');
+        // Ação POST desconhecida
+        $_SESSION['erro_projeto'] = "Ação POST desconhecida.";
+        $turmaIdFallback = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        if ($turmaIdFallback) {
+            Redirect::toAdm('projetos.php', ['turma_id' => $turmaIdFallback]);
+        } else {
+            Redirect::toAdm('turmas.php');
+        }
+    }
+} else {
+    // Nenhuma ação POST (provavelmente um GET indevido na raiz do controller)
+    $_SESSION['erro_projeto'] = "Ação desconhecida.";
+    $turmaIdFallback = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT); // Tenta pegar de GET
+    if ($turmaIdFallback) {
+        Redirect::toAdm('projetos.php', ['turma_id' => $turmaIdFallback]);
+    } else {
+        Redirect::toAdm('turmas.php');
     }
 }

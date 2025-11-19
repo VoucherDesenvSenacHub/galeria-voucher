@@ -128,7 +128,7 @@ try {
                             $turmas_slice1 = array_slice($turmas, 0, 6);
                             foreach ($turmas_slice1 as $turma): ?>
                                 <div class='image-turma'>
-                                    <a href="<?= Config::getDirUser() ?>galeria-turma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
+                                    <a href="<?= Config::getDirUser() ?>galeriaTurma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
                                         <img src="<?= Config::getAppUrl() . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
                                     </a>
                                 </div>
@@ -140,7 +140,7 @@ try {
                             $turmas_slice2 = array_slice($turmas, 6, 5);
                             foreach ($turmas_slice2 as $turma): ?>
                                 <div class='image-turma'>
-                                    <a href="<?= Config::getDirUser() ?>galeria-turma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
+                                    <a href="<?= Config::getDirUser() ?>galeriaTurma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
                                         <img src="<?= Config::getAppUrl() . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
                                     </a>
                                 </div>
@@ -152,7 +152,7 @@ try {
                             $turmas_slice3 = array_slice($turmas, 11, 6);
                             foreach ($turmas_slice3 as $turma): ?>
                                 <div class='image-turma'>
-                                    <a href="<?= Config::getDirUser() ?>galeria-turma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
+                                    <a href="<?= Config::getDirUser() ?>galeriaTurma.php?id=<?= htmlspecialchars($turma['turma_id']) ?>">
                                         <img src="<?= Config::getAppUrl() . htmlspecialchars($turma['imagem_url']) ?>" alt="Imagem da <?= htmlspecialchars($turma['nome_turma']) ?>">
                                     </a>
                                 </div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../../Config/App.php'; // Usa App.php
+require_once __DIR__ . '/../../Config/Config.php';
 require_once __DIR__ . '/../../Config/Database.php';
 require_once __DIR__ . '/../../Model/UsuarioModel.php';
 
@@ -18,7 +18,7 @@ $usuario = $usuarioModel->validarLogin($email, $senha);
 if ($usuario) {
     $_SESSION['usuario'] = $usuario;
     if (in_array($usuario['perfil'], ['adm', 'professor'])) {
-        header('Location: ' . Config::getDirAdm() . 'home-adm.php');
+        header('Location: ' . Config::getDirAdm() . 'homeAdm.php');
     } else {
         header('Location: ' . Config::getDirUser() . 'home.php');
     }

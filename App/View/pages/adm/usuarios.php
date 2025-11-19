@@ -41,7 +41,7 @@ try {
     <?php BreadCrumbs::gerarBreadCrumbs()?>
     <div class="container-lista-alunos">
       <div class="topo-lista-alunos">
-        <?php buttonComponent('primary', 'CADASTRAR', false, Config::getDirAdm() . 'cadastrar-usuarios.php'); ?>
+        <?php buttonComponent('primary', 'CADASTRAR', false, Config::getDirAdm() . 'cadastroUsuarios.php'); ?>
 
         <form method="GET" action="">
           <div class="input-pesquisa-container">
@@ -80,7 +80,7 @@ try {
                           <td><?= htmlspecialchars(ucfirst($usuario['tipo'])) ?></td>
                           <td><?= htmlspecialchars($usuario['polo'] ?? 'Sem polo') ?></td>
                           <td class="acoes">
-                              <a href="cadastrar-usuarios.php?acao=editar&id=<?= $usuario['pessoa_id'] ?>">
+                              <a href="cadastroUsuarios.php?acao=editar&id=<?= $usuario['pessoa_id'] ?>">
                                   <span class="material-symbols-outlined acao-edit" title="Editar">edit</span>
                               </a>
                               <a href="<?= Config::getAppUrl() ?>App/Controller/PessoaController.php?acao=excluir&id=<?= $usuario['pessoa_id'] ?>&perfil=<?= $usuario['tipo']?>"
