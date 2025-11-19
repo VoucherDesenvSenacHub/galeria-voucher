@@ -1,18 +1,26 @@
-
 const modalVincularAluno = document.querySelector("#modal-cadastro-aluno");
 const modalVincularProfessor = document.querySelector("#modal-cadastro-professor");
+const inputDocenteTurmaId = document.querySelector('#vincular-docente-turma-id');
 const closeButton = document.querySelector('.btn-close');
-const inputPesquisa = document.querySelector('input[name="pesquisar-pessoa"]');
+const inputPesquisaPessoa = document.querySelector('input[name="pesquisar-pessoa"]');
 const sugestoes = document.querySelector("#sugestoes");
 const selecionados = document.querySelector("#pessoas-selecionadas");
 const adicionados = new Set();
+const formVincularDocente = document.getElementById('form-vincular-docente')
+const formVincularAluno = document.getElementById('form-vincular-aluno')
+
+let currentEndpoint = null;
 
 function abrirModalCadastroProfessor() {
     modalVincularProfessor.style.display = "block";
+    currentEndpoint = 'BuscaDocenteController.php';
+    buscarPessoas('');
 }
 
 function abrirModalCadastroAluno() {
     modalVincularAluno.style.display = "block";
+    currentEndpoint = 'BuscaAlunoController.php';
+    buscarPessoas(''); 
 }
 
 closeButton.addEventListener('click', () => {
@@ -20,37 +28,48 @@ closeButton.addEventListener('click', () => {
     if (modalVincularProfessor) modalVincularProfessor.style.display = "none";
     sugestoes.innerHTML = "";
     selecionados.innerHTML = "";
-    inputPesquisa.value = "";
+    inputPesquisaPessoa.value = "";
     adicionados.clear();
+    currentEndpoint = null;
 });
 
-inputPesquisa.addEventListener('input', (event) => {
-    const busca = event.target.value;
-    const endpoint = modalVincularAluno ? 'BuscaAlunoController.php' : 'BuscaDocenteController.php';
-    const url = `/galeria-voucher/app/Controller/${endpoint}`;
+
     
-    fetch(`${url}?busca=${encodeURIComponent(busca)}`)
-        .then(res => res.json())
-        .then(dados => {
-            sugestoes.innerHTML = "";
-            dados.forEach(item => {
-                const div = document.createElement("div");
-                div.className = 'sugestao-item';
-                div.textContent = item.nome;
+function buscarPessoas(busca = '') {
+    if (!currentEndpoint) return;
+    const url = `/galeria-voucher/app/Controller/${currentEndpoint}`;
+    const turmaId = inputDocenteTurmaId && inputDocenteTurmaId?.value ? `&turma_id=${inputDocenteTurmaId.value}` : ''
 
-                div.dataset.id = item.pessoa_id;
+fetch(`${url}?busca=${encodeURIComponent(busca)}${turmaId}`)
+    .then(res => res.json())
+    .then(dados => {
+        sugestoes.innerHTML = "";
+        dados.forEach(item => {
+            const div = document.createElement("div");
+            div.className = 'sugestao-item';
+            div.textContent = item.nome;
 
-                div.onclick = function () {
-                    const id = this.dataset.id;
-                    const nome = this.textContent;
-                    adicionarPessoa(id, nome);
-                };
-                sugestoes.appendChild(div);
-            }
-            );
-        })
+            div.dataset.id = item.pessoa_id;
 
-})
+            div.onclick = function () {
+                const id = this.dataset.id;
+                const nome = this.textContent;
+                adicionarPessoa(id, nome);
+            };
+            sugestoes.appendChild(div);
+        });
+    })
+    .catch(err => {
+        console.error('Erro ao buscar pessoas:', err);
+        sugestoes.innerHTML = "";
+    });
+}
+
+inputPesquisaPessoa?.addEventListener('input', (event) => {
+    const busca = event.target.value;
+    buscarPessoas(busca);
+});
+
 
 function adicionarPessoa(id, nome) {
     if (adicionados.has(id)) {
@@ -60,7 +79,7 @@ function adicionarPessoa(id, nome) {
 
     adicionados.add(id);
 
-    inputPesquisa.value = "";
+    inputPesquisaPessoa.value = "";
     sugestoes.innerHTML = "";
 
     const chip = document.createElement("div");
@@ -80,3 +99,14 @@ function adicionarPessoa(id, nome) {
 
     selecionados.appendChild(chip);
 }
+
+
+const ignoraVinculoVazio = (e) => {
+    const chips = document.getElementsByClassName('chip')
+    if(chips.length !== 0)return
+
+    e.preventDefault()
+    e.stopPropagation()
+}
+formVincularDocente?.addEventListener('submit', ignoraVinculoVazio)
+formVincularAluno?.addEventListener('submit', ignoraVinculoVazio)

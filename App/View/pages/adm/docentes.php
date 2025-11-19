@@ -61,7 +61,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
         <?php endif; ?>
 
         <div class="topo-lista-alunos">
-            <?php buttonComponent('primary', 'VINCULAR DOCENTE', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroProfessor()\""); ?>
+            <?php buttonComponent('primary', 'VINCULAR', false, null, null, "id='btn-cadastrar-pessoa' onclick=\"abrirModalCadastroProfessor()\""); ?>
             <div class="input-pesquisa-container">
                 <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou polo">
                 <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
@@ -134,7 +134,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                     <span class="material-symbols-outlined modal-header-action btn-close" name="btn-close">close</span>
                 </div>
 
-                <form class="form-cadastro-pessoa" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
+                <form class="form-cadastro-pessoa" id="form-vincular-docente" method="POST" action="/galeria-voucher/App/Controller/VincularDocenteTurmaController.php">
                     <div class="modal-body">
                         <div>
                             <label for="pesquisar-pessoa">
@@ -146,7 +146,7 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
 
                         <div id="pessoas-selecionadas"></div>
 
-                        <input type="hidden" name="turma_id" value="<?= $turmaId ?>">
+                        <input type="hidden" id="vincular-docente-turma-id" name="turma_id" value="<?= $turmaId ?>">
 
                     </div>
 

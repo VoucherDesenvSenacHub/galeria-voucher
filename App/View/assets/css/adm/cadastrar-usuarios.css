@@ -32,7 +32,6 @@ main.conteudo-cadastro::-webkit-scrollbar-thumb:hover {
 
 
 .form-dados {
-  padding: 20px;
   display: grid;
   grid-template-columns: 6fr 4fr;
   gap: 10px;

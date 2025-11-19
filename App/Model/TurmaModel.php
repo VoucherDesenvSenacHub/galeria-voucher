@@ -177,7 +177,6 @@ class TurmaModel extends BaseModel
         }
     }
 
-
     /**
      * Exclui uma turma e todos os seus registros dependentes.
      * Usa uma transação para garantir a integridade dos dados.
@@ -187,31 +186,56 @@ class TurmaModel extends BaseModel
     public function excluirTurma(int $id): bool
     {
         try {
-            // Inicia uma transação. Todas as queries a seguir devem ser bem-sucedidas.
-            // Se qualquer uma falhar, todas as anteriores são desfeitas (rollback).
+            // Inicia uma transação.
             $this->pdo->beginTransaction();
 
-            // 1. Exclui as associações de alunos com esta turma.
+            // 1. Buscar todos os projetos (projeto_id) associados à turma
+            $stmtProjIds = $this->pdo->prepare("SELECT projeto_id FROM projeto WHERE turma_id = :id");
+            $stmtProjIds->execute([':id' => $id]);
+            $projectIds = $stmtProjIds->fetchAll(PDO::FETCH_COLUMN);
+
+            if (!empty($projectIds)) {
+                // Cria placeholders para a cláusula IN ()
+                $projectPlaceholders = rtrim(str_repeat('?,', count($projectIds)), ',');
+
+                // 2. Buscar todos os dias (projeto_dia_id) desses projetos
+                $stmtDiaIds = $this->pdo->prepare("SELECT projeto_dia_id FROM projeto_dia WHERE projeto_id IN ($projectPlaceholders)");
+                $stmtDiaIds->execute($projectIds);
+                $diaIds = $stmtDiaIds->fetchAll(PDO::FETCH_COLUMN);
+
+                if (!empty($diaIds)) {
+                    // 3. Excluir os registros "netos" (imagem_projeto_dia)
+                    $diaPlaceholders = rtrim(str_repeat('?,', count($diaIds)), ',');
+                    $stmtImgDia = $this->pdo->prepare("DELETE FROM imagem_projeto_dia WHERE projeto_dia_id IN ($diaPlaceholders)");
+                    $stmtImgDia->execute($diaIds);
+                }
+
+                // 4. Excluir os registros "filhos" (projeto_dia)
+                $stmtDia = $this->pdo->prepare("DELETE FROM projeto_dia WHERE projeto_id IN ($projectPlaceholders)");
+                $stmtDia->execute($projectIds);
+            }
+
+            // 5. Excluir associações de alunos
             $stmt1 = $this->pdo->prepare("DELETE FROM aluno_turma WHERE turma_id = :id");
             $stmt1->execute([':id' => $id]);
 
-            // 2. Exclui as associações de docentes com esta turma.
+            // 6. Excluir associações de docentes
             $stmt2 = $this->pdo->prepare("DELETE FROM docente_turma WHERE turma_id = :id");
             $stmt2->execute([':id' => $id]);
 
-            // 3. Exclui os projetos associados a esta turma.
+            // 7. Excluir os projetos (agora órfãos)
             $stmt3 = $this->pdo->prepare("DELETE FROM projeto WHERE turma_id = :id");
             $stmt3->execute([':id' => $id]);
 
-            // 4. Finalmente, exclui a própria turma.
+            // 8. Finalmente, excluir a própria turma
             $stmtFinal = $this->pdo->prepare("DELETE FROM turma WHERE turma_id = :id");
             $stmtFinal->execute([':id' => $id]);
 
-            // Se todas as queries foram executadas com sucesso, confirma as alterações no banco.
+            // Se tudo deu certo, confirma as alterações.
             $this->pdo->commit();
             return true;
         } catch (PDOException $e) {
-            // Se qualquer query falhar, desfaz todas as operações feitas desde o beginTransaction().
+            // Se algo deu errado, desfaz tudo.
             $this->pdo->rollBack();
             error_log("Erro ao excluir turma: " . $e->getMessage());
             return false;
@@ -417,8 +441,14 @@ class TurmaModel extends BaseModel
      * @param int $turmaId O ID da turma.
      * @return array Array com projetos da turma e suas informações relacionadas.
      */
+    /**
+     * Busca projetos de uma turma específica com descrições completas.
+     * @param int $turmaId O ID da turma.
+     * @return array Array com projetos da turma e suas informações relacionadas.
+     */
     public function buscarProjetosPorTurma(int $turmaId): array
     {
+        // Query corrigida para refletir o novo schema (projeto_dia e imagem_projeto_dia)
         $query = "
             SELECT 
                 pr.projeto_id,
@@ -427,8 +457,8 @@ class TurmaModel extends BaseModel
                 pr.link AS LINK_PROJETO,
                 t.nome AS NOME_TURMA,
                 p.nome AS NOME_POLO,
-                i.url AS URL_IMAGEM,
-                i.descricao AS DESCRICAO_IMAGEM
+                MIN(i.url) AS URL_IMAGEM, -- Pega a primeira imagem encontrada para o projeto
+                MIN(i.descricao) AS DESCRICAO_IMAGEM
             FROM 
                 projeto pr
             JOIN 
@@ -436,11 +466,15 @@ class TurmaModel extends BaseModel
             JOIN 
                 polo p ON t.polo_id = p.polo_id
             LEFT JOIN 
-                imagem_projeto ip ON pr.projeto_id = ip.projeto_id
+                projeto_dia pd ON pr.projeto_id = pd.projeto_id -- Junção com a nova tabela projeto_dia
             LEFT JOIN 
-                imagem i ON ip.imagem_id = i.imagem_id
+                imagem_projeto_dia ipd ON pd.projeto_dia_id = ipd.projeto_dia_id -- Junção com a tabela renomeada
+            LEFT JOIN 
+                imagem i ON ipd.imagem_id = i.imagem_id
             WHERE 
                 t.turma_id = :turmaId
+            GROUP BY -- Agrupa para evitar duplicatas de projetos
+                pr.projeto_id, pr.nome, pr.descricao, pr.link, t.nome, p.nome
             ORDER BY 
                 pr.nome ASC
         ";
@@ -453,8 +487,8 @@ class TurmaModel extends BaseModel
 
     public function VincularDocenteComTurma(int $id_pessoa, int $id_turma)
     {
-        $sql = 'INSERT INTO docente_turma (pessoa_id, turma_id, data_associacao) 
-                VALUES (:id_pessoa, :id_turma, NOW())';
+        $sql = 'INSERT INTO docente_turma (pessoa_id, turma_id, data_associacao)
+            VALUES (:id_pessoa, :id_turma, NOW())';
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([
             ':id_pessoa' => $id_pessoa,
@@ -471,5 +505,28 @@ class TurmaModel extends BaseModel
             ':id_pessoa' => $id_pessoa,
             ':id_turma' => $id_turma
         ]);
+    }
+
+    public function existeVinculoPessoaTurma(int $id_pessoa, int $id_turma): bool
+    {
+        $sql = 'SELECT EXISTS (
+            SELECT 1 
+            FROM docente_turma 
+            WHERE pessoa_id = :id_pessoa 
+              AND turma_id = :id_turma
+            UNION
+            SELECT 1 
+            FROM aluno_turma 
+            WHERE pessoa_id = :id_pessoa 
+              AND turma_id = :id_turma
+        )';
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':id_pessoa' => $id_pessoa,
+            ':id_turma' => $id_turma
+        ]);
+
+        return (bool) $stmt->fetchColumn();
     }
 }
