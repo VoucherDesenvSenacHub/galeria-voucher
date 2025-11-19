@@ -31,6 +31,7 @@ if ($projetoId != null) {
     $projetoModel = new ProjetoModel();
     $dados = $projetoModel->getProjetoDiaID($turmaId, $projetoId);
 
+
     if (!empty($dados)) {
         $nomeProjeto = $dados[0]['NOME_PROJETO'] ?? '';
         $descricaoProjeto = $dados[0]['DESCRICAO_PROJETO'] ?? '';
@@ -40,7 +41,10 @@ if ($projetoId != null) {
             $tipo = $d['DIA_PROJETO']; // I, P ou E
             $dias[$tipo]['descricao'] = $d['DESC_DIA_PROJETO'] ?? '';
             $dias[$tipo]['imagem'] = $d['URL_IMG_PROJETO'] ?? '';
+            $dias[$tipo]['img_id'] = $d['IMG_ID'] ?? '';
+            $dias[$tipo]['id'] = $d['ID_DIA_PROJETO'] ?? '';
         }
+        
     }
 }
 
@@ -89,8 +93,22 @@ require_once __DIR__ . "/../../componentes/nav.php";
         <form class="form-container-projeto" method="POST"
             action="<?= Config::getAppUrl() ?>App/Controller/ProjetoController.php" enctype="multipart/form-data">
 
-            <input type="hidden" name="action" value="salvar">
+            <!-- INPUTS HIDDEN CORRIGIDOS -->
+            <input type="hidden" name="action" value="<?= $projetoId ? 'editar' : 'salvar' ?>">
+            <input type="hidden" name="projeto_id" value="<?= htmlspecialchars($projetoId) ?>">
             <input type="hidden" name="turma_id" value="<?= htmlspecialchars($turmaId) ?>">
+
+            <!-- DIA I -->
+            <input type="hidden" name="id_dia_projeto_i" value="<?= htmlspecialchars($dias['I']['id'] ?? '') ?>">
+            <input type="hidden" name="img_id_i" value="<?= htmlspecialchars($dias['I']['img_id'] ?? '') ?>">
+
+            <!-- DIA P -->
+            <input type="hidden" name="id_dia_projeto_p" value="<?= htmlspecialchars($dias['P']['id'] ?? '') ?>">
+            <input type="hidden" name="img_id_p" value="<?= htmlspecialchars($dias['P']['img_id'] ?? '') ?>">
+
+            <!-- DIA E -->
+            <input type="hidden" name="id_dia_projeto_e" value="<?= htmlspecialchars($dias['E']['id'] ?? '') ?>">
+            <input type="hidden" name="img_id_e" value="<?= htmlspecialchars($dias['E']['img_id'] ?? '') ?>">
 
             <div class="span-full">
                 <div>

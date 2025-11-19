@@ -219,13 +219,16 @@ class ProjetoModel extends BaseModel
     }
 
     public function getProjetoDiaID(int $turmaId, int $projetoId){
-        $sql = "SELECT P.nome NOME_PROJETO, 
+        $sql = "SELECT
+                	p.projeto_id ID_PROJETO,
+                	P.nome NOME_PROJETO, 
                     P.descricao DESCRICAO_PROJETO, 
-                    P.link LINK_PROJETO, 
+                    P.link LINK_PROJETO,
                     PD.tipo_dia DIA_PROJETO,
                     PD.descricao DESC_DIA_PROJETO,
                     PD.projeto_dia_id ID_DIA_PROJETO,
-                    I.url URL_IMG_PROJETO
+                    I.url URL_IMG_PROJETO,
+                    I.imagem_id IMG_ID
                 FROM projeto p
                 JOIN projeto_dia PD
                     ON P.projeto_id = PD.projeto_id

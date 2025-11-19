@@ -120,6 +120,91 @@ class ProjetoController
         // Fim salvamentos
     }
 
+   public function editar()
+    {
+        // -----------------------------
+        // CAMPOS BÁSICOS
+        // -----------------------------
+        $turmaId   = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
+        $projetoId = filter_input(INPUT_POST, 'projeto_id', FILTER_VALIDATE_INT);
+
+        $nomeProjeto      = trim(Request::post('nome_projeto', ''));
+        $descricaoProjeto = trim(Request::post('descricao_projeto', ''));
+        $linkProjeto      = trim(Request::post('link_projeto', ''));
+
+        // -----------------------------
+        // FUNÇÃO AUXILIAR
+        // -----------------------------
+        $getInt = function ($name) {
+            $raw = filter_input(INPUT_POST, $name, FILTER_DEFAULT);
+
+            return ($raw === '' || $raw === null)
+                ? null
+                : filter_var($raw, FILTER_VALIDATE_INT);
+        };
+
+        // -----------------------------
+        // IDS DE DIA E IMAGENS EXISTENTES
+        // -----------------------------
+        $id_dia_projeto_i = $getInt('id_dia_projeto_i');
+        $img_id_i         = $getInt('img_id_i');
+
+        $id_dia_projeto_p = $getInt('id_dia_projeto_p');
+        $img_id_p         = $getInt('img_id_p');
+
+        $id_dia_projeto_e = $getInt('id_dia_projeto_e');
+        $img_id_e         = $getInt('img_id_e');
+
+        // -----------------------------
+        // DESCRIÇÃO DOS DIAS (IGUAL SALVAR)
+        // -----------------------------
+        $descricao_dia_i = trim(Request::post('descricao_dia_i', ''));
+        $descricao_dia_p = trim(Request::post('descricao_dia_p', ''));
+        $descricao_dia_e = trim(Request::post('descricao_dia_e', ''));
+
+        // -----------------------------
+        // ARQUIVOS DE IMAGENS ALTERADOS (SE O USUÁRIO TROCAR)
+        // -----------------------------
+        $imagem_dia_i = Request::file('imagem_dia_i');
+        $imagem_dia_p = Request::file('imagem_dia_p');
+        $imagem_dia_e = Request::file('imagem_dia_e');
+
+        // -----------------------------
+        // VAR_DUMP COMPLETO
+        // -----------------------------
+        var_dump([
+            'turmaId' => $turmaId,
+            'projetoId' => $projetoId,
+
+            'nomeProjeto' => $nomeProjeto,
+            'descricaoProjeto' => $descricaoProjeto,
+            'linkProjeto' => $linkProjeto,
+
+            'dias' => [
+                'I' => [
+                    'id_dia_projeto' => $id_dia_projeto_i,
+                    'img_id' => $img_id_i,
+                    'descricao' => $descricao_dia_i,
+                    'arquivo_enviado' => $imagem_dia_i
+                ],
+                'P' => [
+                    'id_dia_projeto' => $id_dia_projeto_p,
+                    'img_id' => $img_id_p,
+                    'descricao' => $descricao_dia_p,
+                    'arquivo_enviado' => $imagem_dia_p
+                ],
+                'E' => [
+                    'id_dia_projeto' => $id_dia_projeto_e,
+                    'img_id' => $img_id_e,
+                    'descricao' => $descricao_dia_e,
+                    'arquivo_enviado' => $imagem_dia_e
+                ],
+            ]
+        ]);
+        exit;
+    }
+
+
     public function excluir()
     {
         // Validação de login (pode ajustar conforme necessário)
@@ -161,7 +246,10 @@ if (isset($action)) {
         $controller->salvar();
     } elseif ($action === 'excluir') {
         $controller->excluir(); // Adiciona a rota para a exclusão
-    } else {
+    } elseif ($action === 'editar'){
+        $controller->editar();
+    }
+    else {
         // Ação POST desconhecida
         $_SESSION['erro_projeto'] = "Ação POST desconhecida.";
         $turmaIdFallback = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
