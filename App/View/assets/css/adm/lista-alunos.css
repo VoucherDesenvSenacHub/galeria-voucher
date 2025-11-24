@@ -1,250 +1,253 @@
 /* Estilo base do corpo da página */
 .body-lista-alunos {
-  background-color: #e2e2e2;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
+    background-color: #e2e2e2;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
 /* Conteúdo principal (scroll está aqui agora) */
 .main-lista-alunos {
-  flex-direction: column;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 20px;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
 }
 
 /* Container geral da seção aluno */
 .container-lista-alunos {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
 }
 
 /* Topo com botão e campo de pesquisa */
 .topo-lista-alunos {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px;
 }
 
 /* Campo de pesquisa com ícone de lupa */
 .input-pesquisa-container {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .input-pesquisa-container input[type="text"] {
-  width: 400px;
-  padding: 8px 40px 8px 12px;
-  font-size: 20px;
-  background-color: #d8dbd6;
-  color: #000;
-  border: 1px solid #999;
-  border-radius: 30px;
-  outline: none;
+    width: 400px;
+    padding: 8px 40px 8px 12px;
+    font-size: 20px;
+    background-color: #d8dbd6;
+    color: #000;
+    border: 1px solid #999;
+    border-radius: 30px;
+    outline: none;
 }
 
 .icone-lupa-img {
-  position: absolute;
-  top: 50%;
-  right: 14px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  opacity: 0.6;
-  pointer-events: none;
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 /* Estilos para o botão de pesquisa */
 .search-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: -15%;
-  right: 14px;
-  padding: 0;
+    --button-width:40px;
+    width: var(--button-width);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    inset: 0 0 0 calc(100% - var(--button-width));
+    padding: 0 0 0 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: start;
 }
+
 .acoes-container {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
+
 .no-style {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
 }
 
 
 
 /* Botão Nova Turma */
 #btn-nvturma {
-  width: 200px;
-  height: 60px;
-  padding: 10px 20px;
-  font-size: 30px;
-  text-align: center;
-  color: #004302;
-  background-color: #aeff40;
-  border: 3px solid #004302;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    width: 200px;
+    height: 60px;
+    padding: 10px 20px;
+    font-size: 30px;
+    text-align: center;
+    color: #004302;
+    background-color: #aeff40;
+    border: 3px solid #004302;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 #btn-nvturma:hover {
-  background-color: #9fe83a;
+    background-color: #9fe83a;
 }
 
 .tabela-container-lista-alunos {
-  height: auto;
-  overflow-x: auto;
+    height: auto;
+    overflow-x: auto;
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Estilo da tabela */
 #tabela-alunos {
-  width: 100%;
-  min-width: 1000px;
-  /* força scroll horizontal se necessário */
-  border-collapse: collapse;
+    width: 100%;
+    min-width: 1000px;
+    /* força scroll horizontal se necessário */
+    border-collapse: collapse;
 
-  a{
-  text-decoration: none;
-  color: #000;
-  transition: 0.2s linear;
-  cursor: pointer;
+    a {
+        text-decoration: none;
+        color: #000;
+        transition: 0.2s linear;
+        cursor: pointer;
 
-  &:hover{
-    transition: 0.2s linear;
-    color:#9fe83a;
-  }
-  }
+        &:hover {
+            transition: 0.2s linear;
+            color: #9fe83a;
+        }
+    }
 
 }
 
 
 /* Cabeçalho da tabela */
 thead {
-  top: 0;
-  background-color: #b6b6b6;
-  z-index: 2;
-  text-align: center;
-  font-size: 25px;
-  font-weight: bold;
+    top: 0;
+    background-color: #b6b6b6;
+    z-index: 2;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 /* Células */
 th,
 td {
-  padding: 15px 18px;
-  text-align: center;
+    padding: 15px 18px;
+    text-align: center;
 }
 
 td {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 /* Linhas divisórias verticais */
 th:not(:last-child),
 td:not(:last-child) {
-  box-shadow: inset -1px 0 black;
+    box-shadow: inset -1px 0 black;
 }
 
 /* Linhas alternadas */
 tbody tr:nth-child(even) {
-  background-color: #d1d1d1;
+    background-color: #d1d1d1;
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #c1c0c0;
+    background-color: #c1c0c0;
 }
 
 .acoes-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
-#edite{
-  color: #000;
+
+#edite {
+    color: #000;
 }
 
 .paginacao {
-  margin: auto;
+    margin: auto;
 }
 
 
 /* Fix para o menu hamburger nas páginas de lista */
 @media (max-width: 768px) {
-  .body-lista-alunos .menu-links {
-    transform: translateX(100%) !important;
-  }
+    .body-lista-alunos .menu-links {
+        transform: translateX(100%) !important;
+    }
 
-  .body-lista-alunos .menu-links.open {
-    transform: translateX(0) !important;
-  }
+    .body-lista-alunos .menu-links.open {
+        transform: translateX(0) !important;
+    }
 }
 
 /* Estilos para mensagens de erro e sucesso */
 .error-message {
-  background: #ffebee;
-  color: #c62828;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 8px;
-  border: 1px solid #ffcdd2;
+    background: #ffebee;
+    color: #c62828;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border: 1px solid #ffcdd2;
 }
 
 .success-message {
-  background: #e8f5e8;
-  color: #2e7d32;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 8px;
-  border: 1px solid #c8e6c9;
+    background: #e8f5e8;
+    color: #2e7d32;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
 }
 
 /* Estilos para o título da página */
 .page-title-container {
-  margin: 1.5rem 0.5rem;
+    margin: 1.5rem 0.5rem;
 }
 
 .page-title {
-  color: #2c3e50;
+    color: #2c3e50;
 }
 
 /* Estilos para células vazias da tabela */
 .empty-table-cell {
-  text-align: center;
-  padding: 2rem;
-  color: #6c757d;
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
 }
 
 .empty-state-container {
-  text-align: center;
+    text-align: center;
 }
 
 .empty-state-title {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
 }
 
 .empty-state-description {
-  color: #6c757d;
-  font-size: 0.9rem;
+    color: #6c757d;
+    font-size: 0.9rem;
 }
 
 /* Estilos para ícones de ação */
 .acao-delete {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 
@@ -293,40 +296,40 @@ tbody tr:nth-child(odd) {
 } */
 
 .warning-text {
-  color: #e74c3c;
-  font-weight: 500;
-  font-size: 0.9rem;
+    color: #e74c3c;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .form-group {
-  margin-top: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #333;
-  font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
 }
 
 .form-group input[type="password"] {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
 .form-group input[type="password"]:focus {
-  outline: none;
-  border-color: #9fe83a;
-  box-shadow: 0 0 0 2px rgba(159, 232, 58, 0.2);
+    outline: none;
+    border-color: #9fe83a;
+    box-shadow: 0 0 0 2px rgba(159, 232, 58, 0.2);
 }
 
 .modal-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 1.5rem 1.5rem 1.5rem;
 }
