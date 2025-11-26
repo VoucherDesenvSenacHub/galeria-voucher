@@ -112,7 +112,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                             <td colspan="3" class="empty-table-cell">
                                 <div class="empty-state-container">
                                     <p class="empty-state-title">Nenhum docente vinculado a esta turma.</p>
-                                    <p class="empty-state-description">Clique em "VINCULAR DOCENTE" para adicionar.</p>
                                 </div>
                             </td>
                         </tr>
