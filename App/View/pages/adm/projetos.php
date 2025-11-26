@@ -61,11 +61,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                 Config::getDirAdm() . 'cadastroProjetos.php' . ($turmaId ? "?turma_id=$turmaId" : '')
             );
             ?>
-
-            <div class="input-pesquisa-container">
-                <input type="text" id="pesquisa" placeholder="Pesquisar por nome...">
-                <img src="<?= Config::getDirImg() ?>adm/lupa.png" alt="Ícone de lupa" class="icone-lupa-img">
-            </div>
         </div>
 
         <?php if (isset($error_message)): ?>

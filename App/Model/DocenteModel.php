@@ -124,4 +124,94 @@ class DocenteModel extends BaseModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    /**
+     * Conta o total de docentes de uma turma específica, opcionalmente filtrados por termo de pesquisa.
+     * @param int $turma_id O ID da turma.
+     * @param string $termo Termo de pesquisa opcional.
+     * @return int
+     */
+    public function contarDocentesPorTurma(int $turma_id, string $termo = ''): int
+    {
+        $query = "
+            SELECT COUNT(DISTINCT p.pessoa_id)
+            FROM pessoa p
+            JOIN docente_turma at ON p.pessoa_id = at.pessoa_id
+            JOIN turma t ON at.turma_id = t.turma_id
+            JOIN polo ON t.polo_id = polo.polo_id
+            WHERE at.turma_id = :turma_id
+            AND p.perfil = 'professor'
+        ";
+
+        $params = [':turma_id' => $turma_id];
+        
+        if (!empty($termo)) {
+            $query .= " AND (p.nome LIKE :termo OR polo.nome LIKE :termo)";
+            $params[':termo'] = '%' . $termo . '%';
+        }
+
+        $stmt = $this->pdo->prepare($query);
+        
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
+        
+        $stmt->execute();
+        return (int)$stmt->fetchColumn();
+    }
+
+    /**
+     * Busca docentes de uma turma específica com paginação e pesquisa opcional.
+     * @param int $turma_id O ID da turma.
+     * @param int $limite Número de registros por página.
+     * @param int $offset Offset para paginação.
+     * @param string $termo Termo de pesquisa opcional.
+     * @return array
+     */
+    public function buscarDocentesPorTurmaPaginado(int $turma_id, int $limite, int $offset, string $termo = ''): array
+    {
+        $query = "
+            SELECT
+                p.pessoa_id,
+                p.nome,
+                p.linkedin,
+                p.github,
+                i.url as imagem_url,
+                polo.nome AS polo
+            FROM
+                pessoa p
+            JOIN
+                docente_turma at ON p.pessoa_id = at.pessoa_id
+            JOIN
+                turma t ON at.turma_id = t.turma_id
+            LEFT JOIN
+                imagem i ON p.imagem_id = i.imagem_id
+            JOIN
+                polo ON t.polo_id = polo.polo_id
+            WHERE
+                at.turma_id = :turma_id
+                AND p.perfil = 'professor'
+        ";
+
+        $params = [':turma_id' => $turma_id];
+        
+        if (!empty($termo)) {
+            $query .= " AND (p.nome LIKE :termo OR polo.nome LIKE :termo)";
+            $params[':termo'] = '%' . $termo . '%';
+        }
+
+        $query .= " ORDER BY p.nome ASC LIMIT :limite OFFSET :offset";
+
+        $stmt = $this->pdo->prepare($query);
+        
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
+        
+        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
