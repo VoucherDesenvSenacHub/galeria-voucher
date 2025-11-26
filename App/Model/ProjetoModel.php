@@ -192,6 +192,96 @@ class ProjetoModel extends BaseModel
             throw $e;
         }
     }
+    
+    public function editarProjeto(array $dados): bool
+    {
+        error_log("[editarProjeto] Iniciando edição do projeto ID {$dados['projetoId']}.");
+
+        if (!isset($dados['dias']) || !is_array($dados['dias'])) {
+            throw new Exception("Array 'dias' não fornecido ou inválido.");
+        }
+
+        try {
+            // Inicia transação
+            $this->pdo->beginTransaction();
+
+            // =============================
+            // 1. ATUALIZA PROJETO PRINCIPAL
+            // =============================
+            $sqlProjeto = "UPDATE {$this->tabela}
+                        SET nome = :nome,
+                            descricao = :descricao,
+                            link = :link
+                        WHERE projeto_id = :projetoId";
+
+            $stmtProjeto = $this->pdo->prepare($sqlProjeto);
+            $executou = $stmtProjeto->execute([
+                ':nome'       => $dados['nomeProjeto'],
+                ':descricao'  => $dados['descricaoProjeto'],
+                ':link'       => $dados['linkProjeto'],
+                ':projetoId'  => $dados['projetoId']
+            ]);
+
+            if (!$executou) {
+                $errorInfo = $stmtProjeto->errorInfo();
+                throw new Exception("Falha ao atualizar projeto: " . ($errorInfo[2] ?? 'Erro desconhecido'));
+            }
+
+            error_log("[editarProjeto] Projeto principal atualizado.");
+
+            // =============================
+            // 2. ATUALIZA DIAS E IMAGENS
+            // =============================
+            foreach ($dados['dias'] as $tipoDia => $dia) {
+                
+                if (isset($dia['arquivo_enviado']) && $dia['arquivo_enviado']['error'] === UPLOAD_ERR_OK) {
+
+ 
+
+                    $ext = pathinfo($dia['arquivo_enviado']['name'], PATHINFO_EXTENSION);
+                    $novoNome = 'img_' . uniqid() . '.' . $ext;
+                    $caminhoCompleto = './../../Uploads/'. $novoNome;
+
+                    if (!move_uploaded_file($dia['arquivo_enviado']['tmp_name'], $caminhoCompleto)) {
+                        throw new Exception("Falha ao mover imagem do dia {$tipoDia}");
+                    }
+
+                    $caminhoRelativo = './../../Uploads/' . $novoNome;
+
+                    $sqlImg = "UPDATE imagem
+                            SET url = :url
+                            WHERE imagem_id = :id";
+
+                    $stmtImg = $this->pdo->prepare($sqlImg);
+                    $executou = $stmtImg->execute([
+                        ':url' => $caminhoRelativo,
+                        ':id'  => $dia['img_id']
+                    ]);
+
+                    if (!$executou) {
+                        throw new Exception("Falha ao atualizar imagem do dia {$tipoDia}");
+                    }
+                }
+            }
+
+            // Finaliza transação
+            $this->pdo->commit();
+            error_log("[editarProjeto] ✅ PROJETO EDITADO COM SUCESSO.");
+
+            return true;
+
+        } catch (Throwable $e) {
+
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+
+            error_log("[editarProjeto] ❌ ERRO: " . $e->getMessage());
+            throw $e;
+        }
+    }
+
+
 
     /**
      * Função auxiliar para verificar a existência de um registro em uma tabela.

@@ -26,7 +26,7 @@ class ProjetoController
 
     public function salvar()
     {
-        // Inicio Validações
+
         ValidarLoginController::validarAdminRedirect(Config::getDirAdm() . 'login.php');
 
         $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
@@ -65,9 +65,7 @@ class ProjetoController
             'turma_id' => $turmaId,
             'dias' => []
         ];
-        // Fim validações
 
-        // Inicio Salvamentos
         try {
 
             $this->projetoModel->getPDO()->beginTransaction();
@@ -92,7 +90,7 @@ class ProjetoController
 
             if (!empty($erros)) {
                 $_SESSION['erro_projeto'] = $erros;
-                // Limpa arquivos que possam ter sido enviados se o processo falhou
+
                 foreach ($dadosProjeto['dias'] as $dia) {
                     if (isset($dia['imagem_id']) && $dia['imagem_id']) {
                         $imgInfo = $this->imagemModel->buscarImagemPorId($dia['imagem_id']);
@@ -117,14 +115,12 @@ class ProjetoController
             $this->projetoModel->getPDO()->rollBack();
             return;
         }
-        // Fim salvamentos
+
     }
 
    public function editar()
     {
-        // -----------------------------
-        // CAMPOS BÁSICOS
-        // -----------------------------
+
         $turmaId   = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT);
         $projetoId = filter_input(INPUT_POST, 'projeto_id', FILTER_VALIDATE_INT);
 
@@ -132,9 +128,7 @@ class ProjetoController
         $descricaoProjeto = trim(Request::post('descricao_projeto', ''));
         $linkProjeto      = trim(Request::post('link_projeto', ''));
 
-        // -----------------------------
-        // FUNÇÃO AUXILIAR
-        // -----------------------------
+
         $getInt = function ($name) {
             $raw = filter_input(INPUT_POST, $name, FILTER_DEFAULT);
 
@@ -143,9 +137,6 @@ class ProjetoController
                 : filter_var($raw, FILTER_VALIDATE_INT);
         };
 
-        // -----------------------------
-        // IDS DE DIA E IMAGENS EXISTENTES
-        // -----------------------------
         $id_dia_projeto_i = $getInt('id_dia_projeto_i');
         $img_id_i         = $getInt('img_id_i');
 
@@ -155,24 +146,46 @@ class ProjetoController
         $id_dia_projeto_e = $getInt('id_dia_projeto_e');
         $img_id_e         = $getInt('img_id_e');
 
-        // -----------------------------
-        // DESCRIÇÃO DOS DIAS (IGUAL SALVAR)
-        // -----------------------------
         $descricao_dia_i = trim(Request::post('descricao_dia_i', ''));
         $descricao_dia_p = trim(Request::post('descricao_dia_p', ''));
         $descricao_dia_e = trim(Request::post('descricao_dia_e', ''));
 
-        // -----------------------------
-        // ARQUIVOS DE IMAGENS ALTERADOS (SE O USUÁRIO TROCAR)
-        // -----------------------------
         $imagem_dia_i = Request::file('imagem_dia_i');
         $imagem_dia_p = Request::file('imagem_dia_p');
         $imagem_dia_e = Request::file('imagem_dia_e');
 
-        // -----------------------------
-        // VAR_DUMP COMPLETO
-        // -----------------------------
-        var_dump([
+        // var_dump([
+        //     'turmaId' => $turmaId,
+        //     'projetoId' => $projetoId,
+
+        //     'nomeProjeto' => $nomeProjeto,
+        //     'descricaoProjeto' => $descricaoProjeto,
+        //     'linkProjeto' => $linkProjeto,
+
+        //     'dias' => [
+        //         'I' => [
+        //             'id_dia_projeto' => $id_dia_projeto_i,
+        //             'img_id' => $img_id_i,
+        //             'descricao' => $descricao_dia_i,
+        //             'arquivo_enviado' => $imagem_dia_i
+        //         ],
+        //         'P' => [
+        //             'id_dia_projeto' => $id_dia_projeto_p,
+        //             'img_id' => $img_id_p,
+        //             'descricao' => $descricao_dia_p,
+        //             'arquivo_enviado' => $imagem_dia_p
+        //         ],
+        //         'E' => [
+        //             'id_dia_projeto' => $id_dia_projeto_e,
+        //             'img_id' => $img_id_e,
+        //             'descricao' => $descricao_dia_e,
+        //             'arquivo_enviado' => $imagem_dia_e
+        //         ],
+        //     ]
+        // ]);
+        // exit;
+
+        $dados = [
             'turmaId' => $turmaId,
             'projetoId' => $projetoId,
 
@@ -200,20 +213,22 @@ class ProjetoController
                     'arquivo_enviado' => $imagem_dia_e
                 ],
             ]
-        ]);
-        exit;
+        ];
+
+        
+
+       $this->projetoModel->editarProjeto($dados);
     }
 
 
     public function excluir()
     {
-        // Validação de login (pode ajustar conforme necessário)
+
         ValidarLoginController::validarAdminRedirect(Config::getDirAdm() . 'login.php');
 
         $projetoId = filter_input(INPUT_POST, 'projeto_id', FILTER_VALIDATE_INT);
-        $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT); // Para redirecionar de volta
+        $turmaId = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT); 
 
-        // Define os parâmetros de redirecionamento
         $redirectParams = $turmaId ? ['turma_id' => $turmaId] : [];
 
         if (!$projetoId) {
@@ -222,7 +237,6 @@ class ProjetoController
             return;
         }
 
-        // Chama o novo método do model
         $resultado = $this->projetoModel->excluirProjeto($projetoId);
 
         if ($resultado) {
@@ -231,13 +245,12 @@ class ProjetoController
             $_SESSION['erro_projeto'] = "Erro ao excluir o projeto.";
         }
 
-        // Redireciona de volta para a lista de projetos da turma
         Redirect::toAdm('projetos.php', $redirectParams);
     }
 
 }
 
-$action = Request::post('action'); // Ações de salvar e excluir vêm via POST
+$action = Request::post('action'); 
 
 if (isset($action)) {
     $controller = new ProjetoController();
@@ -245,12 +258,12 @@ if (isset($action)) {
     if ($action === 'salvar') {
         $controller->salvar();
     } elseif ($action === 'excluir') {
-        $controller->excluir(); // Adiciona a rota para a exclusão
+        $controller->excluir();
     } elseif ($action === 'editar'){
         $controller->editar();
     }
     else {
-        // Ação POST desconhecida
+
         $_SESSION['erro_projeto'] = "Ação POST desconhecida.";
         $turmaIdFallback = filter_input(INPUT_POST, 'turma_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if ($turmaIdFallback) {
@@ -260,9 +273,9 @@ if (isset($action)) {
         }
     }
 } else {
-    // Nenhuma ação POST (provavelmente um GET indevido na raiz do controller)
+
     $_SESSION['erro_projeto'] = "Ação desconhecida.";
-    $turmaIdFallback = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT); // Tenta pegar de GET
+    $turmaIdFallback = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     if ($turmaIdFallback) {
         Redirect::toAdm('projetos.php', ['turma_id' => $turmaIdFallback]);
     } else {
