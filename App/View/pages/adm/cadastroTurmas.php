@@ -76,16 +76,13 @@ $currentTab = 'Dados-gerais';
           <div class="form-top">
             <div class="form-section">
               <h1 class='h1-turma'><?= $isEditMode ? 'EDITAR TURMA' : 'CADASTRO DE TURMA' ?></h1>
-           
-                    
-                  <?php  inputComponent('text', 'nome', 'Nome da turma' ,  ($turma['nome'] ?? ''), label:"nome", required: true)?>
-              
+
+              <?php inputComponent('text', 'nome', 'Nome da Turma', ($turma['nome'] ?? ''), label:"nome", required: true) ?>
+
               <div class="input-container">
-                     <label class="form-label" id="text_input">Descrição</label>
-              <textarea name="descricao"
-                ><?= htmlspecialchars($turma['descricao'] ?? '') ?></textarea>
+                  <label class="form-label" id="text_input">Descrição</label>
+                  <textarea name="descricao" placeholder="Descrição da Turma" required><?= htmlspecialchars($turma['descricao'] ?? '') ?></textarea>
               </div>
-           
 
                 <div class="container_dia_data">
                   <div class="container_input_text">
