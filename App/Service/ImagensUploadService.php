@@ -57,6 +57,18 @@ class ImagensUploadService
         }
     }
 
+    public function salvar(array $arquivo, string $prefixo, ?string $descricao = null)
+    {
+
+        $salvo = $this->salvarArquivo($arquivo, $prefixo);
+
+        if(!$salvo['success'])return false;
+
+        $id = $this->model->salvarImagem($salvo['caminho'], $descricao);
+
+        return $id;
+    }
+
 
     public function excluir(int $id)
     {

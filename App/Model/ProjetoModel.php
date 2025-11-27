@@ -236,7 +236,7 @@ class ProjetoModel extends BaseModel
                 
                 if (isset($dia['arquivo_enviado']) && $dia['arquivo_enviado']['error'] === UPLOAD_ERR_OK) {
 
- 
+
 
                     $ext = pathinfo($dia['arquivo_enviado']['name'], PATHINFO_EXTENSION);
                     $novoNome = 'img_' . uniqid() . '.' . $ext;
