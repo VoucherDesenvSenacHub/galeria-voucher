@@ -92,23 +92,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         title="Editar">
                                         <span class="material-symbols-outlined" id="edite">edit</span>
                                     </a>
-                                    <span class="material-symbols-outlined" style="cursor: pointer;"
-                                        title="Excluir">delete</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                        <?php foreach ($projetos as $projeto): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($projeto['projeto_id']) ?></td>
-                            <td><?= htmlspecialchars($projeto['NOME_PROJETO']) ?></td>
-                            <td><?= htmlspecialchars(mb_strimwidth($projeto['DESCRICAO_PROJETO'], 0, 100, "...")) ?>
-                            </td>
-                            <td class="acoes">
-                                <div class="acoes-container">
-                                    <span class="material-symbols-outlined action-icon" style="cursor: pointer;"
-                                        title="Editar">edit
-                                    </span>
 
                                     <form method="POST"
                                         action="<?= Config::getAppUrl() ?>App/Controller/ProjetoController.php"
@@ -122,7 +105,6 @@ $is_admin = isset($_SESSION['usuario']) && $_SESSION['usuario']['perfil'] === 'a
                                         </button>
                                     </form>
                                 </div>
-                            </td>
                             </td>
                         </tr>
                         <?php endforeach; ?>

@@ -231,7 +231,7 @@ require_once __DIR__ . "/../../componentes/nav.php";
             </div>
 
             <div class="button-projeto">
-                <?php buttonComponent('secondary', 'Cancelar', false, Config::getDirAdm() . 'projetos.php?id=' . $turmaId, null, '', 'back-button-js'); ?>
+                <?php buttonComponent('secondary', 'Cancelar', false, Config::getDirAdm() . 'projetos.php?turma_id=' . $turmaId); ?>
                 <?php buttonComponent('primary', 'Salvar Projeto', true); ?>
             </div>
 
@@ -254,14 +254,6 @@ require_once __DIR__ . "/../../componentes/nav.php";
             preview.src = defaultImage;
         }
     }
-
-    document.querySelectorAll('.preview-imagem').forEach(img => {
-        img.addEventListener('click', () => {
-            const inputFile = img.closest('.input-imagem-container').querySelector(
-                'input[type="file"]');
-            if (inputFile) inputFile.click();
-        });
-    });
 
     const cancelButton = document.querySelector('.back-button-js');
     if (cancelButton) {
