@@ -72,7 +72,7 @@ class ProjetoController
             foreach ($dias as $tipoDia => $diaData) {
                 $imagemId = null;
                 if ($diaData['imagem'] && $diaData['imagem']['error'] === UPLOAD_ERR_OK) {
-                    $resultadoUpload = $this->uploadService->salvar($diaData['imagem'], 'projeto-' . $tipoDia);
+                    $resultadoUpload = $this->uploadService->salvarArquivo($diaData['imagem'], 'projeto-' . $tipoDia);
                     if ($resultadoUpload['success']) {
                         $novoImagemId = $this->imagemModel->criarImagem($resultadoUpload['caminho'], null, "Imagem do Projeto {$nomeProjeto} - Dia {$tipoDia}");
                     } else {

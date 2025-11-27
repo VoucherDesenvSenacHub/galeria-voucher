@@ -66,7 +66,7 @@ class TurmaController {
 
             $imagemFile = Request::file('imagem_turma');
             if ($imagemFile && $imagemFile['error'] === UPLOAD_ERR_OK) {
-                $resultadoUpload = $this->uploadService->salvar($imagemFile, 'turma');
+                $resultadoUpload = $this->uploadService->salvarArquivo($imagemFile, 'turma');
 
                 if ($resultadoUpload['success']) {
                     $imagemModel = new ImagemModel();
@@ -139,7 +139,7 @@ class TurmaController {
 
             $imagemFile = Request::file('imagem_turma');
             if ($imagemFile && $imagemFile['error'] === UPLOAD_ERR_OK) {
-                $resultadoUpload = $this->uploadService->salvar($imagemFile, 'turma');
+                $resultadoUpload = $this->uploadService->salvarArquivo($imagemFile, 'turma');
 
                 if ($resultadoUpload['success']) {
                     $imagemModel = new ImagemModel();
