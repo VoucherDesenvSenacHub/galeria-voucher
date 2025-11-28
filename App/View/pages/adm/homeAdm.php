@@ -21,7 +21,7 @@ $paginaAtiva = 'home';
     <main class="content-adm layout-main">
       <div class="user-profile-adm">
         <div>
-          <img class="img-Adm" src="<?= $usuarioImagem ?>" alt="Foto de <?= $usuarioNome ?>">
+          <img class="img-Adm" src="<?= Config::getAppUrl() . $usuarioImagem ?>" alt="Foto de <?= $usuarioNome ?>">
         </div>
         <div class="welcome-message-adm">
           BEM VINDO
