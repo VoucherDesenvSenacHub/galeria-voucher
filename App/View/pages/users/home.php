@@ -100,7 +100,7 @@ try {
                     <div class="stats">
                         <?php
                         $estatisticas = [
-                            ['valor' => $resultado['alunos'] > 100 ? '+' . floor($resultado['alunos'] / 100) * 100 : $resultado['alunos'], 'label' => 'DE ALUNOS'],
+                            ['valor' => $resultado['alunos'] > 100 ? '+' . floor($resultado['alunos'] / 100) * 100 : $resultado['alunos'], 'label' => 'ALUNOS'],
                             ['valor' => $resultado['projetos'] > 10 ? '+' . floor($resultado['projetos'] / 10) * 10 : $resultado['projetos'], 'label' => 'PROJETOS'],
                             ['valor' => $resultado['polos'], 'label' => 'POLOS'],
                             ['valor' => '1200', 'label' => 'CURSO COM HORAS']
