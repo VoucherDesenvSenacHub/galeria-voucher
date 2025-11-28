@@ -201,6 +201,8 @@ class ProjetoModel extends BaseModel
             throw new Exception("Array 'dias' não fornecido ou inválido.");
         }
 
+        $imageService = new ImagensUploadService();
+
         try {
             // Inicia transação
             $this->pdo->beginTransaction();
@@ -237,16 +239,12 @@ class ProjetoModel extends BaseModel
                 if (isset($dia['arquivo_enviado']) && $dia['arquivo_enviado']['error'] === UPLOAD_ERR_OK) {
 
 
+                    $result = $imageService->salvarArquivo($dia['arquivo_enviado'], 'projeto_dia');
 
-                    $ext = pathinfo($dia['arquivo_enviado']['name'], PATHINFO_EXTENSION);
-                    $novoNome = 'img_' . uniqid() . '.' . $ext;
-                    $caminhoCompleto = './../../Uploads/'. $novoNome;
 
-                    if (!move_uploaded_file($dia['arquivo_enviado']['tmp_name'], $caminhoCompleto)) {
+                    if (!$result['success']) {
                         throw new Exception("Falha ao mover imagem do dia {$tipoDia}");
                     }
-
-                    $caminhoRelativo = './../../Uploads/' . $novoNome;
 
                     $sqlImg = "UPDATE imagem
                             SET url = :url
@@ -254,7 +252,7 @@ class ProjetoModel extends BaseModel
 
                     $stmtImg = $this->pdo->prepare($sqlImg);
                     $executou = $stmtImg->execute([
-                        ':url' => $caminhoRelativo,
+                        ':url' => $result['caminho'],
                         ':id'  => $dia['img_id']
                     ]);
 

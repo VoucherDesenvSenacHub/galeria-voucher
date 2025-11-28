@@ -85,7 +85,7 @@ class ImagensUploadService
         return $this->excluirArquivo($imagem['url']);
 
     }
-    private function excluirArquivo($path): bool
+    public function excluirArquivo($path): bool
     {
 
         if(!isset($path) || !empty($path))return false;

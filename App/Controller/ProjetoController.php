@@ -154,7 +154,8 @@ class ProjetoController
         $imagem_dia_p = Request::file('imagem_dia_p');
         $imagem_dia_e = Request::file('imagem_dia_e');
 
-        // var_dump([
+        // echo "<pre>";
+        // print_r([
         //     'turmaId' => $turmaId,
         //     'projetoId' => $projetoId,
 
@@ -183,6 +184,7 @@ class ProjetoController
         //         ],
         //     ]
         // ]);
+        // echo "</pre>";
         // exit;
 
         $dados = [
@@ -216,8 +218,16 @@ class ProjetoController
         ];
 
         
+        try{
+            $this->projetoModel->editarProjeto($dados);
+            $_SESSION['sucesso_projeto'] = "Projeto alterado com sucesso!";
+            Redirect::toAdm('projetos.php', ['turma_id' => $turmaId]);
+        } catch (\Exception $e) {
+            $this->projetoModel->getPDO()->rollBack();
+            $_SESSION['erro_projeto'] = "Erro ao alterar o projeto.";
+            Redirect::toAdm('projetos.php', ['turma_id' => $turmaId]);
+        }
 
-       $this->projetoModel->editarProjeto($dados);
     }
 
 
