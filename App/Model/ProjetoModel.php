@@ -192,6 +192,94 @@ class ProjetoModel extends BaseModel
             throw $e;
         }
     }
+    
+    public function editarProjeto(array $dados): bool
+    {
+        error_log("[editarProjeto] Iniciando edição do projeto ID {$dados['projetoId']}.");
+
+        if (!isset($dados['dias']) || !is_array($dados['dias'])) {
+            throw new Exception("Array 'dias' não fornecido ou inválido.");
+        }
+
+        $imageService = new ImagensUploadService();
+
+        try {
+            // Inicia transação
+            $this->pdo->beginTransaction();
+
+            // =============================
+            // 1. ATUALIZA PROJETO PRINCIPAL
+            // =============================
+            $sqlProjeto = "UPDATE {$this->tabela}
+                        SET nome = :nome,
+                            descricao = :descricao,
+                            link = :link
+                        WHERE projeto_id = :projetoId";
+
+            $stmtProjeto = $this->pdo->prepare($sqlProjeto);
+            $executou = $stmtProjeto->execute([
+                ':nome'       => $dados['nomeProjeto'],
+                ':descricao'  => $dados['descricaoProjeto'],
+                ':link'       => $dados['linkProjeto'],
+                ':projetoId'  => $dados['projetoId']
+            ]);
+
+            if (!$executou) {
+                $errorInfo = $stmtProjeto->errorInfo();
+                throw new Exception("Falha ao atualizar projeto: " . ($errorInfo[2] ?? 'Erro desconhecido'));
+            }
+
+            error_log("[editarProjeto] Projeto principal atualizado.");
+
+            // =============================
+            // 2. ATUALIZA DIAS E IMAGENS
+            // =============================
+            foreach ($dados['dias'] as $tipoDia => $dia) {
+                
+                if (isset($dia['arquivo_enviado']) && $dia['arquivo_enviado']['error'] === UPLOAD_ERR_OK) {
+
+
+                    $result = $imageService->salvarArquivo($dia['arquivo_enviado'], 'projeto_dia');
+
+
+                    if (!$result['success']) {
+                        throw new Exception("Falha ao mover imagem do dia {$tipoDia}");
+                    }
+
+                    $sqlImg = "UPDATE imagem
+                            SET url = :url
+                            WHERE imagem_id = :id";
+
+                    $stmtImg = $this->pdo->prepare($sqlImg);
+                    $executou = $stmtImg->execute([
+                        ':url' => $result['caminho'],
+                        ':id'  => $dia['img_id']
+                    ]);
+
+                    if (!$executou) {
+                        throw new Exception("Falha ao atualizar imagem do dia {$tipoDia}");
+                    }
+                }
+            }
+
+            // Finaliza transação
+            $this->pdo->commit();
+            error_log("[editarProjeto] ✅ PROJETO EDITADO COM SUCESSO.");
+
+            return true;
+
+        } catch (Throwable $e) {
+
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+
+            error_log("[editarProjeto] ❌ ERRO: " . $e->getMessage());
+            throw $e;
+        }
+    }
+
+
 
     /**
      * Função auxiliar para verificar a existência de um registro em uma tabela.
@@ -217,6 +305,39 @@ class ProjetoModel extends BaseModel
             return false;
         }
     }
+
+    public function getProjetoDiaID(int $turmaId, int $projetoId){
+        $sql = "SELECT
+                	p.projeto_id ID_PROJETO,
+                	P.nome NOME_PROJETO, 
+                    P.descricao DESCRICAO_PROJETO, 
+                    P.link LINK_PROJETO,
+                    PD.tipo_dia DIA_PROJETO,
+                    PD.descricao DESC_DIA_PROJETO,
+                    PD.projeto_dia_id ID_DIA_PROJETO,
+                    I.url URL_IMG_PROJETO,
+                    I.imagem_id IMG_ID
+                FROM projeto p
+                JOIN projeto_dia PD
+                    ON P.projeto_id = PD.projeto_id
+                JOIN TURMA T 
+                    ON P.turma_id = T.turma_id
+                JOIN imagem_projeto_dia IPD
+                    ON PD.projeto_dia_id = IPD.projeto_dia_id
+                JOIN imagem I
+                    ON IPD.imagem_id = I.imagem_id
+                WHERE T.turma_id = :turmaId
+                AND P.projeto_id = :projetoId";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(":turmaId", $turmaId, PDO::PARAM_INT);
+        $stmt->bindValue(":projetoId", $projetoId, PDO::PARAM_INT);
+
+        $stmt->execute(); 
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     /**
      * Exclui um projeto e todos os seus dados dependentes (dias, associações de imagens).

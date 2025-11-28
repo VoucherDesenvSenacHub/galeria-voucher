@@ -217,12 +217,14 @@
 }
 
 /* ===== IMAGENS ===== */
-.galeria-turma-section img {
+.galeria-turma-section img:not(.social-icons img) {
   width: 100%;
   max-width: 31.25rem;
   display: block;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+
 
 .galeria-turma-image-container img {
   border-radius: 12px;

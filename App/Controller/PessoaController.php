@@ -31,7 +31,7 @@ switch ($acao) {
         
         $imagemId = null;
         if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
+            $resultadoUpload = $uploadService->salvarArquivo($_FILES['imagem'], 'perfil');
             if ($resultadoUpload['success']) {
                 $imagemModel = new ImagemModel();
                 $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
@@ -68,7 +68,7 @@ switch ($acao) {
 
         $imagemId = null;
         if (!empty($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $resultadoUpload = $uploadService->salvar($_FILES['imagem'], 'perfil');
+            $resultadoUpload = $uploadService->salvarArquivo($_FILES['imagem'], 'perfil');
             if ($resultadoUpload['success']) {
                 $imagemModel = new ImagemModel();
                 $imagemId = $imagemModel->criarImagem($resultadoUpload['caminho'], null, 'Imagem de perfil');
