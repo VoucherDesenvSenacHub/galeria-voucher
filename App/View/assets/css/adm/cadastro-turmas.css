@@ -189,4 +189,44 @@
         font-family: var(--font-secondary);
     }
 
+    input[type="date"] {
+        font-family: 'Arial', sans-serif;
+        /* Exemplo de fonte */
+        font-size: 16px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        padding: 14px;
+        margin-top: 5px;
+        font-size: var(--m-font);
+        border: 1 solid #ccc;
+        background-color: #d8dbd6;
+        border-radius: 10px;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    .input-container select,
+    .input-container textarea {
+        font-family: 'Arial', sans-serif;
+        /* Exemplo de fonte */
+        font-size: 16px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        padding: 14px;
+        margin-top: 5px;
+        font-size: var(--m-font);
+        border: 1 solid #ccc;
+        background-color: #d8dbd6;
+        border-radius: 10px;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+
 }
