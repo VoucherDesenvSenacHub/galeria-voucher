@@ -118,7 +118,7 @@ class TurmaModel extends BaseModel
             SELECT 
                 t.turma_id,
                 t.nome AS nome_turma,
-                COALESCE(i.url, 'App/View/assets/img/utilitarios/foto.png') AS imagem_url
+                COALESCE(i.url, 'App/View/assets/img/utilitarios/foto1.png') AS imagem_url
             FROM turma t
             LEFT JOIN imagem i ON t.imagem_id = i.imagem_id
             ORDER BY t.nome ASC

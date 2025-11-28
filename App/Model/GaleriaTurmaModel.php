@@ -33,7 +33,7 @@ class GaleriaTurmaModel
         $orientadores = $this->docenteModel->buscarPorTurma($turmaId);
 
         return [
-            'imagemTurmaUrl' => urlImagem($turma['imagem'], 'App/View/assets/img/utilitarios/foto.png'),
+            'imagemTurmaUrl' => urlImagem($turma['imagem'], 'App/View/assets/img/utilitarios/foto1.png'),
             'nomeTurma' => $turma['nome'],
             'descricaoTurma' => $turma['descricao'],
             'alunos' => $alunos,
