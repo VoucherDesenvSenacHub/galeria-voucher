@@ -61,7 +61,7 @@ if ($acao === 'editar' && $pessoa && !empty($pessoa['imagem_id'])) {
                     <?php
                         inputComponent('text', 'nome', 'Nome Completo', $pessoa['nome'] ?? ($_POST['nome'] ?? ''), "nome", true );
                         inputComponent('text', 'email', 'Email', $pessoa['email'] ?? ($_POST['email'] ?? ''), "email", true);
-                        inputComponent('password', 'senha', 'Senha', $_POST['senha'] ?? '', "senha", true);
+                        inputComponent('password', 'senha', 'Senha', $_POST['senha'] ?? '', "senha");
                         inputComponent('text', 'linkedin', 'Link do linkedin', $pessoa['linkedin'] ?? ($_POST['linkedin'] ?? ''), "linkedin" );
                         inputComponent('text', 'github', 'Link para o GitHub', $pessoa['github'] ?? ($_POST['github'] ?? ''), "github" );
                     ?>
